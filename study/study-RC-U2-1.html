@@ -1,0 +1,1265 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-U2-1 RC 剪力強度分析與設計 — 複習導覽</title>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/katex.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/KaTeX/0.16.4/contrib/auto-render.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.4.0/chart.umd.min.js"></script>
+<style>
+:root {
+  --bg: #ffffff;
+  --surface: #f8f9fa;
+  --surface2: #eef0f5;
+  --border: #d0d5e0;
+  --text: #1a1d2e;
+  --muted: #5a6380;
+  --accent: #0066cc;
+  --typeA: #c0392b;
+  --typeB: #2471a3;
+  --typeC: #1e8449;
+  --typeD: #7d3c98;
+  --typeE: #d68910;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: 'Segoe UI', 'Noto Sans TC', sans-serif;
+  font-size: 15px;
+  line-height: 1.6;
+}
+.topbar {
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  padding: 14px 32px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+.topbar-title { font-size: 1.05rem; font-weight: 700; color: var(--accent); }
+.topbar-sub { color: var(--muted); font-size: 0.85rem; }
+.topbar-nav { margin-left: auto; display: flex; gap: 8px; flex-wrap: wrap; }
+.topbar-nav a {
+  color: var(--muted);
+  text-decoration: none;
+  font-size: 0.8rem;
+  padding: 4px 10px;
+  border-radius: 4px;
+  border: 1px solid var(--border);
+  transition: all 0.15s;
+}
+.topbar-nav a:hover { color: var(--accent); border-color: var(--accent); }
+.section {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 48px 24px;
+  border-bottom: 1px solid var(--border);
+}
+.section-label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.15em;
+  color: var(--accent);
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+.section-title {
+  font-size: 1.5rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 28px;
+}
+.kpi-row {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  margin-bottom: 28px;
+}
+@media (max-width: 700px) { .kpi-row { grid-template-columns: repeat(2, 1fr); } }
+.kpi-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.kpi-num { font-size: 2rem; font-weight: 800; color: var(--accent); }
+.kpi-label { font-size: 0.8rem; color: var(--muted); margin-top: 4px; }
+.type-chips {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+.chip {
+  padding: 5px 14px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  transition: all 0.15s;
+  background: var(--surface);
+}
+.chip.all { border-color: var(--accent); color: var(--accent); }
+.chip.A { border-color: var(--typeA); color: var(--typeA); }
+.chip.B { border-color: var(--typeB); color: var(--typeB); }
+.chip.C { border-color: var(--typeC); color: var(--typeC); }
+.chip.D { border-color: var(--typeD); color: var(--typeD); }
+.chip.E { border-color: var(--typeE); color: var(--typeE); }
+.chip.active { color: #fff !important; }
+.chip.all.active { background: var(--accent); }
+.chip.A.active { background: var(--typeA); }
+.chip.B.active { background: var(--typeB); }
+.chip.C.active { background: var(--typeC); }
+.chip.D.active { background: var(--typeD); }
+.chip.E.active { background: var(--typeE); }
+.charts-row {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+}
+@media (max-width: 700px) { .charts-row { grid-template-columns: 1fr; } }
+.chart-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 20px;
+}
+.chart-card h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 14px; }
+.q-list { display: flex; flex-direction: column; gap: 10px; }
+.q-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  transition: border-color 0.15s;
+}
+.q-card.A { border-left-color: var(--typeA); }
+.q-card.B { border-left-color: var(--typeB); }
+.q-card.C { border-left-color: var(--typeC); }
+.q-card.D { border-left-color: var(--typeD); }
+.q-card.E { border-left-color: var(--typeE); }
+.q-card.hidden { display: none; }
+.q-meta { min-width: 90px; }
+.q-id a { font-weight: 700; font-size: 0.92rem; text-decoration: none; color: var(--accent); }
+.q-id a:hover { text-decoration: underline; }
+.q-year { font-size: 0.78rem; color: var(--muted); }
+.q-body { flex: 1; }
+.q-title { font-size: 0.92rem; color: var(--text); margin-bottom: 6px; }
+.q-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.q-tag {
+  font-size: 0.72rem;
+  padding: 2px 8px;
+  background: var(--surface2);
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  color: var(--muted);
+}
+.q-icons { font-size: 0.8rem; }
+.diagrams-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+  gap: 20px;
+}
+.diagram-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px;
+}
+.diagram-card h4 { font-size: 0.85rem; color: var(--muted); margin-bottom: 12px; text-align: center; }
+.diagram-card svg { width: 100%; }
+.flow-wrap {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 20px;
+}
+.flow-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.flow-card h4 { font-size: 0.88rem; font-weight: 700; color: var(--text); margin-bottom: 14px; }
+.flow-card h4 span { padding: 2px 8px; border-radius: 4px; margin-right: 8px; font-size: 0.75rem; color: #fff; }
+.flow-card h4 span.A { background: var(--typeA); }
+.flow-card h4 span.B { background: var(--typeB); }
+.flow-card h4 span.C { background: var(--typeC); }
+.flow-card h4 span.D { background: var(--typeD); }
+.flow-card h4 span.E { background: var(--typeE); }
+.flow-step { display: flex; gap: 10px; align-items: flex-start; margin-bottom: 8px; }
+.flow-num {
+  min-width: 22px; height: 22px; border-radius: 50%;
+  background: var(--surface2); border: 1px solid var(--border);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 0.72rem; font-weight: 700; color: var(--muted); flex-shrink: 0;
+}
+.flow-text { font-size: 0.82rem; color: var(--text); line-height: 1.5; }
+.flow-sub { font-size: 0.76rem; color: var(--muted); margin-top: 2px; }
+.flow-arrow { text-align: center; color: var(--muted); font-size: 0.8rem; margin: 2px 0 2px 28px; }
+.flow-decision {
+  background: var(--surface2);
+  border: 1px dashed var(--border);
+  border-radius: 6px;
+  padding: 6px 10px;
+  font-size: 0.78rem; color: var(--muted);
+  margin-left: 28px; margin-bottom: 8px;
+}
+.formula-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+  gap: 16px;
+}
+.formula-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 18px 20px;
+}
+.formula-card h4 {
+  font-size: 0.88rem; font-weight: 700; margin-bottom: 12px;
+  padding-bottom: 8px; border-bottom: 1px solid var(--border);
+}
+.formula-card h4.A { color: var(--typeA); }
+.formula-card h4.B { color: var(--typeB); }
+.formula-card h4.C { color: var(--typeC); }
+.formula-card h4.D { color: var(--typeD); }
+.formula-card h4.E { color: var(--typeE); }
+.formula-block { margin-bottom: 10px; }
+.formula-block .label { font-size: 0.78rem; color: var(--muted); margin-bottom: 3px; }
+.formula-note {
+  margin-top: 10px; font-size: 0.78rem; color: var(--muted);
+  background: var(--surface2); border-radius: 6px; padding: 8px 10px; line-height: 1.6;
+}
+.traps-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 14px; }
+.trap-card { background: var(--surface); border: 1px solid var(--border); border-radius: 8px; padding: 14px 16px; }
+.trap-header { display: flex; align-items: center; gap: 8px; margin-bottom: 8px; }
+.trap-badge { font-size: 0.7rem; font-weight: 700; padding: 2px 8px; border-radius: 10px; color: #fff; }
+.trap-badge.A { background: var(--typeA); }
+.trap-badge.B { background: var(--typeB); }
+.trap-badge.C { background: var(--typeC); }
+.trap-badge.D { background: var(--typeD); }
+.trap-badge.E { background: var(--typeE); }
+.trap-title { font-size: 0.88rem; font-weight: 700; color: var(--text); }
+.trap-desc { font-size: 0.8rem; color: var(--muted); line-height: 1.5; }
+.calc-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 20px; }
+.calc-card { background: var(--surface); border: 1px solid var(--border); border-radius: 10px; padding: 20px; }
+.calc-card h4 { font-size: 0.95rem; font-weight: 700; color: var(--accent); margin-bottom: 16px; }
+.calc-row { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+.calc-row label { font-size: 0.8rem; color: var(--muted); min-width: 130px; }
+.calc-row input, .calc-row select {
+  flex: 1; background: #fff; border: 1px solid var(--border);
+  border-radius: 6px; padding: 6px 10px; color: var(--text); font-size: 0.85rem; outline: none;
+}
+.calc-row input:focus, .calc-row select:focus { border-color: var(--accent); }
+.calc-btn {
+  width: 100%; margin-top: 12px; padding: 9px;
+  background: var(--accent); color: #fff; font-weight: 700;
+  font-size: 0.88rem; border: none; border-radius: 6px; cursor: pointer; transition: opacity 0.15s;
+}
+.calc-btn:hover { opacity: 0.85; }
+.calc-result {
+  margin-top: 12px; background: var(--surface2); border-radius: 8px;
+  padding: 12px 14px; font-size: 0.82rem; line-height: 1.8; display: none;
+}
+.calc-result .pass { color: #1e8449; font-weight: 700; }
+.calc-result .fail { color: #c0392b; font-weight: 700; }
+.calc-result .val { color: var(--accent); font-weight: 700; }
+.katex-block { margin: 8px 0; overflow-x: auto; }
+.ref-table { width: 100%; border-collapse: collapse; font-size: 0.82rem; margin-top: 10px; }
+.ref-table th { background: var(--surface2); color: var(--muted); padding: 7px 10px; text-align: left; border: 1px solid var(--border); }
+.ref-table td { padding: 7px 10px; border: 1px solid var(--border); color: var(--text); }
+.ref-table tr:nth-child(even) { background: var(--surface); }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <div>
+    <div class="topbar-title">RC-U2-1 RC 剪力強度分析與設計</div>
+    <div class="topbar-sub">第二單元 · 子項1 · 剪力設計 / 軸力修正 / 摩擦剪力 / STM</div>
+  </div>
+  <nav class="topbar-nav">
+    <a href="#s1">① 命題分析</a>
+    <a href="#s2">② 截面圖解</a>
+    <a href="#s3">③ 解題流程</a>
+    <a href="#s4">④ 核心公式</a>
+    <a href="#s5">⑤ 考題清單</a>
+    <a href="#s6">⑥ 陷阱</a>
+    <a href="#s7">⑦ 計算器</a>
+    <a href="../index.html">← 題庫</a>
+  </nav>
+</div>
+
+<!-- ① 命題分析 -->
+<section class="section" id="s1">
+  <div class="section-label">Section 01</div>
+  <div class="section-title">命題分析</div>
+  <div class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-num">7</div>
+      <div class="kpi-label">歷年主考題數（2006–2023）</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">7%</div>
+      <div class="kpi-label">佔全科比例（100題中7題）</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">#5</div>
+      <div class="kpi-label">全科出題頻率排名</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-num">2/6年</div>
+      <div class="kpi-label">近6年（2020–2025）出題年份</div>
+    </div>
+  </div>
+  <div class="type-chips">
+    <div class="chip all active" onclick="filterType('all',this)">全部 7題</div>
+    <div class="chip A" onclick="filterType('A',this)">🔴 基本剪力設計 2題</div>
+    <div class="chip B" onclick="filterType('B',this)">🔵 軸力修正剪力 2題</div>
+    <div class="chip C" onclick="filterType('C',this)">🟢 摩擦剪力法 1題</div>
+    <div class="chip D" onclick="filterType('D',this)">🟣 壓拉桿模式STM 1題</div>
+    <div class="chip E" onclick="filterType('E',this)">🟠 剪力扭力門檻 1題</div>
+  </div>
+  <div class="charts-row">
+    <div class="chart-card">
+      <h4>年度出題分布（2002–2025）</h4>
+      <canvas id="barChart" height="160"></canvas>
+    </div>
+    <div class="chart-card">
+      <h4>題型比例</h4>
+      <canvas id="pieChart" height="160"></canvas>
+    </div>
+  </div>
+</section>
+
+<!-- ② 截面圖解 -->
+<section class="section" id="s2">
+  <div class="section-label">Section 02</div>
+  <div class="section-title">截面圖解</div>
+  <div class="diagrams-grid">
+
+    <!-- 斜裂縫與剪力破壞 -->
+    <div class="diagram-card">
+      <h4>🔴 剪力裂縫形態</h4>
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- beam -->
+        <rect x="10" y="50" width="240" height="60" fill="#f0f2f5" stroke="#aaa" stroke-width="1.5"/>
+        <!-- flexural crack vertical -->
+        <line x1="60" y1="110" x2="60" y2="75" stroke="#3498db" stroke-width="1.5"/>
+        <line x1="80" y1="110" x2="82" y2="65" stroke="#3498db" stroke-width="1.5"/>
+        <!-- diagonal tension crack -->
+        <line x1="110" y1="110" x2="145" y2="55" stroke="#c0392b" stroke-width="2"/>
+        <line x1="130" y1="110" x2="165" y2="55" stroke="#c0392b" stroke-width="2"/>
+        <!-- web-shear crack near support -->
+        <line x1="30" y1="80" x2="55" y2="60" stroke="#7d3c98" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <!-- stirrups -->
+        <rect x="90" y="50" width="8" height="60" fill="none" stroke="#888" stroke-width="1.2"/>
+        <rect x="115" y="50" width="8" height="60" fill="none" stroke="#888" stroke-width="1.2"/>
+        <rect x="140" y="50" width="8" height="60" fill="none" stroke="#888" stroke-width="1.2"/>
+        <rect x="165" y="50" width="8" height="60" fill="none" stroke="#888" stroke-width="1.2"/>
+        <!-- main bars -->
+        <line x1="10" y1="100" x2="250" y2="100" stroke="#c0392b" stroke-width="2.5"/>
+        <line x1="10" y1="94" x2="250" y2="94" stroke="#c0392b" stroke-width="2.5"/>
+        <!-- labels -->
+        <text x="70" y="140" text-anchor="middle" fill="#3498db" font-size="8">撓曲裂縫</text>
+        <text x="140" y="140" text-anchor="middle" fill="#c0392b" font-size="8">斜拉裂縫（主）</text>
+        <text x="35" y="40" fill="#7d3c98" font-size="8">腹剪裂縫</text>
+        <!-- d label -->
+        <line x1="250" y1="50" x2="250" y2="94" stroke="#aaa" stroke-width="0.8"/>
+        <text x="255" y="75" fill="#888" font-size="8">d</text>
+        <!-- critical section -->
+        <line x1="10" y1="50" x2="10" y2="170" stroke="#888" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <line x1="10" y1="170" x2="75" y2="170" stroke="#c0392b" stroke-width="1" marker-end="url(#ar1)"/>
+        <text x="40" y="183" text-anchor="middle" fill="#c0392b" font-size="8">臨界斷面 = d</text>
+        <defs>
+          <marker id="ar1" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#c0392b"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- 剪力設計圖（Vu包絡圖） -->
+    <div class="diagram-card">
+      <h4>🔴 設計剪力包絡圖</h4>
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- axes -->
+        <line x1="30" y1="170" x2="250" y2="170" stroke="#aaa" stroke-width="1.2"/>
+        <line x1="30" y1="20" x2="30" y2="170" stroke="#aaa" stroke-width="1.2"/>
+        <!-- Vu envelope - simply supported -->
+        <polyline points="30,50 130,170 230,50" fill="none" stroke="#c0392b" stroke-width="2"/>
+        <!-- phi*Vc line -->
+        <line x1="30" y1="140" x2="230" y2="140" stroke="#3498db" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- phi*(Vc+Vs_max) line -->
+        <line x1="30" y1="100" x2="230" y2="100" stroke="#1e8449" stroke-width="1.5" stroke-dasharray="5,3"/>
+        <!-- critical section marker -->
+        <line x1="73" y1="20" x2="73" y2="170" stroke="#aaa" stroke-width="0.8" stroke-dasharray="3,2"/>
+        <text x="73" y="15" text-anchor="middle" fill="#888" font-size="8">臨界面</text>
+        <!-- zone labels -->
+        <text x="130" y="155" text-anchor="middle" fill="#c0392b" font-size="8">Vu（均布載重）</text>
+        <text x="235" y="138" fill="#3498db" font-size="8">φVc</text>
+        <text x="235" y="98" fill="#1e8449" font-size="8">φ(Vc+Vs,max)</text>
+        <!-- zones -->
+        <rect x="30" y="140" width="200" height="30" fill="#3498db11"/>
+        <text x="130" y="158" text-anchor="middle" fill="#3498db" font-size="7">僅需最小箍筋</text>
+        <!-- axis labels -->
+        <text x="240" y="173" fill="#888" font-size="8">x</text>
+        <text x="18" y="20" fill="#888" font-size="8">Vu</text>
+        <!-- note -->
+        <rect x="10" y="175" width="240" height="22" rx="4" fill="#fff3e0"/>
+        <text x="130" y="183" text-anchor="middle" fill="#d68910" font-size="8">Vu &gt; φ(Vc+Vs,max) → 需加大斷面</text>
+        <text x="130" y="192" text-anchor="middle" fill="#d68910" font-size="7">Vs,max = (2/3)√f'c·bw·d（kgf/cm²）</text>
+      </svg>
+    </div>
+
+    <!-- Shear Friction 介面 -->
+    <div class="diagram-card">
+      <h4>🟢 摩擦剪力法（Shear Friction）</h4>
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- old concrete -->
+        <rect x="30" y="20" width="200" height="80" rx="3" fill="#e8eaf0" stroke="#aaa" stroke-width="1.5"/>
+        <text x="130" y="65" text-anchor="middle" fill="#888" font-size="10">舊混凝土</text>
+        <!-- new concrete -->
+        <rect x="30" y="110" width="200" height="75" rx="3" fill="#f0f2f5" stroke="#3498db" stroke-width="1.5" stroke-dasharray="4,2"/>
+        <text x="130" y="153" text-anchor="middle" fill="#3498db" font-size="10">新混凝土（新澆）</text>
+        <!-- interface line -->
+        <line x1="30" y1="105" x2="230" y2="105" stroke="#1e8449" stroke-width="2.5"/>
+        <text x="130" y="102" text-anchor="middle" fill="#1e8449" font-size="8">結合面（施工縫）</text>
+        <!-- Avf bars crossing interface -->
+        <line x1="80" y1="80" x2="80" y2="130" stroke="#c0392b" stroke-width="2"/>
+        <circle cx="80" cy="105" r="4" fill="#c0392b" opacity="0.3"/>
+        <line x1="130" y1="80" x2="130" y2="130" stroke="#c0392b" stroke-width="2"/>
+        <circle cx="130" cy="105" r="4" fill="#c0392b" opacity="0.3"/>
+        <line x1="180" y1="80" x2="180" y2="130" stroke="#c0392b" stroke-width="2"/>
+        <circle cx="180" cy="105" r="4" fill="#c0392b" opacity="0.3"/>
+        <!-- Vu arrow -->
+        <line x1="40" y1="60" x2="200" y2="60" stroke="#d68910" stroke-width="2" marker-end="url(#ar2)"/>
+        <text x="50" y="55" fill="#d68910" font-size="9">Vu（介面剪力）</text>
+        <!-- labels -->
+        <text x="200" y="85" fill="#c0392b" font-size="8">Avf</text>
+        <!-- formula box -->
+        <rect x="30" y="190" width="200" height="0" rx="4" fill="#e8f5ee"/>
+        <!-- friction label -->
+        <text x="130" y="195" text-anchor="middle" fill="#1e8449" font-size="8">Vn = μ·Avf·fy　φ = 0.75</text>
+        <defs>
+          <marker id="ar2" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#d68910"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+    <!-- STM 深梁 -->
+    <div class="diagram-card">
+      <h4>🟣 壓拉桿模式（STM）深梁</h4>
+      <svg viewBox="0 0 260 200" xmlns="http://www.w3.org/2000/svg">
+        <!-- beam outline -->
+        <rect x="20" y="30" width="220" height="130" rx="3" fill="#f0f2f5" stroke="#aaa" stroke-width="1.5"/>
+        <!-- load P -->
+        <line x1="130" y1="0" x2="130" y2="30" stroke="#c0392b" stroke-width="2.5" marker-end="url(#ar3)"/>
+        <text x="140" y="20" fill="#c0392b" font-size="10">P</text>
+        <!-- reactions -->
+        <line x1="60" y1="160" x2="60" y2="185" stroke="#3498db" stroke-width="2.5"/>
+        <polygon points="50,185 60,195 70,185" fill="#3498db" opacity="0.8"/>
+        <line x1="200" y1="160" x2="200" y2="185" stroke="#3498db" stroke-width="2.5"/>
+        <polygon points="190,185 200,195 210,185" fill="#3498db" opacity="0.8"/>
+        <!-- compression struts -->
+        <line x1="130" y1="35" x2="60" y2="155" stroke="#c0392b" stroke-width="3" opacity="0.7"/>
+        <line x1="130" y1="35" x2="200" y2="155" stroke="#c0392b" stroke-width="3" opacity="0.7"/>
+        <!-- tension tie -->
+        <line x1="60" y1="145" x2="200" y2="145" stroke="#2471a3" stroke-width="3"/>
+        <!-- node labels -->
+        <circle cx="130" cy="35" r="7" fill="#7d3c98" opacity="0.8"/>
+        <text x="140" y="38" fill="#7d3c98" font-size="8">CCC節點</text>
+        <circle cx="60" cy="155" r="7" fill="#7d3c98" opacity="0.6"/>
+        <text x="30" y="150" fill="#7d3c98" font-size="8">CCT</text>
+        <circle cx="200" cy="155" r="7" fill="#7d3c98" opacity="0.6"/>
+        <text x="208" y="150" fill="#7d3c98" font-size="8">CCT</text>
+        <!-- labels -->
+        <text x="75" y="100" fill="#c0392b" font-size="8">壓桿</text>
+        <text x="115" y="138" fill="#2471a3" font-size="8">拉力桿（縱向拉筋）</text>
+        <defs>
+          <marker id="ar3" markerWidth="6" markerHeight="5" refX="6" refY="2.5" orient="auto">
+            <path d="M0,0 L6,2.5 L0,5 Z" fill="#c0392b"/>
+          </marker>
+        </defs>
+      </svg>
+    </div>
+
+  </div>
+</section>
+
+<!-- ③ 解題流程 -->
+<section class="section" id="s3">
+  <div class="section-label">Section 03</div>
+  <div class="section-title">解題流程圖</div>
+  <div class="flow-wrap">
+
+    <!-- 基本剪力設計流程 -->
+    <div class="flow-card">
+      <h4><span class="A">基本剪力</span>Vc + Vs 設計流程</h4>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <div class="flow-text">確認臨界斷面位置</div>
+          <div class="flow-sub">均布載重：距支承面 d 處；集中載重或懸臂梁：支承面</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <div class="flow-text">計算 Vc（選簡化或詳細公式）</div>
+          <div class="flow-sub">簡化：Vc = 0.53√f'c·bw·d；詳細：含 ρw、Vu·d/Mu 項</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <div class="flow-text">判斷箍筋需求程度</div>
+        </div>
+      </div>
+      <div class="flow-decision">Vu ≤ φVc/2 → 不需箍筋<br/>φVc/2 &lt; Vu ≤ φVc → 最小箍筋<br/>Vu &gt; φVc → 需計算 Vs</div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <div class="flow-text">計算 Vs 需求</div>
+          <div class="flow-sub">Vs = Vu/φ − Vc；Av/s = Vs/(fy·d)</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div>
+          <div class="flow-text">檢查 Vs 上限 & 箍筋間距</div>
+          <div class="flow-sub">Vs ≤ (2/3)√f'c·bw·d（否則加大斷面）<br/>Vs ≤ (1/3)√f'c·bw·d：s ≤ d/2；否則：s ≤ d/4</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- 軸力修正 Vc 流程 -->
+    <div class="flow-card">
+      <h4><span class="B">軸力修正</span>含軸力構件剪力 Vc</h4>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <div class="flow-text">判斷軸力性質（壓或拉）</div>
+          <div class="flow-sub">Nu &gt; 0：軸壓（增加剪力強度）；Nu &lt; 0：軸拉（降低剪力強度）</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <div class="flow-text">使用簡化修正公式</div>
+          <div class="flow-sub">
+            軸壓：Vc = 0.53(1 + Nu/140Ag)√f'c·bw·d<br/>
+            軸拉：Vc = 0.53(1 + Nu/35Ag)√f'c·bw·d（Nu 為負）
+          </div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <div class="flow-text">或使用詳細公式（含 Mm）</div>
+          <div class="flow-sub">Vc 詳細式含等效彎矩 Mm = Mu − Nu(4h−d)/8</div>
+        </div>
+      </div>
+      <div class="flow-decision">若 Mm &lt; 0 → Vc 取簡化式上限值（表示強軸壓，Vc 達最大）</div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <div class="flow-text">軸拉時若 Vc &lt; 0 → Vc = 0</div>
+          <div class="flow-sub">強軸拉力使混凝土完全開裂，Vs 須承擔全部剪力</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- STM 流程 -->
+    <div class="flow-card">
+      <h4><span class="D">STM 深梁</span>壓拉桿模式設計</h4>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <div class="flow-text">確認構件為深梁</div>
+          <div class="flow-sub">Ln/h &lt; 4（深梁）或剪力跨度 a/d &lt; 2</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <div class="flow-text">建立壓拉桿模型（桁架）</div>
+          <div class="flow-sub">確認壓桿角度 θ ≥ 25°；辨認節點類型（CCC / CCT / CTT）</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <div class="flow-text">計算壓桿與節點強度</div>
+          <div class="flow-sub">壓桿：fce = 0.85·βs·f'c；節點：fn = 0.85·βn·f'c</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <div class="flow-text">設計拉力桿（縱向鋼筋）</div>
+          <div class="flow-sub">Ast = Ftu / (φ·fy)，φ = 0.75；須充分錨定於節點</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">5</div>
+        <div>
+          <div class="flow-text">驗核各壓桿、節點不超限</div>
+          <div class="flow-sub">φFns ≥ Fns_demand；節點處需考量多方向力合成</div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Shear Friction 流程 -->
+    <div class="flow-card">
+      <h4><span class="C">摩擦剪力</span>介面剪力設計</h4>
+      <div class="flow-step">
+        <div class="flow-num">1</div>
+        <div>
+          <div class="flow-text">確認介面條件，選擇 μ 值</div>
+          <div class="flow-sub">一體澆置：μ = 1.4；粗糙施工縫：μ = 1.0；光滑施工縫：μ = 0.7</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">2</div>
+        <div>
+          <div class="flow-text">計算所需摩擦鋼筋 Avf</div>
+          <div class="flow-sub">Avf = Vu / (φ·μ·fy)，φ = 0.75</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">3</div>
+        <div>
+          <div class="flow-text">驗核 Vn 上限</div>
+          <div class="flow-sub">Vn ≤ min(0.2f'c·Ac, 5.5·Ac) tf，Ac = 介面面積（cm²）</div>
+        </div>
+      </div>
+      <div class="flow-arrow">↓</div>
+      <div class="flow-step">
+        <div class="flow-num">4</div>
+        <div>
+          <div class="flow-text">植筋設計（新舊混凝土結合）</div>
+          <div class="flow-sub">確認鋼筋與結合面角度（垂直或斜交皆可計算），且鋼筋須在兩側充分錨定</div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ④ 核心公式速查 -->
+<section class="section" id="s4">
+  <div class="section-label">Section 04</div>
+  <div class="section-title">核心公式速查</div>
+  <div class="formula-grid">
+
+    <div class="formula-card">
+      <h4 class="A">🔴 混凝土剪力強度 Vc（kgf/cm² 單位）</h4>
+      <div class="formula-block">
+        <div class="label">簡化公式（大多數情況可用）：</div>
+        <div class="katex-block">$$V_c = 0.53\sqrt{f'_c}\, b_w\, d$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">詳細公式（含撓曲與軸力效應）：</div>
+        <div class="katex-block">$$V_c = \left(0.158\sqrt{f'_c} + 17.2\,\rho_w\frac{V_u d}{M_u}\right) b_w d \leq 0.29\sqrt{f'_c}\, b_w d$$</div>
+      </div>
+      <div class="formula-note">
+        ρw = As/(bw·d)；Vu·d/Mu ≤ 1.0<br/>
+        詳細公式通常比簡化公式大，但需確認剪跨比與鋼筋比
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <h4 class="B">🔵 含軸力時 Vc 修正（kgf/cm² 單位）</h4>
+      <div class="formula-block">
+        <div class="label">簡化修正（軸壓 Nu &gt; 0，軸拉 Nu &lt; 0）：</div>
+        <div class="katex-block">$$V_c = 0.53\!\left(1 + \frac{N_u}{140\,A_g}\right)\!\sqrt{f'_c}\, b_w d \quad \text{（軸壓）}$$</div>
+        <div class="katex-block">$$V_c = 0.53\!\left(1 + \frac{N_u}{35\,A_g}\right)\!\sqrt{f'_c}\, b_w d \quad \text{（軸拉，Nu 取負值）}$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">詳細公式等效彎矩（軸壓）：</div>
+        <div class="katex-block">$$M_m = M_u - N_u\frac{4h-d}{8}$$</div>
+      </div>
+      <div class="formula-note">
+        Nu 以 kgf 代入，Ag 以 cm² 代入<br/>
+        Mm &lt; 0 → Vc 取簡化式（即 Vc 已達上限）<br/>
+        軸拉使 Vc 降低，若 Vc &lt; 0 則令 Vc = 0
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <h4 class="A">🔴 箍筋剪力強度 Vs 與間距控制</h4>
+      <div class="formula-block">
+        <div class="label">Vs 設計：</div>
+        <div class="katex-block">$$V_s = \frac{V_u}{\phi} - V_c, \quad \frac{A_v}{s} = \frac{V_s}{f_y\, d}, \quad \phi = 0.75$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">最大箍筋間距：</div>
+        <div class="katex-block">$$s_{max} = \begin{cases} d/2 \text{ 且 } 60\text{ cm} & V_s \leq \frac{\sqrt{f'_c}}{3}b_w d \\ d/4 \text{ 且 } 30\text{ cm} & V_s > \frac{\sqrt{f'_c}}{3}b_w d \end{cases}$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">Vs 上限（超過須加大斷面）：</div>
+        <div class="katex-block">$$V_{s,max} = \frac{2}{3}\sqrt{f'_c}\, b_w\, d$$</div>
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <h4 class="C">🟢 摩擦剪力法（Shear Friction）</h4>
+      <div class="formula-block">
+        <div class="label">介面剪力強度：</div>
+        <div class="katex-block">$$V_n = \mu\, A_{vf}\, f_y, \quad \phi = 0.75$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">μ 值速查（正常重量混凝土）：</div>
+      </div>
+      <table class="ref-table">
+        <tr><th>介面條件</th><th>μ</th></tr>
+        <tr><td>一體澆置</td><td>1.4</td></tr>
+        <tr><td>粗糙施工縫（≥6mm凹凸）</td><td>1.0</td></tr>
+        <tr><td>光滑施工縫</td><td>0.7</td></tr>
+        <tr><td>鋼材埋入混凝土</td><td>0.7</td></tr>
+      </table>
+      <div class="formula-note">
+        Vn 上限：min(0.2f'c·Ac, 480+0.08f'c·Ac, 1670·Ac) [N, mm²]<br/>
+        或約 min(0.2f'c, 55.2 kgf/cm²) × Ac
+      </div>
+    </div>
+
+    <div class="formula-card">
+      <h4 class="D">🟣 壓拉桿模式（STM）強度係數</h4>
+      <div class="formula-block">
+        <div class="label">壓桿有效強度：fce = 0.85·βs·f'c</div>
+      </div>
+      <table class="ref-table">
+        <tr><th>壓桿類型</th><th>βs</th></tr>
+        <tr><td>稜柱形壓桿（一致寬度）</td><td>1.0</td></tr>
+        <tr><td>瓶形壓桿（有橫向配筋）</td><td>0.75</td></tr>
+        <tr><td>瓶形壓桿（無橫向配筋）</td><td>0.60</td></tr>
+        <tr><td>拉力筋控制斷面</td><td>0.40</td></tr>
+      </table>
+      <div class="formula-block" style="margin-top:10px;">
+        <div class="label">節點有效強度：fn = 0.85·βn·f'c</div>
+      </div>
+      <table class="ref-table">
+        <tr><th>節點類型</th><th>βn</th></tr>
+        <tr><td>CCC（三壓桿交會）</td><td>1.0</td></tr>
+        <tr><td>CCT（一拉力桿）</td><td>0.80</td></tr>
+        <tr><td>CTT（二拉力桿）</td><td>0.60</td></tr>
+      </table>
+      <div class="formula-note">φ = 0.75；壓桿角度 θ ≥ 25°（相對於拉力桿）</div>
+    </div>
+
+    <div class="formula-card">
+      <h4 class="E">🟠 剪力扭力組合 — 扭矩忽略門檻</h4>
+      <div class="formula-block">
+        <div class="label">可忽略扭矩條件（MPa 單位）：</div>
+        <div class="katex-block">$$T_u \leq \phi\frac{\sqrt{f'_c}}{12}\frac{A_{cp}^2}{p_{cp}}$$</div>
+      </div>
+      <div class="formula-block">
+        <div class="label">kgf/cm² 單位等效：</div>
+        <div class="katex-block">$$T_u \leq \phi\frac{\sqrt{f'_c}}{4}\frac{A_{cp}^2}{p_{cp}}$$</div>
+      </div>
+      <div class="formula-note">
+        Acp：斷面全面積（含保護層到外表面）<br/>
+        pcp：斷面外周長（含保護層到外表面）<br/>
+        φ = 0.75；若 Tu 超過門檻，扭矩與剪力需同時設計
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⑤ 考題清單 -->
+<section class="section" id="s5">
+  <div class="section-label">Section 05</div>
+  <div class="section-title">考題清單</div>
+  <div class="type-chips" id="q-chips">
+    <div class="chip all active" onclick="filterQ('all',this)">全部 7題</div>
+    <div class="chip A" onclick="filterQ('A',this)">🔴 基本剪力設計</div>
+    <div class="chip B" onclick="filterQ('B',this)">🔵 軸力修正剪力</div>
+    <div class="chip C" onclick="filterQ('C',this)">🟢 摩擦剪力法</div>
+    <div class="chip D" onclick="filterQ('D',this)">🟣 STM深梁</div>
+    <div class="chip E" onclick="filterQ('E',this)">🟠 剪扭門檻</div>
+  </div>
+  <div class="q-list" id="qList"></div>
+</section>
+
+<!-- ⑥ 高頻陷阱 -->
+<section class="section" id="s6">
+  <div class="section-label">Section 06</div>
+  <div class="section-title">高頻陷阱 Top 8</div>
+  <div class="traps-grid">
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge A">基本剪力</span>
+        <span class="trap-title">臨界斷面的位置判斷</span>
+      </div>
+      <div class="trap-desc">均布載重簡支梁：距支承面 d 處（不是 d/2）。懸臂梁、集中載重靠近支承（a &lt; d）、支承面向下作用力：臨界斷面直接在支承面。錯判位置導致全部計算偏差。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge A">基本剪力</span>
+        <span class="trap-title">φ = 0.75（剪力），不是 0.9</span>
+      </div>
+      <div class="trap-desc">剪力設計的強度折減係數 φ = 0.75，不是彎矩設計的 0.9。Vu ≤ φVn = φ(Vc + Vs)，每個步驟都需注意 φ 值選用。部分考生在比較時誤用 0.9。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge A">基本剪力</span>
+        <span class="trap-title">Vs,max 超限時需加大斷面，不是加密箍筋</span>
+      </div>
+      <div class="trap-desc">Vs &gt; (2/3)√f'c·bw·d 是上限，表示即使加再多箍筋也無法通過，必須加大梁深（增加 d）或加大梁寬（增加 bw）。許多考生繼續計算箍筋，方向錯誤。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge B">軸力修正</span>
+        <span class="trap-title">軸壓修正係數 140、軸拉係數 35 不要互換</span>
+      </div>
+      <div class="trap-desc">軸壓修正：係數為 140（分母大，增幅小）；軸拉修正：係數為 35（分母小，降幅大）。互換後答案差距 4 倍。記憶口訣：軸拉對結構傷害更大，所以係數更小（懲罰更重）。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge B">軸力修正</span>
+        <span class="trap-title">Mm &lt; 0 時 Vc 的處理</span>
+      </div>
+      <div class="trap-desc">詳細公式中若 Mm = Mu − Nu(4h−d)/8 &lt; 0，表示軸壓很大，此時 Vc 詳細式不適用（分母為負），應改用簡化式計算 Vc。許多考生代入負值 Mm 導致荒謬結果。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge C">摩擦剪力</span>
+        <span class="trap-title">μ 值依介面條件，不是一律 1.4</span>
+      </div>
+      <div class="trap-desc">施工縫（粗糙面）μ = 1.0，不是 1.4。一體澆置才是 1.4。光滑施工縫 μ = 0.7。題目若描述「施工縫」要用 1.0；若是「同一次澆置」才用 1.4。選錯差距 40%。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge D">STM</span>
+        <span class="trap-title">βs 瓶形壓桿有無配筋決定係數</span>
+      </div>
+      <div class="trap-desc">瓶形壓桿（兩端寬中間窄的壓桿）：有橫向配筋 βs = 0.75，無橫向配筋 βs = 0.60。題目若沒說有配橫筋，預設用 0.60。許多考生直接用 0.75 高估強度。</div>
+    </div>
+
+    <div class="trap-card">
+      <div class="trap-header">
+        <span class="trap-badge E">剪扭門檻</span>
+        <span class="trap-title">Acp 和 pcp 用外圍總尺寸，非 Aoh 和 ph</span>
+      </div>
+      <div class="trap-desc">忽略門檻判斷用 Acp（斷面全外圍面積，到表面）和 pcp（全外圍周長），而非箍筋中心圍成的 Aoh 和 ph。設計扭力強度才改用 Aoh/ph（塑性理論）。混用兩組幾何量是常見錯誤。</div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ⑦ 互動計算器 -->
+<section class="section" id="s7">
+  <div class="section-label">Section 07</div>
+  <div class="section-title">互動計算器</div>
+  <div class="calc-grid">
+
+    <!-- Vc 計算器 -->
+    <div class="calc-card">
+      <h4>🔴 Vc & Vs 設計計算器</h4>
+      <div class="calc-row">
+        <label>bw (cm)</label>
+        <input type="number" id="bw" value="35" step="1">
+      </div>
+      <div class="calc-row">
+        <label>d (cm)</label>
+        <input type="number" id="d" value="55" step="1">
+      </div>
+      <div class="calc-row">
+        <label>f'c (kgf/cm²)</label>
+        <input type="number" id="fc" value="280" step="10">
+      </div>
+      <div class="calc-row">
+        <label>fy (kgf/cm²)</label>
+        <input type="number" id="fy" value="4200" step="100">
+      </div>
+      <div class="calc-row">
+        <label>Vu (tf)</label>
+        <input type="number" id="Vu" value="80" step="1">
+      </div>
+      <div class="calc-row">
+        <label>公式選擇</label>
+        <select id="vcMethod">
+          <option value="simple">簡化式</option>
+          <option value="detail">詳細式（需填 ρw、Vu·d/Mu）</option>
+        </select>
+      </div>
+      <div id="detailInputs" style="display:none">
+        <div class="calc-row">
+          <label>ρw (As/bw·d)</label>
+          <input type="number" id="rho_w" value="0.015" step="0.001">
+        </div>
+        <div class="calc-row">
+          <label>Vud/Mu（≤1.0）</label>
+          <input type="number" id="VudMu" value="0.8" step="0.05">
+        </div>
+      </div>
+      <div class="calc-row">
+        <label>Av 提供 (cm²)</label>
+        <input type="number" id="Av" value="2.84" step="0.1">
+        <span style="font-size:0.75rem;color:var(--muted)">雙肢箍</span>
+      </div>
+      <button class="calc-btn" onclick="calcVc()">計算 Vc & Vs</button>
+      <div class="calc-result" id="res-vc"></div>
+    </div>
+
+    <!-- 軸力修正 Vc -->
+    <div class="calc-card">
+      <h4>🔵 含軸力時 Vc 修正計算器</h4>
+      <div class="calc-row">
+        <label>bw (cm)</label>
+        <input type="number" id="bw2" value="40" step="1">
+      </div>
+      <div class="calc-row">
+        <label>d (cm)</label>
+        <input type="number" id="d2" value="60" step="1">
+      </div>
+      <div class="calc-row">
+        <label>f'c (kgf/cm²)</label>
+        <input type="number" id="fc2" value="280" step="10">
+      </div>
+      <div class="calc-row">
+        <label>Ag (cm²)</label>
+        <input type="number" id="Ag" value="2400" step="100">
+      </div>
+      <div class="calc-row">
+        <label>Nu (tf, 壓為正)</label>
+        <input type="number" id="Nu" value="50" step="5">
+      </div>
+      <div class="calc-row">
+        <label>Vu (tf)</label>
+        <input type="number" id="Vu2" value="70" step="1">
+      </div>
+      <button class="calc-btn" onclick="calcVcAxial()">計算含軸力 Vc</button>
+      <div class="calc-result" id="res-vc-axial"></div>
+    </div>
+
+    <!-- Shear Friction -->
+    <div class="calc-card">
+      <h4>🟢 摩擦剪力法驗核器</h4>
+      <div class="calc-row">
+        <label>Vu (tf)</label>
+        <input type="number" id="Vu_sf" value="120" step="1">
+      </div>
+      <div class="calc-row">
+        <label>fy (kgf/cm²)</label>
+        <input type="number" id="fy_sf" value="4200" step="100">
+      </div>
+      <div class="calc-row">
+        <label>f'c (kgf/cm²)</label>
+        <input type="number" id="fc_sf" value="280" step="10">
+      </div>
+      <div class="calc-row">
+        <label>介面面積 Ac (cm²)</label>
+        <input type="number" id="Ac" value="3000" step="100">
+      </div>
+      <div class="calc-row">
+        <label>介面條件</label>
+        <select id="mu_sel">
+          <option value="1.4">一體澆置 (μ=1.4)</option>
+          <option value="1.0" selected>粗糙施工縫 (μ=1.0)</option>
+          <option value="0.7">光滑施工縫 (μ=0.7)</option>
+        </select>
+      </div>
+      <div class="calc-row">
+        <label>提供 Avf (cm²)</label>
+        <input type="number" id="Avf_prov" value="10" step="0.5">
+      </div>
+      <button class="calc-btn" onclick="calcSF()">驗核摩擦剪力</button>
+      <div class="calc-result" id="res-sf"></div>
+    </div>
+
+  </div>
+</section>
+
+<div style="height:60px;"></div>
+
+<script>
+// ─── DATA ─────────────────────────────────────────────────────────
+const questions = [
+  { id:"RC-2023-3", year:2023, type:"E",
+    title:"懸臂梁偏心載重 — 扭矩忽略門檻與剪力需求計算",
+    tags:["懸臂梁","臨界斷面","扭力忽略門檻","偏心載重","Acp","pcp","φTcr","剪力需求"],
+    hasViz:false, verified:true },
+  { id:"RC-2020-2", year:2020, type:"A",
+    title:"倒T型梁臨界斷面剪力設計與最大肋筋間距",
+    tags:["倒T型梁","臨界斷面","d偏移規則","最大肋筋間距","最大設計剪力","Vc簡化公式"],
+    hasViz:false, verified:true },
+  { id:"RC-2017-2", year:2017, type:"C",
+    title:"新舊混凝土介面剪力設計 — 植筋摩擦剪力法",
+    tags:["加大柱","介面剪力","摩擦剪力法","植筋設計","新舊混凝土結合","Shear Friction","粗糙面"],
+    hasViz:false, verified:true },
+  { id:"RC-2014-3", year:2014, type:"B",
+    title:"含軸力梁 Vc 詳細公式 — 軸壓 / 軸拉三情境比較",
+    tags:["臨界斷面","Vc最大混凝土剪力強度","軸力影響","等效彎矩Mm","詳細公式","軸壓梁","軸拉梁","Mm為負取上限"],
+    hasViz:false, verified:true },
+  { id:"RC-2010-3", year:2010, type:"B",
+    title:"軸力對剪力開裂強度影響 — 三種軸力條件比較",
+    tags:["軸力影響","剪力開裂強度","裂縫形態","簡化式Vc","軸壓修正係數140","軸拉修正係數35","三種軸力比較"],
+    hasViz:false, verified:true },
+  { id:"RC-2009-3", year:2009, type:"D",
+    title:"深梁壓拉桿模式（STM）設計 — 節點驗核",
+    tags:["壓拉桿模式","STM","深梁","兩點載重","拉力桿","CCT節點","CCC節點","瓶形壓桿","βs係數","βn係數"],
+    hasViz:false, verified:true },
+  { id:"RC-2006-1", year:2006, type:"A",
+    title:"懸臂雙筋梁剪力設計與最大箍筋間距",
+    tags:["懸臂梁","雙筋梁","壓力鋼筋未降伏","剪力設計","最大箍筋間距","撓曲強度控制設計剪力","#3箍筋"],
+    hasViz:false, verified:true }
+];
+
+// ─── RENDER LIST ──────────────────────────────────────────────────
+function buildList() {
+  const c = document.getElementById('qList');
+  c.innerHTML = '';
+  questions.forEach(q => {
+    const tags = q.tags.slice(0,5).map(t=>`<span class="q-tag">${t}</span>`).join('');
+    const icons = (q.verified?'✅':'❓') + (q.hasViz?' 📊':'');
+    const link = `../index.html#md=raw/solutions/${q.id}/${q.id}.md&t=${q.id}`;
+    c.innerHTML += `
+      <div class="q-card ${q.type}" data-type="${q.type}">
+        <div class="q-meta">
+          <div class="q-id"><a href="${link}" target="_blank">${q.id}</a></div>
+          <div class="q-year">${q.year}年</div>
+        </div>
+        <div class="q-body">
+          <div class="q-title">${q.title}</div>
+          <div class="q-tags">${tags}</div>
+        </div>
+        <div class="q-icons">${icons}</div>
+      </div>`;
+  });
+}
+buildList();
+
+// ─── FILTER ───────────────────────────────────────────────────────
+function filterType(type, el) {
+  document.querySelectorAll('.section#s1 .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+}
+function filterQ(type, el) {
+  document.querySelectorAll('#q-chips .chip').forEach(c=>c.classList.remove('active'));
+  el.classList.add('active');
+  document.querySelectorAll('#qList .q-card').forEach(card=>{
+    card.classList.toggle('hidden', type !== 'all' && card.dataset.type !== type);
+  });
+}
+
+// ─── CHARTS ───────────────────────────────────────────────────────
+const allYears = Array.from({length:24},(_,i)=>2002+i);
+const yearType = {2006:'A',2009:'D',2010:'B',2014:'B',2017:'C',2020:'A',2023:'E'};
+const counts = allYears.map(y => yearType[y]?1:0);
+
+const barColors = allYears.map(y=>{
+  const t = yearType[y];
+  const map = {A:'#c0392b',B:'#2471a3',C:'#1e8449',D:'#7d3c98',E:'#d68910'};
+  return t ? (map[t]+'cc') : '#e8eaf0';
+});
+
+const ctx1 = document.getElementById('barChart').getContext('2d');
+new Chart(ctx1, {
+  type:'bar',
+  data:{
+    labels: allYears.map(y=>String(y).slice(2)),
+    datasets:[{ data:counts, backgroundColor:barColors, borderColor:'transparent', borderWidth:0 }]
+  },
+  options:{
+    plugins:{ legend:{ display:false } },
+    scales:{
+      x:{ ticks:{ color:'#5a6380', font:{size:9} }, grid:{ color:'#d0d5e0' } },
+      y:{ ticks:{ color:'#5a6380', stepSize:1 }, grid:{ color:'#d0d5e0' }, max:2, min:0 }
+    }
+  }
+});
+
+const ctx2 = document.getElementById('pieChart').getContext('2d');
+new Chart(ctx2,{
+  type:'doughnut',
+  data:{
+    labels:['基本剪力設計','軸力修正剪力','摩擦剪力法','STM深梁','剪扭門檻'],
+    datasets:[{
+      data:[2,2,1,1,1],
+      backgroundColor:['#c0392b','#2471a3','#1e8449','#7d3c98','#d68910'],
+      borderColor:'#fff', borderWidth:2
+    }]
+  },
+  options:{
+    plugins:{ legend:{ position:'bottom', labels:{ color:'#5a6380', font:{size:9}, padding:8 } } }
+  }
+});
+
+// ─── CALC: Vc & Vs ────────────────────────────────────────────────
+document.getElementById('vcMethod').addEventListener('change', function(){
+  document.getElementById('detailInputs').style.display = this.value==='detail' ? '' : 'none';
+});
+
+function calcVc() {
+  const bw = +document.getElementById('bw').value;
+  const d  = +document.getElementById('d').value;
+  const fc = +document.getElementById('fc').value;
+  const fy = +document.getElementById('fy').value;
+  const Vu = +document.getElementById('Vu').value;
+  const Av = +document.getElementById('Av').value;
+  const method = document.getElementById('vcMethod').value;
+
+  let Vc;
+  let vcNote = '';
+  if (method === 'simple') {
+    Vc = 0.53 * Math.sqrt(fc) * bw * d / 1000;
+    vcNote = `Vc（簡化）= 0.53√${fc}×${bw}×${d} = <span class="val">${Vc.toFixed(2)}</span> tf`;
+  } else {
+    const rho = +document.getElementById('rho_w').value;
+    const ratio = Math.min(1.0, +document.getElementById('VudMu').value);
+    const Vc_detail = (0.158*Math.sqrt(fc) + 17.2*rho*ratio) * bw * d / 1000;
+    const Vc_upper  = 0.29 * Math.sqrt(fc) * bw * d / 1000;
+    Vc = Math.min(Vc_detail, Vc_upper);
+    vcNote = `Vc（詳細）= <span class="val">${Vc_detail.toFixed(2)}</span> tf，上限 = <span class="val">${Vc_upper.toFixed(2)}</span> tf → 取 <span class="val">${Vc.toFixed(2)}</span> tf`;
+  }
+
+  const phiVc = 0.75 * Vc;
+  const phi = 0.75;
+
+  let need = '';
+  if (Vu <= phiVc/2) {
+    need = '<span class="pass">✅ 不需箍筋（Vu ≤ φVc/2）</span>';
+  } else if (Vu <= phiVc) {
+    need = '<span style="color:#d68910">⚠️ 需最小箍筋（φVc/2 < Vu ≤ φVc）</span>';
+  } else {
+    const Vs_req = Vu/phi - Vc;
+    const Vs_max = (2/3)*Math.sqrt(fc)*bw*d/1000;
+    const AvSreq = Vs_req/(fy*d/100);
+    const s_prov = Av/(AvSreq) * 100;
+    const s_d2 = d/2, s_d4 = d/4;
+    const threshold = Math.sqrt(fc)/3*bw*d/1000;
+    const s_limit = Vs_req <= threshold ? Math.min(s_d2,60) : Math.min(s_d4,30);
+
+    if (Vs_req > Vs_max) {
+      need = `<span class="fail">❌ Vs 需求 = ${Vs_req.toFixed(2)} tf 超過上限 ${Vs_max.toFixed(2)} tf → 須加大斷面</span>`;
+    } else {
+      need = `需箍筋：Vs = <span class="val">${Vs_req.toFixed(2)}</span> tf（≤ Vs,max ${Vs_max.toFixed(2)} tf ✓）<br/>
+      Av/s 需求 = <span class="val">${(AvSreq).toFixed(4)}</span> cm²/cm<br/>
+      提供 Av=${Av} cm² → s = <span class="val">${s_prov.toFixed(1)}</span> cm<br/>
+      間距上限 = <span class="val">${s_limit}</span> cm<br/>
+      <span class="${s_prov<=s_limit?'pass':'fail'}">${s_prov<=s_limit?'✅ 間距符合':'❌ 間距超限，需加密'}</span>`;
+    }
+  }
+
+  const div = document.getElementById('res-vc');
+  div.style.display = 'block';
+  div.innerHTML = `${vcNote}<br/>φVc = <span class="val">${phiVc.toFixed(2)}</span> tf，φVc/2 = <span class="val">${(phiVc/2).toFixed(2)}</span> tf<br/>${need}`;
+}
+
+// ─── CALC: Vc with Axial ──────────────────────────────────────────
+function calcVcAxial() {
+  const bw = +document.getElementById('bw2').value;
+  const d  = +document.getElementById('d2').value;
+  const fc = +document.getElementById('fc2').value;
+  const Ag = +document.getElementById('Ag').value;
+  const Nu = +document.getElementById('Nu').value * 1000; // kgf
+  const Vu = +document.getElementById('Vu2').value;
+
+  const Vc_plain = 0.53 * Math.sqrt(fc) * bw * d / 1000;
+  let coeff, label;
+  if (Nu >= 0) {
+    coeff = 1 + Nu/(140*Ag);
+    label = `軸壓：1 + Nu/140Ag = 1 + ${(Nu/1000).toFixed(0)}tf/(140×${Ag}) = <span class="val">${coeff.toFixed(4)}</span>`;
+  } else {
+    coeff = 1 + Nu/(35*Ag);
+    label = `軸拉：1 + Nu/35Ag = 1 + ${(Nu/1000).toFixed(0)}tf/(35×${Ag}) = <span class="val">${coeff.toFixed(4)}</span>`;
+  }
+  const Vc = Math.max(0, coeff * Vc_plain);
+  const phiVc = 0.75 * Vc;
+  const ok = Vu <= phiVc;
+
+  const div = document.getElementById('res-vc-axial');
+  div.style.display = 'block';
+  div.innerHTML = `
+    Vc（無軸力）= <span class="val">${Vc_plain.toFixed(2)}</span> tf<br/>
+    修正係數：${label}<br/>
+    <b>Vc（修正後）= <span class="val">${Vc.toFixed(2)}</span> tf</b><br/>
+    φVc = <span class="val">${phiVc.toFixed(2)}</span> tf<br/>
+    Vu = <span class="val">${Vu}</span> tf<br/>
+    <span class="${ok?'pass':'fail'}">${ok?`✅ Vu ≤ φVc，若無箍筋可能 OK（仍需確認最小箍筋）`:`❌ Vu > φVc，需設計箍筋 Vs = ${(Vu/0.75-Vc).toFixed(2)} tf`}</span>
+  `;
+}
+
+// ─── CALC: Shear Friction ─────────────────────────────────────────
+function calcSF() {
+  const Vu   = +document.getElementById('Vu_sf').value;
+  const fy   = +document.getElementById('fy_sf').value;
+  const fc   = +document.getElementById('fc_sf').value;
+  const Ac   = +document.getElementById('Ac').value;
+  const mu   = +document.getElementById('mu_sel').value;
+  const Ap   = +document.getElementById('Avf_prov').value;
+  const phi  = 0.75;
+
+  const Avf_req = Vu * 1000 / (phi * mu * fy); // cm²
+  const Vn_prov = mu * Ap * fy / 1000; // tf
+  const phiVn   = phi * Vn_prov;
+
+  // upper bound check
+  const Vn_upper = Math.min(0.2*fc*Ac/1000, 5.5*Ac/100); // rough limit (tf)
+  const upperOk  = phiVn <= phi * Vn_upper;
+
+  const ok = Ap >= Avf_req && Vu <= phiVn;
+
+  const div = document.getElementById('res-sf');
+  div.style.display = 'block';
+  div.innerHTML = `
+    <b>Avf 需求：</b><br/>
+    Avf = Vu/(φ·μ·fy) = ${Vu}×1000/(${phi}×${mu}×${fy})<br/>
+    Avf,req = <span class="val">${Avf_req.toFixed(2)}</span> cm²<br/>
+    提供 Avf = <span class="val">${Ap}</span> cm²<br/>
+    <span class="${Ap>=Avf_req?'pass':'fail'}">${Ap>=Avf_req?'✅ Avf 足夠':'❌ Avf 不足'}</span><br/>
+    <br/><b>強度驗核：</b><br/>
+    φVn = φ·μ·Avf·fy = ${phi}×${mu}×${Ap}×${fy}/1000 = <span class="val">${phiVn.toFixed(2)}</span> tf<br/>
+    Vu = <span class="val">${Vu}</span> tf<br/>
+    <span class="${ok?'pass':'fail'}">${ok?`✅ Vu ≤ φVn，設計通過`:`❌ Vu > φVn，需增加 Avf`}</span>
+  `;
+}
+
+// ─── KATEX ────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', ()=>{
+  renderMathInElement(document.body, {
+    delimiters:[
+      {left:'$$',right:'$$',display:true},
+      {left:'$',right:'$',display:false}
+    ],
+    throwOnError:false
+  });
+});
+</script>
+</body>
+</html>
