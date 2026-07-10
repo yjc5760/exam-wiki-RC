@@ -200,3 +200,17 @@
   - 核對 raw/json/syllabus_taxonomy.json（RC 分類樹）：window.RC_TOPICS／window.RC_UNITS 內容一致，無需更動
   - 操作者：Cowork
 
+## 2026-07-10 STUDY（子項層級 ×5）
+
+- 指令：`study RC-U1-1`、`study RC-U1-2`、`study RC-U2-1`、`study RC-U3-3`、`study RC-U4-1`
+- 產出（七區塊互動 HTML，KaTeX 渲染、自含檔案）：
+  - study/study-RC-U1-1.html — 梁彎矩強度分析與設計（主 19 題／相關 22 題，排名 1，近6年 5/6）
+  - study/study-RC-U1-2.html — 柱強度分析與設計（主 12／相關 20，排名 4，近6年 3/6）
+  - study/study-RC-U2-1.html — 剪力強度分析與設計（主 7／相關 16，排名 6，近6年 5/6）
+  - study/study-RC-U3-3.html — 韌性要求與耐震設計（主 16／相關 18，排名 2，近6年 2/6）
+  - study/study-RC-U4-1.html — 預力梁斷面應力分析（主 13／相關 21，排名 3，近6年 5/6）
+- 資料來源：raw/json/question_index.json（100 題，2002–2025，全數 verified）
+- 考題連結格式：`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`（符合 CLAUDE-CODE.md STUDY 規格）
+- 驗證：五頁題數與索引一致（22/20/16/18/21）、題號全數存在且相關、JS 語法檢查通過（node --check）
+- 互動計算器：U1-1 矩形梁 φMn／U1-2 柱 P-M 強度點／U2-1 梁剪力檢核／U3-3 圍束箍筋 Ash／U4-1 預力梁兩階段應力
+- 操作者：Cowork
