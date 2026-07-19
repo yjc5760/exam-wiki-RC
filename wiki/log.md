@@ -1,4 +1,4 @@
-﻿# Wiki 操作紀錄
+# Wiki 操作紀錄
 
 > append-only，請勿刪除已有紀錄
 
@@ -213,4 +213,9 @@
 - 考題連結格式：`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`（符合 CLAUDE-CODE.md STUDY 規格）
 - 驗證：五頁題數與索引一致（22/20/16/18/21）、題號全數存在且相關、JS 語法檢查通過（node --check）
 - 互動計算器：U1-1 矩形梁 φMn／U1-2 柱 P-M 強度點／U2-1 梁剪力檢核／U3-3 圍束箍筋 Ash／U4-1 預力梁兩階段應力
+- 操作者：Cowork
+
+## 2026-07-19
+
+- **[UI-UPDATE]** 於 `study/` 目錄下的 5 個 `study-RC-U*.html` 主題總覽區塊右側，新增「Keynote」按鈕，並分別連結至對應的 PDF 講義檔案。
 - 操作者：Cowork
