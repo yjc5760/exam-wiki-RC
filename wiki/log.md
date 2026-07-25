@@ -219,3 +219,25 @@
 
 - **[UI-UPDATE]** 於 `study/` 目錄下的 5 個 `study-RC-U*.html` 主題總覽區塊右側，新增「Keynote」按鈕，並分別連結至對應的 PDF 講義檔案。
 - 操作者：Cowork
+
+## 2026-07-25 UNIT-LECTURE（RC-U1-1 觀念講義）
+
+- 觸發：`生成 RC-U1-1 講義`（外部 `unit-lecture` skill，非本知識庫 16 指令之一）
+- 產出：
+  - `study/lecture-RC-U1-1.html` — 理解導向觀念講義，13 節（§0 全景 → §12 精選 5 題），10 張內嵌 SVG 圖解
+  - `study/lecture-RC-U1-1.pdf` — 21 頁 A4 可列印版（MathJax→SVG + WeasyPrint）
+  - `study/assets/katex/` — 離線 KaTeX（約 600 KB），本科所有 lecture 頁共用，勿刪
+- 定位：與 `study/study-RC-U1-1.html`（速查頁）**並存不覆蓋**；速查頁供練題時查，講義供練題前建立物理直覺
+- 內容主軸：核心對立「強度＝力的平衡／安全＝應變的幾何」；每個規範常數追來源
+  （0.85 ← Rüsch 持續載重效應；β₁=2k₂ ← 應力分布形心；6120 ← εcu·Es；3/7 ← 0.003/0.007；ρmin 的 √f'c ← 破裂模數 fr=2√f'c）
+- 涵蓋題數：19 主分類 + 3 副分類 = 22 題（2002–2024），全數 verified
+- 精選 5 題：RC-2023-2、RC-2011-2、RC-2007-1、RC-2015-2、RC-2016-1
+  （誠實標註未涵蓋：RC-2014-1 過筋梁、RC-2014-2 M-φ 三階段、RC-2015-3 負彎矩 T 形梁、RC-2022-2 材料經濟性）
+- 考題連結格式：`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`（同 STUDY 規格）
+- 驗證：22 題號與 question_index.json 完全對齊（無缺漏／誤植／年份錯誤，解析檔皆存在）；
+  29 項數值以 Python 重算吻合（β₁ 分段、φ 內插、ρb/ρmax/ρmin 比值、RC-2023-1 曲率延展比算例 μφ=3.61→4.96）；
+  PDF 抽查 9 頁確認無 MathJax 黑方框、SVG 文字無溢出；節號交叉引用完整
+- 連動修改：README.md（快速導航＋檔案地圖）、CLAUDE.md（資料夾結構＋CHANGELOG）、
+  檔案架構索引表.md（study/ 與 assets/ 兩列）、CLAUDE-CODE.md（STUDY 段落加交叉註記，未新增指令）、
+  study/study-RC-U1-1.html（新增「觀念講義」按鈕）
+- 操作者：Cowork

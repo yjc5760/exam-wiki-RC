@@ -71,7 +71,12 @@ exam-wiki-RC/
 ├── CLAUDE-CODE.md                   ← Claude Code 操作指令（Runbook）
 ├── CLAUDE-SPEC.md                   ← 規格驗證層（格式、命名、完成標準）
 │
-├── study/                           ← 讀書筆記、講義、study 指令 HTML 輸出（study-RC-UN.html / study-RC-UN-n.html）
+├── study/                           ← 讀書筆記與講義
+│   ├── study-RC-UN.html             ← study 指令輸出（單元層級速查／複習頁）
+│   ├── study-RC-UN-n.html           ← study 指令輸出（子項層級速查／複習頁）
+│   ├── lecture-RC-UN-n.html/.pdf    ← unit-lecture skill 輸出（理解導向觀念講義，與 study 頁並存）
+│   ├── RC-UN-n_*.pdf                ← 使用者放入的 Keynote／補充講義
+│   └── assets/katex/                ← 離線 KaTeX（lecture 頁共用，勿刪）
 │
 ├── raw/                             ← 所有原始資料（唯讀，絕對不可修改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：RC-YYYY_鋼筋混凝土設計與預力.pdf）
@@ -192,3 +197,4 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-07-01 | dashboard-data.js 每題新增 pdf 補充筆記檔名陣列欄位（由 REFRESH-DASHBOARD 掃描 raw/solutions/RC-YYYY-N/ 下 *.pdf 寫入）；index.html 移除「📎 掃描補充 PDF」工具列按鈕與前端即時掃描機制（injectPdfButtons/pdfCache/listDir），改為依 dashboard-data.js 靜態資料直接顯示「📎 補充筆記 PDF」按鈕；同步更新 CLAUDE-CODE.md、CLAUDE-SPEC.md | 使用者自行放入補充 PDF 後無需手動點擊掃描按鈕，題卡即可自動顯示 PDF 連結 |
 | 2026-07-02 | index.html 實作「線上/單機雙軌讀取」機制，線上環境（GitHub Pages 等非 file:/// 環境）自動使用 fetch 與相對路徑讀取 md、pdf 及圖片，免除資料夾授權提示 | 提升線上版儀表板的使用體驗，使其運作如同一般靜態網站 |
 | 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 CLAUDE-CODE.md 中 STUDY 指令的連結規格 |
+| 2026-07-25 | `study/` 新增第二種教材型態：`lecture-RC-UN-n.html/.pdf`（由外部 `unit-lecture` skill 產出的理解導向觀念講義），與 study 速查頁並存不互相覆蓋；新增共用離線資源 `study/assets/katex/`；同步更新 README.md、檔案架構索引表.md、CLAUDE-CODE.md（STUDY 段落交叉註記） | 練題前需要建立物理直覺的教材，與練題時用的速查頁定位不同，分開管理 |

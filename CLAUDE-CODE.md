@@ -359,6 +359,17 @@ RC-U4（預力）：XX%
 - 單元層級：`study/study-RC-UN.html`（例：`study/study-RC-U1.html`）
 - 子項層級：`study/study-RC-UN-n.html`（例：`study/study-RC-U1-1.html`）
 
+> **交叉註記 — 不要與觀念講義混淆：**
+> `study/` 下另有 `lecture-RC-UN-n.html/.pdf`，由**外部 `unit-lecture` skill** 產出（觸發語：`生成 RC-UN-n 講義`），
+> **不是本 Runbook 的指令**，故不列入 16 個指令內。兩者定位不同、並存不互相覆蓋：
+>
+> | | `study-RC-UN-n.html` | `lecture-RC-UN-n.html` |
+> |---|---|---|
+> | 何時用 | 練題時查 | 練題前建立物理直覺 |
+> | 內容 | 公式速查、考題清單、互動計算器 | 規範常數的來源推導、SVG 圖解、因果鏈、精選題 |
+> | 產生者 | 本指令（STUDY） | `unit-lecture` skill |
+> | 依賴 | 自含單檔 | 需 `study/assets/katex/`（共用，勿刪） |
+
 ---
 
 ## FIND
