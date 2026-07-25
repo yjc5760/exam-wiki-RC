@@ -47,6 +47,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 raw/solutions/RC-XXXX-N/RC-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
 raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile-all）
 raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: compile-all）
+   ↑ 修正公式錯誤時改「這一端」，不要只改 wiki 副本（否則下次 compile 會被蓋回）
 Cowork 查詢結果                        ──→  wiki/queries/       （Cowork 直接存入）
 Cowork study 指令輸出                  ──→  study/              （Cowork 直接存入）
 Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （Cowork 直接存入）
@@ -56,6 +57,7 @@ Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （C
 
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
 索引資訊唯一來源：raw/json/question_index.json
+方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋同步 wiki＋記 log，見規則 1）
 wiki/queries/、study/（study 輸出）及四個跨層知識目錄：由 Cowork 直接寫入，不走 ingest 流程
 ```
 
@@ -78,18 +80,18 @@ exam-wiki-RC/
 │   ├── RC-UN-n_*.pdf                ← 使用者放入的 Keynote／補充講義
 │   └── assets/katex/                ← 離線 KaTeX（lecture 頁共用，勿刪）
 │
-├── raw/                             ← 所有原始資料（唯讀，絕對不可修改）
+├── raw/                             ← 所有原始資料（預設唯讀，僅 ✏️ 兩處可改）
 │   ├── exams/                       ← 原始考卷 PDF（命名：RC-YYYY_鋼筋混凝土設計與預力.pdf）
 │   ├── json/
 │   │   ├── concepts.json            ← 概念定義（供 compile-all）
-│   │   └── question_index.json      ← ⭐ 題目總索引（唯一需要人工維護的 JSON）
+│   │   └── question_index.json      ← ⭐✏️ 題目總索引（唯一需要人工維護的 JSON）
 │   └── solutions/                   ← AI 解析 + 補充截圖（每題一個資料夾）
-│       ├── RC-YYYY-N/
+│       ├── RC-YYYY-N/               ← 🔒 證據，不可修改（規則 1、2）
 │       │   ├── RC-YYYY-N.md
 │       │   ├── RC-YYYY-N-fig-1.png
 │       │   ├── RC-YYYY-N-[內容碼]-viz.html
 │       │   └── *.pdf                    ← 補充筆記（選用，命名無限制）
-│       └── methods/                 ← 解題方法論
+│       └── methods/                 ← ✏️ 解題方法論（可修正公式／單位，見規則 1）
 │
 └── wiki/                            ← 知識庫輸出
     ├── index.md                     ← 主導航（七層架構）
@@ -170,7 +172,22 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
 ## 重要規則
 
-1. **`raw/` 目錄下所有檔案絕對不可修改**（`question_index.json` 除外）
+1. **`raw/` 目錄下所有檔案一律不可修改**，僅以下兩處例外：
+   - `raw/json/question_index.json`（索引唯一人工維護處）
+   - `raw/solutions/methods/`（方法論文件，可修正公式錯誤與單位標註）
+
+   > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、AI 解析、驗證過的答案），
+   > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
+   > 且它是 `wiki/methods/` 的 compile 來源 —— 只改 wiki 副本的話，下次 `compile-all` 會被蓋回舊版。
+   > 發現公式或係數錯誤時，必須改 raw 來源才算根治。
+   >
+   > **修改 methods/ 的三個條件（缺一不可）**：
+   > ① 修正前先做**數值驗算**（邊界代入、量綱檢查、與驗證解答交叉比對），不可憑印象改；
+   > ② 改完**同步覆蓋** `wiki/methods/` 對應檔；
+   > ③ 在 `wiki/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
+   >
+   > ⚠️ `raw/solutions/RC-YYYY-N/`（個別題目解析）**不在例外內**，仍受規則 1 與規則 2 保護。
+
 2. **`verifiedSolution` 是最終答案，不可質疑或重新計算**
 3. **`wiki/log.md` 只可 append，不可刪除已有紀錄**
 4. **wiki/ 大多數目錄是 compile 輸出，不可手動修改**；例外：diagnosis/ · failure-modes/ · materials/ · code-ref/ · queries/ 由 Cowork 直接維護
@@ -198,3 +215,4 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-07-02 | index.html 實作「線上/單機雙軌讀取」機制，線上環境（GitHub Pages 等非 file:/// 環境）自動使用 fetch 與相對路徑讀取 md、pdf 及圖片，免除資料夾授權提示 | 提升線上版儀表板的使用體驗，使其運作如同一般靜態網站 |
 | 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 CLAUDE-CODE.md 中 STUDY 指令的連結規格 |
 | 2026-07-25 | `study/` 新增第二種教材型態：`lecture-RC-UN-n.html/.pdf`（由外部 `unit-lecture` skill 產出的理解導向觀念講義），與 study 速查頁並存不互相覆蓋；新增共用離線資源 `study/assets/katex/`；同步更新 README.md、檔案架構索引表.md、CLAUDE-CODE.md（STUDY 段落交叉註記） | 練題前需要建立物理直覺的教材，與練題時用的速查頁定位不同，分開管理 |
+| 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/RC-YYYY-N/` 仍受完整保護 |

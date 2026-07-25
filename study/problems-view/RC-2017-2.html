@@ -1,0 +1,423 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2017-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2017-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h3>考題編號：RC-2017-2</h3>
+<p><strong>主分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
+<strong>副分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
+<strong>設計法：</strong> USD強度設計法<br />
+<strong>標籤：</strong> <code>加大柱</code> <code>介面剪力</code> <code>摩擦剪力法</code> <code>植筋設計</code> <code>新舊混凝土結合</code> <code>複合截面</code> <code>Shear Friction</code> <code>粗糙面</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p><strong>規範依據：</strong> 土木 401-100（ACI 318 Chapter 17 對應章節）</p>
+<p>承第一題。加大後柱斷面 $40\text{ cm} \times 70\text{ cm}$，新混凝土（兩側各 $15\text{ cm} \times 40\text{ cm}$）已進行表面粗糙化處理。</p>
+<p>為確保新舊混凝土可有效結合、發揮複合截面作用，在<strong>彎矩最大斷面處</strong>，試設計植筋以確保介面不致剪離。</p>
+<p><strong>植筋材料：</strong> D19（$f_y = 4{,}200\text{ kgf/cm}^2$，$A_b = 3.871\text{ cm}^2$）</p>
+<p><strong>介面條件：</strong></p>
+<ul>
+<li>舊混凝土：$f'_c = 210\text{ kgf/cm}^2$（原有）</li>
+<li>新混凝土：$f'_c = 210\text{ kgf/cm}^2$（加大用）</li>
+<li>介面處理：已粗糙化（符合 ACI 故意粗糙化標準，即凹凸深度 $\geq 6\text{ mm}$）</li>
+</ul>
+<p>（25分）</p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：</strong> 加大柱的新舊混凝土若介面傳力不足，兩部分將「各自為政」，整個截面無法以 $A_g = 2{,}800\text{ cm}^2$ 的組合截面發揮強度。本題測試：</p>
+<ol>
+<li><strong>介面剪力設計力的判斷</strong>：新混凝土翼板所承受的壓力 $C_{\text{new}}$，就是介面必須傳遞的剪力</li>
+<li><strong>摩擦剪力法（Shear Friction）的正確應用</strong>：粗糙面的 $\mu$ 取值、$\phi$ 值</li>
+<li><strong>植筋（Dowel Bars）的功能</strong>：穿越介面的鋼筋提供夾緊力（Clamping Force），啟動摩擦機制</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測試學生能否從第一題的雙折線結果直接提取 $0.8f'_c$ 帶入，而非另外假設</li>
+<li>測試「介面剪力力 = 新混凝土翼板的壓力」這個力學邏輯</li>
+<li>測試摩擦剪力法：$\phi V_n = \phi \cdot \mu \cdot A_{vf} \cdot f_y$</li>
+</ul>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>確認介面幾何（每個介面面積）</li>
+<li>計算新混凝土翼板最大壓力 $C_{\text{wing}}$（＝介面剪力設計值 $V_u$）</li>
+<li>套用摩擦剪力法：$V_n = \mu \cdot A_{vf} \cdot f_y$</li>
+<li>求所需 $A_{vf}$ → 換算 D19 支數</li>
+<li>驗核最大 $V_n$ 上限</li>
+</ol>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>陷阱</th>
+<th>正確做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>誤用 $0.85f'_c$ 計算 $C_{\text{wing}}$</strong></td>
+<td>第一題已用雙折線確認 $\varepsilon_{cu}=0.003$ 時 $f_c = 0.8f'_c$，必須一致沿用</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>$\mu$ 值取錯</strong>：自然面 $\mu=0.6$，故意粗糙化面 $\mu=1.0$（或 $\mu=1.4$ for monolithic cast）</td>
+<td>題目說「已粗糙化」→ $\mu = 1.0$（正常重量混凝土）</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>$\phi$ 值用 $0.65$ 或 $0.9$</strong>：摩擦剪力法的 $\phi = 0.75$（剪力類）</td>
+<td>$\phi_{\text{shear friction}} = 0.75$</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>忽略兩個介面</strong>：加大柱有左右兩個介面，各需獨立設計</td>
+<td>每側介面各自設計，植筋不重複使用</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>每個介面所需植筋量（D19支數），確保介面剪力傳遞不致剪離</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1: 介面剪力設計值 } V_u = 0.8f'_c \times A_{\text{wing}}$$</p>
+<p>$$\text{Step 2: 摩擦剪力強度 } V_n = \mu \cdot A_{vf} \cdot f_y \geq \frac{\boxed{V_u}}{\phi}$$</p>
+<p>$$\text{Step 3: 所需植筋量 } A_{vf} \geq \frac{\boxed{V_u}}{\phi \cdot \mu \cdot f_y}$$</p>
+<p>$$\text{Step 4: D19 支數 } n = \left\lceil \frac{\boxed{A_{vf}}}{A_b} \right\rceil$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$t_{\text{wing}}$</td>
+<td>15 cm</td>
+<td>新混凝土翼板厚度（每側）</td>
+</tr>
+<tr>
+<td>$b$</td>
+<td>40 cm</td>
+<td>柱寬（介面寬度 = 柱寬）</td>
+</tr>
+<tr>
+<td>$A_b$ (D19)</td>
+<td>3.871 cm²</td>
+<td>單支 D19 植筋面積</td>
+</tr>
+<tr>
+<td>$f_y$</td>
+<td>4,200 kgf/cm²</td>
+<td>植筋降伏強度</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>210 kgf/cm²</td>
+<td>混凝土強度（新舊相同）</td>
+</tr>
+<tr>
+<td>介面條件</td>
+<td>粗糙化</td>
+<td>$\mu = 1.0$（正常重量混凝土，故意粗糙化）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：新混凝土翼板壓力（介面剪力設計值）</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$f_c$</td>
+<td>從 Q1 雙折線：$\varepsilon_{cu}=0.003 \Rightarrow f_c = 0.8f'_c = 168\text{ kgf/cm}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_{\text{wing}}$</td>
+<td>$t_{\text{wing}} \times b = 15 \times 40 = 600\text{ cm}^2$（每側）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_u$</td>
+<td>$0.8f'_c \times A_{\text{wing}} = 168 \times 600 = 100{,}800\text{ kgf} = 100.8\text{ tf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：摩擦剪力法設計</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\phi$</td>
+<td>0.75（剪力類，ACI §21.2.1）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>1.0（正常重量混凝土，故意粗糙面，ACI Table 22.9.4.2）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_{vf}$</td>
+<td>$V_u/(\phi \cdot \mu \cdot f_y) = 100{,}800/(0.75\times1.0\times4200) = 32.0\text{ cm}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$n$ (D19)</td>
+<td>$32.0/3.871 = 8.27 \Rightarrow$ 取 $\mathbf{9}$ 支 D19</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：上限驗核</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式/來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$V_{n,\max}$</td>
+<td>$0.2f'_c \times A_c$（ACI §22.9.4.4，$A_c$ = 介面接觸面積）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>最小分布長</td>
+<td>$A_c = V_u/(0.2f'_c \times b) \Rightarrow L_{\min} = V_u/(0.2f'_c \times b)$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>摩擦剪力機制（Shear Friction）</td>
+<td>穿越介面的鋼筋受拉（Avf fy），對介面產生夾緊力；介面粗糙化後，夾緊力 × μ = 剪力抵抗</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\mu$ 值分級</td>
+<td>一體澆置：$\mu=1.4$；故意粗糙化（舊硬化面）：$\mu=1.0$；自然面：$\mu=0.6$；預鑄面：$\mu=0.7$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>介面壓力 = 介面設計剪力的物理意義</td>
+<td>新混凝土翼板承受壓力 $C_{\text{wing}}$，若介面脫離，此力無法由舊柱接手→截面弱化；植筋確保力流連續</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>植筋錨定問題</td>
+<td>D19 穿越介面後嵌入舊柱需足夠埋置深度；嵌入新混凝土僅15cm，需以彎鉤（Hook）或頭錨鋼筋補強</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>【前置】介面幾何說明</h3>
+<p>加大後柱 $40\text{ cm} \times 70\text{ cm}$，新舊混凝土接觸面如下：</p>
+<pre><code>      40cm
+ ┌───────────────┐
+ │  新混凝土(15cm)│  ← 介面 ①（左側）
+ ├───────────────┤
+ │               │
+ │  舊混凝土(40cm)│
+ │               │
+ ├───────────────┤
+ │  新混凝土(15cm)│  ← 介面 ②（右側）
+ └───────────────┘
+</code></pre>
+<p>每個介面面積（截面處）：介面寬度 $= 40\text{ cm}$（柱寬方向）</p>
+<hr />
+<h3>【Step 1】介面剪力設計值 $V_u$</h3>
+<p>新混凝土翼板在最大壓縮狀態（承上題，雙折線在 $\varepsilon_{cu} = 0.003$ 時 $f_c = 0.8f'_c$）：</p>
+<p>$$f_c = 0.8f'_c = 0.8 \times 210 = 168\text{ kgf/cm}^2$$</p>
+<p>每個翼板面積：<br />
+$$A_{\text{wing}} = t_{\text{wing}} \times b = 15 \times 40 = 600\text{ cm}^2$$</p>
+<p>每個介面的設計剪力（= 翼板最大壓力）：<br />
+$$\boxed{V_u = f_c \times A_{\text{wing}} = 168 \times 600 = 100{,}800\text{ kgf} = 100.8\text{ tf}}$$</p>
+<blockquote>
+<p>📝 <strong>策略註解：</strong> 此力的物理意義：新混凝土翼板承受的壓力必須全部通過介面傳入舊柱，若介面剪力不足，翼板將「彈開」，加大柱喪失組合截面效果。</p>
+</blockquote>
+<hr />
+<h3>【Step 2】摩擦剪力法設計（Shear Friction Method）</h3>
+<p>依 ACI 318（土木401-100）之摩擦剪力公式：</p>
+<p>$$\phi V_n = \phi \cdot \mu \cdot A_{vf} \cdot f_y \geq V_u$$</p>
+<p><strong>參數選取：</strong></p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th style="text-align: center;">取值</th>
+<th>依據</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\phi$</td>
+<td style="text-align: center;">0.75</td>
+<td>剪力類強度折減係數</td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td style="text-align: center;">1.0</td>
+<td>故意粗糙化接觸面（凹凸深 $\geq 6\text{ mm}$），正常重量混凝土</td>
+</tr>
+</tbody>
+</table>
+<p><strong>所需植筋面積（每個介面）：</strong></p>
+<p>$$A_{vf} \geq \frac{V_u}{\phi \cdot \mu \cdot f_y} = \frac{100{,}800}{0.75 \times 1.0 \times 4{,}200} = \frac{100{,}800}{3{,}150} = \boxed{32.0\text{ cm}^2}$$</p>
+<p><strong>D19 植筋支數（每個介面）：</strong></p>
+<p>$$n \geq \frac{A_{vf}}{A_b} = \frac{32.0}{3.871} = 8.27 \quad \Rightarrow \quad \text{取 } \boxed{n = 9 \text{ 支 D19}}$$</p>
+<p>實際提供：$A_{vf,\text{actual}} = 9 \times 3.871 = 34.84\text{ cm}^2 > 32.0\text{ cm}^2 \quad \checkmark$</p>
+<hr />
+<h3>【Step 3】$V_n$ 上限驗核（ACI §22.9.4.4）</h3>
+<p>$$V_n \leq 0.2 f'_c \times A_c \quad \text{且} \quad V_n \leq 5.52\text{ MPa} \times A_c$$</p>
+<p>其中 $A_c$ = 介面接觸面積（= 介面寬 $\times$ 分布長度 $L$）</p>
+<p>$$V_n = \frac{V_u}{\phi} = \frac{100{,}800}{0.75} = 134{,}400\text{ kgf}$$</p>
+<p>所需最小分布長度 $L$：<br />
+$$L_{\min} = \frac{V_n}{0.2f'_c \times b} = \frac{134{,}400}{0.2 \times 210 \times 40} = \frac{134{,}400}{1{,}680} = 80\text{ cm}$$</p>
+<p>$$\Rightarrow \quad \text{9 支 D19 植筋必須分布在柱高至少 } \boxed{L \geq 80\text{ cm}} \text{ 的範圍內}$$</p>
+<hr />
+<h3>【Step 4】植筋間距計算</h3>
+<p>9 支 D19 植筋均勻分布於 $L \geq 80\text{ cm}$ 的柱高範圍：</p>
+<p>$$s = \frac{80}{9} \approx 8.9\text{ cm} \quad \text{（取 } s = 10\text{ cm，共 9 支）}$$</p>
+<p>或：若柱高 $H > 80\text{ cm}$（例如 $H = 300\text{ cm}$），間距可放寬至：<br />
+$$s = \frac{300}{9} \approx 33\text{ cm} \quad \text{（每側介面 9 支 D19 @ 33 cm）}$$</p>
+<blockquote>
+<p>📝 <strong>策略註解：</strong> 實際間距取決於柱高；題目未指定時，給出最小分布長度（80cm）及每側 9 支的結論即可。</p>
+</blockquote>
+<hr />
+<h3>【Step 5】植筋錨定深度驗核</h3>
+<p>D19 植筋穿越介面，需在舊混凝土中足夠錨定：</p>
+<p><strong>嵌入舊混凝土（化學植筋，錨定長度）：</strong><br />
+$$L_e \geq 15 d_b = 15 \times 1.905 = 28.6\text{ cm} \quad \text{（化學錨議規範，保守估）}$$</p>
+<p>舊柱寬度 $= 40\text{ cm}$，扣除保護層後可用 $= 40 - 6.5 = 33.5\text{ cm} > 28.6\text{ cm} \quad \checkmark$</p>
+<p><strong>嵌入新混凝土（翼板內，長度受限）：</strong><br />
+新混凝土翼板厚度僅 $15\text{ cm}$，扣除保護層 $= 15 - 6.5 = 8.5\text{ cm}$，不足直線發展長度。</p>
+<p>$$\Rightarrow \text{需在新混凝土端設置 } \boxed{90°\text{ 彎鉤（Standard Hook）}} \text{ 補強錨定}$$</p>
+<p>90° 彎鉤直線延伸長度 $= 12d_b = 12 \times 1.905 = 22.9\text{ cm}$（彎入翼板後沿縱向延伸）</p>
+<hr />
+<h3>【結論】</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>每個介面設計剪力 $V_u$</td>
+<td style="text-align: center;">$100.8\text{ tf}$</td>
+</tr>
+<tr>
+<td>每個介面所需植筋 $A_{vf}$</td>
+<td style="text-align: center;">$32.0\text{ cm}^2$</td>
+</tr>
+<tr>
+<td>每個介面 D19 植筋數</td>
+<td style="text-align: center;">$\boxed{9 \text{ 支 D19}}$</td>
+</tr>
+<tr>
+<td>最小分布長度 $L_{\min}$</td>
+<td style="text-align: center;">$\geq 80\text{ cm}$</td>
+</tr>
+<tr>
+<td>共兩個介面（左右各一）</td>
+<td style="text-align: center;"><strong>共 18 支 D19 植筋</strong></td>
+</tr>
+<tr>
+<td>植筋錨定</td>
+<td style="text-align: center;">舊柱端：化學植筋 $\geq 28.6\text{ cm}$；新混凝土端：90° 彎鉤</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>爭議1：$\mu$ 值的精確選取</strong></p>
+<ul>
+<li>ACI 318-14 Table 22.9.4.2 規定：</li>
+<li>一體澆置（Monolithically cast）：$\mu = 1.4$</li>
+<li>故意粗糙化（Intentionally roughened, $\geq$ ¼ in amplitude）：$\mu = 1.0$</li>
+<li>未粗糙化（未特別處理）：$\mu = 0.6$</li>
+<li>本題「已粗糙化」→ 取 $\mu = 1.0$，不可用 $1.4$（非一體澆置）</li>
+</ul>
+<p><strong>爭議2：設計力是否應取全截面壓力或僅新混凝土翼板壓力？</strong></p>
+<ul>
+<li>保守設計：以新混凝土翼板在最大壓縮狀態下的全部壓力作為介面設計力（本題做法）</li>
+<li>較精確做法：以「無複合作用」vs「有複合作用」的應力差計算，通常更小；考場選保守即可</li>
+</ul>
+<p><strong>爭議3：植筋設計方向</strong></p>
+<ul>
+<li>本題植筋垂直介面（即在 $h$ 方向，穿越介面）</li>
+<li>為提供有效夾緊力（Clamping Force），植筋方向須與預期剪力方向垂直（即穿越介面面積）</li>
+</ul>
+<p><strong>進階：柱加大工法（Column Jacketing）實務</strong></p>
+<ul>
+<li>建議分批植筋（先植鋼筋、再模板、最後澆置新混凝土）</li>
+<li>新舊混凝土介面若使用環氧樹脂（Epoxy Bonding Agent）可提升初期黏結；但長期設計不應計入環氧樹脂的貢獻（脆性破壞風險）</li>
+<li>ACI 355 系列規範詳述化學植筋（Chemical Anchor）的設計方法</li>
+</ul></main>
+<footer>來源：raw/solutions/RC-2017-2/RC-2017-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

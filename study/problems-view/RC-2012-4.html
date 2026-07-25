@@ -1,0 +1,367 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2012-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2012-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：RC-2012-4</h1>
+<p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
+<strong>副分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
+<strong>設計法：</strong> USD 強度設計法<br />
+<strong>標籤：</strong> <code>梁柱外接頭</code> <code>接頭剪力</code> <code>角隅邊柱</code> <code>Vjh</code> <code>Aj接頭有效面積</code> <code>3.2係數</code> <code>外接頭</code> <code>強柱弱梁</code> <code>特殊矩形框架接頭</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>承第三題，接頭區箍筋配筋同柱箍筋之配置（4-leg #4 @ 9 cm），附圖中之柱是屬於<strong>結構角隅邊柱</strong>，試<strong>檢核此梁柱外接頭剪力是否足夠</strong>？若不足夠，應說明如何改善。（20 分）</p>
+<blockquote>
+<p>本題構架配置、斷面尺寸與配筋見 RC-2012-2 附圖（<code>RC-2012-2-fig-1.png</code>、<code>RC-2012-2-fig-2.png</code>）。</p>
+</blockquote>
+<p><strong>延用前題數值：</strong></p>
+<table>
+<thead>
+<tr>
+<th>來源</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{pr}^-$（頂筋 6-#8，EQ→右）</td>
+<td>75.5 tf·m（RC-2012-2）</td>
+</tr>
+<tr>
+<td>$M_{pr}^+$（底筋 4-#7，EQ→左）</td>
+<td>41.1 tf·m（RC-2012-2）</td>
+</tr>
+<tr>
+<td>柱設計剪力 $V_{col}$</td>
+<td>50.33 tf（RC-2012-3）</td>
+</tr>
+<tr>
+<td>梁頂筋 $A_{s,\text{top}}$，$f_{ps}$</td>
+<td>$30.42\ \text{cm}^2$，$5250\ \text{kgf/cm}^2$</td>
+</tr>
+<tr>
+<td>柱斷面</td>
+<td>60×60 cm</td>
+</tr>
+<tr>
+<td>梁斷面 $b_w$</td>
+<td>50 cm</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>280 kgf/cm²</td>
+</tr>
+</tbody>
+</table>
+<p><strong>題目所給接頭剪力強度規定：</strong></p>
+<table>
+<thead>
+<tr>
+<th>圍束條件</th>
+<th>設計強度</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>接頭四面受圍束</td>
+<td>$5.3\sqrt{f'_c}\,A_j$</td>
+</tr>
+<tr>
+<td>三面或一雙對面受圍束</td>
+<td>$3.9\sqrt{f'_c}\,A_j$</td>
+</tr>
+<tr>
+<td>其他（外接頭）</td>
+<td>$3.2\sqrt{f'_c}\,A_j$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong><br />
+強柱弱梁機制中，梁端塑鉸形成時會對梁柱接頭施加極大水平剪力。外接頭（角隅邊柱）因缺乏對向梁的圍束，接頭剪力強度最低（係數 3.2），故是否充裕須嚴格驗算。</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測試「外接頭水平剪力 $V_{jh}$」的正確推導（以梁筋力 $T$ 減去柱剪力 $V_{col}$）</li>
+<li>測試接頭有效面積 $A_j$ 的計算（$b_j \times h_{col}$）</li>
+<li>測試圍束條件分類（角隅邊柱 → 外接頭 → 「其他」→ $3.2\sqrt{f'_c}\,A_j$）</li>
+<li>測試改善措施的知識（若不足時）</li>
+</ol>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>Step 1：計算接頭水平剪力需求 Vjh（梁頂筋拉力 - 柱剪力）
+Step 2：判斷圍束條件 → 選用正確係數（3.2）
+Step 3：計算接頭有效面積 Aj = bj × hcol
+Step 4：計算接頭剪力設計強度
+Step 5：比較 Vjh vs 設計強度 → 結論
+</code></pre>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>陷阱</th>
+<th>應對策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>Vjh 忘記減 Vcol</strong>：接頭剪力 ≠ T，應扣除柱剪力</td>
+<td>$V_{jh} = T_1 - V_{col} = 159.7 - 50.3 = 109.4\ \text{tf}$</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>用 fy 計算 T</strong>：接頭剪力需求來自梁端塑鉸，應用 $f_{ps} = 1.25 f_y$</td>
+<td>$T_1 = A_{s,\text{top}} \times f_{ps} = 30.42 \times 5250 = 159.7\ \text{tf}$</td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>接頭面積用梁寬</strong>：$b_j$ 取柱寬與（梁寬 + 柱高）之小值，此題柱寬 60 控制</td>
+<td>$A_j = 60 \times 60 = 3600\ \text{cm}^2$</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>圍束係數用 3.9 或 5.3</strong>：角隅邊柱為外接頭，梁僅從單側框入，屬「其他」→ 3.2</td>
+<td>係數 = <strong>3.2</strong></td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>以正彎矩 Mpr⁺ 計算 Vjh</strong>：應取最大剪力 → EQ→右，頂筋受拉（Mpr⁻）控制</td>
+<td>$T_1$ 用頂筋力 159.7 tf</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>計算 Vjh（水平接頭剪力需求），與設計強度 3.2√f'c·Aj 比較，判斷外接頭是否足夠</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$\text{Step 1:}\quad T_1 = A_{s,\text{top}} \times f_{ps}$$</p>
+<p>$$\text{Step 2:}\quad V_{jh} = \boxed{T_1} - V_{col}$$</p>
+<p>$$\text{Step 3:}\quad b_j = \min(b_{\text{col}},\ b_w + h_{\text{col}})$$</p>
+<p>$$\text{Step 4:}\quad A_j = \boxed{b_j} \times h_{\text{col}}$$</p>
+<p>$$\text{Step 5:}\quad \phi V_n = 3.2\sqrt{f'_c} \times \boxed{A_j}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A_{s,\text{top}}$</td>
+<td>30.42 cm²</td>
+<td>梁頂筋 6-#8</td>
+</tr>
+<tr>
+<td>$f_{ps}$</td>
+<td>5250 kgf/cm²</td>
+<td>$1.25 f_y$</td>
+</tr>
+<tr>
+<td>$V_{col}$</td>
+<td>50.33 tf</td>
+<td>由 RC-2012-3 得</td>
+</tr>
+<tr>
+<td>$b_w$</td>
+<td>50 cm</td>
+<td>梁寬</td>
+</tr>
+<tr>
+<td>$b_{\text{col}} = h_{\text{col}}$</td>
+<td>60 cm</td>
+<td>方形柱邊長</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>280 kgf/cm²</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_1$</td>
+<td>$30.42 \times 5250 = 159{,}705\ \text{kgf} = 159.7\ \text{tf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_{jh}$</td>
+<td>$159.7 - 50.33 = 109.4\ \text{tf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$b_j$</td>
+<td>$\min(60,\ 50+60) = 60\ \text{cm}$（柱寬控制）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_j$</td>
+<td>$60 \times 60 = 3600\ \text{cm}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi V_n$</td>
+<td>$3.2 \times \sqrt{280} \times 3600 = 3.2 \times 16.73 \times 3600 = 192{,}800\ \text{kgf} = 192.8\ \text{tf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>外接頭 Vjh 推導</strong></td>
+<td>梁頂筋拉力 $T_1$ 水平拉入接頭，柱剪力 $V_{col}$ 抵消一部分，因此 $V_{jh} = T_1 - V_{col}$。對向無梁（外接頭），無反側壓力分擔</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>T 用 fps 而非 fy</strong></td>
+<td>接頭剪力來自梁端塑鉸機構，對應 $M_{pr}$；$M_{pr}$ 用 $f_{ps} = 1.25 f_y$，故 $T_1$ 也用 $f_{ps}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>圍束條件分類</strong></td>
+<td>四面圍束（γ=5.3）→ 四側均有梁框入；三面或對面（γ=3.9）→ 三側有梁或兩對面有梁；其他（γ=3.2）→ 僅一側或兩相鄰側有梁（本題角隅外接頭屬此類）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>bj 計算</strong></td>
+<td>$b_j = \min(b_{\text{col}},\ b_w + h_{\text{col}})$；此題 $\min(60,\ 110) = 60\ \text{cm}$（柱寬控制）。ACI 318 限制 bj 不超過柱寬</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>改善外接頭不足的方法</strong></td>
+<td>①增大柱斷面（增 $A_j$）；②增加梁柱接頭上下方的垂直（N-S 向）梁，升級圍束條件係數（3.2→3.9→5.3）；③減少梁頂筋量（降低 $T_1$）；④增大 $f'_c$（提升混凝土強度）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：接頭水平剪力需求 $V_{jh}$</h3>
+<p>最大剪力需求發生於 EQ→右時，梁端發展 $M_{pr}^-$（頂筋受拉）。</p>
+<p>梁頂筋拉力：</p>
+<p>$$T_1 = A_{s,\text{top}} \times f_{ps} = 30.42 \times 5{,}250 = \boxed{159{,}705\ \text{kgf} = 159.7\ \text{tf}}$$</p>
+<p>外接頭水平剪力（梁力 − 柱剪力）：</p>
+<p>$$V_{jh} = T_1 - V_{col} = 159.7 - 50.33 = \boxed{109.4\ \text{tf}}$$</p>
+<hr />
+<h3>Step 2：判斷圍束條件</h3>
+<p>本題柱為<strong>結構角隅邊柱</strong>（corner edge column），梁柱外接頭特徵：</p>
+<ul>
+<li>E-W 向僅有<strong>一根梁</strong>從單側框入</li>
+<li>另三面無梁（或僅有柱，不算圍束）</li>
+</ul>
+<p>→ 屬「<strong>其他</strong>」類（exterior joint, one-sided beam）→ 使用係數 <strong>3.2</strong></p>
+<hr />
+<h3>Step 3：接頭有效斷面積 $A_j$</h3>
+<p>有效接頭寬度：</p>
+<p>$$b_j = \min(b_{\text{col}},\ b_w + h_{\text{col}}) = \min(60,\ 50 + 60) = \min(60,\ 110) = \boxed{60\ \text{cm}}$$</p>
+<p>接頭有效面積（柱寬 × 柱深，方形柱）：</p>
+<p>$$A_j = b_j \times h_{\text{col}} = 60 \times 60 = \boxed{3{,}600\ \text{cm}^2}$$</p>
+<hr />
+<h3>Step 4：接頭剪力設計強度</h3>
+<p>$$\phi V_n = 3.2\sqrt{f'_c} \times A_j = 3.2 \times \sqrt{280} \times 3{,}600$$</p>
+<p>$$= 3.2 \times 16.73 \times 3{,}600 = \boxed{192{,}800\ \text{kgf} = 192.8\ \text{tf}}$$</p>
+<hr />
+<h3>Step 5：強度檢核</h3>
+<p>$$V_{jh} = 109.4\ \text{tf} \leq \phi V_n = 192.8\ \text{tf} \quad \boxed{\checkmark\ \text{足夠}}$$</p>
+<p>$$\text{強度比} = \frac{109.4}{192.8} = 0.568 \quad \text{（尚有 43\% 餘裕）}$$</p>
+<hr />
+<h3>結論</h3>
+<p>$$\boxed{\text{梁柱外接頭剪力強度足夠，無須改善。}\ V_{jh} = 109.4\ \text{tf} \leq \phi V_n = 192.8\ \text{tf}}$$</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>① 若接頭不足時的改善方案（進階備考）</strong></p>
+<p>雖然本題通過，但若未來遇到接頭不足的情形，標準改善措施：</p>
+<table>
+<thead>
+<tr>
+<th>方法</th>
+<th>機制</th>
+<th>效果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>增大柱斷面</strong></td>
+<td>增加 $A_j = b_j \times h_{\text{col}}$</td>
+<td>直接提升接頭強度</td>
+</tr>
+<tr>
+<td><strong>增加垂直向（N-S）梁</strong></td>
+<td>圍束條件由「其他（3.2）」升為「三面受圍束（3.9）」，強度提升 22%</td>
+<td>改善效果顯著</td>
+</tr>
+<tr>
+<td><strong>降低梁頂筋量</strong></td>
+<td>減少 $T_1$ → 降低 $V_{jh}$</td>
+<td>但可能影響梁彎矩強度</td>
+</tr>
+<tr>
+<td><strong>提高混凝土強度</strong></td>
+<td>$\phi V_n \propto \sqrt{f'_c}$</td>
+<td>效果有限（取 √f'c）</td>
+</tr>
+<tr>
+<td><strong>確保接頭箍筋密置</strong></td>
+<td>維持圍束條件分類適用性</td>
+<td>如本題「接頭區箍筋配筋同柱箍筋」已達此目標</td>
+</tr>
+</tbody>
+</table>
+<p><strong>② 為何外接頭係數最低（3.2 vs 3.9 vs 5.3）</strong></p>
+<p>接頭剪力由接頭核心混凝土的對角壓力桿（diagonal strut）機制承擔。梁從更多方向框入，能對接頭核心提供更好的圍束效果，使混凝土能承受更大的斜向壓力。角隅外接頭（僅單側有梁）圍束最差，故係數最低（3.2）。</p>
+<p><strong>③ 接頭剪力與 $V_{col}$ 的方向關係</strong></p>
+<p>$V_{col}$ 從柱傳入接頭，方向與 $T_1$ 相反，因此接頭的有效水平剪力 $= T_1 - V_{col}$（非 $T_1 + V_{col}$）。直覺記法：柱剪力「幫忙抵消」一部分梁筋拉力，所以接頭剪力 &lt; 梁筋全部拉力。</p></main>
+<footer>來源：raw/solutions/RC-2012-4/RC-2012-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+</body></html>

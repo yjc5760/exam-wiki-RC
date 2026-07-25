@@ -241,3 +241,10 @@
   檔案架構索引表.md（study/ 與 assets/ 兩列）、CLAUDE-CODE.md（STUDY 段落加交叉註記，未新增指令）、
   study/study-RC-U1-1.html（新增「觀念講義」按鈕）
 - 操作者：Cowork
+- 2026-07-25｜FIX｜**單位係數勘誤（跨科稽核發現）**。於 exam-wiki-SS 修正一批公式單位錯誤後，回頭稽核六科知識庫，在 RC 發現兩處：
+  1. `wiki/code-ref/CNS-1480.md` §混凝土彈性模數：`Ec = 4270√f'c (kgf/cm²) ≈ 15100√f'c (MPa)` —— **兩個單位標籤對調**，且 kgf/cm² 制係數誤植為 4270。正確為 `Ec = 15100√f'c (kgf/cm²) = 4700√f'c (MPa)`。原式誤差達 3.2～3.5 倍，會直接毀掉撓度與轉換斷面計算。已改正並加入驗算示例（f'c=280 kgf/cm² 時兩制應同得約 25 萬 kgf/cm²）與記憶法（係數大的配單位小的）。
+  2. `f_r` 的 MPa 制係數不一致：`wiki/code-ref/CNS-1480.md` 與驗證解答 RC-2018-4 均為 `0.623√f'c`，但 `wiki/concepts/GLOSSARY.md`、`wiki/traps/DEFLECTION-EFFECTIVE-INERTIA.md`、`wiki/methods/effective-inertia-deflection.md` 寫成 `0.7√f'c`（差 12%；0.7 為 ACI 318-99 舊版值）。依規則 2 以驗證解答為準，已將 GLOSSARY 與 traps 兩檔改為 0.623。
+  驗算方式：以 f'c = 280 kgf/cm² = 27.5 MPa 雙制互換確認；fr 以 2.0√f'c(kgf/cm²) 為錨點換算得 0.626 ≈ 0.623。
+  ⚠️ **未完成**：`wiki/methods/effective-inertia-deflection.md` 的 `0.7` 尚未修正，因其 compile 來源在 `raw/solutions/methods/effective-inertia-deflection/`，而 RC 的規則 1 目前尚未開放 methods 例外（SS 已於同日開放）。待決定是否比照 SS 修改 RC 的 CLAUDE.md 規則 1。
+  同時確認：SS 的 ASD/LTB 係數錯誤（703,000 / 1,170,000 / 1,055,000、Lp=300ry、Lr 分母、λ 138/322）**未擴散**至 RC/SA/SD/SM/MM 任一科（該類公式為鋼結構專有）。
+- 2026-07-25｜HARNESS + FIX｜規則 1 例外擴充（比照 SS）：`raw/` 唯讀例外增列 `raw/solutions/methods/`，並訂三項條件（驗算／同步 wiki／記 log）；`CLAUDE.md`（規則 1、結構圖 🔒/✏️ 標記、單向資料流、CHANGELOG）與 `CLAUDE-CODE.md`（新增 FIX-METHOD 流程）同步更新。依此完成前一筆待辦：`raw/solutions/methods/effective-inertia-deflection/` 的 `f_r = 0.7√f'c (MPa)` 已改為 `0.623√f'c` 並同步覆蓋 `wiki/methods/`。至此 RC 全庫 6 處 f_r 定義一致（0.623），與驗證解答 RC-2018-4 相符。

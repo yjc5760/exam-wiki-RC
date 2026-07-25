@@ -25,7 +25,11 @@ RC 梁受力後部分開裂，有效慣性矩 $I_e$ 介於全斷面（未開裂�
 
 **Step 1：開裂彎矩**
 
-$$M_{cr} = \frac{f_r I_g}{y_t}, \quad f_r = 2\sqrt{f'_c} \text{ (kgf/cm}^2\text{)} \quad \text{或} \quad 0.7\sqrt{f'_c} \text{ (MPa)}$$
+$$M_{cr} = \frac{f_r I_g}{y_t}, \quad f_r = 2\sqrt{f'_c} \text{ (kgf/cm}^2\text{)} \;=\; 0.623\sqrt{f'_c} \text{ (MPa)}$$
+
+> ⚠️ MPa 制係數是 **0.623**（＝ ACI 318-19 的 $0.62\lambda\sqrt{f'_c}$），不是 0.7。
+> 0.7 是 ACI 318-99 舊版值，與 kgf/cm² 制的 2.0 不相容（差 12%）。
+> 驗算：$2.0\sqrt{f'_c}$ 以 $f'_c$ 用 kgf/cm² 換算後即得 $0.626\sqrt{f'_c}$ (MPa)。見 RC-2018-4。
 
 **Step 2：開裂斷面慣性矩 $I_{cr}$**
 

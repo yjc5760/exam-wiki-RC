@@ -17,7 +17,7 @@ $I_{cr}$ 的計算，以及長期撓度修正係數 $\lambda$ 的應用，是高
 
 $$I_e = \left(\frac{M_{cr}}{M_a}\right)^3 I_g + \left[1 - \left(\frac{M_{cr}}{M_a}\right)^3\right] I_{cr} \leq I_g$$
 
-$$M_{cr} = \frac{f_r \cdot I_g}{y_t}, \quad f_r = 2\sqrt{f'_c} \text{ (kgf/cm²)} = 0.7\sqrt{f'_c} \text{ (MPa)}$$
+$$M_{cr} = \frac{f_r \cdot I_g}{y_t}, \quad f_r = 2\sqrt{f'_c} \text{ (kgf/cm²)} = 0.623\sqrt{f'_c} \text{ (MPa)}$$
 
 ---
 
