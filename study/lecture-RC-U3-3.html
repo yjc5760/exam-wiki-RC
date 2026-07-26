@@ -1,0 +1,1441 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RC-U3-3 觀念講義｜韌性要求與耐震設計</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--ac2:#e3f2fd;--tension:#2e7d32;--tension2:#e8f5e9;
+--comp:#c62828;--comp2:#ffebee;--warn:#ef6c00;--warn2:#fff3e0;
+--key:#6a1b9a;--key2:#f3e5f5;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:34px 26px}
+header h1{margin:0 0 8px;font-size:1.6em}header .sub{opacity:.9;font-size:.93em;margin:0}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:980px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.32em;border-left:6px solid var(--ac);padding-left:12px;margin:44px 0 18px;line-height:1.4}
+h3{font-size:1.08em;margin:30px 0 10px;color:#0d47a1}
+h4{font-size:.99em;margin:20px 0 8px;color:#37474f}
+.lead{font-size:1.03em;background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.box{background:var(--card);border:1px solid var(--bd);border-radius:11px;padding:16px 18px;margin:16px 0}
+.why{background:var(--key2);border:1px solid #ce93d8;border-left:5px solid var(--key);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.why b:first-child{color:var(--key)}
+.trap{background:var(--warn2);border:1px solid #ffcc80;border-left:5px solid var(--warn);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.trap b:first-child{color:#e65100}
+.tens{background:var(--tension2);border:1px solid #a5d6a7;border-left:5px solid var(--tension);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
+.fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
+.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
+table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600}
+tbody tr:nth-child(even){background:#fafcfd}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:5px 0}
+.pill{display:inline-block;font-size:.76em;padding:2px 8px;border-radius:10px;margin-right:4px}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+@media(max-width:760px){.grid2{grid-template-columns:1fr}}
+details{background:#fff;border:1px solid var(--bd);border-radius:9px;padding:10px 14px;margin:12px 0}
+summary{cursor:pointer;font-weight:600;color:var(--ac)}
+details p{border-left:3px solid #e0e0e0;padding-left:12px;margin:8px 0;color:#37474f}
+.qlink{color:#1565c0;text-decoration:none;border-bottom:1px dotted #90caf9;font-weight:600}
+.katex-display{margin:14px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+</style>
+</head>
+<body>
+<header>
+<h1>RC-U3-3 觀念講義：韌性要求與耐震設計</h1>
+<p class="sub">理解導向 — 每條公式追到來源，每個規範係數交代出處。練題之前先讀這一份。</p>
+<p class="meta">結構工程技師｜鋼筋混凝土設計與預力｜第三單元第 3 子項<br>
+涵蓋歷屆考題：主分類 16 題、副分類 2 題（2003–2025）</p>
+</header>
+<nav>
+  <a href="#s0">§0 全景</a>
+  <a href="#s1">§1 讓分階梯</a>
+  <a href="#s2">§2 韌性三層次</a>
+  <a href="#s3">§3 耐震梁</a>
+  <a href="#s4">§4 耐震柱</a>
+  <a href="#s5">§5 強柱弱梁</a>
+  <a href="#s6">§6 梁柱接頭</a>
+  <a href="#s7">§7 其他構件</a>
+  <a href="#s8">§8 解題流程</a>
+  <a href="#s9">§9 考點對照</a>
+  <a href="#s10">§10 陷阱總表</a>
+  <a href="#s11">§11 自我檢測</a>
+  <a href="#s12">★ 精選 5 題</a>
+  <a href="#s13">§13 因果鏈</a>
+  <span style="flex:1"></span>
+  <a href="study-RC-U3-3.html" style="background:#eceff1;color:#455a64">📊 速查頁</a>
+  <a href="RC-U3-3_韌性要求與耐震設計.pdf" target="_blank" style="background:#eceff1;color:#455a64">📄 Keynote</a>
+  <a href="lecture-RC-U3-3.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+<section id="s0">
+<h2>§0 全景：一場你可以作弊的賽跑</h2>
+
+<div class="lead">
+<b>一句話：地震不會問你哪裡該壞 —— 所以你要在設計階段就把「想要它壞的地方」做弱、「不准它壞的地方」做強，
+而且差距要大到即使材料超強也翻不了盤。</b><br>
+延性機構（梁端彎矩塑鉸）和脆性機構（剪力破壞、接頭破壞、柱壓碎）在賽跑，<b>誰先到達自己的強度，誰就決定破壞模式</b>。
+能力設計法（capacity design）就是刻意讓延性機構永遠先到。RC-U3-3 這 18 題考題，全部是這一句話的展開。
+</div>
+
+<p>
+一般強度設計問的是「撐不撐得住」；耐震設計問的是「<b>壞的時候用什麼方式壞</b>」。
+這是完全不同的問題 —— 所以本單元幾乎沒有一條公式是在算「需求」，
+它們都在算「<b>某個機構最多可能有多強</b>」，然後拿這個上限去設計別的構件。
+只要抓住這個顛倒的邏輯，1.25、\(\phi=1.0\)、6/5、\(V_c=0\) 就全部合理了（見 §1）。
+</p>
+
+<div class="fig">
+<svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="20" x2="450" y2="330" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <text x="220" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#c62828">脆性先到：層崩塌機構</text>
+  <text x="220" y="46" font-size="12.5" text-anchor="middle" fill="#607d8b">柱端先出鉸（或柱剪力先破壞）</text>
+  <line x1="45" y1="272" x2="400" y2="272" stroke="#546e7a" stroke-width="2.4"/>
+  <g stroke="#455a64" stroke-width="2.2" fill="none">
+    <line x1="75" y1="272" x2="75" y2="92"/><line x1="222" y1="272" x2="222" y2="92"/><line x1="370" y1="272" x2="370" y2="92"/>
+    <line x1="75" y1="212" x2="370" y2="212"/><line x1="75" y1="152" x2="370" y2="152"/><line x1="75" y1="92" x2="370" y2="92"/>
+  </g>
+  <g fill="#c62828">
+    <circle cx="75" cy="272" r="6"/><circle cx="222" cy="272" r="6"/><circle cx="370" cy="272" r="6"/>
+    <circle cx="75" cy="212" r="6"/><circle cx="222" cy="212" r="6"/><circle cx="370" cy="212" r="6"/>
+  </g>
+  <line x1="80" y1="82" x2="150" y2="82" stroke="#c62828" stroke-width="2.4" marker-end="url(#h1)"/>
+  <defs><marker id="h1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
+  <marker id="h2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#2e7d32"/></marker></defs>
+  <text x="220" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">變形全部集中在這一層</text>
+  <text x="220" y="300" font-size="13" text-anchor="middle" fill="#455a64">只有 6 個塑鉸就成為機構 → 立即崩塌</text>
+  <text x="220" y="322" font-size="13" text-anchor="middle" fill="#c62828" font-weight="700">耗能少、無預警、整棟倒</text>
+
+  <text x="675" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#2e7d32">延性先到：梁式機構</text>
+  <text x="675" y="46" font-size="12.5" text-anchor="middle" fill="#607d8b">梁端先出鉸，柱保持彈性（柱底除外）</text>
+  <line x1="500" y1="272" x2="855" y2="272" stroke="#546e7a" stroke-width="2.4"/>
+  <g stroke="#455a64" stroke-width="2.2" fill="none">
+    <line x1="530" y1="272" x2="530" y2="92"/><line x1="677" y1="272" x2="677" y2="92"/><line x1="825" y1="272" x2="825" y2="92"/>
+    <line x1="530" y1="212" x2="825" y2="212"/><line x1="530" y1="152" x2="825" y2="152"/><line x1="530" y1="92" x2="825" y2="92"/>
+  </g>
+  <g fill="#2e7d32">
+    <circle cx="548" cy="212" r="5.5"/><circle cx="659" cy="212" r="5.5"/><circle cx="695" cy="212" r="5.5"/><circle cx="807" cy="212" r="5.5"/>
+    <circle cx="548" cy="152" r="5.5"/><circle cx="659" cy="152" r="5.5"/><circle cx="695" cy="152" r="5.5"/><circle cx="807" cy="152" r="5.5"/>
+    <circle cx="548" cy="92" r="5.5"/><circle cx="659" cy="92" r="5.5"/><circle cx="695" cy="92" r="5.5"/><circle cx="807" cy="92" r="5.5"/>
+    <circle cx="530" cy="272" r="6"/><circle cx="677" cy="272" r="6"/><circle cx="825" cy="272" r="6"/>
+  </g>
+  <line x1="535" y1="82" x2="605" y2="82" stroke="#2e7d32" stroke-width="2.4" marker-end="url(#h2)"/>
+  <text x="675" y="248" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">變形分散到每一層</text>
+  <text x="675" y="300" font-size="13" text-anchor="middle" fill="#455a64">需要 15 個塑鉸才成為機構 → 有大量餘裕</text>
+  <text x="675" y="322" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">耗能多、變形可見、不易倒</text>
+</svg>
+<div class="cap">
+兩張圖是同一棟建築的兩種命運，差別只在「哪裡先出鉸」。
+右圖需要的塑鉸數是左圖的 2.5 倍 —— 這就是「強柱弱梁」值得用 6/5 去買的東西（§5）。
+注意右圖<b>柱底仍然出鉸</b>：強柱弱梁救不了柱底，所以柱底一定要有密箍（§4）。
+</div>
+</div>
+
+<div class="why">
+<b>為什麼要這樣看？</b><br>
+如果只把本單元當成「一堆耐震規範的公式與限值」，你會發現要背的東西多到記不住：
+\(1.25f_y\)、\(\phi=1.0\)、\(6/5\)、\(V_c=0\)、\(A_{sh}\) 兩式、\(l_o\) 三式、\(s\) 三式、\(\gamma\sqrt{f'_c}A_j\)、\(\phi=0.85\)、\(\phi=0.6\)……<br>
+但如果理解「這些全是<b>同一場賽跑的讓分</b>」，你只需要記住讓分的方向：
+<b>延性那一側往下調（做弱、允許它先壞），脆性那一側往上調（做強、絕對不准它先壞）</b>。
+考場上忘記某個係數時，至少能寫出方向與理由，拿到大部分過程分。
+</div>
+
+<h3>本單元的五個題型群（先認出是哪一群）</h3>
+
+<table>
+<thead><tr><th>群</th><th>問什麼</th><th>核心工具</th><th>代表題</th><th>本講義</th></tr></thead>
+<tbody>
+<tr><td><b>A. 耐震梁</b></td><td>塑鉸區剪力筋設計</td><td>\(M_{pr}\to V_e\to V_c=0\to\) 密箍間距</td><td>RC-2025-2、RC-2016-2、RC-2012-2</td><td>§3</td></tr>
+<tr><td><b>B. 耐震柱</b></td><td>圍束箍筋與密箍區</td><td>\(A_{sh}\) 兩式取大；\(l_o\)、\(s\) 各三式</td><td>RC-2013-2、RC-2004-3、RC-2009-1</td><td>§4</td></tr>
+<tr><td><b>C. 強柱弱梁與柱剪力</b></td><td>機構驗核、柱設計剪力</td><td>\(\sum M_{nc}\ge\frac65\sum M_{nb}\)；\(V_u=\sum M_{pr}/l_n\)</td><td><a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a></td><td>§5</td></tr>
+<tr><td><b>D. 梁柱接頭</b></td><td>接頭剪力檢核</td><td>\(V_{jh}=T_{top}+T_{bot}-V_{col}\)；\(\phi\gamma\sqrt{f'_c}A_j\)</td><td>RC-2003-3、RC-2005-3、RC-2012-4、RC-2018-2</td><td>§6</td></tr>
+<tr><td><b>E. 韌性量化與其他構件</b></td><td>韌性比、剪力牆、橫膈版、耐震搭接</td><td>\(\mu_\phi,\mu_\theta,\mu\)；\(L_p\)；牆與版的耐震規定</td><td>RC-2022-4、RC-2003-4、RC-2019-3、RC-2010-2</td><td>§2、§7</td></tr>
+</tbody>
+</table>
+
+<p>
+<b>群 D（接頭）出現 4 次、群 B（柱圍束）出現 3 次、群 A（梁剪力）出現 3 次</b> —— 這三群佔了本單元一半以上。
+但注意群 E 裡的剪力牆（<a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a>）是<b>單題 40 分</b>的大題，
+投報率不能只看出現次數。
+</p>
+</section>
+
+<section id="s1">
+<h2>§1 讓分階梯：每個係數在補償什麼</h2>
+
+<div class="lead">
+<b>本節主張：</b>耐震設計的所有「奇怪係數」都在做同一件事 ——
+<b>確保「延性那一側的真實上限」低於「脆性那一側的保證下限」</b>。
+公式方向搞清楚，數字忘了也能推。
+</div>
+
+<h3>1.1 為什麼剪力設計不能用 φM<sub>n</sub></h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg">
+  <line x1="228" y1="45" x2="228" y2="222" stroke="#90a4ae" stroke-width="1.4"/>
+  <rect x="228" y="58" width="360" height="36" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+  <text x="220" y="82" font-size="12.5" text-anchor="end" fill="#0d47a1" font-weight="700">設計時承諾的 φMn</text>
+  <text x="600" y="82" font-size="12.5" fill="#1565c0" font-weight="700">0.90 Mn</text>
+  <rect x="228" y="110" width="400" height="36" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
+  <text x="220" y="134" font-size="12.5" text-anchor="end" fill="#37474f" font-weight="700">標稱彎矩強度 Mn</text>
+  <text x="640" y="134" font-size="12.5" fill="#455a64" font-weight="700">1.00 Mn</text>
+  <rect x="228" y="162" width="500" height="36" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
+  <text x="220" y="186" font-size="12.5" text-anchor="end" fill="#b71c1c" font-weight="700">地震時真的可能發揮的 Mpr</text>
+  <text x="740" y="186" font-size="12.5" fill="#c62828" font-weight="700">1.25 Mn</text>
+  <line x1="592" y1="76" x2="724" y2="76" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="5 4"/>
+  <line x1="728" y1="58" x2="728" y2="200" stroke="#ef6c00" stroke-width="1.4" stroke-dasharray="5 4"/>
+  <line x1="588" y1="58" x2="588" y2="200" stroke="#1565c0" stroke-width="1.2" stroke-dasharray="4 4"/>
+  <text x="660" y="232" font-size="13" text-anchor="middle" fill="#ef6c00" font-weight="700">差 1.25 / 0.90 = 1.39 倍</text>
+  <text x="660" y="252" font-size="12" text-anchor="middle" fill="#607d8b">用 φMn 反推剪力會低估 39%</text>
+  <text x="30" y="36" font-size="12.5" fill="#455a64">同一根梁的三個「彎矩強度」，差別在你想用它做什麼：</text>
+</svg>
+<div class="cap">
+\(\phi M_n\) 是「我保證至少有這麼強」（下限）；\(M_{pr}\) 是「它最多可能有這麼強」（上限）。
+剪力設計要問的是「塑鉸能把多大的力送進來」—— 那是<b>上限</b>問題，所以必須用 \(M_{pr}\)，而且不能再折減。
+</div>
+</div>
+
+<h3>1.2 讓分階梯（依作用位置排序）</h3>
+
+<table>
+<thead><tr><th>調整</th><th>方向</th><th>補償什麼（物理）</th><th>規範</th></tr></thead>
+<tbody>
+<tr><td>\(f_y \to 1.25 f_y\)</td><td>延性側<b>往上</b>估</td><td>① 鋼筋實際降伏強度統計上超過標稱值（SD420 實測常在 1.1~1.15 倍）；② 塑鉸大轉角下進入<b>應變硬化</b>，應力繼續爬升。1.25 是兩者合起來的工程近似</td><td>§18.6.5.1</td></tr>
+<tr><td>\(M_{pr}\) 取 \(\phi = 1.0\)</td><td>不折減</td><td>\(\phi<1\) 的用途是「保證下限」；\(M_{pr}\) 要的是<b>上限估計</b>，折減會讓答案往錯的方向跑。這是很多人算 \(M_{pr}\) 時仍乘 0.9 的根源</td><td>§18.6.5.1</td></tr>
+<tr><td>\(V_c = 0\)</td><td>脆性側<b>往下</b>估</td><td>塑鉸區反覆正負彎矩 → 裂縫<b>貫穿全深度</b> → 骨材互鎖（aggregate interlock）失效、壓力區混凝土剝落 → 混凝土的剪力貢獻不可靠</td><td>§18.6.5.2</td></tr>
+<tr><td>\(\sum M_{nc} \geq \frac{6}{5}\sum M_{nb}\)</td><td>柱側<b>往上</b>要求</td><td>讓梁比柱先到達強度。6/5 = 1.2 只是<b>降低機率</b>而非絕對保證（見 §5.2）</td><td>§18.7.3.1</td></tr>
+<tr><td>\(A_{sh}\) 兩式<b>取大</b></td><td>圍束<b>往上</b></td><td>一式管「保護層剝落後核心強度不能掉」，一式管「最低延性底線」，適用區間不同（§4.1）</td><td>§18.7.5.4</td></tr>
+<tr><td>接頭 \(\phi = 0.85\)、剪力牆 \(\phi = 0.6\)</td><td>脆性側<b>往下</b></td><td>接頭與牆的剪力破壞是脆性、離散度大、且無替代傳力路徑 → 折減比一般剪力（0.75）更嚴</td><td>§18.8.4、牆設計規範</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>方向記法（忘記數字時自救）</b><br>
+問自己一句：「這個量是我<b>希望它發生</b>的，還是我<b>絕對不准它發生</b>的？」<br>
+・希望它發生（梁端彎矩塑鉸）→ 我要估它的<b>上限</b> → 材料強度往上調（1.25）、不折減（\(\phi=1.0\)）。<br>
+・不准它發生（剪力、接頭、柱鉸）→ 我要估它的<b>下限</b> → 材料貢獻往下調（\(V_c=0\)）、折減更嚴（\(\phi=0.85/0.75/0.6\)）。<br>
+<b>凡是把係數調反的答案，閱卷者一眼就看出來</b> —— 因為那代表你沒懂能力設計法。
+</div>
+
+<div class="trap">
+<b>陷阱：把 1.25 也用在「不該用」的地方</b><br>
+觸發信號：題目要你驗核<b>強柱弱梁</b>。<br>
+錯誤思維：既然耐震都用 1.25，\(\sum M_{nb}\) 也用 \(1.25f_y\)。<br>
+正確認知：\(\sum M_{nc} \geq \frac65\sum M_{nb}\) 的 \(M_{nb}\) 依 ACI 318 §18.7.3.2 用<b>標稱</b>強度（\(f_y\)，不含超強），
+超強的餘裕已經包在 6/5 裡。<b>但</b>知識庫 <code>wiki/code-ref/seismic-code.md</code> 有一處寫成「\(\sum M_{nb}\)：節點處各梁 Mpr（1.25fy 計算）之和」——
+兩種寫法會給出不同答案。<b>作答時寫明你採用標稱強度並註明依據</b>，或直接照題目指定。
+</div>
+</section>
+
+<section id="s2">
+<h2>§2 韌性到底是什麼：三個層次不是三個公式</h2>
+
+<div class="lead">
+<b>本節主張：</b>曲率韌性 \(\mu_\phi\)、轉角韌性 \(\mu_\theta\)、位移韌性 \(\mu\) 是<b>同一件事在三個尺度上的投影</b>：
+斷面 → 構件 → 系統。而且它們必然滿足 \(\mu_\phi \geq \mu_\theta = \mu\) —— 這個不等式本身就是考點。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="20" x2="450" y2="320" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+  <text x="225" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#0d47a1">斷面層次：雙線性 M-φ</text>
+
+  <line x1="90" y1="272" x2="410" y2="272" stroke="#455a64" stroke-width="1.8"/>
+  <line x1="90" y1="272" x2="90" y2="60" stroke="#455a64" stroke-width="1.8"/>
+  <text x="404" y="292" font-size="11.5" text-anchor="end" fill="#607d8b">曲率 φ</text>
+  <text x="84" y="56" font-size="11.5" text-anchor="end" fill="#607d8b">M</text>
+  <polyline points="90,272 168,178 370,140" fill="none" stroke="#1565c0" stroke-width="3"/>
+  <circle cx="168" cy="178" r="5.5" fill="#1565c0"/>
+  <circle cx="370" cy="140" r="5.5" fill="#c62828"/>
+  <line x1="168" y1="178" x2="168" y2="272" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
+  <line x1="370" y1="140" x2="370" y2="272" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
+  <line x1="90" y1="178" x2="168" y2="178" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
+  <line x1="90" y1="140" x2="370" y2="140" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
+  <text x="168" y="290" font-size="11.5" text-anchor="middle" fill="#1565c0" font-weight="700">φy</text>
+  <text x="370" y="290" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">φu</text>
+  <text x="84" y="182" font-size="11.5" text-anchor="end" fill="#1565c0">My</text>
+  <text x="84" y="144" font-size="11.5" text-anchor="end" fill="#c62828">Mu</text>
+  <text x="180" y="166" font-size="11.5" fill="#607d8b">降伏後幾乎水平：強度不增，變形大增</text>
+  <text x="225" y="316" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">μφ = φu / φy（RC-2022-4：4.0）</text>
+
+  <text x="675" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#0d47a1">構件層次：塑鉸只有 Lp 那麼長</text>
+  <line x1="560" y1="278" x2="700" y2="278" stroke="#546e7a" stroke-width="2.6"/>
+  <g stroke="#78909c" stroke-width="1.4">
+    <line x1="568" y1="278" x2="560" y2="290"/><line x1="588" y1="278" x2="580" y2="290"/>
+    <line x1="608" y1="278" x2="600" y2="290"/><line x1="628" y1="278" x2="620" y2="290"/>
+    <line x1="648" y1="278" x2="640" y2="290"/><line x1="668" y1="278" x2="660" y2="290"/>
+    <line x1="688" y1="278" x2="680" y2="290"/>
+  </g>
+  <rect x="605" y="228" width="42" height="50" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1.8"/>
+  <rect x="605" y="70" width="42" height="158" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
+  <text x="672" y="258" font-size="12" fill="#e65100" font-weight="700">Lp 塑鉸長度</text>
+  <path d="M626,278 Q634,180 700,72" fill="none" stroke="#c62828" stroke-width="2.4" stroke-dasharray="7 4"/>
+  <line x1="626" y1="62" x2="700" y2="62" stroke="#c62828" stroke-width="1.6" marker-end="url(#a3)"/>
+  <defs><marker id="a3" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker></defs>
+  <text x="712" y="66" font-size="12" fill="#c62828" font-weight="700">δu</text>
+  <line x1="530" y1="70" x2="530" y2="278" stroke="#90a4ae" stroke-width="1.2"/>
+  <text x="524" y="178" font-size="12" text-anchor="end" fill="#607d8b">L = 反曲點至柱底</text>
+  <text x="675" y="312" font-size="12.5" text-anchor="middle" fill="#0d47a1" font-weight="700">θp = (φu − φy)·Lp，δu 由 θp 乘力臂而來</text>
+  <text x="675" y="332" font-size="12" text-anchor="middle" fill="#607d8b">μθ = μ（RC-2022-4：2.63，遠小於 μφ = 4.0）</text>
+</svg>
+<div class="cap">
+左圖的 \(\mu_\phi = 4.0\) 是<b>斷面</b>能提供的曲率放大倍數；
+右圖說明為什麼傳到頂點只剩 \(\mu = 2.63\) ——
+因為塑性曲率只發生在 \(L_p\) 這一小段（本例 0.595 m ÷ 3.2 m ≈ 19% 的柱長），其餘部分仍是彈性的。
+</div>
+</div>
+
+<h3>2.1 為什麼 μ<sub>φ</sub> 一定大於 μ</h3>
+
+<p>降伏位移是<b>整根構件</b>的彈性積分：</p>
+
+$$\delta_y = \frac{\phi_y L^2}{3}$$
+
+<p>而極限位移只在塑鉸長度 \(L_p\) 內獲得額外的塑性轉角：</p>
+
+$$\theta_p = (\phi_u - \phi_y)\,L_p, \qquad
+\delta_u = \underbrace{\frac{M_u}{M_y}\delta_y}_{\text{硬化後的等效彈性位移}} + \underbrace{\theta_p\left(L - \tfrac{L_p}{2}\right)}_{\text{塑鉸轉角乘力臂}}$$
+
+<div class="why">
+<b>極限檢查（三個都要會）</b><br>
+① 令 \(L_p \to 0\)（塑鉸集中成一點）：\(\theta_p \to 0\)，\(\delta_u \to (M_u/M_y)\delta_y\) → \(\mu \to M_u/M_y \approx 1.1\)。
+<b>斷面再有韌性，若塑鉸長度為零，構件就沒有韌性</b> —— 這是 \(L_p\) 存在的全部意義。<br>
+② 令 \(L_p \to L\)（整根都塑化，例如均勻彎矩）：\(\mu\) 會逼近 \(\mu_\phi\)。<br>
+③ \(\mu_\theta = \dfrac{\theta_u}{\theta_y} = \dfrac{\delta_u/L}{\delta_y/L} = \dfrac{\delta_u}{\delta_y} = \mu\) —— <b>兩者必定相等</b>，
+考場上算出不一樣就是算錯。（RC-2022-4 的內建檢查點。）
+</div>
+
+<div class="box">
+<b>手算：<a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a>（2022，橋梁耐震規範，計算量小但觀念密度高）</b><br>
+柱 80×80 cm、淨高 \(l_u = 6.4\) m、\(P = 270\) tf、D32 主筋、\(f_y = 4200\) kgf/cm²。
+
+<h4>① 懸臂長度：反曲點把雙曲率柱切成兩根懸臂</h4>
+$$L = \frac{l_u}{2} = 3.2\ \text{m}$$
+
+<h4>② 線性內插（P = 270 落在 180 與 360 之間）</h4>
+$$\alpha = \frac{270-180}{360-180} = 0.5
+\;\Rightarrow\; \phi_y = 0.005,\; M_y = 220,\; \phi_u = 0.020,\; M_u = 245$$
+
+<b>注意 \(\phi_u\) 是「內插後變小」</b>（0.030 → 0.010，軸力越大韌性越差），這是物理上正確的方向 —— 軸壓削弱曲率韌性。
+
+<h4>③ 塑鉸長度（下限常常控制）</h4>
+$$L_p = \max\!\big(0.08L + 0.0022 d_b f_y,\; 0.0044 d_b f_y\big)$$
+$$= \max(0.08\times3.2 + 0.0022\times0.0322\times4200,\; 0.0044\times0.0322\times4200)$$
+$$= \max(0.256+0.297,\; 0.595) = \max(0.553,\; 0.595) = \mathbf{0.595\ m}$$
+
+<h4>④ 三個韌性比</h4>
+$$\delta_y = \frac{0.005\times3.2^2}{3} = 0.01707\ \text{m},\qquad \theta_y = \frac{0.01707}{3.2} = 0.005335\ \text{rad}$$
+$$\delta_u = \frac{245}{220}\times0.01707 + (0.020-0.005)\times0.595\times(3.2-0.298) = 0.01902 + 0.02591 = 0.04493\ \text{m}$$
+$$\mu_\phi = \frac{0.020}{0.005} = \mathbf{4.00},\qquad
+\mu_\theta = \frac{0.01404}{0.005335} = \mathbf{2.63},\qquad
+\mu = \frac{0.04493}{0.01707} = \mathbf{2.63}$$
+
+<b>三個自我檢查：</b><br>
+① \(\mu_\theta = \mu\) ✓（必然相等）<br>
+② \(\mu < \mu_\phi\) ✓（塑鉸只佔 0.595/3.2 = 19% 的柱長）<br>
+③ 應用彎矩 \(M = 232.5\) 介於 \(M_y=220\) 與 \(M_u=245\) 之間 → 柱底確實已進入塑性，題目自洽。
+</div>
+
+<div class="trap">
+<b>陷阱：L 用全柱高</b><br>
+觸發信號：「反曲點位於淨高一半」「雙曲率柱」「單曲率柱」。<br>
+錯誤思維：\(L = l_u = 6.4\) m。<br>
+正確認知：\(L\) 是<b>塑鉸到反曲點</b>的距離。雙曲率柱 \(L = l_u/2\)；真正的單懸臂（如橋墩）才是 \(L = l_u\)。
+用錯會讓 \(\delta_y\) 差 4 倍（\(L^2\)）。出自 <a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a>。
+</div>
+
+<div class="trap">
+<b>陷阱：L<sub>p</sub> 公式的混合單位</b><br>
+\(0.0022\,d_b\,f_y\) 裡 \(d_b\) 用<b>公尺</b>、\(f_y\) 用 kgf/cm²，結果直接得到公尺。
+係數已吸收單位換算，<b>不要自己再換</b>。且 \(0.0044 d_b f_y\) 是<b>下限</b>（本題正是它控制），不是上限。
+</div>
+</section>
+<section id="s3">
+<h2>§3 耐震梁：從 M<sub>pr</sub> 反推剪力</h2>
+
+<div class="lead">
+<b>本節主張：</b>耐震梁的剪力設計<b>完全不看載重組合的剪力圖</b>。
+它問的是「當兩端塑鉸都完全發展時，梁裡的剪力有多大」——
+這是一個純靜力平衡問題，只要把自由體圖畫對就不會錯。
+</div>
+
+<h3>3.1 自由體圖決定一切</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="b1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#546e7a"/></marker>
+  <marker id="b2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker></defs>
+
+  <text x="450" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">梁自由體：地震向右，兩端塑鉸同時發展</text>
+
+  <g stroke="#546e7a" stroke-width="1.5" marker-end="url(#b1)">
+    <line x1="160" y1="52" x2="160" y2="82"/><line x1="230" y1="52" x2="230" y2="82"/>
+    <line x1="300" y1="52" x2="300" y2="82"/><line x1="370" y1="52" x2="370" y2="82"/>
+    <line x1="440" y1="52" x2="440" y2="82"/><line x1="510" y1="52" x2="510" y2="82"/>
+    <line x1="580" y1="52" x2="580" y2="82"/><line x1="650" y1="52" x2="650" y2="82"/>
+    <line x1="720" y1="52" x2="720" y2="82"/>
+  </g>
+  <text x="770" y="70" font-size="12.5" fill="#455a64" font-weight="700">wu（重力）</text>
+
+  <rect x="140" y="88" width="600" height="34" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
+  <rect x="108" y="70" width="32" height="90" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.6"/>
+  <rect x="740" y="70" width="32" height="90" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.6"/>
+  <text x="124" y="176" font-size="11.5" text-anchor="middle" fill="#607d8b">柱</text>
+  <text x="756" y="176" font-size="11.5" text-anchor="middle" fill="#607d8b">柱</text>
+
+  <circle cx="152" cy="105" r="7" fill="#2e7d32"/>
+  <circle cx="728" cy="105" r="7" fill="#2e7d32"/>
+  <path d="M150,140 A26,26 0 1,0 176,140" fill="none" stroke="#c62828" stroke-width="2.2" marker-end="url(#b2)"/>
+  <path d="M704,140 A26,26 0 1,1 730,140" fill="none" stroke="#c62828" stroke-width="2.2" marker-end="url(#b2)"/>
+  <text x="176" y="186" font-size="12.5" fill="#c62828" font-weight="700">Mpr⁻（頂筋受拉）</text>
+  <text x="700" y="186" font-size="12.5" text-anchor="end" fill="#c62828" font-weight="700">Mpr⁺（底筋受拉）</text>
+
+  <line x1="140" y1="215" x2="740" y2="215" stroke="#90a4ae" stroke-width="1.2"/>
+  <text x="130" y="219" font-size="11.5" text-anchor="end" fill="#607d8b">ln</text>
+  <line x1="140" y1="208" x2="140" y2="222" stroke="#90a4ae" stroke-width="1.2"/>
+  <line x1="740" y1="208" x2="740" y2="222" stroke="#90a4ae" stroke-width="1.2"/>
+
+  <text x="450" y="248" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">剪力圖（RC-2025-2 實際數值，單位 tf）</text>
+  <line x1="140" y1="300" x2="740" y2="300" stroke="#455a64" stroke-width="1.5"/>
+  <path d="M140,264 L740,292 L740,300 L140,300 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
+  <text x="132" y="262" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">46.44</text>
+  <text x="750" y="292" font-size="12" fill="#1565c0" font-weight="700">28.44</text>
+  <text x="440" y="322" font-size="12" text-anchor="middle" fill="#607d8b">地震項 37.44（全跨定值）＋ 重力項 ±9.00（線性）</text>
+</svg>
+<div class="cap">
+地震項 \(\left(M_{pr}^-+M_{pr}^+\right)/l_n\) 在全跨是<b>定值</b>（兩端彎矩方向相反的必然結果）；
+重力項 \(\pm w_u l_n/2\) 是線性的。兩者<b>同號的那一端</b>就是控制端 —— 這就是公式裡 \(\pm\) 的意思。
+</div>
+</div>
+
+<div class="why">
+<b>為什麼地震項是「定值」而重力項是「線性」</b><br>
+兩端塑鉸的彎矩<b>方向相同</b>（都在抵抗同一個方向的層間變位），畫成彎矩圖是一條<b>斜直線</b>從 \(M_{pr}^-\) 到 \(-M_{pr}^+\)
+→ 斜率（＝剪力）為常數 \(\left(M_{pr}^-+M_{pr}^+\right)/l_n\)。<br>
+重力載重的彎矩圖是<b>拋物線</b> → 斜率線性變化。<br>
+所以 \(V_e\) 的兩項不是「兩個獨立公式硬湊」，它們是同一張彎矩圖的兩個部分的斜率。<br>
+<b>順帶解決一個常見疑問：</b>為什麼分母是<b>淨跨 \(l_n\)</b> 而不是中心距？
+因為塑鉸發生在<b>柱面</b>（那裡才是梁的斷面），力臂就是柱面到柱面。
+</div>
+
+<h3>3.2 手算：<a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a>（2025，30 分，耐震梁公版流程）</h3>
+
+<div class="box">
+<b>給定：</b>\(l_n = 9\) m，\(b_w = 60\) cm，\(h = 76\) cm，\(d' = 9\) cm；柱面頂 8-D32、底 6-D32；
+\(w_u = 2\) tf/m；\(f'_c = 280\)、\(f_y = 4200\) kgf/cm²；箍筋 D13（\(f_{yt}=2800\)，\(A_b = 1.27\) cm²）。
+
+<h4>① 幾何與超強鋼筋強度</h4>
+$$d = 76 - 9 = 67\ \text{cm},\quad A_{s,top} = 8\times8.14 = 65.12,\quad A_{s,bot} = 6\times8.14 = 48.84\ \text{cm}^2$$
+$$1.25 f_y = 1.25\times4200 = 5250\ \text{kgf/cm}^2$$
+
+<h4>② 兩個方向的 M<sub>pr</sub>（頂底鋼筋量不同 → 必須各算一次）</h4>
+$$a_{top} = \frac{65.12\times5250}{0.85\times280\times60} = \frac{341{,}880}{14{,}280} = 23.94\ \text{cm}
+\;\Rightarrow\; M_{pr}^- = 341{,}880\times(67-11.97) = \mathbf{188.2\ tf·m}$$
+$$a_{bot} = \frac{48.84\times5250}{14{,}280} = 17.95\ \text{cm}
+\;\Rightarrow\; M_{pr}^+ = 256{,}410\times(67-8.975) = \mathbf{148.8\ tf·m}$$
+
+<h4>③ 設計剪力</h4>
+$$V_{seis} = \frac{188.2+148.8}{9} = \frac{337.0}{9} = 37.44\ \text{tf},\qquad V_{grav} = \frac{2\times9}{2} = 9.00\ \text{tf}$$
+$$V_u = 37.44 + 9.00 = \mathbf{46.44\ tf}\quad(\text{控制端：地震與重力同向})$$
+
+<h4>④ V<sub>c</sub> = 0 判斷（兩個條件都要寫）</h4>
+$$\frac{V_{seis}}{V_u} = \frac{37.44}{46.44} = 80.6\% > 50\% \quad✓ \qquad
+N_u = 0 < \frac{A_g f'_c}{20} \quad✓ \;\Rightarrow\; V_c = 0$$
+$$V_s\ \text{需求} = \frac{V_u}{\phi} = \frac{46.44}{0.75} = 61.92\ \text{tf}\quad(\text{全部由箍筋承擔})$$
+
+<h4>⑤ 箍筋間距（強度需求 vs 耐震構造限制，取小）</h4>
+$$A_v = 4\times1.27 = 5.08\ \text{cm}^2\ (4\ \text{腳})
+\;\Rightarrow\; s_{req} = \frac{A_v f_{yt} d}{V_s} = \frac{5.08\times2800\times67}{61{,}920} = 15.4\ \text{cm}$$
+$$s_{seis} = \min\!\left(\frac{d}{4},\; 6d_b,\; 150\ \text{mm}\right) = \min(16.8,\; 19.3,\; 15.0) = 15.0\ \text{cm}$$
+$$\Rightarrow s = 15\ \text{cm}\ \text{（密箍區）};\quad
+\text{密箍區長度} = 2h = 152\ \text{cm};\quad \text{第一支距柱面} \leq s/2 = 7.5\ \text{cm}$$
+
+<b>三個自我檢查：</b><br>
+① \(M_{pr}^-/M_{pr}^+ = 188.2/148.8 = 1.27\)，與鋼筋量比 \(65.12/48.84 = 1.33\) 同一量級 ✓
+（不會完全相等，因為 \(a\) 不同；若差很多就算錯了）。<br>
+② 地震剪力佔比 80.6% 遠大於 50% → \(V_c=0\) 幾乎必然。<b>耐震梁的 \(V_c=0\) 是常態，不是例外</b>。<br>
+③ \(s_{req} = 15.4\) 與 \(s_{seis} = 15.0\) 幾乎相同 → 這題的箍筋量「剛好」，是出題者調過的。
+若你算出 \(s_{req}\) 只有 5 cm 或高達 40 cm，回去檢查 \(A_v\) 的腳數與 \(f_{yt}\)。
+</div>
+
+<div class="trap">
+<b>陷阱一：密箍區長度用 2d 而不是 2h</b><br>
+正確：梁端密箍區 \(\geq 2h\)（<b>梁全高</b>的兩倍）。本題 \(2h = 152\) cm，若誤用 \(2d = 134\) cm 會少 18 cm。
+出自 <a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a>、<a class="qlink" href="problems-view/RC-2016-2.html">RC-2016-2</a>。
+</div>
+
+<div class="trap">
+<b>陷阱二：箍筋間距的兩套限制混用</b><br>
+知識庫內對耐震梁密箍區間距有兩種寫法：<br>
+・\(\min(d/4,\; 8d_b,\; 24d_{b,tie},\; 300\text{ mm})\)（<code>code-ref/seismic-code.md</code>、ACI 318-19 §18.6.4.4）<br>
+・\(\min(d/4,\; 6d_b,\; 150\text{ mm})\)（<code>methods/SEISMIC-CAPACITY-METHOD.md</code>、RC-2025-2 解析所採，即土木 401 版）<br>
+兩者會給出不同答案（本題分別是 15.0 cm 與 16.8 cm 控制）。
+<b>作答時寫明採用的規範版本</b>；題目若指定「土木401-112」就用後者。
+這不是知識庫寫錯，是<b>規範版本差異</b>，考場上務必註明依據。
+</div>
+
+<div class="trap">
+<b>陷阱三：φ 用 0.9</b><br>
+剪力設計的 \(\phi = 0.75\)。\(M_{pr}\) 用 \(\phi=1.0\)、\(V_s\) 需求用 \(\phi=0.75\) ——
+<b>同一題裡出現兩個不同的 φ 是正常的</b>，因為它們在回答兩個不同性質的問題（上限估計 vs 下限保證）。
+</div>
+</section>
+
+<section id="s4">
+<h2>§4 耐震柱：圍束箍筋 A<sub>sh</sub> 兩式的分工</h2>
+
+<div class="lead">
+<b>本節主張：</b>\(A_{sh}\) 兩個公式不是「規範不放心所以列兩個」。
+它們針對<b>兩種不同的失效</b>：一個管「保護層剝落後強度不能掉」，一個管「延性的最低底線」。
+而且哪一式控制，看一個比值就知道，不必兩式都算完才比較。
+</div>
+
+<h3>4.1 兩式的物理與「誰控制」的判斷</h3>
+
+$$A_{sh} \geq \max\underbrace{\left[0.3\,s\,b_c\frac{f'_c}{f_{yt}}\left(\frac{A_g}{A_{ch}}-1\right)\right.}_{\text{式①：補回剝落損失}}
+,\quad \underbrace{\left.0.09\,s\,b_c\frac{f'_c}{f_{yt}}\right]}_{\text{式②：延性底線}}$$
+
+<div class="why">
+<b>式①在補什麼</b><br>
+柱在大變形下<b>保護層一定會剝落</b>。剝落瞬間軸向承載面積從 \(A_g\) 掉到 \(A_{ch}\)，
+損失的強度約與 \((A_g - A_{ch})\) 成正比。式① 的括號 \(\left(\dfrac{A_g}{A_{ch}}-1\right) = \dfrac{A_g-A_{ch}}{A_{ch}}\)
+就是「損失佔核心的比例」—— 圍束帶來的<b>強度增量</b>必須至少補回這個損失，柱才不會在保護層剝落的瞬間掉載重。<br>
+<b>推論：</b>保護層越厚、斷面越小 → \(A_g/A_{ch}\) 越大 → 需要越多圍束。這完全符合直覺。<br><br>
+<b>式②在補什麼</b><br>
+式① 有一個致命缺陷：<b>大斷面柱的 \(A_g/A_{ch}\) 趨近 1</b>，式① 會趨近於零，
+彷彿大柱不需要任何圍束。但圍束的另一個作用是<b>提升混凝土的極限壓應變</b>
+（無圍束 \(\varepsilon_{cu}\approx0.003\)，良好圍束可到 0.01~0.02），這與斷面大小無關。
+式② 不含 \(A_g/A_{ch}\)，正是這條「與尺寸無關的延性底線」。
+</div>
+
+<div class="tens">
+<b>不必兩式都算完的判斷法（自己推一次）</b><br>
+兩式只差在括號，令它們相等：
+$$0.3\left(\frac{A_g}{A_{ch}}-1\right) = 0.09 \;\Longrightarrow\; \frac{A_g}{A_{ch}} = 1 + \frac{0.09}{0.3} = \mathbf{1.30}$$
+所以：<b>\(A_g/A_{ch} > 1.30\) → 式①控制（小柱、厚保護層）；\(< 1.30\) → 式②控制（大柱）。</b><br>
+驗證：<a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a> 的 \(2500/1764 = 1.417 > 1.3\) → 式①控制 ✓；
+<a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a> 的 \(3600/2304 = 1.563 > 1.3\) → 式①控制 ✓。<br>
+（考題絕大多數落在式①，但你要能說出式②何時控制，這是拿高分的地方。）
+</div>
+
+<h3>4.2 為什麼繫筋（crossties）不能省</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
+  <line x1="450" y1="20" x2="450" y2="330" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+
+  <text x="215" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#c62828">只有外箍：圍束無效區大</text>
+  <rect x="125" y="52" width="180" height="180" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.4"/>
+  <rect x="139" y="66" width="152" height="152" fill="none" stroke="#c62828" stroke-width="2.6"/>
+  <g fill="#37474f">
+    <circle cx="149" cy="76" r="6"/><circle cx="185" cy="76" r="6"/><circle cx="215" cy="76" r="6"/><circle cx="245" cy="76" r="6"/><circle cx="281" cy="76" r="6"/>
+    <circle cx="149" cy="208" r="6"/><circle cx="185" cy="208" r="6"/><circle cx="215" cy="208" r="6"/><circle cx="245" cy="208" r="6"/><circle cx="281" cy="208" r="6"/>
+    <circle cx="149" cy="112" r="6"/><circle cx="149" cy="142" r="6"/><circle cx="149" cy="172" r="6"/>
+    <circle cx="281" cy="112" r="6"/><circle cx="281" cy="142" r="6"/><circle cx="281" cy="172" r="6"/>
+  </g>
+  <path d="M149,76 Q215,132 281,76" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <path d="M149,208 Q215,152 281,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <path d="M149,76 Q205,142 149,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <path d="M281,76 Q225,142 281,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
+  <text x="215" y="256" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">紅色＝箍筋外拱、圍束失效區</text>
+  <text x="215" y="276" font-size="12" text-anchor="middle" fill="#455a64">箍筋只在四個角落被撐住</text>
+  <text x="215" y="298" font-size="12" text-anchor="middle" fill="#455a64">中間主筋無側向支撐 → 易挫屈</text>
+  <text x="215" y="322" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Ash 只有 2 腳，通常不足</text>
+
+  <text x="675" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#2e7d32">加 3 道繫筋：圍束幾乎滿佈</text>
+  <rect x="585" y="52" width="180" height="180" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.4"/>
+  <rect x="599" y="66" width="152" height="152" fill="none" stroke="#2e7d32" stroke-width="2.6"/>
+  <g stroke="#2e7d32" stroke-width="2.2">
+    <line x1="645" y1="66" x2="645" y2="218"/><line x1="675" y1="66" x2="675" y2="218"/><line x1="705" y1="66" x2="705" y2="218"/>
+    <line x1="599" y1="112" x2="751" y2="112"/><line x1="599" y1="142" x2="751" y2="142"/><line x1="599" y1="172" x2="751" y2="172"/>
+  </g>
+  <g fill="#37474f">
+    <circle cx="609" cy="76" r="6"/><circle cx="645" cy="76" r="6"/><circle cx="675" cy="76" r="6"/><circle cx="705" cy="76" r="6"/><circle cx="741" cy="76" r="6"/>
+    <circle cx="609" cy="208" r="6"/><circle cx="645" cy="208" r="6"/><circle cx="675" cy="208" r="6"/><circle cx="705" cy="208" r="6"/><circle cx="741" cy="208" r="6"/>
+    <circle cx="609" cy="112" r="6"/><circle cx="609" cy="142" r="6"/><circle cx="609" cy="172" r="6"/>
+    <circle cx="741" cy="112" r="6"/><circle cx="741" cy="142" r="6"/><circle cx="741" cy="172" r="6"/>
+  </g>
+  <text x="675" y="256" font-size="12" text-anchor="middle" fill="#2e7d32" font-weight="700">每根主筋都被箍筋或繫筋直接支撐</text>
+  <text x="675" y="276" font-size="12" text-anchor="middle" fill="#455a64">拱的跨距變短 → 失效區大幅縮小</text>
+  <text x="675" y="298" font-size="12" text-anchor="middle" fill="#455a64">hx 變小 → so 變大（間距限制放寬）</text>
+  <text x="675" y="322" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">Ash 有 5 腳（RC-2013-2）</text>
+</svg>
+<div class="cap">
+繫筋做兩件事：<b>①增加 \(A_{sh}\) 的腳數</b>（直接提供圍束力）、
+<b>②縮短箍筋外拱的跨距</b>（讓圍束真正到得了核心中央），並同時<b>把 \(h_x\) 變小</b>，
+使 \(s_o = 10 + (35-h_x)/3\) 放寬。三件事是同一個動作的三個好處。
+</div>
+</div>
+
+<div class="why">
+<b>A<sub>sh</sub> 是「單一方向」的量 —— 這是最容易錯的定義</b><br>
+\(A_{sh,x}\) ＝ 所有<b>沿 x 方向提供圍束力</b>的箍筋腳的截面積之和。
+外方箍在 x 方向提供 <b>2 腳</b>（左右兩支垂直腿），每根<b>垂直方向的繫筋</b>再提供 1 腳。<br>
+所以 RC-2013-2 的「1 外箍 + 3 繫筋 = 5 腳/方向」，
+\(A_{sh} = 5\times1.27 = 6.35\ \text{cm}^2\)。<b>不是把所有箍筋腳加起來（那會是 10 腳）。</b><br>
+公式裡的 \(b_c\) 也要取<b>與該方向垂直</b>的核心尺寸 —— 方形柱兩方向相同，長方形柱必須分開算兩次。
+</div>
+
+<h3>4.3 手算：<a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a>（2013，25 分，柱圍束公版）</h3>
+
+<div class="box">
+<b>給定：</b>方形柱 50×50 cm，16-D32（每面 5 根），保護層 4 cm（至箍筋外緣），
+\(f'_c = 280\)、\(f_{yh} = 2800\) kgf/cm²，箍筋 D13（\(A_b=1.27\)）。
+
+<h4>① 核心尺寸</h4>
+$$h_c = 50 - 2\times4 = 42\ \text{cm},\quad A_g = 2500,\quad A_{ch} = 42^2 = 1764\ \text{cm}^2$$
+$$\frac{A_g}{A_{ch}} = 1.417 > 1.30 \;\Rightarrow\; \textbf{式①控制（不必算式②）}$$
+
+<h4>② 單位間距所需 A<sub>sh</sub></h4>
+$$\frac{A_{sh}}{s} = 0.3\times42\times\frac{280}{2800}\times(1.417-1) = 0.3\times42\times0.10\times0.417 = 0.526\ \text{cm}^2/\text{cm}$$
+
+<h4>③ 間距三條件（取小）</h4>
+$$\frac{b}{4} = 12.5\ \text{cm};\qquad 6d_b = 6\times3.22 = 19.3\ \text{cm};$$
+$$h_x = 2\times9.4 = 18.8\ \text{cm}\ (\text{跳過中間位置時})
+\;\Rightarrow\; s_o = 10+\frac{35-18.8}{3} = 15.4 \xrightarrow{\text{上限 }15} 15.0\ \text{cm}$$
+$$s \leq \min(12.5,\;19.3,\;15.0) = 12.5 \;\Rightarrow\; \textbf{取 } s = 12\ \text{cm}$$
+
+<h4>④ 需求與配置</h4>
+$$A_{sh,req} = 0.526\times12 = 6.31\ \text{cm}^2/\text{方向}
+\;\Rightarrow\; \text{腳數} \geq \frac{6.31}{1.27} = 4.97 \to \mathbf{5\ \text{腳}}$$
+外箍 2 腳 + 繫筋 3 腳 = 5 腳 → \(A_{sh} = 5\times1.27 = 6.35 \geq 6.31\) ✓
+
+<h4>⑤ 密箍區長度</h4>
+$$l_o \geq \max\!\left(\text{柱最大邊長},\; \frac{l_u}{6},\; 45\ \text{cm}\right) = \max(50,\; l_u/6,\; 45)\ \text{cm}$$
+
+<b>兩個自我檢查：</b><br>
+① 若只配 2 繫筋（4 腳，\(A_{sh}=5.08\)）→ \(5.08 < 6.31\) <b>不足</b>。
+所以「所有主筋都要被支撐」這個構造要求，在本題<b>同時也是強度要求</b>。<br>
+② \(h_x\) 與 \(s_o\) 是<b>互相牽動的</b>：多配繫筋 → \(h_x\) 減半（18.8 → 9.4）→ \(s_o = 10+(35-9.4)/3 = 18.5 \to 15\)（仍受 15 上限）。
+本題 \(s_o\) 不是控制條件，控制的是 \(b/4 = 12.5\)。<b>先算三個再取小，不要猜。</b>
+</div>
+
+<div class="trap">
+<b>陷阱：h<sub>c</sub>（或 b<sub>c</sub>）的量法</b><br>
+知識庫內對 \(b_c\) 的定義有兩種措辭：「至箍筋<b>外緣</b>」（<code>code-ref</code>）與「至箍筋<b>中心線</b>」（<code>concepts</code>）。
+RC-2013-2 用 \(h_c = 50-2\times4 = 42\)（保護層量到箍筋外緣）；
+RC-2012-3 用 \(b_c = 60-2\times6 = 48\)（保護層 6 cm 量到<b>主筋心</b>）。<br>
+<b>結論：跟著題目給的「保護層量到哪裡」定義走</b>，並在答案紙上寫出你的 \(h_c\) 怎麼來的。
+兩種量法差約一個箍筋直徑，對 \(A_{sh}\) 影響約 3%，寫清楚不會被扣分；沒寫才會。
+</div>
+</section>
+<section id="s5">
+<h2>§5 強柱弱梁：6/5 買到了什麼，又沒買到什麼</h2>
+
+<div class="lead">
+<b>本節主張：</b>強柱弱梁不是「柱要比梁強」這麼簡單的一句話。
+它是<b>在節點處</b>比較「上下柱的彎矩容量之和」與「左右梁的彎矩容量之和」，
+而且 6/5 只是<b>降低柱出鉸的機率</b>，不是保證 —— 這就是柱端仍然必須配密箍的原因。
+</div>
+
+<h3>5.1 節點平衡：為什麼是「和」而不是單一構件</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="c1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
+  <marker id="c2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#1565c0"/></marker></defs>
+
+  <rect x="390" y="120" width="120" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.2"/>
+  <text x="450" y="166" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">接頭</text>
+  <rect x="400" y="30" width="100" height="90" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="400" y="200" width="100" height="90" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="180" y="136" width="210" height="48" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="510" y="136" width="210" height="48" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <text x="285" y="206" font-size="12" text-anchor="middle" fill="#607d8b">左梁</text>
+  <text x="615" y="206" font-size="12" text-anchor="middle" fill="#607d8b">右梁</text>
+  <text x="450" y="22" font-size="12" text-anchor="middle" fill="#607d8b">上柱</text>
+  <text x="450" y="306" font-size="12" text-anchor="middle" fill="#607d8b">下柱</text>
+
+  <path d="M380,60 A24,24 0 1,1 380,108" fill="none" stroke="#1565c0" stroke-width="2.4" marker-end="url(#c2)"/>
+  <text x="350" y="88" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Mnc,上</text>
+  <path d="M380,212 A24,24 0 1,1 380,260" fill="none" stroke="#1565c0" stroke-width="2.4" marker-end="url(#c2)"/>
+  <text x="350" y="242" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Mnc,下</text>
+  <path d="M262,204 A24,24 0 1,0 310,204" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#c1)"/>
+  <text x="285" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Mnb,左</text>
+  <path d="M592,204 A24,24 0 1,0 640,204" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#c1)"/>
+  <text x="615" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Mnb,右</text>
+
+  <text x="450" y="280" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">Mnc,上 + Mnc,下  ≥  (6/5) × (Mnb,左 + Mnb,右)</text>
+  <text x="760" y="120" font-size="12" fill="#455a64">柱側：藍</text>
+  <text x="760" y="142" font-size="12" fill="#455a64">梁側：紅</text>
+  <text x="760" y="168" font-size="11.5" fill="#607d8b">梁的 Mnb 取</text>
+  <text x="760" y="186" font-size="11.5" fill="#607d8b">該地震方向下</text>
+  <text x="760" y="204" font-size="11.5" fill="#607d8b">實際受拉側配筋</text>
+</svg>
+<div class="cap">
+節點是一個自由體：進來的彎矩必須平衡。所以問題不是「這根柱比這根梁強嗎」，
+而是「<b>柱能提供的總容量</b>是否超過<b>梁能送進來的總需求</b>」。
+地震方向反轉時，左右梁的受拉側互換 → \(\sum M_{nb}\) 要<b>兩個方向各算一次</b>取大。
+</div>
+</div>
+
+<div class="why">
+<b>6/5 = 1.2 買到了什麼</b><br>
+它讓「柱先到達強度」這件事在<b>機率上</b>變得不容易：柱多 20% 的容量，
+足以吸收一般的分析誤差、鋼筋放樣誤差、樓板參與（樓板鋼筋會讓梁的負彎矩容量比計算值大）。<br><br>
+<b>又沒買到什麼（這是高分關鍵）</b><br>
+① \(\sum M_{nb}\) 用<b>標稱</b>強度算，但梁真正會發展到 \(M_{pr} = 1.25\) 倍 → <b>1.2 < 1.25</b>，
+單看這個比較，強柱弱梁其實「不夠」。<br>
+② 柱的 \(M_{nc}\) 隨<b>當時軸力</b>變化；地震時軸力起伏（一側柱受拉、一側受壓），
+最不利軸力下的 \(M_{nc}\) 可能比設計假設低。<br>
+③ 高模態反應與雙向地震會讓實際柱彎矩超過靜力分析值。<br>
+<b>結論：柱端出鉸無法完全排除 → 所以規範仍然要求柱端有 \(l_o\) 密箍區與 \(A_{sh}\) 圍束。</b>
+這兩件事（強柱弱梁 + 柱端圍束）是<b>互補</b>而不是重複 ——
+一個降低柱出鉸的機率，一個確保萬一出鉸了柱還有延性。
+</div>
+
+<h3>5.2 柱的設計剪力也來自梁的 M<sub>pr</sub></h3>
+
+<p>
+既然設計意圖是「梁端出鉸、柱保持彈性」，那麼<b>柱能受到的最大剪力就被梁的塑鉸強度封頂</b> ——
+再大的地震也送不進更多力。所以：
+</p>
+
+$$V_u^{col} = \frac{M_{pr,top} + M_{pr,bot}}{l_n}\quad(\text{反曲點在柱淨高中點})$$
+
+<div class="box">
+<b>手算：<a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a>（2012，30 分，把梁與柱串起來的觀念鏈題）</b><br>
+柱 60×60 cm、12-#7、保護層 6 cm（至主筋心）、\(l_n = 300\) cm、\(N_u = 50\) tf、
+4 腳 #4 箍筋（\(A_b=1.27\)）、\(f'_c=280\)、\(f_{yt}=4200\) kgf/cm²。<br>
+由前一題得梁端 \(M_{pr}^- = 75.5\)、\(M_{pr}^+ = 41.1\) tf·m。
+
+<h4>① 柱設計剪力（取最不利：上下端都發展 M<sub>pr</sub>⁻）</h4>
+$$V_u = \frac{75.5+75.5}{3.0} = \mathbf{50.33\ tf}$$
+
+<h4>② 密箍區長度</h4>
+$$l_o = \max\!\left(\frac{l_n}{6},\; b_{\max},\; 45\right) = \max(50,\; 60,\; 45) = \mathbf{60\ cm}$$
+
+<h4>③ 核心尺寸與 A<sub>sh</sub></h4>
+$$b_c = 60-2\times6 = 48\ \text{cm},\quad A_g = 3600,\quad A_{ch} = 48^2 = 2304,\quad \frac{A_g}{A_{ch}} = 1.563 > 1.30 \Rightarrow \text{式①控制}$$
+$$\frac{A_{sh}}{s} = 0.3\times48\times\frac{280}{4200}\times0.5625 = 0.540\ \text{cm}^2/\text{cm}$$
+$$A_{sh,prov} = 4\times1.27 = 5.08\ \text{cm}^2 \;\Rightarrow\; s \leq \frac{5.08}{0.540} = 9.41\ \text{cm}$$
+
+<h4>④ 幾何間距上限</h4>
+$$h_x = \frac{48}{3} = 16\ \text{cm} \Rightarrow s_o = 10+\frac{35-16}{3} = 16.3 \xrightarrow{\text{上限}} 15\ \text{cm}$$
+$$s \leq \min\!\left(\frac{b}{4},\; 6d_b,\; s_o\right) = \min(15,\; 6\times2.22,\; 15) = 13.3\ \text{cm}$$
+
+<h4>⑤ V<sub>c</sub> = 0 判斷（柱的軸力條件是<b>臨界</b>）</h4>
+$$\frac{A_g f'_c}{20} = 0.05\times280\times3600 = 50{,}400\ \text{kgf} = 50.4\ \text{tf}$$
+$$N_u = 50\ \text{tf} < 50.4\ \text{tf} \;\Rightarrow\; V_c = 0\ \text{（只差 0.8%！）}$$
+
+<b>三個自我檢查：</b><br>
+① 圍束需求給的 \(s \leq 9.41\) cm 比幾何限制 \(13.3\) cm <b>更嚴</b> →
+本題是<b>圍束控制</b>，不是構造控制。若你算出圍束需求比幾何限制寬鬆，回去檢查 \(A_g/A_{ch}\)。<br>
+② \(N_u\) 與門檻只差 0.8% —— 出題者故意設在臨界點，<b>務必把 50.4 算出來寫在紙上</b>，
+只寫「軸力小所以 \(V_c=0\)」拿不到分。<br>
+③ 柱剪力 50.33 tf 對 60×60 柱而言 \(v = 50330/(60\times54) \approx 15.5\) kgf/cm²，
+約 \(0.93\sqrt{f'_c}\)，屬合理範圍（\(V_n\) 上限約 \(2.65\sqrt{f'_c}b d\)）。
+</div>
+
+<div class="trap">
+<b>陷阱：柱剪力用地震分析的側力算</b><br>
+觸發信號：「以梁端產生塑鉸方式計算因地震引入柱剪力」。<br>
+錯誤思維：拿載重組合 \(U = 1.2D+1.0L+1.0E\) 的柱剪力當設計值。<br>
+正確認知：能力設計法用<b>梁的 \(M_{pr}\) 反推</b>。這個值通常比彈性分析大很多 ——
+因為它代表「地震再大也就這樣了」的上限，反而是更可靠的設計基礎。
+出自 <a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a>。
+</div>
+</section>
+
+<section id="s6">
+<h2>§6 梁柱接頭：整棟樓最容易被忽略的瓶頸</h2>
+
+<div class="lead">
+<b>本節主張：</b>接頭剪力可以是柱剪力的 <b>2~6 倍</b>，因為梁的頂筋拉力與底部混凝土壓力在接頭內形成一對水平力，
+柱剪力只抵消其中一小部分。這是為什麼接頭常常是整個框架的控制點。
+</div>
+
+<h3>6.1 力平衡：V<sub>jh</sub> 從哪裡來</h3>
+
+<div class="fig">
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+  <defs><marker id="d1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
+  <marker id="d2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+    <path d="M0,0 L9,4.5 L0,9 z" fill="#1565c0"/></marker></defs>
+
+  <text x="450" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">接頭自由體：切開接頭上半部，水平力必須平衡</text>
+
+  <rect x="360" y="110" width="150" height="110" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.2"/>
+  <rect x="372" y="46" width="126" height="64" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="372" y="220" width="126" height="64" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="180" y="126" width="180" height="78" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <rect x="510" y="126" width="180" height="78" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
+  <line x1="360" y1="165" x2="510" y2="165" stroke="#ef6c00" stroke-width="2" stroke-dasharray="7 5"/>
+  <text x="530" y="160" font-size="11.5" fill="#ef6c00">切面</text>
+
+  <line x1="300" y1="138" x2="200" y2="138" stroke="#c62828" stroke-width="2.6" marker-end="url(#d1)"/>
+  <text x="196" y="126" font-size="12.5" text-anchor="end" fill="#c62828" font-weight="700">T_top</text>
+  <text x="270" y="126" font-size="11" text-anchor="middle" fill="#607d8b">梁頂筋受拉</text>
+  <line x1="570" y1="192" x2="670" y2="192" stroke="#c62828" stroke-width="2.6" marker-end="url(#d1)"/>
+  <text x="676" y="196" font-size="12.5" fill="#c62828" font-weight="700">C_bot = T_bot</text>
+  <text x="600" y="216" font-size="11" text-anchor="middle" fill="#607d8b">梁底混凝土受壓</text>
+
+  <line x1="435" y1="60" x2="330" y2="60" stroke="#1565c0" stroke-width="2.6" marker-end="url(#d2)"/>
+  <text x="326" y="64" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Vcol</text>
+
+  <line x1="380" y1="165" x2="490" y2="165" stroke="#2e7d32" stroke-width="3.4" marker-end="url(#d1)"/>
+  <text x="435" y="188" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">Vjh</text>
+
+  <text x="450" y="304" font-size="13.5" text-anchor="middle" fill="#0d47a1" font-weight="700">Vjh = T_top + T_bot − Vcol</text>
+  <text x="450" y="324" font-size="12" text-anchor="middle" fill="#607d8b">外接頭／角接頭：只有一側有梁 → Vjh = T_top − Vcol</text>
+</svg>
+<div class="cap">
+關鍵在於 \(T_{top}\) 與 \(C_{bot}\) <b>方向相同</b>（一個往左拉、一個往右推，對切面而言是同向的水平推力），
+所以它們相<b>加</b>；柱剪力方向相反，所以相<b>減</b>。
+搞錯這個符號會讓答案差兩倍以上 —— 而且是最常見的錯誤。
+</div>
+</div>
+
+<div class="why">
+<b>為什麼接頭剪力遠大於柱剪力（量級感）</b><br>
+以 <a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a> 的角接頭為例（只有一側有梁）：
+\(V_{jh}/V_{col} = 81.9/45.9 = \mathbf{1.78}\) 倍。<br>
+若是<b>內接頭</b>（兩側都有梁），\(T_{bot}\) 也要加進來，比值輕易上到 4~6 倍。<br>
+物理原因：梁的彎矩靠「頂筋拉力 × 力臂」傳遞，而力臂（約 \(0.9d\)）比柱的力臂（約半層高）<b>短得多</b>
+→ 同樣的彎矩，梁端的內力偶遠大於柱端的剪力。
+<b>所以「梁越深、鋼筋越多，接頭壓力越大」</b>，這也是為什麼深梁配大量頂筋的設計常在接頭卡住。
+</div>
+
+<h3>6.2 γ 係數：三種單位制，三組數字</h3>
+
+$$\phi V_{n} = \phi\,\gamma\sqrt{f'_c}\,A_j,\qquad \phi = 0.85$$
+
+<table>
+<thead><tr><th>接頭類型（依有梁圍束的面數）</th><th>psi 制</th><th>MPa 制</th><th>kgf/cm² 制</th></tr></thead>
+<tbody>
+<tr><td>四面有梁（內接頭）</td><td>20</td><td>1.7</td><td><b>5.3</b></td></tr>
+<tr><td>三面或對面兩面有梁（T 形）</td><td>15</td><td>1.25</td><td><b>4.0</b></td></tr>
+<tr><td>其他（外接頭、角接頭）</td><td>12</td><td>1.0</td><td><b>3.2</b></td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>三組數字是同一組（自己驗一次就永遠不會記錯）</b><br>
+\(k\sqrt{f'_c}\) 型的係數換單位時，係數本身會變（因為根號裡也換了）：
+
+$$\text{psi} \to \text{kgf/cm}^2:\ \times\sqrt{0.0703} = 0.265
+\qquad \text{psi} \to \text{MPa}:\ \times\sqrt{0.006895} = 0.0830$$
+
+驗算：\(20\times0.265 = 5.30\)、\(15\times0.265 = 3.98\approx4.0\)、\(12\times0.265 = 3.18\approx3.2\) ✓<br>
+以及 \(20\times0.0830 = 1.66\approx1.7\)、\(15\times0.0830=1.25\)、\(12\times0.0830=1.00\) ✓<br>
+<b>這正是 RC-2005-3 解析裡「\(\gamma = 12\times0.265 = 3.18 \approx 3.2\)」那一行的來源。</b>
+</div>
+
+<div class="trap">
+<b>陷阱：抄到不同單位制的 γ</b>（這是本考點最常見的整題錯判來源）<br>
+三組數字都「看起來像 γ」，但只有<b>與你所用單位制相符的那一組</b>是對的。
+用 kgf/cm² 算應力卻套 MPa 制的 1.7，接頭強度會被低估到約 <b>1/3</b>，
+好斷面也會被判「不合格」。<br>
+可信的錨點是<b>兩份 verified 解答</b>：
+<a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a>（角接頭 \(\gamma=3.2\)，附 \(12\times0.265\) 的換算推導）與
+<a class="qlink" href="problems-view/RC-2003-3.html">RC-2003-3</a>（內接頭 \(\gamma=5.3\)，明載對應 psi 制 20）。<br>
+考場上若題目未給 \(\gamma\)，寫出「<b>採 kgf/cm² 制，\(\gamma=3.2\)（其他類接頭，等值於 ACI 12 psi 制）</b>」最安全。<br>
+<span style="font-size:.92em;color:#6d4c41">
+（附記：本知識庫原有 <code>diagnosis/</code>、<code>code-ref/</code>、<code>traps/</code>、<code>philosophy/</code>、<code>methods/</code>
+共 8 檔的 γ 記載互相矛盾，已於 <b>2026-07-26</b> 依上述兩份 verified 解答全庫勘誤並記入
+<code>wiki/log.md</code>。現在全庫一致，可放心引用。）</span>
+</div>
+
+<h3>6.3 手算：<a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a>（2005，20 分，接頭群唯一必練）</h3>
+
+<div class="box">
+<b>給定：</b>樓層高 \(H = 365\) cm，柱 60×60 cm，梁寬＝柱寬＝60 cm，梁 \(d = 70\) cm，
+梁拉力筋 6-#8（\(A_s = 30.42\) cm²），\(f'_c = 280\)、\(f_y = 4200\) kgf/cm²。求<b>角柱接頭</b>剪力強度檢核。
+
+<h4>① 梁鋼筋拉力</h4>
+$$T = A_s f_y = 30.42\times4200 = 127{,}764\ \text{kgf}$$
+
+<h4>② 梁標稱彎矩（用來反推柱剪力）</h4>
+$$a = \frac{127{,}764}{0.85\times280\times60} = 8.95\ \text{cm}
+\;\Rightarrow\; M_n = 127{,}764\times\left(70-\frac{8.95}{2}\right) = 83.74\ \text{tf·m}$$
+
+<h4>③ 柱剪力（反曲點在樓層中高）</h4>
+$$V_{col}\times\frac{H}{2} = M_n \;\Rightarrow\; V_{col} = \frac{2M_n}{H} = \frac{2\times8{,}374{,}165}{365} = 45{,}886\ \text{kgf} = 45.9\ \text{tf}$$
+
+<h4>④ 接頭剪力需求（角接頭：只有一側有梁）</h4>
+$$V_{jh} = T - V_{col} = 127{,}764 - 45{,}886 = 81{,}878\ \text{kgf} = \mathbf{81.9\ tf}$$
+
+<h4>⑤ 有效接頭面積</h4>
+$$b_j = \min\!\left(b_c,\; b_w + 0.5 h_c\right) = \min(60,\; 60+30) = 60\ \text{cm}
+\;\Rightarrow\; A_j = 60\times60 = 3600\ \text{cm}^2$$
+
+<h4>⑥ 強度與檢核（角接頭 → γ = 3.2）</h4>
+$$\phi V_n = 0.85\times3.2\times\sqrt{280}\times3600 = 0.85\times3.2\times16.733\times3600 = 163{,}848\ \text{kgf} = \mathbf{163.8\ tf}$$
+$$V_{jh} = 81.9 \leq \phi V_n = 163.8 \quad✓\qquad \text{使用率} = 50\%$$
+
+<b>三個自我檢查：</b><br>
+① \(V_{jh}/V_{col} = 1.78\) → 落在「接頭剪力是柱剪力的 1.5~6 倍」的合理帶內 ✓<br>
+② \(b_j\) 三個候選（\(b_c\)、\(b_w+0.5h_c\)）都要寫出來再取小；梁寬＝柱寬時 \(b_j = b_c\) 是<b>必然</b>結果。<br>
+③ 本題以<b>標稱</b> \(f_y\) 計算 \(T\)（2005 年題，以 \(M_n\) 為基準）。
+依現行規範應以 \(T = 1.25 f_y A_s\)，\(V_{jh}\) 會放大 25%（→ 約 114 tf，仍小於 163.8 tf 而通過）。
+<b>作答時寫明你採用哪一種並說明理由</b>，兩種都能得分；沒交代才會被扣。
+</div>
+</section>
+
+<section id="s7">
+<h2>§7 其他耐震構件：牆、橫膈版、耐震搭接</h2>
+
+<div class="lead">
+<b>本節主張：</b>這三類題目看似各自獨立，但它們遵守<b>同一條原則</b>：
+凡是脆性、無替代路徑的傳力機制，折減更嚴、構造要求更多。
+只要抓住這一點，沒見過的規定也能推出方向。
+</div>
+
+<h3>7.1 剪力牆（<a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a>，40 分大題）</h3>
+
+<table>
+<thead><tr><th>項目</th><th>規定／做法</th><th>為什麼</th></tr></thead>
+<tbody>
+<tr><td>\(\phi = 0.6\)</td><td>牆的剪力折減比一般構件（0.75）更嚴</td><td>牆剪力破壞是脆性、且牆是<b>單一</b>抗側力路徑，一旦破壞無替代</td></tr>
+<tr><td>邊界構材（boundary element）</td><td>牆兩端加大並加密箍</td><td>牆的<b>彎矩</b>由兩端的拉壓力偶承擔 → 兩端是「柱」，需要柱的圍束要求</td></tr>
+<tr><td>單層配筋條件<br>\(V_u \leq 0.53\sqrt{f'_c}A_{cv}\)</td><td>超過就必須<b>雙層</b>配筋</td><td>剪力大 → 斜壓桿效應強 → 需要兩側都有鋼筋夾住，避免混凝土保護層剝離帶走鋼筋</td></tr>
+<tr><td>水平＋垂直剪力筋<b>都要</b></td><td>兩個方向都要驗算配筋率</td><td>牆的剪力傳遞是<b>桁架機制</b>：斜壓桿需要水平與垂直兩組拉力桿共同錨住</td></tr>
+<tr><td>彎鉤錨定 \(l_{dh} = 0.06 f_y d_b/\sqrt{f'_c}\)</td><td>水平筋在邊界構材內錨定</td><td>水平剪力筋若在邊界構材處拔出，整個桁架機制失效</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>把剪力牆當成「一根躺著的深梁 + 兩根柱」</b><br>
+・牆版 = 深梁的腹板 → 負責<b>剪力</b>（水平＋垂直剪力筋 = 腹板的桁架）<br>
+・兩端邊界構材 = 深梁的頂底翼板／或兩根柱 → 負責<b>彎矩</b>（覆沒力矩 \(M\) 除以牆長得到拉壓力）<br>
+這個類比讓你不用背牆的規定：邊界構材的箍筋要求 ≈ 柱的要求（§4），牆版的剪力要求 ≈ 梁的要求但 \(\phi\) 更嚴。<br>
+RC-2003-4 的 \(M = 360\) tf·m、\(l_w = 9\) m → 邊界構材拉力約 \(360/(0.8\times9) = 50\) tf 量級，
+再扣掉軸壓 25 tf/邊 → 這就是縱筋量的來源。
+</div>
+
+<h3>7.2 橫膈版（<a class="qlink" href="problems-view/RC-2019-3.html">RC-2019-3</a>）</h3>
+
+<p>
+樓版在耐震系統裡的角色是<b>把地震慣性力水平傳遞到抗側力構件</b>（牆或框架）。
+所以它是一片「躺著的深梁」：需要<b>抗剪鋼筋</b>與<b>弦力（chord）鋼筋</b>。
+考點通常是：算出樓層地震剪力 → 決定版內抗剪鋼筋比 \(\rho_t\) → 與撓曲控制的間距要求比較，取嚴者。
+</p>
+
+<div class="trap">
+<b>陷阱：橫膈版的鋼筋量被「撓曲控制」而非「剪力控制」</b><br>
+版的鋼筋間距同時受①剪力需求②撓曲最小鋼筋量與最大間距（\(\min(3h,\;45\text{ cm})\) 等）約束。
+RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，取嚴者</b>，並說明是哪一個控制。
+</div>
+
+<h3>7.3 耐震搭接（<a class="qlink" href="problems-view/RC-2010-2.html">RC-2010-2</a>、<a class="qlink" href="problems-view/RC-2003-2.html">RC-2003-2</a>、<a class="qlink" href="problems-view/RC-2004-1.html">RC-2004-1</a>）</h3>
+
+<table>
+<thead><tr><th>規定</th><th>內容</th><th>為什麼（耐震理由）</th></tr></thead>
+<tbody>
+<tr><td>搭接位置</td><td>限於柱<b>中段 1/2</b>（避開柱端 \(l_o\)）</td><td>柱端是潛在塑鉸區，搭接在該處會在反覆載重下劈裂失效</td></tr>
+<tr><td>搭接等級</td><td>一律採 <b>Class B</b>（\(1.3 l_d\)）</td><td>耐震設計不允許用 Class A 的寬鬆條件（同一斷面搭接比例大、應力高）</td></tr>
+<tr><td>同一斷面搭接量</td><td>\(\leq 50\%\) 主筋面積</td><td>避免同一斷面同時是「弱面」</td></tr>
+<tr><td>搭接區橫向鋼筋</td><td>需配置圍束箍筋（間距加密）</td><td>搭接的傳力靠<b>混凝土劈裂抗力</b>，橫向鋼筋提供圍束才不會劈開</td></tr>
+<tr><td>\(l_d\) 詳細計算式的 \(K_{tr}\)</td><td>橫向鋼筋指標，出現在 \((c+K_{tr})/d_b\) 分母</td><td>它<b>量化</b>了上一條：橫向鋼筋越多 → 圍束越好 → \(l_d\) 越短</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>一條原則貫穿本節</b><br>
+搭接、接頭、牆的剪力、版的傳力，共同點都是<b>「靠混凝土的抗拉／劈裂／互鎖」在傳力</b> ——
+而這些機制在反覆載重下會退化。<br>
+所以規範的手法永遠是同兩招：<b>①加橫向鋼筋提供圍束</b>（\(A_{sh}\)、\(K_{tr}\)、搭接區箍筋、牆的雙層配筋），
+<b>②把機制移到不會退化的位置</b>（搭接移到柱中段、塑鉸移到梁端）。<br>
+記住這兩招，遇到沒背過的耐震條文也能答出「規範應該會要求什麼」。
+</div>
+</section>
+<section id="s8">
+<h2>§8 解題決策流程</h2>
+
+<div class="lead">
+<b>本節主張：</b>本單元題目的差異，在<b>前三個判斷</b>之內就定位完畢：
+①問韌性量化還是問設計？②主體是接頭嗎？③梁還是柱？
+判斷做完再動筆，可以省掉大半的重算。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 900 800" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="f1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
+  <path d="M0,0 L9,4.5 L0,9 z" fill="#546e7a"/></marker></defs>
+<g stroke="#546e7a" stroke-width="1.6" fill="none" marker-end="url(#f1)">
+  <line x1="450" y1="64" x2="450" y2="74"/>
+  <line x1="450" y1="142" x2="450" y2="171"/>
+  <line x1="450" y1="239" x2="450" y2="268"/>
+  <line x1="765" y1="320" x2="765" y2="332"/>
+  <line x1="765" y1="390" x2="765" y2="402"/>
+  <line x1="160" y1="432" x2="160" y2="442"/>
+  <line x1="460" y1="432" x2="460" y2="442"/>
+  <line x1="160" y1="500" x2="160" y2="512"/>
+  <line x1="460" y1="500" x2="460" y2="512"/>
+  <line x1="160" y1="348" x2="160" y2="360"/>
+  <line x1="460" y1="348" x2="460" y2="360"/>
+  <line x1="85" y1="588" x2="85" y2="600"/>
+  <line x1="235" y1="588" x2="235" y2="600"/>
+  <line x1="385" y1="588" x2="385" y2="600"/>
+  <line x1="535" y1="588" x2="535" y2="600"/>
+  <line x1="160" y1="670" x2="160" y2="682"/>
+  <line x1="460" y1="670" x2="460" y2="682"/>
+</g>
+<g stroke="#546e7a" stroke-width="1.6" fill="none">
+  <polyline points="620,110 765,110 765,128" marker-end="url(#f1)"/>
+  <polyline points="620,207 765,207 765,244" marker-end="url(#f1)"/>
+  <polyline points="450,334 450,348 160,348"/>
+  <polyline points="450,348 460,348"/>
+  <polyline points="160,576 160,588 85,588"/>
+  <polyline points="160,588 235,588"/>
+  <polyline points="460,576 460,588 385,588"/>
+  <polyline points="460,588 535,588"/>
+  <polyline points="85,652 85,670 160,670"/>
+  <polyline points="235,652 235,670 160,670"/>
+  <polyline points="385,652 385,670 460,670"/>
+  <polyline points="535,652 535,670 460,670"/>
+</g>
+
+<rect x="250" y="20" width="400" height="44" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+<text x="450" y="48" font-size="12.5" text-anchor="middle" fill="#0d47a1" font-weight="700">讀題：先認出構件、規範版本、單位制</text>
+
+<polygon points="280,110 450,78 620,110 450,142" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+<text x="450" y="114" font-size="11.5" text-anchor="middle" fill="#e65100" font-weight="700">問的是韌性量化嗎（μφ／μθ／μ）？</text>
+<text x="644" y="102" font-size="11.5" fill="#546e7a">是</text>
+<text x="460" y="164" font-size="11.5" fill="#546e7a">否</text>
+
+<rect x="640" y="128" width="250" height="68" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
+<text x="765" y="149" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">雙線性 M-φ 內插 → Lp</text>
+<text x="765" y="167" font-size="10" text-anchor="middle" fill="#4a148c">L = 反曲點至塑鉸；δy = φyL²/3</text>
+<text x="765" y="185" font-size="10" text-anchor="middle" fill="#4a148c">μφ = φu/φy；μθ = μ = δu/δy</text>
+
+<polygon points="280,207 450,175 620,207 450,239" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+<text x="450" y="211" font-size="11.5" text-anchor="middle" fill="#e65100" font-weight="700">主體是梁柱接頭嗎？</text>
+<text x="644" y="199" font-size="11.5" fill="#546e7a">是</text>
+<text x="460" y="261" font-size="11.5" fill="#546e7a">否</text>
+
+<rect x="640" y="244" width="250" height="76" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="765" y="265" font-size="10.5" text-anchor="middle" fill="#1b5e20" font-weight="700">Vjh = T_top + T_bot − Vcol</text>
+<text x="765" y="283" font-size="10" text-anchor="middle" fill="#33691e">外／角接頭：只有 T_top</text>
+<text x="765" y="301" font-size="10" text-anchor="middle" fill="#33691e">T = 1.25fy·As（或依題目用 fy）</text>
+
+<rect x="640" y="332" width="250" height="58" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="765" y="354" font-size="10.5" text-anchor="middle" fill="#1b5e20">bj = min(bc, bw + 0.5hc)</text>
+<text x="765" y="374" font-size="10.5" text-anchor="middle" fill="#1b5e20">Aj = bj × hc</text>
+
+<rect x="640" y="402" width="250" height="92" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
+<text x="765" y="423" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">γ = 5.3 / 4.0 / 3.2（kgf/cm²）</text>
+<text x="765" y="441" font-size="10" text-anchor="middle" fill="#4a148c">依有梁圍束面數：四／三／其他</text>
+<text x="765" y="459" font-size="10" text-anchor="middle" fill="#4a148c">MPa 制為 1.7 / 1.25 / 1.0</text>
+<text x="765" y="479" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">檢核 φγ√f'c·Aj ≥ Vjh（φ=0.85）</text>
+
+<polygon points="260,302 450,270 640,302 450,334" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+<text x="450" y="306" font-size="11.5" text-anchor="middle" fill="#e65100" font-weight="700">主體是梁，還是柱？</text>
+<text x="238" y="342" font-size="11.5" text-anchor="middle" fill="#546e7a">梁</text>
+<text x="500" y="342" font-size="11.5" text-anchor="middle" fill="#546e7a">柱</text>
+
+<rect x="20" y="360" width="280" height="72" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+<text x="160" y="382" font-size="11" text-anchor="middle" fill="#0d47a1" font-weight="700">Mpr⁻、Mpr⁺ 各算一次</text>
+<text x="160" y="401" font-size="10.5" text-anchor="middle" fill="#0d47a1">apr = As·1.25fy /(0.85f'c bw)</text>
+<text x="160" y="420" font-size="10.5" text-anchor="middle" fill="#0d47a1">φ = 1.0（不折減）</text>
+
+<rect x="320" y="360" width="280" height="72" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+<text x="460" y="382" font-size="11" text-anchor="middle" fill="#0d47a1" font-weight="700">先驗強柱弱梁</text>
+<text x="460" y="401" font-size="10.5" text-anchor="middle" fill="#0d47a1">ΣMnc ≥ (6/5) ΣMnb</text>
+<text x="460" y="420" font-size="10.5" text-anchor="middle" fill="#0d47a1">Mnb 用標稱 fy（不含 1.25）</text>
+
+<rect x="20" y="442" width="280" height="58" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+<text x="160" y="464" font-size="10.5" text-anchor="middle" fill="#0d47a1">Ve = ΣMpr/ln ± wu·ln/2</text>
+<text x="160" y="484" font-size="10.5" text-anchor="middle" fill="#0d47a1">取同號那一端（較大值）</text>
+
+<rect x="320" y="442" width="280" height="58" rx="7" fill="#e3f2fd" stroke="#1565c0" stroke-width="1.7"/>
+<text x="460" y="464" font-size="10.5" text-anchor="middle" fill="#0d47a1">Vu = ΣMpr,梁 / ln</text>
+<text x="460" y="484" font-size="10.5" text-anchor="middle" fill="#0d47a1">不用彈性分析的柱剪力</text>
+
+<polygon points="25,546 160,516 295,546 160,576" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+<text x="160" y="550" font-size="11" text-anchor="middle" fill="#e65100" font-weight="700">Vc 可以計入嗎？</text>
+<text x="100" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">不可</text>
+<text x="222" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">可</text>
+
+<polygon points="325,546 460,516 595,546 460,576" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
+<text x="460" y="550" font-size="11" text-anchor="middle" fill="#e65100" font-weight="700">Nu &lt; Ag f'c /20 ？</text>
+<text x="400" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">是</text>
+<text x="522" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">否</text>
+
+<rect x="22" y="600" width="126" height="52" rx="7" fill="#ffebee" stroke="#c62828" stroke-width="1.6"/>
+<text x="85" y="622" font-size="10.5" text-anchor="middle" fill="#b71c1c" font-weight="700">Vc = 0</text>
+<text x="85" y="640" font-size="10" text-anchor="middle" fill="#b71c1c">Vs = Vu/φ</text>
+
+<rect x="172" y="600" width="126" height="52" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="235" y="622" font-size="10.5" text-anchor="middle" fill="#1b5e20" font-weight="700">Vc 計入</text>
+<text x="235" y="640" font-size="10" text-anchor="middle" fill="#1b5e20">Vs = Vu/φ − Vc</text>
+
+<rect x="322" y="600" width="126" height="52" rx="7" fill="#ffebee" stroke="#c62828" stroke-width="1.6"/>
+<text x="385" y="622" font-size="10.5" text-anchor="middle" fill="#b71c1c" font-weight="700">Vc = 0</text>
+<text x="385" y="640" font-size="10" text-anchor="middle" fill="#b71c1c">軸壓不足以壓閉裂縫</text>
+
+<rect x="472" y="600" width="126" height="52" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
+<text x="535" y="622" font-size="10.5" text-anchor="middle" fill="#1b5e20" font-weight="700">Vc 可計入</text>
+<text x="535" y="640" font-size="10" text-anchor="middle" fill="#1b5e20">軸壓恢復骨材互鎖</text>
+
+<rect x="20" y="682" width="280" height="94" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.7"/>
+<text x="160" y="703" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">梁密箍區間距取最小</text>
+<text x="160" y="721" font-size="10" text-anchor="middle" fill="#4a148c">強度需求、d/4、6db（或 8db）</text>
+<text x="160" y="739" font-size="10" text-anchor="middle" fill="#4a148c">150mm（或 24db,tie 與 300mm）</text>
+<text x="160" y="759" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">密箍區長 = 2h；第一支 ≤ s/2</text>
+
+<rect x="320" y="682" width="280" height="94" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.7"/>
+<text x="460" y="703" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">柱圍束：Ash 兩式取大</text>
+<text x="460" y="721" font-size="10" text-anchor="middle" fill="#4a148c">Ag/Ach 大於 1.3 → 式①控制</text>
+<text x="460" y="739" font-size="10" text-anchor="middle" fill="#4a148c">s ≤ min(b/4, 6db, so)</text>
+<text x="460" y="759" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">lo = max(h, ln/6, 45cm)</text>
+</svg>
+<div class="cap">
+五個判斷菱形。注意<b>梁與柱的 \(V_c=0\) 條件不同</b>：梁看「地震剪力是否超過一半」（幾乎總是成立），
+柱看「軸壓是否足夠小」（常常是臨界，必須把 \(A_g f'_c/20\) 算出來）。
+</div>
+</div>
+</section>
+
+<section id="s9">
+<h2>§9 歷屆題 × 觀念對照表</h2>
+
+<h3>9.1 主分類（primaryTopicId = RC-U3-3，共 16 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>考年</th><th>群</th><th>核心考點</th><th>對應本講義</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/RC-2003-3.html">RC-2003-3</a></td><td>2003</td><td>D</td><td>梁柱內部接頭、水平剪力 Vjh、有效接頭寬 bj、γ 係數</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a></td><td>2003</td><td>E</td><td>剪力牆 40 分大題：邊界構材、水平／垂直剪力筋、覆沒力矩、φ=0.6、彎鉤錨定</td><td>§7.1</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2004-1.html">RC-2004-1</a></td><td>2004</td><td>E</td><td>概念題：混凝土品質統計驗收＋耐震搭接（Class B、橫向鋼筋間距）</td><td>§7.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2004-3.html">RC-2004-3</a></td><td>2004</td><td>B</td><td>耐震柱 Ash 公式、圍束箍筋與繫筋、密箍區間距</td><td>§4</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a></td><td>2005</td><td>D</td><td>角柱（外）接頭：Vjh、Vcol 反推、Aj、γ=3.2</td><td>§6.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2009-1.html">RC-2009-1</a></td><td>2009</td><td>B</td><td>概念題：耐震柱橫向鋼筋全要求（lo、Ash、Vc=0、Mpr 設計剪力）</td><td>§1、§4</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2010-2.html">RC-2010-2</a></td><td>2010</td><td>E</td><td>耐震柱縱筋搭接：Class B、中段 1/2、50% 限制、ld 與 Ktr</td><td>§7.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2012-2.html">RC-2012-2</a></td><td>2012</td><td>A</td><td>耐震梁 Mpr（1.25fy）、梁端強度、強柱弱梁前置</td><td>§1.1、§3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a></td><td>2012</td><td>C</td><td>強柱弱梁塑鉸機構、柱設計剪力、Ash、Vc=0 軸力條件、lo</td><td>§5.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2012-4.html">RC-2012-4</a></td><td>2012</td><td>D</td><td>梁柱外接頭（角隅邊柱）：Vjh、Aj、γ 係數</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a></td><td>2013</td><td>B</td><td>特殊矩形柱 Ash、繫筋數量、hx 與 so、配置圖</td><td>§4.3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2016-2.html">RC-2016-2</a></td><td>2016</td><td>A</td><td>特殊框架梁塑鉸區：Mpr、Ve、Vc 判斷、密箍區間距</td><td>§3</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2018-2.html">RC-2018-2</a></td><td>2018</td><td>D</td><td>角柱接頭剪力檢核、γ 係數、Whitney 應力塊求梁 Mn</td><td>§6</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2019-3.html">RC-2019-3</a></td><td>2019</td><td>E</td><td>橫膈版地震剪力、抗剪鋼筋 ρt、撓曲控制間距、最終設計比較</td><td>§7.2</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a></td><td>2022</td><td>E</td><td>曲率／轉角／位移韌性、線性內插、塑鉸長度 Lp</td><td>§2</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td><td>2025</td><td>A</td><td>耐震梁完整流程：Mpr、Vc=0、密箍區剪力筋設計</td><td>§3.2</td></tr>
+</tbody>
+</table>
+
+<h3>9.2 副分類（RC-U3-3 為 secondaryTopicId，共 2 題）</h3>
+
+<table>
+<thead><tr><th>題號</th><th>考年</th><th>主分類</th><th>與本子項的關聯</th></tr></thead>
+<tbody>
+<tr><td><a class="qlink" href="problems-view/RC-2003-2.html">RC-2003-2</a></td><td>2003</td><td>RC-U2-3</td><td>耐震柱搭接長度詳細計算法（c 值、Ktr）、Class B、中段 1/2 限制（§7.3）</td></tr>
+<tr><td><a class="qlink" href="problems-view/RC-2016-1.html">RC-2016-1</a></td><td>2016</td><td>RC-U1-1</td><td>兩端固定梁的地震彎矩組合、雙曲度彎矩、頂底筋設計（§3 的前置）</td></tr>
+</tbody>
+</table>
+
+<div class="why">
+<b>從這張表可以讀出命題規律</b><br>
+・<b>群 D（梁柱接頭）4 題、群 B（柱圍束）3 題、群 A（梁剪力）3 題</b>，三群共 10 題 ＝ 本單元 62%。
+接頭是出現最多的單一題型，但它每題只有 20~25 分且計算量小 —— <b>投報率最高</b>。<br>
+・<b>2012 年一次考了三題（2012-2 梁、2012-3 柱、2012-4 接頭）且共用同一張圖</b> ——
+這是出題者最喜歡的「一組構架考三個構件」模式。練 2012 這一組等於練完整個能力設計法流程。<br>
+・<b>2019 之後只出了 3 題（2019-3、2022-4、2025-2）且題型各不相同</b>（橫膈版／韌性量化／耐震梁），
+近年偏向「不重複」的命題策略 —— 建議廣度優先，別只練接頭。<br>
+・剪力牆只出過 1 次（2003-4）但是 <b>40 分</b>；耐震搭接出過 3 次（2003-2、2004-1、2010-2）。
+兩者都被大多數考生忽略。
+</div>
+</section>
+
+<section id="s10">
+<h2>§10 陷阱總表（考前十分鐘掃完）</h2>
+
+<table>
+<thead><tr><th>#</th><th>觸發信號</th><th>錯誤思維</th><th>正確認知</th><th>出處</th></tr></thead>
+<tbody>
+<tr><td>1</td><td>「耐震」「特殊矩形框架」＋要算剪力</td><td>用載重組合的剪力當設計值</td><td>用 Mpr 反推：Ve = ΣMpr/ln ± wu·ln/2</td><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td></tr>
+<tr><td>2</td><td>要算 Mpr</td><td>用 fy</td><td>用 1.25fy（材料超強＋應變硬化）</td><td><a class="qlink" href="problems-view/RC-2012-2.html">RC-2012-2</a></td></tr>
+<tr><td>3</td><td>要算 Mpr</td><td>再乘 φ = 0.9</td><td>Mpr 是<b>上限估計</b>，φ = 1.0；折減方向相反</td><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td></tr>
+<tr><td>4</td><td>梁頂底鋼筋量不同</td><td>只算一個 Mpr</td><td>Mpr⁻ 與 Mpr⁺ 各算一次（a 值也不同）</td><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td></tr>
+<tr><td>5</td><td>Ve 公式的 ±</td><td>只算一個方向</td><td>取地震與重力<b>同號</b>的那一端（大值）</td><td><a class="qlink" href="problems-view/RC-2016-2.html">RC-2016-2</a></td></tr>
+<tr><td>6</td><td>Ve 公式的分母</td><td>用柱中心距 L</td><td>用<b>淨跨 ln</b>（塑鉸在柱面）</td><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td></tr>
+<tr><td>7</td><td>梁密箍區長度</td><td>用 2d</td><td>用 <b>2h</b>（梁全高的兩倍）</td><td><a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a></td></tr>
+<tr><td>8</td><td>梁 Vc 是否歸零</td><td>直接沿用一般梁的 Vc</td><td>兩條件：地震剪力 &gt; 50% 且 Nu &lt; Agf'c/20（梁幾乎必然成立）</td><td><a class="qlink" href="problems-view/RC-2016-2.html">RC-2016-2</a></td></tr>
+<tr><td>9</td><td>柱 Vc 是否歸零</td><td>以為柱也一定 Vc=0</td><td>柱有軸壓：必須把 Agf'c/20 算出來比較（RC-2012-3 只差 0.8%）</td><td><a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a></td></tr>
+<tr><td>10</td><td>同一題出現兩個 φ</td><td>以為抄錯</td><td>Mpr 用 φ=1.0、剪力用 φ=0.75、接頭用 φ=0.85、牆用 φ=0.6 —— 各有理由</td><td>§1.2</td></tr>
+<tr><td>11</td><td>Ash 公式</td><td>只算一式</td><td>兩式<b>取大</b>；Ag/Ach &gt; 1.3 → 式①控制（省一次計算）</td><td><a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a></td></tr>
+<tr><td>12</td><td>Ash 的定義</td><td>把所有箍筋腳加總</td><td>Ash 是<b>單一方向</b>的腳數：外箍 2 腳 + 該方向繫筋各 1 腳</td><td><a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a></td></tr>
+<tr><td>13</td><td>hc（或 bc）的量法</td><td>用柱全寬</td><td>核心尺寸；量到箍筋外緣或中心線<b>依題目保護層定義</b>，並在紙上寫清楚</td><td>RC-2013-2、RC-2012-3</td></tr>
+<tr><td>14</td><td>柱密箍區間距</td><td>漏掉 so 公式</td><td>三條件 min(b/4, 6db, so)；so = 10+(35−hx)/3 ≤ 15 cm</td><td><a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a></td></tr>
+<tr><td>15</td><td>密箍區長度 lo</td><td>只寫一個條件，或把柱的三條件套到梁上</td><td><b>柱</b>：三條件 max(柱最大邊長, ln/6, 45 cm)（§18.7.5.1）；<b>梁</b>：<b>只有 2h</b> 單一條件（§18.6.4.1）—— 兩者不可互換</td><td><a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a></td></tr>
+<tr><td>16</td><td>接頭剪力 Vjh</td><td>直接用 T = As·fy 當 Vjh</td><td>要扣柱剪力：Vjh = T_top + T_bot − Vcol</td><td><a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a></td></tr>
+<tr><td>17</td><td>接頭 T_top 與 T_bot</td><td>相減（以為方向相反）</td><td>對切面而言<b>同向</b> → 相加；只有 Vcol 是減項</td><td><a class="qlink" href="problems-view/RC-2003-3.html">RC-2003-3</a></td></tr>
+<tr><td>18</td><td>接頭 γ 係數</td><td>抄到不同單位制的數字</td><td>kgf/cm²：5.3／4.0／3.2；MPa：1.7／1.25／1.0；psi：20／15／12（知識庫內有三套矛盾值，見 §6.2）</td><td><a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a></td></tr>
+<tr><td>19</td><td>接頭 Aj</td><td>只寫一個 bj 候選</td><td>bj = min(bc, bw+0.5hc) 全部寫出再取小</td><td><a class="qlink" href="problems-view/RC-2012-4.html">RC-2012-4</a></td></tr>
+<tr><td>20</td><td>強柱弱梁的 ΣMnb</td><td>用 1.25fy</td><td>用<b>標稱</b> fy（超強餘裕已含在 6/5 裡）；知識庫 code-ref 有相反寫法，作答註明依據</td><td>§1.2</td></tr>
+<tr><td>21</td><td>強柱弱梁通過就不配柱密箍</td><td>以為 6/5 是絕對保證</td><td>6/5 只降低機率；柱端仍必須有 lo 與 Ash（且柱底一定出鉸）</td><td>§5.1</td></tr>
+<tr><td>22</td><td>韌性題的 L</td><td>用全柱高 lu</td><td>L = 塑鉸到<b>反曲點</b>；雙曲率柱 L = lu/2（δy 差 4 倍）</td><td><a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a></td></tr>
+<tr><td>23</td><td>Lp 公式</td><td>只算第一式</td><td>0.0044db·fy 是<b>下限</b>，常常控制；且 db 用公尺、fy 用 kgf/cm²，不要自行換算</td><td><a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a></td></tr>
+<tr><td>24</td><td>算出 μθ ≠ μ</td><td>以為正常</td><td>μθ 必定等於 μ（θ = δ/L）；不等就是算錯</td><td><a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a></td></tr>
+<tr><td>25</td><td>剪力牆</td><td>只配水平剪力筋</td><td>水平＋垂直<b>都要</b>（桁架機制）；φ = 0.6；兩端邊界構材照柱的規定辦</td><td><a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a></td></tr>
+<tr><td>26</td><td>耐震搭接位置</td><td>搭在柱端方便施工</td><td>限柱<b>中段 1/2</b>，避開潛在塑鉸區；一律 Class B、同斷面 ≤ 50%</td><td><a class="qlink" href="problems-view/RC-2010-2.html">RC-2010-2</a></td></tr>
+</tbody>
+</table>
+</section>
+
+<section id="s11">
+<h2>§11 自我檢測：12 個「為什麼」</h2>
+
+<p>不用紙筆，用嘴巴回答。答不出來的，回去讀對應章節。</p>
+
+<details><summary>1. 耐震設計和一般強度設計在問的問題有什麼根本不同？</summary>
+<p>強度設計問「撐不撐得住」（強度 ≥ 需求）；耐震設計問「<b>壞的時候用什麼方式壞</b>」。
+因為大地震下結構必然進入非線性，重點不再是不壞，而是壞得延性、可見、可耗能、不倒塌。
+所以本單元的公式幾乎都在算「某個機構最多可能有多強」，再拿這個上限去設計別的構件。（§0）</p></details>
+
+<details><summary>2. 為什麼 1.25？它補償的是一件事還是兩件事？</summary>
+<p>兩件事：①鋼筋<b>實際</b>降伏強度統計上超過標稱值（SD420 實測常在 1.1~1.15 倍）；
+②塑鉸大轉角下鋼筋進入<b>應變硬化</b>，應力繼續爬升。1.25 是兩者合起來的工程近似。（§1.2）</p></details>
+
+<details><summary>3. 為什麼 M<sub>pr</sub> 的 φ 是 1.0 而不是 0.9？</summary>
+<p>φ &lt; 1 的用途是「保證下限」（我至少有這麼強）。但 Mpr 要回答的是「它<b>最多</b>可能有多強」——
+那是上限問題，折減會讓答案往錯的方向跑，使剪力設計偏不安全。（§1.1）</p></details>
+
+<details><summary>4. 為什麼 V<sub>e</sub> 的地震項在全跨是定值，而重力項是線性？</summary>
+<p>兩端塑鉸彎矩方向相同 → 彎矩圖是<b>斜直線</b> → 斜率（剪力）為常數。
+重力彎矩圖是<b>拋物線</b> → 斜率線性變化。兩項是同一張彎矩圖的兩個部分的斜率，不是硬湊的公式。（§3.1）</p></details>
+
+<details><summary>5. V<sub>e</sub> 分母為什麼是淨跨 l<sub>n</sub>？</summary>
+<p>塑鉸發生在<b>柱面</b>（那裡才是梁的斷面，接頭內不是梁），所以力臂是柱面到柱面的淨跨。（§3.1）</p></details>
+
+<details><summary>6. 塑鉸區 V<sub>c</sub> 為什麼要歸零？為什麼還要附帶一個軸力條件？</summary>
+<p>反覆正負彎矩使裂縫<b>貫穿全深度</b>，骨材互鎖失效、壓力區混凝土剝落 → Vc 不可靠。
+軸力條件（Nu &lt; Agf'c/20）的意義是：<b>足夠的軸壓可以把裂縫壓閉合、恢復骨材互鎖</b>。
+所以梁（無軸壓）幾乎必然 Vc=0，柱（有軸壓）要實際算過才知道。（§1.2、§8）</p></details>
+
+<details><summary>7. A<sub>sh</sub> 兩個公式各在防什麼？哪一式會控制？</summary>
+<p>式① \(0.3(A_g/A_{ch}-1)\)：補回保護層剝落瞬間損失的軸向強度。
+式② \(0.09\)：與斷面大小無關的<b>延性底線</b>（提升 εcu），因為大斷面柱的 Ag/Ach 趨近 1，式①會趨近 0。
+分界在 \(A_g/A_{ch} = 1.30\)：大於則式①控制。（§4.1）</p></details>
+
+<details><summary>8. 繫筋（crossties）有哪三個好處？</summary>
+<p>①直接增加 Ash 的腳數；②縮短箍筋外拱的跨距，讓圍束真正到得了核心中央；
+③把 hx 變小，使 so = 10+(35−hx)/3 放寬。三件事是同一個動作的三個好處。（§4.2）</p></details>
+
+<details><summary>9. 強柱弱梁的 6/5 買到了什麼？沒買到什麼？</summary>
+<p>買到：吸收分析誤差、放樣誤差、樓板參與，讓柱出鉸在機率上不容易。
+沒買到：梁實際會發展到 1.25 倍（&gt; 1.2）、柱 Mnc 隨軸力變動、高模態與雙向地震 ——
+所以柱出鉸<b>無法完全排除</b>，柱端仍須密箍。兩者互補而非重複。（§5.1）</p></details>
+
+<details><summary>10. 為什麼接頭剪力可以是柱剪力的好幾倍？</summary>
+<p>梁彎矩靠「頂筋拉力 × 力臂（約 0.9d）」傳遞，柱剪力的力臂是<b>半層高</b>，長得多。
+同樣的彎矩，力臂短的那一側內力大得多。而且 T_top 與 C_bot 對切面同向 → 相加。
+RC-2005-3 的角接頭是 1.78 倍，內接頭可到 4~6 倍。（§6.1）</p></details>
+
+<details><summary>11. γ 係數為什麼會有 5.3 / 1.7 / 20 三種數字？</summary>
+<p>同一組值的三種單位制。\(k\sqrt{f'_c}\) 型係數換單位時係數本身會變：
+psi → kgf/cm² 乘 \(\sqrt{0.0703}=0.265\)、psi → MPa 乘 \(\sqrt{0.006895}=0.0830\)。
+驗算 20×0.265 = 5.30、20×0.0830 = 1.66 ✓。（§6.2）</p></details>
+
+<details><summary>12. 為什麼斷面韌性 μ<sub>φ</sub> 幾乎總是大於位移韌性 μ？</summary>
+<p>因為塑性曲率只發生在塑鉸長度 \(L_p\) 這一小段（RC-2022-4 約佔柱長 19%），
+其餘部分仍是彈性的。極限檢查：令 \(L_p\to0\) 則 \(\mu\to M_u/M_y\approx1.1\) ——
+斷面再有韌性，塑鉸長度為零則構件沒有韌性。（§2.1）</p></details>
+</section>
+<section id="s12">
+<h2>★ 精選 5 題：時間只夠練五題就練這五題</h2>
+
+<div class="lead">
+選題邏輯：<b>一題練到最多獨立技能、彼此重疊最少，並且五題合起來覆蓋能力設計法的完整鏈條</b>
+（韌性定義 → 梁 → 柱 → 機構 → 接頭）。18 題裡有大量重複（接頭 4 題幾乎同型、柱圍束 3 題同型），
+練完這五題等於練完那些重複。
+</div>
+
+<h3>① <a class="qlink" href="problems-view/RC-2025-2.html">RC-2025-2</a>（2025，30 分）— 耐震梁公版，最新題</h3>
+<div class="box">
+<b>為什麼選它：</b>本單元唯一「從 Mpr 一路做到箍筋間距與密箍區長度」的完整流程題，
+而且是最新年份。2016-2、2012-2 都是它的子集 —— 練這一題等於練那兩題。
+數字也被出題者調過（\(s_{req}=15.4\) vs \(s_{seis}=15.0\)），逼你兩個限制都算。<br>
+<b>先讀：</b>§1.1、§3.1、§3.2<br>
+<b>做完要能回答：</b>①為什麼 Mpr⁻ 和 Mpr⁺ 要各算一次？②為什麼同一題出現 φ=1.0 與 φ=0.75？
+③密箍區為什麼是 2h 不是 2d？
+</div>
+
+<h3>② <a class="qlink" href="problems-view/RC-2013-2.html">RC-2013-2</a>（2013，25 分）— 柱圍束，且要自己畫配置</h3>
+<div class="box">
+<b>為什麼選它：</b>柱圍束三題（2004-3、2009-1、2013-2）中唯一要求<b>決定繫筋數量並繪製配置圖</b>的，
+而且 hx 要自己從主筋排列推。<b>「畫配置」是別題練不到的技能</b>，也是閱卷者最容易看出你懂不懂的地方。<br>
+<b>先讀：</b>§4.1、§4.2、§4.3<br>
+<b>做完要能回答：</b>①Ash 為什麼是「單一方向」的量？②不必算式②就知道式①控制的判準是什麼？
+③hx 與 so 為什麼互相牽動？
+</div>
+
+<h3>③ <a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a>（2012，30 分）— 把梁與柱串起來的觀念鏈題</h3>
+<div class="box">
+<b>為什麼選它：</b>它強迫你走完「梁塑鉸 → 柱剪力 → 柱圍束」的整條因果鏈，
+還附帶一個<b>臨界的 Vc=0 軸力判斷</b>（Nu = 50 vs 門檻 50.4 tf，只差 0.8%）。
+而且它與 RC-2012-2（梁 Mpr）、RC-2012-4（接頭）共用同一張構架圖 ——
+練它時順手把那兩題的題目看過，等於掌握「一組構架考三個構件」的整套題型。<br>
+<b>先讀：</b>§5.1、§5.2、§4.1<br>
+<b>做完要能回答：</b>①柱剪力為什麼不用彈性分析值？②圍束需求與幾何間距限制哪一個控制，為什麼？
+③強柱弱梁通過了，為什麼柱端還要密箍？
+</div>
+
+<h3>④ <a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a>（2005，20 分）— 接頭群唯一必練，計算量最小</h3>
+<div class="box">
+<b>為什麼選它：</b>接頭 4 題（2003-3、2005-3、2012-4、2018-2）幾乎同型，選<b>計算最完整又最短</b>的這一題。
+它把「T → Mn → Vcol → Vjh → bj → Aj → γ → φVn」八個步驟壓在 20 分裡，
+且解析附有 γ = 12 psi<sup>0.5</sup> → 3.2 的<b>換算推導</b>，是本單元單位制問題的錨點。<br>
+<b>先讀：</b>§6.1、§6.2、§6.3<br>
+<b>做完要能回答：</b>①T_top 與 C_bot 為什麼相加、Vcol 為什麼相減？
+②角接頭與內接頭的 γ 差多少倍，為什麼？③內接頭的 Vjh 會變成多少？
+</div>
+
+<h3>⑤ <a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a>（2022，25 分）— 「韌性」二字的定義來源</h3>
+<div class="box">
+<b>為什麼選它：</b>整個單元叫「<b>韌性</b>要求與耐震設計」，但只有這一題真的在<b>量化</b>韌性。
+計算量小（純內插 + 代公式），卻是唯一會讓你想通「斷面韌性 ≠ 構件韌性 ≠ 系統韌性」的題目。
+而且它有兩個內建自我檢查點（μθ = μ、Lp 下限控制），練起來投報率極高。<br>
+<b>先讀：</b>§2、§2.1<br>
+<b>做完要能回答：</b>①為什麼 L = lu/2？②為什麼軸力越大 φu 越小？
+③若 Lp → 0，μ 會趨近多少，這代表什麼？
+</div>
+
+<h3>練這五題的正確方法</h3>
+<ol>
+<li><b>先寫「這一題屬於哪一群、我要估上限還是下限」再動筆。</b>
+上限（Mpr、Vjh 的 T）→ 材料往上調、不折減；下限（Vc、φVn）→ 往下調、折減更嚴。
+2 分鐘寫完這個判斷，能救回半題的分數。</li>
+<li><b>每個 min／max 的候選<u>全部寫出來</u>再取值。</b>
+本單元有大量三選一（\(l_o\)、\(s\)、\(b_j\)、\(A_{sh}\) 兩式）——
+<b>只寫最後結果拿不到過程分</b>，而過程分通常佔一半以上。</li>
+<li><b>把規範版本與單位制寫在答案紙第一行。</b>
+本單元至少有三處版本／單位差異（梁密箍間距、γ 係數、ΣMnb 是否含 1.25），
+註明依據後兩種答案都能得分；不註明才會被扣。</li>
+<li><b>③和④各算兩遍。</b>第二遍改一個條件（③把 Nu 改成 60 tf 看 Vc 是否還歸零；
+④把角接頭改成內接頭，加上 T_bot 再算一次）。<b>會判斷方向，比會算數字更能應付變形題。</b></li>
+<li><b>量級檢查表隨身帶：</b>Mpr/Mn ≈ 1.25；Ve 地震項佔比通常 &gt; 70%；
+接頭 Vjh/Vcol 約 1.5~6；柱 Ag/Ach 約 1.3~1.7；μφ 約 3~6 而 μ 約 2~4。出範圍就停下找錯。</li>
+</ol>
+
+<div class="trap">
+<b>誠實說明：這五題沒有涵蓋以下考點群</b><br>
+① <b>剪力牆設計</b>（<a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a>）——
+只出現過一次，但是<b>單題 40 分</b>，且要同時處理邊界構材、水平／垂直剪力筋、錨定、斷面圖四個部分。
+本講義 §7.1 只給了觀念骨架。<b>這是本單元最大的缺口，強烈建議另外投資這一題</b>，
+它的分數等於本講義精選 ①②③ 加起來的一半以上。<br>
+② <b>耐震搭接與 l<sub>d</sub> 詳細計算法</b>（RC-2003-2、RC-2004-1、RC-2010-2，共 3 題）——
+技術屬 RC-U2-3（錨定與搭接），但在耐震脈絡下反覆出現。§7.3 有觀念、無練習。<br>
+③ <b>橫膈版</b>（RC-2019-3）—— 近年題型，且「剪力需求 vs 撓曲構造要求誰控制」的比較是關鍵。<br>
+④ <b>混凝土品質統計驗收</b>（RC-2004-1 前半）—— 與力學無關的規範記憶題，本講義完全未觸及。<br>
+⑤ <b>梁的地震彎矩組合與配筋</b>（RC-2016-1）—— 屬 RC-U1-1，但它是 §3 的前置（沒有 As 就沒有 Mpr）。<br>
+<b>候補兩題：</b><a class="qlink" href="problems-view/RC-2003-4.html">RC-2003-4</a>（剪力牆，40 分，最值得補）、
+<a class="qlink" href="problems-view/RC-2010-2.html">RC-2010-2</a>（耐震搭接，把 §7.3 變成可操作的計算）。
+</div>
+</section>
+
+<section id="s13">
+<h2>§13 因果鏈總表：能用嘴巴講出來才算懂</h2>
+
+<p>每一條都應該可以在 20 秒內不看講義講完。講不出來的，回去讀括號裡的節。</p>
+
+<div class="box">
+<b>鏈 1：能力設計法為什麼存在（§0、§1）</b><br>
+大地震下結構必然進入非線性 → 問題從「不壞」變成「怎麼壞」 →
+延性機構與脆性機構在賽跑，先到者決定破壞模式 →
+所以刻意把延性側往上估（1.25fy、φ=1.0）、脆性側往下估（Vc=0、φ=0.85/0.75/0.6）→
+<b>讓延性一定先到，而且領先幅度大到材料超強也翻不了盤</b>。
+</div>
+
+<div class="box">
+<b>鏈 2：為什麼剪力設計不能用 φM<sub>n</sub>（§1.1）</b><br>
+\(\phi M_n\) 是「保證下限」、\(M_{pr}\) 是「可能上限」 → 兩者差 \(1.25/0.9 = 1.39\) 倍 →
+剪力要問「塑鉸能送進多大的力」，那是上限問題 →
+用 \(\phi M_n\) 反推會低估 39% → 剪力可能先於彎矩破壞 → 能力設計法失效。
+</div>
+
+<div class="box">
+<b>鏈 3：V<sub>e</sub> 公式的兩項從哪來（§3.1）</b><br>
+兩端塑鉸彎矩方向相同 → 地震彎矩圖是斜直線 → 斜率為常數 \(\sum M_{pr}/l_n\) →
+重力彎矩圖是拋物線 → 斜率線性 \(\pm w_u l_n/2\) →
+兩者<b>同號</b>的那一端是控制端 → 這就是公式裡 \(\pm\) 的意思；分母用淨跨因為塑鉸在柱面。
+</div>
+
+<div class="box">
+<b>鏈 4：V<sub>c</sub> = 0 與軸力條件（§1.2、§8）</b><br>
+塑鉸區反覆正負彎矩 → 裂縫貫穿全深度 → 骨材互鎖失效、壓力區剝落 → \(V_c\) 不可靠 →
+但足夠的<b>軸壓能把裂縫壓閉合、恢復互鎖</b> → 所以加一個 \(N_u < A_g f'_c/20\) 的條件 →
+梁（無軸壓）幾乎必然 \(V_c=0\)；柱（有軸壓）必須實際算過才知道。
+</div>
+
+<div class="box">
+<b>鏈 5：A<sub>sh</sub> 為什麼是兩式（§4.1）</b><br>
+柱大變形時保護層必剝落 → 損失 \((A_g-A_{ch})\) 的承載面積 → 圍束的強度增量要補回它（式①）→
+但大斷面柱 \(A_g/A_{ch}\to1\)，式①趨近 0 → 而圍束還有「提升 \(\varepsilon_{cu}\)」的作用，與尺寸無關 →
+需要一條不含 \(A_g/A_{ch}\) 的延性底線（式②）→ 分界 \(A_g/A_{ch}=1.30\)。
+</div>
+
+<div class="box">
+<b>鏈 6：繫筋的三重效果（§4.2）</b><br>
+箍筋只在角落被撐住 → 中間段外拱、圍束到不了核心中央 → 加繫筋 →
+①直接增加 \(A_{sh}\) 腳數 ②縮短外拱跨距、擴大有效圍束區 ③縮小 \(h_x\)、放寬 \(s_o\) →
+三個好處是同一個動作帶來的。
+</div>
+
+<div class="box">
+<b>鏈 7：強柱弱梁與柱密箍為什麼並存（§5.1）</b><br>
+柱端出鉸 → 層崩塌機構（6 個鉸就倒）→ 必須讓梁先出鉸 → \(\sum M_{nc}\ge\frac65\sum M_{nb}\) →
+<b>但</b> 1.2 &lt; 1.25（梁的實際超強）、柱 \(M_{nc}\) 隨軸力變動、高模態效應 →
+柱出鉸無法完全排除 → 所以柱端仍需 \(l_o\) 與 \(A_{sh}\)：一個降低機率，一個保底延性。
+</div>
+
+<div class="box">
+<b>鏈 8：接頭為什麼是瓶頸（§6.1）</b><br>
+梁彎矩靠「頂筋拉力 × 約 0.9d 的力臂」傳遞，柱剪力的力臂是半層高 →
+力臂短的一側內力大得多 → \(T_{top}\) 與 \(C_{bot}\) 對切面<b>同向</b>相加、只有 \(V_{col}\) 相減 →
+\(V_{jh}\) 可達柱剪力的 1.5~6 倍 → 梁越深、頂筋越多，接頭越容易卡住。
+</div>
+
+<div class="box">
+<b>鏈 9：韌性的三個尺度（§2.1）</b><br>
+斷面能提供 \(\mu_\phi = \phi_u/\phi_y\) → 但塑性曲率只發生在 \(L_p\) 這一小段 →
+塑鉸轉角 \(\theta_p = (\phi_u-\phi_y)L_p\) 乘力臂 \((L-L_p/2)\) 才變成頂點位移 →
+其餘柱長仍是彈性 → 所以 \(\mu < \mu_\phi\)；而 \(\theta=\delta/L\) 使 \(\mu_\theta\) 必等於 \(\mu\)。
+</div>
+
+<div class="box">
+<b>鏈 10：所有耐震構造規定的兩招（§7.3）</b><br>
+搭接、接頭、牆剪力、版傳力的共同點：都靠<b>混凝土的抗拉／劈裂／骨材互鎖</b>傳力 →
+這些機制在反覆載重下退化 → 規範只有兩招：
+<b>①加橫向鋼筋提供圍束</b>（\(A_{sh}\)、\(K_{tr}\)、搭接區箍筋、牆雙層配筋）、
+<b>②把機制移到不會退化的位置</b>（搭接移到柱中段、塑鉸移到梁端）→
+遇到沒背過的條文，用這兩招也能推出方向。
+</div>
+</section>
+
+</main>
+<footer>
+RC-U3-3 觀念講義｜exam-wiki-RC 知識庫｜由 unit-lecture skill 產生<br>
+資料來源：raw/json/question_index.json、wiki/concepts/、wiki/traps/、wiki/code-ref/、wiki/methods/
+</footer>
+</body>
+</html>

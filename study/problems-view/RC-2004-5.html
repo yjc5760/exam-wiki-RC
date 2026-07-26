@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2004-5 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2004-5 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：RC-2004-5</h1>
+<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
+<strong>副分類：</strong> <code>RC-U4-3</code> 預力損失
+<strong>設計法：</strong> 混合（WSD 應力分析 + USD 強度設計）
+<strong>標籤：</strong> <code>先拉法</code> <code>有黏結腱</code> <code>開裂彎矩Mcr</code> <code>fps公式</code> <code>Whitney應力塊</code> <code>β₁折減</code> <code>矩形斷面</code> <code>有效預力</code> <code>ωp延性驗核</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>先拉預力梁，矩形斷面與鋼腱配置如圖所示：</p>
+<p><img alt="RC-2004-5 題目附圖：40cm×90cm 矩形斷面，鋼腱在底部 10cm 處" src="../../raw/solutions/RC-2004-5/RC-2004-5-fig-1.png" /></p>
+<p><em>圖說：矩形斷面寬 b = 40 cm，高 h = 90 cm。預力鋼腱位於距底部 10 cm 處，有效深度 $d_p = 90 - 10 = 80\ \text{cm}$。</em></p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$b \times h$</td>
+<td>$40 \times 90\ \text{cm}$</td>
+</tr>
+<tr>
+<td>$d_p$</td>
+<td>$90 - 10 = 80\ \text{cm}$</td>
+</tr>
+<tr>
+<td>$A_{ps}$</td>
+<td>$6.16\ \text{cm}^2$</td>
+</tr>
+<tr>
+<td>$f_{pu}$</td>
+<td>$16{,}500\ \text{kgf/cm}^2$</td>
+</tr>
+<tr>
+<td>$f_{py}$</td>
+<td>$0.85\,f_{pu} = 14{,}025\ \text{kgf/cm}^2$</td>
+</tr>
+<tr>
+<td>$f_e$（有效預力）</td>
+<td>$0.6\,f_{pu} = 9{,}900\ \text{kgf/cm}^2$</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>$350\ \text{kgf/cm}^2$</td>
+</tr>
+<tr>
+<td>$\gamma_p$</td>
+<td>$0.4$（給定）</td>
+</tr>
+<tr>
+<td>$f_r$（裂縫模數）</td>
+<td>$2.0\sqrt{f'_c}$（給定）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>求：（1）開裂彎矩 $M_{cr}$；（2）彎矩設計強度 $\phi M_n$</strong></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖</h2>
+<p><strong>核心觀念：</strong> 先拉預力梁的<strong>兩個強度指標</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>指標</th>
+<th>分析方法</th>
+<th>物理意義</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_{cr}$（開裂彎矩）</td>
+<td>WSD 彈性法 + 斷裂模數</td>
+<td>有效預力 + $f_r$ 的組合抵抗力</td>
+</tr>
+<tr>
+<td>$\phi M_n$（設計強度）</td>
+<td>USD 強度設計 + ACI $f_{ps}$ 公式</td>
+<td>鋼腱拉力 × 力臂</td>
+</tr>
+</tbody>
+</table>
+<p><strong>測驗重點：</strong>
+1. $\beta_1$ 需依 $f'<em ps="ps">c = 350\ \text{kgf/cm}^2$ 折減（$\ne 0.85$）
+2. 偏心距 $e = d_p - h/2 = 35\ \text{cm}$（鋼腱距中性軸距離）
+3. $f</em>$）
+4. $M_{cr}$ 用底纖維壓應力 + $f_r$ 判斷開裂時刻}$ 公式正確帶入並確認結果合理（$f_{pe} &lt; f_{ps} &lt; f_{pu</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析</h2>
+<p><strong>作戰計畫：</strong>
+1. 計算 $\beta_1$、斷面幾何（$A$、$I$、$S_b$、$e$）
+2. 計算有效預力力 $P_e$，求底纖維壓應力 $f_{ce}$
+3. $M_{cr} = S_b \times (f_{ce} + f_r)$
+4. 計算 $\rho_p$，代入 $f_{ps}$ 公式
+5. 驗核延性（$\omega_p \le 0.36\beta_1$），求 $a$，計算 $M_n$、$\phi M_n$</p>
+<p><strong>關鍵陷阱（3 個）：</strong>
+- ⚠ <strong>$\beta_1 \ne 0.85$</strong>：$f'<em ce="ce">c = 350 &gt; 280\ \text{kgf/cm}^2$，需折減：$\beta_1 = 0.85 - 0.05 \times (350-280)/70 = 0.80$
+- ⚠ <strong>偏心距 $e$ 的計算</strong>：$e = d_p - h/2 = 80 - 45 = 35\ \text{cm}$（鋼腱中心至斷面形心的距離，非 $d_p$）
+- ⚠ <strong>底纖維壓應力包含軸壓與偏心兩項</strong>：$f</em> = P_e/A + P_e \cdot e / S_b$（兩項均為壓縮，同向）</p>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p>求 $M_{cr}$（開裂彎矩，tf·m）與 $\phi M_n$（設計彎矩強度，tf·m）。</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$\text{Step 1: } \beta_1 = 0.85 - 0.05 \times \frac{f'_c - 280}{70}$$</p>
+<p>$$\text{Step 2: } f_{ce} = \frac{P_e}{A} + \frac{P_e \cdot e}{S_b},\quad M_{cr} = S_b \times \left(\boxed{f_{ce}} + f_r\right)$$</p>
+<p>$$\text{Step 3: } \rho_p = \frac{A_{ps}}{b \cdot d_p},\quad f_{ps} = f_{pu}!\left(1 - \frac{\gamma_p}{\boxed{\beta_1}} \cdot \rho_p \cdot \frac{f_{pu}}{f'_c}\right)$$</p>
+<p>$$\text{Step 4: } a = \frac{A_{ps}\,\boxed{f_{ps}}}{0.85\,f'<em ps="ps">c\,b},\quad M_n = A</em>\right)$$}\,\boxed{f_{ps}}!\left(d_p - \frac{\boxed{a}}{2</p>
+<p>$$\text{Step 5: } \omega_p = \frac{A_{ps}\,\boxed{f_{ps}}}{b\,d_p\,f'_c} \le 0.36\beta_1 \text{（延性驗核）}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$b, h, d_p$</td>
+<td>$40, 90, 80\ \text{cm}$</td>
+<td></td>
+</tr>
+<tr>
+<td>$A_{ps}$</td>
+<td>$6.16\ \text{cm}^2$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_{pu}$</td>
+<td>$16{,}500\ \text{kgf/cm}^2$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_e$</td>
+<td>$9{,}900\ \text{kgf/cm}^2$（$= 0.6f_{pu}$）</td>
+<td>有效預力</td>
+</tr>
+<tr>
+<td>$\gamma_p$</td>
+<td>$0.4$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>$350\ \text{kgf/cm}^2$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\beta_1$</td>
+<td>$0.85 - 0.05(350-280)/70 = 0.80$</td>
+<td></td>
+</tr>
+<tr>
+<td>$A, I, S_b, e$</td>
+<td>幾何計算</td>
+<td></td>
+</tr>
+<tr>
+<td>$P_e, f_{ce}$</td>
+<td>有效預力 × 面積/模數</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_r$</td>
+<td>$2\sqrt{350} = 37.4\ \text{kgf/cm}^2$</td>
+<td></td>
+</tr>
+<tr>
+<td>$M_{cr}$</td>
+<td>$S_b(f_{ce}+f_r)$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\rho_p$</td>
+<td>$6.16/(40\times80)$</td>
+<td></td>
+</tr>
+<tr>
+<td>$f_{ps}$</td>
+<td>ACI 公式代入</td>
+<td></td>
+</tr>
+<tr>
+<td>$\phi M_n$</td>
+<td>$0.9 \times M_n$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程</h2>
+<h3>① 材料與幾何參數</h3>
+<p>$$\beta_1 = 0.85 - 0.05 \times \frac{350 - 280}{70} = 0.85 - 0.05 \times 1.0 = 0.80$$</p>
+<p>$$f_r = 2.0\sqrt{f'_c} = 2.0\sqrt{350} = 2.0 \times 18.71 = 37.4\ \text{kgf/cm}^2$$</p>
+<p><strong>斷面幾何：</strong>
+$$A = 40 \times 90 = 3{,}600\ \text{cm}^2$$
+$$I = \frac{40 \times 90^3}{12} = \frac{40 \times 729{,}000}{12} = 2{,}430{,}000\ \text{cm}^4$$
+$$y_t = \frac{h}{2} = 45\ \text{cm},\quad S_b = \frac{I}{y_t} = \frac{2{,}430{,}000}{45} = 54{,}000\ \text{cm}^3$$</p>
+<p><strong>偏心距（鋼腱中心至形心）：</strong>
+$$e = d_p - \frac{h}{2} = 80 - 45 = 35\ \text{cm}$$</p>
+<hr />
+<h3>② 開裂彎矩 $M_{cr}$</h3>
+<p><strong>有效預力作用力：</strong>
+$$P_e = A_{ps} \times f_e = 6.16 \times 9{,}900 = 61{,}024\ \text{kgf}$$</p>
+<p><strong>底纖維預壓應力（軸壓 + 偏心壓縮）：</strong>
+$$f_{ce} = \frac{P_e}{A} + \frac{P_e \cdot e}{S_b} = \frac{61{,}024}{3{,}600} + \frac{61{,}024 \times 35}{54{,}000}$$</p>
+<p>$$= 16.95 + \frac{2{,}135{,}840}{54{,}000} = 16.95 + 39.55 = 56.50\ \text{kgf/cm}^2 \text{（壓縮）}$$</p>
+<p><strong>開裂彎矩（底纖維合應力 = 0 時為去壓，再加 $f_r$ 才開裂）：</strong>
+$$M_{cr} = S_b \times (f_{ce} + f_r) = 54{,}000 \times (56.50 + 37.4) = 54{,}000 \times 93.9$$</p>
+<p>$$= 5{,}070{,}600\ \text{kgf·cm} = \boxed{M_{cr} = 50.7\ \text{tf·m}}$$</p>
+<hr />
+<h3>③ 極限鋼腱應力 $f_{ps}$（ACI 公式）</h3>
+<p>$$\rho_p = \frac{A_{ps}}{b \cdot d_p} = \frac{6.16}{40 \times 80} = \frac{6.16}{3{,}200} = 0.001925$$</p>
+<p>$$f_{ps} = f_{pu}!\left(1 - \frac{\gamma_p}{\beta_1} \cdot \rho_p \cdot \frac{f_{pu}}{f'_c}\right)$$</p>
+<p>$$= 16{,}500 \times \left(1 - \frac{0.4}{0.80} \times 0.001925 \times \frac{16{,}500}{350}\right)$$</p>
+<p>$$= 16{,}500 \times \left(1 - 0.5 \times 0.001925 \times 47.14\right)$$</p>
+<p>$$= 16{,}500 \times (1 - 0.04538) = 16{,}500 \times 0.9546$$</p>
+<p>$$\boxed{f_{ps} = 15{,}751\ \text{kgf/cm}^2}$$</p>
+<p><strong>驗核：</strong> $f_e = 9{,}900 \le f_{ps} = 15{,}751 \le f_{pu} = 16{,}500$ ✓（在有效預力至極限強度之間）</p>
+<hr />
+<h3>④ 延性驗核（$\omega_p$ 指標）</h3>
+<p>$$\omega_p = \frac{A_{ps} \cdot f_{ps}}{b \cdot d_p \cdot f'_c} = \frac{6.16 \times 15{,}751}{40 \times 80 \times 350} = \frac{97{,}026}{1{,}120{,}000} = 0.0867$$</p>
+<p>$$0.36\beta_1 = 0.36 \times 0.80 = 0.288$$</p>
+<p>$$\omega_p = 0.0867 \le 0.288 \quad \checkmark \quad \text{（足夠延性，可用 } \phi = 0.9\text{）}$$</p>
+<hr />
+<h3>⑤ 彎矩設計強度 $\phi M_n$</h3>
+<p><strong>Whitney 等值應力塊深度：</strong>
+$$a = \frac{A_{ps} \cdot f_{ps}}{0.85 \cdot f'_c \cdot b} = \frac{6.16 \times 15{,}751}{0.85 \times 350 \times 40} = \frac{97{,}026}{11{,}900} = 8.15\ \text{cm}$$</p>
+<p><strong>標稱彎矩：</strong>
+$$M_n = A_{ps} \cdot f_{ps} \cdot \left(d_p - \frac{a}{2}\right) = 97{,}026 \times \left(80 - \frac{8.15}{2}\right)$$</p>
+<p>$$= 97{,}026 \times 75.93 = 7{,}367{,}224\ \text{kgf·cm} = 73.7\ \text{tf·m}$$</p>
+<p>$$\phi M_n = 0.9 \times 73.7 = \boxed{66.3\ \text{tf·m}}$$</p>
+<hr />
+<h3>⑥ 最小彎矩強度驗核（ACI 18.8.2）</h3>
+<p>$$1.2\,M_{cr} = 1.2 \times 50.7 = 60.8\ \text{tf·m}$$</p>
+<p>$$\phi M_n = 66.3 \ge 60.8 \quad \checkmark$$</p>
+<hr />
+<p><strong>最終答案：</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>開裂彎矩 $M_{cr}$</td>
+<td style="text-align: center;">$\boxed{50.7\ \text{tf·m}}$</td>
+</tr>
+<tr>
+<td>彎矩設計強度 $\phi M_n$</td>
+<td style="text-align: center;">$\boxed{66.3\ \text{tf·m}}$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討</h2>
+<p><strong>① 為何 $f_{ps}$ 可超過 $f_{py}$？</strong></p>
+<p>ACI $f_{ps}$ 公式給出 $f_{ps} = 15{,}751 &gt; f_{py} = 14{,}025$。這在物理上合理：先拉有黏結腱在極限狀態下，混凝土極限應變使鋼腱應變遠超過降伏應變，進入<strong>應變硬化</strong>區，應力可從 $f_{py}$ 繼續升高至 $f_{pu}$（16,500 kgf/cm²）。ACI 公式用近似法得出極限狀態下的鋼腱應力，結果在 $f_{py}$ 與 $f_{pu}$ 之間是合理的。</p>
+<p><strong>② $\beta_1$ 的折減效應</strong></p>
+<p>若誤用 $\beta_1 = 0.85$（不折減）：
+$$f_{ps} = 16{,}500 \times (1 - \frac{0.4}{0.85} \times 0.001925 \times 47.14)$$
+$$= 16{,}500 \times (1 - 0.04278) = 16{,}793\ \text{kgf/cm}^2$$</p>
+<p>偏大約 0.3%，影響不大。但 $a = A_{ps}f_{ps}/(0.85 f'_c b)$ 的分子會稍大，導致 $M_n$ 略有差異。正確使用 $\beta_1 = 0.80$。</p>
+<p><strong>③ 開裂彎矩的工程意義</strong></p>
+<p>$M_{cr} = 50.7\ \text{tf·m}$ 是梁從全截面受壓（無裂縫）轉為開裂的臨界值。在 $M_{cr}$ 以下，截面保持不開裂（Uncracked），預力梁具有良好防腐蝕和耐久性。$\phi M_n/M_{cr} = 66.3/50.7 = 1.31 &gt; 1.2$，滿足 ACI 最小強度要求，確保有一定的強度儲備。</p></main>
+<footer>來源：raw/solutions/RC-2004-5/RC-2004-5.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
+</footer>
+</body></html>

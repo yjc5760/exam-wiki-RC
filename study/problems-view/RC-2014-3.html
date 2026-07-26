@@ -1,0 +1,456 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2014-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2014-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h1>考題編號：RC-2014-3</h1>
+<p><strong>主分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計
+<strong>副分類：</strong> （無）
+<strong>設計法：</strong> USD 強度設計法
+<strong>標籤：</strong> <code>臨界斷面</code> <code>Vc最大混凝土剪力強度</code> <code>軸力影響</code> <code>等效彎矩Mm</code> <code>詳細公式</code> <code>軸壓梁</code> <code>軸拉梁</code> <code>剪力三種條件比較</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>有一<strong>簡支矩形梁</strong>，跨距 $L = 5\ \text{m}$，斷面尺寸：</p>
+<p>$$b = 30\ \text{cm},\quad d = 60\ \text{cm},\quad h = 70\ \text{cm}$$</p>
+<p>材料與載重：
+- $f'_c = 280\ \text{kgf/cm}^2$
+- 均布設計載重 $w_u = 5\ \text{tf/m}$（不計梁自重）
+- 受拉鋼筋：$A_s = 3\text{-D32} = 24.42\ \text{cm}^2$</p>
+<p>在下列三種軸力條件下，求<strong>臨界斷面</strong>（距支承面距離 $d$ 處）之<strong>最大混凝土剪力計算強度 $V_c$</strong>：（25 分）</p>
+<table>
+<thead>
+<tr>
+<th>案例</th>
+<th>軸力條件</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Case 1</td>
+<td>無軸力（$N_u = 0$）</td>
+</tr>
+<tr>
+<td>Case 2</td>
+<td>設計軸壓力 $N_u = 25\ \text{tf}$（壓力）</td>
+</tr>
+<tr>
+<td>Case 3</td>
+<td>設計軸拉力 $N_u = 25\ \text{tf}$（拉力）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心精神：</strong>
+本題考查軸力對混凝土剪力強度 $V_c$ 的影響，使用<strong>等效彎矩法</strong>（$M_m$ 修正）——以 $M_m = M_u - N_u(4h-d)/8$ 代入詳細 $V_c$ 公式，統一處理三種軸力情況。</p>
+<p><strong>關鍵物理直覺：</strong>
+- <strong>軸壓</strong>使斷面受壓增加、抑制裂縫，$V_c$ 提升
+- <strong>軸拉</strong>使斷面更易開裂，$V_c$ 降低
+- $M_m$ 公式通過等效彎矩放大或縮小 $V_u \cdot d / M_m$ 比值，間接反映此效果</p>
+<p><strong>出題者意圖：</strong>
+- 測試詳細 $V_c$ 公式（非簡化）的正確應用
+- 考查 $M_m$ 公式的物理意義與 $N_u$ 符號規定
+- 觀察 $M_m &lt; 0$ 時的邊界條件處理（壓力大到超過彎矩）</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>共用前置（全三案例相同）：
+  → 計算 ρw、√f'c、臨界斷面 Vu、Mu
+
+Case 1（無軸力）：Mm = Mu
+  → 詳細公式：Vc = (0.50√f'c + 175ρw × Vu·d/Mu) × bw·d ≤ 0.93√f'c × bw·d
+
+Case 2（軸壓）：計算 Mm = Mu - Nu(4h-d)/8
+  → 若 Mm &lt; 0 → 公式失效 → Vc = 0.93√f'c × bw·d（最大值）
+
+Case 3（軸拉）：計算 Mm = Mu - Nu(4h-d)/8，Nu &lt; 0
+  → Mm &gt; Mu（拉力使等效彎矩增大）
+  → 詳細公式代入，Vc 低於無軸力
+</code></pre>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>陷阱</th>
+<th>應對策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td><strong>誤用簡化公式</strong>（$V_c = 0.53\sqrt{f'_c}\,b_w d$）：只能用在「無軸力」簡算，本題要求「最大」$V_c$</td>
+<td>題目要求最大剪力強度 → 用詳細公式（通常更高）</td>
+</tr>
+<tr>
+<td>2</td>
+<td><strong>$N_u$ 符號搞混</strong>：壓力為正或負取決於規範版本</td>
+<td>本題規定（土木401-100）：<strong>壓力 $N_u &gt; 0$，拉力 $N_u &lt; 0$</strong></td>
+</tr>
+<tr>
+<td>3</td>
+<td><strong>$M_m &lt; 0$ 時繼續套公式</strong>：得出 $V_c &lt; 0$ 或極大值</td>
+<td>$M_m &lt; 0$ → 公式不適用 → 取上限 $V_c = 0.93\sqrt{f'_c}\,b_w d$</td>
+</tr>
+<tr>
+<td>4</td>
+<td><strong>忘記上限值驗算</strong>：詳細公式結果須檢查 $\leq 0.93\sqrt{f'_c}\,b_w d$</td>
+<td>每次計算 $V_c$ 後必須與上限比較</td>
+</tr>
+<tr>
+<td>5</td>
+<td><strong>臨界斷面位置錯誤</strong>：取支承中心 $d$ 而非支承面 $d$</td>
+<td>臨界斷面在<strong>支承面</strong>（支承邊緣）起算 $d$ 距離</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>三種軸力條件下，臨界斷面之最大混凝土剪力計算強度 Vc</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<blockquote>
+<p>$\boxed{\cdot}$ = 需由前步驟推導，非題目直接給定的變數</p>
+</blockquote>
+<p>$$\text{Step 1:}\quad \rho_w = A_s/(b_w\,d),\quad V_u = w_u(L/2 - d),\quad M_u = w_u\,d\,(L-d)/2$$</p>
+<p>$$\text{Step 2:}\quad M_m = M_u - N_u\,(4h-d)/8 \quad \text{（軸壓} N_u&gt;0\text{；軸拉} N_u&lt;0\text{）}$$</p>
+<p>$$\text{Step 3（}M_m&gt;0\text{）:}\quad V_c = !\left(0.50\sqrt{f'_c} + 175\rho_w\,\frac{\boxed{V_u}\,d}{\boxed{M_m}}\right)!b_w\,d \leq 0.93\sqrt{f'_c}\,b_w\,d$$</p>
+<p>$$\text{Step 3（}M_m\leq0\text{）:}\quad V_c = 0.93\sqrt{f'_c}\,b_w\,d \quad \text{（直接取上限）}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$b$</td>
+<td>30 cm</td>
+<td>梁寬</td>
+</tr>
+<tr>
+<td>$d$</td>
+<td>60 cm</td>
+<td>有效深度</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>70 cm</td>
+<td>梁高</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>280 kgf/cm²</td>
+<td>混凝土強度</td>
+</tr>
+<tr>
+<td>$A_s$</td>
+<td>24.42 cm²</td>
+<td>拉力鋼筋量（3-D32）</td>
+</tr>
+<tr>
+<td>$L$</td>
+<td>500 cm</td>
+<td>跨距</td>
+</tr>
+<tr>
+<td>$w_u$</td>
+<td>5 tf/m = 50 kgf/cm</td>
+<td>均布設計載重</td>
+</tr>
+<tr>
+<td>$N_{u,2}$</td>
+<td>+25,000 kgf</td>
+<td>Case 2 軸壓力（正）</td>
+</tr>
+<tr>
+<td>$N_{u,3}$</td>
+<td>−25,000 kgf</td>
+<td>Case 3 軸拉力（負）</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>共用前置：</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\rho_w$</td>
+<td>$24.42/(30\times60) = 0.01357$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\sqrt{f'_c}$</td>
+<td>$\sqrt{280} = 16.733$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$b_w\,d$</td>
+<td>$30\times60 = 1800\ \text{cm}^2$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_u$</td>
+<td>$w_u(L/2-d) = 50\times(250-60) = 9500\ \text{kgf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$M_u$</td>
+<td>$w_u\,d\,(L-d)/2 = 50\times60\times440/2 = 660{,}000\ \text{kgf·cm}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_u\,d/M_u$</td>
+<td>$9500\times60/660{,}000 = 0.8636$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$(4h-d)/8$</td>
+<td>$(4\times70-60)/8 = 220/8 = 27.5\ \text{cm}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Case 2（軸壓）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_m$</td>
+<td>$660{,}000 - 25{,}000\times27.5 = -27{,}500\ \text{kgf·cm} &lt; 0$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_c$</td>
+<td>$M_m&lt;0 \Rightarrow V_c = 0.93\times16.733\times1800 = 28{,}010\ \text{kgf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Case 3（軸拉）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$M_m$</td>
+<td>$660{,}000 - (-25{,}000)\times27.5 = 1{,}347{,}500\ \text{kgf·cm}$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_u\,d/M_m$</td>
+<td>$9500\times60/1{,}347{,}500 = 0.4230$</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_c$</td>
+<td>$(8.366 + 175\times0.01357\times0.4230)\times1800 = 16{,}868\ \text{kgf}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>$M_m$ 的物理意義</strong></td>
+<td>軸壓力會在梁腹產生附加彎矩，使截面的「等效淨彎矩」減小；$M_m &lt; 0$ 表示軸壓引起的彎矩已超過外力彎矩，截面實際上受的是「壓彎加強」→ Vc 達上限</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>為何軸壓提升 Vc</strong></td>
+<td>壓力使截面中性軸下移、裂縫傾向被壓閉，抗剪能力增強；過大壓力（$M_m &lt; 0$）→ Vc 達規範上限 0.93√f'c·bw·d</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>為何軸拉降低 Vc</strong></td>
+<td>拉力促進開裂，斷面有效壓力區縮小，Vc 降低；極端拉力（Nu/(3.5Ag) &lt; −1）→ Vc → 0</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td><strong>詳細公式比簡化公式高的原因</strong></td>
+<td>詳細公式中 $175\rho_w V_u d/M_m$ 項在 $V_u d/M_m$ 不為零時均為正，增加 Vc；簡化公式相當於忽略此項</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>前置計算（三案例共用）</h3>
+<p><strong>斷面參數：</strong></p>
+<p>$$\rho_w = \frac{A_s}{b_w\,d} = \frac{24.42}{30\times60} = \frac{24.42}{1800} = \boxed{0.01357}$$</p>
+<p>$$\sqrt{f'_c} = \sqrt{280} = \boxed{16.733}\ \text{kgf}^{1/2}/\text{cm}$$</p>
+<p>$$A_g = b\times h = 30\times70 = 2100\ \text{cm}^2$$</p>
+<p><strong>臨界斷面（距支承面 $d = 60$ cm 處）之 $V_u$、$M_u$：</strong></p>
+<p>$$\text{支承反力：} R = \frac{w_u\,L}{2} = \frac{50\times500}{2} = 12{,}500\ \text{kgf}$$</p>
+<p>$$V_u = R - w_u\,d = 12{,}500 - 50\times60 = 12{,}500 - 3{,}000 = \boxed{9{,}500\ \text{kgf}}$$</p>
+<p>$$M_u = R\cdot d - \frac{w_u\,d^2}{2} = 12{,}500\times60 - \frac{50\times3600}{2} = 750{,}000 - 90{,}000 = \boxed{660{,}000\ \text{kgf·cm}}$$</p>
+<p>$$\frac{V_u\,d}{M_u} = \frac{9{,}500\times60}{660{,}000} = \frac{570{,}000}{660{,}000} = \boxed{0.8636} \leq 1.0\ ✓$$</p>
+<p><strong>等效彎矩參數：</strong></p>
+<p>$$\frac{4h-d}{8} = \frac{4\times70 - 60}{8} = \frac{280-60}{8} = \frac{220}{8} = \boxed{27.5\ \text{cm}}$$</p>
+<p><strong>上限 $V_{c,\text{max}}$：</strong></p>
+<p>$$V_{c,\max} = 0.93\sqrt{f'_c}\,b_w\,d = 0.93\times16.733\times1800 = 15.561\times1800 = \boxed{28{,}010\ \text{kgf} = 28.01\ \text{tf}}$$</p>
+<p><strong>參考：簡化公式 $V_c$（無軸力）</strong></p>
+<p>$$V_{c,\text{simple}} = 0.53\sqrt{f'_c}\,b_w\,d = 0.53\times16.733\times1800 = 8.869\times1800 = 15{,}964\ \text{kgf} = 15.96\ \text{tf}$$</p>
+<hr />
+<h3>Case 1：無軸力（$N_u = 0$）</h3>
+<p>$M_m = M_u = 660{,}000\ \text{kgf·cm}$（軸力為零，$M_m$ 即 $M_u$）</p>
+<p>詳細公式：</p>
+<p>$$V_c = !\left(0.50\sqrt{f'_c} + 175\,\rho_w\,\frac{V_u\,d}{M_u}\right)!b_w\,d$$</p>
+<p>$$= !\left(0.50\times16.733 + 175\times0.01357\times0.8636\right)!\times1800$$</p>
+<p>$$= !\left(8.366 + 2.375\times0.8636\right)!\times1800$$</p>
+<p>$$= !\left(8.366 + 2.051\right)!\times1800 = 10.417\times1800$$</p>
+<p>$$= \boxed{V_c = 18{,}751\ \text{kgf} = 18.75\ \text{tf}}$$</p>
+<p>上限驗算：$18{,}751 &lt; 28{,}010\ ✓$（詳細公式值有效）</p>
+<hr />
+<h3>Case 2：設計軸壓力 $N_u = +25\ \text{tf}$（壓力，$N_u &gt; 0$）</h3>
+<p>等效彎矩：</p>
+<p>$$M_m = M_u - N_u\,\frac{4h-d}{8} = 660{,}000 - 25{,}000\times27.5 = 660{,}000 - 687{,}500 = \boxed{-27{,}500\ \text{kgf·cm}}$$</p>
+<p>$$M_m = -27{,}500\ \text{kgf·cm} &lt; 0$$</p>
+<p><strong>當 $M_m \leq 0$ 時，詳細公式中 $V_u d/M_m &lt; 0$，公式失效。</strong>
+按規範規定，此時 $V_c$ 取規範上限：</p>
+<p>$$\boxed{V_c = V_{c,\max} = 0.93\sqrt{f'_c}\,b_w\,d = 28{,}010\ \text{kgf} = 28.01\ \text{tf}}$$</p>
+<p><strong>物理意義</strong>：軸壓力 25 tf 所產生的等效附加彎矩（$687{,}500\ \text{kgf·cm}$）已超過外力彎矩（$660{,}000\ \text{kgf·cm}$），說明臨界斷面實際上處於「壓彎加強」狀態，混凝土剪力強度達到上限。</p>
+<hr />
+<h3>Case 3：設計軸拉力 $N_u = -25\ \text{tf}$（拉力，$N_u &lt; 0$）</h3>
+<p>等效彎矩（$N_u$ 取負值代入）：</p>
+<p>$$M_m = M_u - N_u\,\frac{4h-d}{8} = 660{,}000 - (-25{,}000)\times27.5 = 660{,}000 + 687{,}500 = \boxed{1{,}347{,}500\ \text{kgf·cm}}$$</p>
+<p>$$\frac{V_u\,d}{M_m} = \frac{9{,}500\times60}{1{,}347{,}500} = \frac{570{,}000}{1{,}347{,}500} = \boxed{0.4230} \leq 1.0\ ✓$$</p>
+<p>詳細公式：</p>
+<p>$$V_c = !\left(0.50\sqrt{f'_c} + 175\,\rho_w\,\frac{V_u\,d}{M_m}\right)!b_w\,d$$</p>
+<p>$$= !\left(0.50\times16.733 + 175\times0.01357\times0.4230\right)!\times1800$$</p>
+<p>$$= !\left(8.366 + 2.375\times0.4230\right)!\times1800$$</p>
+<p>$$= !\left(8.366 + 1.005\right)!\times1800 = 9.371\times1800$$</p>
+<p>$$= \boxed{V_c = 16{,}868\ \text{kgf} = 16.87\ \text{tf}}$$</p>
+<p>上限驗算：$16{,}868 &lt; 28{,}010\ ✓$</p>
+<hr />
+<h3>彙總比較表</h3>
+<table>
+<thead>
+<tr>
+<th>案例</th>
+<th style="text-align: center;">$N_u$ (kgf)</th>
+<th style="text-align: center;">$M_m$ (kgf·cm)</th>
+<th style="text-align: center;">$V_u d/M_m$</th>
+<th style="text-align: center;">$V_c$ (kgf)</th>
+<th style="text-align: center;">$V_c$ (tf)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Case 1 無軸力</td>
+<td style="text-align: center;">0</td>
+<td style="text-align: center;">660,000</td>
+<td style="text-align: center;">0.864</td>
+<td style="text-align: center;"><strong>18,751</strong></td>
+<td style="text-align: center;"><strong>18.75</strong></td>
+</tr>
+<tr>
+<td>Case 2 軸壓</td>
+<td style="text-align: center;">+25,000</td>
+<td style="text-align: center;">−27,500（&lt;0）</td>
+<td style="text-align: center;">—</td>
+<td style="text-align: center;"><strong>28,010</strong></td>
+<td style="text-align: center;"><strong>28.01</strong></td>
+</tr>
+<tr>
+<td>Case 3 軸拉</td>
+<td style="text-align: center;">−25,000</td>
+<td style="text-align: center;">1,347,500</td>
+<td style="text-align: center;">0.423</td>
+<td style="text-align: center;"><strong>16,868</strong></td>
+<td style="text-align: center;"><strong>16.87</strong></td>
+</tr>
+</tbody>
+</table>
+<p>（參考：簡化公式 $V_{c,\text{simple}} = 15{,}964\ \text{kgf} = 15.96\ \text{tf}$）</p>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>① 為何軸壓 Case 2 的 $V_c$ 反而達到上限（最大）</strong></p>
+<p>直覺上，軸壓使梁的剪切剛度增加——壓力閉合了潛在的斜裂縫，混凝土整體受壓後的抗剪貢獻更大。但 $M_m$ 公式更深的意涵是：</p>
+<blockquote>
+<p>軸壓 $N_u$ 在梁腹部的任意斷面會產生一個「負彎矩效應」（$-N_u(4h-d)/8$ 項為負），<strong>等效上抵銷了外加彎矩</strong>。當此抵銷量超過外加彎矩（$M_m &lt; 0$），即表示軸壓已使斷面接近純壓狀態，$V_c$ 達規範允許上限。</p>
+</blockquote>
+<p><strong>② 軸拉力的工程意義</strong></p>
+<p>Case 3 中，$V_c = 16.87\ \text{tf}$ 比無軸力（18.75 tf）低約 10%，比簡化公式（15.96 tf）仍略高。軸拉力使斷面開裂趨勢增加，降低混凝土抗剪能力。若繼續增加軸拉力，$V_c$ 將持續降低，最終趨近於零（當 $N_u(3.5A_g) \leq -f'_c$ 時，混凝土完全不提供抗剪貢獻）。</p>
+<p><strong>③ 詳細公式 vs. 簡化公式的取捨</strong></p>
+<table>
+<thead>
+<tr>
+<th>公式</th>
+<th style="text-align: center;">Case 1 $V_c$</th>
+<th>適用情境</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>簡化：$0.53\sqrt{f'_c}\,b_w d$</td>
+<td style="text-align: center;">15.96 tf</td>
+<td>快速估算、保守設計</td>
+</tr>
+<tr>
+<td>詳細：$0.50\sqrt{f'_c} + 175\rho_w V_u d/M_m$</td>
+<td style="text-align: center;">18.75 tf</td>
+<td>最大化 $V_c$ 以減少腹筋用量</td>
+</tr>
+</tbody>
+</table>
+<p>詳細公式需計算 $V_u \cdot d/M_m$，但可節省約 15% 的腹筋設計需求。考場建議：若題目說「最大混凝土剪力計算強度」→ 用詳細公式；若說「計算 $V_c$」或時間緊迫 → 用簡化公式即可。</p></main>
+<footer>來源：raw/solutions/RC-2014-3/RC-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
+</footer>
+</body></html>

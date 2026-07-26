@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2006-4 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2006-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h3>考題編號：RC-2006-4</h3>
+<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
+<strong>副分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計
+<strong>設計法：</strong> WSD工作應力法
+<strong>標籤：</strong> <code>後拉法</code> <code>組合T型斷面</code> <code>兩階段應力疊加</code> <code>非組合梁承受DL</code> <code>組合梁承受LL</code> <code>上緣壓力</code> <code>下緣拉力</code> <code>不同f'c轉換</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>簡支預力梁，先架設（承受梁自重及版 DL），版硬化後形成組合斷面，施加均布活載重 $w_{LL} = 1.0$ tf/m²，求<strong>跨中斷面預力梁上緣（頂）及下緣（底）之混凝土應力</strong>。</p>
+<p><strong>已知條件：</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁跨度 $L$</td>
+<td>20 m = 2000 cm</td>
+</tr>
+<tr>
+<td>梁斷面</td>
+<td>$b=30$ cm，$h=80$ cm</td>
+</tr>
+<tr>
+<td>梁 $f'_{c1}$</td>
+<td>350 kgf/cm²</td>
+</tr>
+<tr>
+<td>版斷面</td>
+<td>寬 200 cm，厚 15 cm</td>
+</tr>
+<tr>
+<td>版 $f'_{c2}$</td>
+<td>280 kgf/cm²</td>
+</tr>
+<tr>
+<td>有效預力 $P_e$</td>
+<td>210 tf = 210,000 kgf</td>
+</tr>
+<tr>
+<td>c.g.s. 距梁底</td>
+<td>15 cm</td>
+</tr>
+<tr>
+<td>均布活載重 $w_{LL}$</td>
+<td>1.0 tf/m²（施於版上）</td>
+</tr>
+<tr>
+<td>$\gamma_c$</td>
+<td>2400 kgf/m³</td>
+</tr>
+</tbody>
+</table>
+<p><strong>題目附圖：</strong></p>
+<p><img alt="RC-2006-4 預力梁組合截面：梁30×80cm（c.g.s.距底15cm），版寬200cm（梁中心各100cm）、版厚15cm，三梁示意圖" src="../../raw/solutions/RC-2006-4/RC-2006-4-fig-1.png" /></p>
+<p><em>圖說：簡支預力梁 30×80 cm，c.g.s. 距梁底 15 cm，梁偏心距 e=40-15=25 cm。梁間距 200 cm（梁中心各 100 cm），版寬 200 cm，版厚 15 cm（$f'_{c2}=280$ kgf/cm²）。有效預力 210 tf，$L=20$ m。</em></p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>兩階段施工順序：</strong>
+- <strong>Stage 1（非組合梁）：</strong> $P_e$ + 梁自重 + 版濕混凝土 DL → 作用於梁斷面
+- <strong>Stage 2（組合斷面）：</strong> $w_{LL}$ → 作用於組合轉換斷面</p>
+<p><strong>控制條件：</strong> 本題不要求驗算，只求應力值。</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<table>
+<thead>
+<tr>
+<th>步驟</th>
+<th>工作</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>1</td>
+<td>計算梁斷面性質（$A_1$, $I_1$, $S_{t1}$, $S_{b1}$）</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Stage 1：預力 + 梁 SW + 版 DL → 梁頂/底應力</td>
+</tr>
+<tr>
+<td>3</td>
+<td>計算組合轉換斷面（$n=\sqrt{280/350}$）</td>
+</tr>
+<tr>
+<td>4</td>
+<td>Stage 2：$w_{LL}$ → 組合斷面增量應力</td>
+</tr>
+<tr>
+<td>5</td>
+<td>疊加得最終應力</td>
+</tr>
+</tbody>
+</table>
+<p><strong>三大陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⚠ 版 DL 作用在非組合梁</td>
+<td>版尚未硬化時，版重由梁獨自承受</td>
+</tr>
+<tr>
+<td>⚠ $n = \sqrt{f'<em c1="c1">{c2}/f'</em>$（非 1）}</td>
+<td>版混凝土較弱，需折減轉換</td>
+</tr>
+<tr>
+<td>⚠ LL 在組合斷面上</td>
+<td>版硬化後形成組合，活載重作用於組合截面</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
+<h3>最終目標</h3>
+<p><code>疊加 Stage1（預力+DL）和 Stage2（LL）應力，得梁頂梁底最終應力</code></p>
+<h3>本題關鍵公式鏈</h3>
+<p>$$\text{Stage 1: } f = \frac{P_e}{A_1} \pm \frac{P_e \cdot e}{S} \mp \frac{M_{S1}}{S}$$</p>
+<p>$$n = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em>, \quad b'}}<em slab="slab">{slab} = b</em>$$} \times n, \quad \bar{y} = \frac{\sum A_i y_i}{\sum A_i</p>
+<p>$$\text{Stage 2: } \Delta f = \pm \frac{M_{LL} \cdot y}{I_c}$$</p>
+<h3>L2 關鍵數值</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$e$</td>
+<td>$40-15=25$ cm</td>
+</tr>
+<tr>
+<td>$A_1, I_1$</td>
+<td>2400 cm², 1,280,000 cm⁴</td>
+</tr>
+<tr>
+<td>$S_{t1}=S_{b1}$</td>
+<td>32,000 cm³</td>
+</tr>
+<tr>
+<td>$w_{S1}$</td>
+<td>$576+720=1296$ kgf/m</td>
+</tr>
+<tr>
+<td>$M_{S1}$</td>
+<td>6,480,000 kgf·cm</td>
+</tr>
+<tr>
+<td>$f_{top}^{S1}$, $f_{bot}^{S1}$</td>
+<td>+125.9, +49.1 kgf/cm²（均壓縮）</td>
+</tr>
+<tr>
+<td>$n$, $b'$</td>
+<td>0.8944, 178.9 cm</td>
+</tr>
+<tr>
+<td>$\bar{y}$</td>
+<td>65.07 cm（梁底起）</td>
+</tr>
+<tr>
+<td>$I_c$</td>
+<td>4,188,647 cm⁴</td>
+</tr>
+<tr>
+<td>$S_{comp,top}$, $S_{comp,bot}$</td>
+<td>280,554, 64,373 cm³</td>
+</tr>
+<tr>
+<td>$M_{LL}$</td>
+<td>10,000,000 kgf·cm</td>
+</tr>
+<tr>
+<td>$\Delta f_{top}^{LL}$, $\Delta f_{bot}^{LL}$</td>
+<td>+35.6, −155.4 kgf/cm²</td>
+</tr>
+<tr>
+<td><strong>梁頂最終</strong></td>
+<td><strong>+161.6 kgf/cm²（壓縮）</strong></td>
+</tr>
+<tr>
+<td><strong>梁底最終</strong></td>
+<td><strong>−106.3 kgf/cm²（拉伸）</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：非組合梁斷面性質</h3>
+<p>$$A_1 = 30 \times 80 = 2{,}400 \text{ cm}^2, \quad I_1 = \frac{30 \times 80^3}{12} = \frac{30 \times 512{,}000}{12} = 1{,}280{,}000 \text{ cm}^4$$</p>
+<p>$$S_{t1} = S_{b1} = \frac{I_1}{h/2} = \frac{1{,}280{,}000}{40} = 32{,}000 \text{ cm}^3$$</p>
+<p>偏心距：$e = \frac{h}{2} - 15 = 40 - 15 = \boxed{25 \text{ cm}}$</p>
+<hr />
+<h3>Step 2：Stage 1（非組合梁：$P_e$ + 梁 SW + 版 DL）</h3>
+<p><strong>預力應力（壓縮為正）：</strong></p>
+<p>$$f_{top}^{PS} = \frac{P_e}{A_1} - \frac{P_e \cdot e}{S_{t1}} = \frac{210{,}000}{2{,}400} - \frac{210{,}000 \times 25}{32{,}000} = 87.50 - 164.06 = \boxed{-76.56 \text{ kgf/cm}^2 \text{ （拉）}}$$</p>
+<p>$$f_{bot}^{PS} = \frac{P_e}{A_1} + \frac{P_e \cdot e}{S_{b1}} = 87.50 + 164.06 = \boxed{+251.56 \text{ kgf/cm}^2 \text{ （壓）}}$$</p>
+<p><strong>Stage 1 DL 荷載（作用於非組合梁）：</strong></p>
+<p>$$w_{beam} = 2400 \times \frac{30 \times 80}{10{,}000} = 576 \text{ kgf/m} = 5.76 \text{ kgf/cm}$$</p>
+<p>$$w_{slab} = 2400 \times 0.15 \times 2.00 = 720 \text{ kgf/m} = 7.20 \text{ kgf/cm}$$</p>
+<p>$$w_{S1} = 5.76 + 7.20 = 12.96 \text{ kgf/cm}$$</p>
+<p>$$M_{S1} = \frac{12.96 \times 2000^2}{8} = 12.96 \times 500{,}000 = 6{,}480{,}000 \text{ kgf·cm}$$</p>
+<p><strong>Stage 1 DL 應力：</strong></p>
+<p>$$f_{top}^{S1,DL} = +\frac{M_{S1}}{S_{t1}} = +\frac{6{,}480{,}000}{32{,}000} = +202.50 \text{ kgf/cm}^2 \text{ （壓）}$$</p>
+<p>$$f_{bot}^{S1,DL} = -\frac{M_{S1}}{S_{b1}} = -202.50 \text{ kgf/cm}^2 \text{ （拉）}$$</p>
+<p><strong>Stage 1 總應力（預力 + DL）：</strong></p>
+<p>$$f_{top}^{S1} = -76.56 + 202.50 = \boxed{+125.94 \text{ kgf/cm}^2 \text{ （壓）}}$$</p>
+<p>$$f_{bot}^{S1} = +251.56 - 202.50 = \boxed{+49.06 \text{ kgf/cm}^2 \text{ （壓）}}$$</p>
+<hr />
+<h3>Step 3：組合轉換斷面</h3>
+<p>$$n = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em> = 0.8944$$}}} = \sqrt{\frac{280}{350}} = \sqrt{0.800</p>
+<p>轉換版寬：$b'_{slab} = 200 \times 0.8944 = 178.9$ cm</p>
+<p>各子斷面（梁底起量）：</p>
+<table>
+<thead>
+<tr>
+<th>子斷面</th>
+<th>面積 $A_i$</th>
+<th>形心 $y_i$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁（30×80）</td>
+<td>2,400 cm²</td>
+<td>40 cm</td>
+</tr>
+<tr>
+<td>轉換版（178.9×15）</td>
+<td>2,683.2 cm²</td>
+<td>80+7.5 = 87.5 cm</td>
+</tr>
+</tbody>
+</table>
+<p><strong>組合形心：</strong>
+$$\bar{y} = \frac{2{,}400 \times 40 + 2{,}683.2 \times 87.5}{2{,}400 + 2{,}683.2} = \frac{96{,}000 + 234{,}780}{5{,}083.2} = \frac{330{,}780}{5{,}083.2} = \boxed{65.07 \text{ cm}}$$</p>
+<p>各關鍵距離：
+- 梁底至形心：65.07 cm（$y_{bot}$）
+- 形心至梁頂：$80 - 65.07 = 14.93$ cm（$y_{beam,top}$）
+- 形心至版頂：$95 - 65.07 = 29.93$ cm</p>
+<p><strong>組合慣性矩：</strong></p>
+<p>$$I_{beam} = 1{,}280{,}000 + 2{,}400 \times (65.07 - 40)^2 = 1{,}280{,}000 + 2{,}400 \times 628.5 = 2{,}788{,}400 \text{ cm}^4$$</p>
+<p>$$I_{slab} = \frac{178.9 \times 15^3}{12} + 2{,}683.2 \times (87.5 - 65.07)^2 = 50{,}310 + 2{,}683.2 \times 503.1 = 50{,}310 + 1{,}349{,}913 = 1{,}400{,}223 \text{ cm}^4$$</p>
+<p>$$I_c = 2{,}788{,}400 + 1{,}400{,}223 = \boxed{4{,}188{,}623 \text{ cm}^4}$$</p>
+<p><strong>截面模數（梁材料）：</strong>
+$$S_{comp,top} = \frac{I_c}{y_{beam,top}} = \frac{4{,}188{,}623}{14.93} = 280{,}552 \text{ cm}^3$$</p>
+<p>$$S_{comp,bot} = \frac{I_c}{\bar{y}} = \frac{4{,}188{,}623}{65.07} = 64{,}372 \text{ cm}^3$$</p>
+<hr />
+<h3>Step 4：Stage 2（組合斷面：$w_{LL}$ 均布活載重）</h3>
+<p>$$w_{LL} = 1.0 \text{ tf/m}^2 \times 2.0 \text{ m} = 2.0 \text{ tf/m} = 20.0 \text{ kgf/cm}$$</p>
+<p>$$M_{LL} = \frac{20.0 \times 2000^2}{8} = 20.0 \times 500{,}000 = 10{,}000{,}000 \text{ kgf·cm}$$</p>
+<p><strong>LL 增量應力（作用於梁）：</strong></p>
+<p>$$\Delta f_{top}^{LL} = +\frac{M_{LL}}{S_{comp,top}} = +\frac{10{,}000{,}000}{280{,}552} = +\boxed{35.6 \text{ kgf/cm}^2 \text{ （壓）}}$$</p>
+<p>$$\Delta f_{bot}^{LL} = -\frac{M_{LL}}{S_{comp,bot}} = -\frac{10{,}000{,}000}{64{,}372} = -\boxed{155.4 \text{ kgf/cm}^2 \text{ （拉）}}$$</p>
+<hr />
+<h3>Step 5：施加 LL 後梁頂/底總應力</h3>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>Stage 1</th>
+<th>Stage 2 LL</th>
+<th><strong>總應力</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁頂</td>
+<td>+125.94（壓）</td>
+<td>+35.6（壓）</td>
+<td>$\boxed{+161.6 \text{ kgf/cm}^2}$（<strong>壓縮</strong>）</td>
+</tr>
+<tr>
+<td>梁底</td>
+<td>+49.06（壓）</td>
+<td>−155.4（拉）</td>
+<td>$\boxed{-106.3 \text{ kgf/cm}^2}$（<strong>拉伸</strong>）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討</h2>
+<h3>容許應力驗算</h3>
+<table>
+<thead>
+<tr>
+<th>位置</th>
+<th>計算應力</th>
+<th>容許值</th>
+<th>判斷</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>梁頂（壓）</td>
+<td>161.6 kgf/cm²</td>
+<td>$0.4\times350 = 140$ kgf/cm²</td>
+<td>❌ 超限</td>
+</tr>
+<tr>
+<td>梁底（拉）</td>
+<td>106.3 kgf/cm²</td>
+<td>$3\sqrt{350} = 56.1$ kgf/cm²</td>
+<td>❌ 超限</td>
+</tr>
+</tbody>
+</table>
+<p>→ 本題目所施加的活載重（1.0 tf/m²）使梁的工作應力超過容許值，顯示此梁在此條件下的服務性能不足。</p>
+<h3>版頂應力驗算（附加）</h3>
+<p>版頂（35.93 cm above composite centroid）LL 引起之壓力：
+$$f_{deck,top}^{LL} = +\frac{M_{LL} \times y_{deck,top}}{I_c} \times n = +\frac{10{,}000{,}000 \times 29.93}{4{,}188{,}623} \times 0.8944 = 71.45 \times 0.8944 = 63.9 \text{ kgf/cm}^2$$</p>
+<p>容許壓力 $0.4\times280 = 112$ kgf/cm²，版頂 63.9 &lt; 112 ✓ 版本身OK。</p>
+<h3>版 DL 在 Stage 1 而非 Stage 2</h3>
+<p>若版 DL 誤置於組合斷面（Stage 2），梁底在 Stage 1 結束後仍有大量預壓：
+$f_{bot}^{S1,incorrect} = +251.56 - 576\times500{,}000/32{,}000 = +251.56 - 90.0 = +161.6$ kgf/cm²（壓縮）</p>
+<p>此值偏大，實際情況應如本題解算（版 DL 使梁底從 251.56 減少到 49.06 kgf/cm²）。</p></main>
+<footer>來源：raw/solutions/RC-2006-4/RC-2006-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
+</footer>
+</body></html>

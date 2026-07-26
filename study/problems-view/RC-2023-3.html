@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2023-3 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2023-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<main><h3>考題編號：RC-2023-3</h3>
+<p><strong>主分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計
+<strong>副分類：</strong> <code>RC-U2-2</code> RC 扭力強度設計
+<strong>設計法：</strong> USD強度設計法
+<strong>標籤：</strong> <code>懸臂梁</code> <code>臨界斷面</code> <code>扭力忽略門檻</code> <code>偏心載重</code> <code>Acp</code> <code>pcp</code> <code>φTcr</code> <code>剪力需求</code></p>
+<hr />
+<h2>1. 原始題目重述 (Problem Restatement)</h2>
+<p>鋼筋混凝土懸臂矩形梁，條件如下：</p>
+<table>
+<thead>
+<tr>
+<th>參數</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>跨度</td>
+<td>3.5 m（懸臂）</td>
+</tr>
+<tr>
+<td>梁寬 $b$</td>
+<td>35 cm</td>
+</tr>
+<tr>
+<td>梁深 $h$</td>
+<td>60 cm</td>
+</tr>
+<tr>
+<td>有效深度 $d$</td>
+<td>53 cm（題目已給定）</td>
+</tr>
+<tr>
+<td>箍筋</td>
+<td>閉合箍筋 D13</td>
+</tr>
+<tr>
+<td>縱向鋼筋</td>
+<td>D13</td>
+</tr>
+<tr>
+<td>偏心垂直均佈載重</td>
+<td>$W_u = 2.5 \text{ tf/m}$，偏心量 $e$</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>280 kgf/cm²</td>
+</tr>
+<tr>
+<td>$f_y$</td>
+<td>4200 kgf/cm²</td>
+</tr>
+<tr>
+<td>強度折減因子</td>
+<td>$\phi = 0.75$</td>
+</tr>
+</tbody>
+</table>
+<p>此梁<strong>設計時不考慮扭力</strong>。試求：
+1. 此梁斷面的最大設計剪力 $V_u$（臨界斷面）
+2. 臨界斷面的最大偏心量 $e$（使扭力仍可忽略）</p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
+<p><strong>核心觀念：</strong> 偏心垂直載重同時產生<strong>剪力 V</strong> 與<strong>扭矩 T = V × e</strong>。若扭矩 $T_u$ 低於規範扭力忽略門檻 $\phi T_{th}$，則扭力效應可在設計中忽略，只需設計剪力。</p>
+<p><strong>出題者測驗：</strong>
+1. 懸臂梁臨界斷面位置（$d$ 距固定端）與剪力計算
+2. CNS 1480（土木401-110）扭力忽略條件的應用：$T_u &lt; \phi T_{th}$
+3. $T_{th}$ 的計算（需用 $A_{cp}$ 和 $p_{cp}$）</p>
+<p><strong>設計哲學：</strong> 偏心載重本質上是「剪力 + 扭力」的組合作用。當 $e$ 足夠小使扭矩低於裂縫扭矩的 $\phi$ 倍時，規範允許忽略扭力的設計影響——這也是本題的物理核心。</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
+<p><strong>作戰計畫：</strong></p>
+<pre><code>Step 1：確認臨界斷面位置（懸臂梁：d 距固定端）
+     ↓
+Step 2：計算臨界斷面的剪力需求 Vu = Wu × (L - d)
+     ↓
+Step 3：計算斷面幾何參數 Acp、pcp
+     ↓
+Step 4：計算扭力門檻 Tth（土木401-110 公式）
+     ↓
+Step 5：由 Tu = Vu × e ≤ φTth → 求 emax
+</code></pre>
+<p><strong>關鍵陷阱：</strong></p>
+<table>
+<thead>
+<tr>
+<th>陷阱</th>
+<th>說明</th>
+<th>應對策略</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>⚠ 懸臂梁的臨界斷面</td>
+<td>依 ACI 318 §9.4.3.2 <strong>三條件逐一驗</strong>：(a) 固定端反力向上、端區受壓 ✓ (b) 載重自頂面施加 ✓ (c) 區間內無集中載重 ✓ → 三條件均成立，臨界斷面取距<strong>固定端</strong> $d$ 處（非自由端）</td>
+<td>剪力由大到小，從固定端算起距離 $d$；判準是三條件而非構件名稱</td>
+</tr>
+<tr>
+<td>⚠ 扭矩門檻公式的單位</td>
+<td>土木401-110 公式為 SI（MPa, mm, N·mm），直接套 kgf/cm² 數值會低估 3.19 倍</td>
+<td>換算至 SI 計算，或使用 kgf/cm² 等效係數 0.266</td>
+</tr>
+<tr>
+<td>⚠ 混淆 $A_{cp}$ 與 $A_{oh}$</td>
+<td>$A_{cp}$：整個斷面積（用於忽略條件）；$A_{oh}$：箍筋中心線圍成的面積（用於扭力設計）</td>
+<td>忽略條件用 $A_{cp} = b \times h$</td>
+</tr>
+<tr>
+<td>⚠ 偏心距的力學關係</td>
+<td>均佈偏心載重在任意截面的扭矩 = 該截面剪力 × 偏心距 $e$</td>
+<td>$T_u = V_u \cdot e$（可直接由比例關係導出）</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p><code>求懸臂梁臨界斷面的最大設計剪力 Vu，及在不考慮扭力條件下的最大偏心量 emax</code></p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$\text{Step 1: } V_u = W_u \times (L - d)$$</p>
+<p>$$\text{Step 2: } T_{th} = \frac{\sqrt{f'<em cp="cp">c}}{12} \cdot \frac{A</em>$$}^2}{p_{cp}} \quad \text{(SI: MPa, mm, N·mm)</p>
+<p>$$\text{Step 3: } T_u \leq \phi T_{th} \quad \Rightarrow \quad e_{\max} = \frac{\phi \boxed{T_{th}}}{V_u}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$L$</td>
+<td>3.5 m = 350 cm</td>
+<td>懸臂跨度</td>
+</tr>
+<tr>
+<td>$b$</td>
+<td>35 cm</td>
+<td>梁寬</td>
+</tr>
+<tr>
+<td>$h$</td>
+<td>60 cm</td>
+<td>梁深</td>
+</tr>
+<tr>
+<td>$d$</td>
+<td>53 cm</td>
+<td>有效深度（已給）</td>
+</tr>
+<tr>
+<td>$W_u$</td>
+<td>2.5 tf/m</td>
+<td>因數化偏心均佈載重</td>
+</tr>
+<tr>
+<td>$f'_c$</td>
+<td>280 kgf/cm² = 27.46 MPa</td>
+<td>混凝土強度</td>
+</tr>
+<tr>
+<td>$\phi$</td>
+<td>0.75</td>
+<td>剪力/扭力強度折減因子</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>Step 1：臨界斷面剪力</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>臨界斷面位置</td>
+<td>$x_c = d = 53\text{ cm}$ 距固定端（ACI 9.4.3.2）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$V_u$</td>
+<td>$W_u \times (L - d) = 2.5 \times (3.5 - 0.53)$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 2：斷面幾何</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A_{cp}$</td>
+<td>$b \times h = 35 \times 60$（完整斷面積）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$p_{cp}$</td>
+<td>$2(b + h) = 2(35 + 60)$（外周長）</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 3：扭力忽略門檻</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_{th}$ [N·mm]</td>
+<td>$\frac{\sqrt{f'<em cp="cp">c[\text{MPa}]}}{12} \cdot \frac{A</em>$（土木401-110 §22.7.1.1）}^2[\text{mm}^2]}{p_{cp}[\text{mm}]</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$\phi T_{th}$</td>
+<td>$\phi \times T_{th}$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<p><strong>Step 4：最大偏心量</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$T_u$</td>
+<td>$V_u \times e$（均佈偏心載重的扭矩）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$e_{\max}$</td>
+<td>$\phi T_{th} / V_u$</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th style="text-align: center;">卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>懸臂梁臨界剪力斷面</td>
+<td>ACI 9.4.3.2 三條件：(a) 反力在端區產生壓力 (b) 載重在頂面 (c) 區間無集中載重。本題三條件均成立 → 取距支承面 $d$ 處。<strong>判準是條件不是構件名稱</strong>；若支承細節未明示或屬吊掛式，應保守取端面（見 <a href="../RC-2006-1/RC-2006-1.md">RC-2006-1</a>）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$T_{th}$ 的物理意義</td>
+<td>$T_{th} \approx T_{cr}/4$：裂縫扭矩的四分之一；當 $T_u &lt; \phi T_{th}$，扭力對設計的影響可忽略</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>$A_{cp}$ vs. $A_{oh}$</td>
+<td>$A_{cp}$：截面外輪廓全面積（忽略條件用）；$A_{oh}$：箍筋中心線圍面積（實際扭力設計用，考箍筋後退縮）</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>扭矩公式的單位換算</td>
+<td>土木401-110 = ACI 318（SI 版），f'c 代入 MPa，面積代入 mm，結果為 N·mm；直接用 kgf/cm² 會缺少 3.19 換算因子</td>
+<td style="text-align: center;"></td>
+</tr>
+<tr>
+<td>為何 $T_u = V_u \times e$？</td>
+<td>偏心 UDL：$T(x) = W_u \cdot e \cdot (L-x)$，$V(x) = W_u(L-x)$，故 $T = V \cdot e$ 對所有截面成立</td>
+<td style="text-align: center;"></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
+<h3>Step 1：臨界斷面位置與最大設計剪力 $V_u$</h3>
+<p>懸臂梁，固定端在左（$x = 0$），自由端在右（$x = L = 350$ cm）。</p>
+<p><strong>ACI 318 §9.4.3.2 三條件檢核：</strong>(a) 固定端支承反力向上、於端區產生壓力 ✓；(b) 垂直均布載重自頂面施加 ✓；(c) 固定端面與臨界斷面之間無集中載重 ✓ → <strong>三條件均成立，可採 d 偏移</strong>。</p>
+<p><strong>臨界斷面位置：</strong> $x_c = d = 53$ cm（距固定端）</p>
+<p><strong>臨界斷面剪力：</strong></p>
+<p>$$V(x) = W_u(L - x) \quad \Rightarrow \quad V_u = W_u(L - d) = 2.5 \times (3.5 - 0.53) = 2.5 \times 2.97$$</p>
+<p>$$\boxed{V_u = 7.425 \text{ tf} = 7{,}425 \text{ kgf}}$$</p>
+<blockquote>
+<p><strong>驗核混凝土剪力容量（確認 D13 箍筋用途）：</strong>
+$\phi V_c = 0.75 \times 0.53\sqrt{280} \times 35 \times 53 = 0.75 \times 0.53 \times 16.73 \times 1855 = 12{,}370 \text{ kgf} = 12.37 \text{ tf}$
+$V_u = 7.425 \text{ tf} &lt; \phi V_c = 12.37 \text{ tf}$ → 混凝土本身即可抵抗剪力，D13 箍筋係作為<strong>最小鋼筋量要求</strong>（因 $V_u &gt; 0.5\phi V_c = 6.19 \text{ tf}$）而設置，而非為了承受扭力。</p>
+</blockquote>
+<hr />
+<h3>Step 2：斷面幾何參數</h3>
+<p>$$A_{cp} = b \times h = 35 \times 60 = 2{,}100 \text{ cm}^2$$</p>
+<p>$$p_{cp} = 2(b + h) = 2(35 + 60) = 190 \text{ cm}$$</p>
+<hr />
+<h3>Step 3：計算扭力忽略門檻 $T_{th}$（土木401-110 §22.7.1.1）</h3>
+<p><strong>以 SI 單位計算（土木401-110 原始單位）：</strong></p>
+<p>$$f'_c = 280 \text{ kgf/cm}^2 = \frac{280}{10.197} = 27.46 \text{ MPa}$$</p>
+<p>$$A_{cp} = 2{,}100 \text{ cm}^2 = 210{,}000 \text{ mm}^2, \quad p_{cp} = 190 \text{ cm} = 1{,}900 \text{ mm}$$</p>
+<p>$$T_{th} = \frac{\sqrt{f'<em cp="cp">c}}{12} \cdot \frac{A</em>$$}^2}{p_{cp}} = \frac{\sqrt{27.46}}{12} \times \frac{(210{,}000)^2}{1{,}900</p>
+<p>$$= \frac{5.240}{12} \times \frac{4.41 \times 10^{10}}{1{,}900} = 0.4367 \times 2.321 \times 10^7 = 1.013 \times 10^7 \text{ N·mm}$$</p>
+<p><strong>換算至 kgf·cm：</strong></p>
+<p>$$T_{th} = \frac{1.013 \times 10^7 \text{ N·mm}}{9.81 \times 10} = \frac{1.013 \times 10^7}{98.1} = 103{,}262 \text{ kgf·cm}$$</p>
+<p>$$\phi T_{th} = 0.75 \times 103{,}262 = 77{,}447 \text{ kgf·cm} \approx 7.745 \text{ tf·m}$$</p>
+<hr />
+<h3>Step 4：最大偏心量 $e_{\max}$</h3>
+<p>對均佈偏心載重，臨界斷面的扭矩：</p>
+<p>$$T_u = V_u \times e = 7{,}425 \times e \text{ [kgf·cm，}e\text{ 單位 cm]}$$</p>
+<p>扭力忽略條件：$T_u \leq \phi T_{th}$</p>
+<p>$$7{,}425 \times e \leq 77{,}447$$</p>
+<p>$$\boxed{e_{\max} = \frac{77{,}447}{7{,}425} \approx 10.4 \text{ cm}}$$</p>
+<hr />
+<h3>計算結果彙整</h3>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th style="text-align: center;">結果</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>臨界斷面位置</td>
+<td style="text-align: center;">距固定端 $d = 53$ cm</td>
+</tr>
+<tr>
+<td><strong>最大設計剪力 $V_u$</strong></td>
+<td style="text-align: center;"><strong>7.425 tf（7,425 kgf）</strong></td>
+</tr>
+<tr>
+<td>混凝土剪力容量 $\phi V_c$</td>
+<td style="text-align: center;">12.37 tf &gt; $V_u$ ✓</td>
+</tr>
+<tr>
+<td>斷面積 $A_{cp}$</td>
+<td style="text-align: center;">2,100 cm²</td>
+</tr>
+<tr>
+<td>外周長 $p_{cp}$</td>
+<td style="text-align: center;">190 cm</td>
+</tr>
+<tr>
+<td>扭力門檻 $T_{th}$</td>
+<td style="text-align: center;">103,262 kgf·cm</td>
+</tr>
+<tr>
+<td>$\phi T_{th}$</td>
+<td style="text-align: center;">77,447 kgf·cm</td>
+</tr>
+<tr>
+<td><strong>最大偏心量 $e_{\max}$</strong></td>
+<td style="text-align: center;"><strong>≈ 10.4 cm</strong></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<p><strong>1. 扭力門檻公式的單位問題</strong></p>
+<p>土木401-110（= ACI 318 SI 版）的 $T_{th}$ 公式以 MPa、mm、N·mm 為基礎。直接將 kgf/cm² 代入 $(1/12)\sqrt{f'<em cp="cp">c} \cdot A</em>$ 低估）。}^2/p_{cp}$ 會缺少換算係數 3.19，導致低估約 3.19 倍（$T_{th}$ 低估 → $e_{max</p>
+<p>正確 kgf/cm² 等效公式：
+$$T_{th} = 0.266 \cdot \sqrt{f'<em cp="cp">c} \cdot \frac{A</em>$$}^2}{p_{cp}} \quad \text{[kgf·cm, kgf/cm², cm]</p>
+<p><strong>2. 為何 $T_u = V_u \times e$ 在每個截面都成立？</strong></p>
+<p>對懸臂梁：
+$$T(x) = W_u \cdot e \cdot (L - x), \quad V(x) = W_u(L - x)$$
+$$\Rightarrow T(x) = e \cdot V(x)$$
+這個比例關係在每個截面都成立，因此在臨界斷面直接代入 $V_u$ 即可。</p>
+<p><strong>3. D13 箍筋的設計目的</strong></p>
+<p>本題 $V_u &lt; \phi V_c$ → 混凝土單獨就夠；但 $V_u &gt; 0.5\phi V_c$ → 仍需最小箍筋量。閉合箍筋的設置也符合扭力配筋的形式要求（即使此處扭力被忽略）。</p>
+<p><strong>4. 考場最安全作法</strong></p>
+<ul>
+<li>扭力門檻計算先換算成 SI（MPa, mm），在 SI 求 $T_{th}$，最後換算成 kgf·cm</li>
+<li>記住 $A_{cp}$ = 整個截面積，$p_{cp}$ = 外周長（不是箍筋中心線圍成的 $A_{oh}$）</li>
+<li>$e_{max}$ 的單位要一致（kgf·cm ÷ kgf = cm）</li>
+</ul></main>
+<footer>來源：raw/solutions/RC-2023-3/RC-2023-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
+</footer>
+</body></html>
