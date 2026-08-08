@@ -3,376 +3,270 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RC-U4-1 預力梁斷面應力分析｜深度複習</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
- onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+<title>RC-U4-1 預力梁斷面應力分析｜命題分析</title>
 <style>
-:root{--c0:#3b82f6;--c1:#ef4444;--c2:#10b981;--c3:#f59e0b;--c4:#8b5cf6;--bg:#f5f7fa;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 80px}
-header{background:linear-gradient(135deg,#164e63,#06b6d4);color:#fff;border-radius:14px;padding:28px 28px 22px;margin-bottom:20px}
-header h1{font-size:1.6rem;margin-bottom:6px}
-header .sub{opacity:.85;font-size:.95rem}
-nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-nav.toc a{color:#fff;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:.85rem;text-decoration:none}
-nav.toc a:hover{background:rgba(255,255,255,.3)}
-section{background:var(--card);border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
-h2{font-size:1.25rem;border-left:5px solid #0891b2;padding-left:10px;margin-bottom:16px}
-h3{font-size:1.05rem;margin:14px 0 8px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
-.kpi{background:#ecfeff;border:1px solid #a5f3fc;border-radius:12px;padding:14px;text-align:center}
-.kpi .num{font-size:1.7rem;font-weight:700;color:#0e7490}
-.kpi .lab{font-size:.85rem;color:var(--mut)}
-.subcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(185px,1fr));gap:12px;margin-bottom:18px}
-.scard{border-radius:12px;padding:12px 14px;color:#fff;cursor:pointer;transition:transform .15s}
-.scard:hover{transform:translateY(-2px)}
-.scard .n{font-size:1.4rem;font-weight:700}
-.scard .t{font-size:.9rem;font-weight:600}
-.scard .d{font-size:.76rem;opacity:.9}
-.charts{display:grid;grid-template-columns:2fr 1fr;gap:16px}
-@media(max-width:800px){.charts{grid-template-columns:1fr}}
-canvas{width:100%;height:auto;background:#fbfdff;border:1px solid var(--line);border-radius:10px}
-.svgbox{overflow-x:auto;text-align:center;background:#fbfdff;border:1px solid var(--line);border-radius:10px;padding:10px}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
-.fcard{border:1px solid var(--line);border-left:5px solid #0891b2;border-radius:10px;padding:14px;background:#fcfeff}
-.fcard h4{font-size:.98rem;margin-bottom:8px}
-.fcard .note{font-size:.83rem;color:var(--mut);margin-top:6px}
-table{border-collapse:collapse;width:100%;font-size:.9rem}
-th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
-th{background:#ecfeff}
-.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.fbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font-size:.86rem;cursor:pointer}
-.fbtn.on{color:#fff;border-color:transparent}
-.qitem{border:1px solid var(--line);border-left-width:5px;border-left-style:solid;border-radius:10px;padding:10px 14px;margin-bottom:10px;background:#fff}
-.qitem .top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.qitem a.qid{font-weight:700;color:#0e7490;text-decoration:none;font-size:1rem}
-.qitem a.qid:hover{text-decoration:underline}
-.badge{font-size:.74rem;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#334155}
-.badge.p{background:#dcfce7;color:#166534}.badge.s{background:#fef3c7;color:#92400e}
-.qitem .sum{font-size:.92rem;margin:4px 0 2px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-size:.74rem;background:#f1f5f9;border-radius:6px;padding:1px 7px;color:var(--mut)}
-.traps li{margin-bottom:10px;padding:10px 12px;border-radius:10px;background:#fff7ed;border:1px solid #fed7aa;list-style:none}
-.traps .tt{font-weight:700}
-.tagchip{display:inline-block;font-size:.72rem;color:#fff;border-radius:6px;padding:1px 8px;margin-right:6px;vertical-align:2px}
-.calc{display:grid;grid-template-columns:340px 1fr;gap:18px}
-@media(max-width:820px){.calc{grid-template-columns:1fr}}
-.calc label{display:block;font-size:.85rem;margin:7px 0 2px;color:var(--mut)}
-.calc input{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:.95rem}
-.calc button{margin-top:12px;width:100%;padding:9px;border:none;border-radius:9px;background:#0e7490;color:#fff;font-size:1rem;cursor:pointer}
-.calc button:hover{background:#155e75}
-.result{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px 16px;font-size:.94rem;margin-bottom:12px}
-.result .big{font-size:1.15rem;font-weight:700;color:#166534}
-.result.warn{background:#fef2f2;border-color:#fecaca}.result.warn .big{color:#b91c1c}
-footer{text-align:center;color:var(--mut);font-size:.8rem;margin-top:30px}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--t:#f57c00;--k:#2e7d32;--c:#1565c0;--x:#8e24aa;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828;--g:#546e7a}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:34px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+.role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:6px}
+.role b{color:#e65100}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.9em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em;border:none;padding:0}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:var(--ac2)}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:12px;border-radius:3px;vertical-align:middle}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--warn);font-weight:700}.flat{color:var(--mut);font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow.sec{background:#fafafa;border-style:dashed}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:92px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .meta{font-size:.72em;white-space:nowrap;color:#fff;border-radius:10px;padding:1px 8px}
+.note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-<div class="wrap">
-
 <header>
-<h1>RC-U4-1｜預力梁斷面應力分析</h1>
-<div class="sub">結構技師考試「鋼筋混凝土設計與預力」子項深度複習｜資料範圍：2002–2025（民國91–114年）共 100 題</div>
-<nav class="toc">
-<a href="#s1">① 命題分析</a><a href="#s2">② 截面圖解</a><a href="#s3">③ 解題流程</a><a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 互動計算器</a>
-</nav>
+<h1>RC-U4-1 預力梁斷面應力分析 — 命題分析</h1>
+<p>結構技師「鋼筋混凝土設計與預力混凝土設計」子項命題情報頁｜資料來源：raw/json/question_index.json（2002–2025，24 個考年、100 題）｜更新日期 2026-08-08</p>
 </header>
+<nav>
+<a href="#b1">出題概況</a><a href="#b2">考點結構</a><a href="#b3">考點漂移</a>
+<a href="#b4">WSD／USD</a><a href="#b5">考題清單</a><a href="#b6">命題風險</a>
+</nav>
+<main>
 
 <section id="s1">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-<h2 style="margin-bottom:0">① 命題分析</h2>
-<div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
-<a href="lecture-RC-U4-1.html" title="練題前先讀：理解導向觀念講義（公式來源推導、圖解、精選題）" style="background:#7c3aed;color:white;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:0.95rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 2px rgba(0,0,0,.1)">觀念講義 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></a>
-<a href="lecture-RC-U4-1.pdf" target="_blank" title="觀念講義可列印版（A4，22 頁）" style="background:#ede9fe;color:#5b21b6;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:600;display:inline-flex;align-items:center;gap:5px;border:1px solid #c4b5fd">PDF</a>
-<a href="RC-U4-1_預力梁斷面應力分析.pdf" target="_blank" style="background:#3b82f6;color:white;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:0.95rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 2px rgba(0,0,0,.1)">Keynote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></a>
+<h2><span>命題分析</span></h2>
+
+<div class="role">
+📚 <b>本頁只回答一件事：這個子項「考什麼」。</b>
+原理與圖解看 <b>觀念講義</b>、公式要不要背看 <b>給／背分界</b>、本頁提供的是可從 <code>question_index.json</code> 重生的命題事實：頻率、結構、漂移、設計法、清單、風險。<br>
+建議順序：<b style="color:#6a1b9a;">觀念講義</b>（練題前建立直覺）→ <b style="color:var(--warn);">給／背分界</b>（決定記憶投資）→ <b>本頁</b>（決定練題順序與押題）。
 </div>
+<div class="btnbar">
+  <a href="lecture-RC-U4-1.html" title="原理圖解、公式來源、自我檢測、精選必練題" style="background:#6a1b9a;color:#fff;">觀念講義 📘</a>
+  <a href="lecture-RC-U4-1.pdf" target="_blank" style="background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;">講義 PDF 🖨️</a>
+  <a href="formula-given-RC-U4-1.html" title="逐條公式 × 24 年考卷證據：哪些會印給你、哪些必須自己背" style="background:#c62828;color:#fff;">給／背分界 🎯</a>
+  <a href="formula-given-RC-U4-1.pdf" target="_blank" style="background:#ffebee;color:#c62828;border:1px solid #ef9a9a;">分界 PDF 🖨️</a>
 </div>
-<p style="margin:-6px 0 16px;font-size:.88rem;color:#64748b">使用順序：<b style="color:#7c3aed">觀念講義</b>（練題前建立物理直覺）→ <b style="color:#3b82f6">Keynote</b>（課堂）→ <b>本速查頁</b>（考前複習）</p>
+
+<h3 id="b1">出題概況</h3>
 <div class="kpis">
-<div class="kpi"><div class="num">21</div><div class="lab">相關題數（含副考點 8 題）</div></div>
-<div class="kpi"><div class="num">13 題｜13%</div><div class="lab">主考點題數／佔全科比例</div></div>
-<div class="kpi"><div class="num">第 3 名</div><div class="lab">全科 13 個考點頻率排名</div></div>
-<div class="kpi"><div class="num">5 / 6 年</div><div class="lab">近 6 年（2020–2025）出題率</div></div>
+<div class="kpi"><div class="n">13</div><div class="l">主考點題數（另有 8 題副考點）</div></div>
+<div class="kpi"><div class="n">13.0%</div><div class="l">佔全科比例（13／100）</div></div>
+<div class="kpi"><div class="n">#3</div><div class="l">全科出題排名（U3-3 16 題居前、U1-2 12 題居次）</div></div>
+<div class="kpi"><div class="n">2/6</div><div class="l">近 6 考年出題年數（2020–2025 共 2 題）</div></div>
 </div>
-<h3>題型分類（點擊卡片可過濾 ⑤ 考題清單）</h3>
-<div class="subcards" id="subcards"></div>
 <div class="charts">
-<div><h3>年度分布（堆疊）</h3><canvas id="cvYear" width="960" height="260"></canvas></div>
-<div><h3>題型比例</h3><canvas id="cvPie" width="360" height="260"></canvas></div>
+<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 13 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例（主考點 13 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
-<p style="font-size:.85rem;color:var(--mut);margin-top:10px">觀察：預力題幾乎<b>每年固定佔一題（第 4 題）</b>，本子項即其主幹。WSD 兩階段應力分析（8 題）是絕對核心，組合斷面（橋梁 I 形＋場鑄版）出現 4 次；近年輪動至等效載重／二次彎矩（2020、2024）與偏心限制（2025），顯示 U4-1 與 U4-2 已成連體題組。</p>
-</section>
-
-<section id="s2">
-<h2>② 截面圖解</h2>
-<div class="svgbox">
-<svg viewBox="0 0 1000 340" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
-<!-- I 形斷面 -->
-<g transform="translate(30,40)">
-<text x="110" y="-12" text-anchor="middle" font-weight="bold" fill="#0891b2">I 形（預鑄梁）</text>
-<path d="M20,0 h180 v50 l-60,25 v100 l60,25 v50 h-180 v-50 l60,-25 v-100 l-60,-25 z" fill="#ecfeff" stroke="#334155" stroke-width="2"/>
-<line x1="20" y1="125" x2="200" y2="125" stroke="#94a3b8" stroke-dasharray="5 4"/>
-<text x="208" y="129" fill="#64748b" font-size="12">形心軸</text>
-<circle cx="110" cy="215" r="8" fill="#dc2626"/>
-<text x="110" y="240" text-anchor="middle" fill="#dc2626">鋼腱（偏心 e）</text>
-<line x1="110" y1="125" x2="110" y2="207" stroke="#dc2626" stroke-dasharray="4 3"/>
-<text x="118" y="175" fill="#dc2626" font-size="12">e</text>
-</g>
-<!-- 組合斷面 -->
-<g transform="translate(330,40)">
-<text x="130" y="-12" text-anchor="middle" font-weight="bold" fill="#f59e0b">組合斷面（兩階段）</text>
-<rect x="0" y="0" width="260" height="42" fill="#fef3c7" stroke="#334155" stroke-width="2"/>
-<text x="130" y="27" text-anchor="middle" font-size="12">場鑄版（f′c 較低 → n 轉換）</text>
-<path d="M85,42 h90 v30 l-28,14 v80 l28,14 v40 h-90 v-40 l28,-14 v-80 l-28,-14 z" fill="#ecfeff" stroke="#334155" stroke-width="2"/>
-<circle cx="130" cy="200" r="7" fill="#dc2626"/>
-<text x="130" y="248" text-anchor="middle" font-size="12">預力＋自重→預鑄斷面</text>
-<text x="130" y="266" text-anchor="middle" font-size="12">疊加載重→組合斷面</text>
-</g>
-<!-- 應力疊加 -->
-<g transform="translate(650,40)">
-<text x="160" y="-12" text-anchor="middle" font-weight="bold" fill="#10b981">應力疊加（壓為＋）</text>
-<g stroke="#334155">
-<line x1="30" y1="20" x2="30" y2="180"/><line x1="110" y1="20" x2="110" y2="180"/><line x1="190" y1="20" x2="190" y2="180"/><line x1="285" y1="20" x2="285" y2="180"/>
-</g>
-<polygon points="30,20 62,20 62,180 30,180" fill="#bae6fd"/>
-<text x="46" y="200" text-anchor="middle" font-size="12">P/A</text>
-<polygon points="110,20 80,20 110,100 142,180 110,180" fill="#fecaca"/>
-<text x="111" y="200" text-anchor="middle" font-size="12">∓Pe·y/I</text>
-<polygon points="190,20 222,20 190,100 158,180 190,180" fill="#bbf7d0"/>
-<text x="190" y="200" text-anchor="middle" font-size="12">±M·y/I</text>
-<polygon points="285,20 320,20 285,110 272,180 285,180" fill="#fde68a"/>
-<text x="290" y="200" text-anchor="middle" font-size="12">合計 f</text>
-<text x="70" y="105" font-size="15" fill="#334155">＋</text><text x="148" y="105" font-size="15" fill="#334155">＋</text><text x="238" y="105" font-size="15" fill="#334155">＝</text>
-</g>
-</svg>
+<div class="note">
+📌 <b>三個要記住的數字</b>：① 全科第三大單元（13 題、13.0%），24 個考年中 <b>13 年</b>出現，空窗年段只有 <b>2015–2017、2019–2020、2024–2025</b> 三段——是全科<b>最規律</b>的單元之一；而且位置固定得驚人——本頁清單 21 題裡有 <b>19 題是考卷的第 4 或第 5 題</b>（17 題正好是第 4 題），預力幾乎就是每張考卷的收尾題；
+② <b>加上 8 題副考點共 21 題</b>，而這 8 題的主考點全在 U4-2（預力量與偏心量，5 題）與 U4-3（預力損失，3 題）——預力這一整塊實務上必須一起讀，不能只讀斷面應力；
+③ 近 6 考年只有 2021、2023 兩年共 2 題，但同期 U4-2 在 <b>2024、2025 連兩年出題</b>（2024-4、2025-4），所以「預力」整體並未降溫，只是主考點跑到隔壁子項；空窗不代表退場。
 </div>
-<p style="font-size:.85rem;color:var(--mut)">基本式：\(f=\dfrac{P}{A}\mp\dfrac{P e\,y}{I}\pm\dfrac{M y}{I}\)。偏心預力使上緣減壓（甚至受拉）、下緣加壓；外加彎矩相反。兩個危險時刻：<b>傳遞（P 最大、M 最小）</b>與<b>使用（P 已損失、M 最大）</b>。</p>
-</section>
 
-<section id="s3">
-<h2>③ 解題流程圖</h2>
-<div class="svgbox">
-<svg viewBox="0 0 980 470" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
-<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#475569"/></marker></defs>
-<g text-anchor="middle">
-<rect x="380" y="10" width="220" height="42" rx="10" fill="#0e7490"/><text x="490" y="36" fill="#fff" font-weight="bold">預力梁題目</text>
-<line x1="490" y1="52" x2="490" y2="78" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="360" y="78" width="260" height="42" rx="10" fill="#fde68a" stroke="#d97706"/><text x="490" y="104">問「應力」還是「強度」？</text>
-<line x1="360" y1="99" x2="170" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="235" y="112" font-size="12">應力（WSD）</text>
-<line x1="620" y1="99" x2="810" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="745" y="112" font-size="12">強度（USD）</text>
-<rect x="50" y="150" width="240" height="52" rx="10" fill="#dbeafe" stroke="#1d4ed8"/><text x="170" y="171">斷面性質 A、I、St、Sb</text><text x="170" y="191" font-size="12">組合斷面：預鑄／組合分開算＋n 轉換</text>
-<line x1="170" y1="202" x2="170" y2="234" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="50" y="234" width="240" height="66" rx="10" fill="#fff" stroke="#1d4ed8"/><text x="170" y="255">傳遞階段：Pi＋M自重</text><text x="170" y="274">使用階段：Pe（=ηPi）＋M全部</text><text x="170" y="293" font-size="12">組合梁：兩階段各由對應斷面承擔</text>
-<line x1="170" y1="300" x2="170" y2="332" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="50" y="332" width="240" height="52" rx="10" fill="#dcfce7" stroke="#166534"/><text x="170" y="353">上、下緣 4 組應力</text><text x="170" y="373" font-size="12">vs 容許值（0.6f′ci／0.8√f′ci／0.45f′c／1.6√f′c）</text>
-<rect x="690" y="150" width="240" height="52" rx="10" fill="#fecaca" stroke="#dc2626"/><text x="810" y="171">fps 公式選擇</text><text x="810" y="191" font-size="12">有黏結近似式／無黏結 L/dp 分式／應變相容</text>
-<line x1="810" y1="202" x2="810" y2="234" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="690" y="234" width="240" height="66" rx="10" fill="#fff" stroke="#dc2626"/><text x="810" y="255">a=Aps·fps/(0.85f′c b)</text><text x="810" y="274">Mn=Aps·fps(dp−a/2)</text><text x="810" y="293" font-size="12">T 形檢核 a 與 hf；非預力筋另加項</text>
-<line x1="810" y1="300" x2="810" y2="332" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="690" y="332" width="240" height="52" rx="10" fill="#dcfce7" stroke="#166534"/><text x="810" y="353">Mcr=fr·Sb+Pe(e+Sb/A)</text><text x="810" y="373" font-size="12">檢核 φMn ≥ 1.2Mcr</text>
-<line x1="490" y1="120" x2="490" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="490" y="143" font-size="12"></text>
-<rect x="380" y="150" width="220" height="52" rx="10" fill="#ede9fe" stroke="#7c3aed"/><text x="490" y="171">偏心／等效載重題型</text><text x="490" y="191" font-size="12">（跨 U4-2，近年高頻）</text>
-<line x1="490" y1="202" x2="490" y2="234" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="380" y="234" width="220" height="66" rx="10" fill="#fff" stroke="#7c3aed"/><text x="490" y="255">四控制條件（e 上下限）</text><text x="490" y="274">拋物線腱 w_eq=8Pf/L²</text><text x="490" y="293" font-size="12">超靜定：M₂ 次彎矩、C 線</text>
-<line x1="170" y1="384" x2="450" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<line x1="490" y1="300" x2="490" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<line x1="810" y1="384" x2="530" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="360" y="430" width="260" height="32" rx="10" fill="#166534"/><text x="490" y="451" fill="#fff" font-weight="bold">檢核結論／補救措施敘述</text>
-</g>
-</svg>
+<h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('M')"><h3>🟥 開裂彎矩與極限強度（5 題）</h3><p>M<sub>cr</sub>、f<sub>ps</sub> 公式選擇、β₁ 折減、Whitney 應力塊、鋼腱極限應變</p></div>
+<div class="cat" style="border-left-color:var(--t)" onclick="filterQ('P')"><h3>🟧 偏心量／預力量設計（5 題）</h3><p>四控制條件、核心距、等效載重法、連續梁二次彎矩與 C 線</p></div>
+<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('E')"><h3>🟦 彈性應力與使用性檢核（4 題）</h3><p>兩階段容許應力、淨／變換／合成斷面的選擇、偏心方向、裂縫寬度</p></div>
+<div class="cat" style="border-left-color:var(--k)" onclick="filterQ('K')"><h3>🟩 組合斷面兩階段疊加（4 題）</h3><p>非組合梁承 DL、組合梁承 LL、不同 f′<sub>c</sub> 轉換、有效翼板寬</p></div>
+<div class="cat" style="border-left-color:var(--x)" onclick="filterQ('L')"><h3>🟪 預力損失（3 題）</h3><p>彈性縮短、摩擦損失、潛變／乾縮／鬆弛、lump-sum 總量</p></div>
 </div>
-</section>
-
-<section id="s4">
-<h2>④ 核心公式速查</h2>
-<div class="fgrid">
-<div class="fcard" style="border-left-color:var(--c0)"><h4>🟦 斷面應力（壓為正）</h4>
-$$f_{top}=\frac{P}{A}-\frac{P e}{S_t}+\frac{M}{S_t},\quad f_{bot}=\frac{P}{A}+\frac{P e}{S_b}-\frac{M}{S_b}$$
-$$核心距：k_t=\frac{S_b}{A},\;k_b=\frac{S_t}{A}$$
-<div class="note">傳遞：P=Pi、M=Mmin（自重）；使用：P=Pe=ηPi、M=Mmax。全程固定一套正負號。</div></div>
-<div class="fcard" style="border-left-color:var(--c0)"><h4>🟦 容許應力（kgf/cm²）</h4>
-<table><tr><th>階段</th><th>壓應力</th><th>拉應力</th></tr>
-<tr><td>傳遞（f′ci）</td><td>0.60 f′ci</td><td>0.80√f′ci（端部 1.6√f′ci）</td></tr>
-<tr><td>使用（f′c）</td><td>0.45 f′c（全載 0.60）</td><td>1.6√f′c（U級）</td></tr></table>
-<div class="note">超限之補救：調 e、調 P、加非預力筋、提高 f′ci（2012-1 考補救措施敘述）。</div></div>
-<div class="fcard" style="border-left-color:var(--c3)"><h4>🟧 組合斷面兩階段疊加</h4>
-$$第一階段：f_1=\frac{P}{A_{pc}}\mp\frac{Pe\,y_{pc}}{I_{pc}}\pm\frac{M_{DL}\,y_{pc}}{I_{pc}}$$
-$$第二階段：f_2=\pm\frac{M_{SDL+LL}\;y_{comp}}{I_{comp}}$$
-<div class="note">版與梁 f′c 不同：翼板有效寬×n（=E版/E梁）轉換；同一纖維兩階段取「該階段斷面」的 y 與 I（2006-4、2007-4、2008-4、2011-5）。</div></div>
-<div class="fcard" style="border-left-color:var(--c1)"><h4>🟥 極限強度：fps 公式</h4>
-$$有黏結(f_{se}\ge0.5f_{pu})：f_{ps}=f_{pu}\left(1-\frac{\gamma_p}{\beta_1}\rho_p\frac{f_{pu}}{f'_c}\right)$$
-$$無黏結\;L/d_p\le35：f_{ps}=f_{se}+700+\frac{f'_c}{100\rho_p}$$
-$$（\le f_{py},\;\le f_{se}+4200）；L/d_p>35\;另式$$
-<div class="note">γp：低鬆弛 0.28、應力消除 0.40；部分預力／給應力應變曲線時用應變相容（2003-1）。</div></div>
-<div class="fcard" style="border-left-color:var(--c1)"><h4>🟥 開裂彎矩與強度檢核</h4>
-$$M_{cr}=f_r S_b+P_e\left(e+\frac{S_b}{A}\right),\;f_r=2.0\sqrt{f'_c}$$
-$$M_n=A_{ps}f_{ps}\left(d_p-\frac{a}{2}\right)+A_sf_y\left(d-\frac{a}{2}\right)$$
-$$檢核\;\phi M_n\ge1.2M_{cr}\;(防脆性)$$
-<div class="note">Mcr 之預力項最常被漏掉——不是純 fr·Sb（2004-5、2013-4、2018-4）。</div></div>
-<div class="fcard" style="border-left-color:var(--c4)"><h4>🟪 等效載重與偏心限制（跨 U4-2）</h4>
-$$拋物線腱：w_{eq}=\frac{8P f}{L^2}\;(向上)$$
-$$四控制條件\Rightarrow e\;上下限包絡（傳遞×2＋使用×2）$$
-$$超靜定：M_{total}=M_1(=Pe)+M_2(次彎矩)，C\;線=M_{total}/P$$
-<div class="note">一致腱（concordant tendon）：M₂=0；2020-4、2024-4 連續梁題核心。</div></div>
+<div class="note">
+分群依<b>解題套路</b>而非標籤字面，每題只歸一群。第二群「偏心量／預力量設計」與第五群「預力損失」<b>全部由副考點組成</b>（主考點在 U4-2、U4-3），但兩群合計 8 題、佔清單 38%——這正是「預力要整塊一起讀」的量化證據。
 </div>
-</section>
 
-<section id="s5">
-<h2>⑤ 考題清單（21 題）</h2>
-<div class="fbtns" id="fbtns"></div>
+<h3 id="b3">考點漂移：前 6 題（2003–2009）vs. 後 7 題（2011–2023）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把 13 題主考點依題號排序後對切，前段 2003–2009 共 6 題、後段 2011–2023 共 7 題。「偏心量設計」與「預力損失」兩群全為副考點，不計入主考點對切，另在表後說明。</p>
+<table>
+<thead><tr><th>題型</th><th class="num">2003–2009</th><th class="num">2011–2023</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody>
+<tr><td><span class="bar" style="width:12px;background:var(--k)"></span> 組合斷面兩階段疊加</td><td class="num">3</td><td class="num">1</td><td class="num down">▼ −2</td><td><b>2006-4、2007-4、2008-4 連三個考年</b>用同一個模子（非組合梁承 DL、組合梁承 LL、不同 f′<sub>c</sub> 轉換），之後 13 年只剩 2021-4 一題。純組合橋梁斷面題已明顯退燒</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--c)"></span> 彈性應力與使用性檢核</td><td class="num">1</td><td class="num">3</td><td class="num up">▲ +2</td><td><b>後段的主戰場。</b>2011-5（要在淨斷面／變換斷面／合成斷面之間選對）、2012-1（懸臂梁偏心方向反了會全錯）、2014-4（對稱 I 形兩階段檢核）——考的都是「這一步該用哪個斷面、哪個階段、哪一條容許應力」</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--warn)"></span> 開裂彎矩與極限強度</td><td class="num">2</td><td class="num">3</td><td class="num up">▲ +1</td><td>從「算 M<sub>cr</sub> 再算 φM<sub>n</sub>」（2004-5）走向「<b>選對 f<sub>ps</sub> 公式</b>」：2018-4 要選公式並檢核鋼鍵拉斷、<b>2023-4 首度考無握裹鋼絞線</b>（f<sub>ps</sub> 隨 L/d<sub>p</sub> 變），2013-4 則反過來要求鋼腱極限應變</td></tr>
+<tr style="background:#fafafa"><td><span class="bar" style="width:12px;background:var(--t)"></span> 偏心量／預力量設計<br><span style="font-size:.85em;color:var(--mut)">（全為副考點，主考點在 U4-2）</span></td><td class="num">0</td><td class="num">0</td><td class="num flat">5 題副考點</td><td>2010-4、2015-4、2025-4 是同一模子（傳遞＋使用兩階段各兩條控制條件）；2020-4、2024-4 換成連續梁二次彎矩與 C 線。<b>2024、2025 連兩個考年出題，是目前最熱的鄰居</b></td></tr>
+<tr style="background:#fafafa"><td><span class="bar" style="width:12px;background:var(--x)"></span> 預力損失<br><span style="font-size:.85em;color:var(--mut)">（全為副考點，主考點在 U4-3）</span></td><td class="num">0</td><td class="num">0</td><td class="num flat">3 題副考點</td><td>2016-4、2017-4、2019-4 <b>集中在 2016–2019 四年內連出三題</b>（彈性縮短 → 論述總量 → 摩擦損失），之後 6 年完全消失，是典型的「成群出現」型</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>一句話</b>：這個單元的重心從「<b>把組合斷面的應力疊起來</b>」漂到「<b>選對斷面、階段與公式</b>」——後段 7 題有 6 題的關鍵失分點都是選擇題性質的判斷（用淨斷面還是變換斷面、傳遞階段還是使用階段、哪一條 f<sub>ps</sub>），而不是計算量。
+若你的複習時間依「歷史總題數」分配，會高估組合 T 形梁的轉換斷面計算（2008 年後只考過一次），低估這些「一步選錯全題報廢」的判斷點。
+</div>
+
+<h3 id="b4">設計法走向：全科唯一必須準備兩套設計法的單元</h3>
+<table>
+<thead><tr><th>期間</th><th class="num">WSD<br>容許應力</th><th class="num">混合<br>WSD＋USD</th><th class="num">USD<br>強度</th><th class="num">概念題</th><th>觀察</th></tr></thead>
+<tbody>
+<tr><td>2003–2009（6 題）</td><td class="num">3</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td>清一色要用彈性理論，USD 尚未單獨出現</td></tr>
+<tr><td>2011–2023（7 題）</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td>WSD 仍過半，<b>2023-4 是唯一的純 USD</b></td></tr>
+<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025（2 題）</b></td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td>樣本只有 2 題，不足以推翻上面兩列</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>對複習的直接影響</b>：<b>WSD 不是可以跳過的舊制度。</b>13 題主考點裡 WSD 7 題＋混合 4 題＝<b>11 題</b>都要用彈性理論算
+<code>f = P/A ± Pec/I ± Mc/I</code>；只有 2023-4 一題是純 USD。而 8 題副考點（U4-2、U4-3）在索引中<b>全部標記為 WSD</b>——整個預力區塊的骨幹就是容許應力法。
+對照全科：100 題裡 WSD 只有 16 題，而這 <b>16 題全部落在 U4 單元群</b>（U4-1 七題、U4-2 五題、U4-3 四題），U1、U2、U3 三個單元群一題都沒有。
+<br><br>
+⚠️ <b>資料註記</b>：2021-4 在 <code>question_index.json</code> 中的 <code>designMethod</code> 記為「概念題」，但其解析內容是 WSD 容許應力計算題（求最大均布活載重）。
+本頁所有數字一律以索引為準，這一筆待更正後需重算本區塊。
+<br><br>
+哪些公式（f<sub>ps</sub> 三式、容許應力四條、M<sub>cr</sub>）考卷會印給你、哪些必須自己背，見 <a href="formula-given-RC-U4-1.html">給／背分界</a>。
+</div>
+
+<h3 id="b5">考題清單（主 13 ＋ 副 8 ＝ 21 題，點題號開啟解析）</h3>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（21）</button>
+<button class="fbtn" onclick="filterQ('M',this)">開裂彎矩與極限強度（5）</button>
+<button class="fbtn" onclick="filterQ('P',this)">偏心量／預力量設計（5）</button>
+<button class="fbtn" onclick="filterQ('E',this)">彈性應力與使用性（4）</button>
+<button class="fbtn" onclick="filterQ('K',this)">組合斷面疊加（4）</button>
+<button class="fbtn" onclick="filterQ('L',this)">預力損失（3）</button>
+<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（13）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（8）</button>
+</div>
 <div id="qlist"></div>
+<div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U4-1 的知識）。圖示：📄 有解析／📊 有互動圖／✅ 已人工驗證。</div>
+
+<h3 id="b6">命題風險排序（下一次最可能考什麼）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測而非預言</b>，用途是決定<b>練題順序</b>，不是叫你 all-in 單一考點。</p>
+<table>
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
+<tbody>
+<tr class="risk-hi"><td><b>高</b></td><td>兩階段容許應力檢核：用哪個斷面、哪個階段、哪一條上限</td><td class="num">4</td><td>2014-4（主）</td><td class="num">11 年</td><td>後段主考點 3 題（2011-5、2012-1、2014-4）全屬此型，是本單元近年最集中的失分點；雖然主考點已空窗 11 年，但副考點 2025-4 剛用同一套四控制條件考過，代表彈性應力這條線仍在活躍</td></tr>
+<tr class="risk-hi"><td><b>高</b></td><td>f<sub>ps</sub> 公式的選擇（有握裹／無握裹、β₁ 折減、鋼鍵拉斷檢核）</td><td class="num">5</td><td>2023-4</td><td class="num">2 年</td><td>2004-5、2013-4、2018-4、2023-4 約每 5 年一次且每次換條件；<b>2023-4 首度考無握裹（f<sub>ps</sub> 隨 L/d<sub>p</sub> 變）</b>，新條件通常會在數年內回頭複考，且 2003-1 的應變相容精確法是同一族的上位解法</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>偏心距四控制條件與核心距（以副考點身分）</td><td class="num">5</td><td>2025-4</td><td class="num">0 年</td><td>2010-4、2015-4、2025-4 是同一模子（傳遞階段兩條＋使用階段兩條）；<b>2024-4、2025-4 連兩個考年出題</b>，是目前整個預力區塊最熱的入口，且與上面第一項共用同一組容許應力</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>組合斷面兩階段疊加（非組合承 DL、組合承 LL、不同 f′<sub>c</sub> 轉換）</td><td class="num">4</td><td>2021-4</td><td class="num">4 年</td><td>2006-4、2007-4、2008-4 連三年出現後只剩 2021-4；計算量大但流程完全固定，屬於「久沒考就該練、練了一定拿分」的類型</td></tr>
+<tr class="risk-lo"><td><b>中</b></td><td>預力損失（先拉／後拉、摩擦、時間相關、lump-sum）</td><td class="num">3</td><td>2019-4</td><td class="num">6 年</td><td>2016-4、2017-4、2019-4 四年內連出三題後完全消失，是「成群出現」型；其中 2017-4 是純論述題，寫得出六種損失來源就有分，CP 值高</td></tr>
+<tr class="risk-lo"><td><b>低</b></td><td>混合斷面裂縫寬度（預力＋非預力拉力桿）</td><td class="num">1</td><td>2009-4</td><td class="num">16 年</td><td>24 個考年只出現過一次，且與 U3-1 裂縫控制重疊；w<sub>max</sub> 公式與 β、d<sub>c</sub>、A 的定義都要背，投報率最低</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>若只剩三天</b>：先把「<code>f = P/A ± Pec/I ± Mc/I</code> 在<b>傳遞階段</b>與<b>使用階段</b>各要檢核哪四條容許應力」整理成一張表背下來——本單元 21 題有 11 題以上要用，且和最熱的 U4-2 共用；
+第二順位是 f<sub>ps</sub> 的四種選法（含 2023-4 的無握裹版）；組合斷面轉換計算量大、流程固定，排第三；<b>裂縫寬度直接跳過</b>。
+逐題練習順序建議見 <a href="lecture-RC-U4-1.html">觀念講義</a>的精選題章節。
+</div>
+
 </section>
 
-<section id="s6">
-<h2>⑥ 高頻陷阱 Top 8</h2>
-<ul class="traps">
-<li><span class="tagchip" style="background:var(--c0)">正負號</span><span class="tt">應力正負號系統全程統一。</span>偏心預力對上緣是「減壓」、對下緣是「加壓」；外加正彎矩恰相反。建議固定「壓為＋」並畫小圖驗證（幾乎每題）。</li>
-<li><span class="tagchip" style="background:var(--c0)">階段</span><span class="tt">兩個危險時刻檢核對象不同</span>：傳遞用 Pi＋f′ci＋Mmin；使用用 Pe（扣損失）＋f′c＋Mmax。用錯 P 或容許值整組錯（2012-1、2014-4）。</li>
-<li><span class="tagchip" style="background:var(--c3)">組合斷面</span><span class="tt">載重歸屬分清楚</span>：預力＋梁自重（＋濕版重）由預鑄斷面承擔；硬化後之 SDL＋LL 才由組合斷面承擔；斷面性質、y、I 各階段不同（2006-4、2008-4）。</li>
-<li><span class="tagchip" style="background:var(--c3)">n轉換</span><span class="tt">版與梁 f′c 不同須轉換翼寬</span>：be,tr＝be×(E版/E梁)；直接用幾何翼寬會高估組合斷面勁度（2007-4、2011-5 淨斷面／變換斷面三層次）。</li>
-<li><span class="tagchip" style="background:var(--c1)">fps</span><span class="tt">fps 公式適用條件先檢查</span>：近似式需 fse ≥ 0.5fpu；無黏結依 L/dp 選式且有 fpy、fse+4200 雙上限（2023-4 專考選式）。</li>
-<li><span class="tagchip" style="background:var(--c1)">Mcr</span><span class="tt">預力梁 Mcr 含預力項</span>：Mcr＝frSb＋Pe(e＋Sb/A)，漏掉預力貢獻會嚴重低估；φMn≥1.2Mcr 為防脆性檢核（2004-5、2018-4）。</li>
-<li><span class="tagchip" style="background:var(--c4)">次彎矩</span><span class="tt">超靜定預力梁有二次彎矩 M₂</span>：Mtotal＝Pe＋M₂，C 線非鋼腱線；一致腱 M₂=0 是特例，勿當通則（2020-4、2024-4）。</li>
-<li><span class="tagchip" style="background:var(--c2)">損失</span><span class="tt">即時損失 vs 時間相關損失分類</span>：彈性縮短、摩擦、錨定滑動為即時；潛變、乾縮、鬆弛為長期；先拉法無摩擦損失（2016-4、2017-4、2019-4）。</li>
-</ul>
-</section>
-
-<section id="s7">
-<h2>⑦ 互動計算器：矩形預力梁兩階段應力檢核</h2>
-<div class="calc">
-<div>
-<label>梁寬 b（cm）</label><input id="pb" type="number" value="40">
-<label>梁深 h（cm）</label><input id="ph" type="number" value="90">
-<label>鋼腱偏心 e（cm，形心下為＋）</label><input id="pe" type="number" value="25">
-<label>初始預力 Pi（tf）</label><input id="ppi" type="number" value="180">
-<label>有效預力比 η＝Pe/Pi（%）</label><input id="peta" type="number" value="82">
-<label>傳遞階段彎矩 M₁（tf·m，通常自重）</label><input id="pm1" type="number" value="35">
-<label>使用階段彎矩 M₂（tf·m，全服務載重）</label><input id="pm2" type="number" value="95">
-<label>f′ci（kgf/cm²）</label><input id="pfci" type="number" value="280">
-<label>f′c（kgf/cm²）</label><input id="pfc" type="number" value="350">
-<button onclick="calc()">檢核四組應力</button>
-</div>
-<div>
-<div class="result" id="out">輸入參數後按「檢核」。</div>
-<div class="svgbox"><canvas id="cvStress" width="620" height="250"></canvas></div>
-</div>
-</div>
-</section>
-
-<footer>exam-wiki-RC ｜ study RC-U4-1 ｜ 生成日期 2026-07-10 ｜ 題目連結經 index.html#md 渲染器開啟（KaTeX＋附圖）</footer>
-</div>
+<footer>study RC-U4-1 命題分析｜exam-wiki-RC 知識庫｜統計基準 raw/json/question_index.json（100 題 / 24 考年）｜題號連結指向 study/problems-view/</footer>
+</main>
 
 <script>
-const SUB=[
- {t:"WSD 斷面應力分析",d:"兩階段疊加、組合斷面、容許值",cc:"#3b82f6"},
- {t:"極限強度與 fps",d:"fps 選式、Mn、Mcr、1.2Mcr",cc:"#ef4444"},
- {t:"偏心設計與等效載重（跨U4-2）",d:"四控制條件、次彎矩、C線",cc:"#8b5cf6"},
- {t:"預力損失（跨U4-3）",d:"即時／長期損失、摩擦",cc:"#10b981"},
- {t:"特殊題型",d:"預力拉力桿、裂縫寬度",cc:"#f59e0b"}];
+const CATC={M:'#c62828',P:'#f57c00',E:'#1565c0',K:'#2e7d32',L:'#8e24aa'};
+const CATN={M:'開裂彎矩與極限強度',P:'偏心量/預力量設計',E:'彈性應力與使用性',K:'組合斷面疊加',L:'預力損失'};
+const MC={'USD':'#1565c0','WSD':'#f57c00','混合':'#6a1b9a','概念題':'#546e7a'};
+// [題號, 分群, 摘要, 標籤, 有viz, 設計法, 主(1)/副(0), 副考點的所屬單元]
 const Q=[
-["RC-2025-4",2025,2,"S:RC-U4-2","簡支預力梁偏心距限制（四控制條件、核心距）",["偏心距限制","傳遞階段","使用階段","核心距","四控制條件"],0],
-["RC-2024-4",2024,2,"S:RC-U4-2","超靜定預力梁等效載重與次彎矩（C 線）",["等效載重法","拋物線腱","次彎矩","C線","一致腱"],0],
-["RC-2023-4",2023,1,"P","無握裹單向版：fps 公式選擇與撓曲強度",["後拉法","無握裹鋼絞線","fps公式","L/dp比值","β₁折減"],0],
-["RC-2021-4",2021,0,"P","預力 T 型組合梁容許應力反推最大活載重",["預力T型梁","組合斷面","有效翼板寬","容許應力設計","底纖維拉力控制"],0],
-["RC-2020-4",2020,2,"S:RC-U4-2","預力連續梁一致腱與二次彎矩",["預力連續梁","一致腱","二次彎矩","等效載重法","偏心量設計"],0],
-["RC-2019-4",2019,3,"S:RC-U4-3","後拉法摩擦損失（拋物線雙腱）",["摩擦損失","拋物線腱","矢高計算","角度改變量","非張拉端"],0],
-["RC-2018-4",2018,1,"P","後拉有黏結梁：開裂彎矩與極限彎矩",["後拉法","開裂彎矩","極限彎矩","fps公式選擇","鋼鍵拉斷檢核"],0],
-["RC-2017-4",2017,3,"S:RC-U4-3","先拉／後拉法預力損失分類（論述）",["論述題","即時損失","時間相關損失","摩擦損失","潛變"],0],
-["RC-2016-4",2016,0,"S:RC-U4-3","先拉法彈性縮短損失與斷面應力、裂縫判斷",["先拉法","彈性縮短損失","斷面應力分析","裂縫判斷","n值計算"],0],
-["RC-2015-4",2015,2,"S:RC-U4-2","後拉拋物線腱四控制條件求最大活載重",["後拉法","拋物線腱","四控制條件","最大活載重","核心距"],0],
-["RC-2014-4",2014,0,"P","對稱 I 形梁兩階段應力檢核與超限判斷",["預力梁斷面應力","兩階段分析","容許應力檢核","底纖維拉應力超限","WSD彈性法"],1],
-["RC-2013-4",2013,1,"P","先拉有黏結梁：開裂彎矩與 fps 極限應變",["先拉法","開裂彎矩","鋼腱極限應變","fps公式","Whitney應力塊"],0],
-["RC-2012-1",2012,0,"P","先拉懸臂梁初始階段應力與補救措施",["先拉法","懸臂梁","初始階段應力","偏心方向判斷","底纖維拉應力超限"],0],
-["RC-2011-5",2011,0,"P","後拉合成斷面三層次分析（淨／變換斷面）",["後拉法","合成斷面","三斷面分析","淨斷面","變換斷面"],0],
-["RC-2010-4",2010,2,"S:RC-U4-2","簡支梁偏心距限制：曲線腱 vs 直線腱",["偏心距限制","四控制條件","曲線型鋼腱","等效載重法","傳遞階段"],0],
-["RC-2009-4",2009,4,"P","預力 RC 拉力桿：去壓載重與裂縫寬度",["預力RC拉力桿","混合斷面","裂縫寬度wmax","張力硬化","去壓載重"],0],
-["RC-2008-4",2008,0,"P","後拉組合 T 型梁兩階段應力（底緣拉力控制）",["後拉法","組合T型斷面","兩階段應力疊加","底纖維拉力控制","不同f'c轉換"],0],
-["RC-2007-4",2007,0,"P","I 形橋梁組合斷面應力（內梁＋集中活載）",["I形橋梁","組合T型斷面","兩階段應力疊加","集中活載重","不同f'c轉換"],0],
-["RC-2006-4",2006,0,"P","後拉組合 T 型梁：DL 非組合／LL 組合承擔",["後拉法","組合T型斷面","兩階段應力疊加","上緣壓力","下緣拉力"],0],
-["RC-2004-5",2004,1,"P","先拉有黏結梁：Mcr 與 fps（Whitney）",["先拉法","開裂彎矩Mcr","fps公式","Whitney應力塊","有效預力"],0],
-["RC-2003-1",2003,1,"P","部分預力梁應變相容法求 Mn（雙線性模型）",["部分預力梁","應變相容法","非預力鋼絞線","雙線性應力應變","fps精確法"],0]];
-const YEARS=[];for(let y=2002;y<=2025;y++)YEARS.push(y);
-
-const sc=document.getElementById('subcards');
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;
- sc.insertAdjacentHTML('beforeend',`<div class="scard" style="background:${s.cc}" onclick="setF(${i});document.getElementById('s5').scrollIntoView({behavior:'smooth'})"><div class="n">${n} 題</div><div class="t">${s.t}</div><div class="d">${s.d}</div></div>`);});
-
-let cur=-1;
-const fb=document.getElementById('fbtns');
-fb.insertAdjacentHTML('beforeend',`<button class="fbtn on" data-i="-1" onclick="setF(-1)">全部（${Q.length}）</button>`);
-SUB.forEach((s,i)=>fb.insertAdjacentHTML('beforeend',`<button class="fbtn" data-i="${i}" onclick="setF(${i})">${s.t}（${Q.filter(q=>q[2]===i).length}）</button>`));
-function setF(i){cur=i;document.querySelectorAll('.fbtn').forEach(b=>{b.classList.toggle('on',+b.dataset.i===i);if(+b.dataset.i===i&&i>=0){b.style.background=SUB[i].cc;}else if(+b.dataset.i===i){b.style.background='#0e7490'}else{b.style.background='#fff'}});renderList();}
-function renderList(){
- const el=document.getElementById('qlist');el.innerHTML='';
- Q.filter(q=>cur<0||q[2]===cur).forEach(q=>{
-  const[id,y,st,role,sum,tags,viz]=q;const s=SUB[st];
-  const rb=role==="P"?'<span class="badge p">主考點</span>':`<span class="badge s">副考點（主：${role.slice(2)}）</span>`;
-  el.insertAdjacentHTML('beforeend',`<div class="qitem" style="border-left-color:${s.cc}">
-   <div class="top"><a class="qid" href="../index.html#md=raw/solutions/${id}/${id}.md&t=${id}" target="_blank">${id}</a>
-   <span class="badge">${y}（民國${y-1911}）</span>${rb}<span class="badge" style="background:${s.cc};color:#fff">${s.t}</span>
-   <span title="已驗證">✅</span>${viz?'<span title="含互動圖">📊</span>':''}</div>
-   <div class="sum">${sum}</div><div class="tags">${tags.map(t=>`<span>${t}</span>`).join('')}</div></div>`);});}
-setF(-1);
-
-(function(){const cv=document.getElementById('cvYear'),x=cv.getContext('2d');
-const W=cv.width,H=cv.height,L=30,B=36,T=14;const bw=(W-L-14)/YEARS.length;
-const max=3;x.font='11px sans-serif';x.fillStyle='#64748b';
-for(let g=0;g<=max;g++){const yy=H-B-(H-B-T)*g/max;x.strokeStyle='#e2e8f0';x.beginPath();x.moveTo(L,yy);x.lineTo(W-8,yy);x.stroke();x.fillText(g,L-14,yy+4);}
-YEARS.forEach((y,i)=>{let acc=0;SUB.forEach((s,si)=>{const n=Q.filter(q=>q[1]===y&&q[2]===si).length;if(n){const h=(H-B-T)*n/max;x.fillStyle=s.cc;x.fillRect(L+i*bw+2,H-B-acc-h,bw-4,h);acc+=h;}});
- x.fillStyle='#64748b';x.save();x.translate(L+i*bw+bw/2+3,H-B+8);x.rotate(Math.PI/3);x.fillText(String(y).slice(2),0,0);x.restore();});
-})();
-
-(function(){const cv=document.getElementById('cvPie'),x=cv.getContext('2d');
-const cx=110,cy=125,r=86;let a=-Math.PI/2;const tot=Q.length;
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;if(!n)return;const a2=a+2*Math.PI*n/tot;
- x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,a2);x.closePath();x.fillStyle=s.cc;x.fill();x.strokeStyle='#fff';x.stroke();
- const m=(a+a2)/2;x.fillStyle='#fff';x.font='bold 12px sans-serif';x.textAlign='center';x.fillText(n,cx+Math.cos(m)*r*.62,cy+Math.sin(m)*r*.62+4);a=a2;});
-x.textAlign='left';x.font='11px sans-serif';
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;x.fillStyle=s.cc;x.fillRect(212,40+i*26,13,13);x.fillStyle='#334155';x.fillText(`${s.t.split('（')[0]} ${(100*n/tot).toFixed(0)}%`,231,51+i*26);});
-})();
-
-/* 計算器（壓為＋，單位 kgf/cm²） */
-function calc(){
- const b=+pb.value,h=+ph.value,e=+pe.value,Pi=+ppi.value*1000,eta=+peta.value/100,
-  M1=+pm1.value*100000,M2=+pm2.value*100000,fci=+pfci.value,fc=+pfc.value;
- const A=b*h,S=b*h*h/6,Pe=eta*Pi;
- const t1=Pi/A-Pi*e/S+M1/S, b1v=Pi/A+Pi*e/S-M1/S;
- const t2=Pe/A-Pe*e/S+M2/S, b2v=Pe/A+Pe*e/S-M2/S;
- const aC1=0.60*fci, aT1=-0.80*Math.sqrt(fci), aC2=0.45*fc, aT2=-1.6*Math.sqrt(fc);
- function chk(v,aC,aT){return v>=0?(v<=aC?"✅":"❌ 壓超限"):(v>=aT?"✅":"❌ 拉超限");}
- const all=[chk(t1,aC1,aT1),chk(b1v,aC1,aT1),chk(t2,aC2,aT2),chk(b2v,aC2,aT2)];
- const ok=all.every(s=>s==="✅");
- out.className="result"+(ok?"":" warn");
- out.innerHTML=`A=${A.toFixed(0)} cm²｜S=${S.toFixed(0)} cm³｜Pe=${(Pe/1000).toFixed(1)} tf<br>
- <b>傳遞階段</b>（容許：壓 ${aC1.toFixed(0)}／拉 ${aT1.toFixed(1)}）<br>
- 上緣 ${t1.toFixed(1)} ${all[0]}｜下緣 ${b1v.toFixed(1)} ${all[1]}<br>
- <b>使用階段</b>（容許：壓 ${aC2.toFixed(0)}／拉 ${aT2.toFixed(1)}）<br>
- 上緣 ${t2.toFixed(1)} ${all[2]}｜下緣 ${b2v.toFixed(1)} ${all[3]}<br>
- <span class="big">${ok?"四組應力全數通過 ✅":"有應力超限 ❌（調 e／P／斷面）"}</span>（單位 kgf/cm²，壓為＋）`;
- drawStress(t1,b1v,t2,b2v);
+["RC-2003-1","M","部分預力梁以應變相容法求標稱彎矩（雙線性 σ-ε 曲線）",["部分預力梁","應變相容法","非預力鋼絞線","fps精確法"],0,"混合",1,""],
+["RC-2004-5","M","先拉法矩形斷面求開裂彎矩 Mcr 與設計彎矩強度 φMn",["先拉法","開裂彎矩Mcr","fps公式","ωp延性驗核"],0,"混合",1,""],
+["RC-2013-4","M","先拉法求開裂彎矩，並反推鋼腱極限應變 εps,u",["先拉法","開裂彎矩","鋼腱極限應變","β₁折減"],0,"混合",1,""],
+["RC-2018-4","M","後拉有黏結梁求 Mcr 與極限彎矩，並檢核鋼鍵是否拉斷",["後拉法","fps公式選擇","鋼鍵拉斷檢核","Whitney應力塊"],0,"WSD",1,""],
+["RC-2023-4","M","後拉無握裹單向版，fps 隨 L/dp 變化，求計算撓曲強度 Mn",["無握裹鋼絞線","fps公式","L/dp比值","單向版"],0,"USD",1,""],
+["RC-2011-5","E","後拉法以淨／變換／合成三種斷面分階段求鋼腱與上下緣應力",["後拉法","三斷面分析","變換斷面","n值相容性"],0,"WSD",1,""],
+["RC-2012-1","E","先拉懸臂梁初始階段應力，判斷偏心方向並提補救措施",["先拉法","懸臂梁","偏心方向判斷","底纖維拉應力超限"],0,"WSD",1,""],
+["RC-2014-4","E","對稱 I 形梁施預力階段與服務載重階段的容許應力檢核",["兩階段分析","對稱I形斷面","容許應力檢核","WSD彈性法"],1,"WSD",1,""],
+["RC-2009-4","E","預力＋非預力混合斷面拉力桿的最大裂縫寬度 wmax",["預力RC拉力桿","混合斷面","裂縫寬度wmax","去壓載重"],0,"混合",1,""],
+["RC-2006-4","K","後拉組合 T 型梁兩階段疊加，求跨中上下緣混凝土應力",["後拉法","組合T型斷面","兩階段應力疊加","不同f'c轉換"],0,"WSD",1,""],
+["RC-2007-4","K","20 m 預力 I 形橋梁組合斷面，求跨中最大集中活載重 P",["I形橋梁","組合T型斷面","底纖維拉力控制","不同f'c轉換"],0,"WSD",1,""],
+["RC-2008-4","K","15 m 組合 T 斷面由底纖維拉力控制，求最大均布活載重",["後拉法","組合T型斷面","底纖維拉力控制","容許應力設計"],0,"WSD",1,""],
+["RC-2021-4","K","預鑄預力梁與場鑄板組成 T 型梁，求最大均布活載重",["預力T型梁","組合斷面","有效翼板寬","最大活載重"],0,"概念題",1,""],
+["RC-2010-4","P","曲線腱較直線腱的載重效益，並求梁中央偏心距限制",["偏心距限制","四控制條件","曲線型鋼腱","等效載重法"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
+["RC-2015-4","P","拋物線腱端部無偏心，求最優 F、跨中 ep 與最大活載重",["拋物線腱","四控制條件","核心距","最大活載重"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
+["RC-2020-4","P","預力連續梁一致腱二次彎矩，以等效載重法求 C 線",["預力連續梁","一致腱","二次彎矩","C線"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
+["RC-2024-4","P","受撐懸臂預力梁次彎矩與壓力線 C 線（等效載重法）",["等效載重法","次彎矩","C線","propped cantilever"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
+["RC-2025-4","P","簡支預力梁傳遞與使用兩階段的偏心距四控制條件",["偏心距限制","傳遞階段","使用階段","核心距"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
+["RC-2016-4","L","先拉法彈性縮短損失，並檢核初施預力後斷面應力與開裂",["先拉法","彈性縮短損失","斷面應力分析","裂縫判斷"],0,"WSD",0,"U4-3 預力損失"],
+["RC-2017-4","L","論述先拉／後拉的預力損失來源、公式與 lump-sum 總量",["論述題","即時損失","時間相關損失","潛變乾縮鬆弛"],0,"WSD",0,"U4-3 預力損失"],
+["RC-2019-4","L","後拉雙腱拋物線配置的摩擦損失（角度改變量與矢高）",["後拉法","摩擦損失","拋物線腱","角度改變量"],0,"WSD",0,"U4-3 預力損失"]
+];
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  const sel=Q.filter(q=>{
+    if(cat==='ALL')return true;
+    if(cat==='PRI')return q[6]===1;
+    if(cat==='SEC')return q[6]===0;
+    return q[1]===cat;});
+  sel.sort((a,b)=>a[0].localeCompare(b[0])).forEach(q=>{
+    const d=document.createElement('div');
+    d.className='qrow'+(q[6]?'':' sec');d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="problems-view/${q[0]}.html" target="_blank">${q[0]}</a>
+    <span class="meta" style="background:${MC[q[5]]}">${q[5]}</span>
+    ${q[6]?'':`<span class="meta" style="background:#90a4ae">副・${q[7]}</span>`}
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析／互動圖／已驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    box.appendChild(d);});
 }
-function drawStress(t1,b1v,t2,b2v){
- const cv=document.getElementById('cvStress'),x=cv.getContext('2d');x.clearRect(0,0,cv.width,cv.height);
- const mx=Math.max(Math.abs(t1),Math.abs(b1v),Math.abs(t2),Math.abs(b2v))*1.2||1;
- function block(ox,ft,fb,label){
-  const axis=ox+80,top=30,bot=200,k=70/mx;
-  x.strokeStyle='#334155';x.beginPath();x.moveTo(axis,top);x.lineTo(axis,bot);x.stroke();
-  x.beginPath();x.fillStyle='rgba(59,130,246,.45)';
-  x.moveTo(axis,top);x.lineTo(axis+ft*k,top);x.lineTo(axis+fb*k,bot);x.lineTo(axis,bot);x.closePath();x.fill();
-  x.strokeStyle='#1d4ed8';x.stroke();
-  x.fillStyle='#334155';x.font='12px sans-serif';x.textAlign='center';
-  x.fillText(label,axis,222);
-  x.fillText(ft.toFixed(0),axis+ft*k+(ft>=0?22:-22),36);
-  x.fillText(fb.toFixed(0),axis+fb*k+(fb>=0?22:-22),198);
- }
- block(40,t1,b1v,'傳遞階段（Pi＋M₁）');
- block(340,t2,b2v,'使用階段（Pe＋M₂）');
- x.textAlign='left';x.fillStyle='#64748b';x.fillText('→ 右為壓（＋）',10,18);
+function filterQ(cat,btn){renderQ(cat);
+  const order=['ALL','M','P','E','K','L','PRI','SEC'];
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  const idx=order.indexOf(cat);if(idx>=0)document.querySelectorAll('.fbtn')[idx].classList.add('on');
+  if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
-calc();
+renderQ('ALL');
+// ---- charts: 主考點 13 題 ----
+const KEYS=Object.keys(CATC);
+const PQ=Q.filter(q=>q[6]===1);
+const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];
+  if(!byYear[y]){byYear[y]={};KEYS.forEach(k=>byYear[y][k]=0);}byYear[y][q[1]]++;});
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='10px sans-serif';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillStyle='#78909c';ctx.fillText(i,8,yy+3);
+    ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    KEYS.forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,Math.min(bw*0.7,40),h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+Math.min(bw*0.35,20),H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
+}
+function drawPie(){
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={};KEYS.forEach(k=>cnt[k]=0);PQ.forEach(q=>cnt[q[1]]++);
+  const tot=PQ.length,cx=cv.width*0.28,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  KEYS.forEach(c=>{const frac=cnt[c]/tot;if(!frac)return;const a2=a+frac*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=36;
+  KEYS.forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.56,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.56+18,ly);ly+=24;});
+  ctx.fillStyle='#78909c';ctx.font='11px sans-serif';
+  ctx.fillText('（偏心量設計 5 題、預力損失 3 題全為副考點，未計入本圖）',cv.width*0.03,cv.height-8);
+}
+drawBar();drawPie();
 </script>
 </body>
 </html>

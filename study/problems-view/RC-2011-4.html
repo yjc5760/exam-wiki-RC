@@ -14,19 +14,24 @@ body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans
   background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
 header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
 header h1{margin:0;font-size:1.15em}
-header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+header .navbtns{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+header .navbtns a{display:inline-block;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
   padding:4px 12px;border-radius:14px;text-decoration:none}
+header .navbtns a:hover{background:rgba(255,255,255,.32)}
 main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
 h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
 th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
 th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
 code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#263238;color:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.86em;line-height:1.5}
+pre code{background:none;color:inherit;padding:0}
 img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;padding:8px 16px;color:#37474f}
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2011-4 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<header><h1>RC-2011-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U2-1.html">&#128269; U2-1 命題分析</a><a class="lect" href="../lecture-RC-U2-1.html">&#128218; U2-1 RC 剪力強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2011-4</h1>
 <p><strong>主分類：</strong> <code>RC-U2-2</code> RC 扭力強度設計<br />
 <strong>副分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
@@ -35,9 +40,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>矩形 RC 梁斷面：$b = 35$ cm，$d = 53$ cm，$h = 60$ cm<br />
-材料：$f'<em yt="yt">c = 280$ kgf/cm²，$f_y = f</em> = 2800$ kgf/cm²<br />
-配置：#4@8 cm 閉合箍筋，淨保護層 4 cm  </p>
-<h1>4 鋼筋：$d_b = 1.27$ cm，$A_b = 1.267$ cm²（一根）</h1>
+材料：$f'_c = 280$ kgf/cm²，$f_y = f_{yt} = 2800$ kgf/cm²<br />
+配置：#4@8 cm 閉合箍筋，淨保護層 4 cm<br />
+#4 鋼筋：$d_b = 1.27$ cm，$A_b = 1.267$ cm²（一根）</p>
 <p><strong>已知條件：</strong> 梁承受扭矩 $T_u = T_{cr}$（等於此斷面之開裂扭矩）</p>
 <p><strong>求：</strong> 在此扭矩條件下，梁斷面尚可承受之<strong>最大設計剪力</strong> $V_u$。（20 分）</p>
 <blockquote>
@@ -45,20 +50,20 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 矩形實心斷面在扭矩與剪力<strong>同時作用</strong>下，受兩個限制：
-1. <strong>箍筋能力</strong>：箍筋必須同時抵抗扭矩與剪力，兩者共享
+<p><strong>核心觀念：</strong> 矩形實心斷面在扭矩與剪力<strong>同時作用</strong>下，受兩個限制：<br />
+1. <strong>箍筋能力</strong>：箍筋必須同時抵抗扭矩與剪力，兩者共享<br />
 2. <strong>斷面適當性</strong>：混凝土受壓斜撐不得壓碎（ACI §11.6.3.1），此為<strong>上限</strong></p>
-<p><strong>出題者意圖：</strong>
-1. 測驗是否能正確計算開裂扭矩 $T_{cr} = (\sqrt{f'<em cp="cp">c}/3) \times A</em>$
-2. 測驗 $A_{oh}$、$p_h$ 的幾何計算（保護層 + 箍筋半徑）
-3. 測驗聯合扭矩-剪力斷面適當性公式（ACI §11.6.3.1）}^2/p_{cp</p>
+<p><strong>出題者意圖：</strong><br />
+1. 測驗是否能正確計算開裂扭矩 $T_{cr} = (\sqrt{f'_c}/3) \times A_{cp}^2/p_{cp}$<br />
+2. 測驗 $A_{oh}$、$p_h$ 的幾何計算（保護層 + 箍筋半徑）<br />
+3. 測驗聯合扭矩-剪力斷面適當性公式（ACI §11.6.3.1）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong>
-1. 求 $A_{cp}$、$p_{cp}$ → 算 $T_{cr}$
-2. 求 $A_{oh}$、$p_h$（需考慮保護層 + 箍筋半徑至中心線）
-3. 計算 $V_c$（混凝土剪力貢獻）
-4. 代入斷面適當性公式，解出 $V_u$
+<p><strong>作戰計畫：</strong><br />
+1. 求 $A_{cp}$、$p_{cp}$ → 算 $T_{cr}$<br />
+2. 求 $A_{oh}$、$p_h$（需考慮保護層 + 箍筋半徑至中心線）<br />
+3. 計算 $V_c$（混凝土剪力貢獻）<br />
+4. 代入斷面適當性公式，解出 $V_u$<br />
 5. 驗算箍筋是否足夠（確認控制條件）</p>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
@@ -97,11 +102,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>最終目標</h3>
 <p>在 $T_u = T_{cr}$ 已固定之條件下，求此矩形梁斷面能額外承受的最大設計剪力 $V_u$。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$\text{Step 1：} T_{cr} = \frac{\sqrt{f'<em cp="cp">c}}{3}\cdot\frac{A</em>$$}^2}{p_{cp}</p>
-<p>$$\text{Step 2：} A_{oh} = x_{oh}\cdot y_{oh},\quad x_{oh} = b - 2!\left(cc + \frac{d_b}{2}\right),\quad p_h = 2(x_{oh}+y_{oh})$$</p>
+<p>$$\text{Step 1：} T_{cr} = \frac{\sqrt{f'_c}}{3}\cdot\frac{A_{cp}^2}{p_{cp}}$$</p>
+<p>$$\text{Step 2：} A_{oh} = x_{oh}\cdot y_{oh},\quad x_{oh} = b - 2\!\left(cc + \frac{d_b}{2}\right),\quad p_h = 2(x_{oh}+y_{oh})$$</p>
 <p>$$\text{Step 3：} V_c = 0.53\sqrt{f'_c}\cdot b_w\cdot d$$</p>
-<p>$$\text{Step 4（斷面適當性）：} \sqrt{\left(\frac{V_u}{b_w d}\right)^2 + \left(\frac{\boxed{T_{cr}}\cdot\boxed{p_h}}{1.7\,\boxed{A_{oh}}^2}\right)^2} \le \phi!\left(\frac{V_c}{b_w d} + 2.12\sqrt{f'_c}\right)$$</p>
-<p>$$\text{Step 5（箍筋驗算）：} \frac{A_t}{s}\bigg|<em yt="yt">{req,T} = \frac{T_u}{\phi\cdot2\cdot A_o\cdot f</em>\bigg|}},\quad \frac{A_v}{s<em yt="yt">{req,V} = \frac{V_u - \phi V_c}{\phi\cdot f</em>$$}\cdot d</p>
+<p>$$\text{Step 4（斷面適當性）：} \sqrt{\left(\frac{V_u}{b_w d}\right)^2 + \left(\frac{\boxed{T_{cr}}\cdot\boxed{p_h}}{1.7\,\boxed{A_{oh}}^2}\right)^2} \le \phi\!\left(\frac{V_c}{b_w d} + 2.12\sqrt{f'_c}\right)$$</p>
+<p>$$\text{Step 5（箍筋驗算）：} \frac{A_t}{s}\bigg|_{req,T} = \frac{T_u}{\phi\cdot2\cdot A_o\cdot f_{yt}},\quad \frac{A_v}{s}\bigg|_{req,V} = \frac{V_u - \phi V_c}{\phi\cdot f_{yt}\cdot d}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -300,11 +305,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$p_{cp} = 2(b+h) = 2(35+60) = 190 \text{ cm}$$</p>
 <hr />
 <h3>Step 2：開裂扭矩 $T_{cr}$</h3>
-<p>$$T_{cr} = \frac{\sqrt{f'<em cp="cp">c}}{3}\cdot\frac{A</em>$$}^2}{p_{cp}} = \frac{\sqrt{280}}{3}\times\frac{2100^2}{190</p>
+<p>$$T_{cr} = \frac{\sqrt{f'_c}}{3}\cdot\frac{A_{cp}^2}{p_{cp}} = \frac{\sqrt{280}}{3}\times\frac{2100^2}{190}$$</p>
 <p>$$= \frac{16.733}{3}\times\frac{4{,}410{,}000}{190} = 5.578\times23{,}210.5 = \boxed{129{,}444 \text{ kgf·cm}}$$</p>
 <hr />
 <h3>Step 3：箍筋中心線幾何（$A_{oh}$、$p_h$）</h3>
-<p>各邊面到箍筋中心線距離：
+<p>各邊面到箍筋中心線距離：<br />
 $$cc + \frac{d_b}{2} = 4 + \frac{1.27}{2} = 4 + 0.635 = 4.635 \text{ cm}$$</p>
 <p>$$x_{oh} = b - 2\times4.635 = 35 - 9.27 = 25.73 \text{ cm}$$</p>
 <p>$$y_{oh} = h - 2\times4.635 = 60 - 9.27 = 50.73 \text{ cm}$$</p>
@@ -326,7 +331,7 @@ $$cc + \frac{d_b}{2} = 4 + \frac{1.27}{2} = 4 + 0.635 = 4.635 \text{ cm}$$</p>
 <p>計算右側上限（$\phi = 0.75$）：</p>
 <p>$$2.12\sqrt{f'_c} = 2.12\times\sqrt{280} = 2.12\times16.733 = 35.47 \text{ kgf/cm}^2$$</p>
 <p>$$\frac{V_c}{b_w d} = \frac{16{,}452}{35\times53} = \frac{16{,}452}{1855} = 8.87 \text{ kgf/cm}^2$$</p>
-<p>$$\text{上限} = \phi!\left(\frac{V_c}{b_w d} + 2.12\sqrt{f'_c}\right) = 0.75\times(8.87+35.47) = 0.75\times44.34 = \boxed{33.26 \text{ kgf/cm}^2}$$</p>
+<p>$$\text{上限} = \phi\!\left(\frac{V_c}{b_w d} + 2.12\sqrt{f'_c}\right) = 0.75\times(8.87+35.47) = 0.75\times44.34 = \boxed{33.26 \text{ kgf/cm}^2}$$</p>
 <p><strong>代入已知 $\tau_t = 6.83$ kgf/cm²，解 $V_u$：</strong></p>
 <p>$$\sqrt{\left(\frac{V_u}{1855}\right)^2 + 6.83^2} = 33.26$$</p>
 <p>$$\left(\frac{V_u}{1855}\right)^2 = 33.26^2 - 6.83^2 = 1{,}106.2 - 46.6 = 1{,}059.6$$</p>
@@ -335,14 +340,14 @@ $$cc + \frac{d_b}{2} = 4 + \frac{1.27}{2} = 4 + 0.635 = 4.635 \text{ cm}$$</p>
 <hr />
 <h3>Step 7：驗算箍筋是否足夠</h3>
 <p><strong>扭矩所需 $A_t/s$：</strong></p>
-<p>$$\frac{A_t}{s}\bigg|<em yt="yt">{req,T} = \frac{T_u}{\phi\cdot2\cdot A_o\cdot f</em>$$}} = \frac{129{,}444}{0.75\times2\times1109.5\times2800} = \frac{129{,}444}{4{,}659{,}900} = 0.02778 \text{ cm}^2/\text{cm</p>
+<p>$$\frac{A_t}{s}\bigg|_{req,T} = \frac{T_u}{\phi\cdot2\cdot A_o\cdot f_{yt}} = \frac{129{,}444}{0.75\times2\times1109.5\times2800} = \frac{129{,}444}{4{,}659{,}900} = 0.02778 \text{ cm}^2/\text{cm}$$</p>
 <p><strong>剪力所需 $A_v/s$：</strong></p>
 <p>$$\phi V_c = 0.75\times16{,}452 = 12{,}339 \text{ kgf}$$</p>
-<p>$$\frac{A_v}{s}\bigg|<em yt="yt">{req,V} = \frac{V_u - \phi V_c}{\phi\cdot f</em>$$}\cdot d} = \frac{60{,}380 - 12{,}339}{0.75\times2800\times53} = \frac{48{,}041}{111{,}300} = 0.4317 \text{ cm}^2/\text{cm</p>
+<p>$$\frac{A_v}{s}\bigg|_{req,V} = \frac{V_u - \phi V_c}{\phi\cdot f_{yt}\cdot d} = \frac{60{,}380 - 12{,}339}{0.75\times2800\times53} = \frac{48{,}041}{111{,}300} = 0.4317 \text{ cm}^2/\text{cm}$$</p>
 <p><strong>合計需求 vs. 提供量：</strong></p>
 <p>$$\left(\frac{A_v}{s} + 2\frac{A_t}{s}\right)_{req} = 0.4317 + 2\times0.02778 = 0.4317 + 0.05556 = 0.487 \text{ cm}^2/\text{cm}$$</p>
 <p>$$\left(\frac{A_v+2A_t}{s}\right)_{prov} = \frac{4\times A_b}{s} = \frac{4\times1.267}{8} = 0.634 \text{ cm}^2/\text{cm}$$</p>
-<p>$$0.487 &lt; 0.634 \quad \checkmark \text{（箍筋充足）}$$</p>
+<p>$$0.487 < 0.634 \quad \checkmark \text{（箍筋充足）}$$</p>
 <p><strong>結論：斷面適當性（Step 6）控制，$V_u$ 由混凝土壓碎上限決定。</strong></p>
 <p>$$\boxed{V_u = 60.4 \text{ tf}}$$</p>
 <hr />
@@ -379,14 +384,28 @@ $$cc + \frac{d_b}{2} = 4 + \frac{1.27}{2} = 4 + 0.635 = 4.635 \text{ cm}$$</p>
 </table>
 <p>三者等效，只是單位換算。</p>
 <p><strong>③ 開裂扭矩 $T_{cr}$ 的物理意義</strong></p>
-<p>$T_{cr} = (\sqrt{f'<em cp="cp">c}/3) \times A</em>$ 來自薄壁管理論（thin-walled tube analogy）：
-- 等效薄壁厚度 $t \approx A_{cp}/(4\times p_{cp})$... 但實際上 ACI 使用 $A_{cp}^2/p_{cp}$ 的形式
-- 裂縫時主拉應力達 $\approx (1/3)\sqrt{f'_c}$（混凝土拉裂強度）}^2/p_{cp</p>
+<p>$T_{cr} = (\sqrt{f'_c}/3) \times A_{cp}^2/p_{cp}$ 來自薄壁管理論（thin-walled tube analogy）：<br />
+- 等效薄壁厚度 $t \approx A_{cp}/(4\times p_{cp})$... 但實際上 ACI 使用 $A_{cp}^2/p_{cp}$ 的形式<br />
+- 裂縫時主拉應力達 $\approx (1/3)\sqrt{f'_c}$（混凝土拉裂強度）</p>
 <p><strong>④ 考場速解提示</strong></p>
 <p>本題的計算順序：$T_{cr}$ → $A_{oh}$ → $V_c$ → 斷面適當性公式反解 $V_u$</p>
-<p>不需要解聯立方程式，但需要留意：
-- $\tau_t = T_{cr} \times p_h / (1.7 \times A_{oh}^2)$ 是一個已知的「扭矩剪應力」
+<p>不需要解聯立方程式，但需要留意：<br />
+- $\tau_t = T_{cr} \times p_h / (1.7 \times A_{oh}^2)$ 是一個已知的「扭矩剪應力」<br />
 - 斷面限制是一個圓方程：$\tau_v^2 + \tau_t^2 \le R^2$，解 $\tau_v$ 後乘以 $b_w d$ 即得 $V_u$</p></main>
-<footer>來源：raw/solutions/RC-2011-4/RC-2011-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
-</footer>
+<footer>來源：raw/solutions/RC-2011-4/RC-2011-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+   把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
+(function(){
+  try{
+    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    if(!m) return;
+    var u = m[1];
+    var q = document.querySelector('header a.quick');
+    var l = document.querySelector('header a.lect');
+    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(l) l.setAttribute('href','../lecture-'+u+'.html');
+  }catch(e){}
+})();
+</script>
 </body></html>

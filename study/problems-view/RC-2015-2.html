@@ -1,0 +1,474 @@
+<!DOCTYPE html>
+<html lang="zh-Hant"><head><meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>RC-2015-2 — 題目解析</title>
+<link rel="stylesheet" href="../assets/katex/katex.min.css">
+<script defer src="../assets/katex/katex.min.js"></script>
+<script defer src="../assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},
+  {left:'$',right:'$',display:false},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#1565c0;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+  background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
+header h1{margin:0;font-size:1.15em}
+header .navbtns{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+header .navbtns a{display:inline-block;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+header .navbtns a:hover{background:rgba(255,255,255,.32)}
+main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
+h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
+table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
+th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
+th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
+code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#263238;color:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.86em;line-height:1.5}
+pre code{background:none;color:inherit;padding:0}
+img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;padding:8px 16px;color:#37474f}
+.katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
+</style></head><body>
+<header><h1>RC-2015-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<main><h1>考題編號：RC-2015-2</h1>
+<p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
+<strong>副分類：</strong> （無）<br />
+<strong>設計法：</strong> USD強度設計法<br />
+<strong>標籤：</strong> <code>雙筋梁</code> <code>最大設計彎矩</code> <code>曲率韌性</code> <code>εt=0.004限制</code> <code>最小配筋率</code> <code>φu/φy</code> <code>轉換斷面法</code> <code>壓力鋼筋未降伏（韌性計算）</code></p>
+<hr />
+<h2>1. 原始題目重述（Problem Restatement）</h2>
+<p>RC 雙筋矩形梁斷面，已知條件：</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>數值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面寬 $b$</td>
+<td>35 cm</td>
+</tr>
+<tr>
+<td>斷面總深 $h$</td>
+<td>70 cm</td>
+</tr>
+<tr>
+<td>拉力鋼筋有效深度 $d$</td>
+<td>63 cm</td>
+</tr>
+<tr>
+<td>壓力鋼筋有效深度 $d'$</td>
+<td>7 cm</td>
+</tr>
+<tr>
+<td>混凝土強度 $f'_c$</td>
+<td>350 kgf/cm²</td>
+</tr>
+<tr>
+<td>鋼筋降伏強度 $f_y$</td>
+<td>4200 kgf/cm²</td>
+</tr>
+<tr>
+<td>彈性模數比 $n$</td>
+<td>7</td>
+</tr>
+<tr>
+<td>壓力鋼筋 $A'_s$</td>
+<td>$2\text{-\#8} = 2 \times 5.067 = 10.134$ cm²</td>
+</tr>
+</tbody>
+</table>
+<p><strong>試求（在適當設置拉力鋼筋後）：</strong><br />
+（一）此梁斷面可具有之最大設計彎矩強度。（20 分）<br />
+（二）此梁斷面可具有之最大韌性容量 $\mu$，其中 $\mu = \varphi_u / \varphi_y$。（20 分）</p>
+<hr />
+<h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
+<p><strong>核心觀念：</strong><br />
+- <strong>(一)</strong> 最大設計彎矩強度：最大拉力鋼筋量受延性控制（$\varepsilon_t \geq 0.004$），此時 $\varphi$ 處於過渡區；壓力鋼筋提供額外壓力，允許更多拉力鋼筋。<br />
+- <strong>(二)</strong> 最大韌性容量：最大曲率韌性 $\mu$ 在<strong>最少拉力鋼筋</strong>時出現。極限曲率 $\varphi_u = \varepsilon_{cu}/c_u$，降伏曲率 $\varphi_y = \varepsilon_y/(d-k_y d)$（彈性轉換斷面）。</p>
+<p><strong>出題者意圖：</strong> 讓考生看清「最大彎矩」與「最大韌性」是兩個相互<strong>抵換</strong>（trade-off）的設計目標——拉力鋼筋越多，彎矩越大但韌性越低；鋼筋越少，韌性越高但強度越小。</p>
+<hr />
+<h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
+<p><strong>Part (一) 作戰：</strong></p>
+<pre><code>(1) 確認 β₁ = 0.80（f'c = 350 kgf/cm²）
+(2) 延性控制最大中性軸：εt = 0.004 → c_max = 3d/7 = 27 cm
+(3) 驗算 A's 是否降伏（ε's vs εy）
+(4) Cc + Cs 求最大 As；計算 Mn
+(5) φ = 0.817（εt = 0.004 在過渡區）→ φMn
+</code></pre>
+<p><strong>Part (二) 作戰：</strong></p>
+<pre><code>(1) 最大韌性 → 最少拉力鋼筋 As,min = ρmin × b × d
+(2) 極限分析：找 cu（注意 A's 可能落在中性軸下方 = 拉力）
+(3) 彈性轉換斷面法：找 ky（n=7），求 φy
+(4) μ = φu/φy = (εcu/cu) / (εy / (d - kyd))
+</code></pre>
+<p><strong>關鍵陷阱（四個）：</strong></p>
+<table>
+<thead>
+<tr>
+<th>#</th>
+<th>陷阱</th>
+<th>正確做法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>①</td>
+<td>Part(一) φ 誤用 0.90</td>
+<td>εt = 0.004 在過渡區，φ = 0.817</td>
+</tr>
+<tr>
+<td>②</td>
+<td>Cs 未扣除混凝土占位</td>
+<td>$C'_s = A'_s(f'_s - 0.85f'_c)$</td>
+</tr>
+<tr>
+<td>③</td>
+<td>Part(二) 極限時 A's 落於中性軸以下（拉力區）</td>
+<td>cu &lt; d' = 7 cm → A's 為拉力鋼筋，需重新列平衡</td>
+</tr>
+<tr>
+<td>④</td>
+<td>φy 直接用 εy/d（忽略轉換斷面中性軸）</td>
+<td>必須用彈性轉換斷面求 ky，φy = εy/(d(1-ky))</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>3.5 變數層次分析（Variable Hierarchy Analysis）</h2>
+<blockquote>
+<p>複習提示：第一次解題後，在每個卡住的知識點旁標記 <code>⚠</code>；第二次複習時只看有 <code>⚠</code> 的項目。</p>
+</blockquote>
+<h3>最終目標</h3>
+<p>（一）最大 φMn（εt = 0.004 限制）；（二）最大 μ = φu/φy（最小 As 限制）</p>
+<h3>本題關鍵公式（依計算順序）</h3>
+<p>$$\text{Part(一)-Step1:}\quad c_{\max} = \frac{3}{7}\,d \quad (\varepsilon_t = 0.004,\ c/d = 3/7)$$</p>
+<p>$$\text{Part(一)-Step2:}\quad \varepsilon'_s = 0.003\,\frac{\boxed{c_{\max}}-d'}{\boxed{c_{\max}}} \quad \Rightarrow f'_s$$</p>
+<p>$$\text{Part(一)-Step3:}\quad A_{s,\max} = \frac{C_c + C'_s}{f_y},\quad \varphi M_n = \varphi\!\left[C_c\!\left(d-\tfrac{a}{2}\right)+C'_s(d-d')\right]$$</p>
+<p>$$\text{Part(二)-Step1:}\quad A_{s,\min} = \rho_{\min} \cdot b \cdot d,\quad \rho_{\min} = \frac{0.8\sqrt{f'_c}}{f_y}$$</p>
+<p>$$\text{Part(二)-Step2:}\quad 0.85 f'_c \beta_1 c_u b = A'_s\,f'_{s,\text{tension}} + A_s\,f_y \quad (c_u < d')$$</p>
+<p>$$\text{Part(二)-Step3:}\quad \frac{b(k_y d)^2}{2} + (n-1)A'_s(k_y d - d') = n A_s(d - k_y d)$$</p>
+<p>$$\text{Part(二)-Step4:}\quad \mu = \frac{\varphi_u}{\varphi_y} = \frac{\varepsilon_{cu}/\boxed{c_u}}{\varepsilon_y/(d - \boxed{k_y}\,d)}$$</p>
+<h3>L1：題目直接給定</h3>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>數值</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$b, h, d, d'$</td>
+<td>35, 70, 63, 7 cm</td>
+<td>斷面幾何</td>
+</tr>
+<tr>
+<td>$f'_c, f_y$</td>
+<td>350, 4200 kgf/cm²</td>
+<td>材料強度</td>
+</tr>
+<tr>
+<td>$n$</td>
+<td>7</td>
+<td>彈性模數比（用於降伏曲率分析）</td>
+</tr>
+<tr>
+<td>$A'_s$</td>
+<td>10.134 cm²</td>
+<td>2-\#8，固定壓力鋼筋</td>
+</tr>
+</tbody>
+</table>
+<h3>L2：需知識點推導</h3>
+<p><strong>▎Part (一)：最大設計彎矩</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\beta_1$</td>
+<td>$0.85 - 0.05(350-280)/70 = 0.80$</td>
+<td></td>
+</tr>
+<tr>
+<td>$c_{\max}$</td>
+<td>$3d/7 = 27$ cm（εt = 0.004）</td>
+<td></td>
+</tr>
+<tr>
+<td>$a_{\max}$</td>
+<td>$\beta_1 c_{\max} = 21.6$ cm</td>
+<td></td>
+</tr>
+<tr>
+<td>$\varepsilon'_s$</td>
+<td>$0.003(27-7)/27 = 0.00222 > \varepsilon_y$ → A's 降伏</td>
+<td></td>
+</tr>
+<tr>
+<td>$C_c$</td>
+<td>$0.85 \times 350 \times 21.6 \times 35$</td>
+<td></td>
+</tr>
+<tr>
+<td>$C'_s$</td>
+<td>$A'_s(f_y - 0.85f'_c)$</td>
+<td></td>
+</tr>
+<tr>
+<td>$A_{s,\max}$</td>
+<td>$(C_c + C'_s)/f_y$</td>
+<td></td>
+</tr>
+<tr>
+<td>$M_n$</td>
+<td>$C_c(d-a/2) + C'_s(d-d')$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\varphi$</td>
+<td>$0.65 + (0.004-0.002)/0.003 \times 0.25 = 0.817$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p><strong>▎Part (二)：最大韌性</strong></p>
+<table>
+<thead>
+<tr>
+<th>符號</th>
+<th>公式／來源</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\rho_{\min}$</td>
+<td>$0.8\sqrt{350}/4200 = 0.003564$</td>
+<td></td>
+</tr>
+<tr>
+<td>$A_{s,\min}$</td>
+<td>$\rho_{\min} \times 35 \times 63 = 7.86$ cm²</td>
+<td></td>
+</tr>
+<tr>
+<td>$c_u$</td>
+<td>由力平衡求解（含 cu &lt; d' 之特殊條件）</td>
+<td></td>
+</tr>
+<tr>
+<td>$k_y$</td>
+<td>由彈性轉換斷面二次方程求解</td>
+<td></td>
+</tr>
+<tr>
+<td>$\varphi_u$</td>
+<td>$\varepsilon_{cu}/c_u = 0.003/c_u$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\varphi_y$</td>
+<td>$\varepsilon_y/(d-k_y d)$</td>
+<td></td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td>$\varphi_u/\varphi_y$</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<h3>L3：深層知識（不懂就卡住）</h3>
+<table>
+<thead>
+<tr>
+<th>知識點</th>
+<th>說明</th>
+<th>卡關?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>εt = 0.004 為梁最大鋼筋限制</td>
+<td>ACI 規定梁（非柱）εt ≥ 0.004，對應 c/d ≤ 3/7</td>
+<td></td>
+</tr>
+<tr>
+<td>最大韌性在最小鋼筋</td>
+<td>As ↓ → cu ↓ → φu ↑；ky 幾乎不變 → φy 幾乎不變 → μ ↑</td>
+<td></td>
+</tr>
+<tr>
+<td>cu &lt; d' 時 A's 成為拉力鋼筋</td>
+<td>當中性軸比 d'（壓力鋼筋位置）還高時，A's 落在拉力區，平衡方程式改變</td>
+<td></td>
+</tr>
+<tr>
+<td>彈性轉換斷面求 ky（用於 φy）</td>
+<td>截面一開始仍是彈性，用 n 倍化鋼筋面積，對中性軸取面積矩 = 0</td>
+<td></td>
+</tr>
+<tr>
+<td>韌性 vs 強度的本質抵換</td>
+<td>多鋼筋 → c↑ → φu↓ → μ↓；少鋼筋 → c↓ → φu↑ → μ↑</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>4. 步驟化詳細計算過程（Step-by-Step Detailed Calculation）</h2>
+<h3>共用基本參數</h3>
+<p>$$\beta_1 = 0.85 - 0.05 \times \frac{350-280}{70} = 0.85 - 0.05 = \boxed{0.80}$$</p>
+<p>$$\varepsilon_y = \frac{f_y}{E_s} = \frac{4200}{2{,}040{,}000} = 0.00206$$</p>
+<p>$$A'_s = 2 \times 5.067 = 10.134 \text{ cm}^2$$</p>
+<hr />
+<h3>Part（一）：最大設計彎矩強度</h3>
+<h4>Step 1：延性控制之最大中性軸深度</h4>
+<blockquote>
+<p><strong>策略：</strong> 梁之最大鋼筋量由 $\varepsilon_t \geq 0.004$ 控制，此時 $c/d = 0.003/(0.003+0.004) = 3/7$。</p>
+</blockquote>
+<p>$$c_{\max} = \frac{3}{7} \times 63 = \boxed{27 \text{ cm}},\quad a_{\max} = 0.80 \times 27 = \boxed{21.6 \text{ cm}}$$</p>
+<h4>Step 2：驗算壓力鋼筋是否降伏</h4>
+<p>$$\varepsilon'_s = 0.003 \times \frac{27 - 7}{27} = 0.003 \times \frac{20}{27} = 0.00222 > \varepsilon_y = 0.00206$$</p>
+<p>$$\Rightarrow \boxed{f'_s = f_y = 4{,}200 \text{ kgf/cm}^2 \text{（壓力鋼筋降伏）}}$$</p>
+<h4>Step 3：三力計算</h4>
+<p>$$C_c = 0.85 \times 350 \times 21.6 \times 35 = 297.5 \times 21.6 \times 35 = 224{,}910 \text{ kgf}$$</p>
+<p>$$C'_s = A'_s(f'_s - 0.85f'_c) = 10.134 \times (4{,}200 - 297.5) = 10.134 \times 3{,}902.5 = 39{,}548 \text{ kgf}$$</p>
+<h4>Step 4：最大拉力鋼筋量</h4>
+<p>$$A_{s,\max} = \frac{C_c + C'_s}{f_y} = \frac{224{,}910 + 39{,}548}{4{,}200} = \frac{264{,}458}{4{,}200} = \boxed{62.97 \text{ cm}^2}$$</p>
+<h4>Step 5：標稱彎矩強度</h4>
+<p>$$M_n = C_c\!\left(d - \frac{a}{2}\right) + C'_s(d - d')$$</p>
+<p>$$= 224{,}910 \times (63 - 10.8) + 39{,}548 \times (63 - 7)$$</p>
+<p>$$= 224{,}910 \times 52.2 + 39{,}548 \times 56$$</p>
+<p>$$= 11{,}740{,}302 + 2{,}214{,}688 = 13{,}954{,}990 \text{ kgf·cm} = 139.55 \text{ tf·m}$$</p>
+<h4>Step 6：φ 值與設計彎矩</h4>
+<p>$$\varepsilon_t = 0.004 \in (0.002,\ 0.005) \Rightarrow \varphi = 0.65 + \frac{0.004-0.002}{0.003} \times 0.25 = 0.65 + 0.167 = \boxed{0.817}$$</p>
+<p>$$\boxed{\varphi M_n = 0.817 \times 139.55 = 114.0 \text{ tf·m}}$$</p>
+<hr />
+<h3>Part（二）：最大韌性容量 μ = φu / φy</h3>
+<h4>Step 1：最小拉力鋼筋量</h4>
+<p>$$\rho_{\min} = \frac{0.8\sqrt{f'_c}}{f_y} = \frac{0.8 \times \sqrt{350}}{4{,}200} = \frac{0.8 \times 18.71}{4{,}200} = \frac{14.97}{4{,}200} = 0.003564$$</p>
+<p>$$A_{s,\min} = 0.003564 \times 35 \times 63 = \boxed{7.86 \text{ cm}^2}$$</p>
+<h4>Step 2：極限中性軸深度 $c_u$（特殊：A's 落在拉力區）</h4>
+<blockquote>
+<p><strong>策略關鍵：</strong> 當拉力鋼筋 As 極少時，中性軸極高（cu 很小）。若 $c_u < d' = 7$ cm，則「壓力鋼筋」A's 實際上落在<strong>拉力區</strong>，改為拉力鋼筋處理。</p>
+</blockquote>
+<p><strong>假設 $c_u < d' = 7$ cm（A's 在拉力區，未降伏）：</strong></p>
+<p>$$0.85 f'_c \cdot \beta_1 c_u \cdot b = A'_s \cdot \underbrace{E_s \cdot \frac{0.003(d'-c_u)}{c_u}}_{f'_{s,\text{tension}}} + A_{s,\min} \cdot f_y$$</p>
+<p>$$8{,}330\,c_u = 10.134 \times \frac{6{,}120(7-c_u)}{c_u} + 7.86 \times 4{,}200$$</p>
+<p>$$8{,}330\,c_u = \frac{62{,}020(7-c_u)}{c_u} + 33{,}012$$</p>
+<p>整理成二次方程：</p>
+<p>$$8{,}330\,c_u^2 + 29{,}008\,c_u - 434{,}140 = 0$$</p>
+<p>$$c_u = \frac{-29{,}008 + \sqrt{29{,}008^2 + 4 \times 8{,}330 \times 434{,}140}}{2 \times 8{,}330} = \frac{-29{,}008 + 123{,}722}{16{,}660} = \boxed{5.69 \text{ cm}}$$</p>
+<p><strong>驗證假設：</strong> $c_u = 5.69 \text{ cm} < d' = 7 \text{ cm}$ ✓</p>
+<p>A's 拉力應變：$\varepsilon'_{s} = 0.003(7-5.69)/5.69 = 0.000691 < \varepsilon_y$ ✓（未降伏，與計算一致）</p>
+<p>$$\varphi_u = \frac{\varepsilon_{cu}}{c_u} = \frac{0.003}{5.69} = \boxed{5.27 \times 10^{-4} \text{ rad/cm}}$$</p>
+<h4>Step 3：降伏曲率 $\varphi_y$（彈性轉換斷面法，n=7）</h4>
+<blockquote>
+<p><strong>注意：</strong> φy 用<strong>彈性分析</strong>，此時 As 很小，ky 值小（NA 在上方），A's 在壓力區（kyd &gt; d' = 7 cm，需驗證）。</p>
+</blockquote>
+<p>轉換斷面中性軸（對 NA 面積矩為零）：</p>
+<p>$$\frac{b(k_y d)^2}{2} + (n-1)A'_s(k_y d - d') = n A_{s,\min}(d - k_y d)$$</p>
+<p>$$\frac{35(63k_y)^2}{2} + 6 \times 10.134(63k_y - 7) = 7 \times 7.86 \times 63(1-k_y)$$</p>
+<p>$$69{,}458\,k_y^2 + 3{,}831\,k_y - 425.6 = 3{,}466 - 3{,}466\,k_y$$</p>
+<p>$$69{,}458\,k_y^2 + 7{,}297\,k_y - 3{,}892 = 0$$</p>
+<p>$$k_y = \frac{-7{,}297 + \sqrt{7{,}297^2 + 4 \times 69{,}458 \times 3{,}892}}{2 \times 69{,}458} = \frac{-7{,}297 + 33{,}683}{138{,}916} = \boxed{0.190}$$</p>
+<p>$$k_y d = 0.190 \times 63 = 11.97 \text{ cm} > d' = 7 \text{ cm} \quad \checkmark \text{（A's 在壓力區，假設一致）}$$</p>
+<p>$$\varphi_y = \frac{\varepsilon_y}{d - k_y d} = \frac{0.00206}{63 \times (1-0.190)} = \frac{0.00206}{63 \times 0.810} = \frac{0.00206}{51.03} = \boxed{4.04 \times 10^{-5} \text{ rad/cm}}$$</p>
+<h4>Step 4：最大韌性容量</h4>
+<p>$$\mu = \frac{\varphi_u}{\varphi_y} = \frac{5.27 \times 10^{-4}}{4.04 \times 10^{-5}} = \boxed{13.0}$$</p>
+<hr />
+<h3>計算結果彙整</h3>
+<table>
+<thead>
+<tr>
+<th>子題</th>
+<th>設計條件</th>
+<th>核心計算值</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>(一) 最大設計彎矩</strong></td>
+<td>$A_{s,\max} = 62.97$ cm²（$\varepsilon_t = 0.004$）</td>
+<td>$\varphi M_n = \mathbf{114.0 \text{ tf·m}}$，φ = 0.817</td>
+</tr>
+<tr>
+<td><strong>(二) 最大韌性容量</strong></td>
+<td>$A_{s,\min} = 7.86$ cm²（$\rho_{\min}$）</td>
+<td>$\mu = \mathbf{13.0}$，$c_u = 5.69$ cm，$k_y = 0.190$</td>
+</tr>
+</tbody>
+</table>
+<hr />
+<h2>5. 關鍵爭議點與進階探討（Critical Issues &amp; Advanced Discussion）</h2>
+<h3>爭議：Part (二) 為何「壓力鋼筋」變成拉力鋼筋？</h3>
+<p>當 $A_{s,\min} = 7.86$ cm²（拉力）對上 $A'_s = 10.134$ cm²（原設計為壓力），壓力鋼筋的壓力容量遠超拉力鋼筋的拉力需求。混凝土壓力區需要同時平衡 As 的拉力和 A's 的拉力（A's 已落到拉力區），導致 $c_u$ 極小（5.69 cm）。</p>
+<p>這揭示一個重要設計原則：<strong>壓力鋼筋量不應過大</strong>，否則在最小張力鋼筋條件下反而造成「兩邊都是拉力鋼筋」的矛盾截面。</p>
+<h3>最大彎矩 vs. 最大韌性的抵換（Trade-off）</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: center;">最大彎矩（一）</th>
+<th style="text-align: center;">最大韌性（二）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$A_s$</td>
+<td style="text-align: center;">62.97 cm²</td>
+<td style="text-align: center;">7.86 cm²</td>
+</tr>
+<tr>
+<td>$c$（ultimate）</td>
+<td style="text-align: center;">27 cm</td>
+<td style="text-align: center;">5.69 cm</td>
+</tr>
+<tr>
+<td>$\varphi_u$</td>
+<td style="text-align: center;">$1.11 \times 10^{-4}$ rad/cm</td>
+<td style="text-align: center;">$5.27 \times 10^{-4}$ rad/cm</td>
+</tr>
+<tr>
+<td>$\varphi M_n$</td>
+<td style="text-align: center;"><strong>114.0 tf·m</strong></td>
+<td style="text-align: center;">約 9.5 tf·m</td>
+</tr>
+<tr>
+<td>$\mu$</td>
+<td style="text-align: center;">約 2.0</td>
+<td style="text-align: center;"><strong>13.0</strong></td>
+</tr>
+</tbody>
+</table>
+<p>高強度與高韌性是相互抵換的設計目標，地震區設計應在兩者之間取得平衡。</p></main>
+<footer>來源：raw/solutions/RC-2015-2/RC-2015-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+   把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
+(function(){
+  try{
+    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    if(!m) return;
+    var u = m[1];
+    var q = document.querySelector('header a.quick');
+    var l = document.querySelector('header a.lect');
+    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(l) l.setAttribute('href','../lecture-'+u+'.html');
+  }catch(e){}
+})();
+</script>
+</body></html>

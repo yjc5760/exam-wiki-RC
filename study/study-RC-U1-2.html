@@ -3,380 +3,266 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>RC-U1-2 柱強度分析與設計｜深度複習</title>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
-<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js"
- onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}]});"></script>
+<title>RC-U1-2 RC 柱強度分析與設計｜命題分析</title>
 <style>
-:root{--c0:#3b82f6;--c1:#ef4444;--c2:#10b981;--c3:#f59e0b;--c4:#8b5cf6;--bg:#f5f7fa;--card:#fff;--ink:#1e293b;--mut:#64748b;--line:#e2e8f0}
-*{box-sizing:border-box;margin:0;padding:0}
-body{font-family:"Microsoft JhengHei","PingFang TC","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
-.wrap{max-width:1080px;margin:0 auto;padding:24px 16px 80px}
-header{background:linear-gradient(135deg,#7c2d12,#ea580c);color:#fff;border-radius:14px;padding:28px 28px 22px;margin-bottom:20px}
-header h1{font-size:1.6rem;margin-bottom:6px}
-header .sub{opacity:.85;font-size:.95rem}
-nav.toc{display:flex;flex-wrap:wrap;gap:8px;margin-top:14px}
-nav.toc a{color:#fff;background:rgba(255,255,255,.15);padding:4px 12px;border-radius:999px;font-size:.85rem;text-decoration:none}
-nav.toc a:hover{background:rgba(255,255,255,.3)}
-section{background:var(--card);border-radius:14px;padding:22px;margin-bottom:20px;box-shadow:0 1px 3px rgba(0,0,0,.07)}
-h2{font-size:1.25rem;border-left:5px solid #ea580c;padding-left:10px;margin-bottom:16px}
-h3{font-size:1.05rem;margin:14px 0 8px}
-.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:12px;margin-bottom:18px}
-.kpi{background:#fff7ed;border:1px solid #fed7aa;border-radius:12px;padding:14px;text-align:center}
-.kpi .num{font-size:1.7rem;font-weight:700;color:#c2410c}
-.kpi .lab{font-size:.85rem;color:var(--mut)}
-.subcards{display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:12px;margin-bottom:18px}
-.scard{border-radius:12px;padding:12px 14px;color:#fff;cursor:pointer;transition:transform .15s}
-.scard:hover{transform:translateY(-2px)}
-.scard .n{font-size:1.4rem;font-weight:700}
-.scard .t{font-size:.92rem;font-weight:600}
-.scard .d{font-size:.78rem;opacity:.9}
-.charts{display:grid;grid-template-columns:2fr 1fr;gap:16px}
-@media(max-width:800px){.charts{grid-template-columns:1fr}}
-canvas{width:100%;height:auto;background:#fbfdff;border:1px solid var(--line);border-radius:10px}
-.svgbox{overflow-x:auto;text-align:center;background:#fbfdff;border:1px solid var(--line);border-radius:10px;padding:10px}
-.fgrid{display:grid;grid-template-columns:repeat(auto-fit,minmax(320px,1fr));gap:14px}
-.fcard{border:1px solid var(--line);border-left:5px solid #ea580c;border-radius:10px;padding:14px;background:#fffdfa}
-.fcard h4{font-size:.98rem;margin-bottom:8px}
-.fcard .note{font-size:.83rem;color:var(--mut);margin-top:6px}
-table{border-collapse:collapse;width:100%;font-size:.9rem}
-th,td{border:1px solid var(--line);padding:6px 10px;text-align:left}
-th{background:#fff7ed}
-.fbtns{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
-.fbtn{border:1px solid var(--line);background:#fff;border-radius:999px;padding:5px 14px;font-size:.86rem;cursor:pointer}
-.fbtn.on{color:#fff;border-color:transparent}
-.qitem{border:1px solid var(--line);border-left-width:5px;border-left-style:solid;border-radius:10px;padding:10px 14px;margin-bottom:10px;background:#fff}
-.qitem .top{display:flex;flex-wrap:wrap;align-items:center;gap:8px}
-.qitem a.qid{font-weight:700;color:#c2410c;text-decoration:none;font-size:1rem}
-.qitem a.qid:hover{text-decoration:underline}
-.badge{font-size:.74rem;padding:2px 8px;border-radius:999px;background:#e2e8f0;color:#334155}
-.badge.p{background:#dcfce7;color:#166534}.badge.s{background:#fef3c7;color:#92400e}
-.qitem .sum{font-size:.92rem;margin:4px 0 2px}
-.tags{display:flex;flex-wrap:wrap;gap:6px}
-.tags span{font-size:.74rem;background:#f1f5f9;border-radius:6px;padding:1px 7px;color:var(--mut)}
-.traps li{margin-bottom:10px;padding:10px 12px;border-radius:10px;background:#fff7ed;border:1px solid #fed7aa;list-style:none}
-.traps .tt{font-weight:700}
-.tagchip{display:inline-block;font-size:.72rem;color:#fff;border-radius:6px;padding:1px 8px;margin-right:6px;vertical-align:2px}
-.calc{display:grid;grid-template-columns:340px 1fr;gap:18px}
-@media(max-width:820px){.calc{grid-template-columns:1fr}}
-.calc label{display:block;font-size:.85rem;margin:7px 0 2px;color:var(--mut)}
-.calc input{width:100%;padding:6px 9px;border:1px solid var(--line);border-radius:8px;font-size:.95rem}
-.calc button{margin-top:12px;width:100%;padding:9px;border:none;border-radius:9px;background:#c2410c;color:#fff;font-size:1rem;cursor:pointer}
-.calc button.alt{background:#64748b;margin-top:8px}
-.calc button:hover{opacity:.9}
-.result{background:#f0fdf4;border:1px solid #bbf7d0;border-radius:10px;padding:12px 16px;font-size:.94rem;margin-bottom:12px}
-.result .big{font-size:1.2rem;font-weight:700;color:#166534}
-footer{text-align:center;color:var(--mut);font-size:.8rem;margin-top:30px}
+:root{--ac:#1565c0;--ac2:#e3f2fd;--t:#f57c00;--k:#2e7d32;--c:#1565c0;--x:#8e24aa;
+--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#78909c;--bd:#e0e6ea;--warn:#c62828;--g:#546e7a}
+*{box-sizing:border-box}body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",sans-serif;background:var(--bg);color:var(--ink);line-height:1.6}
+header{background:linear-gradient(135deg,#0d47a1,#1976d2);color:#fff;padding:28px 24px}
+header h1{margin:0 0 6px;font-size:1.5em}header p{margin:0;opacity:.85;font-size:.92em}
+nav{position:sticky;top:0;z-index:9;background:#fff;border-bottom:2px solid var(--bd);padding:8px 16px;display:flex;flex-wrap:wrap;gap:6px}
+nav a{text-decoration:none;color:var(--ac);font-size:.88em;padding:5px 10px;border-radius:16px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1080px;margin:0 auto;padding:20px 16px 60px}
+section{margin-bottom:34px}
+h2{font-size:1.25em;border-left:5px solid var(--ac);padding-left:10px;margin:26px 0 14px;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:10px}
+h3{font-size:1.05em;margin:30px 0 10px;padding-bottom:5px;border-bottom:2px solid var(--ac2)}
+.role{background:#fffde7;border:1px solid #ffe082;border-left:5px solid #f9a825;border-radius:8px;padding:12px 16px;font-size:.88em;margin-bottom:6px}
+.role b{color:#e65100}
+.btnbar{display:flex;flex-wrap:wrap;gap:8px;margin:12px 0 4px}
+.btnbar a{padding:5px 14px;border-radius:6px;font-size:.9em;text-decoration:none;display:inline-flex;align-items:center;gap:6px}
+.kpis{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:12px}
+.kpi{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac)}.kpi .l{font-size:.82em;color:var(--mut)}
+.cats{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:12px;margin-top:14px}
+.cat{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:10px;padding:12px 14px;cursor:pointer;transition:.15s}
+.cat:hover{transform:translateY(-2px);box-shadow:0 3px 10px rgba(0,0,0,.1)}
+.cat h3{margin:0 0 4px;font-size:1em;border:none;padding:0}.cat p{margin:0;font-size:.82em;color:var(--mut)}
+.charts{display:grid;grid-template-columns:1fr 1fr;gap:16px;margin-top:16px}
+@media(max-width:760px){.charts{grid-template-columns:1fr}}
+.chartbox{background:var(--card);border:1px solid var(--bd);border-radius:10px;padding:14px}
+.chartbox h4{margin:0 0 8px;font-size:.95em;color:var(--mut)}
+canvas{width:100%;height:auto}
+table{border-collapse:collapse;width:100%;background:#fff;font-size:.9em}
+th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:middle}
+th{background:var(--ac2)}
+td.num{text-align:center;font-variant-numeric:tabular-nums}
+.bar{display:inline-block;height:12px;border-radius:3px;vertical-align:middle}
+.up{color:#2e7d32;font-weight:700}.down{color:var(--warn);font-weight:700}.flat{color:var(--mut);font-weight:700}
+.filters{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+.fbtn{border:1px solid var(--bd);background:#fff;border-radius:18px;padding:6px 14px;cursor:pointer;font-size:.88em;font-family:inherit}
+.fbtn.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.qrow{background:var(--card);border:1px solid var(--bd);border-left:6px solid;border-radius:8px;padding:10px 14px;margin-bottom:8px;display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.qrow.sec{background:#fafafa;border-style:dashed}
+.qrow a{font-weight:700;text-decoration:none;color:var(--ac);min-width:92px}
+.qrow a:hover{text-decoration:underline}
+.qrow .sum{flex:1;min-width:200px;font-size:.92em}
+.qrow .tags{font-size:.75em;color:var(--mut)}
+.qrow .meta{font-size:.72em;white-space:nowrap;color:#fff;border-radius:10px;padding:1px 8px}
+.note{font-size:.85em;color:var(--mut);background:#fff;border:1px dashed var(--bd);border-radius:8px;padding:10px 14px;margin-top:12px}
+.risk-hi{background:#ffebee}.risk-md{background:#fff8e1}.risk-lo{background:#f1f8e9}
+footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </style>
 </head>
 <body>
-<div class="wrap">
-
 <header>
-<h1>RC-U1-2｜RC 柱強度分析與設計</h1>
-<div class="sub">結構技師考試「鋼筋混凝土設計與預力」子項深度複習｜資料範圍：2002–2025（民國91–114年）共 100 題</div>
-<nav class="toc">
-<a href="#s1">① 命題分析</a><a href="#s2">② 截面圖解</a><a href="#s3">③ 解題流程</a><a href="#s4">④ 公式速查</a><a href="#s5">⑤ 考題清單</a><a href="#s6">⑥ 高頻陷阱</a><a href="#s7">⑦ 互動計算器</a>
-</nav>
+<h1>RC-U1-2 RC 柱強度分析與設計 — 命題分析</h1>
+<p>結構技師「鋼筋混凝土設計與預力混凝土設計」子項命題情報頁｜資料來源：raw/json/question_index.json（2002–2025，24 個考年、100 題）｜更新日期 2026-08-08</p>
 </header>
+<nav>
+<a href="#b1">出題概況</a><a href="#b2">考點結構</a><a href="#b3">考點漂移</a>
+<a href="#b4">題型走向</a><a href="#b5">考題清單</a><a href="#b6">命題風險</a>
+</nav>
+<main>
 
 <section id="s1">
-<div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:16px">
-<h2 style="margin-bottom:0">① 命題分析</h2>
-<div style="display:inline-flex;align-items:center;gap:8px;flex-wrap:wrap">
-<a href="lecture-RC-U1-2.html" title="練題前先讀：理解導向觀念講義（公式來源推導、圖解、精選題）" style="background:#7c3aed;color:white;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:0.95rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 2px rgba(0,0,0,.1)">觀念講義 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"></path><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"></path></svg></a>
-<a href="lecture-RC-U1-2.pdf" target="_blank" title="觀念講義可列印版（A4，25 頁）" style="background:#ede9fe;color:#5b21b6;padding:6px 12px;border-radius:6px;text-decoration:none;font-size:0.9rem;font-weight:600;display:inline-flex;align-items:center;gap:5px;border:1px solid #c4b5fd">PDF</a>
-<a href="RC-U1-2_柱強度分析與設計.pdf" target="_blank" style="background:#3b82f6;color:white;padding:6px 16px;border-radius:6px;text-decoration:none;font-size:0.95rem;font-weight:600;display:inline-flex;align-items:center;gap:6px;box-shadow:0 1px 2px rgba(0,0,0,.1)">Keynote <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg></a>
+<h2><span>命題分析</span></h2>
+
+<div class="role">
+📚 <b>本頁只回答一件事：這個子項「考什麼」。</b>
+原理與圖解看 <b>觀念講義</b>、公式要不要背看 <b>給／背分界</b>、本頁提供的是可從 <code>question_index.json</code> 重生的命題事實：頻率、結構、漂移、題型、清單、風險。<br>
+建議順序：<b style="color:#6a1b9a;">觀念講義</b>（練題前建立直覺）→ <b style="color:var(--warn);">給／背分界</b>（決定記憶投資）→ <b>本頁</b>（決定練題順序與押題）。
 </div>
+<div class="btnbar">
+  <a href="lecture-RC-U1-2.html" title="原理圖解、公式來源、自我檢測、精選必練題" style="background:#6a1b9a;color:#fff;">觀念講義 📘</a>
+  <a href="lecture-RC-U1-2.pdf" target="_blank" style="background:#f3e5f5;color:#6a1b9a;border:1px solid #ce93d8;">講義 PDF 🖨️</a>
+  <a href="formula-given-RC-U1-2.html" title="逐條公式 × 24 年考卷證據：哪些會印給你、哪些必須自己背" style="background:#c62828;color:#fff;">給／背分界 🎯</a>
+  <a href="formula-given-RC-U1-2.pdf" target="_blank" style="background:#ffebee;color:#c62828;border:1px solid #ef9a9a;">分界 PDF 🖨️</a>
 </div>
-<p style="margin:-6px 0 16px;font-size:.88rem;color:#64748b">使用順序：<b style="color:#7c3aed">觀念講義</b>（練題前建立物理直覺）→ <b style="color:#3b82f6">Keynote</b>（課堂）→ <b>本速查頁</b>（考前複習）</p>
+
+<h3 id="b1">出題概況</h3>
 <div class="kpis">
-<div class="kpi"><div class="num">20</div><div class="lab">相關題數（含副考點 8 題）</div></div>
-<div class="kpi"><div class="num">12 題｜12%</div><div class="lab">主考點題數／佔全科比例</div></div>
-<div class="kpi"><div class="num">第 4 名</div><div class="lab">全科 13 個考點頻率排名</div></div>
-<div class="kpi"><div class="num">3 / 6 年</div><div class="lab">近 6 年（2020–2025）出題率</div></div>
+<div class="kpi"><div class="n">12</div><div class="l">主考點題數（另有 8 題副考點）</div></div>
+<div class="kpi"><div class="n">12.0%</div><div class="l">佔全科比例（12／100）</div></div>
+<div class="kpi"><div class="n">#4</div><div class="l">全科出題排名（U4-1 13 題居前、U3-2 7 題居次）</div></div>
+<div class="kpi"><div class="n">2/6</div><div class="l">近 6 考年出題年數（2020–2025 共 2 題）</div></div>
 </div>
-<h3>題型分類（點擊卡片可過濾 ⑤ 考題清單）</h3>
-<div class="subcards" id="subcards"></div>
 <div class="charts">
-<div><h3>年度分布（堆疊）</h3><canvas id="cvYear" width="960" height="260"></canvas></div>
-<div><h3>題型比例</h3><canvas id="cvPie" width="360" height="260"></canvas></div>
+<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 12 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例（主考點 12 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
-<p style="font-size:.85rem;color:var(--mut);margin-top:10px">觀察：本子項核心是 <b>P-M 互制分析（9 題，含 12 題互動 P-M 圖）</b>，平均約每 2～3 年一題；且與 RC-U3-3 高度交叉（耐震圍束箍筋、梁柱接頭皆以柱斷面為載體）。細長柱（RC-U1-3）雖獨立編碼，實務上與本子項合併複習效率最高。</p>
-</section>
-
-<section id="s2">
-<h2>② 截面圖解</h2>
-<div class="svgbox">
-<svg viewBox="0 0 1000 330" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
-<!-- 矩形締箍柱 -->
-<g transform="translate(40,40)">
-<text x="90" y="-14" text-anchor="middle" font-weight="bold" fill="#3b82f6">矩形締箍柱（三排配筋）</text>
-<rect x="0" y="0" width="180" height="220" fill="#eff6ff" stroke="#334155" stroke-width="2"/>
-<rect x="14" y="14" width="152" height="192" fill="none" stroke="#0ea5e9" stroke-width="2.5" rx="8"/>
-<circle cx="35" cy="35" r="8" fill="#ef4444"/><circle cx="90" cy="35" r="8" fill="#ef4444"/><circle cx="145" cy="35" r="8" fill="#ef4444"/>
-<circle cx="35" cy="110" r="8" fill="#ef4444"/><circle cx="145" cy="110" r="8" fill="#ef4444"/>
-<circle cx="35" cy="185" r="8" fill="#ef4444"/><circle cx="90" cy="185" r="8" fill="#ef4444"/><circle cx="145" cy="185" r="8" fill="#ef4444"/>
-<text x="90" y="250" text-anchor="middle">中排鋼筋常未降伏，須應變相容</text>
-<line x1="195" y1="0" x2="195" y2="35" stroke="#64748b"/><text x="202" y="24">d′</text>
-<line x1="195" y1="0" x2="195" y2="185" stroke="none"/><text x="202" y="120" fill="#64748b">dt=最外拉排</text>
-</g>
-<!-- 圓形螺旋柱 -->
-<g transform="translate(360,40)">
-<text x="105" y="-14" text-anchor="middle" font-weight="bold" fill="#ef4444">圓形螺旋柱</text>
-<circle cx="105" cy="110" r="105" fill="#fef2f2" stroke="#334155" stroke-width="2"/>
-<circle cx="105" cy="110" r="82" fill="none" stroke="#0ea5e9" stroke-width="3" stroke-dasharray="10 5"/>
-<g fill="#ef4444">
-<circle cx="105" cy="42" r="8"/><circle cx="153" cy="62" r="8"/><circle cx="173" cy="110" r="8"/><circle cx="153" cy="158" r="8"/>
-<circle cx="105" cy="178" r="8"/><circle cx="57" cy="158" r="8"/><circle cx="37" cy="110" r="8"/><circle cx="57" cy="62" r="8"/>
-</g>
-<text x="105" y="250" text-anchor="middle">螺旋筋圍束 → f′cc 提升、韌性佳</text>
-</g>
-<!-- P-M 互制圖 -->
-<g transform="translate(650,40)">
-<text x="150" y="-14" text-anchor="middle" font-weight="bold" fill="#10b981">P-M 互制圖（分析骨架）</text>
-<line x1="30" y1="0" x2="30" y2="230" stroke="#334155" stroke-width="2"/>
-<line x1="30" y1="230" x2="310" y2="230" stroke="#334155" stroke-width="2"/>
-<text x="14" y="10">Pn</text><text x="300" y="248">Mn</text>
-<path d="M30,20 C120,25 175,60 185,120 C190,155 150,205 90,230" fill="none" stroke="#10b981" stroke-width="3"/>
-<line x1="30" y1="20" x2="70" y2="20" stroke="#64748b" stroke-dasharray="4 3"/>
-<circle cx="30" cy="20" r="5" fill="#334155"/><text x="76" y="24">P₀（純軸壓）</text>
-<line x1="30" y1="42" x2="118" y2="42" stroke="#b91c1c" stroke-dasharray="4 3"/><text x="124" y="46" fill="#b91c1c">0.80φP₀ 上限</text>
-<circle cx="185" cy="120" r="6" fill="#f59e0b"/><text x="196" y="118">平衡點（εt=εy）</text>
-<circle cx="90" cy="230" r="6" fill="#8b5cf6"/><text x="100" y="222">純彎（Pn=0）</text>
-<text x="205" y="170" fill="#64748b" font-size="12">下段：拉力控制 φ→0.9</text>
-<text x="205" y="90" fill="#64748b" font-size="12">上段：壓力控制 φ=0.65</text>
-</g>
-</svg>
+<div class="note">
+📌 <b>三個要記住的數字</b>：① 全科第 4 大單元，但主考點只佔 12%，不到 U1-1（19%）的三分之二；② <b>副考點 8 題，是主考點的三分之二</b>——柱的知識有很大一部分是在耐震（U3-3）、細長柱（U1-3）題裡被順帶考走，只看主考點會低估這個單元的實際份量；③ 24 個考年中 11 年出現，空窗年段為 <b>2006–2007、2012–2014、2022–2023</b>；近 6 考年只有 2021、2024 兩年共 2 題，是明顯的降溫段，但 2012–2014 也曾連空三年後於 2015 回歸，<b>空窗不代表退場</b>。
 </div>
-<p style="font-size:.85rem;color:var(--mut)">P-M 圖上每一點對應一個中性軸深度 c：由 c 定各排鋼筋應變 → 合軸力 Pn 與對形心彎矩 Mn。考題常給定 e＝M/P 或特定應變條件（如「最外拉排應變＝0」）反求 c。</p>
-</section>
 
-<section id="s3">
-<h2>③ 解題流程圖</h2>
-<div class="svgbox">
-<svg viewBox="0 0 980 480" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="13">
-<defs><marker id="ar" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto"><path d="M0,0 L8,4 L0,8 z" fill="#475569"/></marker></defs>
-<g text-anchor="middle">
-<rect x="390" y="10" width="200" height="42" rx="10" fill="#c2410c"/><text x="490" y="36" fill="#fff" font-weight="bold">柱題目</text>
-<line x1="490" y1="52" x2="490" y2="78" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="380" y="78" width="220" height="42" rx="10" fill="#fde68a" stroke="#d97706"/><text x="490" y="104">題型判斷？</text>
-<line x1="380" y1="99" x2="170" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="240" y="112" font-size="12">P-M 強度</text>
-<line x1="490" y1="120" x2="490" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="540" y="140" font-size="12">細長柱</text>
-<line x1="600" y1="99" x2="810" y2="150" stroke="#475569" marker-end="url(#ar)"/><text x="745" y="112" font-size="12">軸壓／特殊柱</text>
-<rect x="60" y="150" width="220" height="50" rx="10" fill="#dbeafe" stroke="#1d4ed8"/><text x="170" y="171">已知條件定 c：</text><text x="170" y="190" font-size="12">給 e、給 εt、給平衡點…</text>
-<line x1="170" y1="200" x2="170" y2="232" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="45" y="232" width="250" height="66" rx="10" fill="#fff" stroke="#1d4ed8"/><text x="170" y="253">各排 εsi=0.003(c−di)/c</text><text x="170" y="272">fsi=Es εsi（|fsi|≤fy）</text><text x="170" y="291">壓區鋼筋扣 0.85f′c</text>
-<line x1="170" y1="298" x2="170" y2="330" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="45" y="330" width="250" height="50" rx="10" fill="#dcfce7" stroke="#166534"/><text x="170" y="351">Pn=Cc+ΣFsi</text><text x="170" y="370">Mn=對塑性形心取矩</text>
-<rect x="380" y="150" width="220" height="50" rx="10" fill="#fecaca" stroke="#dc2626"/><text x="490" y="171">kLu/r 檢核可否忽略</text><text x="490" y="190" font-size="12">無側移：≤34−12(M1/M2)</text>
-<line x1="490" y1="200" x2="490" y2="232" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="380" y="232" width="220" height="66" rx="10" fill="#fff" stroke="#dc2626"/><text x="490" y="253">Pc=π²EI/(kLu)²</text><text x="490" y="272">Cm=0.6+0.4(M1/M2)</text><text x="490" y="291">δns=Cm/(1−Pu/0.75Pc)≥1</text>
-<line x1="490" y1="298" x2="490" y2="330" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="380" y="330" width="220" height="50" rx="10" fill="#dcfce7" stroke="#166534"/><text x="490" y="351">Mc=δns·M2</text><text x="490" y="370">回 P-M 圖檢核</text>
-<rect x="700" y="150" width="220" height="50" rx="10" fill="#a7f3d0" stroke="#059669"/><text x="810" y="171">P0=0.85f′c(Ag−Ast)</text><text x="810" y="190">＋fy·Ast</text>
-<line x1="810" y1="200" x2="810" y2="232" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="700" y="232" width="220" height="66" rx="10" fill="#fff" stroke="#059669"/><text x="810" y="253">締箍：φPn,max=0.80φP0</text><text x="810" y="272">螺箍：0.85φP0（φ=0.75）</text><text x="810" y="291">螺旋柱另核 ρs,min</text>
-<line x1="810" y1="298" x2="810" y2="330" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="700" y="330" width="220" height="50" rx="10" fill="#dcfce7" stroke="#166534"/><text x="810" y="351">加大柱：新舊斷面</text><text x="810" y="370">應變一致疊加</text>
-<line x1="170" y1="380" x2="450" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<line x1="490" y1="380" x2="490" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<line x1="810" y1="380" x2="530" y2="430" stroke="#475569" marker-end="url(#ar)"/>
-<rect x="360" y="430" width="260" height="42" rx="10" fill="#166534"/><text x="490" y="456" fill="#fff" font-weight="bold">εt 判 φ 區 → φPn、φMn</text>
-</g>
-</svg>
+<h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
+<div class="cats">
+<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('P')"><h3>🎯 互制圖單點求解（5 題）</h3><p>給 e／給 c／給 P<sub>u</sub>／給 ε<sub>t</sub>＝0，用應變相容＋力平衡反推另一量</p></div>
+<div class="cat" style="border-left-color:var(--k)" onclick="filterQ('B')"><h3>📈 特徵點與互制圖建構（2 題）</h3><p>純軸壓點、平衡點 P<sub>b</sub>、純彎點、φ 值分區、整條曲線的求算步驟</p></div>
+<div class="cat" style="border-left-color:var(--t)" onclick="filterQ('S')"><h3>🛡️ 軸壓強度與圍束／補強（3 題）</h3><p>螺旋筋圍束 f′<sub>cc</sub>、ρ<sub>s,min</sub>、加大柱組合斷面、新舊混凝土介面</p></div>
+<div class="cat" style="border-left-color:var(--x)" onclick="filterQ('C')"><h3>🌀 柱曲率韌性（3 題）</h3><p>μ<sub>φ</sub>＝φ<sub>u</sub>/φ<sub>y</sub>、γ 換算服務載重、彈性中性軸、塑鉸長度</p></div>
+<div class="cat" style="border-left-color:var(--g)" onclick="filterQ('L')"><h3>📏 細長柱彎矩放大（3 題）</h3><p>細長比檢核、C<sub>m</sub> 係數、臨界載重 P<sub>c</sub>、δ<sub>ns</sub> 放大</p></div>
+<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('J')"><h3>🏚️ 耐震柱與梁柱接頭（4 題）</h3><p>A<sub>sh</sub> 圍束箍筋、密箍區、接頭水平剪力 V<sub>jh</sub>、A<sub>j</sub> 有效面積</p></div>
 </div>
-</section>
-
-<section id="s4">
-<h2>④ 核心公式速查</h2>
-<div class="fgrid">
-<div class="fcard" style="border-left-color:var(--c0)"><h4>🟦 P-M 互制：任一中性軸 c 之強度點</h4>
-$$C_c=0.85f'_c\,ab,\;a=\beta_1 c\;(\le h)$$
-$$\varepsilon_{si}=0.003\frac{c-d_i}{c},\;F_{si}=A_{si}f_{si}\;(壓區扣\,0.85f'_c)$$
-$$P_n=C_c+\sum F_{si},\quad M_n=C_c\!\left(\tfrac{h}{2}-\tfrac{a}{2}\right)+\sum F_{si}\!\left(\tfrac{h}{2}-d_i\right)$$
-<div class="note">對稱配筋時塑性形心＝幾何中心；取矩點務必一致。</div></div>
-<div class="fcard" style="border-left-color:var(--c0)"><h4>🟦 平衡點與純軸壓</h4>
-$$c_b=\frac{0.003}{0.003+\varepsilon_y}\,d_t=\frac{6120}{6120+f_y}\,d_t$$
-$$P_0=0.85f'_c(A_g-A_{st})+f_y A_{st}$$
-$$締箍：\phi P_{n,max}=0.80\,\phi P_0，\;螺箍：0.85\,\phi P_0$$
-<div class="note">cb 用最外排拉筋 dt；φ 締箍 0.65、螺箍 0.75（壓力控制）。</div></div>
-<div class="fcard" style="border-left-color:var(--c1)"><h4>🟥 細長柱彎矩放大（無側移）</h4>
-$$可忽略細長：\frac{kL_u}{r}\le 34-12\frac{M_1}{M_2}\;(\le 40)$$
-$$P_c=\frac{\pi^2 EI}{(kL_u)^2},\;EI=\frac{0.4E_cI_g}{1+\beta_{dns}}$$
-$$\delta_{ns}=\frac{C_m}{1-\dfrac{P_u}{0.75P_c}}\ge 1.0,\;C_m=0.6+0.4\frac{M_1}{M_2}$$
-<div class="note">單曲率 M1/M2 為正、雙曲率為負；Mc=δns·M2 ≥ M2,min=Pu(1.5+0.03h)。</div></div>
-<div class="fcard" style="border-left-color:var(--c2)"><h4>🟩 螺旋柱圍束</h4>
-$$\rho_{s,min}=0.45\left(\frac{A_g}{A_{ch}}-1\right)\frac{f'_c}{f_{yt}}$$
-$$側向圍束壓力\;f_L=\frac{2\rho_s f_{yt}}{4}\cdot\!\ldots\approx\frac{\rho_s f_{yt}}{2},\;f'_{cc}\approx f'_c+4.1f_L$$
-<div class="note">2010-1 考螺旋圍束後 Pu 與降伏軸力 Py 比較，須用圍束強度 f′cc。</div></div>
-<div class="fcard" style="border-left-color:var(--c3)"><h4>🟧 耐震圍束（跨 U3-3 常考）</h4>
-$$A_{sh}=max\!\left[0.3\,s\,b_c\frac{f'_c}{f_{yt}}\!\left(\frac{A_g}{A_{ch}}-1\right)\!,\;0.09\,s\,b_c\frac{f'_c}{f_{yt}}\right]$$
-$$接頭：V_n=\gamma\sqrt{f'_c}\,A_j\;(\gamma=5.3/4.0/3.2)$$
-<div class="note">詳見 study-RC-U3-3；柱題常以耐震細節作為第二小題。</div></div>
-<div class="fcard" style="border-left-color:#475569"><h4>⬛ φ 值速查表（柱）</h4>
-<table><tr><th>斷面狀態</th><th>條件</th><th>締箍</th><th>螺箍</th></tr>
-<tr><td>壓力控制</td><td>εt ≤ εty</td><td>0.65</td><td>0.75</td></tr>
-<tr><td>過渡區</td><td>εty&lt;εt&lt;0.005</td><td>0.65+0.25k</td><td>0.75+0.15k</td></tr>
-<tr><td>拉力控制</td><td>εt ≥ 0.005</td><td>0.90</td><td>0.90</td></tr></table>
-<div class="note">k＝(εt−εty)/(0.005−εty)。大偏心柱可能落入過渡區甚至拉力控制。</div></div>
+<div class="note">
+分群依<b>解題套路</b>而非標籤字面，每題只歸一群。後兩群（細長柱、耐震柱與接頭）<b>幾乎全由副考點組成</b>——主考點在 U1-3、U3-3、U2-1，但解題時必須先站在柱斷面的強度分析上，所以列在這裡。
 </div>
-</section>
 
-<section id="s5">
-<h2>⑤ 考題清單（20 題）</h2>
-<div class="fbtns" id="fbtns"></div>
+<h3 id="b3">考點漂移：前 6 題（2002–2011）vs. 後 6 題（2011–2024）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把 12 題主考點依題號排序後對切，前後各 6 題（2011 年兩題分屬前後段）。題數偏少，以下結論僅供排練題順序參考。</p>
+<table>
+<thead><tr><th>題型</th><th class="num">2002–2011</th><th class="num">2011–2024</th><th class="num">變化</th><th>解讀</th></tr></thead>
+<tbody>
+<tr><td><span class="bar" style="width:12px;background:var(--c)"></span> 互制圖單點求解</td><td class="num">2</td><td class="num">3</td><td class="num up">▲ +1</td><td>後段的 2019-2、2021-2、2024-3 <b>全部</b>是「先給一個特殊條件（P<sub>u</sub> 已知／c 已知／拉力筋 ε<sub>t</sub>＝0），再反推另一個量」，不再要求把整條曲線畫出來</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--k)"></span> 特徵點與互制圖建構</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2011-1（說明求算步驟，本單元唯一的概念題）與 2015-1（調軸力至平衡點求最大彎矩）各一次，<b>最後一次是 2015-1，已空窗 10 年</b></td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--t)"></span> 軸壓強度與圍束／補強</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2010-1（圓形螺旋柱 f′<sub>cc</sub>）、2017-1（加大柱雙折線應力應變）各一次，兩題型互不重複；<b>最後 2017 年，空窗 8 年</b></td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--x)"></span> 柱曲率韌性</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2005-1、2011-3 各一次，<b>主考點最後一次是 2011-3，空窗 14 年</b>；2022-4 從 U3-3 那邊以概念題形式回鍋（曲率／轉角／位移韌性換算）</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--g)"></span> 細長柱彎矩放大</td><td class="num">1</td><td class="num">0</td><td class="num down">▼ −1</td><td>2004-4 之後本單元主考點<b>再無細長柱</b>；2006-2、2016-3 的 primaryTopicId 都改成 U1-3，細長柱在這裡只剩副考點身分</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--warn)"></span> 耐震柱與梁柱接頭</td><td class="num">0</td><td class="num">0</td><td class="num flat">全為副考點</td><td>2004-3、2012-4、2013-2、2018-2 各一次，主考點都掛在 U3-3；<b>最後 2018-2，空窗 7 年</b></td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>一句話</b>：這個單元的重心從「<b>把整條 P-M 互制圖建出來</b>」收斂成「<b>在互制圖上解一個點</b>」。
+後段 6 題有 3 題是給條件反推單點，畫圖／特徵點題已 10 年未見，細長柱早已移交 U1-3。
+若你的複習時間依「歷史總題數」平均分配，會高估細長柱與畫圖題，低估「三排配筋＋壓力筋未降伏」這個每次換皮不換骨的核心動作。
+</div>
+
+<h3 id="b4">題型走向：唯一的分歧是「題目給你什麼」</h3>
+<table>
+<thead><tr><th>期間</th><th class="num">USD</th><th class="num">概念題</th><th>觀察</th></tr></thead>
+<tbody>
+<tr><td>2002–2011（6 題）</td><td class="num">5</td><td class="num">1</td><td>唯一一題概念題是 2011-1（說明 P-M 互制圖求算步驟）</td></tr>
+<tr><td>2011–2024（6 題）</td><td class="num">6</td><td class="num">0</td><td>後段全為計算題，概念說明題已 14 年未在本單元出現</td></tr>
+<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025（2 題）</b></td><td class="num"><b>2</b></td><td class="num">0</td><td>僅 2021-2、2024-3 兩題，<b>且都是互制圖單點求解</b></td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>對複習的直接影響</b>：RC 科沒有鋼結構那種 ASD／LRFD 雙軌問題，24 年來柱題幾乎清一色 USD 強度設計法。
+真正會換的是<b>題目給你什麼</b>——早期給偏心距 e（2002-2），中期給軸力比例 P<sub>u</sub>＝0.9P<sub>b</sub>（2011-3），
+近期直接給中性軸 c（2021-2）或給應變條件 ε<sub>t</sub>＝0（2008-2、2024-3）。
+所以準備方向不是背兩套規範，而是把「<b>不管給什麼條件，都回到應變相容＋力平衡</b>」練成反射動作。
+哪些公式考卷會印給你、哪些必須自己背，見 <a href="formula-given-RC-U1-2.html">給／背分界</a>。
+</div>
+
+<h3 id="b5">考題清單（主 12 ＋ 副 8 ＝ 20 題，點題號開啟解析）</h3>
+<div class="filters">
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（20）</button>
+<button class="fbtn" onclick="filterQ('P',this)">互制圖單點求解（5）</button>
+<button class="fbtn" onclick="filterQ('B',this)">特徵點與建構（2）</button>
+<button class="fbtn" onclick="filterQ('S',this)">軸壓與圍束（3）</button>
+<button class="fbtn" onclick="filterQ('C',this)">柱曲率韌性（3）</button>
+<button class="fbtn" onclick="filterQ('L',this)">細長柱放大（3）</button>
+<button class="fbtn" onclick="filterQ('J',this)">耐震柱與接頭（4）</button>
+<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（12）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（8）</button>
+</div>
 <div id="qlist"></div>
+<div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U1-2 的知識）。圖示：📄 有解析／📊 有互動圖／✅ 已人工驗證。</div>
+
+<h3 id="b6">命題風險排序（下一次最可能考什麼）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">依「歷史頻率 × 空窗年數 × 近年趨勢」排序。<b>這是推測而非預言</b>，用途是決定<b>練題順序</b>，不是叫你 all-in 單一考點。</p>
+<table>
+<thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
+<tbody>
+<tr class="risk-hi"><td><b>高</b></td><td>給特殊條件反推單點（ε<sub>t</sub>＝0／已知 c／已知 P<sub>u</sub>）</td><td class="num">5</td><td>2024-3</td><td class="num">1 年</td><td>後段 6 題有 3 題屬此型；且 <b>2008-2 與 2024-3 是同一個條件（拉力筋應變為零）隔 16 年重出</b>，換皮成本最低，是最穩定的重複題型</td></tr>
+<tr class="risk-hi"><td><b>高</b></td><td>三排（3+2+3）配筋與中排鋼筋處理</td><td class="num">6</td><td>2024-3</td><td class="num">1 年</td><td>2002-2、2005-1、2008-2、2011-3、2021-2、2024-3 都刻意把鋼筋排成三排，考的是<b>中排力臂為零不貢獻彎矩</b>、以及中排落在壓力區時要不要扣 0.85f′<sub>c</sub></td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>平衡點 P<sub>b</sub> 與最大彎矩 M<sub>n,max</sub></td><td class="num">3</td><td>2017-1</td><td class="num">8 年</td><td>互制圖的必考特徵點（2011-1 說明、2015-1 計算、2017-1 後半），卻已 8 年未見；屬於「條件明確、一定算得出來」的穩定得分題</td></tr>
+<tr class="risk-md"><td><b>中高</b></td><td>柱曲率延展比 μ<sub>φ</sub>（γ 換算服務載重求彈性中性軸）</td><td class="num">3</td><td>2011-3 主／2022-4 副</td><td class="num">14 年</td><td><b>主考點空窗最久的高分題型</b>；2022-4 已從 U3-3 以概念題回鍋，且 U1-1 的 2023-1 同期考了梁的 μ<sub>φ</sub>——兩邊共用同一套算法，可能是柱版計算題復出的前兆</td></tr>
+<tr class="risk-lo"><td><b>中</b></td><td>螺旋柱圍束 f′<sub>cc</sub>／ρ<sub>s,min</sub> 與加大柱組合斷面</td><td class="num">3</td><td>2017-1、2017-2</td><td class="num">8 年</td><td>兩題型各只出現過一次，但都是 25–40 分大題；且與 U3-3 的耐震圍束 A<sub>sh</sub> 共用「橫向鋼筋提供側壓」的觀念，一次準備可涵蓋兩處</td></tr>
+<tr class="risk-lo"><td><b>低</b></td><td>細長柱 δ<sub>ns</sub> 彎矩放大（C<sub>m</sub>、P<sub>c</sub>）</td><td class="num">3</td><td>2016-3（副考點）</td><td class="num">9 年</td><td>命題已移交 RC-U1-3，2004-4 之後在本單元只以副考點身分出現；時間有限時應併入 U1-3 一起準備，不必在這裡重複投資</td></tr>
+</tbody>
+</table>
+<div class="note">
+📌 <b>若只剩三天</b>：先把「不管給什麼條件都回到應變相容＋力平衡」練成反射動作，重點是<b>三排配筋的中排處理</b>——近 6 考年僅有的 2 題（2021-2、2024-3）全屬此型；
+再補「平衡點 P<sub>b</sub>／最大彎矩」這個空窗 8 年的特徵點題；細長柱與耐震圍束留給 <b>U1-3、U3-3</b> 一起讀，別在這裡重複。
+逐題練習順序建議見 <a href="lecture-RC-U1-2.html">觀念講義</a>的精選題章節。
+</div>
+
 </section>
 
-<section id="s6">
-<h2>⑥ 高頻陷阱 Top 8</h2>
-<ul class="traps">
-<li><span class="tagchip" style="background:var(--c0)">P-M</span><span class="tt">中排鋼筋逐排應變相容。</span>靠近中性軸的鋼筋常未降伏，fsi＝Es·εsi 逐排計算，勿全部假設 ±fy（2008-2、2011-3、2024-3）。</li>
-<li><span class="tagchip" style="background:var(--c0)">P-M</span><span class="tt">壓力側鋼筋力須扣 0.85f′c</span>：Fsi＝Asi(fsi−0.85f′c)（僅在等效應力塊內時），否則混凝土面積重複計算。</li>
-<li><span class="tagchip" style="background:var(--c0)">P-M</span><span class="tt">平衡點 cb 用最外排 dt</span>，非平均 d；三排配筋時中排力臂可能為零（2002-2 專考此觀念）。</li>
-<li><span class="tagchip" style="background:var(--c0)">φ值</span><span class="tt">φPn,max 軸壓上限勿漏</span>：締箍 0.80φP₀、螺箍 0.85φP₀；小偏心題算出的 φPn 若超過上限即被截斷。</li>
-<li><span class="tagchip" style="background:var(--c1)">細長柱</span><span class="tt">M1/M2 正負號</span>：單曲率為正（Cm 大）、雙曲率為負（Cm 小，最低 0.4 舊制）；判錯曲率整題翻盤（2004-4、2006-2、2016-3）。</li>
-<li><span class="tagchip" style="background:var(--c1)">細長柱</span><span class="tt">δns 分母是 0.75Pc</span>（勁度折減係數），且 δns ≥ 1.0；EI 需含 βdns 潛變折減。</li>
-<li><span class="tagchip" style="background:var(--c2)">特殊柱</span><span class="tt">加大柱新舊混凝土 f′c 不同</span>：以應變一致分別計算兩部分混凝土應力，介面剪力另以摩擦剪力法檢核（2017-1、2017-2）。</li>
-<li><span class="tagchip" style="background:var(--c3)">耐震</span><span class="tt">接頭剪力 Vjh＝T頂＋T底−Vcol</span>，鋼筋拉力用 1.25fy；Aj 有效寬度取 min(b柱, b梁+h柱)（2012-4、2018-2）。</li>
-</ul>
-</section>
-
-<section id="s7">
-<h2>⑦ 互動計算器：矩形柱 P-M 強度點（給定 c）</h2>
-<div class="calc">
-<div>
-<label>柱寬 b（cm）</label><input id="ib" type="number" value="50">
-<label>柱深 h（cm）</label><input id="ih" type="number" value="50">
-<label>邊排鋼筋至邊緣 d′（cm）</label><input id="idp" type="number" value="6">
-<label>頂排（壓側）As₁（cm²）</label><input id="ias1" type="number" value="15.3">
-<label>中排 As₂（cm²，置於 h/2，無則填 0）</label><input id="ias2" type="number" value="10.2">
-<label>底排（拉側）As₃（cm²）</label><input id="ias3" type="number" value="15.3">
-<label>f′c（kgf/cm²）</label><input id="ifc" type="number" value="280">
-<label>fy（kgf/cm²）</label><input id="ify" type="number" value="4200">
-<label>中性軸深度 c（cm）</label><input id="ic" type="number" value="30">
-<button onclick="calc()">計算 Pn、Mn</button>
-<button class="alt" onclick="setCb()">帶入平衡點 cb</button>
-</div>
-<div>
-<div class="result" id="out">輸入參數後按「計算」。</div>
-<div class="svgbox"><svg id="strain" viewBox="0 0 420 270" xmlns="http://www.w3.org/2000/svg" font-family="sans-serif" font-size="12"></svg></div>
-</div>
-</div>
-</section>
-
-<footer>exam-wiki-RC ｜ study RC-U1-2 ｜ 生成日期 2026-07-10 ｜ 題目連結經 index.html#md 渲染器開啟（KaTeX＋附圖）</footer>
-</div>
+<footer>study RC-U1-2 命題分析｜exam-wiki-RC 知識庫｜統計基準 raw/json/question_index.json（100 題 / 24 考年）｜題號連結指向 study/problems-view/</footer>
+</main>
 
 <script>
-const SUB=[
- {t:"P-M 互制分析",d:"給 e／給應變反求 c、平衡點",cc:"#3b82f6"},
- {t:"細長柱與彎矩放大",d:"kLu/r、Cm、δns、Pc",cc:"#ef4444"},
- {t:"特殊柱與軸壓強度",d:"螺旋柱、加大柱、P₀",cc:"#10b981"},
- {t:"耐震柱與接頭（跨U3-3）",d:"Ash、密箍區、Vjh、韌性",cc:"#f59e0b"}];
+const CATC={P:'#1565c0',B:'#2e7d32',S:'#f57c00',C:'#8e24aa',L:'#546e7a',J:'#c62828'};
+const CATN={P:'互制圖單點求解',B:'特徵點與建構',S:'軸壓與圍束',C:'柱曲率韌性',L:'細長柱放大',J:'耐震柱與接頭'};
+const MC={'USD':'#1565c0','WSD':'#f57c00','概念題':'#546e7a'};
+// [題號, 分群, 摘要, 標籤, 有viz, 設計法, 主(1)/副(0), 副考點的所屬單元]
 const Q=[
-["RC-2024-3",2024,0,"P","方形柱 P-M：拉力鋼筋應變為零之強度點",["方形柱","P-M互制","拉力鋼筋應變為零","應變相容","壓力控制區"],1],
-["RC-2022-4",2022,3,"S:RC-U3-3","曲率／轉角／位移韌性與塑鉸長度（橋柱）",["曲率韌性","位移韌性","彎矩塑鉸","塑鉸長度Lp","公路橋梁耐震規範"],0],
-["RC-2021-2",2021,0,"P","已知中性軸逆推偏心距（大偏心、拉力控制）",["偏心距求解","P-M互制","中性軸已知逆推","大偏心","拉力控制"],1],
-["RC-2019-2",2019,0,"P","矩形柱 P-M：壓力控制斷面（拉筋未降伏）",["矩形柱","P-M互制","壓力控制斷面","拉力鋼筋未降伏","二次方程求中性軸"],1],
-["RC-2018-2",2018,3,"S:RC-U3-3","角柱接頭剪力強度檢核",["角柱接頭","接頭剪力","γ係數","Whitney應力塊","耐震設計"],0],
-["RC-2017-2",2017,2,"S:RC-U2-1","加大柱介面剪力與植筋（摩擦剪力法）",["加大柱","介面剪力","摩擦剪力法","植筋設計","新舊混凝土結合"],0],
-["RC-2017-1",2017,2,"P","加大柱組合截面最大可用軸力（雙折線模型）",["加大柱","組合截面","軸壓強度","雙折線應力應變","新舊混凝土"],1],
-["RC-2016-3",2016,1,"S:RC-U1-3","無側移細長柱放大彎矩法（雙曲度）",["細長柱","無側移構架","放大彎矩法","Cm係數","δns計算"],0],
-["RC-2015-1",2015,0,"P","方形柱 P-M：平衡點與最大彎矩",["方形柱","P-M互制","平衡點","最大彎矩","對稱配筋"],1],
-["RC-2013-2",2013,3,"S:RC-U3-3","特殊矩形柱耐震圍束箍筋（Ash＋繫筋）",["耐震圍束箍筋","密箍區","Ash公式","crossties繫筋","16根D32"],0],
-["RC-2012-4",2012,3,"S:RC-U3-3","梁柱外接頭剪力檢核（角隅邊柱）",["梁柱外接頭","接頭剪力","Vjh","Aj接頭有效面積","強柱弱梁"],0],
-["RC-2011-3",2011,0,"P","矩形柱 P-M 與柱曲率延展比（三排配筋）",["矩形柱","P-M互制","三排配筋","過渡區φ值","柱曲率延展比"],1],
-["RC-2011-1",2011,0,"P","P-M 互制圖求算步驟（概念題）",["P-M互制圖","求算步驟","平衡點","φ值分區","純軸壓"],1],
-["RC-2010-1",2010,2,"P","圓形螺旋柱：圍束強度與 Pu≥Py 檢核",["圓形螺旋柱","螺旋筋圍束","f'cc圍束強度","fL側向壓力","ρs最小值"],1],
-["RC-2008-2",2008,0,"P","方形柱 P-M：拉排應變為零（三排配筋）",["方形柱","P-M互制","拉力鋼筋應變為零","三排配筋","壓力控制"],1],
-["RC-2006-2",2006,1,"S:RC-U1-3","無側移柱彎矩放大法（單曲率）",["無側移柱","彎矩放大法","Cm係數","單曲率","臨界挫屈載重Pc"],0],
-["RC-2005-1",2005,0,"P","矩形柱 P-M 與曲率延展比（壓筋未降伏）",["矩形柱","P-M互制","曲率延展比","壓縮區鋼筋未降伏","8-#8對稱配筋"],1],
-["RC-2004-4",2004,1,"P","雙軸彎矩細長柱之彎矩放大法",["雙軸彎矩","細長柱","彎矩放大法","δns放大係數","雙曲度"],1],
-["RC-2004-3",2004,3,"S:RC-U3-3","耐震柱圍束箍筋 Ash 與密箍區間距",["耐震柱","Ash公式","圍束箍筋","繫筋","密箍區間距"],0],
-["RC-2002-2",2002,0,"P","偏心受壓柱 P-M（e=10cm、中排力臂為零）",["偏心受壓","P-M互制","6-#9","中排鋼筋力矩臂為零","壓力筋降伏邊界"],1]];
-const YEARS=[];for(let y=2002;y<=2025;y++)YEARS.push(y);
-
-const sc=document.getElementById('subcards');
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;
- sc.insertAdjacentHTML('beforeend',`<div class="scard" style="background:${s.cc}" onclick="setF(${i});document.getElementById('s5').scrollIntoView({behavior:'smooth'})"><div class="n">${n} 題</div><div class="t">${s.t}</div><div class="d">${s.d}</div></div>`);});
-
-let cur=-1;
-const fb=document.getElementById('fbtns');
-fb.insertAdjacentHTML('beforeend',`<button class="fbtn on" data-i="-1" onclick="setF(-1)">全部（${Q.length}）</button>`);
-SUB.forEach((s,i)=>fb.insertAdjacentHTML('beforeend',`<button class="fbtn" data-i="${i}" onclick="setF(${i})">${s.t}（${Q.filter(q=>q[2]===i).length}）</button>`));
-function setF(i){cur=i;document.querySelectorAll('.fbtn').forEach(b=>{b.classList.toggle('on',+b.dataset.i===i);if(+b.dataset.i===i&&i>=0){b.style.background=SUB[i].cc;}else if(+b.dataset.i===i){b.style.background='#c2410c'}else{b.style.background='#fff'}});renderList();}
-function renderList(){
- const el=document.getElementById('qlist');el.innerHTML='';
- Q.filter(q=>cur<0||q[2]===cur).forEach(q=>{
-  const[id,y,st,role,sum,tags,viz]=q;const s=SUB[st];
-  const rb=role==="P"?'<span class="badge p">主考點</span>':`<span class="badge s">副考點（主：${role.slice(2)}）</span>`;
-  el.insertAdjacentHTML('beforeend',`<div class="qitem" style="border-left-color:${s.cc}">
-   <div class="top"><a class="qid" href="../index.html#md=raw/solutions/${id}/${id}.md&t=${id}" target="_blank">${id}</a>
-   <span class="badge">${y}（民國${y-1911}）</span>${rb}<span class="badge" style="background:${s.cc};color:#fff">${s.t}</span>
-   <span title="已驗證">✅</span>${viz?'<span title="含互動圖">📊</span>':''}</div>
-   <div class="sum">${sum}</div><div class="tags">${tags.map(t=>`<span>${t}</span>`).join('')}</div></div>`);});}
-setF(-1);
-
-(function(){const cv=document.getElementById('cvYear'),x=cv.getContext('2d');
-const W=cv.width,H=cv.height,L=30,B=36,T=14;const bw=(W-L-14)/YEARS.length;
-const max=3;x.font='11px sans-serif';x.fillStyle='#64748b';
-for(let g=0;g<=max;g++){const yy=H-B-(H-B-T)*g/max;x.strokeStyle='#e2e8f0';x.beginPath();x.moveTo(L,yy);x.lineTo(W-8,yy);x.stroke();x.fillText(g,L-14,yy+4);}
-YEARS.forEach((y,i)=>{let acc=0;SUB.forEach((s,si)=>{const n=Q.filter(q=>q[1]===y&&q[2]===si).length;if(n){const h=(H-B-T)*n/max;x.fillStyle=s.cc;x.fillRect(L+i*bw+2,H-B-acc-h,bw-4,h);acc+=h;}});
- x.fillStyle='#64748b';x.save();x.translate(L+i*bw+bw/2+3,H-B+8);x.rotate(Math.PI/3);x.fillText(String(y).slice(2),0,0);x.restore();});
-})();
-
-(function(){const cv=document.getElementById('cvPie'),x=cv.getContext('2d');
-const cx=120,cy=125,r=88;let a=-Math.PI/2;const tot=Q.length;
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;if(!n)return;const a2=a+2*Math.PI*n/tot;
- x.beginPath();x.moveTo(cx,cy);x.arc(cx,cy,r,a,a2);x.closePath();x.fillStyle=s.cc;x.fill();x.strokeStyle='#fff';x.stroke();
- const m=(a+a2)/2;x.fillStyle='#fff';x.font='bold 12px sans-serif';x.textAlign='center';x.fillText(n,cx+Math.cos(m)*r*.62,cy+Math.sin(m)*r*.62+4);a=a2;});
-x.textAlign='left';x.font='12px sans-serif';
-SUB.forEach((s,i)=>{const n=Q.filter(q=>q[2]===i).length;x.fillStyle=s.cc;x.fillRect(228,50+i*26,13,13);x.fillStyle='#334155';x.fillText(`${s.t.split('（')[0]} ${(100*n/tot).toFixed(0)}%`,247,61+i*26);});
-})();
-
-/* 計算器 */
-const Es=2040000;
-function beta1(fc){return fc<=280?0.85:Math.max(0.65,0.85-0.05*(fc-280)/70);}
-function phiOf(et,ety){if(et>=0.005)return 0.90;if(et<=ety)return 0.65;return 0.65+0.25*(et-ety)/(0.005-ety);}
-function setCb(){const h=+ih.value,dp=+idp.value,fy=+ify.value;const dt=h-dp;ic.value=(6120/(6120+fy)*dt).toFixed(2);calc();}
-function calc(){
- const b=+ib.value,h=+ih.value,dp=+idp.value,fc=+ifc.value,fy=+ify.value,c=+ic.value;
- const As=[+ias1.value,+ias2.value,+ias3.value],di=[dp,h/2,h-dp];
- const b1=beta1(fc),ey=fy/Es,a=Math.min(b1*c,h),Cc=0.85*fc*a*b;
- let Pn=Cc,Mn=Cc*(h/2-a/2),rows="";
- for(let i=0;i<3;i++){if(!As[i])continue;
-  const es=0.003*(c-di[i])/c;let fs=Math.max(-fy,Math.min(fy,Es*es));
-  let F=As[i]*fs;if(di[i]<a&&fs>0)F=As[i]*(fs-0.85*fc);
-  Pn+=F;Mn+=F*(h/2-di[i]);
-  rows+=`第${i+1}排（d=${di[i].toFixed(1)}）：εs=${es.toFixed(5)}，fs=${fs.toFixed(0)}，F=${(F/1000).toFixed(1)} tf<br>`;}
- const dt=h-dp,et=0.003*(dt-c)/c,phi=phiOf(et,ey);
- const zone=et>=0.005?"拉力控制":(et<=ey?"壓力控制":"過渡區");
- out.innerHTML=`β₁=${b1.toFixed(3)}｜a=${a.toFixed(2)} cm｜Cc=${(Cc/1000).toFixed(1)} tf<br>${rows}
- εt=${et.toFixed(5)}（${zone}）→ φ=${phi.toFixed(3)}<br>
- <span class="big">Pn=${(Pn/1000).toFixed(1)} tf｜Mn=${(Mn/100000).toFixed(2)} tf·m</span><br>
- φPn=${(phi*Pn/1000).toFixed(1)} tf｜φMn=${(phi*Mn/100000).toFixed(2)} tf·m（未含 φPn,max=0.80φP₀ 截斷檢核）`;
- drawStrain(b,h,dp,c,et);
+["RC-2002-2","P","給偏心距 e=10 cm 求 Pn、Mn；中排鋼筋力矩臂為零",["偏心受壓","P-M互制","中排鋼筋力矩臂為零","壓力控制"],1,"USD",1,""],
+["RC-2008-2","P","拉力側鋼筋應變恰為零（c=dt）時的 Pn 與 Mn",["方形柱","拉力鋼筋應變為零","三排配筋","應變相容"],1,"USD",1,""],
+["RC-2019-2","P","給定 Pu=291 tf（壓力控制），求最大設計彎矩 Mu,max",["矩形柱","壓力控制斷面","拉力鋼筋未降伏","二次方程求中性軸"],1,"USD",1,""],
+["RC-2021-2","P","已知破壞時 c=14.5 cm，反推偏心距 ex（大偏心）",["偏心距求解","中性軸已知逆推","壓縮區鋼筋淨力","拉力控制"],1,"USD",1,""],
+["RC-2024-3","P","拉力筋應變為零時的 Pn、Mn；壓力筋未降伏須驗算",["方形柱","拉力鋼筋應變為零","壓力鋼筋未降伏","應變相容"],1,"USD",1,""],
+["RC-2011-1","B","說明 P-M 互制圖求算步驟、三個特徵點與 φ 值分區",["P-M互制圖","求算步驟","平衡點","φ值分區"],1,"概念題",1,""],
+["RC-2015-1","B","調整軸壓至平衡點，求斷面可承受的最大極限彎矩",["方形柱","平衡點","最大彎矩","對稱配筋"],1,"USD",1,""],
+["RC-2010-1","S","圓形螺旋柱降伏軸力 Py 與圍束後極限軸力 Pu 檢核",["圓形螺旋柱","螺旋筋圍束","f'cc圍束強度","ρs最小值"],1,"USD",1,""],
+["RC-2017-1","S","加大柱雙折線應力應變求純軸壓 Pn，再求平衡點 Mn,b",["加大柱","組合截面","雙折線應力應變","締箍柱"],1,"USD",1,""],
+["RC-2017-2","S","加大柱新舊混凝土介面以剪力摩擦法設計植筋",["加大柱","摩擦剪力法","植筋設計","粗糙面"],0,"USD",0,"U2-1 RC 剪力強度分析與設計"],
+["RC-2005-1","C","Pn=90 t 下的 Mn 與柱曲率延展比 μφ（壓力筋未降伏）",["矩形柱","曲率延展比","彎矩曲率","三排配筋"],1,"USD",1,""],
+["RC-2011-3","C","Pu=0.9Pb 求 φMn，再以 γ=1.3 換算服務載重求 μφ",["矩形柱","過渡區φ值","柱曲率延展比","彈性中性軸"],1,"USD",1,""],
+["RC-2022-4","C","曲率／轉角／位移三種韌性的換算與塑鉸長度 Lp",["曲率韌性","轉角韌性","位移韌性","塑鉸長度Lp"],0,"概念題",0,"U3-3 韌性要求與耐震設計"],
+["RC-2004-4","L","1.4D+1.7L 雙軸彎矩＋無側移細長比檢核與 δns 放大",["雙軸彎矩","細長柱","δns放大係數","M1M2比值"],1,"USD",1,""],
+["RC-2006-2","L","無側移柱 Cm、臨界挫屈載重 Pc 與 δns 彎矩放大",["無側移柱","彎矩放大法","Cm係數","臨界挫屈載重Pc"],0,"USD",0,"U1-3 細長柱"],
+["RC-2016-3","L","無側移構架雙曲度細長柱，由 Cm 與 Pc 求 δns",["細長柱","放大彎矩法","Cm係數","雙曲度"],0,"USD",0,"U1-3 細長柱"],
+["RC-2004-3","J","特殊矩形框架柱密箍區 Ash 圍束箍筋與繫筋配置",["耐震柱","Ash公式","圍束箍筋","密箍區間距"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
+["RC-2012-4","J","角隅邊柱梁柱外接頭水平剪力 Vjh 與 Aj 檢核",["梁柱外接頭","Vjh","Aj接頭有效面積","強柱弱梁"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
+["RC-2013-2","J","16-D32 特殊矩形柱密箍區 Ash 與繫筋配置",["特殊矩形柱","耐震圍束箍筋","Ash公式","crossties繫筋"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
+["RC-2018-2","J","角柱接頭剪力強度檢核（γ 係數與 Whitney 應力塊）",["角柱接頭","接頭剪力","γ係數","剪力強度檢核"],0,"USD",0,"U3-3 韌性要求與耐震設計"]
+];
+function renderQ(cat){
+  const box=document.getElementById('qlist');box.innerHTML='';
+  const sel=Q.filter(q=>{
+    if(cat==='ALL')return true;
+    if(cat==='PRI')return q[6]===1;
+    if(cat==='SEC')return q[6]===0;
+    return q[1]===cat;});
+  sel.sort((a,b)=>a[0].localeCompare(b[0])).forEach(q=>{
+    const d=document.createElement('div');
+    d.className='qrow'+(q[6]?'':' sec');d.style.borderLeftColor=CATC[q[1]];
+    d.innerHTML=`<a href="problems-view/${q[0]}.html" target="_blank">${q[0]}</a>
+    <span class="meta" style="background:${MC[q[5]]}">${q[5]}</span>
+    ${q[6]?'':`<span class="meta" style="background:#90a4ae">副・${q[7]}</span>`}
+    <span class="sum">${q[2]}</span><span class="tags">${q[3].join('・')}</span>
+    <span class="ico" title="解析／互動圖／已驗證">📄${q[4]?' 📊':''} ✅</span>`;
+    box.appendChild(d);});
 }
-function drawStrain(b,h,dp,c,et){
- const s=document.getElementById('strain');const k=210/h;const cy=Math.min(c,h)*k;
- const ew=Math.min(90,Math.abs(et)/0.010*90),sgn=et>0?-1:1;
- s.innerHTML=`
- <rect x="40" y="20" width="${Math.min(140,b*k)}" height="${h*k}" fill="#fff7ed" stroke="#334155" stroke-width="2"/>
- <circle cx="60" cy="${20+dp*k}" r="5" fill="#ef4444"/><circle cx="${20+Math.min(140,b*k)}" cy="${20+dp*k}" r="5" fill="#ef4444"/>
- <circle cx="60" cy="${20+h*k/2}" r="5" fill="#f59e0b"/><circle cx="${20+Math.min(140,b*k)}" cy="${20+h*k/2}" r="5" fill="#f59e0b"/>
- <circle cx="60" cy="${20+(h-dp)*k}" r="5" fill="#ef4444"/><circle cx="${20+Math.min(140,b*k)}" cy="${20+(h-dp)*k}" r="5" fill="#ef4444"/>
- <line x1="40" y1="${20+cy}" x2="${40+Math.min(140,b*k)}" y2="${20+cy}" stroke="#b91c1c" stroke-dasharray="5 3"/>
- <text x="${46+Math.min(140,b*k)}" y="${24+cy}" fill="#b91c1c">c=${c} cm</text>
- <line x1="290" y1="20" x2="290" y2="${20+h*k}" stroke="#334155" stroke-width="2"/>
- <polygon points="290,20 355,20 290,${20+cy}" fill="#fde68a" opacity=".8"/>
- <polygon points="290,${20+cy} 290,${20+h*k} ${290+sgn*ew},${20+h*k}" fill="#bfdbfe" opacity=".9"/>
- <text x="358" y="30">εcu=0.003</text>
- <text x="${290+sgn*ew-20}" y="${38+h*k}">εt=${et.toFixed(4)}</text>`;
+function filterQ(cat,btn){renderQ(cat);
+  const order=['ALL','P','B','S','C','L','J','PRI','SEC'];
+  document.querySelectorAll('.fbtn').forEach(b=>b.classList.remove('on'));
+  const idx=order.indexOf(cat);if(idx>=0)document.querySelectorAll('.fbtn')[idx].classList.add('on');
+  if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
-calc();
+renderQ('ALL');
+// ---- charts: 主考點 12 題 ----
+const KEYS=Object.keys(CATC);
+const PQ=Q.filter(q=>q[6]===1);
+const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];
+  if(!byYear[y]){byYear[y]={};KEYS.forEach(k=>byYear[y][k]=0);}byYear[y][q[1]]++;});
+function drawBar(){
+  const cv=document.getElementById('cvBar'),ctx=cv.getContext('2d');
+  const years=Object.keys(byYear).sort(),W=cv.width,H=cv.height,bw=(W-60)/years.length;
+  const max=Math.max(...years.map(y=>Object.values(byYear[y]).reduce((a,b)=>a+b,0)));
+  ctx.font='10px sans-serif';
+  for(let i=0;i<=max;i++){const yy=H-30-(H-60)*i/max;ctx.fillStyle='#78909c';ctx.fillText(i,8,yy+3);
+    ctx.strokeStyle='#eceff1';ctx.beginPath();ctx.moveTo(24,yy);ctx.lineTo(W-10,yy);ctx.stroke();}
+  years.forEach((y,i)=>{let acc=0;
+    KEYS.forEach(c=>{const v=byYear[y][c];if(!v)return;
+      const h=(H-60)*v/max;ctx.fillStyle=CATC[c];
+      ctx.fillRect(30+i*bw,H-30-acc-h,bw*0.7,h);acc+=h;});
+    ctx.fillStyle='#78909c';ctx.save();ctx.translate(30+i*bw+bw*0.35,H-18);ctx.rotate(-0.7);ctx.fillText(y.slice(2),0,0);ctx.restore();});
+}
+function drawPie(){
+  const cv=document.getElementById('cvPie'),ctx=cv.getContext('2d');
+  const cnt={};KEYS.forEach(k=>cnt[k]=0);PQ.forEach(q=>cnt[q[1]]++);
+  const tot=PQ.length,cx=cv.width*0.28,cy=cv.height/2,r=Math.min(cx,cy)-16;let a=-Math.PI/2;
+  KEYS.forEach(c=>{const frac=cnt[c]/tot;if(!frac)return;const a2=a+frac*2*Math.PI;
+    ctx.beginPath();ctx.moveTo(cx,cy);ctx.arc(cx,cy,r,a,a2);ctx.closePath();ctx.fillStyle=CATC[c];ctx.fill();a=a2;});
+  ctx.font='12px sans-serif';let ly=34;
+  KEYS.forEach(c=>{ctx.fillStyle=CATC[c];ctx.fillRect(cv.width*0.56,ly-9,12,12);
+    ctx.fillStyle='#263238';ctx.fillText(`${CATN[c]}：${cnt[c]} 題（${Math.round(cnt[c]/tot*100)}%）`,cv.width*0.56+18,ly);ly+=24;});
+}
+drawBar();drawPie();
 </script>
 </body>
 </html>

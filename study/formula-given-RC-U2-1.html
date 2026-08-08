@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RC-U2-1 給／背分界｜RC 剪力強度分析與設計</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#00695c;--ac2:#e0f2f1;--must:#c62828;--must2:#ffebee;--half:#ef6c00;--half2:#fff3e0;
+--give:#2e7d32;--give2:#e8f5e9;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#004d40,#00796b 60%,#26a69a);color:#fff;padding:32px 26px}
+header h1{margin:0 0 8px;font-size:1.55em}
+header p{margin:0;opacity:.92;font-size:.93em}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1060px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.3em;border-left:6px solid var(--ac);padding-left:12px;margin:40px 0 16px;line-height:1.4}
+h3{font-size:1.05em;margin:26px 0 10px;color:var(--ac)}
+h3.grph{background:#eceff1;border-left:5px solid var(--ac);padding:6px 12px;border-radius:6px;color:var(--ac);margin:26px 0 12px}
+p.lead{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.kpi{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac);line-height:1.2}
+.kpi .l{font-size:.79em;color:var(--mut);margin-top:3px}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.lg{border-radius:10px;padding:12px 15px;border:1px solid var(--bd)}
+.lg h4{margin:0 0 5px;font-size:.98em}
+.lg p{margin:0;font-size:.85em;line-height:1.6}
+.lg.must{background:var(--must2);border-color:#ef9a9a}.lg.must h4{color:var(--must)}
+.lg.half{background:var(--half2);border-color:#ffcc80}.lg.half h4{color:var(--half)}
+.lg.give{background:var(--give2);border-color:#a5d6a7}.lg.give h4{color:var(--give)}
+.note{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--mut);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.warn{background:var(--half2);border:1px solid #ffcc80;border-left:5px solid var(--half);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.quote{font-style:normal;color:#37474f;background:#eceff1;border-radius:8px;padding:9px 14px;margin:9px 0;font-size:.9em}
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+.filters button{border:1px solid var(--bd);background:#fff;color:var(--ink);border-radius:16px;
+padding:5px 13px;font-size:.85em;cursor:pointer;font-family:inherit}
+.filters button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards h3.grph{grid-column:1 / span 2;margin:14px 0 0}
+@media(max-width:860px){.cards{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:1fr}}
+.fc{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:13px 16px;
+box-shadow:0 1px 3px rgba(0,0,0,.04);border-top:4px solid var(--bd)}
+.fc.must{border-top-color:var(--must)}.fc.half{border-top-color:var(--half)}.fc.give{border-top-color:var(--give)}
+.fc .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.fc .nm{font-weight:700;font-size:1.01em}
+.tag{font-size:.74em;padding:2px 10px;border-radius:11px;white-space:nowrap;font-weight:600}
+.tag.must{background:var(--must2);color:var(--must)}
+.tag.half{background:var(--half2);color:var(--half)}
+.tag.give{background:var(--give2);color:var(--give)}
+.fc .eq{background:#fafcfd;border:1px solid #eceff1;border-radius:7px;padding:5px 11px;margin:7px 0;overflow-x:auto}
+.fc .meta{font-size:.88em;margin:7px 0 0;line-height:1.62;color:#37474f}
+.fc .ev{font-size:.79em;margin-top:9px;padding-top:7px;border-top:1px dashed #e0e6ea;color:var(--mut);line-height:2}
+.yr{display:inline-block;padding:1px 6px;border-radius:9px;margin:1px 2px 1px 0;font-weight:600}
+.yr.ok{background:var(--give2);color:var(--give)}
+.yr.no{background:var(--must2);color:var(--must)}
+.never{color:var(--must);font-weight:700}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:6px}
+table{border-collapse:collapse;width:100%;min-width:940px;font-size:.83em;background:#fff}
+th,td{border-bottom:1px solid #e8edf0;padding:5px 6px;vertical-align:top}
+th{background:#eceff1;font-weight:600;font-size:.92em;text-align:center;position:sticky;top:46px;z-index:5}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td.c .y{color:var(--give);font-weight:700}
+td.c .n{color:#cfd8dc}
+td.qq{font-size:.93em;color:#37474f;white-space:nowrap}
+td.rm{color:#455a64;line-height:1.5}
+tr.hl{background:#f2f8f7}
+.ynote{font-size:.85em;color:var(--mut)}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:6px 0}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+.katex-display{margin:6px 0!important;overflow-x:auto;overflow-y:hidden}
+</style>
+</head>
+<body>
+<header>
+<h1>RC-U2-1 給／背分界：RC 剪力強度分析與設計</h1>
+<p>這個單元的公式，哪些考卷會印給你、哪些必須自己寫得出來 —— 全部以 24 年考卷原文為證據。</p>
+<p class="meta">exam-wiki-RC｜命題大綱 RC-U2-1｜證據範圍：民國 91–114 年（2002–2025）共 24 份考卷｜本單元題目 16 題（主考點 7 ／副考點 9）</p>
+</header>
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-RC-U2-1.html">▶ U2-1 觀念講義</a>
+  <a href="study-RC-U2-1.html">▶ U2-1 命題分析</a>
+  <a href="formula-given-RC-U1-1.html">▶ U1-1 給／背分界</a>
+  <a href="formula-given-RC-U1-2.html">▶ U1-2 給／背分界</a>
+  <a href="formula-given-RC-U3-3.html">▶ U3-3 給／背分界</a>
+  <a href="formula-given-RC-U4-1.html">▶ U4-1 給／背分界</a>
+  <a href="formula-given-RC-U2-1.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+
+<p class="lead">結論先講：<b>連 \(V_c = 0.53\sqrt{f'_c}b_wd\) 都不保證會給。</b>
+24 年裡它只被印過三次（103、106、109 年），而需要它的年份有七個。
+更關鍵的是 —— <b>\(V_s\)、\(s_{\max}\)、\(V_s\) 上限、\(A_{v,\min}\) 這四條「箍筋設計四件套」，24 年一次都沒有印過</b>，
+偏偏 95、109、110、114 年考的正是「求箍筋最大間距」。</p>
+
+<h3>1-1　考卷把公式印出來的三種擺法</h3>
+<table style="min-width:0">
+<tr><th style="width:14%">擺法</th><th style="width:30%">特徵</th><th>RC 剪力題的實例</th></tr>
+<tr><td><b>(a) 集中式</b></td><td>題目之前的共用區，標題為「可能使用之公式」</td><td>103 年（\(V_c\) 簡化式＋詳細式＋\(M_m\)）、106 年（\(V_c\) 簡化式）</td></tr>
+<tr><td><b>(b) 隨題式</b></td><td>緊跟在該題題目下方或題幹條列中</td><td>101 年（含軸壓的 \(V_c\)）、109 年第二題（\(V_c\) 簡化式）、92 年第四題（剪力牆單層配筋門檻、\(\phi=0.6\)、\(\lambda_{dh}\)）</td></tr>
+<tr><td><b>(c) 內文式</b></td><td>混在題目敘述裡，以文字或數值直接給定</td><td>95 年第一題註明「剪力設計之強度折減因數 \(\phi\) 採用 0.75」、112 年第三題「強度折減因子採 0.75」</td></tr>
+</table>
+<p>三種都算「有給」。剪力這個單元的 (a) 與 (b) 幾乎只給 \(V_c\)，(c) 幾乎只給 \(\phi\) —— 設計端的規定一律不給。</p>
+
+<h3>1-2　RC 考卷的免責聲明：和你想的方向相反</h3>
+<p>鋼結構考卷的慣用語是「所列公式僅供參考，應自負確認與勘誤責任」——<b>給了，但叫你檢查</b>。
+RC 考卷不是這樣，它的慣用語是：</p>
+<div class="quote">「以下各計算題依規範所需之公式或物理參數等，請自行推知或合理假設。」（99 年 —— 這年第三題就是軸力對剪力強度的影響，題目還寫「以簡化式計算」）</div>
+<div class="quote">「本試題之相關符號、公式、物理常數及設計參數未提及時，請依規範自行做合理推斷或假設。」（100 年）</div>
+<div class="quote">「答題所需公式或參數若未提供，請自行作合理假設。」（101 年）</div>
+<p><b>語意是「本來就不打算給」。</b>近年一律加註「未依上述規範作答，不予計分」，
+而規範版本從土木 401-100 換到 401-110（112 年）、401-112（113、114 年）——
+剪力係數的單位制（\(0.53\sqrt{f'_c}\) 是 kgf/cm² 制，MPa 制是 \(\tfrac16\sqrt{f'_c}\)）也要背對。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>🔴 必背</h4><p>考卷從未印過，或曾經「考了卻沒給」且比例高。自己要寫得出來，一個字都不能少。</p></div>
+<div class="lg half"><h4>🟠 別賭</h4><p>多數年份有印，但有明確沒印的先例；或印的是另一種寫法／少印關鍵一步。仍然建議背。</p></div>
+<div class="lg give"><h4>🟢 通常會給</h4><p>凡考此題型幾乎必印，且無「考了卻沒給」先例。背概念與用法即可。</p></div>
+</div>
+<div class="kpis">
+<div class="kpi"><div class="n">24</div><div class="l">盤點公式條數</div></div>
+<div class="kpi"><div class="n">20</div><div class="l">🔴 必背</div></div>
+<div class="kpi"><div class="n">3</div><div class="l">🟠 別賭</div></div>
+<div class="kpi"><div class="n">1</div><div class="l">🟢 通常會給</div></div>
+</div>
+<div class="warn"><b>⚠️ 最刺眼的一年是 99 年。</b>
+第三題明白寫著「試以<b>簡化式</b>計算下列各情況時，臨界斷面之最大混凝土剪力設計強度」，
+分別問無軸力、軸壓 30 tf、軸拉 30 tf 三種 —— 也就是要你默寫三條 \(V_c\)。
+而整張考卷的說明欄寫的是「公式或物理參數等，請自行推知」。</div>
+</section>
+
+<section id="cards">
+<h2>二、公式逐條分界</h2>
+<div class="filters">
+<button data-k="lv" data-v="all" class="on">全部級別</button>
+<button data-k="lv" data-v="must">🔴 必背</button>
+<button data-k="lv" data-v="half">🟠 別賭</button>
+<button data-k="lv" data-v="give">🟢 通常會給</button>
+</div>
+<div class="filters" id="gf"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<div class="tw">
+<table id="mx">
+<thead><tr>
+<th>考卷年</th><th>單元題號</th>
+<th class="c">Vc<br>簡化式</th>
+<th class="c">Vc 詳細<br>軸力/Mm</th>
+<th class="c">預力<br>Vcw/Vci</th>
+<th class="c">Vs 與<br>間距規定</th>
+<th class="c">φ<br>=0.75</th>
+<th class="c">臨界斷面<br>與流程</th>
+<th class="c">摩擦<br>剪力 μ</th>
+<th class="c">STM<br>βs/βn</th>
+<th class="c">扭剪<br>聯合</th>
+<th class="c">耐震 Ve<br>剪力牆</th>
+<th>備註</th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
+<p style="font-size:.88em;color:#607d8b;margin-top:8px">✔ ＝該年考卷印出此類公式（含集中式／隨題式／內文式）。底色列 ＝該年有本單元題目。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+
+<h3>4-1　這 24 條裡，先背哪 6 條</h3>
+<p>依「沒背就整題卡死 × 出現頻率」排序：</p>
+<ol>
+<li><b>箍筋設計四件套：\(V_s = A_vf_{yt}d/s\)、\(s_{\max}\)、\(V_s\) 上限 \(2.12\sqrt{f'_c}b_wd\)、\(A_{v,\min}\)</b>
+—— 24 年<b>零次印出</b>，而 95、109、110、114 年考的正是「求肋筋最大間距」。109 年第二題甚至印了 \(V_c\) 卻不印這四條，等於明講「\(V_c\) 送你，設計端自己來」。</li>
+<li><b>\(V_c = 0.53\sqrt{f'_c}b_wd\)</b> —— 印過三次（103、106、109），但 95、99、105、110、112 年要它卻沒印。單位制要記牢：kgf/cm² 制是 0.53，MPa 制是 \(\tfrac16\)。</li>
+<li><b>臨界斷面取距支承面 \(d\)，以及它的三個例外</b> —— 109 年第二題第一小問就是「請判斷支承處斷面可否按距離支承面 \(d\) 處斷面之 \(V_u\) 設計之，請說明原因」。整題在考這一條規定，考卷當然不會印。</li>
+<li><b>耐震梁／柱的 \(M_{pr}\)、\(V_e\) 與 \(V_c = 0\) 條件</b> —— 101、105、114 年三度考「以塑鉸機構決定設計剪力」，三次都沒給。101 年印了 \(A_{sh}\)、\(s_0\)、含軸壓 \(V_c\)、接頭係數，就是不印 \(M_{pr}\)。</li>
+<li><b>介面摩擦剪力 \(V_n = \mu A_{vf}f_y\) 與 \(\mu\) 的三個值</b> —— 106 年第二題只寫「已經過表面粗糙處理」，\(\mu = 1.0\) 要自己知道。</li>
+<li><b>壓拉桿模式的 \(\beta_s\)、\(\beta_n\)</b> —— 98 年第三題只說「符合 ACI 規範之規定」，兩組係數一個都沒印。</li>
+</ol>
+
+<h3>4-2　可以省下的背誦力氣（很少）</h3>
+<ul>
+<li><b>含軸力的 \(V_c\) 修正式與 \(M_m\)</b> —— 101、103 年印過。103 年是 24 年最完整的一次（簡化式、詳細式含 0.93 上限、\(M_m\) 全給）。但 99 年考同型題卻一條沒給，所以仍列「別賭」。</li>
+<li><b>剪力牆「\(V_u \le 0.53\sqrt{f'_c}A_{cv}\) 可用單層配筋」的門檻</b> —— 92 年唯一一次考剪力牆就印了它（連同 \(\phi = 0.6\)）。樣本只有一個，但沒有反例。</li>
+<li><b>鋼筋斷面積與直徑</b> —— 幾乎每年以表格給，不用背。</li>
+</ul>
+
+<h3>4-3　三個非背不可的「陷阱型」細節</h3>
+<div class="warn"><b>⚠️ 一、109 年印了 \(V_c\)，卻沒印你真正要算的東西。</b>
+第二題三個小問分別是「臨界斷面位置的判斷」「支承位置剪力鋼筋的最大間距」「斷面所能抵抗的最大設計剪力」——
+需要的是 \(s_{\max}\) 規定與 \(V_s\) 上限，考卷給的卻是 \(V_c\)。這是典型的「給了式子，少給關鍵一步」。</div>
+<div class="warn"><b>⚠️ 二、\(V_s\) 一過 \(1.06\sqrt{f'_c}b_wd\)，最大間距要減半。</b>
+從 \(\min(d/2,\,60\text{ cm})\) 變成 \(\min(d/4,\,30\text{ cm})\)。這條門檻從未被印過，
+而它決定了 95、109、110 年那幾題的答案是不是對的。</div>
+<div class="warn"><b>⚠️ 三、預力梁的剪力不是同一套。</b>
+111 年第三題考的是預力 I 形梁的<b>腹剪裂縫</b>，要用 \(V_{cw}=(0.93\sqrt{f'_c}+0.3f_{pc})b_wd_p+V_p\)，
+不是 RC 梁的 \(0.53\sqrt{f'_c}b_wd\)。考卷什麼都沒給，直接用錯公式會整題歪掉。</div>
+
+<h3>4-4　一句話</h3>
+<p class="lead">RC-U2-1 的給／背分界很不對稱：<b>考卷偶爾送你「材料能扛多少」（\(V_c\)），
+但「鋼筋要怎麼配」（\(V_s\)、\(s_{\max}\)、上限、最小量）從來不送。</b>
+而考題問的幾乎都是後者。把箍筋設計四件套與臨界斷面規定寫到能默背，
+比記住哪一年印過 \(V_c\) 有用得多。</p>
+</section>
+
+</main>
+<footer>exam-wiki-RC｜RC-U2-1 給／背分界｜判定依據：raw/exams/ 民國 91–114 年考卷原文（含 92 年掃描卷逐頁目視判讀）</footer>
+
+<script>
+const F = [
+ {g:"A 混凝土剪力強度 Vc", lv:"must", nm:"Vc 簡化式",
+  eq:"$$V_c = 0.53\\sqrt{f'_c}\\,b_w d\\quad(\\text{kgf/cm}^2)$$",
+  meta:"印過三次（103、106、109 年），但 95年一、99年三、105年二、110年一、112年三 要它卻沒印。單位制是常見扣分點：kgf/cm² 制係數 0.53，MPa 制是 \\(\\tfrac16\\)，兩者不可混用。",
+  ok:[2014,2017,2020], no:[2006,2010,2016,2021,2023]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"half", nm:"Vc 詳細式（含 ρw 與 Vu·d/Mu）",
+  eq:"$$V_c=\\left(0.50\\sqrt{f'_c}+175\\,\\rho_w\\frac{V_ud}{M_u}\\right)b_wd \\;\\le\\; 0.93\\sqrt{f'_c}\\,b_wd$$",
+  meta:"只有 103 年印過（連同 0.93 的上限）。99年三 題目寫明「以簡化式計算」，但比較三種軸力時仍要知道詳細式與簡化式的差別。\\(V_ud/M_u \\le 1.0\\) 這個內建限制考卷也沒印。",
+  ok:[2014], no:[2010]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"half", nm:"軸壓修正 Vc",
+  eq:"$$V_c = 0.53\\left(1+\\frac{N_u}{140A_g}\\right)\\sqrt{f'_c}\\,b_wd$$",
+  meta:"101 年第四題的參考規範節錄印過（\\(N_u\\) 為軸壓力，取正）；103 年以 \\(M_m\\) 的形式間接處理。99年三 直接考「設計軸壓力 30 tf」卻沒印。",
+  ok:[2012,2014], no:[2010]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"must", nm:"軸拉修正 Vc",
+  eq:"$$V_c = 0.53\\left(1+\\frac{N_u}{35A_g}\\right)\\sqrt{f'_c}\\,b_wd \\ge 0\\qquad(N_u \\text{ 取負})$$",
+  meta:"從未印過。99年三、103年三 都問「設計軸拉力」情況。分母是 35 不是 140，而且拉力要代負號、結果不得小於零 —— 三個細節都沒有任何一年提示過。",
+  ok:[], no:[2010,2014]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"half", nm:"等效彎矩 Mm（詳細式配軸力）",
+  eq:"$$M_m = M_u - N_u\\,\\frac{4h-d}{8}$$",
+  meta:"103 年印在共用公式區。它的用途是把軸力效應塞回詳細式的 \\(M_u\\) 裡；\\(M_m\\) 若算成負值要改取上限值 \\(V_c \\le 0.93\\sqrt{f'_c}b_wd\\sqrt{1+N_u/(35A_g)}\\) —— 這條配套規定考卷沒印。",
+  ok:[2014], no:[2010]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"must", nm:"預力梁腹剪 Vcw",
+  eq:"$$V_{cw} = \\left(0.93\\sqrt{f'_c}+0.3f_{pc}\\right)b_wd_p + V_p$$",
+  meta:"從未印過。111年三 是「距梁端一倍有效深度處出現<b>腹剪裂縫</b>」，正是 \\(V_{cw}\\) 控制的區域。直接套 RC 梁的 \\(0.53\\sqrt{f'_c}b_wd\\) 會低估很多。",
+  ok:[], no:[2022]},
+
+ {g:"A 混凝土剪力強度 Vc", lv:"must", nm:"預力梁撓剪 Vci 與取小規則",
+  eq:"$$V_c = \\min\\{V_{ci},\\,V_{cw}\\},\\qquad V_{ci}=0.16\\sqrt{f'_c}b_wd_p+V_d+\\frac{V_iM_{cre}}{M_{\\max}}$$",
+  meta:"從未印過。預力梁的 \\(V_c\\) 是兩種開裂模式取小，不是單一式子 —— 111年三 若只算腹剪就少了一半的判斷。",
+  ok:[], no:[2022]},
+
+ {g:"B 箍筋設計四件套", lv:"must", nm:"箍筋剪力強度 Vs",
+  eq:"$$V_s = \\frac{A_v f_{yt} d}{s},\\qquad V_s = \\frac{V_u}{\\phi} - V_c$$",
+  meta:"<b>24 年零次印出。</b>95年一、105年二、109年二、110年一、112年三、114年二 全部要用它反算間距。\\(A_v\\) 是「一個斷面上所有肢的面積」—— 110 年第一題明寫 2 股 D10、114 年是閉合箍筋，肢數算錯就整題錯。",
+  ok:[], no:[2006,2016,2020,2021,2023,2025]},
+
+ {g:"B 箍筋設計四件套", lv:"must", nm:"最大間距 smax（含減半規定）",
+  eq:"$$s_{\\max}=\\min\\!\\left(\\frac{d}{2},\\,60\\text{ cm}\\right);\\qquad V_s>1.06\\sqrt{f'_c}b_wd \\Rightarrow s_{\\max}=\\min\\!\\left(\\frac{d}{4},\\,30\\text{ cm}\\right)$$",
+  meta:"從未印過，而 95年一、105年二、109年二、110年一、114年二 問的正是「最大間距」。減半的門檻 \\(1.06\\sqrt{f'_c}b_wd\\) 是最容易漏的一步：不先判斷就直接寫 \\(d/2\\)，答案會偏大一倍。",
+  ok:[], no:[2006,2016,2020,2021,2025]},
+
+ {g:"B 箍筋設計四件套", lv:"must", nm:"Vs 上限 2.12√f'c bw d",
+  eq:"$$V_s \\le 2.12\\sqrt{f'_c}\\,b_wd \\;\\Rightarrow\\; \\phi V_{n,\\max}=\\phi\\left(V_c+2.12\\sqrt{f'_c}b_wd\\right)$$",
+  meta:"從未印過。109年二 第三小問「計算此梁斷面所能抵抗之最大設計剪力 \\(V_u\\)」，答案就是這條 —— 超過就必須加大斷面，再加箍筋也沒用。",
+  ok:[], no:[2006,2020,2021,2025]},
+
+ {g:"B 箍筋設計四件套", lv:"must", nm:"最小剪力筋量 Av,min",
+  eq:"$$A_{v,\\min}=\\max\\!\\left(0.2\\sqrt{f'_c}\\,\\frac{b_ws}{f_{yt}},\\;3.5\\,\\frac{b_ws}{f_{yt}}\\right)$$",
+  meta:"從未印過。當 \\(V_u > \\phi V_c/2\\) 就要配最小剪力筋，這個門檻也沒印。110年一 的支承附近間距若只用 \\(V_s\\) 反算，會忽略最小量的下限。",
+  ok:[], no:[2006,2020,2021]},
+
+ {g:"B 箍筋設計四件套", lv:"must", nm:"剪力強度折減因數 φ = 0.75",
+  eq:"$$\\phi V_n = \\phi\\,(V_c+V_s) \\ge V_u,\\qquad \\phi = 0.75$$",
+  meta:"95年一 註明「剪力設計之強度折減因數 \\(\\phi\\) 採用 0.75」、96 年共用區列「剪力：0.75」、112年三 內文寫「強度折減因子採 0.75」。但 99、103、105、109、110、114 年都沒提。舊題（91–95 年）可能是 0.85（舊版規範），要看規範版本。",
+  ok:[2006,2007,2023], no:[2010,2014,2016,2020,2021,2025]},
+
+ {g:"C 臨界斷面與設計流程", lv:"must", nm:"臨界斷面取距支承面 d（含三個例外）",
+  eq:"$$V_u \\text{ 取自支承面外 } d \\text{ 處；例外：集中載重在 } d \\text{ 內、支承為拉力、載重非施於梁頂}$$",
+  meta:"從未印過。109年二 第一小問「請判斷支承處斷面可否按距離支承面 \\(d\\) 處斷面之 \\(V_u\\) 設計之，<b>請說明原因</b>」—— 整題就是在考這條規定與例外。112年三（懸臂梁）、110年一 也都要先定位臨界斷面。",
+  ok:[], no:[2010,2014,2020,2021,2023]},
+
+ {g:"C 臨界斷面與設計流程", lv:"must", nm:"剪力設計三步流程（流程骨架）",
+  eq:"$$V_u \\to V_s=\\frac{V_u}{\\phi}-V_c \\to s=\\frac{A_vf_{yt}d}{V_s} \\to \\text{檢 } s_{\\max} \\text{ 與 } A_{v,\\min}$$",
+  meta:"沒有符號，但決定給不給分。最常見的失分是算完 \\(s\\) 就交卷，沒回頭檢查 \\(s_{\\max}\\) 與最小量 —— 而規範規定三者取最小。95、109、110、114 年都是這個流程。",
+  ok:[], no:[2006,2020,2021,2025]},
+
+ {g:"D 摩擦剪力與壓拉桿", lv:"must", nm:"介面摩擦剪力 Vn = μ Avf fy",
+  eq:"$$V_n = \\mu\\,A_{vf}f_y,\\qquad \\mu = 1.4\\lambda\\ (\\text{整體澆置}),\\;1.0\\lambda\\ (\\text{粗糙面}),\\;0.6\\lambda\\ (\\text{未粗糙})$$",
+  meta:"從未印過。106年二（加大柱植筋）只寫「新舊混凝土間已經過表面粗糙處理」，\\(\\mu=1.0\\) 完全靠背。三個 \\(\\mu\\) 值挑錯，植筋量會差到兩倍以上。",
+  ok:[], no:[2017]},
+
+ {g:"D 摩擦剪力與壓拉桿", lv:"must", nm:"摩擦剪力上限",
+  eq:"$$V_n \\le \\min\\left(0.2f'_cA_c,\\;55A_c\\right)$$",
+  meta:"從未印過。這是摩擦剪力的天花板：\\(A_{vf}\\) 再加也沒用。106年二 若只算 \\(A_{vf}\\) 而不檢核上限，等於漏掉一個判斷步驟。",
+  ok:[], no:[2017]},
+
+ {g:"D 摩擦剪力與壓拉桿", lv:"must", nm:"STM 壓桿有效強度（βs）",
+  eq:"$$f_{ce} = 0.85\\,\\beta_s f'_c,\\qquad \\beta_s = 1.0\\ (\\text{稜柱形}),\\;0.75\\ (\\text{瓶形有腹筋}),\\;0.60\\lambda\\ (\\text{瓶形無腹筋})$$",
+  meta:"從未印過。98年三 只寫「梁配有水平與垂直腹筋，且符合 ACI 規範之規定」—— 這句話的作用就是讓你選 \\(\\beta_s = 0.75\\)，但係數本身要自己知道。",
+  ok:[], no:[2009]},
+
+ {g:"D 摩擦剪力與壓拉桿", lv:"must", nm:"STM 節點區有效強度（βn）",
+  eq:"$$f_{ce}=0.85\\,\\beta_n f'_c,\\qquad \\beta_n = 1.0\\ (\\text{CCC}),\\;0.8\\ (\\text{CCT}),\\;0.6\\ (\\text{CTT})$$",
+  meta:"從未印過。98年三 要「預估最大載重 P 及可能破壞模式」，就是要你比較壓桿、拉力桿、節點三種極限狀態取小 —— 節點型式判斷錯（載重點是 CCC、支承點是 CCT）係數就用錯。",
+  ok:[], no:[2009]},
+
+ {g:"D 摩擦剪力與壓拉桿", lv:"must", nm:"深梁判定與 STM 拉力桿",
+  eq:"$$\\frac{l_n}{h}\\le 4\\ \\text{或載重距支承}\\le 2h \\;\\Rightarrow\\; \\text{深梁};\\qquad F_{nt}=A_{st}f_y$$",
+  meta:"從未印過。98年三 給了 6-D19 的拉力桿與「純彎區水平壓桿寬 20 cm」，要你組出桁架。題目說「不考慮強度折減係數」是為了簡化，不是說 \\(\\phi\\) 不存在 —— STM 的 \\(\\phi = 0.75\\)。",
+  ok:[], no:[2009]},
+
+ {g:"E 與扭力／耐震的交界", lv:"must", nm:"扭力可忽略門檻",
+  eq:"$$T_u < \\phi\\,0.265\\sqrt{f'_c}\\,\\frac{A_{cp}^2}{p_{cp}} \\;\\Rightarrow\\; \\text{可不計扭力}$$",
+  meta:"從未印過。112年三 問的正是「若此梁設計時不考慮扭力，則最大設計剪力 \\(V_u\\) 及臨界斷面最大偏心量 \\(e\\)」—— 整題就是把這條門檻反過來解。\\(A_{cp}\\)、\\(p_{cp}\\) 用的是<b>全斷面</b>（含保護層），不是核心 \\(A_{oh}\\)。",
+  ok:[], no:[2011,2018,2023]},
+
+ {g:"E 與扭力／耐震的交界", lv:"must", nm:"剪力＋扭力聯合斷面尺寸檢核",
+  eq:"$$\\sqrt{\\left(\\frac{V_u}{b_wd}\\right)^2+\\left(\\frac{T_up_h}{1.7A_{oh}^2}\\right)^2}\\;\\le\\;\\phi\\left(\\frac{V_c}{b_wd}+2.12\\sqrt{f'_c}\\right)$$",
+  meta:"從未印過。100年四、107年一 都是剪力與扭矩同時作用，必須先過這一關才談配筋。實心斷面用平方和開根號、空心斷面改用直接相加 —— 這個分支考卷也沒提。",
+  ok:[], no:[2011,2018]},
+
+ {g:"E 與扭力／耐震的交界", lv:"must", nm:"耐震構件 Vc = 0 條件",
+  eq:"$$V_{E} \\ge \\tfrac12 V_u \\;\\text{且}\\; N_u < \\frac{A_gf'_c}{20} \\;\\Rightarrow\\; V_c = 0$$",
+  meta:"從未印過。101年三、105年二、114年二 三度考耐震塑鉸區箍筋，全部適用這條。忘了把 \\(V_c\\) 歸零，箍筋量會少算三到四成 —— 這是耐震剪力題最大的單一失分點。",
+  ok:[], no:[2012,2016,2025]},
+
+ {g:"E 與扭力／耐震的交界", lv:"must", nm:"能力設計剪力 Ve（由 Mpr 推）",
+  eq:"$$V_e = \\frac{M_{pr,l}+M_{pr,r}}{l_n} \\pm \\frac{w_ul_n}{2},\\qquad M_{pr}=A_s(1.25f_y)\\left(d-\\frac{a_{pr}}{2}\\right)$$",
+  meta:"從未印過。101年二三、105年二、114年二 都要它。關鍵是 \\(M_{pr}\\) 用 \\(1.25f_y\\) 且 \\(\\phi=1.0\\)，連 \\(a_{pr}\\) 也要用 \\(1.25f_y\\) 重算 —— 101 年考卷印了 \\(A_{sh}\\)、\\(s_0\\)、\\(V_c\\)、接頭係數，唯獨不印這一條。",
+  ok:[], no:[2012,2016,2025]},
+
+ {g:"E 與扭力／耐震的交界", lv:"give", nm:"剪力牆單層配筋門檻",
+  eq:"$$V_u \\le 0.53\\sqrt{f'_c}\\,A_{cv} \\;\\Rightarrow\\; \\text{可採單層鋼筋網}$$",
+  meta:"92年四 是 24 年唯一一次考剪力牆設計，考卷就把這條門檻連同 \\(\\phi=0.6\\) 與彎鉤錨定 \\(\\lambda_{dh}=0.06d_bf_y/\\sqrt{f'_c}\\) 一起印出來。樣本只有一個，但沒有反例。牆體本身的 \\(V_n=A_{cv}(\\alpha_c\\sqrt{f'_c}+\\rho_tf_y)\\) 則沒印 —— 詳見 U3-3 那頁。",
+  ok:[2003], no:[]}
+];
+
+const MX = [
+ [2002,91,"(—)",        0,0,0,0,0,0,0,0,0,0, "第三題為扭力（U2-2）。本單元無題。"],
+ [2003,92,"3(副)、4(副)", 0,0,0,0,0,0,0,0,0,1, "掃描影像卷（已目視）。第四題印剪力牆單層配筋門檻、φ=0.6 與 λdh；牆的 Vn 沒印。"],
+ [2004,93,"(—)",        0,0,0,0,0,0,0,0,0,0, "本單元無題。第三題印 Ash 兩式（屬 U3-3）。"],
+ [2005,94,"(—)",        0,0,0,0,0,0,0,0,0,0, "零公式年。本單元無題。"],
+ [2006,95,"1",          0,0,0,0,1,0,0,0,0,0, "只註明撓曲 φ=0.9、剪力 φ=0.75。要求「剪力鋼筋容許之最大間距」，Vc、Vs、smax 全無。"],
+ [2007,96,"(—)",        0,0,0,0,1,0,0,0,0,0, "共用區列「剪力：0.75」。本單元無題。"],
+ [2008,97,"(—)",        0,0,0,0,0,0,0,0,0,0, "「如有條件不足請自行合理假設。」本單元無題。"],
+ [2009,98,"3",          0,0,0,0,0,0,0,0,0,0, "⚠️ 壓拉桿模式深梁題，只說「符合 ACI 規範之規定」，βs、βn 都沒印。"],
+ [2010,99,"3",          0,0,0,0,0,0,0,0,0,0, "⚠️ 題目寫明「以簡化式計算」三種軸力下的 Vc，簡化式與兩條修正式全無。"],
+ [2011,100,"4(副)",      0,0,0,0,0,0,0,0,0,0, "零公式年。扭矩＋剪力，聯合檢核式與扭力門檻皆無。"],
+ [2012,101,"3(副)",      0,1,0,0,0,0,0,0,0,0, "印含軸壓的 Vc=0.53(1+Nu/140Ag)√f'c bwd；但柱 Ve 與 Vc=0 條件沒印。"],
+ [2013,102,"(—)",       0,0,0,0,0,0,0,0,0,0, "參考公式只有 Ash 兩式。本單元無題。"],
+ [2014,103,"3",         1,1,0,0,0,0,0,0,0,0, "24 年最完整的一次：Vc 簡化式、詳細式（含 0.93 上限）與 Mm 全印；軸拉的 35 分母沒印。"],
+ [2015,104,"(—)",       0,0,0,0,0,0,0,0,0,0, "零公式年。本單元無題。"],
+ [2016,105,"2(副)",      0,0,0,0,0,0,0,0,0,0, "⚠️ 耐震梁塑鉸區箍筋設計，Mpr、Ve、Vc=0 與密箍間距全無。"],
+ [2017,106,"2",         1,0,0,0,0,0,0,0,0,0, "共用區印 Vc=0.53√f'c bwd；但第二題考介面摩擦剪力，μ 值與上限沒給。"],
+ [2018,107,"1(副)",      0,0,0,0,0,0,0,0,0,0, "扭矩＋剪力，只給材料表，聯合檢核式沒印。"],
+ [2019,108,"(—)",       0,0,0,0,0,0,0,0,0,0, "第三題橫膈版印 Vn 與 φ=0.6（屬 U3-3）。本單元無題。"],
+ [2020,109,"2",         1,0,0,0,0,0,0,0,0,0, "⚠️ 印了 Vc，但三小問要的臨界斷面規定、smax 與 Vs 上限都沒給。"],
+ [2021,110,"1(副)",      0,0,0,0,0,0,0,0,0,0, "⚠️ 要設計剪力筋求 smax，連 Vc 都沒印（第三題只印版的穿孔剪力式）。"],
+ [2022,111,"3(副)",      0,0,0,0,0,0,0,0,0,0, "⚠️ 預力梁腹剪裂縫題，Vcw 與 Vci 都沒印。"],
+ [2023,112,"3",         0,0,0,0,1,0,0,0,0,0, "內文給「強度折減因子採 0.75」，但 Vc 與扭力可忽略門檻沒印。"],
+ [2024,113,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2025,114,"2(副)",      0,0,0,0,0,0,0,0,0,0, "⚠️ 耐震梁剪力筋設計，Mpr、Ve、Vc=0 全無，只給鋼筋尺度表。"]
+];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:"🔴 必背",half:"🟠 別賭",give:"🟢 通常會給"};
+let curLv="all",curG="all";
+const groups=[];F.forEach(f=>{if(!groups.includes(f.g))groups.push(f.g)});
+const gf=document.getElementById("gf");
+gf.innerHTML='<button data-k="g" data-v="all" class="on">全部主題</button>'+
+  groups.map(g=>'<button data-k="g" data-v="'+g+'">'+g+'</button>').join("");
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join("")}
+function render(){
+  const box=document.getElementById("cards");
+  box.innerHTML=F.filter(f=>(curLv==="all"||f.lv===curLv)&&(curG==="all"||f.g===curG)).map(f=>{
+    let ev=f.ok.length?"<b>考卷給過：</b>"+yrs(f.ok,"ok"):'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length)ev+="　｜　<b>考了卻沒給：</b>"+yrs(f.no,"no");
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+
+      '</span><span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div><div class="eq">'+f.eq+
+      '</div><p class="meta">'+f.meta+'</p><div class="ev">'+ev+'</div></div>';
+  }).join("");
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false});
+}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  const k=b.dataset.k;
+  b.parentNode.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  if(k==="lv")curLv=b.dataset.v;else curG=b.dataset.v;
+  render();
+}));
+const tb=document.querySelector("#mx tbody");
+tb.innerHTML=MX.map(r=>{
+  const has=r[2]!=="(—)";
+  const cells=r.slice(3,13).map(v=>'<td class="c">'+(v?'<span class="y">✔</span>':'<span class="n">·</span>')+"</td>").join("");
+  return '<tr class="'+(has?"hl":"")+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+
+    '年</span></td><td class="qq">'+r[2]+"</td>"+cells+'<td class="rm">'+r[13]+"</td></tr>";
+}).join("");
+render();
+</script>
+</body>
+</html>

@@ -31,6 +31,7 @@
 | 特定題目的解析 | `raw/solutions/RC-YYYY-N/RC-YYYY-N.md` |
 | 子項深度複習速查頁 | `study/study-RC-UN-n.html`（說 `study RC-UN-n` 生成）— **練題時**用 |
 | 子項觀念講義（理解導向） | `study/lecture-RC-UN-n.html` + `.pdf`（說 `生成 RC-UN-n 講義` 生成）— **練題前**用 |
+| 公式給／背分界 | `study/formula-given-RC-UN-n.html` + `.pdf`（說 `整理 RC-UN-n 主要公式` 生成）— **背誦決策**用 |
 | wiki 題目頁（含標籤/考點） | `wiki/problems/RC-YYYY-N.md` |
 | 依年份瀏覽所有題目 | `wiki/by-year.md` |
 | 概念說明（Whitney應力塊、P-M圖等） | `wiki/concepts/` |
@@ -55,6 +56,7 @@ exam-wiki-RC/
 ├── study/             ← 讀書講義
 │   ├── study-RC-UN-n.html      ← study 指令輸出（速查／複習頁，練題時用）
 │   ├── lecture-RC-UN-n.html/pdf ← unit-lecture skill 輸出（觀念講義，練題前用）
+│   ├── formula-given-RC-UN-n.html/pdf ← unit-formula-map skill 輸出（哪些公式考卷會給）
 │   └── assets/katex/           ← 離線 KaTeX，lecture 頁共用（勿刪）
 │
 ├── raw/               ← 原始資料（唯讀）

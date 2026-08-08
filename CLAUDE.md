@@ -77,6 +77,7 @@ exam-wiki-RC/
 │   ├── study-RC-UN.html             ← study 指令輸出（單元層級速查／複習頁）
 │   ├── study-RC-UN-n.html           ← study 指令輸出（子項層級速查／複習頁）
 │   ├── lecture-RC-UN-n.html/.pdf    ← unit-lecture skill 輸出（理解導向觀念講義，與 study 頁並存）
+│   ├── formula-given-RC-UN-n.html/.pdf ← unit-formula-map skill 輸出（公式「給／背分界」盤點）
 │   ├── RC-UN-n_*.pdf                ← 使用者放入的 Keynote／補充講義
 │   └── assets/katex/                ← 離線 KaTeX（lecture 頁共用，勿刪）
 │
@@ -216,3 +217,7 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 CLAUDE-CODE.md 中 STUDY 指令的連結規格 |
 | 2026-07-25 | `study/` 新增第二種教材型態：`lecture-RC-UN-n.html/.pdf`（由外部 `unit-lecture` skill 產出的理解導向觀念講義），與 study 速查頁並存不互相覆蓋；新增共用離線資源 `study/assets/katex/`；同步更新 README.md、檔案架構索引表.md、CLAUDE-CODE.md（STUDY 段落交叉註記） | 練題前需要建立物理直覺的教材，與練題時用的速查頁定位不同，分開管理 |
 | 2026-07-25 | **規則 1 例外擴充**：`raw/` 唯讀的例外從「`question_index.json`」擴充為「`question_index.json` + `raw/solutions/methods/`」，並訂出三項修改條件（驗算／同步 wiki／記 log） | `methods/` 是 `wiki/methods/` 的 compile 來源，只改 wiki 副本會被 `compile-all` 蓋回；公式勘誤需能根治。個別題目解析 `raw/solutions/RC-YYYY-N/` 仍受完整保護 |
+| 2026-08-08 | `study/` 新增第三種教材型態：`formula-given-RC-UN-n.html/.pdf`（由外部 `unit-formula-map` skill 產出的公式「給／背分界」盤點），與 study 命題分析頁、lecture 觀念講義並存；首批完成 RC-U1-1、RC-U1-2；同步更新 README.md、檔案架構索引表.md | 考卷幾乎不印撓曲／P-M 公式，需以 24 年考卷原文為證據界定背誦範圍 |
+| 2026-08-08 | `unit-formula-map` 再產出三個單元的公式給／背分界：RC-U2-1（剪力）、RC-U3-3（韌性與耐震）、RC-U4-1（預力斷面應力）；五份頁面全部雙向互連（nav 加上其他單元按鈕，PDF 鍵維持最後一顆） | 剪力的箍筋設計四件套、耐震的能力設計法、預力的應力疊加式皆為 24 年零次印出，需以證據界定背誦範圍 |
+| 2026-08-08 | `unit-exam-intel` 將 `study-RC-U1-1.html`、`study-RC-U1-2.html` 由七區段深度複習頁重構為六區塊「命題情報頁」（出題概況／考點結構／考點漂移／題型走向／考題清單／命題風險），檔名不變；刪除與 lecture／formula-given 重複的截面圖解、解題流程、公式速查、高頻陷阱四區段與互動計算器（經使用者確認），移除 Keynote 按鈕；`study/problems-view/` 由 64 頁補齊至 100 頁，全數改用「命題分析＋講義」雙鈕並注入跟隨來源單元腳本，取代失效的 `javascript:history.back()` | 三份教材定位分工：lecture 講「為什麼」、formula-given 講「要不要背」、study 只講「考什麼」；所有數字改由 `scripts/stats.py` 產生並以 `verify.py` 對帳，杜絕手打統計（舊頁曾把「2025 年缺席」誤寫成「近 5 年連續出題」）|
+| 2026-08-08 | `unit-exam-intel` 續作三個單元：`study-RC-U2-1.html`、`study-RC-U3-3.html`、`study-RC-U4-1.html` 由七區段深度複習頁重構為命題情報頁（互動計算器與 Keynote 按鈕比照 U1-1／U1-2 移除，至此 `study/` 已無 Keynote 鍵）；U2-1 因主考點僅 7 題（<8）依規格跳過「考點漂移」，改放「剪力的角色：主 7 vs 副 9」表；三份 lecture 頁 nav 的「速查頁」改為「命題分析」並補上「給／背分界」鍵 | 五個已有 lecture＋formula-given 的單元至此三份教材定位一致；本輪另發現 `RC-2021-4` 索引 designMethod 記為「概念題」但實為 WSD 計算題（已在頁面加註記、未逕改索引），以及 `RC-2019-3`、`RC-2018-4` 解析表頭主分類缺子項號 |

@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RC-U4-1 給／背分界｜預力梁斷面應力分析</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#283593;--ac2:#e8eaf6;--must:#c62828;--must2:#ffebee;--half:#ef6c00;--half2:#fff3e0;
+--give:#2e7d32;--give2:#e8f5e9;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#1a237e,#3949ab 60%,#5c6bc0);color:#fff;padding:32px 26px}
+header h1{margin:0 0 8px;font-size:1.55em}
+header p{margin:0;opacity:.92;font-size:.93em}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1060px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.3em;border-left:6px solid var(--ac);padding-left:12px;margin:40px 0 16px;line-height:1.4}
+h3{font-size:1.05em;margin:26px 0 10px;color:var(--ac)}
+h3.grph{background:#eceff1;border-left:5px solid var(--ac);padding:6px 12px;border-radius:6px;color:var(--ac);margin:26px 0 12px}
+p.lead{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.kpi{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac);line-height:1.2}
+.kpi .l{font-size:.79em;color:var(--mut);margin-top:3px}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.lg{border-radius:10px;padding:12px 15px;border:1px solid var(--bd)}
+.lg h4{margin:0 0 5px;font-size:.98em}
+.lg p{margin:0;font-size:.85em;line-height:1.6}
+.lg.must{background:var(--must2);border-color:#ef9a9a}.lg.must h4{color:var(--must)}
+.lg.half{background:var(--half2);border-color:#ffcc80}.lg.half h4{color:var(--half)}
+.lg.give{background:var(--give2);border-color:#a5d6a7}.lg.give h4{color:var(--give)}
+.note{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--mut);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.warn{background:var(--half2);border:1px solid #ffcc80;border-left:5px solid var(--half);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.quote{font-style:normal;color:#37474f;background:#eceff1;border-radius:8px;padding:9px 14px;margin:9px 0;font-size:.9em}
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+.filters button{border:1px solid var(--bd);background:#fff;color:var(--ink);border-radius:16px;
+padding:5px 13px;font-size:.85em;cursor:pointer;font-family:inherit}
+.filters button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards h3.grph{grid-column:1 / span 2;margin:14px 0 0}
+@media(max-width:860px){.cards{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:1fr}}
+.fc{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:13px 16px;
+box-shadow:0 1px 3px rgba(0,0,0,.04);border-top:4px solid var(--bd)}
+.fc.must{border-top-color:var(--must)}.fc.half{border-top-color:var(--half)}.fc.give{border-top-color:var(--give)}
+.fc .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.fc .nm{font-weight:700;font-size:1.01em}
+.tag{font-size:.74em;padding:2px 10px;border-radius:11px;white-space:nowrap;font-weight:600}
+.tag.must{background:var(--must2);color:var(--must)}
+.tag.half{background:var(--half2);color:var(--half)}
+.tag.give{background:var(--give2);color:var(--give)}
+.fc .eq{background:#fafcfd;border:1px solid #eceff1;border-radius:7px;padding:5px 11px;margin:7px 0;overflow-x:auto}
+.fc .meta{font-size:.88em;margin:7px 0 0;line-height:1.62;color:#37474f}
+.fc .ev{font-size:.79em;margin-top:9px;padding-top:7px;border-top:1px dashed #e0e6ea;color:var(--mut);line-height:2}
+.yr{display:inline-block;padding:1px 6px;border-radius:9px;margin:1px 2px 1px 0;font-weight:600}
+.yr.ok{background:var(--give2);color:var(--give)}
+.yr.no{background:var(--must2);color:var(--must)}
+.never{color:var(--must);font-weight:700}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:6px}
+table{border-collapse:collapse;width:100%;min-width:940px;font-size:.83em;background:#fff}
+th,td{border-bottom:1px solid #e8edf0;padding:5px 6px;vertical-align:top}
+th{background:#eceff1;font-weight:600;font-size:.92em;text-align:center;position:sticky;top:46px;z-index:5}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td.c .y{color:var(--give);font-weight:700}
+td.c .n{color:#cfd8dc}
+td.qq{font-size:.93em;color:#37474f;white-space:nowrap}
+td.rm{color:#455a64;line-height:1.5}
+tr.hl{background:#f4f5fc}
+.ynote{font-size:.85em;color:var(--mut)}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:6px 0}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+.katex-display{margin:6px 0!important;overflow-x:auto;overflow-y:hidden}
+</style>
+</head>
+<body>
+<header>
+<h1>RC-U4-1 給／背分界：預力梁斷面應力分析</h1>
+<p>這個單元的公式，哪些考卷會印給你、哪些必須自己寫得出來 —— 全部以 24 年考卷原文為證據。</p>
+<p class="meta">exam-wiki-RC｜命題大綱 RC-U4-1｜證據範圍：民國 91–114 年（2002–2025）共 24 份考卷｜本單元題目 21 題（主考點 13 ／副考點 8）</p>
+</header>
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-RC-U4-1.html">▶ U4-1 觀念講義</a>
+  <a href="study-RC-U4-1.html">▶ U4-1 命題分析</a>
+  <a href="formula-given-RC-U1-1.html">▶ U1-1 給／背分界</a>
+  <a href="formula-given-RC-U1-2.html">▶ U1-2 給／背分界</a>
+  <a href="formula-given-RC-U2-1.html">▶ U2-1 給／背分界</a>
+  <a href="formula-given-RC-U3-3.html">▶ U3-3 給／背分界</a>
+  <a href="formula-given-RC-U4-1.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+
+<p class="lead">結論先講：<b>預力是全 RC 唯一「有一組公式幾乎必印」的地方 —— \(f_{ps}\) 近似式。</b>
+93、102、107、112 年只要考到極限撓曲強度就印出來（而且四年印的是四種不同版本）。
+但反過來，本單元真正的主軸 —— <b>四項應力疊加式 \(f = -P/A \mp Pe/S \pm M/S\) —— 24 年零次印出</b>，
+21 題裡有 8 題直接考它。</p>
+
+<h3>1-1　考卷把公式印出來的三種擺法</h3>
+<table style="min-width:0">
+<tr><th style="width:14%">擺法</th><th style="width:30%">特徵</th><th>RC 預力題的實例</th></tr>
+<tr><td><b>(a) 集中式</b></td><td>題目之前的共用區</td><td>本單元幾乎沒有 —— 預力公式一律隨題給</td></tr>
+<tr><td><b>(b) 隨題式</b></td><td>緊跟在該題下方，標題為「提示」「參考公式」「參考式」</td><td>93 年第五題（\(f_{ps}\)、\(\omega_p\)）、102 年第四題（\(f_{ps}\)）、107 年第四題（有黏結＋無黏結兩式）、108 年第四題（摩擦損失）、112 年第四題（無黏結 \(f_{ps}\)）</td></tr>
+<tr><td><b>(c) 內文式</b></td><td>混在題目敘述裡，以文字、數值或圖直接給定</td><td>96 年「容許壓應力 \(0.4f'_c\)、容許拉應力 \(3\sqrt{f'_c}\)」、97 年「壓應力不得超過 \(0.45f'_c\)，亦不容許張應力」、101 年「初始階段壓 \(0.60f'_{ci}\)、拉 \(0.80\sqrt{f'_{ci}}\)」、104 年「\(f_{ca}=140\)、\(f_{ta}=0\)」、110 年「壓 \(0.6f'_c\)、拉 \(1.6\sqrt{f'_c}\)」、92 年以<b>圖</b>給鋼絞線應力–應變曲線</td></tr>
+</table>
+<p>三種都算「有給」。本單元的 (c) 特別重要 —— <b>容許應力幾乎都是以「這一題用這個值」的形式給的，
+而且年年不同</b>：96 年 \(0.4f'_c\)、97 年 \(0.45f'_c\)、110 年 \(0.6f'_c\)。看到數字就用題目的，不要用背的覆蓋。</p>
+
+<h3>1-2　RC 考卷的免責聲明：和你想的方向相反</h3>
+<p>鋼結構考卷的慣用語是「所列公式僅供參考，應自負確認與勘誤責任」——<b>給了，但叫你檢查</b>。
+RC 考卷不是這樣，它的慣用語是：</p>
+<div class="quote">「以下各計算題依規範所需之公式或物理參數等，請自行推知或合理假設。」（99 年 —— 這年第四題就是偏心距限制）</div>
+<div class="quote">「本試題之相關符號、公式、物理常數及設計參數未提及時，請依規範自行做合理推斷或假設。」（100 年 —— 這年第五題是三斷面應力分析）</div>
+<div class="quote">「答題所需公式或參數若未提供，請自行作合理假設。」（101 年）</div>
+<p><b>語意是「本來就不打算給」。</b>而 92 年那題更極端 ——
+它給了鋼絞線的雙線性應力–應變曲線，然後寫「<b>限用</b>應變一致性較精確之方式」，
+等於明文禁止你用背起來的 \(f_{ps}\) 近似公式。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>🔴 必背</h4><p>考卷從未印過，或曾經「考了卻沒給」且比例高。自己要寫得出來，一個字都不能少。</p></div>
+<div class="lg half"><h4>🟠 別賭</h4><p>多數年份有印，但有明確沒印的先例；或印的是另一種寫法／少印關鍵一步。仍然建議背。</p></div>
+<div class="lg give"><h4>🟢 通常會給</h4><p>凡考此題型幾乎必印，且無「考了卻沒給」先例。背概念與用法即可。</p></div>
+</div>
+<div class="kpis">
+<div class="kpi"><div class="n">23</div><div class="l">盤點公式條數</div></div>
+<div class="kpi"><div class="n">14</div><div class="l">🔴 必背</div></div>
+<div class="kpi"><div class="n">4</div><div class="l">🟠 別賭</div></div>
+<div class="kpi"><div class="n">5</div><div class="l">🟢 通常會給</div></div>
+</div>
+<div class="warn"><b>⚠️ 六個「預力零公式年」：95、98、100、103、109、113 年。</b>
+這六年都有本單元題目，考卷卻沒給任何應力式或容許應力值。
+其中 100 年第五題最誇張 —— 它給了淨斷面、變換斷面、合成斷面<b>三組</b>完整斷面性質（\(A_c\)、\(Z_t\)、\(Z_b\)、\(I\)、\(e_p\)）與 \(n=6\)，
+就是不給那四項疊加怎麼寫。</div>
+</section>
+
+<section id="cards">
+<h2>二、公式逐條分界</h2>
+<div class="filters">
+<button data-k="lv" data-v="all" class="on">全部級別</button>
+<button data-k="lv" data-v="must">🔴 必背</button>
+<button data-k="lv" data-v="half">🟠 別賭</button>
+<button data-k="lv" data-v="give">🟢 通常會給</button>
+</div>
+<div class="filters" id="gf"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<div class="tw">
+<table id="mx">
+<thead><tr>
+<th>考卷年</th><th>單元題號</th>
+<th class="c">應力疊加<br>S / k / n</th>
+<th class="c">容許應力<br>傳遞階段</th>
+<th class="c">容許應力<br>使用階段</th>
+<th class="c">fr<br>開裂判準</th>
+<th class="c">fps<br>有黏結</th>
+<th class="c">fps<br>無黏結</th>
+<th class="c">Mn/Mcr<br>ωp</th>
+<th class="c">應變<br>相容法</th>
+<th class="c">預力損失<br>公式</th>
+<th class="c">偏心限制<br>C 線</th>
+<th>備註</th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
+<p style="font-size:.88em;color:#607d8b;margin-top:8px">✔ ＝該年考卷印出此類公式（含集中式／隨題式／內文式）。底色列 ＝該年有本單元題目。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+
+<h3>4-1　這 23 條裡，先背哪 6 條</h3>
+<p>依「沒背就整題卡死 × 出現頻率」排序：</p>
+<ol>
+<li><b>四項應力疊加式 \(f_{t,b} = -\dfrac{P_e}{A} \pm \dfrac{P_ee}{S_{t,b}} \mp \dfrac{M}{S_{t,b}}\)</b>
+—— 21 題裡 8 題直接考，<b>24 年零次印出</b>。符號約定（壓為負、\(e\) 向下為正）要先自己訂清楚並寫在卷面上。</li>
+<li><b>兩階段（非組合 → 組合）疊加流程</b> —— 95、96、97、100、103、110 年六題都是組合斷面。
+自重與施工載重作用在<b>非組合斷面</b>、活載重作用在<b>合成斷面</b>，兩階段的 \(S\) 不一樣，混用整題錯。</li>
+<li><b>容許應力的四個檢核點</b>（傳遞階段上下緣 × 使用階段上下緣）—— 值年年不同、以內文給，
+但「哪四個點要檢核」從來沒印過。103、105 年就是要你「確認是否符合規範規定」「判斷是否開裂與受壓過多」，卻連 \(f_r\) 都沒給。</li>
+<li><b>開裂彎矩 \(M_{cr} = \left(\dfrac{P_e}{A}+\dfrac{P_ee}{S_b}+f_r\right)S_b\)</b>
+—— 93、102、107 年三度考，零次印出。\(f_r=2.0\sqrt{f'_c}\) 只有 101 年印過。</li>
+<li><b>四控制條件反推偏心距上下限</b> —— 99、104、114 年三度考「求梁中央鋼腱配置之偏心距限制」，
+零次印出。114 年幾乎是 99 年的重製題，15 年後仍然不給。</li>
+<li><b>等效載重法 \(w_p = 8P_eh/L^2\) 與壓力線（C 線）、二次彎矩</b>
+—— 109、113 年兩度考連續梁／超靜定預力，零次印出。113 年還要你「如何調整鋼腱使其成為同位鋼腱」。</li>
+</ol>
+
+<h3>4-2　可以省下的背誦力氣（本單元最值錢的發現）</h3>
+<ul>
+<li><b>\(f_{ps}\) 近似公式 —— 考到就給。</b>93 年給 \(\gamma_p/\beta_1\) 版、102 與 107 年給 \(0.5\) 版、
+107 年另給無黏結 \(f_{se}+700+f'_c/(100\rho_p)\)、112 年給無黏結 \(f_{se}+700+f'_c/(300\rho_p)\)。
+四種寫法輪流出現，<b>沒有一次是該給而不給</b>。要背的不是式子，而是「哪一條該用」：
+有黏結／無黏結、\(L/d_p\) 大於或小於 35。</li>
+<li><b>摩擦損失 \(P_{px}=P_{pj}e^{-(Kl_{px}+\mu_p\alpha_{px})}\)</b> —— 108 年印出完整式子與 \(\omega\) 定義。</li>
+<li><b>有效預力比</b> —— 99、105、110、114 年都以 \(f_{pe}/f_{pi}=0.85\)、\(F_e=0.7F_i\) 這類條件直接給，不用推。</li>
+<li><b>斷面性質</b>（\(A\)、\(I\)、\(S_t\)、\(S_b\)、\(r^2\)、\(c_t\)、\(c_b\)）—— 96、100、103 年直接給表，不必算。</li>
+</ul>
+
+<h3>4-3　四個非背不可的「陷阱型」細節</h3>
+<div class="warn"><b>⚠️ 一、92 年明文禁止用 \(f_{ps}\) 近似公式。</b>
+它給了鋼絞線的雙線性曲線（\(f_p=2{,}000{,}000\varepsilon_p\) 到 16,950，之後 \(f_p=65{,}000\varepsilon_p+16{,}400\)，上限 19,000），
+然後寫「<b>限用應變一致性較精確之方式</b>」。這是「給了東西，但不是你想的那一條」的典型 ——
+要用應變相容法：\(\varepsilon_{ps}=\varepsilon_{pe}+\varepsilon_{decomp}+\varepsilon_{ps,f}\)，這條關係式考卷沒給。</div>
+<div class="warn"><b>⚠️ 二、容許應力年年不同，一定要用題目給的。</b>
+96 年壓 \(0.4f'_c\)／拉 \(3\sqrt{f'_c}\)（橋梁習慣值）、97 年壓 \(0.45f'_c\)／不容許張應力、
+104 年直接給數值 \(f_{ca}=140\)／\(f_{ta}=0\)、110 年壓 \(0.6f'_c\)／拉 \(1.6\sqrt{f'_c}\)。
+背一組規範值然後套到每一年，會在至少三年得到錯誤結論。</div>
+<div class="warn"><b>⚠️ 三、無黏結 \(f_{ps}\) 的分母有 100 與 300 兩種。</b>
+\(L/d_p \le 35\) 用 \(f'_c/(100\rho_p)\)，\(> 35\) 用 \(f'_c/(300\rho_p)\)。
+107 年印的是 100 版、112 年印的是 300 版 —— 而 112 年那題是跨度 10 m、\(d_p=22\) cm 的單向版，
+\(L/d_p \approx 45 > 35\)，考卷印對了。<b>但如果哪年只印一種而題目落在另一區，你要看得出來。</b></div>
+<div class="warn"><b>⚠️ 四、100 年給你三組斷面性質，是提醒也是陷阱。</b>
+淨斷面 \((A_{c1},Z_{t1},Z_{b1},e_{p1})\)、變換斷面、合成斷面各一組 ——
+它在暗示「施預力時用淨／變換斷面、全載重時用合成斷面」。
+給了資料不等於給了方法：哪一階段配哪一組，要自己判斷。</div>
+
+<h3>4-4　一句話</h3>
+<p class="lead">RC-U4-1 的給／背分界非常清楚：<b>「極限強度那一段」（\(f_{ps}\)）考卷幾乎必給，
+「使用性那一段」（應力疊加、容許應力檢核點、偏心距限制、C 線）一次都不給。</b>
+而 21 題裡有 15 題是使用性題（WSD）。把四項疊加式與兩階段流程練到閉著眼睛能寫，
+才是這個單元真正的分水嶺。</p>
+</section>
+
+</main>
+<footer>exam-wiki-RC｜RC-U4-1 給／背分界｜判定依據：raw/exams/ 民國 91–114 年考卷原文（含 92 年掃描卷逐頁目視判讀）</footer>
+
+<script>
+const F = [
+ {g:"A 彈性斷面應力（WSD 主體）", lv:"must", nm:"上下緣應力疊加式",
+  eq:"$$f_t = -\\frac{P_e}{A}+\\frac{P_ee}{S_t}-\\frac{M}{S_t},\\qquad f_b = -\\frac{P_e}{A}-\\frac{P_ee}{S_b}+\\frac{M}{S_b}$$",
+  meta:"<b>24 年零次印出</b>，而本單元 21 題裡有 8 題直接考它（95、96、97、100、101、103、105、110 年）。符號約定要自己訂並寫在卷面上：壓為負、\\(e\\) 在形心下方為正。101年一 還特別提醒「應自行判斷預力鋼鍵是往上或往下偏心」—— 符號搞錯，答案正負顛倒。",
+  ok:[], no:[2006,2007,2008,2011,2012,2014,2016,2021]},
+
+ {g:"A 彈性斷面應力（WSD 主體）", lv:"must", nm:"斷面模數 S 與核心距 k",
+  eq:"$$S_t=\\frac{I}{c_t},\\quad S_b=\\frac{I}{c_b},\\qquad k_t=\\frac{r^2}{c_b},\\quad k_b=\\frac{r^2}{c_t},\\quad r^2=\\frac{I}{A}$$",
+  meta:"從未印過（96、100、103 年直接給 \\(S\\)、\\(r^2\\) 的數值，等於幫你算好）。但 99年四、104年四、114年四 求偏心距限制時，核心距是關鍵中介量 —— \\(k_t\\) 用 \\(c_b\\) 當分母（不是 \\(c_t\\)），這個交叉關係最常寫反。",
+  ok:[], no:[2010,2015,2025]},
+
+ {g:"A 彈性斷面應力（WSD 主體）", lv:"must", nm:"兩階段（非組合→組合）疊加流程",
+  eq:"$$f = \\underbrace{f_{P_e}+f_{M_{G}}}_{\\text{非組合斷面 } S_1} + \\underbrace{f_{M_{L}}}_{\\text{合成斷面 } S_3}$$",
+  meta:"沒有符號，但決定整題。95年四、96年四、97年四、100年五、103年四、110年四 六題都是組合斷面：自重與樓版重由<b>非組合</b>斷面承擔、活載重由<b>合成</b>斷面承擔。用同一組 \\(S\\) 算到底是這個單元最大的單一失分點。100 年直接給你三組斷面性質就是在提示這件事。",
+  ok:[], no:[2006,2007,2008,2011,2014,2021]},
+
+ {g:"A 彈性斷面應力（WSD 主體）", lv:"must", nm:"不同 f'c 的斷面轉換",
+  eq:"$$n = \\frac{E_{c,\\text{版}}}{E_{c,\\text{梁}}} = \\sqrt{\\frac{f'_{c,\\text{版}}}{f'_{c,\\text{梁}}}},\\qquad b_{\\text{等效}} = n\\,b_{\\text{版}}$$",
+  meta:"從未印過。95年四（梁 350／版 280）、96年四（350／280）、97年四（350／280）三題的樓版強度都低於梁，翼板寬度必須先折減再算合成斷面性質。不折減會高估合成斷面模數。",
+  ok:[], no:[2006,2007,2008,2021]},
+
+ {g:"B 容許應力與開裂判準", lv:"half", nm:"傳遞階段容許應力",
+  eq:"$$f_{c,\\text{允}} = 0.60f'_{ci},\\qquad f_{t,\\text{允}} = 0.80\\sqrt{f'_{ci}}\\ (\\text{端部 }1.6\\sqrt{f'_{ci}})$$",
+  meta:"只有 101年一 明列（「初始階段混凝土應力容許值：壓應力為 \\(0.60f'_{ci}\\)，拉應力為 \\(0.80\\sqrt{f'_{ci}}\\)」）。99年四、100年五、103年四、105年四、114年四 都要檢核傳遞階段卻沒給。注意用的是 \\(f'_{ci}\\)（施預力時強度），不是 \\(f'_c\\)。",
+  ok:[2012], no:[2010,2011,2014,2016,2025]},
+
+ {g:"B 容許應力與開裂判準", lv:"half", nm:"使用階段容許應力",
+  eq:"$$f_{c,\\text{允}} = 0.45f'_c\\ \\text{或}\\ 0.60f'_c,\\qquad f_{t,\\text{允}} = 1.6\\sqrt{f'_c}\\ \\text{（U 類）}\\ \\sim 3.2\\sqrt{f'_c}\\ \\text{（T 類）}$$",
+  meta:"印過四次，<b>但每次的值都不一樣</b>：96年四 給 \\(0.4f'_c\\)／\\(3\\sqrt{f'_c}\\)、97年四 給 \\(0.45f'_c\\)／不容許張應力、104年四 給數值 \\(f_{ca}=140\\)／\\(f_{ta}=0\\)、110年四 給 \\(0.6f'_c\\)／\\(1.6\\sqrt{f'_c}\\)。而 95、100、103、105、114 年完全沒給。<b>看到數字就用題目的</b>，不要用背的覆蓋。",
+  ok:[2007,2008,2015,2021], no:[2006,2010,2011,2014,2016,2025]},
+
+ {g:"B 容許應力與開裂判準", lv:"must", nm:"開裂模數 fr 與開裂判準",
+  eq:"$$f_r = 2.0\\sqrt{f'_c};\\qquad f_b > f_r \\Rightarrow \\text{斷面開裂}$$",
+  meta:"101年一 印過（\\(f_r=2.0\\sqrt{f'_c}\\)）。但 103年四 要「確認是否符合規範規定」、105年四 要「判斷混凝土是否開裂與受壓過多」，兩年都沒給 \\(f_r\\) —— 沒有它就無從判斷。",
+  ok:[2012], no:[2014,2016]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"give", nm:"fps 有黏結（γp / β₁ 版）",
+  eq:"$$f_{ps}=f_{pu}\\left(1-\\frac{\\gamma_p}{\\beta_1}\\,\\rho_p\\frac{f_{pu}}{f'_c}\\right),\\qquad \\gamma_p=0.4\\ (f_{py}/f_{pu}\\ge0.85)$$",
+  meta:"93年五 以「提示」印出（並直接告訴你 \\(\\gamma_p=0.4\\)）。\\(\\gamma_p\\) 有 0.55／0.40／0.28 三個值，取決於 \\(f_{py}/f_{pu}\\) —— 那一年幫你選好了，別的年份未必。92年一 則明文<b>禁止</b>使用近似式（要用應變相容法），所以那年不算「該給而沒給」。",
+  ok:[2004], no:[]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"give", nm:"fps 有黏結（0.5 簡化版）",
+  eq:"$$f_{ps}=f_{pu}\\left(1-0.5\\,\\rho_p\\frac{f_{pu}}{f'_c}\\right)$$",
+  meta:"102年四、107年四 兩次都印。這是把 \\(\\gamma_p/\\beta_1\\) 概略當成 0.5 的簡化版；只要考有黏結的極限撓曲，考卷就會給其中一種寫法 —— 24 年沒有例外。\\(\\rho_p = A_{ps}/(b\\,d_p)\\) 的定義倒是從沒印過。",
+  ok:[2013,2018], no:[]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"give", nm:"fps 無黏結（L/dp ≤ 35）",
+  eq:"$$f_{ps}=f_{se}+700+\\frac{f'_c}{100\\rho_p}\\ \\le\\ \\min\\{f_{py},\\;f_{se}+4200\\}$$",
+  meta:"107年四 與有黏結版並列印出，要你自己選一條 —— 那題是後拉法有黏結（套管以水泥砂漿填滿），所以答案是選<b>另外</b>那條。「給你兩條」本身就是考點。上限 \\(\\min\\{f_{py},f_{se}+4200\\}\\) 沒印。",
+  ok:[2018], no:[]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"give", nm:"fps 無黏結（L/dp > 35）",
+  eq:"$$f_{ps}=f_{se}+700+\\frac{f'_c}{300\\rho_p}$$",
+  meta:"112年四 印的是這個版本（分母 300）。那題是跨度 10 m、\\(d_p=22\\) cm 的單向版，\\(L/d_p\\approx45>35\\)，考卷印對了 —— 但你要看得懂為什麼是 300 不是 100，否則換一年就會用錯。",
+  ok:[2023], no:[]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"must", nm:"應變相容法（精確法）",
+  eq:"$$\\varepsilon_{ps} = \\varepsilon_{pe}+\\varepsilon_{decomp}+\\varepsilon_{ps,f},\\qquad \\varepsilon_{decomp}=\\frac{P_e}{E_cA}\\left(1+\\frac{e^2}{r^2}\\right)$$",
+  meta:"從未印過。92年一 給了鋼絞線的雙線性 \\(\\sigma\\!-\\!\\varepsilon\\) 曲線並明令「限用應變一致性較精確之方式」—— 給的是材料本構，不是相容關係。三段應變要分別算（有效預應變、消壓應變、彎曲增量），少一段整題偏低。98年四 的混合斷面拉力桿也是同一套。",
+  ok:[], no:[2003,2009]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"must", nm:"預力梁標稱彎矩強度 Mn",
+  eq:"$$a=\\frac{A_{ps}f_{ps}}{0.85f'_cb},\\qquad M_n=A_{ps}f_{ps}\\left(d_p-\\frac{a}{2}\\right)$$",
+  meta:"從未印過 —— 考卷給你 \\(f_{ps}\\)，卻不給後面兩步。92年一、93年五、102年四、107年四、112年四 五題都要它。混合斷面（同時有預力筋與普通鋼筋，如 92、112 年）還要把 \\(A_sf_y\\) 一起納入壓力平衡。",
+  ok:[], no:[2003,2004,2013,2018,2023]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"must", nm:"開裂彎矩 Mcr",
+  eq:"$$M_{cr}=\\left(\\frac{P_e}{A}+\\frac{P_ee}{S_b}+f_r\\right)S_b$$",
+  meta:"從未印過。93年五、102年四、107年四 三度考「求開裂彎矩」。它其實就是「把底纖維應力推到 \\(f_r\\) 所需的彎矩」—— 理解了就不必硬背，但三個項一個都不能漏。",
+  ok:[], no:[2004,2013,2018]},
+
+ {g:"C 極限強度 fps 與 Mn", lv:"half", nm:"ωp 與延性驗核",
+  eq:"$$\\omega_p=\\frac{A_{ps}f_{ps}}{b\\,d_pf'_c},\\qquad \\omega_p \\le 0.36\\beta_1\\ (\\text{否則為過預力斷面})$$",
+  meta:"93年五 印出 \\(\\omega_p\\) 的定義（但沒印 \\(0.36\\beta_1\\) 這個門檻 —— 典型的「用了卻不定義」）。102年四、107年四、112年四 連定義都沒給。超過門檻時 \\(M_n\\) 要改用過預力斷面的公式，不能直接用 \\(A_{ps}f_{ps}(d_p-a/2)\\)。",
+  ok:[2004], no:[2013,2018,2023]},
+
+ {g:"D 預力損失（Pe 的來源）", lv:"must", nm:"彈性縮短損失",
+  eq:"$$\\Delta f_{pES}=n\\,f_{cgp}\\ (\\text{先拉，全量}),\\qquad \\Delta f_{pES}=\\frac{N-1}{2N}\\,n\\,f_{cgp}\\ (\\text{後拉，逐根張拉})$$",
+  meta:"從未印過。105年四 直接考「計算初施預力時造成混凝土彈性收縮之預力損失」，只給 \\(n=6\\)。先拉與後拉的差別（後拉最後一根不損失）是關鍵；106年四 是論述題，要你把整套損失機制默寫出來。",
+  ok:[], no:[2016,2017]},
+
+ {g:"D 預力損失（Pe 的來源）", lv:"half", nm:"摩擦損失",
+  eq:"$$P_{px}=P_{pj}\\,e^{-\\omega},\\qquad \\omega = K\\,l_{px}+\\mu_p\\,\\alpha_{px}$$",
+  meta:"108年四 完整印出（含 \\(\\omega\\) 的定義與 \\(K=0.0049\\)/m、\\(\\mu_p=0.25\\)/rad）。但 106年四 是論述題，明白要你寫出「先拉法與後拉法預力損失原因及計算公式」。另外 108 年沒給的是<b>拋物線腱的角度改變量</b> \\(\\alpha=8h/L\\) —— 而那題要從矢高算 \\(\\alpha\\)。",
+  ok:[2019], no:[2017]},
+
+ {g:"D 預力損失（Pe 的來源）", lv:"must", nm:"長期損失與總損失量級",
+  eq:"$$\\Delta f_{p,\\text{長期}} = \\Delta f_{pCR}+\\Delta f_{pSH}+\\Delta f_{pRE};\\qquad \\text{總損失（lump-sum）約 }15\\%\\!\\sim\\!25\\%$$",
+  meta:"從未印過。106年四 直接問「一設計良好之預力梁，規範建議之最終預力損失總量大約多少（lump-sum）？」—— 這題就是在考你背不背得住這個量級，以及潛變、乾縮、鬆弛三者各自的機制與時間相依性。",
+  ok:[], no:[2017]},
+
+ {g:"D 預力損失（Pe 的來源）", lv:"give", nm:"有效預力 Pe 與損失比",
+  eq:"$$P_e = P_i\\,(1-\\text{總損失率}),\\qquad f_{pe}/f_{pi}\\ \\text{多由題目直接給定}$$",
+  meta:"99年四（\\(f_{pe}/f_{pi}=0.85\\)）、105年四（\\(f_{pi}=0.7f_{pu}\\)）、110年四（\\(F_e=0.7F_i\\)）、114年四（\\(f_{pe}/f_{pi}=0.85\\)）都以題目條件直接給。<b>這是題目條件不是公式</b>，真正要背的是它背後的損失來源（見上面三張卡）。使用性驗算一律用 \\(P_e\\)、傳遞階段用 \\(P_i\\)，別用混。",
+  ok:[2010,2016,2021,2025], no:[]},
+
+ {g:"E 偏心距限制與等效載重", lv:"must", nm:"四控制條件反推偏心距上下限",
+  eq:"$$e \\le \\frac{S_t}{A}+\\frac{M_{\\min}}{P_i}\\ \\cdots\\quad e \\ge -\\frac{S_b}{A}+\\frac{M_{\\max}}{P_e}\\ \\cdots$$",
+  meta:"從未印過。99年四、104年四、114年四 三度考「求梁中央點鋼腱配置之偏心距限制」——<b>114 年幾乎是 99 年的重製題，15 年後仍然不給</b>。四條來自「傳遞階段上緣不拉、下緣不壓爆；使用階段下緣不拉、上緣不壓爆」，要自己列齊再取交集。",
+  ok:[], no:[2010,2015,2025]},
+
+ {g:"E 偏心距限制與等效載重", lv:"must", nm:"等效載重法（平衡載重）",
+  eq:"$$w_p = \\frac{8P_eh}{L^2}\\ (\\text{拋物線}),\\qquad N = 2P_e\\sin\\theta\\ (\\text{折線})$$",
+  meta:"從未印過。109年四 要「使預力不產生二次彎矩效應，且梁斷面受均勻軸壓應力」、113年四 要「繪製壓力作用線、計算固定端與輥支承端之受力」—— 兩題都靠等效載重把預力換成外力來理解。",
+  ok:[], no:[2020,2024]},
+
+ {g:"E 偏心距限制與等效載重", lv:"must", nm:"壓力線（C 線）與二次彎矩",
+  eq:"$$e' = \\frac{M_{\\text{net}}}{C},\\qquad M_{\\text{net}} = M_{P/S}+M_{2}\\ ;\\quad \\text{同位鋼腱} \\Leftrightarrow M_2 = 0$$",
+  meta:"從未印過。109年四、113年四 都是超靜定預力。二次彎矩（\\(M_2\\)）只在超靜定結構出現，「同位鋼腱（concordant tendon）」的定義就是 \\(M_2=0\\)、C 線與腱重合 —— 113 年直接問「如何調整鋼腱使其成為同位鋼腱」。",
+  ok:[], no:[2020,2024]},
+
+ {g:"E 偏心距限制與等效載重", lv:"must", nm:"核心距判準（流程骨架）",
+  eq:"$$\\text{壓力線落在核心（kern）內} \\;\\Leftrightarrow\\; \\text{全斷面無拉應力}$$",
+  meta:"沒有符號，但決定你會不會硬解四條不等式。99年四、104年四、114年四 若先用核心距把可行區間畫出來，四控制條件的幾何意義立刻清楚。104年四 的「\\(f_{ta}=0\\)」就是在說「壓力線不得離開核心」。",
+  ok:[], no:[2010,2015,2025]}
+];
+
+const MX = [
+ [2002,91,"(—)",       0,0,0,0,0,0,0,0,0,0, "第五題為摩擦損失（屬 U4-3），給 μ=0.4、k=0.0026 但沒給公式。本單元無題。"],
+ [2003,92,"1",         0,0,0,0,0,0,0,0,0,0, "掃描影像卷（已目視）。以圖給鋼絞線雙線性 σ-ε 曲線，並明令「限用應變一致性較精確之方式」—— 等於禁用 fps 近似式。"],
+ [2004,93,"5",         0,0,0,0,1,0,1,0,0,0, "印 fps（γp/β1 版，給 γp=0.4）與 ωp 定義；Mcr、Mn 與 0.36β1 門檻沒印。"],
+ [2005,94,"(—)",       0,0,0,0,0,0,0,0,0,0, "第五題為預力概念題，屬 U4-3。本單元無題。"],
+ [2006,95,"4",         0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。組合 T 型兩階段應力題，容許應力、疊加式、斷面轉換全無。"],
+ [2007,96,"4",         0,0,1,0,0,0,0,0,0,0, "內文給容許壓應力 0.4f'c、拉應力 3√f'c，並給完整斷面性質。"],
+ [2008,97,"4",         0,0,1,0,0,0,0,0,0,0, "內文給「壓應力不得超過 0.45f'c，亦不容許張應力」—— 與 96 年的值不同。"],
+ [2009,98,"4",         0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。給裂縫寬度 wmax 與張力硬化 fct（屬裂縫控制），應變相容關係沒給。"],
+ [2010,99,"4(副)",      0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。偏心距限制題，四控制條件與容許應力全無，只給 fpe/fpi=0.85。"],
+ [2011,100,"5",        0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。給淨／變換／合成三組斷面性質與 n=6，就是不給四項疊加怎麼寫。"],
+ [2012,101,"1",        0,1,0,1,0,0,0,0,0,0, "給 Ec、wc、fr=2.0√f'c，並明列「初始階段容許壓 0.60f'ci、拉 0.80√f'ci」。"],
+ [2013,102,"4",        0,0,0,0,1,0,0,0,0,0, "參考公式 fps = fpu(1−0.5ρp fpu/f'c)；但 Mcr 與鋼腱極限應變算法沒給。"],
+ [2014,103,"4",        0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。要「確認是否符合規範規定」，卻沒印任何容許應力值。"],
+ [2015,104,"4(副)",     0,0,1,0,0,0,0,0,0,0, "內文直接給 fca=140、fta=0（數值形式）；四控制條件與核心距要自己列。"],
+ [2016,105,"4(副)",     0,0,0,0,0,0,0,0,0,0, "⚠️ 要算彈性縮短損失並「判斷是否開裂與受壓過多」，卻沒給 fr 與容許壓應力。"],
+ [2017,106,"4(副)",     0,0,0,0,0,0,0,0,0,0, "論述題，要你默寫先拉／後拉的損失原因、計算公式與 lump-sum 量級。"],
+ [2018,107,"4",        0,0,0,0,1,1,0,0,0,0, "同時印出有黏結 fps（0.5 版）與無黏結 fps（分母 100ρp）兩式，要你自己選 —— 該題是有黏結。"],
+ [2019,108,"4(副)",     0,0,0,0,0,0,0,0,1,0, "印摩擦損失 Ppx=Ppj·e^−ω 與 ω=Klpx+μpαpx；但由矢高求 α 的關係要自己推。"],
+ [2020,109,"4(副)",     0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。連續梁二次彎矩題，等效載重與 C 線觀念全無。"],
+ [2021,110,"4",        0,0,1,0,0,0,0,0,0,0, "內文給容許壓應力 0.6f'c、拉應力 1.6√f'c 與有效板寬規則；Fe=0.7Fi 也給。"],
+ [2022,111,"(—)",      0,0,0,0,0,0,0,0,0,0, "第三題為預力梁腹剪（屬 U2-1）。本單元無題。"],
+ [2023,112,"4",        0,0,0,0,0,1,0,0,0,0, "參考式為無黏結、L/dp>35 版（分母 300ρp）；普通鋼筋的貢獻要自己併入。"],
+ [2024,113,"4(副)",     0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。等效載重／次彎矩／同位鋼腱題，一條公式都沒有。"],
+ [2025,114,"4(副)",     0,0,0,0,0,0,0,0,0,0, "⚠️ 偏心距限制題（與 99 年幾乎同型），四控制條件與容許應力仍然沒給。"]
+];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:"🔴 必背",half:"🟠 別賭",give:"🟢 通常會給"};
+let curLv="all",curG="all";
+const groups=[];F.forEach(f=>{if(!groups.includes(f.g))groups.push(f.g)});
+const gf=document.getElementById("gf");
+gf.innerHTML='<button data-k="g" data-v="all" class="on">全部主題</button>'+
+  groups.map(g=>'<button data-k="g" data-v="'+g+'">'+g+'</button>').join("");
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join("")}
+function render(){
+  const box=document.getElementById("cards");
+  box.innerHTML=F.filter(f=>(curLv==="all"||f.lv===curLv)&&(curG==="all"||f.g===curG)).map(f=>{
+    let ev=f.ok.length?"<b>考卷給過：</b>"+yrs(f.ok,"ok"):'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length)ev+="　｜　<b>考了卻沒給：</b>"+yrs(f.no,"no");
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+
+      '</span><span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div><div class="eq">'+f.eq+
+      '</div><p class="meta">'+f.meta+'</p><div class="ev">'+ev+'</div></div>';
+  }).join("");
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false});
+}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  const k=b.dataset.k;
+  b.parentNode.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  if(k==="lv")curLv=b.dataset.v;else curG=b.dataset.v;
+  render();
+}));
+const tb=document.querySelector("#mx tbody");
+tb.innerHTML=MX.map(r=>{
+  const has=r[2]!=="(—)";
+  const cells=r.slice(3,13).map(v=>'<td class="c">'+(v?'<span class="y">✔</span>':'<span class="n">·</span>')+"</td>").join("");
+  return '<tr class="'+(has?"hl":"")+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+
+    '年</span></td><td class="qq">'+r[2]+"</td>"+cells+'<td class="rm">'+r[13]+"</td></tr>";
+}).join("");
+render();
+</script>
+</body>
+</html>

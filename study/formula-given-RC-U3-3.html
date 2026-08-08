@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>RC-U3-3 給／背分界｜韌性要求與耐震設計</title>
+<link rel="stylesheet" href="assets/katex/katex.min.css">
+<script defer src="assets/katex/katex.min.js"></script>
+<script defer src="assets/katex/auto-render.min.js"
+  onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'\\(',right:'\\)',display:false}],throwOnError:false});"></script>
+<style>
+:root{--ac:#bf360c;--ac2:#fbe9e7;--must:#c62828;--must2:#ffebee;--half:#ef6c00;--half2:#fff3e0;
+--give:#2e7d32;--give2:#e8f5e9;--bg:#f7f9fb;--card:#fff;--ink:#263238;--mut:#607d8b;--bd:#dfe6ea}
+*{box-sizing:border-box}
+body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans-serif;
+background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
+header{background:linear-gradient(135deg,#870000,#bf360c 60%,#ef6c00);color:#fff;padding:32px 26px}
+header h1{margin:0 0 8px;font-size:1.55em}
+header p{margin:0;opacity:.92;font-size:.93em}
+header .meta{margin-top:12px;font-size:.82em;opacity:.8}
+nav{position:sticky;top:0;z-index:20;background:#fff;border-bottom:2px solid var(--bd);
+padding:9px 14px;display:flex;flex-wrap:wrap;gap:6px;box-shadow:0 2px 6px rgba(0,0,0,.05)}
+nav a{text-decoration:none;color:var(--ac);font-size:.85em;padding:4px 11px;border-radius:14px;background:var(--ac2)}
+nav a:hover{background:var(--ac);color:#fff}
+main{max-width:1060px;margin:0 auto;padding:24px 18px 80px}
+section{margin-bottom:46px}
+h2{font-size:1.3em;border-left:6px solid var(--ac);padding-left:12px;margin:40px 0 16px;line-height:1.4}
+h3{font-size:1.05em;margin:26px 0 10px;color:var(--ac)}
+h3.grph{background:#eceff1;border-left:5px solid var(--ac);padding:6px 12px;border-radius:6px;color:var(--ac);margin:26px 0 12px}
+p.lead{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--ac);
+border-radius:0 10px 10px 0;padding:14px 18px;margin:16px 0}
+.kpis{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin:18px 0}
+.kpi{background:#fff;border:1px solid var(--bd);border-radius:10px;padding:14px;text-align:center}
+.kpi .n{font-size:1.9em;font-weight:700;color:var(--ac);line-height:1.2}
+.kpi .l{font-size:.79em;color:var(--mut);margin-top:3px}
+.legend{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:16px 0}
+.lg{border-radius:10px;padding:12px 15px;border:1px solid var(--bd)}
+.lg h4{margin:0 0 5px;font-size:.98em}
+.lg p{margin:0;font-size:.85em;line-height:1.6}
+.lg.must{background:var(--must2);border-color:#ef9a9a}.lg.must h4{color:var(--must)}
+.lg.half{background:var(--half2);border-color:#ffcc80}.lg.half h4{color:var(--half)}
+.lg.give{background:var(--give2);border-color:#a5d6a7}.lg.give h4{color:var(--give)}
+.note{background:#fff;border:1px solid var(--bd);border-left:5px solid var(--mut);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.warn{background:var(--half2);border:1px solid #ffcc80;border-left:5px solid var(--half);
+border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0;font-size:.93em}
+.quote{font-style:normal;color:#37474f;background:#eceff1;border-radius:8px;padding:9px 14px;margin:9px 0;font-size:.9em}
+.filters{display:flex;flex-wrap:wrap;gap:7px;margin:14px 0 18px}
+.filters button{border:1px solid var(--bd);background:#fff;color:var(--ink);border-radius:16px;
+padding:5px 13px;font-size:.85em;cursor:pointer;font-family:inherit}
+.filters button.on{background:var(--ac);color:#fff;border-color:var(--ac)}
+.cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.cards h3.grph{grid-column:1 / span 2;margin:14px 0 0}
+@media(max-width:860px){.cards{grid-template-columns:1fr}.kpis{grid-template-columns:repeat(2,1fr)}.legend{grid-template-columns:1fr}}
+.fc{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:13px 16px;
+box-shadow:0 1px 3px rgba(0,0,0,.04);border-top:4px solid var(--bd)}
+.fc.must{border-top-color:var(--must)}.fc.half{border-top-color:var(--half)}.fc.give{border-top-color:var(--give)}
+.fc .top{display:flex;justify-content:space-between;align-items:baseline;gap:8px;margin-bottom:6px}
+.fc .nm{font-weight:700;font-size:1.01em}
+.tag{font-size:.74em;padding:2px 10px;border-radius:11px;white-space:nowrap;font-weight:600}
+.tag.must{background:var(--must2);color:var(--must)}
+.tag.half{background:var(--half2);color:var(--half)}
+.tag.give{background:var(--give2);color:var(--give)}
+.fc .eq{background:#fafcfd;border:1px solid #eceff1;border-radius:7px;padding:5px 11px;margin:7px 0;overflow-x:auto}
+.fc .meta{font-size:.88em;margin:7px 0 0;line-height:1.62;color:#37474f}
+.fc .ev{font-size:.79em;margin-top:9px;padding-top:7px;border-top:1px dashed #e0e6ea;color:var(--mut);line-height:2}
+.yr{display:inline-block;padding:1px 6px;border-radius:9px;margin:1px 2px 1px 0;font-weight:600}
+.yr.ok{background:var(--give2);color:var(--give)}
+.yr.no{background:var(--must2);color:var(--must)}
+.never{color:var(--must);font-weight:700}
+.tw{overflow-x:auto;background:#fff;border:1px solid var(--bd);border-radius:10px;padding:6px}
+table{border-collapse:collapse;width:100%;min-width:940px;font-size:.83em;background:#fff}
+th,td{border-bottom:1px solid #e8edf0;padding:5px 6px;vertical-align:top}
+th{background:#eceff1;font-weight:600;font-size:.92em;text-align:center;position:sticky;top:46px;z-index:5}
+th:first-child,th:last-child{text-align:left}
+td.c{text-align:center}
+td.c .y{color:var(--give);font-weight:700}
+td.c .n{color:#cfd8dc}
+td.qq{font-size:.93em;color:#37474f;white-space:nowrap}
+td.rm{color:#455a64;line-height:1.5}
+tr.hl{background:#fdf5f2}
+table#mx td,table#mx th{padding-top:1.6px;padding-bottom:1.6px}
+table#mx td.rm{line-height:1.34}
+.ynote{font-size:.85em;color:var(--mut)}
+ul,ol{margin:10px 0 10px 4px;padding-left:22px}li{margin:6px 0}
+footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-top:1px solid var(--bd)}
+.katex-display{margin:6px 0!important;overflow-x:auto;overflow-y:hidden}
+</style>
+</head>
+<body>
+<header>
+<h1>RC-U3-3 給／背分界：韌性要求與耐震設計</h1>
+<p>這個單元的公式，哪些考卷會印給你、哪些必須自己寫得出來 —— 全部以 24 年考卷原文為證據。</p>
+<p class="meta">exam-wiki-RC｜命題大綱 RC-U3-3｜證據範圍：民國 91–114 年（2002–2025）共 24 份考卷｜本單元題目 18 題（主考點 16 ／副考點 2）</p>
+</header>
+<nav>
+  <a href="#how">判定方法</a>
+  <a href="#cards">公式清單</a>
+  <a href="#matrix">逐年證據表</a>
+  <a href="#strategy">背誦策略</a>
+  <a href="lecture-RC-U3-3.html">▶ U3-3 觀念講義</a>
+  <a href="study-RC-U3-3.html">▶ U3-3 命題分析</a>
+  <a href="formula-given-RC-U1-1.html">▶ U1-1 給／背分界</a>
+  <a href="formula-given-RC-U1-2.html">▶ U1-2 給／背分界</a>
+  <a href="formula-given-RC-U2-1.html">▶ U2-1 給／背分界</a>
+  <a href="formula-given-RC-U4-1.html">▶ U4-1 給／背分界</a>
+  <a href="formula-given-RC-U3-3.pdf" target="_blank" style="background:#eceff1;color:#455a64">🖨️ 本頁 PDF</a>
+</nav>
+<main>
+
+<section id="how">
+<h2>一、我怎麼判定的</h2>
+
+<p class="lead">結論先講：<b>這是三個單元裡考卷最願意給的一個 —— 但它給的全是「規範抄得到的構造細則」。</b>
+\(A_{sh}\)、\(\lambda_{dh}\)、剪力牆與橫膈版的 \(V_n\)、塑鉸長度 \(L_p\) 都被印過；
+而<b>能力設計法那一整組（\(M_{pr}\)、\(V_e\)、強柱弱梁、接頭 \(V_{jh}\)）24 年零次印出</b>，
+偏偏它才是這個單元的主軸 —— 92、94、101、105、107、114 年六次考題全部押在上面。</p>
+
+<h3>1-1　考卷把公式印出來的三種擺法</h3>
+<table style="min-width:0">
+<tr><th style="width:14%">擺法</th><th style="width:30%">特徵</th><th>RC 耐震題的實例</th></tr>
+<tr><td><b>(a) 集中式</b></td><td>題目之前的共用區</td><td>本單元幾乎沒有 —— 耐震規定一律隨題給</td></tr>
+<tr><td><b>(b) 隨題式</b></td><td>緊跟在該題題目下方，標題為「參考公式」「提示」「部分相關規範公式與規定節錄」</td><td>93 年第三題（\(A_{sh}\) 兩式）、101 年第二～四題（\(A_{sh}\)、\(s_0\)、\(V_c\)、接頭 \(\gamma\)）、102 年第二題（\(A_{sh}\)）、108 年第三題（橫膈版 \(V_n\)、\(\phi=0.6\)）、111 年第四題（塑鉸五式）</td></tr>
+<tr><td><b>(c) 內文式</b></td><td>混在已知條件裡</td><td>92 年第二題（\(\lambda_d\) 詳細算法）、92 年第四題（載重組合、\(\phi=0.6\)、\(\lambda_{dh}\)）</td></tr>
+</table>
+<p>三種都算「有給」。本單元的 (b) 特別集中在 101 年那一張考卷 —— 它一口氣印了四組規範節錄，是 24 年最慷慨的一次。</p>
+
+<h3>1-2　RC 考卷的免責聲明：和你想的方向相反</h3>
+<p>鋼結構考卷的慣用語是「所列公式僅供參考，應自負確認與勘誤責任」——<b>給了，但叫你檢查</b>。
+RC 考卷不是這樣，它的慣用語是：</p>
+<div class="quote">「下列問題之相關公式及設計參數未提及時，請自行做合理假設或推斷。」（98 年 —— 這年第一題正是「說明 RC 柱耐震設計中如何配置橫向鋼筋」）</div>
+<div class="quote">「以下各計算題依規範所需之公式或物理參數等，請自行推知或合理假設。」（99 年 —— 這年第二題要設計抗拉搭接長度）</div>
+<div class="quote">「本試題之相關公式、物理常數、符號意義及設計參數未提及時，請自行合理推斷與假設。」（102 年）</div>
+<p><b>語意是「本來就不打算給」。</b>更要注意本單元的規範版本問題：
+92、93 年依「結構混凝土設計規範」（92.1.1 生效），102、107 年依內政部營建署版＋土木 401-100，
+112 年換 401-110、113／114 年換 401-112，而 111 年第四題引的是<b>交通部「公路橋梁耐震評估與補強設計規範」</b>——
+不同規範的係數與符號不一樣，作答時要跟著題目走。</p>
+
+<h3>1-3　三級圖例</h3>
+<div class="legend">
+<div class="lg must"><h4>🔴 必背</h4><p>考卷從未印過，或曾經「考了卻沒給」且比例高。自己要寫得出來，一個字都不能少。</p></div>
+<div class="lg half"><h4>🟠 別賭</h4><p>多數年份有印，但有明確沒印的先例；或印的是另一種寫法／少印關鍵一步。仍然建議背。</p></div>
+<div class="lg give"><h4>🟢 通常會給</h4><p>凡考此題型幾乎必印，且無「考了卻沒給」先例。背概念與用法即可。</p></div>
+</div>
+<div class="kpis">
+<div class="kpi"><div class="n">27</div><div class="l">盤點條數</div></div>
+<div class="kpi"><div class="n">17</div><div class="l">🔴 必背</div></div>
+<div class="kpi"><div class="n">4</div><div class="l">🟠 別賭</div></div>
+<div class="kpi"><div class="n">6</div><div class="l">🟢 通常會給</div></div>
+</div>
+<div class="warn"><b>⚠️ 「通常會給」的六條裡，有四條只有一次樣本。</b>
+\(\lambda_{dh}\)（92 年）、剪力牆門檻（92 年）、橫膈版 \(V_n\)（108 年）、塑鉸 \(L_p\)（111 年）——
+這些題型 24 年只考過一次，沒有反例但也談不上規律。
+真正有多次證據的只有 \(A_{sh}\)（93、101、102 年三次印出），
+而它<b>仍然有一個沒給的先例</b>：98 年第一題要你說明柱橫向鋼筋如何配置，整張考卷一條公式都沒有。</div>
+</section>
+
+<section id="cards">
+<h2>二、公式與規定逐條分界</h2>
+<div class="filters">
+<button data-k="lv" data-v="all" class="on">全部級別</button>
+<button data-k="lv" data-v="must">🔴 必背</button>
+<button data-k="lv" data-v="half">🟠 別賭</button>
+<button data-k="lv" data-v="give">🟢 通常會給</button>
+</div>
+<div class="filters" id="gf"></div>
+<div class="cards" id="cards"></div>
+</section>
+
+<section id="matrix">
+<h2>三、逐年證據表</h2>
+<div class="tw">
+<table id="mx">
+<thead><tr>
+<th>考卷年</th><th>單元題號</th>
+<th class="c">Ash<br>圍束</th>
+<th class="c">密箍區<br>lo/so</th>
+<th class="c">Mpr/Ve<br>強柱弱梁</th>
+<th class="c">接頭<br>γ√f'c Aj</th>
+<th class="c">接頭<br>Vjh/bj</th>
+<th class="c">ld 詳細<br>Class B</th>
+<th class="c">彎鉤<br>ldh</th>
+<th class="c">剪力牆<br>Vn/配筋</th>
+<th class="c">橫膈版<br>φ=0.6/組合</th>
+<th class="c">塑鉸 Lp<br>韌性 μ</th>
+<th>備註</th>
+</tr></thead>
+<tbody></tbody>
+</table>
+</div>
+<p style="font-size:.88em;color:#607d8b;margin-top:8px">✔ ＝該年考卷印出此類公式（含集中式／隨題式／內文式）。底色列 ＝該年有本單元題目。</p>
+</section>
+
+<section id="strategy">
+<h2>四、背誦策略</h2>
+
+<h3>4-1　這 27 條裡，先背哪 6 條</h3>
+<p>依「沒背就整題卡死 × 出現頻率」排序：</p>
+<ol>
+<li><b>\(M_{pr} = A_s(1.25f_y)(d - a_{pr}/2)\) 與 \(V_e = (M_{pr,l}+M_{pr,r})/l_n \pm w_ul_n/2\)</b>
+—— 101、105、114 年三度考，<b>零次印出</b>。101 年那張考卷印了 \(A_{sh}\)、\(s_0\)、\(V_c\)、接頭係數四組規範節錄，就是不印 \(M_{pr}\)。</li>
+<li><b>接頭水平剪力 \(V_{jh} = T_{top}+T_{bot}-V_{col}\)（\(T = 1.25f_yA_s\)）與有效面積 \(A_j\)</b>
+—— 92、94、101、107 年四度考梁柱接頭，<b>需求端零次印出</b>。101 年只印了強度端的 \(\gamma\sqrt{f'_c}A_j\)。</li>
+<li><b>\(V_c = 0\) 條件</b>（地震剪力 ≥ 一半總剪力 且 \(N_u < A_gf'_c/20\)）—— 98、101、105、114 年都適用。忘記歸零，箍筋量少算三到四成。</li>
+<li><b>密箍區長度 \(l_o\) 與間距上限 \(\min(b/4,\,6d_b,\,s_o)\)</b> —— 93、98、101、102 年四度考「配置橫向鋼筋」，只有 101 年印了 \(s_o\) 那一條，\(l_o\) 與 \(b/4\)、\(6d_b\) 全部沒印。而密箍間距通常是由這幾條控制，不是由 \(A_{sh}\) 控制。</li>
+<li><b>Class B 搭接 = \(1.3\lambda_d\)、搭接位置限中段 \(l_n/2\)、單一斷面搭接量 ≤ 50%</b>
+—— 92、93、99 年三度考搭接，這三條規定一次都沒印（92 年只印了 \(\lambda_d\) 的算式）。</li>
+<li><b>強柱弱梁 \(\sum M_{nc} \ge 1.2\sum M_{nb}\)</b> —— 101 年第三題整題建立在這個機構假設上，係數 1.2 沒印。</li>
+</ol>
+
+<h3>4-2　可以省下的背誦力氣（本單元最多）</h3>
+<ul>
+<li><b>\(A_{sh}\) 兩式</b> —— 93、101、102 年三次考三次印。<b>但兩式取大、\(h_c\) 量到箍筋外緣、\(A_{ch}\) 是核心面積這三件事沒印</b>，而且 98 年那題（說明題）完全沒給，所以列「別賭」不是「通常會給」。</li>
+<li><b>橫膈版／剪力牆的 \(V_n = A_{cv}(\alpha_c\sqrt{f'_c}+\rho_tf_y)\)</b> —— 108 年第三題把它連同 \(\phi=0.6\) 一起印出（\(\alpha_c\) 直接取 0.53）。92 年也給了 \(\phi=0.6\)。</li>
+<li><b>公路橋梁耐震規範的塑鉸與韌性五式</b> —— 111 年第四題整組印出。這類「非混凝土設計規範」的外部公式，考卷向來會附，因為不能假設考生背過交通部的規範。</li>
+<li><b>鋼筋直徑與斷面積</b> —— 幾乎每年以表格給。</li>
+</ul>
+
+<h3>4-3　四個非背不可的「陷阱型」細節</h3>
+<div class="warn"><b>⚠️ 一、101 年印了接頭「強度」，沒印接頭「需求」。</b>
+它印出 \(5.3\)／\(3.9\)／\(3.2\sqrt{f'_c}A_j\) 三種圍束情形的 \(V_n\)，
+但 \(V_{jh}=1.25f_yA_s^{top}+1.25f_yA_s^{bot}-V_{col}\) 從來沒印過。
+而 94、107 年考同樣的角柱接頭時，連強度那一條也沒給。</div>
+<div class="warn"><b>⚠️ 二、\(\gamma\) 係數有三種單位制，長得完全不一樣。</b>
+kgf/cm² 制是 \(5.3/4.0/3.2\)，MPa 制是 \(1.7/1.25/1.0\)，psi 制是 \(20/15/12\)。
+92 年考的是內接頭（\(\gamma=5.3\)）、94 與 107 年是角接頭（\(\gamma=3.2\)）——
+接頭型式判斷錯，係數差 1.7 倍。作答時要寫明用的是哪一個單位制。</div>
+<div class="warn"><b>⚠️ 三、98 年那題是「說明題」，所以什麼都不給。</b>
+「試以說明 RC 柱耐震設計中，如何配置柱之橫向鋼筋？假設地震效應之設計軸壓力小於 \(0.05A_gf'_c\)」——
+題目把 \(V_c=0\) 的門檻條件講出來當提示，卻沒給任何公式。
+<b>說明題＝要你默寫規範</b>，這是本單元最該提防的題型。</div>
+<div class="warn"><b>⚠️ 四、92 年的載重組合是舊版。</b>
+它印的是 \(U=0.9D\pm1.43E\) 與 \(U=0.75(1.4D+1.7L\pm1.87E)\)，
+而 108 年印的是現行的 \(U=1.2D+1.0L\pm1.0E\)。
+兩者不是同一套，考卷印哪一套就用哪一套；沒印的年份（101、105 年）則要依題目指定的規範版本自己判斷。</div>
+
+<h3>4-4　一句話</h3>
+<p class="lead">RC-U3-3 的給／背分界可以一句話概括：<b>「查表查得到的」考卷傾向給你（\(A_{sh}\)、\(\gamma\)、\(\lambda_{dh}\)、\(L_p\)），
+「要靠能力設計法推出來的」一次都不給（\(M_{pr}\)、\(V_e\)、\(V_{jh}\)、強柱弱梁）。</b>
+而後者正是這個單元 18 題裡的主軸。把「以塑鉸機構反推設計力」的整條鏈路練到能默寫，
+比背 \(A_{sh}\) 有價值得多。</p>
+</section>
+
+</main>
+<footer>exam-wiki-RC｜RC-U3-3 給／背分界｜判定依據：raw/exams/ 民國 91–114 年考卷原文（含 92 年掃描卷逐頁目視判讀）</footer>
+
+<script>
+const F = [
+ {g:"A 圍束與密箍（耐震柱）", lv:"half", nm:"圍束箍筋量 Ash 兩式",
+  eq:"$$A_{sh}=0.3\\,s\\,h_c\\frac{f'_c}{f_{yt}}\\left(\\frac{A_g}{A_{ch}}-1\\right),\\qquad A_{sh}=0.09\\,s\\,h_c\\frac{f'_c}{f_{yt}}$$",
+  meta:"93、101、102 年三次考三次印，是本單元證據最多的一條。但 98年一（說明題「如何配置柱之橫向鋼筋」）完全沒給，所以不列「通常會給」。而且<b>只給式子不給用法</b>：兩式取大、\\(h_c\\) 量到箍筋外緣、\\(A_{ch}\\) 是核心面積 —— 這三點沒有任何一年印過。",
+  ok:[2004,2012,2013], no:[2009]},
+
+ {g:"A 圍束與密箍（耐震柱）", lv:"must", nm:"密箍區長度 lo",
+  eq:"$$l_o \\ge \\max\\left\\{h_{\\text{柱最大邊}},\\;\\frac{l_n}{6},\\;45\\text{ cm}\\right\\}$$",
+  meta:"從未印過。93年三、98年一、101年三、102年二 四度要你「配置橫向鋼筋」或「設計柱塑鉸區箍筋」，密箍要配多長全靠自己。三個值取<b>大</b>（不是取小），這點也常錯。",
+  ok:[], no:[2004,2009,2012,2013]},
+
+ {g:"A 圍束與密箍（耐震柱）", lv:"half", nm:"密箍區間距 so",
+  eq:"$$s_o = 10 + \\frac{35-h_x}{3},\\qquad 10\\text{ cm} \\le s_o \\le 15\\text{ cm}$$",
+  meta:"只有 101 年印過（\\(h_x\\) 為繫筋間的最大水平間距）。93年三 問「橫向鋼筋之間距該如何」、102年二 問「請依耐震設計特別規定配置橫向鋼筋」，兩年都只給 \\(A_{sh}\\) 沒給 \\(s_o\\)。",
+  ok:[2012], no:[2004,2013,2009]},
+
+ {g:"A 圍束與密箍（耐震柱）", lv:"must", nm:"密箍區間距上限（三者取小）",
+  eq:"$$s \\le \\min\\left\\{\\frac{b_{\\min}}{4},\\;6d_{b,\\text{縱筋}},\\;s_o\\right\\}$$",
+  meta:"從未印過。實務上密箍間距<b>幾乎都是由這條控制，不是由 \\(A_{sh}\\) 控制</b> —— 只算 \\(A_{sh}\\) 反推間距而不檢核這三項，答案通常偏大。93、98、101、102 年四題都適用。",
+  ok:[], no:[2004,2009,2012,2013]},
+
+ {g:"A 圍束與密箍（耐震柱）", lv:"must", nm:"柱耐震 Vc = 0 條件",
+  eq:"$$V_E \\ge \\tfrac12 V_u \\;\\text{且}\\; N_u < \\frac{A_gf'_c}{20} \\;\\Rightarrow\\; V_c = 0$$",
+  meta:"從未以公式形式印過。98年一 把條件寫進題幹（「假設地震效應之設計軸壓力小於 \\(0.05A_gf'_c\\)」）當提示，但沒說結論是 \\(V_c=0\\)。101年三 要設計柱塑鉸區箍筋，這條沒印。忘了歸零，箍筋量會少三到四成。",
+  ok:[], no:[2009,2012]},
+
+ {g:"B 能力設計（強柱弱梁）", lv:"must", nm:"可能彎矩強度 Mpr",
+  eq:"$$M_{pr}=A_s\\,(1.25f_y)\\left(d-\\frac{a_{pr}}{2}\\right),\\qquad a_{pr}=\\frac{1.25f_yA_s}{0.85f'_cb},\\qquad \\phi=1.0$$",
+  meta:"<b>24 年零次印出。</b>101年二、105年二、114年二 三度直接考。三個關鍵細節都要自己知道：\\(f_y\\) 放大 1.25 倍、\\(\\phi\\) 取 1.0（不折減）、連 \\(a_{pr}\\) 也要用 \\(1.25f_y\\) 重算。101 年那張考卷印了四組規範節錄，唯獨沒有這一條。",
+  ok:[], no:[2012,2016,2025]},
+
+ {g:"B 能力設計（強柱弱梁）", lv:"must", nm:"梁能力設計剪力 Ve",
+  eq:"$$V_e = \\frac{M_{pr,l}+M_{pr,r}}{l_n} \\pm \\frac{w_u l_n}{2}$$",
+  meta:"從未印過。105年二、114年二 都要它。正負地震方向要各算一次取包絡值 —— 上下層鋼筋量不同時兩個方向的 \\(M_{pr}\\) 不相等，只算一個方向會低估。",
+  ok:[], no:[2012,2016,2025]},
+
+ {g:"B 能力設計（強柱弱梁）", lv:"must", nm:"柱能力設計剪力（由梁端 Mpr 傳遞）",
+  eq:"$$V_{e,\\text{col}} = \\frac{\\sum M_{pr,\\text{beam}}\\times(\\text{分配比})}{h_n}$$",
+  meta:"從未印過。101年三 明寫「以梁端產生塑鉸方式（強柱弱梁情形）計算因地震引入柱剪力作為柱最大設計剪力」—— 題目把方法講出來了，但梁端彎矩怎麼分配給上下柱、\\(h_n\\) 取淨高還是層高，全靠自己。",
+  ok:[], no:[2012]},
+
+ {g:"B 能力設計（強柱弱梁）", lv:"must", nm:"強柱弱梁 ΣMnc ≥ 1.2 ΣMnb",
+  eq:"$$\\sum M_{nc} \\ge 1.2\\sum M_{nb}$$",
+  meta:"從未印過。101年三、四 整題建立在「梁端先出塑鉸」這個前提上，係數 1.2 是這個前提的規範依據。考題若要你驗證機構是否成立，這條就是判定式。",
+  ok:[], no:[2012]},
+
+ {g:"B 能力設計（強柱弱梁）", lv:"must", nm:"梁塑鉸區密箍間距",
+  eq:"$$s \\le \\min\\left\\{\\frac{d}{4},\\;8d_{b,\\text{縱筋}},\\;24d_{b,\\text{箍筋}},\\;30\\text{ cm}\\right\\},\\qquad l_o \\ge 2h$$",
+  meta:"從未印過。105年二 要「以 3 股 D10 作梁端塑性鉸區之橫向箍筋設計」、114年二 要「設計此梁於靠近柱端所需之剪力筋」，兩題的答案幾乎都由這四項取小決定，而不是由 \\(V_s\\) 反算決定。密箍長度是 \\(2h\\)（梁全高）不是 \\(2d\\)。",
+  ok:[], no:[2016,2025]},
+
+ {g:"C 梁柱接頭", lv:"must", nm:"接頭水平剪力需求 Vjh",
+  eq:"$$V_{jh} = 1.25f_yA_s^{\\text{top}} + 1.25f_yA_s^{\\text{bot}} - V_{col}\\quad(\\text{內接頭})$$",
+  meta:"<b>四度考、零次印。</b>92年三（內接頭）、94年三、101年四、107年二（角／外接頭）。外接頭只有一側梁，第二項消失；還要記得減掉柱剪力 \\(V_{col}\\)（由柱端彎矩除以層高求得）—— 忘記減會高估兩成以上。",
+  ok:[], no:[2003,2005,2012,2018]},
+
+ {g:"C 梁柱接頭", lv:"half", nm:"接頭剪力強度 Vn = γ√f'c Aj",
+  eq:"$$V_n = \\gamma\\sqrt{f'_c}\\,A_j,\\qquad \\gamma = 5.3\\ (\\text{四面圍束}),\\;3.9\\!\\sim\\!4.0\\ (\\text{三面／一雙對面}),\\;3.2\\ (\\text{其他})$$",
+  meta:"只有 101 年第四題印出完整三種情形。92年三（內接頭 \\(\\gamma=5.3\\)）、94年三、107年二（角接頭 \\(\\gamma=3.2\\)）三年都沒印。注意單位制：kgf/cm² 的 \\(5.3/4.0/3.2\\) ＝ MPa 的 \\(1.7/1.25/1.0\\) ＝ psi 的 \\(20/15/12\\)。",
+  ok:[2012], no:[2003,2005,2018]},
+
+ {g:"C 梁柱接頭", lv:"must", nm:"接頭有效面積 Aj 與有效寬度 bj",
+  eq:"$$A_j = b_j\\times h_{col},\\qquad b_j = \\min\\left\\{b_{beam}+h_{col},\\;b_{beam}+2x,\\;b_{col}\\right\\}$$",
+  meta:"從未印過。101 年印了 \\(\\gamma\\sqrt{f'_c}A_j\\) 卻只註明「\\(A_j\\) 為接頭有效斷面積」—— 典型的「用了卻不定義」。92年三 的梁寬 24 cm、柱 40×50 cm，\\(b_j\\) 怎麼取直接決定強度差多少。",
+  ok:[], no:[2003,2005,2012,2018]},
+
+ {g:"C 梁柱接頭", lv:"must", nm:"接頭剪力 φ = 0.85",
+  eq:"$$\\phi V_n \\ge V_{jh},\\qquad \\phi = 0.85\\ (\\text{接頭剪力})$$",
+  meta:"從未印過。接頭的 \\(\\phi\\) 不是一般剪力的 0.75，也不是撓曲的 0.9。四題接頭題全部要用，四次都沒給。用錯 \\(\\phi\\) 會讓「足夠／不足夠」的結論整個翻轉。",
+  ok:[], no:[2003,2005,2012,2018]},
+
+ {g:"D 搭接、錨定與韌性細則", lv:"must", nm:"拉力伸展長度 λd 詳細式",
+  eq:"$$\\lambda_d = \\frac{0.28\\,d_bf_y}{\\sqrt{f'_c}}\\,(\\alpha\\beta\\lambda)\\,\\frac{d_b}{c+K_{tr}}$$",
+  meta:"92年二 把整條算式印在已知條件裡（並明令「限用詳細計算法評估」）。但 99年二 要「設計其抗拉搭接長度」時完全沒印，93年一 問受撓鋼筋搭接的橫向鋼筋規定也沒印。\\((c+K_{tr})/d_b \\le 2.5\\) 的上限與 \\(K_{tr}\\) 的定義兩年都沒給。",
+  ok:[2003], no:[2010,2004]},
+
+ {g:"D 搭接、錨定與韌性細則", lv:"must", nm:"Class B 搭接與位置限制",
+  eq:"$$l_{st} = 1.3\\,\\lambda_d;\\qquad \\text{搭接限於中段 } l_n/2,\\;\\text{單一斷面搭接量} \\le 50\\%$$",
+  meta:"從未印過。92年二 要你「於柱立面圖標示柱主筋之搭接位置及長度」、99年二 要「說明規範對耐震柱縱向搭接鋼筋面積與配置之要求」—— 兩題考的正是這三條規定本身。另外搭接全長要配置閉合箍筋且間距 ≤ \\(\\min(d/4,\\,10\\text{ cm})\\)，也沒印。",
+  ok:[], no:[2003,2004,2010]},
+
+ {g:"D 搭接、錨定與韌性細則", lv:"give", nm:"標準彎鉤錨定長度 λdh",
+  eq:"$$\\lambda_{dh} = \\frac{0.06\\,d_bf_y}{\\sqrt{f'_c}}$$",
+  meta:"92年四 唯一一次要求「檢查水平剪力鋼筋在邊界構材內之錨定情況」，考卷就把式子印在題目裡。樣本只有一個、也沒有反例。但耐震規定的下限（\\(\\ge 8d_b\\) 且 \\(\\ge 15\\) cm）沒印。",
+  ok:[2003], no:[]},
+
+ {g:"D 搭接、錨定與韌性細則", lv:"give", nm:"塑鉸長度 Lp（公路橋梁耐震規範）",
+  eq:"$$L_p = 0.08L + 0.0022\\,d_bf_y \\ge 0.0044\\,d_bf_y$$",
+  meta:"111年四 整組印出。這是交通部「公路橋梁耐震評估與補強設計規範」的公式，不在混凝土設計規範裡 —— 考卷不能假設你背過，所以會附。要看得懂 \\(L\\) 是<b>到反曲點</b>的長度（該題明寫「反曲點位於淨高度一半位置」）。",
+  ok:[2022], no:[]},
+
+ {g:"D 搭接、錨定與韌性細則", lv:"give", nm:"曲率／轉角／位移韌性需求",
+  eq:"$$\\mu_\\phi=\\frac{\\phi_u}{\\phi_y},\\quad \\theta_y=\\frac{\\phi_yL}{3},\\quad \\theta_u=\\theta_y+(\\phi_u-\\phi_y)L_p,\\quad \\mu_\\Delta=\\frac{\\Delta_u}{\\Delta_y}$$",
+  meta:"111年四 連同 \\(L_p\\) 一起印出（雙線性塑鉸模型＋彎矩塑鉸參數表）。本單元只有這一次考韌性需求，沒有反例。<b>但要注意</b>：同樣的 \\(\\mu_\\phi\\) 在 U1-1／U1-2 是「必背」——94、100、103、104、112 年那幾題要用<b>轉換斷面</b>求 \\(\\phi_y\\)，跟橋梁規範的雙線性模型不是同一套。",
+  ok:[2022], no:[]},
+
+ {g:"E 剪力牆與橫膈版", lv:"must", nm:"剪力牆標稱剪力強度 Vn",
+  eq:"$$V_n = A_{cv}\\left(\\alpha_c\\sqrt{f'_c}+\\rho_tf_y\\right),\\qquad \\alpha_c = 0.80\\ (h_w/l_w\\le1.5) \\to 0.53\\ (\\ge2.0)$$",
+  meta:"從未印過。92年四（24 年唯一一次剪力牆設計題）要「設計剪力牆腹版之水平剪力鋼筋配置」，考卷給了單層配筋門檻與 \\(\\phi=0.6\\)，卻沒給這條主體式，\\(\\alpha_c\\) 隨 \\(h_w/l_w\\) 內插的規則也沒給。",
+  ok:[], no:[2003]},
+
+ {g:"E 剪力牆與橫膈版", lv:"give", nm:"剪力牆單層配筋門檻",
+  eq:"$$V_u \\le 0.53\\sqrt{f'_c}\\,A_{cv} \\;\\Rightarrow\\; \\text{可採單層鋼筋網}$$",
+  meta:"92年四 把它寫進已知條件（「如果規範允許 \\(V_u \\le 0.53\\sqrt{f'_c}A_{cv}\\)，則剪力牆優先採用單層鋼筋網」）。唯一一次考剪力牆就給了，沒有反例。",
+  ok:[2003], no:[]},
+
+ {g:"E 剪力牆與橫膈版", lv:"must", nm:"剪力牆最小鋼筋比與間距",
+  eq:"$$\\rho_t,\\ \\rho_l \\ge 0.0025,\\qquad s \\le 45\\text{ cm}$$",
+  meta:"從未印過。92年四 的第 2、3 小問要「設計腹版之水平與垂直剪力鋼筋配置」，多數情況下答案是由這個下限控制而不是由 \\(V_u\\) 控制。另外當 \\(h_w/l_w<2.0\\) 時 \\(\\rho_l\\) 還有額外要求。",
+  ok:[], no:[2003]},
+
+ {g:"E 剪力牆與橫膈版", lv:"must", nm:"邊界構材需求判定",
+  eq:"$$f_c > 0.2f'_c \\;\\Rightarrow\\; \\text{需設特殊圍束邊界構材（可停止於 } f_c<0.15f'_c\\text{）}$$",
+  meta:"從未印過。92年四 第 1 小問直接要「設計邊界構材之縱向主筋與箍筋之配置」，但判定門檻與圍束要求（比照柱的 \\(A_{sh}\\)）全靠自己。",
+  ok:[], no:[2003]},
+
+ {g:"E 剪力牆與橫膈版", lv:"give", nm:"橫膈版剪力強度 Vn",
+  eq:"$$V_n = A_{cv}\\left(0.53\\sqrt{f'_c}+\\rho_tf_y\\right)$$",
+  meta:"108年三 以「提示」形式完整印出，連 \\(\\alpha_c\\) 都直接固定成 0.53。24 年唯一一次考橫膈版就給了。要注意 \\(A_{cv}\\) 取的是<b>該方向的淨斷面</b>，題目沒說，要自己從平面尺寸判斷。",
+  ok:[2019], no:[]},
+
+ {g:"E 剪力牆與橫膈版", lv:"give", nm:"剪力牆／橫膈版 φ = 0.6",
+  eq:"$$\\phi = 0.6\\quad(\\text{剪力強度小於撓曲強度所對應之剪力時})$$",
+  meta:"92年四（「剪力牆之剪力設計可採 \\(\\phi=0.6\\) 之值，以求簡便」）與 108年三（「剪力設計之強度折減因數可以保守採用 \\(\\phi=0.6\\)」）兩次都印。這是牆／版類構件的特別規定，與梁的 0.75 不同。",
+  ok:[2003,2019], no:[]},
+
+ {g:"F 載重組合與流程", lv:"half", nm:"耐震載重組合 U",
+  eq:"$$U = 1.2D+1.0L\\pm1.0E\\quad(\\text{現行});\\qquad U=0.9D\\pm1.43E,\\;0.75(1.4D+1.7L\\pm1.87E)\\quad(92\\text{ 年版})$$",
+  meta:"92年四 印舊版兩組、108年三 印現行版。但 101年二三四、105年一二 都要用組合值卻沒印。<b>兩套不能混用</b> —— 舊版的 1.43 已含 0.9 的折減，看到 1.87 就知道是舊規範。",
+  ok:[2003,2019], no:[2012,2016]},
+
+ {g:"F 載重組合與流程", lv:"must", nm:"能力設計法流程骨架",
+  eq:"$$\\text{強度}\\to\\text{需求}:\\;M_{pr}\\;\\Rightarrow\\;V_e\\;\\Rightarrow\\;\\text{箍筋}；\\quad\\text{不是由分析剪力設計}$$",
+  meta:"沒有符號，但決定整題方向。101年三 明寫「以梁端產生塑鉸方式計算因地震引入柱剪力<b>作為柱最大設計剪力</b>」、105年二、114年二 同理。用結構分析得到的地震剪力去設計箍筋，方向就錯了 —— 耐震剪力設計的需求來自「構件能發出多大的彎矩」，不是來自「地震給多大的力」。",
+  ok:[], no:[2012,2016,2025]}
+];
+
+const MX = [
+ [2002,91,"(—)",        0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2003,92,"2(副)、3、4", 0,0,0,0,0,1,1,1,1,0, "掃描卷（已目視）。二印 λd 詳細式；四印舊版載重組合、單層配筋門檻、φ=0.6、λdh。接頭 Vjh 與牆的 Vn 沒印。"],
+ [2004,93,"1、3",       1,0,0,0,0,0,0,0,0,0, "第三題印 Ash 兩式；第一題問搭接規定，沒給。"],
+ [2005,94,"3",          0,0,0,0,0,0,0,0,0,0, "⚠️ 零公式年。角柱接頭剪力檢核，Vjh 與 γ 係數都沒印。"],
+ [2006,95,"(—)",        0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2007,96,"(—)",        0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2008,97,"(—)",        0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2009,98,"1",          0,0,0,0,0,0,0,0,0,0, "⚠️ 說明題「如何配置柱之橫向鋼筋」，只把 Nu<0.05Agf'c 寫進題幹，Ash、lo、so 全無。"],
+ [2010,99,"2",          0,0,0,0,0,0,0,0,0,0, "⚠️ 抗拉搭接長度設計，λd、Class B、位置限制全無。"],
+ [2011,100,"(—)",       0,0,0,0,0,0,0,0,0,0, "零公式年。本單元無題。"],
+ [2012,101,"2、3、4",    1,1,0,1,0,0,0,0,0,0, "最慷慨的一張：Ash、s0、含軸壓 Vc、接頭 γ√f'c Aj 全印；但 Mpr、Ve、Vjh 與 1.2 全無。"],
+ [2013,102,"2",         1,0,0,0,0,0,0,0,0,0, "「參考公式」只有 Ash 兩式；so 與 b/4、6db 沒印。"],
+ [2014,103,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2015,104,"(—)",       0,0,0,0,0,0,0,0,0,0, "零公式年。本單元無題。"],
+ [2016,105,"1(副)、2",   0,0,0,0,0,0,0,0,0,0, "⚠️ 耐震梁塑鉸區箍筋，Mpr、Ve、Vc=0 與密箍四項取小全無。"],
+ [2017,106,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2018,107,"2",         0,0,0,0,0,0,0,0,0,0, "⚠️ 同考角柱接頭，101 年印了 γ 係數，這年沒印。"],
+ [2019,108,"3",         0,0,0,0,0,0,0,0,1,0, "印橫膈版 Vn=(0.53√f'c+ρt fy)Acv、φ=0.6，並列 U=1.2D+1.0L±1.0E。"],
+ [2020,109,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2021,110,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2022,111,"4",         0,0,0,0,0,0,0,0,0,1, "印出公路橋梁耐震規範塑鉸與韌性五式（含 Lp）與參數表。"],
+ [2023,112,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2024,113,"(—)",       0,0,0,0,0,0,0,0,0,0, "本單元無題。"],
+ [2025,114,"2",         0,0,0,0,0,0,0,0,0,0, "⚠️ 耐震梁柱端剪力筋，Mpr、Ve、Vc=0 與密箍全無。"]
+];
+
+/* ---------- 渲染 ---------- */
+const LVN={must:"🔴 必背",half:"🟠 別賭",give:"🟢 通常會給"};
+let curLv="all",curG="all";
+const groups=[];F.forEach(f=>{if(!groups.includes(f.g))groups.push(f.g)});
+const gf=document.getElementById("gf");
+gf.innerHTML='<button data-k="g" data-v="all" class="on">全部主題</button>'+
+  groups.map(g=>'<button data-k="g" data-v="'+g+'">'+g+'</button>').join("");
+function yrs(a,c){return a.map(y=>'<span class="yr '+c+'">'+(y-1911)+'年</span>').join("")}
+function render(){
+  const box=document.getElementById("cards");
+  box.innerHTML=F.filter(f=>(curLv==="all"||f.lv===curLv)&&(curG==="all"||f.g===curG)).map(f=>{
+    let ev=f.ok.length?"<b>考卷給過：</b>"+yrs(f.ok,"ok"):'<b>考卷給過：</b><span class="never">從未</span>';
+    if(f.no.length)ev+="　｜　<b>考了卻沒給：</b>"+yrs(f.no,"no");
+    return '<div class="fc '+f.lv+'"><div class="top"><span class="nm">'+f.nm+
+      '</span><span class="tag '+f.lv+'">'+LVN[f.lv]+'</span></div><div class="eq">'+f.eq+
+      '</div><p class="meta">'+f.meta+'</p><div class="ev">'+ev+'</div></div>';
+  }).join("");
+  if(window.renderMathInElement)renderMathInElement(box,{delimiters:[{left:"$$",right:"$$",display:true},{left:"\\(",right:"\\)",display:false}],throwOnError:false});
+}
+document.querySelectorAll(".filters button").forEach(b=>b.addEventListener("click",()=>{
+  const k=b.dataset.k;
+  b.parentNode.querySelectorAll("button").forEach(x=>x.classList.remove("on"));
+  b.classList.add("on");
+  if(k==="lv")curLv=b.dataset.v;else curG=b.dataset.v;
+  render();
+}));
+const tb=document.querySelector("#mx tbody");
+tb.innerHTML=MX.map(r=>{
+  const has=r[2]!=="(—)";
+  const cells=r.slice(3,13).map(v=>'<td class="c">'+(v?'<span class="y">✔</span>':'<span class="n">·</span>')+"</td>").join("");
+  return '<tr class="'+(has?"hl":"")+'"><td><b>'+r[0]+'</b><br><span class="ynote">'+r[1]+
+    '年</span></td><td class="qq">'+r[2]+"</td>"+cells+'<td class="rm">'+r[13]+"</td></tr>";
+}).join("");
+render();
+</script>
+</body>
+</html>

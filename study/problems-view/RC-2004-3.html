@@ -14,6 +14,10 @@ body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans
   background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
 header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
 header h1{margin:0;font-size:1.15em}
+header .navbtns{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+header .navbtns a{display:inline-block;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+  padding:4px 12px;border-radius:14px;text-decoration:none}
+header .navbtns a:hover{background:rgba(255,255,255,.32)}
 header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
   padding:4px 12px;border-radius:14px;text-decoration:none}
 main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
@@ -26,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2004-3 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<header><h1>RC-2004-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2004-3</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
 <strong>副分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
@@ -308,4 +312,19 @@ $$s \le \frac{2.58}{0.526} = 4.9\ \text{cm}$$<br />
 $$l_o \ge \max\!\left(\frac{l_n}{6},\ \text{柱最大邊長},\ 450\ \text{mm}\right) = \max\!\left(\frac{l_n}{6},\ 50\ \text{cm},\ 45\ \text{cm}\right) = \max\!\left(\frac{l_n}{6},\ 50\right)\ \text{cm}$$<br />
 本題未提供柱淨高，故不計算，但考場應能說明此要求。</p></main>
 <footer>來源：raw/solutions/RC-2004-3/RC-2004-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+   把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
+(function(){
+  try{
+    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    if(!m) return;
+    var u = m[1];
+    var q = document.querySelector('header a.quick');
+    var l = document.querySelector('header a.lect');
+    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(l) l.setAttribute('href','../lecture-'+u+'.html');
+  }catch(e){}
+})();
+</script>
 </body></html>

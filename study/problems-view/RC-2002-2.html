@@ -14,19 +14,24 @@ body{margin:0;font-family:"Microsoft JhengHei","Noto Sans TC",-apple-system,sans
   background:var(--bg);color:var(--ink);line-height:1.75;font-size:15.5px}
 header{background:linear-gradient(135deg,#0d47a1,#1976d2 60%,#42a5f5);color:#fff;padding:22px 26px}
 header h1{margin:0;font-size:1.15em}
-header .back{display:inline-block;margin-top:10px;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
+header .navbtns{margin-top:10px;display:flex;flex-wrap:wrap;gap:8px}
+header .navbtns a{display:inline-block;font-size:.82em;color:#fff;background:rgba(255,255,255,.18);
   padding:4px 12px;border-radius:14px;text-decoration:none}
+header .navbtns a:hover{background:rgba(255,255,255,.32)}
 main{max-width:880px;margin:0 auto;padding:26px 22px 70px}
 h1,h2,h3{color:#0d47a1} h2{font-size:1.2em;border-left:6px solid var(--ac);padding-left:12px;margin:34px 0 14px}
 table{width:100%;border-collapse:collapse;margin:14px 0;font-size:.92em;background:#fff}
 th,td{border:1px solid var(--bd);padding:7px 10px;text-align:left;vertical-align:top}
 th{background:#eceff1;font-weight:600} tbody tr:nth-child(even){background:#fafcfd}
 code{background:#eceff1;padding:1px 5px;border-radius:4px;font-size:.92em}
+pre{background:#263238;color:#eceff1;padding:12px 14px;border-radius:8px;overflow-x:auto;font-size:.86em;line-height:1.5}
+pre code{background:none;color:inherit;padding:0}
 img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);border-radius:8px}
+blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;padding:8px 16px;color:#37474f}
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2002-2 題目解析</h1><a class="back" href="javascript:history.back()">← 返回講義</a></header>
+<header><h1>RC-2002-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-2.html">&#128269; U1-2 命題分析</a><a class="lect" href="../lecture-RC-U1-2.html">&#128218; U1-2 RC 柱強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2002-2</h1>
 <p><strong>主分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -36,23 +41,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目（20 分）：</strong></p>
 <p>一柱斷面如圖所示，若作用於此斷面上軸壓力之偏心距 e = 10 cm，試求此時斷面所能承受之軸力 Pn 及彎矩 Mn。</p>
-<p><strong>已知條件：</strong></p>
-<ul>
-<li>f'c = 280 kgf/cm²，fy = 4200 kgf/cm²</li>
-<li>
-<h1>9 截面積 = 6.47 cm²，配置 6-#9</h1>
-</li>
-<li>Es = 2,040,000 kgf/cm²（由 εy = fy/Es 推算）</li>
-</ul>
-<p><strong>斷面幾何（由附圖讀取）：</strong></p>
-<ul>
-<li>h = 40 cm（彎矩方向；圖中水平方向標示 7+26+7=40 cm）</li>
-<li>b = 30 cm（垂直方向）</li>
-<li>d' = 7 cm（壓力側鋼筋至壓力面距離）</li>
-<li>d = h − d' = 40 − 7 = <strong>33 cm</strong>（拉力側有效深度）</li>
-<li>h/2 = <strong>20 cm</strong>（幾何形心，與圖中下方 20 cm 示意一致）</li>
-<li>e = 10 cm（軸力自形心的偏心距）</li>
-</ul>
+<p><strong>已知條件：</strong><br />
+- f'c = 280 kgf/cm²，fy = 4200 kgf/cm²<br />
+- #9 截面積 = 6.47 cm²，配置 6-#9<br />
+- Es = 2,040,000 kgf/cm²（由 εy = fy/Es 推算）</p>
+<p><strong>斷面幾何（由附圖讀取）：</strong><br />
+- h = 40 cm（彎矩方向；圖中水平方向標示 7+26+7=40 cm）<br />
+- b = 30 cm（垂直方向）<br />
+- d' = 7 cm（壓力側鋼筋至壓力面距離）<br />
+- d = h − d' = 40 − 7 = <strong>33 cm</strong>（拉力側有效深度）<br />
+- h/2 = <strong>20 cm</strong>（幾何形心，與圖中下方 20 cm 示意一致）<br />
+- e = 10 cm（軸力自形心的偏心距）</p>
 <p><strong>鋼筋配置：</strong></p>
 <table>
 <thead>
@@ -96,21 +95,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>中間鋼筋（位於幾何形心）在力矩方程中力臂 = 0，但在力平衡方程中仍需納入</li>
 <li>壓力側鋼筋在 Whitney 應力塊範圍內，需扣除 0.85f'c（避免重複計算混凝土）</li>
 </ol>
-<p><strong>出題者意圖：</strong></p>
-<ul>
-<li>測驗是否能正確判定壓力控制（e &lt; e_b）</li>
-<li>測驗三排配筋的完整力/力矩平衡建立</li>
-<li>考查中間鋼筋的正確處理（力矩貢獻為零，但力平衡不可忽略）</li>
-</ul>
+<p><strong>出題者意圖：</strong><br />
+- 測驗是否能正確判定壓力控制（e &lt; e_b）<br />
+- 測驗三排配筋的完整力/力矩平衡建立<br />
+- 考查中間鋼筋的正確處理（力矩貢獻為零，但力平衡不可忽略）</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong></p>
-<ol>
-<li>計算 β₁（f'c = 280 kgf/cm²）</li>
-<li>計算平衡條件 c_b 與 e_b，判斷大/小偏心</li>
-<li>假設 c，建立力平衡與力矩方程，迭代求 c</li>
-<li>代入求 Pn、Mn</li>
-</ol>
+<p><strong>作戰計畫：</strong><br />
+1. 計算 β₁（f'c = 280 kgf/cm²）<br />
+2. 計算平衡條件 c_b 與 e_b，判斷大/小偏心<br />
+3. 假設 c，建立力平衡與力矩方程，迭代求 c<br />
+4. 代入求 Pn、Mn</p>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -418,29 +413,36 @@ $$e_{check} = \frac{M_n}{P_n} = \frac{1{,}626{,}214}{162{,}616} = 10.00 \text{ c
 <p>$$\boxed{M_n = P_n \times e = 162{,}600 \times 10 = 1{,}626{,}000 \text{ kgf·cm} = 16.26 \text{ tf·m}}$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>1. 中間鋼筋的處理（本題最重要陷阱）：</strong></p>
-<ul>
-<li>對形心取矩：力臂 = 20 − 20 = 0 → 貢獻為零，可簡化力矩方程</li>
-<li>但力平衡不可省略：F_sm = 9,420 kgf 壓力貢獻不小</li>
-<li>若誤以為中間鋼筋可完全忽略，Pn 會低估約 9.4 tf（約 6% 誤差）</li>
-</ul>
-<p><strong>2. 中間鋼筋是否扣 0.85f'c？</strong></p>
-<ul>
-<li>中間鋼筋位於 a~c 之間（非 Whitney 應力塊範圍內的具體混凝土）</li>
-<li>應力塊僅至 a = 19.30 cm，中間鋼筋在 20 cm &gt; a</li>
-<li>→ 不扣 0.85f'c，使用全部鋼筋壓力</li>
-</ul>
-<p><strong>3. 壓力側鋼筋：本題剛好達到降伏</strong></p>
-<ul>
-<li>c = 22.7 cm，ε'_s = 0.002075，εy = 0.002059</li>
-<li>壓力側鋼筋恰好在降伏邊界（差距僅 0.8%），可視為降伏</li>
-<li>若 c 稍小，壓力筋未降伏，需用 f'_s = E_s × ε'_s</li>
-</ul>
-<p><strong>4. 題目使用舊版 ACI（kgf/cm² 制）：</strong></p>
-<ul>
-<li>β₁ = 0.85（f'c = 280 kgf/cm² = 27.5 MPa ≤ 280 kgf/cm²）</li>
-<li>ρ_b 公式：6120/(6120+fy)（舊版 ACI 318-99 及早期 CNS 1480 形式）</li>
-<li>本題答案不需計算 φ（題目問的是 Pn, Mn，非設計強度 φPn, φMn）</li>
-</ul></main>
+<p><strong>1. 中間鋼筋的處理（本題最重要陷阱）：</strong><br />
+- 對形心取矩：力臂 = 20 − 20 = 0 → 貢獻為零，可簡化力矩方程<br />
+- 但力平衡不可省略：F_sm = 9,420 kgf 壓力貢獻不小<br />
+- 若誤以為中間鋼筋可完全忽略，Pn 會低估約 9.4 tf（約 6% 誤差）</p>
+<p><strong>2. 中間鋼筋是否扣 0.85f'c？</strong><br />
+- 中間鋼筋位於 a~c 之間（非 Whitney 應力塊範圍內的具體混凝土）<br />
+- 應力塊僅至 a = 19.30 cm，中間鋼筋在 20 cm &gt; a<br />
+- → 不扣 0.85f'c，使用全部鋼筋壓力</p>
+<p><strong>3. 壓力側鋼筋：本題剛好達到降伏</strong><br />
+- c = 22.7 cm，ε'_s = 0.002075，εy = 0.002059<br />
+- 壓力側鋼筋恰好在降伏邊界（差距僅 0.8%），可視為降伏<br />
+- 若 c 稍小，壓力筋未降伏，需用 f'_s = E_s × ε'_s</p>
+<p><strong>4. 題目使用舊版 ACI（kgf/cm² 制）：</strong><br />
+- β₁ = 0.85（f'c = 280 kgf/cm² = 27.5 MPa ≤ 280 kgf/cm²）<br />
+- ρ_b 公式：6120/(6120+fy)（舊版 ACI 318-99 及早期 CNS 1480 形式）<br />
+- 本題答案不需計算 φ（題目問的是 Pn, Mn，非設計強度 φPn, φMn）</p></main>
 <footer>來源：raw/solutions/RC-2002-2/RC-2002-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
+<script>
+/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+   把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
+(function(){
+  try{
+    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    if(!m) return;
+    var u = m[1];
+    var q = document.querySelector('header a.quick');
+    var l = document.querySelector('header a.lect');
+    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(l) l.setAttribute('href','../lecture-'+u+'.html');
+  }catch(e){}
+})();
+</script>
 </body></html>
