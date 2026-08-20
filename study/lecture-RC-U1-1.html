@@ -1100,6 +1100,54 @@ RC-2007-1 與 RC-2019-1 都在題目裡直接給了過渡區的 φ 內插式，�
 然後<b>把這個 \(A_s\) 丟進上面的流程跑一遍</b>做驗證。驗證不過就修正再跑。
 設計題 = 一次猜測 + 一到兩次分析，沒有別的。
 </div>
+
+<div class="why">
+<b>口訣：分析＝順藤摸瓜；設計＝先射箭、後驗靶。</b><br>
+「倒過來走」容易記錯成「整張圖反著畫」，其實不是——<b>分析和設計走的是同一條藤（同一張流程圖，方向不變，永遠由上往下）</b>。
+差別只在<b>起點 \(A_s\) 從哪來</b>：分析題起點是題目給的，直接摸下去；設計題起點沒有，
+所以先用 §7.2 的簡化公式「射一箭」猜出 \(A_s\)，把這支箭放回流程圖最上面，照樣由上往下走一次「驗靶」——
+沒中（\(\phi M_n < M_u\) 或某個檢核不過）就回頭修改箭再射一次，不是逆著箭頭走。
+</div>
+
+<div class="fig">
+<svg viewBox="0 0 960 232" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <marker id="mm-b" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker>
+    <marker id="mm-o" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#ef6c00"/></marker>
+    <marker id="mm-r" markerWidth="10" markerHeight="10" refX="9" refY="5" orient="auto">
+      <path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker>
+  </defs>
+
+  <text x="20" y="20" font-size="13" font-weight="bold" fill="#0d47a1">分析：順藤摸瓜（起點齊全，由上往下一次到底）</text>
+  <rect x="20" y="30" width="190" height="40" rx="8" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+  <text x="115" y="55" text-anchor="middle" font-size="12.5" fill="#0d47a1">起點：已知 As</text>
+  <line x1="210" y1="50" x2="250" y2="50" stroke="#1565c0" stroke-width="2" marker-end="url(#mm-b)"/>
+  <rect x="254" y="30" width="250" height="40" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+  <text x="379" y="55" text-anchor="middle" font-size="12.5" fill="#e65100">§8 決策流程（由上往下）</text>
+  <line x1="504" y1="50" x2="544" y2="50" stroke="#1565c0" stroke-width="2" marker-end="url(#mm-b)"/>
+  <rect x="548" y="30" width="150" height="40" rx="8" fill="#e8f5e9" stroke="#2e7d32" stroke-width="2"/>
+  <text x="623" y="55" text-anchor="middle" font-size="12.5" fill="#1b5e20">終點：Mn</text>
+
+  <text x="20" y="102" font-size="13" font-weight="bold" fill="#e65100">設計：先射箭、後驗靶（起點用猜的，仍由上往下走）</text>
+  <rect x="20" y="112" width="190" height="40" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="2" stroke-dasharray="4 3"/>
+  <text x="115" y="132" text-anchor="middle" font-size="11.5" fill="#e65100">目標 Mu（As 未知）</text>
+  <text x="115" y="147" text-anchor="middle" font-size="11" fill="#8d6e63">§7.2 射箭猜 As</text>
+  <line x1="210" y1="132" x2="250" y2="132" stroke="#ef6c00" stroke-width="2" marker-end="url(#mm-o)"/>
+  <rect x="254" y="112" width="250" height="40" rx="8" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.6"/>
+  <text x="379" y="132" text-anchor="middle" font-size="11.5" fill="#e65100">同一張 §8 流程</text>
+  <text x="379" y="147" text-anchor="middle" font-size="11" fill="#8d6e63">帶著猜的 As 由上往下走一次</text>
+  <line x1="504" y1="132" x2="544" y2="132" stroke="#1565c0" stroke-width="2" marker-end="url(#mm-b)"/>
+  <rect x="548" y="112" width="150" height="40" rx="8" fill="#fff" stroke="#455a64" stroke-width="1.6"/>
+  <text x="623" y="132" text-anchor="middle" font-size="12.5" fill="#263238">驗靶：φMn≥Mu？</text>
+
+  <path d="M623,152 L623,190 L115,190 L115,158" fill="none" stroke="#c62828" stroke-width="1.8" stroke-dasharray="5 4" marker-end="url(#mm-r)"/>
+  <text x="369" y="205" text-anchor="middle" font-size="11.5" fill="#c62828">沒中靶 → 回頭改猜的 As，再射一次（不是逆著箭頭走）</text>
+</svg>
+<div class="cap">上下兩排是<b>同一張流程圖、同一個方向</b>；設計題只是在最上面多插一支「用猜的」起點，
+其餘走法與分析題完全相同。</div>
+</div>
 </section>
 <section id="s9">
 <h2>§9 歷屆題 × 觀念對照表</h2>
