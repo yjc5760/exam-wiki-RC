@@ -498,3 +498,76 @@
   U3-1 梁工作性要求（含撓度、裂縫）主考點 6 題但已 8 年空窗（2010–2017），最後出現 2018。
 - **近 6 考年（2020–2025）共 24 題**，集中在少數幾列。
 - 本頁只用於**分配時間**，不作押題；押題請看各子項 `study-RC-Un-m.html` 的「命題風險排序」。
+
+## 2026-08-20 struct-diagram 圖解整併 RC-2015-1；發現並修正 index.html 的 KaTeX 版本問題
+
+### 一、RC-2015-1 向量圖解整併
+
+- `raw/solutions/RC-2015-1/files/` 內 struct-diagram 的產出整併回正本：新建 `figs/` 子資料夾，
+  收入 4 組 SVG＋2× PNG 與生成腳本 `gen_RC-2015-1.py`（可重跑）。
+  `files/` 殘留的已合併 md 與 `.patch` 移至 `files/_to_delete/`（device_bash 不能刪檔，待人工清除）。
+- 驗證後才套用：把 `RC-2015-1-figs.patch` 套到整併前的正本，結果與 `files/RC-2015-1.md`
+  **逐字元相同**，確認 patch 內容無夾帶未預期改動後才寫入。行尾維持 CRLF。
+- §1 依使用者決定改為**考卷原圖與向量重繪並列**（圖 1a／圖 1b），不以重繪取代截圖。
+- **數值修正（隨 patch 一併帶入，原值為四捨五入累積誤差）：**
+  $C'_s$ 127,126 → **127,112** kgf；$P_{n,b}$ 430,686 → **430,672** kgf；
+  $M_{n,\max}$ 13,585,411 → **13,585,103** kgf·cm；$\varphi M_{n,\max}$ 88.98 → **88.97** tf·m；
+  $\varphi P_{n,\max}$ 689,134 → **689,117** kgf。四捨五入後的結論值（135.85 tf·m、89.0 tf·m）不變。
+- **新增三節進階討論：** 純彎矩點補算（$c=8.60$ cm，$M_n=65.79$ tf·m，$\varphi M_n=59.21$ tf·m）；
+  $\varphi M_n$ 峰值不在平衡點（右移至 $\varepsilon_t=0.005$、$c=19.50$ cm，達 **104.08 tf·m**）；
+  原文「純彎矩（0, ~tf·m）」的空缺補為 59.2。
+- **下游同步三處：** `wiki/problems/RC-2015-1.md`（圖形區＋解題關鍵步驟數字＋兩條進階結論）、
+  `study/problems-view/RC-2015-1.html`（**由新正本完整重新渲染**，非手改）。
+  渲染器設定先以整併前的正本反推驗證：python-markdown `['tables','nl2br','fenced_code']`
+  ＋ 數學式遮罩／清單前補空行／圖片路徑補前綴三道處理，產出與現有 HTML 逐字元相同後才用於新版。
+- `CLAUDE-SPEC.md` 新增 **§5.1 向量圖解（`figs/`）規範**：命名、SVG/PNG 成對、腳本可重跑、
+  與考卷原圖並存、數值以腳本為準並同步三處；§3 允許檔案類型表與目錄同步加列。
+- 驗證：15 個圖片相對路徑全部存在；舊數值全庫零殘留；四檔 CRLF 未破壞；圖 3／圖 4 目視確認數值一致。
+
+### 二、KaTeX 版本問題（既有，非本次造成）
+
+- 現象：`\text{}` 內的 `·`（U+00B7）被 KaTeX 轉為 `\cdotp`，而該指令在舊版**僅限數學模式**，
+  於文字模式成為未定義指令。此寫法全庫 **391 處、散在 136 個檔案**（`tf·m`、`kgf·cm` 等單位）。
+- 實測版本界線：**KaTeX ≤ 0.16.9 失敗，≥ 0.17.0 正常**（0.13.24／0.15.6／0.16.4／0.16.9／0.16.11
+  全部失敗；0.17.0／0.18.0／0.18.1 全部正常）。以 `markdown.math.macros` 把 `\cdotp` 映射成 `\cdot`
+  的偏方**實測無效**，因報錯發生在巨集展開之前。
+- 影響分流：`study/assets/katex/` 是 **0.18.1**，故 `study/` 底下 11 個頁面（含 problems-view）**渲染正常**；
+  **`index.html` 從 CDN 載入 `katex@0.16.11`**，落在失敗區間，且因 `throwOnError:false` 不跳錯，
+  而是靜默印出字面的 `kgf\cdotpcm`、`tf\cdotpm`——主儀表板的 md 預覽長期渲染錯誤而未被察覺。
+- **修正：** `index.html` 的 KaTeX 來源由 CDN 改為本機副本 `study/assets/katex/`（0.18.1），
+  與 `study/` 各頁同一份；離線亦可正常渲染（原本離線是降級為不渲染），並在該段加註「不可退回 0.16.x」的原因。
+  `mathHint` 提示文字同步改為「找不到 study/assets/katex/」。
+- 未處理：VS Code 內建 Markdown 預覽自帶舊版 KaTeX，仍會對 `·` 報 ParseError。
+  依使用者決定不處理——校稿一律以 `study/problems-view/` 與儀表板為準，VS Code 預覽僅作純文字編輯用。
+
+### 三、既有問題（本次未動，供日後處理）
+
+- 全庫工作目錄為 CRLF、git 內儲存為 LF，`.gitattributes` 未設 `text=auto eol=lf`，
+  導致 `git status` 幾乎每個檔案都顯示 modified、diff 全檔翻紅（未經修改的 `RC-2002-1.md`
+  亦顯示 410 行全異動）。檢視實際改動須用 `git diff --ignore-cr-at-eol`；
+  本次真正改動為 4 檔 160 增 27 刪。修正需一次全庫規模的 commit，留待使用者決定。
+
+## 2026-08-20（補正）KaTeX `·` 問題：巨集偏方其實有效，前一則紀錄的判斷有誤
+
+> 本則更正同日前一則「二、KaTeX 版本問題」中「以 `markdown.math.macros` 把 `\cdotp`
+> 映射成 `\cdot` 的偏方**實測無效**」的結論。該結論的**現象描述正確、歸因錯誤**：
+> 巨集其實有生效，錯的是映射目標。依規則 3 不刪改既有紀錄，於此補正。
+
+- 重測發現：套用 `macros {"\cdotp":"\cdot"}` 後，錯誤訊息由
+  `Undefined control sequence: \cdotp` 變成 `Undefined control sequence: \cdot`
+  ——**代表巨集確實展開了**，只是 `\cdot` 與 `\cdotp` 同為數學模式專用指令，
+  在 `\text{}` 內一樣未定義，所以照樣失敗。前一則誤判為「報錯發生在巨集展開之前」。
+- **可行解：把 `·` 直接映射到 Unicode `⋅`（U+22C5 DOT OPERATOR）**，即
+  `"markdown.math.macros": { "·": "⋅" }`。實測：
+  - KaTeX 0.16.11（VS Code 內建同級）：全部通過，輸出 `kgf⋅cm`、`tf⋅m（標稱最大彎矩）`，
+    與 KaTeX 0.18.1 的**原生輸出逐字相同**。
+  - KaTeX 0.18.1（本庫 `study/assets/katex/`）：同樣通過，故日後升級不會反噬。
+  - 數學模式中原本就正常的 `·`（如 `5 · 3`）不受影響；表格內 `M_n (tf·m)`、
+    `kN·m`、`N·mm` 一併正常。
+- 其他候選皆不可用：`\textperiodcentered`、`\textbullet` 在 KaTeX 0.16.x 未定義；
+  `\char"00B7` 渲染出錯字；`\raisebox{0.25em}{.}` 變成句點；映射回 `·` 本身會無限展開。
+- 已產出 `.vscode/settings.json`（含完整原因註解，另關閉中文庫必然觸發的
+  非 ASCII 高亮橫幅）。**該檔無法由 Cowork 寫入**——遠端工具禁止寫 `.vscode`，
+  須由使用者自行建立或貼入使用者設定。
+- 影響範圍不變：此為 VS Code 預覽端的修法，不動 `raw/` 任何檔案，
+  `index.html` 改用本機 0.18.1 的修正仍然必要且已完成。

@@ -259,7 +259,7 @@
 <div id="reader">
   <div id="readerBar">
     <span class="t" id="readerTitle">解析</span>
-    <span id="mathHint">⚠ 離線：公式以原始 LaTeX 顯示</span>
+    <span id="mathHint">⚠ 找不到 study/assets/katex/：公式以原始 LaTeX 顯示</span>
     <button id="btnPdf">⬇ 匯出 PDF</button>
     <button id="btnRawOpen">開啟原始檔</button>
     <button id="btnClose">✕ 關閉</button>
@@ -437,10 +437,13 @@
     setTimeout(()=>{window.print();setTimeout(cleanup,2000);},50);
   });
 
-  // ---- KaTeX 動態載入（CDN；離線時優雅降級） ----
+  // ---- KaTeX 動態載入 ----
+  // 用本機副本 study/assets/katex/（KaTeX 0.18.1），與 study/ 底下各頁同一份。
+  // 不可退回 CDN 的 0.16.x：0.16.9 及以前不支援 \text{} 內的 ·（U+00B7），
+  // 會把 tf·m 渲染成字面的 tf\cdotpm；此寫法全庫 391 處，須 KaTeX ≥ 0.17。
   let katexState='loading';
   (function loadKatex(){
-    const base='https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/';
+    const base='study/assets/katex/';
     const css=document.createElement('link');css.rel='stylesheet';css.href=base+'katex.min.css';
     document.head.appendChild(css);
     const s=document.createElement('script');s.src=base+'katex.min.js';

@@ -1,0 +1,34 @@
+{
+  // ============================================================
+  //  KaTeX：修正 \text{} 內的 ·（U+00B7）在 Markdown 預覽報錯
+  //  ParseError: KaTeX parse error: Undefined control sequence: \cdotp
+  // ============================================================
+  //
+  // 原因：KaTeX 會把 · 轉成 \cdotp，而該指令只存在於數學模式，
+  //   一旦出現在 \text{} 內就成了未定義指令（KaTeX <= 0.16.9 皆然；
+  //   >= 0.17.0 起原生支援，本庫 study/assets/katex/ 是 0.18.1 故正常）。
+  //
+  // 為何不改檔：此寫法全庫 391 處、散在 136 個檔案（tf·m、kgf·cm、t·m、kN·m…），
+  //   且 raw/ 受 CLAUDE.md 規則 1 保護不可批次修改，只能從渲染端解決。
+  //
+  // 為何映射到 ⋅ 而不是 \cdot：\cdot 同樣是數學模式專用，映射過去仍報錯
+  //   （錯誤訊息只會從 \cdotp 變成 \cdot）。映射到 Unicode ⋅（U+22C5）後，
+  //   實測 KaTeX 0.11.1 ~ 0.18.1 全數通過，輸出與新版原生結果一致，
+  //   且數學模式中原本正常的 · 不受影響。
+  //
+  // 為何要寫兩個鍵：預覽由誰渲染就吃誰的設定，兩邊鍵名不同——
+  //   markdown.math.macros           → VS Code 內建 markdown-math（需 VS Code >= 1.73）
+  //   markdown.extension.katex.macros → 擴充套件 Markdown All in One
+  //   兩個都寫，不管哪一邊接手都有效；沒裝的那個會被忽略，無副作用。
+
+  "markdown.math.macros": {
+    "·": "⋅"
+  },
+  "markdown.extension.katex.macros": {
+    "·": "⋅"
+  },
+
+  // 關掉「本文件含大量非 ASCII 字元」的黃色橫幅——中文知識庫必然觸發，無意義。
+  "editor.unicodeHighlight.nonBasicASCII": false,
+  "editor.unicodeHighlight.ambiguousCharacters": false
+}
