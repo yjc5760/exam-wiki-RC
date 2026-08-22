@@ -17,7 +17,7 @@ canvas{display:block;margin:0 auto;background:#16213e;border:1px solid #333;bord
 </head>
 <body>
 <h3>RC-2017-1 加大柱 40×70cm，8-D25（雙折線模型）</h3>
-<div class="sub">加大柱：原 40×40cm 兩側各加 15cm；f'c=210 kgf/cm²，雙折線應力模型（本圖採 Whitney 近似）</div>
+<div class="sub">加大柱：原 40×40cm 兩側各加 15cm；f'c=210 kgf/cm²，<b>壓力區依題目雙折線分區積分</b>（非 Whitney 近似）</div>
 <canvas id="cv" width="580" height="420"></canvas>
 <div class="leg">
   <div class="li"><div class="dot" style="background:#4fc3f7"></div>φPn-φMn（設計強度）</div>
@@ -28,49 +28,74 @@ canvas{display:block;margin:0 auto;background:#16213e;border:1px solid #333;bord
 <script>
 const P = {"b": 40, "h": 70, "fc": 210, "fy": 4200, "rows": [[6.5, 20.268], [63.5, 20.268]]};
 
-function beta1(fc){return fc<=280?0.85:Math.max(0.65,0.85-0.05*(fc-280)/70)}
+// ── 題目給定的雙折線本構（取代 Whitney 0.85f'c 應力塊）──────────────
+//    0      <= eps <= 0.002 : 線性 0 -> 1.0 f'c
+//    0.002  <= eps <= 0.003 : 線性 1.0 f'c -> 0.8 f'c
+function fcOf(eps, fc){
+  if (eps <= 0)      return 0;
+  if (eps <= 0.002)  return eps / 0.002 * fc;
+  if (eps <= 0.003)  return fc * (1 - 0.2 * (eps - 0.002) / 0.001);
+  return 0.8 * fc;
+}
+
+// 壓力區合力與其形心（距壓力面）：對雙折線數值積分
+// 解析解可驗算：中性軸在斷面內時 Cc = (19/30)·b·c·f'c，xbar = 0.37427c
+function ccIntegral(c, b, h, fc){
+  const xTop = Math.min(c, h);          // 壓力區實際深度（c > h 時截在斷面底）
+  const N = 600, dx = xTop / N;
+  let C = 0, Mx = 0;
+  for (let i = 0; i < N; i++){
+    const x = (i + 0.5) * dx;
+    const f = fcOf(0.003 * (c - x) / c, fc);
+    C  += f * b * dx;
+    Mx += f * b * dx * x;
+  }
+  return { C: C, xbar: C > 0 ? Mx / C : 0 };
+}
+
+// 單一中性軸深度的斷面內力
+function sectionAt(c, b, h, fc, fy, rows){
+  const Es = 2040000;
+  const cc = ccIntegral(c, b, h, fc);
+  let Pn = cc.C, Mn = cc.C * (h/2 - cc.xbar);
+  for (const r of rows){
+    if (!r[1]) continue;
+    const eps = 0.003 * (c - r[0]) / c;
+    const fs  = Math.max(-fy, Math.min(fy, eps * Es));
+    // 壓力鋼筋扣「排開的混凝土」：用該位置的雙折線應力，不是 0.85f'c
+    const fn  = (r[0] < Math.min(c, h) && fs > 0) ? (fs - fcOf(eps, fc)) : fs;
+    Pn += fn * r[1];
+    Mn += fn * r[1] * (h/2 - r[0]);
+  }
+  return { Pn: Pn, Mn: Mn, xbar: cc.xbar, Cc: cc.C };
+}
 
 function calcCurve(b,h,fc,fy,rows){
-  const Es=2040000,ey=fy/Es,b1=beta1(fc);
   const pts=[];
   const dMax=Math.max(...rows.map(r=>r[0]));
+  const Ast=rows.reduce((s,r)=>s+r[1],0);
+  // e = 0 也用雙折線：eps = 0.003 全斷面 -> fc = 0.8f'c（與解題 .md Part (a) 一致）
+  const Pmax=0.80*0.65*(0.8*fc*(b*h-Ast)+fy*Ast);
   for(let i=0;i<=250;i++){
     const frac=i/250;
     const c=0.01*Math.pow(h*30/0.01,frac);
-    const a=Math.min(b1*c,h);
-    const Cc=0.85*fc*a*b;
-    let Pn=Cc,Mn=Cc*(h/2-a/2);
-    for(const r of rows){
-      if(!r[1])continue;
-      const eps=0.003*(c-r[0])/c;
-      const fs=Math.max(-fy,Math.min(fy,eps*Es));
-      const fn=(r[0]<a)?(fs-0.85*fc):fs;
-      Pn+=fn*r[1]; Mn+=fn*r[1]*(h/2-r[0]);
-    }
+    const s=sectionAt(c,b,h,fc,fy,rows);
     const et=0.003*(dMax-c)/c;
+    // phi 依考卷首頁所附公式（以 0.002 為壓力控制界限）
     const phi=et>=0.005?0.9:et<=0.002?0.65:0.65+(et-0.002)/0.003*0.25;
-    const Ast=rows.reduce((s,r)=>s+r[1],0);
-    const Pmax=0.80*0.65*(0.85*fc*(b*h-Ast)+fy*Ast);
-    pts.push({c,Pn:Math.min(Pn,Pmax*1.3),Mn:Math.abs(Mn),
-               phiPn:Math.min(phi*Pn,Pmax),phiMn:phi*Math.abs(Mn),phi,et});
+    pts.push({c,Pn:Math.min(s.Pn,Pmax*1.3),Mn:Math.abs(s.Mn),
+               phiPn:Math.min(phi*s.Pn,Pmax),phiMn:phi*Math.abs(s.Mn),phi,et});
   }
   return pts;
 }
 
 function balPt(b,h,fc,fy,rows){
-  const Es=2040000,b1=beta1(fc);
   const dMax=Math.max(...rows.map(r=>r[0]));
-  const cb=6120/(6120+fy)*dMax,ab=b1*cb;
-  const Cc=0.85*fc*ab*b;
-  let Pb=Cc,Mb=Cc*(h/2-ab/2);
-  for(const r of rows){
-    if(!r[1])continue;
-    const eps=0.003*(cb-r[0])/cb;
-    const fs=Math.max(-fy,Math.min(fy,eps*Es));
-    const fn=(r[0]<ab)?(fs-0.85*fc):fs;
-    Pb+=fn*r[1]; Mb+=fn*r[1]*(h/2-r[0]);
-  }
-  return {Pb,Mb:Math.abs(Mb),phiPb:0.65*Pb,phiMb:0.65*Math.abs(Mb)};
+  const cb=6120/(6120+fy)*dMax;
+  const s=sectionAt(cb,b,h,fc,fy,rows);
+  const et=fy/2040000;
+  const phi=et<=0.002?0.65:0.65+(et-0.002)/0.003*0.25;
+  return {Pb:s.Pn,Mb:Math.abs(s.Mn),phiPb:phi*s.Pn,phiMb:phi*Math.abs(s.Mn)};
 }
 
 const cv=document.getElementById('cv'),ctx=cv.getContext('2d');

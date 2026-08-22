@@ -36,35 +36,45 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> USD 強度設計法<br />
-<strong>標籤：</strong> <code>T形梁</code> <code>平衡鋼筋量</code> <code>NA在腹板</code> <code>過渡區φ值</code> <code>斷面韌性容量</code> <code>曲率延展比</code> <code>降伏曲率</code> <code>極限曲率</code> <code>彈性中性軸</code> <code>As=0.9Asb</code></p>
+<strong>標籤：</strong> <code>T形梁</code> <code>平衡鋼筋量</code> <code>NA在腹板</code> <code>過渡區φ值</code> <code>斷面韌性容量</code> <code>曲率延展比</code> <code>降伏曲率</code> <code>極限曲率</code> <code>彈性中性軸</code> <code>As=0.9Asb</code> <code>超筋斷面</code> <code>εt&lt;0.004</code> <code>圖面尺寸歧義</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>針對圖 1 所示之 T 型 RC 梁斷面（<code>RC-2011-2-fig-1.png</code>）：</p>
 <p><img alt="RC-2011-2 題目附圖：T型RC梁斷面，翼板80cm×10cm，腹板40cm×90cm，底部保護層10cm" src="../../raw/solutions/RC-2011-2/RC-2011-2-fig-1.png" /></p>
-<p><em>圖說：翼板寬 $b_f=80$ cm，翼板厚 $h_f=10$ cm；腹板寬 $b_w=40$ cm，腹板高 90 cm；全斷面總高 $h=100$ cm；底部鋼筋形心至底纖維距離 10 cm，故有效深度 $d=90$ cm；受拉鋼筋 $A_s$ 位於底部。</em></p>
+<p><em>圖說：翼板寬 $b_f=80$ cm，翼板厚 $h_f=10$ cm；腹板寬 $b_w=40$ cm；全斷面總高 $h=100$ cm；底部鋼筋形心至底纖維距離 10 cm，故有效深度 $d=90$ cm；受拉鋼筋 $A_s$ 位於底部。</em></p>
+<blockquote>
+<p>⚠ <strong>圖面尺寸鏈有歧義：</strong> 右側「10→90→10」若當成連續尺寸鏈直讀，會得 $h=110$、$d=100$。<br />
+本解依圖面比例判定為 $h=100$、$d=90$；兩種讀法的完整數值對照見 §5 ⑥。</p>
+</blockquote>
 <p><strong>材料：</strong> $f'_c = 350$ kgf/cm²，$f_y = 4200$ kgf/cm²</p>
 <p><strong>(一)</strong> 已知 $A_s = 0.9A_{sb}$（$A_{sb}$ 為此 T 型梁之平衡鋼筋量），求設計彎矩強度 $\phi M_n$。（15 分）</p>
 <p><strong>(二)</strong> 求斷面韌性容量 $\mu_\phi = \phi_u / \phi_y$，其中 $\phi_u$ 及 $\phi_y$ 分別為極限曲率及降伏曲率。（10 分）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong><br />
-- <strong>(一)</strong>：T型梁平衡鋼筋量計算需考慮翼板額外壓力貢獻；$A_s = 0.9A_{sb}$ 表示輕微低配筋，中性軸仍在腹板（過渡區）。<br />
-- <strong>(二)</strong>：曲率延展比 = 極限曲率（Whitney 應力塊非線性中性軸）/ 降伏曲率（彈性轉換斷面中性軸）；重配筋比 → 低延性。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗是否能正確判斷 T 型梁平衡條件下中性軸位置（翼板內 vs. 腹板中）<br />
-2. 測驗 $\phi$ 值過渡區插值是否會算<br />
-3. 測驗 $\phi_y$ 與 $\phi_u$ 採用不同中性軸（彈性 vs. 塑性）的觀念</p>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li><strong>(一)</strong>：T型梁平衡鋼筋量計算需考慮翼板額外壓力貢獻；$A_s = 0.9A_{sb}$ 表示輕微低配筋，中性軸仍在腹板（過渡區）。</li>
+<li><strong>(二)</strong>：曲率延展比 = 極限曲率（Whitney 應力塊非線性中性軸）/ 降伏曲率（彈性轉換斷面中性軸）；重配筋比 → 低延性。</li>
+</ul>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗是否能正確判斷 T 型梁平衡條件下中性軸位置（翼板內 vs. 腹板中）</li>
+<li>測驗 $\phi$ 值過渡區插值是否會算</li>
+<li>測驗 $\phi_y$ 與 $\phi_u$ 採用不同中性軸（彈性 vs. 塑性）的觀念</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 確認材料常數（$\beta_1$、$\varepsilon_y$、$E_c$、$n$）<br />
-2. 求 T 型梁 $A_{sb}$：先算平衡 $c_b$、$a_b$，判斷翼板是否完全壓縮<br />
-3. 求 $A_s = 0.9A_{sb}$，再反算實際 $a$<br />
-4. 計算 $\varepsilon_t$，決定 $\phi$ 值<br />
-5. 對 $A_s$ 位置取矩，得 $M_n$；乘 $\phi$ 得 $\phi M_n$<br />
-6. 求彈性中性軸深度 → $\phi_y$<br />
-7. 用塑性中性軸 → $\phi_u$<br />
-8. 計算 $\mu_\phi = \phi_u/\phi_y$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>確認材料常數（$\beta_1$、$\varepsilon_y$、$E_c$、$n$）</li>
+<li>求 T 型梁 $A_{sb}$：先算平衡 $c_b$、$a_b$，判斷翼板是否完全壓縮</li>
+<li>求 $A_s = 0.9A_{sb}$，再反算實際 $a$</li>
+<li>計算 $\varepsilon_t$，決定 $\phi$ 值</li>
+<li>對 $A_s$ 位置取矩，得 $M_n$；乘 $\phi$ 得 $\phi M_n$</li>
+<li>求彈性中性軸深度 → $\phi_y$</li>
+<li>用塑性中性軸 → $\phi_u$</li>
+<li>計算 $\mu_\phi = \phi_u/\phi_y$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -89,6 +99,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>❸ 過渡區 $\phi$ 值</td>
 <td>$\varepsilon_y < \varepsilon_t < 0.005$，$\phi$ 需線性插值，非直接 0.9</td>
 <td>$\phi = 0.65 + 0.25\dfrac{\varepsilon_t - \varepsilon_y}{0.005 - \varepsilon_y}$</td>
+</tr>
+<tr>
+<td>❸' <strong>漏檢 $\varepsilon_t \geq 0.004$</strong></td>
+<td>本題 $\varepsilon_t = 0.00277 < 0.004$，<strong>規範上此斷面不得作為梁</strong></td>
+<td>算完 $\varepsilon_t$ 一律順手比 0.004，見 §5 ②</td>
 </tr>
 <tr>
 <td>❹ $\phi_y$ 用彈性中性軸，$\phi_u$ 用塑性中性軸</td>
@@ -216,17 +231,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$C_c$</td>
-<td>$0.85\times350\times[80\times10 + 40\times(42.70-10)] = 626{,}630$ kgf</td>
+<td>$0.85\times350\times[80\times10 + 40\times(42.70-10)] = 627{,}103$ kgf</td>
 <td></td>
 </tr>
 <tr>
 <td>$A_{sb}$</td>
-<td>$C_c/f_y = 626{,}630/4200 = 149.2$ cm²</td>
+<td>$C_c/f_y = 627{,}103/4200 = 149.31$ cm²</td>
 <td></td>
 </tr>
 <tr>
 <td>$A_s$</td>
-<td>$0.9\times149.2 = 134.3$ cm²</td>
+<td>$0.9\times149.31 = 134.38$ cm²</td>
 <td></td>
 </tr>
 </tbody>
@@ -243,12 +258,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$a$</td>
-<td>由 $0.85\times350\times[800+40(a-10)]=134.3\times4200$ 解得 37.40 cm</td>
+<td>由 $0.85\times350\times[800+40(a-10)]=134.38\times4200$ 解得 37.43 cm</td>
 <td></td>
 </tr>
 <tr>
 <td>$c_u$</td>
-<td>$a/\beta_1 = 37.40/0.80 = 46.75$ cm</td>
+<td>$a/\beta_1 = 37.43/0.80 = 46.79$ cm</td>
 <td></td>
 </tr>
 </tbody>
@@ -265,12 +280,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$\varepsilon_t$</td>
-<td>$0.003\times(90-46.75)/46.75 = 0.002776$</td>
+<td>$0.003\times(90-46.79)/46.79 = 0.002771$</td>
 <td></td>
 </tr>
 <tr>
 <td>$\phi$</td>
-<td>$0.65 + 0.25\times(0.002776-0.002059)/(0.005-0.002059) = 0.711$</td>
+<td>$0.65 + 0.25\times(0.002771-0.002059)/(0.005-0.002059) = 0.7105$</td>
 <td></td>
 </tr>
 </tbody>
@@ -287,22 +302,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$k_y d$</td>
-<td>彈性裂縫斷面 NA（見 §4 Step 8）= 40.94 cm</td>
+<td>彈性裂縫斷面 NA（見 §4 Step 7）= 40.95 cm</td>
 <td></td>
 </tr>
 <tr>
 <td>$\phi_y$</td>
-<td>$\varepsilon_y/(d-k_y d) = 0.002059/49.06 = 4.197\times10^{-5}$ rad/cm</td>
+<td>$\varepsilon_y/(d-k_y d) = 0.002059/49.05 = 4.198\times10^{-5}$ rad/cm</td>
 <td></td>
 </tr>
 <tr>
 <td>$\phi_u$</td>
-<td>$\varepsilon_{cu}/c_u = 0.003/46.75 = 6.417\times10^{-5}$ rad/cm</td>
+<td>$\varepsilon_{cu}/c_u = 0.003/46.79 = 6.412\times10^{-5}$ rad/cm</td>
 <td></td>
 </tr>
 <tr>
 <td>$\mu_\phi$</td>
-<td>$\phi_u/\phi_y = 6.417/4.197 = 1.53$</td>
+<td>$\phi_u/\phi_y = 6.412/4.198 = 1.53$</td>
 <td></td>
 </tr>
 </tbody>
@@ -357,37 +372,41 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>平衡壓力（分兩部分）：</strong></p>
 <p>$$C_c = 0.85f'_c\bigl[b_f\cdot h_f + b_w\cdot(a_b - h_f)\bigr]$$</p>
 <p>$$= 0.85\times350\times\bigl[80\times10 + 40\times(42.70-10)\bigr]$$</p>
-<p>$$= 297.5\times\bigl[800 + 40\times32.70\bigr] = 297.5\times2108 = 626{,}630 \text{ kgf}$$</p>
-<p>$$\boxed{A_{sb} = \frac{C_c}{f_y} = \frac{626{,}630}{4200} = 149.2 \text{ cm}^2}$$</p>
+<p>$$= 297.5\times\bigl[800 + 40\times32.70\bigr] = 297.5\times2107.9 = 627{,}103 \text{ kgf}$$</p>
+<p>$$\boxed{A_{sb} = \frac{C_c}{f_y} = \frac{627{,}103}{4200} = 149.31 \text{ cm}^2}$$</p>
 <hr />
 <h4>Step 3：計算 $A_s = 0.9 A_{sb}$</h4>
-<p>$$A_s = 0.9\times149.2 = \boxed{134.3 \text{ cm}^2}$$</p>
+<p>$$A_s = 0.9\times149.31 = \boxed{134.38 \text{ cm}^2}$$</p>
 <hr />
 <h4>Step 4：反算實際壓力塊深度 $a$</h4>
 <p>假設 $a > h_f$（待驗證）：</p>
 <p>$$0.85f'_c\bigl[b_f\cdot h_f + b_w\cdot(a-h_f)\bigr] = A_s\cdot f_y$$</p>
-<p>$$297.5\times\bigl[800 + 40(a-10)\bigr] = 134.3\times4200 = 564{,}060$$</p>
-<p>$$800 + 40(a-10) = \frac{564{,}060}{297.5} = 1896.1$$</p>
-<p>$$40(a-10) = 1096.1 \quad\Rightarrow\quad a = 10 + 27.40 = \boxed{37.40 \text{ cm}}$$</p>
-<p>✅ 驗證：$a = 37.40 > h_f = 10$ cm，假設成立。</p>
+<p>$$297.5\times\bigl[800 + 40(a-10)\bigr] = 134.38\times4200 = 564{,}392$$</p>
+<p>$$800 + 40(a-10) = \frac{564{,}392}{297.5} = 1897.1$$</p>
+<p>$$40(a-10) = 1097.1 \quad\Rightarrow\quad a = 10 + 27.43 = \boxed{37.43 \text{ cm}}$$</p>
+<p>✅ 驗證：$a = 37.43 > h_f = 10$ cm，假設成立。</p>
 <hr />
 <h4>Step 5：$\varepsilon_t$ 與 $\phi$ 值</h4>
-<p>$$c_u = \frac{a}{\beta_1} = \frac{37.40}{0.80} = 46.75 \text{ cm}$$</p>
-<p>$$\varepsilon_t = \varepsilon_{cu}\cdot\frac{d - c_u}{c_u} = 0.003\times\frac{90-46.75}{46.75} = 0.003\times0.9251 = 0.002775$$</p>
-<p><strong>判斷區間：</strong> $\varepsilon_y = 0.002059 < \varepsilon_t = 0.002775 < 0.005$ → <strong>過渡區</strong></p>
-<p>$$\phi = 0.65 + 0.25\times\frac{\varepsilon_t - \varepsilon_y}{0.005 - \varepsilon_y} = 0.65 + 0.25\times\frac{0.002775-0.002059}{0.005-0.002059}$$</p>
-<p>$$= 0.65 + 0.25\times\frac{0.000716}{0.002941} = 0.65 + 0.25\times0.2435 = 0.65 + 0.0609 = \boxed{0.711}$$</p>
+<p>$$c_u = \frac{a}{\beta_1} = \frac{37.43}{0.80} = 46.79 \text{ cm}$$</p>
+<p>$$\varepsilon_t = \varepsilon_{cu}\cdot\frac{d - c_u}{c_u} = 0.003\times\frac{90-46.79}{46.79} = 0.003\times0.9237 = 0.002771$$</p>
+<p><strong>判斷區間：</strong> $\varepsilon_y = 0.002059 < \varepsilon_t = 0.002771 < 0.005$ → <strong>過渡區</strong></p>
+<p>$$\phi = 0.65 + 0.25\times\frac{\varepsilon_t - \varepsilon_y}{0.005 - \varepsilon_y} = 0.65 + 0.25\times\frac{0.000712}{0.002941}$$</p>
+<p>$$= 0.65 + 0.25\times0.2421 = 0.65 + 0.0605 = \boxed{0.7105}$$</p>
+<blockquote>
+<p>⚠ <strong>但這個斷面規範上不合格：</strong> $\varepsilon_t = 0.002771 < 0.004$，見 §5 ② 的討論。<br />
+本題為純分析題（題目直接指定 $A_s = 0.9A_{sb}$），故仍照算 $\phi M_n$。</p>
+</blockquote>
 <hr />
 <h4>Step 6：計算 $M_n$（對 $A_s$ 形心取矩）</h4>
 <p><strong>策略：</strong> 將壓力分為腹板矩形塊 + 翼板外挑矩形塊（均勻應力 $0.85f'_c$）：</p>
-<p>$$C_{c,\text{web}} = 0.85\times350\times b_w\times a = 297.5\times40\times37.40 = 444{,}820 \text{ kgf}$$</p>
-<p>$$\text{力臂}_{web} = d - \frac{a}{2} = 90 - 18.70 = 71.30 \text{ cm}$$</p>
+<p>$$C_{c,\text{web}} = 0.85\times350\times b_w\times a = 297.5\times40\times37.43 = 445{,}393 \text{ kgf}$$</p>
+<p>$$\text{力臂}_{web} = d - \frac{a}{2} = 90 - 18.71 = 71.29 \text{ cm}$$</p>
 <p>$$C_{c,\text{flange}} = 0.85\times350\times(b_f-b_w)\times h_f = 297.5\times40\times10 = 119{,}000 \text{ kgf}$$</p>
 <p>$$\text{力臂}_{flange} = d - \frac{h_f}{2} = 90 - 5 = 85.00 \text{ cm}$$</p>
-<p><strong>驗算平衡：</strong> $C_{c,\text{web}} + C_{c,\text{flange}} = 444{,}820 + 119{,}000 = 563{,}820 \approx A_s\cdot f_y = 564{,}060$ kgf ✅</p>
-<p>$$M_n = 444{,}820\times71.30 + 119{,}000\times85.00$$</p>
-<p>$$= 31{,}715{,}666 + 10{,}115{,}000 = 41{,}830{,}666 \text{ kgf·cm} = 418.3 \text{ tf·m}$$</p>
-<p>$$\boxed{\phi M_n = 0.711\times418.3 = 297.4 \text{ tf·m}}$$</p>
+<p><strong>驗算平衡：</strong> $C_{c,\text{web}} + C_{c,\text{flange}} = 445{,}393 + 119{,}000 = 564{,}393 = A_s\cdot f_y = 564{,}392$ kgf ✅</p>
+<p>$$M_n = 445{,}393\times71.29 + 119{,}000\times85.00$$</p>
+<p>$$= 31{,}750{,}285 + 10{,}115{,}000 = 41{,}865{,}285 \text{ kgf·cm} = 418.7 \text{ tf·m}$$</p>
+<p>$$\boxed{\phi M_n = 0.7105\times418.7 = 297.5 \text{ tf·m}}$$</p>
 <hr />
 <h3>Part (二)：斷面韌性容量 $\mu_\phi = \phi_u/\phi_y$</h3>
 <hr />
@@ -395,64 +414,159 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>求彈性裂縫斷面中性軸深度 $k_y d$（設 $x = k_y d$）：</strong></p>
 <p>令 NA 在腹板（$x > h_f$），對 NA 取面積矩：</p>
 <p>$$b_f\cdot h_f\left(x - \frac{h_f}{2}\right) + \frac{b_w\cdot(x-h_f)^2}{2} = n\cdot A_s\cdot(d-x)$$</p>
-<p>代入數值（$b_f=80$，$h_f=10$，$b_w=40$，$n=7.27$，$A_s=134.3$，$d=90$）：</p>
-<p>$$80\times10\times(x-5) + \frac{40\times(x-10)^2}{2} = 7.27\times134.3\times(90-x)$$</p>
-<p>$$800(x-5) + 20(x-10)^2 = 976.2(90-x)$$</p>
+<p>代入數值（$b_f=80$，$h_f=10$，$b_w=40$，$n=7.27$，$A_s=134.38$，$d=90$）：</p>
+<p>$$80\times10\times(x-5) + \frac{40\times(x-10)^2}{2} = 7.27\times134.38\times(90-x)$$</p>
+<p>$$800(x-5) + 20(x-10)^2 = 976.9(90-x)$$</p>
 <p>展開：</p>
-<p>$$800x - 4000 + 20x^2 - 400x + 2000 = 87{,}858 - 976.2x$$</p>
-<p>$$20x^2 + 1376.2x - 89{,}858 = 0$$</p>
-<p>$$x^2 + 68.81x - 4492.9 = 0$$</p>
-<p>$$x = \frac{-68.81 + \sqrt{68.81^2 + 4\times4492.9}}{2} = \frac{-68.81 + \sqrt{4734.8 + 17971.6}}{2} = \frac{-68.81 + 150.69}{2}$$</p>
-<p>$$\boxed{k_y d = x = 40.94 \text{ cm}} \quad (> h_f \text{，假設成立})$$</p>
-<p>$$\phi_y = \frac{\varepsilon_y}{d - k_y d} = \frac{0.002059}{90 - 40.94} = \frac{0.002059}{49.06} = 4.197\times10^{-5} \text{ rad/cm}$$</p>
+<p>$$800x - 4000 + 20x^2 - 400x + 2000 = 87{,}921 - 976.9x$$</p>
+<p>$$20x^2 + 1376.9x - 89{,}921 = 0$$</p>
+<p>$$x^2 + 68.85x - 4496.1 = 0$$</p>
+<p>$$x = \frac{-68.85 + \sqrt{68.85^2 + 4\times4496.1}}{2} = \frac{-68.85 + \sqrt{4740.3 + 17984.2}}{2} = \frac{-68.85 + 150.75}{2}$$</p>
+<p>$$\boxed{k_y d = x = 40.95 \text{ cm}} \quad (> h_f \text{，假設成立})$$</p>
+<p>$$\phi_y = \frac{\varepsilon_y}{d - k_y d} = \frac{0.002059}{90 - 40.95} = \frac{0.002059}{49.05} = 4.198\times10^{-5} \text{ rad/cm}$$</p>
 <hr />
 <h4>Step 8：極限曲率 $\phi_u$（Whitney 塑性中性軸）</h4>
 <p>極限狀態中性軸 $c_u$ 已由 Part (一) 算出：</p>
-<p>$$c_u = 46.75 \text{ cm}$$</p>
-<p>$$\phi_u = \frac{\varepsilon_{cu}}{c_u} = \frac{0.003}{46.75} = 6.417\times10^{-5} \text{ rad/cm}$$</p>
+<p>$$c_u = 46.79 \text{ cm}$$</p>
+<p>$$\phi_u = \frac{\varepsilon_{cu}}{c_u} = \frac{0.003}{46.79} = 6.412\times10^{-5} \text{ rad/cm}$$</p>
 <hr />
 <h4>Step 9：斷面韌性容量</h4>
-<p>$$\boxed{\mu_\phi = \frac{\phi_u}{\phi_y} = \frac{6.417\times10^{-5}}{4.197\times10^{-5}} = 1.53}$$</p>
+<p>$$\boxed{\mu_\phi = \frac{\phi_u}{\phi_y} = \frac{6.412\times10^{-5}}{4.198\times10^{-5}} = 1.53}$$</p>
 <blockquote>
 <p><strong>物理意義：</strong> $A_s = 0.9A_{sb}$ 為高配筋（接近平衡破壞），$\varepsilon_t$ 僅略高於 $\varepsilon_y$，故延性極為有限（$\mu_\phi\approx1.53$）。相較而言，低配筋梁（$A_s\approx0.3A_{sb}$）的 $\mu_\phi$ 通常可達 5–10。</p>
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① $A_{sb}$ 為何遠大於單純腹板矩形梁？</strong></p>
-<p>T 型梁翼板多提供 $C_{c,\text{overhang}} = 0.85\times350\times40\times10 = 119{,}000$ kgf 之壓力，折合鋼筋 $= 119{,}000/4200 = 28.3$ cm²。因此：<br />
-$$A_{sb,T} = A_{sb,\text{web}} + A_{sf} = 120.9 + 28.3 = 149.2 \text{ cm}^2 \gg A_{sb,\text{rect}} = 0.0336\times40\times90 = 121.1 \text{ cm}^2$$</p>
-<p>翼板貢獻約 19%，不可忽略。</p>
-<p><strong>② 過渡區 $\phi$ 值的考場處理</strong></p>
-<p>$A_s < A_{sb}$ 不代表 $\phi = 0.9$，必須計算 $\varepsilon_t$ 後插值。本題 $\phi = 0.711$，若直接取 0.9 將高估 $\phi M_n$ 約 27%，導致設計不安全。</p>
-<p><strong>③ 彈性 vs. 塑性中性軸的深度比較</strong></p>
+<p>先算純腹板矩形梁的平衡鋼筋比：</p>
+<p>$$\rho_b = 0.85\beta_1\frac{f'_c}{f_y}\cdot\frac{6120}{6120+f_y} = 0.85\times0.80\times\frac{350}{4200}\times0.5930 = 0.03360$$</p>
+<p>$$A_{sb,\text{rect}} = 0.03360\times40\times90 = 120.97 \text{ cm}^2$$</p>
+<p>T 型梁翼板外挑部分多提供 $C_{c,\text{overhang}} = 0.85\times350\times40\times10 = 119{,}000$ kgf 之壓力，折合鋼筋：</p>
+<p>$$A_{sf} = \frac{119{,}000}{4200} = 28.33 \text{ cm}^2$$</p>
+<p>$$A_{sb,T} = A_{sb,\text{rect}} + A_{sf} = 120.97 + 28.33 = 149.30 \text{ cm}^2 \;\checkmark\;(\text{與 Step 2 的 } 149.31 \text{ 相符})$$</p>
+<p>翼板貢獻佔 $28.33/149.30 = 19\%$，不可忽略。</p>
+<p><strong>② ⚠ 本斷面規範上不得作為梁使用（$\varepsilon_t < 0.004$）</strong></p>
+<p>$$\varepsilon_t = 0.002771 < 0.004$$</p>
+<p>依土木 401（及 ACI 318 §9.3.3.1），<strong>非預力撓曲構材的最外緣受拉鋼筋淨拉應變不得小於 0.004</strong>；<br />
+更早期的規定 $A_s \leq 0.75A_{sb}$ 同樣不通過（本題 $A_s = 0.9A_{sb}$）。也就是說：</p>
+<blockquote>
+<p><strong>$A_s = 0.9A_{sb}$ 是一個規範上禁止的超筋斷面。</strong></p>
+</blockquote>
+<p>出題者刻意給 $0.9A_{sb}$，就是要看考生會不會發現「$A_s < A_{sb}$ 不等於合法」。<br />
+本題屬<strong>純分析題</strong>（直接指定 $A_s$，只問強度與韌性），故仍照算；<br />
+但若題目是「設計」，正確答案是<strong>這個配筋不可採用</strong>，必須加深斷面、加壓力鋼筋，或降低 $A_s$ 至 $\varepsilon_t \geq 0.004$。</p>
+<p>Part (二) 算出的 $\mu_\phi = 1.53$ 正是這件事的量化證據——延性幾乎沒有。</p>
+<p><strong>③ 過渡區 $\phi$ 值的考場處理</strong></p>
+<p>$A_s < A_{sb}$ 不代表 $\phi = 0.9$，必須計算 $\varepsilon_t$ 後插值。本題 $\phi = 0.7105$，若直接取 0.9 將高估 $\phi M_n$ 約 27%，導致設計不安全。</p>
+<p><strong>④ 彈性 vs. 塑性中性軸的深度比較</strong></p>
 <table>
 <thead>
 <tr>
 <th></th>
 <th>位置</th>
-<th>方法</th>
+<th>由什麼決定</th>
 </tr>
 </thead>
 <tbody>
 <tr>
 <td>彈性 NA（$\phi_y$ 用）</td>
-<td>$k_y d = 40.94$ cm</td>
-<td>轉換斷面一次矩</td>
+<td>$k_y d = 40.95$ cm</td>
+<td>轉換斷面一次矩＝0，是<strong>幾何性質</strong>，與載重大小無關</td>
 </tr>
 <tr>
 <td>塑性 NA（$\phi_u$ 用）</td>
-<td>$c_u = 46.75$ cm</td>
-<td>Whitney 等效應力塊</td>
+<td>$c_u = 46.79$ cm</td>
+<td>$C_c = A_sf_y$ 的<strong>力平衡</strong>，與 $f'_c$、$f_y$、$A_s$ 都有關</td>
 </tr>
 </tbody>
 </table>
-<p>塑性 NA 比彈性 NA 更深（壓力區更大），因為極限狀態混凝土應力分布為矩形，比彈性三角形提供更大壓力中心距底面的力臂，導致中性軸需更深才能與鋼筋拉力平衡。</p>
-<p><strong>④ 考場速解提示</strong></p>
+<p>兩者的定義完全不同，<strong>誰深誰淺沒有普適的因果關係，只能實算比較</strong>。<br />
+本題恰為 $c_u > k_yd$，但這不是通例——例如低配筋斷面（Part 二那類）就會反過來。</p>
+<blockquote>
+<p>⚠ 常見的錯誤說法：「矩形應力塊比三角形提供更大力臂，所以中性軸要更深才能平衡。」<br />
+這是把 $k_yd$ 也當成由力平衡決定的量，因果講反了。</p>
+</blockquote>
+<p><strong>⑤ 考場速解提示</strong></p>
 <ul>
 <li>先判斷 $a_b$ 位置（翼板 or 腹板），免得後面全錯</li>
 <li>$\phi$ 值一定要算，不要假設</li>
+<li>算完 $\varepsilon_t$ <strong>順手比一下 0.004</strong>，這是本題真正的得分點</li>
 <li>$\phi_y$ 和 $\phi_u$ 的中性軸完全不同，<strong>不可混用</strong></li>
-</ul></main>
+</ul>
+<p><strong>⑥ 題意歧義：附圖尺寸鏈可讀成 $d = 100$ cm（2026-08-21 定案）</strong></p>
+<p><code>RC-2011-2-fig-1.png</code> 右側是「10 → 90 → 10」的<strong>連續尺寸鏈</strong>（相鄰兩段以背對背箭頭銜接），<br />
+其中 90 的下箭頭落在 $A_s$ 的高度而非斷面底面。<strong>照尺寸鏈直讀</strong>應為 $h = 110$ cm、$d = 10+90 = 100$ cm。</p>
+<p><strong>本解採 $h = 100$、$d = 90$，理由是圖面比例：</strong> 量測圖檔像素，翼板厚（10 cm）與底部保護層（10 cm）<br />
+都畫成 35～38 px，全斷面高畫成 354 px ≈ 101 cm——<strong>整張圖對 $h = 100$ 完全合乎比例</strong>，<br />
+只有「90」那條的下箭頭位置畫錯。若採直讀，則全圖要比標註短 10%，錯得更離譜。</p>
+<p>兩種讀法的完整數值並陳（$\mu_\phi$ 為無因次量，兩者幾乎相同）：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;"><strong>本解：$h=100,\ d=90$</strong></th>
+<th style="text-align: right;">直讀：$h=110,\ d=100$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$c_b$</td>
+<td style="text-align: right;">53.37 cm</td>
+<td style="text-align: right;">59.30 cm</td>
+</tr>
+<tr>
+<td>$A_{sb}$</td>
+<td style="text-align: right;">149.31 cm²</td>
+<td style="text-align: right;">162.75 cm²</td>
+</tr>
+<tr>
+<td>$A_s = 0.9A_{sb}$</td>
+<td style="text-align: right;">134.38 cm²</td>
+<td style="text-align: right;">146.47 cm²</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td style="text-align: right;">37.43 cm</td>
+<td style="text-align: right;">41.70 cm</td>
+</tr>
+<tr>
+<td>$c_u$</td>
+<td style="text-align: right;">46.79 cm</td>
+<td style="text-align: right;">52.12 cm</td>
+</tr>
+<tr>
+<td>$\varepsilon_t$</td>
+<td style="text-align: right;">0.002771</td>
+<td style="text-align: right;">0.002757</td>
+</tr>
+<tr>
+<td>$\phi$</td>
+<td style="text-align: right;">0.7105</td>
+<td style="text-align: right;">0.7092</td>
+</tr>
+<tr>
+<td>$M_n$</td>
+<td style="text-align: right;">418.7 tf·m</td>
+<td style="text-align: right;">505.8 tf·m</td>
+</tr>
+<tr>
+<td>$\phi M_n$</td>
+<td style="text-align: right;"><strong>297.5 tf·m</strong></td>
+<td style="text-align: right;">358.7 tf·m</td>
+</tr>
+<tr>
+<td>$k_yd$</td>
+<td style="text-align: right;">40.95 cm</td>
+<td style="text-align: right;">45.63 cm</td>
+</tr>
+<tr>
+<td>$\mu_\phi$</td>
+<td style="text-align: right;"><strong>1.53</strong></td>
+<td style="text-align: right;">1.52</td>
+</tr>
+</tbody>
+</table>
+<p>考場上若對圖存疑，<strong>寫明「本解讀 $d = 90$ cm」即可</strong>，不會因此失分。</p></main>
 <footer>來源：raw/solutions/RC-2011-2/RC-2011-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

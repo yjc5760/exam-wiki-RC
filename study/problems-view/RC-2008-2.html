@@ -74,6 +74,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><img alt="RC-2008-2 方形柱斷面 56×56cm，8-#8 鋼筋配置：X 軸右側為壓力側，A 點在 X 軸上，三排鋼筋各距壓力面 8cm、28cm、48cm，壓力排 3 根、中排 2 根、拉力排 3 根" src="../../raw/solutions/RC-2008-2/RC-2008-2-fig-1.png" /></p>
 <p><em>圖說：方形柱斷面 $56 \times 56 \text{ cm}$。保護層 8 cm，鋼筋列間距 20 cm，8-#8 鋼筋共三排：壓力排（距壓力面 $d_1=8$ cm）3 根、中排（$d_2=28$ cm）2 根、拉力排（$d_3=48$ cm）3 根，合計 8 根。$f'_c=350 \text{ kgf/cm}^2$，$f_y=4200 \text{ kgf/cm}^2$。</em></p>
 <hr />
+<p><img alt="RC-2008-2 方形柱斷面 56×56 cm，8-#8 分三排在距壓力面 8/28/48 cm，分別為 3、2、3 根" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-1-section.svg" /></p>
+<p><em>圖 1　方形柱斷面與三排鋼筋。最下排（$d = 48$ cm）就是題目設定應變為零的那一排——這個條件直接把中性軸鎖死，本題根本沒有「解方程求 $c$」這一步。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 在 P-M 互制圖上，<strong>拉力側應變 = 0</strong> 是一個特殊的「邊界狀態」——整個斷面全部受壓（含拉力側鋼筋剛好為零應變），但仍屬壓力控制區域。</p>
 <p><strong>出題者測驗能力：</strong></p>
@@ -458,13 +460,17 @@ $$P_n = C_c + C_{s1} + C_{s2} - T_3 = 639{,}744 + 59{,}357 + 22{,}840 - 0 = \box
 <p>$$M_n = 5{,}629{,}747 + 1{,}187{,}140 + 0 + 0 = 6{,}816{,}887 \text{ kgf·cm}$$</p>
 <p>$$\boxed{M_n \approx 6{,}817{,}000 \text{ kgf·cm} = 68.2 \text{ tf·m}}$$</p>
 <hr />
+<p><img alt="RC-2008-2 拉力側應變為零時的斷面、應變分佈與合力三聯圖，c=48 cm、a=38.4 cm，上兩排在應力塊內要扣占位、最下排在塊外不扣" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-2-strain.svg" /></p>
+<p><em>圖 2　$\varepsilon_t = 0$ 的斷面／應變／合力。三排的處理各不相同：上排降伏且在應力塊內要扣占位、中排未降伏但仍在塊內也要扣、最下排在塊外且應力為零——把三排一律同樣處理是本題最常見的錯。</em></p>
+<p><img alt="RC-2008-2 的 P-M 交互曲線，標出純軸壓、本題點、平衡點、純彎矩四個關鍵點，以及設計曲線的彎矩峰值在 εt=0.005" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-3-pm.svg" /></p>
+<p><em>圖 3　本題點在 P-M 圖上的位置。本題點遠在平衡點之上屬壓力控制區；圖上同時標出</em><em>標稱</em><em> $M_n$ 峰值（平衡點 87.68）與</em><em>設計</em><em> $\varphi M_n$ 峰值（$\varepsilon_t = 0.005$ 處 64.90），可攔下把「$\varphi \times$ 標稱峰值」當成最大設計彎矩的錯誤（那只有 56.99）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>此點在 P-M 互制圖上的位置</h3>
 <p>「拉力側應變 = 0」是 P-M 互制圖中一個特殊點：</p>
 <ul>
 <li><strong>純軸壓點</strong> $P_0$：$e = 0$，無彎矩，所有鋼筋受壓</li>
 <li><strong>本題點</strong>：$P_n = 722$ tf，$M_n = 68.2$ tf·m，拉力排剛好為零（整斷面全部受壓）</li>
-<li><strong>平衡點</strong> $P_b$：拉力筋剛好降伏（$\varepsilon_t = \varepsilon_y$），彎矩最大附近</li>
+<li><strong>平衡點</strong> $P_b$：拉力筋剛好降伏（$\varepsilon_t = \varepsilon_y$），<strong>標稱</strong>彎矩 $M_n$ 的極大值</li>
 <li><strong>純彎點</strong>：$P = 0$</li>
 </ul>
 <p>本題點在平衡點<strong>以上</strong>（壓力控制區），是壓力控制與「全斷面受壓」的分界點。</p>
@@ -473,7 +479,43 @@ $$P_n = C_c + C_{s1} + C_{s2} - T_3 = 639{,}744 + 59{,}357 + 22{,}840 - 0 = \box
 <h3>進階：若改為「拉力排剛好降伏」（平衡點）</h3>
 <p>若題目改成「拉力排應變 $= \varepsilon_y$」，則：<br />
 $$c_b = \frac{\varepsilon_{cu}}{\varepsilon_{cu} + \varepsilon_y} \times d_3 = \frac{0.003}{0.003 + 0.00206} \times 48 = 28.46 \text{ cm}$$</p>
-<p>此時 $a_b = 0.80 \times 28.46 = 22.77$ cm，$P_b$ 和 $M_b$ 均可類似方法求得，且 $M_b > M_n$（本題）。</p></main>
+<p>此時 $a_b = 0.80 \times 28.46 = 22.77$ cm，$P_b = 375.9$ tf、$M_b = 87.68$ tf·m，確實 $M_b > M_n$（87.68 &gt; 68.17）。</p>
+<h3>進階：「彎矩最大」只對標稱值成立</h3>
+<p>上一段的 $M_b = 87.68$ tf·m 是<strong>標稱</strong> $M_n$ 的極大值。若問的是<strong>極限（設計）彎矩</strong> $\varphi M_n$，<br />
+峰值不在平衡點，而在拉力控制界限 $\varepsilon_t = 0.005$（本斷面 $c = 18.00$ cm）：</p>
+<table>
+<thead>
+<tr>
+<th>狀態</th>
+<th style="text-align: right;">$c$ (cm)</th>
+<th style="text-align: right;">$\varepsilon_t$</th>
+<th style="text-align: right;">$\varphi$</th>
+<th style="text-align: right;">$M_n$ (tf·m)</th>
+<th style="text-align: right;">$\varphi M_n$ (tf·m)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>平衡點</td>
+<td style="text-align: right;">28.47</td>
+<td style="text-align: right;">0.00206</td>
+<td style="text-align: right;">0.650</td>
+<td style="text-align: right;"><strong>87.68</strong></td>
+<td style="text-align: right;">57.0</td>
+</tr>
+<tr>
+<td>拉力控制界限</td>
+<td style="text-align: right;">18.00</td>
+<td style="text-align: right;">0.00500</td>
+<td style="text-align: right;">0.900</td>
+<td style="text-align: right;">72.11</td>
+<td style="text-align: right;"><strong>64.90</strong></td>
+</tr>
+</tbody>
+</table>
+<p>$\max(\varphi M_n) = 64.90 \neq \varphi\cdot\max(M_n) = 57.0$。本題問的是標稱 $M_n$，不受影響；<br />
+但同一斷面若被問「最大極限彎矩載重」，答案就是 64.90 tf·m。完整推導見 RC-2015-1。</p>
+<p><em>圖解補繪：2026-08-21（向量圖 3 張，腳本 <code>figs/gen_RC-2008-2.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2008-2/RC-2008-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

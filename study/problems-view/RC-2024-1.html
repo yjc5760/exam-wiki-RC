@@ -42,23 +42,29 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>某一左右對稱 T 形梁斷面，幾何尺寸如圖 1 所示。</p>
 <p><img alt="RC-2024-1 T形梁斷面示意圖：翼板寬80cm、翼板厚20cm、腹板高60cm、腹板寬40cm，受拉鋼筋As位於腹板底部" src="../../raw/solutions/RC-2024-1/RC-2024-1-fig-1.png" /></p>
 <p><em>圖說：T形梁斷面，翼板有效寬度 $b = 80\ \text{cm}$，翼板厚度 $h_f = 20\ \text{cm}$，腹板高度 $60\ \text{cm}$，腹板寬度 $b_w = 40\ \text{cm}$，總深度 $h = 80\ \text{cm}$，受拉鋼筋 $A_s$ 位於腹板底部（假設有效深度 $d = 74\ \text{cm}$，自底面至 $A_s$ 形心保護層厚度 $\approx 6\ \text{cm}$）。</em></p>
-<p><strong>【小題一】</strong> 採中強度鋼筋（$f_y = 4200\ \text{kgf/cm}^2$，$E_s = 2.04 \times 10^6\ \text{kgf/cm}^2$）、混凝土（$f'_c = 280\ \text{kgf/cm}^2$，$\varepsilon_u = 0.003$），依規範（土木 401-112）計算：<br />
-- (a) 最大鋼筋量 $A_{s,\max}$<br />
-- (b) 最小鋼筋量 $A_{s,\min}$</p>
-<p><strong>【小題二】</strong> 改用高強度鋼筋（$f_y = 6900\ \text{kgf/cm}^2$，$E_s = 2.04 \times 10^6\ \text{kgf/cm}^2$）及較低強度混凝土（$f'_c = 210\ \text{kgf/cm}^2$，$\varepsilon_u = 0.004$），斷面不變，計算：<br />
-- (a) 平衡鋼筋量 $A_{s,b}$<br />
-- (b) 最大鋼筋量 $A_{s,\max}$</p>
+<p><strong>【小題一】</strong> 採中強度鋼筋（$f_y = 4200\ \text{kgf/cm}^2$，$E_s = 2.04 \times 10^6\ \text{kgf/cm}^2$）、混凝土（$f'_c = 280\ \text{kgf/cm}^2$，$\varepsilon_u = 0.003$），依規範（土木 401-112）計算：</p>
+<ul>
+<li>(a) 最大鋼筋量 $A_{s,\max}$</li>
+<li>(b) 最小鋼筋量 $A_{s,\min}$</li>
+</ul>
+<p><strong>【小題二】</strong> 改用高強度鋼筋（$f_y = 6900\ \text{kgf/cm}^2$，$E_s = 2.04 \times 10^6\ \text{kgf/cm}^2$）及較低強度混凝土（$f'_c = 210\ \text{kgf/cm}^2$，$\varepsilon_u = 0.004$），斷面不變，計算：</p>
+<ul>
+<li>(a) 平衡鋼筋量 $A_{s,b}$</li>
+<li>(b) 最大鋼筋量 $A_{s,\max}$</li>
+</ul>
 <blockquote>
 <p><strong>假設說明：</strong> 題目未明確標示有效深度 $d$，本解析採 $d = h - 6\ \text{cm} = 74\ \text{cm}$（自底面至 $A_s$ 形心距離 $= 6\ \text{cm}$）。</p>
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> T 形梁的最大、最小、平衡鋼筋量計算，以及當材料參數（$f_y$、$f'_c$、$\varepsilon_u$）改變時，如何系統性修正計算流程。</p>
-<p><strong>出題意圖：</strong><br />
-1. 測試學生能否判斷「中性軸在翼板內或腹板內」並切換計算模式<br />
-2. 測試 $\varepsilon_u = 0.004$（非標準值）時的平衡條件修正<br />
-3. 高強度鋼筋 $f_y = 6900$ 導致 $\varepsilon_y > \varepsilon_u(\text{Case 1})$，學生必須重新計算 $\varepsilon_y$ 而非套用舊公式<br />
-4. 最大鋼筋量（$\varepsilon_t \geq 0.004$）在 $\varepsilon_u = 0.004$ 的情況下的邊界意義</p>
+<p><strong>出題意圖：</strong></p>
+<ol>
+<li>測試學生能否判斷「中性軸在翼板內或腹板內」並切換計算模式</li>
+<li>測試 $\varepsilon_u = 0.004$（非標準值）時的平衡條件修正</li>
+<li>高強度鋼筋 $f_y = 6900$ 導致 $\varepsilon_y > \varepsilon_u(\text{Case 1})$，學生必須重新計算 $\varepsilon_y$ 而非套用舊公式</li>
+<li>最大鋼筋量（$\varepsilon_t \geq 0.004$）在 $\varepsilon_u = 0.004$ 的情況下的邊界意義</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -468,10 +474,44 @@ Step 5（Case 2 最大）：同 Step 2 但用 εu=0.004
 <p><strong>爭議點 1：有效深度 $d$ 未明確給定</strong></p>
 <p>考場上的安全做法：若題目未標示 $d$，應在答案卷上清楚寫明「設 $d = h - 6 = 74\ \text{cm}$」，以使閱卷委員了解假設基礎。部分考生可能採 $d = 70\ \text{cm}$ 或 $d = 75\ \text{cm}$，方法相同即可得分。</p>
 <p><strong>爭議點 2：最大鋼筋量的規範依據</strong></p>
-<p>土木401-112（2023 年版）已取消舊 ACI 318-99 的 $\rho_{max} = 0.75\rho_b$ 規定，改用淨拉應變條件 $\varepsilon_t \geq 0.004$。考生應注意：<br />
-- $\varepsilon_t \geq 0.005$：拉力控制斷面，$\phi = 0.90$<br />
-- $0.004 \leq \varepsilon_t < 0.005$：過渡區，$\phi$ 線性內插<br />
-- $\varepsilon_t < 0.004$：梁設計<strong>不允許</strong>（壓力控制，延性不足）</p>
+<p>土木401-112（2023 年版）已取消舊 ACI 318-99 的 $\rho_{max} = 0.75\rho_b$ 規定，改用淨拉應變條件 $\varepsilon_t \geq 0.004$。考生應注意：</p>
+<ul>
+<li>$\varepsilon_t \geq 0.005$：拉力控制斷面，$\phi = 0.90$</li>
+<li>$0.004 \leq \varepsilon_t < 0.005$：過渡區，$\phi$ 線性內插</li>
+<li>$\varepsilon_t < 0.004$：梁設計<strong>不允許</strong>（壓力控制，延性不足）</li>
+</ul>
+<p><strong>爭議點 3：高強度鋼筋的「拉力控制界限」不是固定的 0.005</strong></p>
+<p>本題只問<strong>最大鋼筋量</strong>（由 $\varepsilon_t \geq 0.004$ 控制），故不受影響。但若延伸去算 $\phi$ 就要小心：</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>$f_y = 4200$（Case 1）</th>
+<th>$f_y = 6900$（Case 2）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>$\varepsilon_{ty} = f_y/E_s$</td>
+<td>0.002059</td>
+<td>0.003382</td>
+</tr>
+<tr>
+<td>壓力控制界限</td>
+<td>$\varepsilon_t \leq 0.002059$</td>
+<td>$\varepsilon_t \leq 0.003382$</td>
+</tr>
+<tr>
+<td>拉力控制界限</td>
+<td>0.005</td>
+<td>$\varepsilon_{ty} + 0.003 = 0.006382$</td>
+</tr>
+</tbody>
+</table>
+<p>土木401-112／ACI 318-19 的拉力控制界限是 $\varepsilon_{ty} + 0.003$，<br />
+對 SD420 恰好等於 $0.002 + 0.003 = 0.005$（習慣上直接記 0.005），但<strong>對 SD690 是 0.006382</strong>。<br />
+Case 2 在 $\varepsilon_t = 0.004$ 時只比 $\varepsilon_{ty} = 0.003382$ 高一點點，<br />
+$\phi$ 會落在<strong>過渡區的很前段</strong>（約 0.70），離 0.90 還很遠——高強度鋼筋的斷面延性餘裕遠比想像中小。</p>
 <p><strong>進階：Case 2 為何 $A_{s,max} < A_{s,b}$？</strong></p>
 <p>當 $\varepsilon_u = 0.004$ 時，最大鋼筋條件 $\varepsilon_t = 0.004$ 使 $c_{max}/d = 0.5$，而平衡條件中 $\varepsilon_y = 0.003382 < 0.004 = \varepsilon_u$，導致 $c_b/d = 0.5419 > 0.5$。因此最大鋼筋量的中性軸反而比平衡條件更高（壓力區更小），導致 $A_{s,max} < A_{s,b}$。這與 Case 1（$\varepsilon_u = 0.003$，$\varepsilon_y = fy/Es \approx 0.00206 < 0.003$）相反，是高強度鋼筋的特殊現象。</p></main>
 <footer>來源：raw/solutions/RC-2024-1/RC-2024-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>

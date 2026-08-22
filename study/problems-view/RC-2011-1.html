@@ -290,8 +290,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>步驟二：求純軸壓點（Point A，e = 0）</h3>
 <p>$$P_{n0} = 0.85f'_c(A_g - A_{st}) + f_y A_{st}$$</p>
 <p>ACI 設計上限（考慮最小偏心）：</p>
-<p>$$\boxed{\phi P_{u,\text{max}} = 0.80\phi P_{n0}} \quad (\phi = 0.65 \text{，矩形箍筋柱})$$</p>
-<p>此點座標：$(\phi M_n = 0,\ \phi P_n = \phi P_{u,\text{max}})$</p>
+<p>$$\boxed{P_{u,\max} = \phi P_{n,\max} = 0.80\,\phi P_{n0}} \quad (\phi = 0.65 \text{，矩形箍筋柱})$$</p>
+<p>此點座標：$(\phi M_n = 0,\ \phi P_n = P_{u,\max})$</p>
+<blockquote>
+<p>$P_u$ 本身已是設計（因數化）值，不可再寫成 $\phi P_{u,\max}$——那等於把 $\phi$ 計入兩次。</p>
+</blockquote>
 <hr />
 <h3>步驟三：求平衡點（Point B，$\varepsilon_t = \varepsilon_y$）</h3>
 <p><strong>中性軸深度：</strong></p>
@@ -312,11 +315,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$0.85f'_c\cdot\beta_1 c\cdot b + A'_s(f'_s - 0.85f'_c) - A_s f_s = 0$$</p>
 <p>其中 $f_s = \min(E_s\varepsilon_t, f_y)$，$f'_s = \min(E_s\varepsilon'_s, f_y)$，解出 $c$ 後：</p>
 <p>$$M_{nc} = \text{各力對形心之矩}$$</p>
-<p>此區段 $\varepsilon_t \gg 0.005$（通常），$\phi = 0.90$。</p>
+<p>此區段須<strong>實算</strong> $\varepsilon_t$ 再定 $\phi$：一般梁式配筋的純彎點 $\varepsilon_t \gg 0.005$ 而 $\phi = 0.90$，但重配筋斷面可能落在過渡區，不可直接假設。</p>
 <p>$$\boxed{(\phi M_{nc},\ \phi P_{nc}) = (0.90 M_{nc},\ 0)}$$</p>
 <hr />
 <h3>步驟五：求若干中間點（假設一系列 $c$ 值）</h3>
-<p>在 $0 < c < c_b$ 及 $c_b < c < h$ 範圍內各取 3–5 個 $c$ 值，對每個 $c$：</p>
+<p>$c$ 由小到大掃過三段：$0 < c < c_b$、$c_b < c < h$、以及 $c > h$（全斷面受壓，一路延伸到被 $0.80\phi P_{n0}$ 水平截平為止；漏掉這一段，曲線上半部就畫不完整）。每段各取 3–5 個 $c$ 值，並且<strong>必須包含這兩個點</strong>：</p>
+<ul>
+<li>$c = c_b$（平衡點）——標稱曲線的彎矩峰值</li>
+<li>$c = \dfrac{0.003}{0.003+0.005}d = 0.375d$（$\varepsilon_t = 0.005$）——<strong>設計</strong>曲線的彎矩峰值兼折點</li>
+</ul>
+<p>對每個 $c$：</p>
 <table>
 <thead>
 <tr>
@@ -357,7 +365,14 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <hr />
 <h3>步驟六：描點繪製互制圖</h3>
-<p>將所有計算點 $(\phi M_n,\ \phi P_n)$ 描在座標系上，平滑連線後形成封閉曲線，並標示：</p>
+<p>將所有計算點 $(\phi M_n,\ \phi P_n)$ 描在座標系上連成曲線，並標示：</p>
+<blockquote>
+<p><strong>注意：$\phi P_n$–$\phi M_n$ 曲線並不平滑。</strong> 平滑的是<strong>標稱</strong>曲線；設計曲線有兩個不連續處：<br />
+（a）$\varepsilon_t = 0.005$ 處 $\varphi$ 觸頂 0.90 後被截平，曲線出現<strong>折點</strong>，<br />
+　　且 $\varphi M_n$ 的<strong>極大值就落在這個折點上</strong>，不在平衡點（推導見 RC-2015-1）；<br />
+（b）上緣被 $0.80\phi P_{n0}$ 水平截平。<br />
+描點時若把這兩處硬拉成平滑弧線，圖形與最大設計彎矩的位置都會畫錯。</p>
+</blockquote>
 <ul>
 <li>曲線上方/右方 → 斷面<strong>不足</strong>（unsafe）</li>
 <li>曲線內部 → 斷面<strong>安全</strong>（safe）</li>

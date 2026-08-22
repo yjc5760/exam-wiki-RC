@@ -35,7 +35,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
 <strong>副分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
 <strong>設計法：</strong> 概念題（耐震評估）<br />
-<strong>標籤：</strong> <code>曲率韌性需求</code> <code>轉角韌性需求</code> <code>位移韌性需求</code> <code>彎矩塑鉸</code> <code>線性內插</code> <code>塑鉸長度</code> <code>公路橋梁耐震規範</code> <code>單曲率柱</code></p>
+<strong>標籤：</strong> <code>曲率韌性</code> <code>轉角韌性</code> <code>位移韌性</code> <code>彎矩塑鉸</code> <code>線性內插</code> <code>塑鉸長度Lp</code> <code>公路橋梁耐震規範</code> <code>單曲率柱</code> <code>需求vs容量</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 某 RC 柱底承受 $P = 270$ tf、$M = 232.5$ tf·m，依線性內插求彎矩塑鉸性質，以民國 109 年交通部頒「公路橋梁耐震評估與補強設計規範」公式，評估曲率韌性需求 $\mu_\phi$、轉角韌性需求 $\mu_\theta$、位移韌性需求 $\mu$。（25 分）</p>
@@ -49,6 +49,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 $$\delta_y = \frac{\phi_y L^2}{3}, \quad \theta_y = \frac{\delta_y}{L}$$<br />
 $$\delta_u = \frac{M_u}{M_y}\delta_y + (\phi_u - \phi_y)L_p(L - 0.5L_p), \quad \theta_u = \frac{\delta_u}{L}$$<br />
 $$L_p = 0.08L + 0.0022\,d_b\,f_y \ge 0.0044\,d_b\,f_y$$</p>
+<blockquote>
+<p><strong>原卷原文（111 年第四題）核對：</strong> 「某鋼筋混凝土柱之斷面尺寸 $80\times80$ cm、淨高度 6.4 m，<br />
+$f'_c$=280、$f_y$=4200 kgf/cm²，縱向主筋使用 D32。已知該柱於軸壓力分別為 $P$=180 tf 及 $P$=360 tf 作用時，<br />
+柱底彎矩塑鉸性質分別如表 3 所示，皆為雙線性曲線。<strong>該柱底今承受軸壓力 $P$=270 tf，彎矩 $M$=232.5 tf-m</strong>，<br />
+假設其彎矩塑鉸性質可由表 3 數值作線性內插，且反曲點位於淨高度一半位置。<br />
+請根據民國 109 年 12 月交通部頒「公路橋梁耐震評估與補強設計規範」所列公式如下，<strong>以撓曲變形為主</strong>，<br />
+評估反曲點下方柱視作單曲率柱時之曲率韌性需求 $\mu_\phi$、轉角韌性需求 $\mu_\theta$，與位移韌性需求 $\mu$。（25 分）」</p>
+<p>卷首另註明本科作答規範為土木 401-100，但本題明確改用<strong>交通部橋梁規範</strong>，兩者不衝突。<br />
+「<strong>以撓曲變形為主</strong>」＝ 只計撓曲變形，不計剪力變形與鋼筋滑移（bond-slip）之貢獻。</p>
+</blockquote>
 <p><strong>表 3 彎矩塑鉸參數（雙線性曲線）：</strong></p>
 <table>
 <thead>
@@ -73,7 +83,13 @@ $$L_p = 0.08L + 0.0022\,d_b\,f_y \ge 0.0044\,d_b\,f_y$$</p>
 </table>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 依橋梁耐震規範的雙線性彎矩-曲率模型，評估 RC 柱在指定軸力下的三種韌性需求比。</p>
+<p><strong>核心觀念：</strong> 依橋梁耐震規範的雙線性彎矩-曲率模型，評估 RC 柱在指定軸力下的三種韌性比。</p>
+<blockquote>
+<p>⚠ <strong>題意歧義（2026-08-22 留檔）：</strong> 題幹說「韌性<strong>需求</strong>」，但原卷印出的公式（$\delta_u$、$\theta_u$、下標 $u$）<br />
+是<strong>韌性容量</strong>的算式；而題目給的 $M = 232.5$ tf·m <strong>恰好是內插後 $M_y = 220$ 與 $M_u = 245$ 的正中點</strong>，<br />
+在「照公式算容量」的讀法下完全用不到。兩種讀法的完整數字都已留檔於 §5 爭議點 2。<br />
+<strong>本解主線採讀法 A（照原卷印出的公式，用 $M_u$、$\phi_u$）。</strong></p>
+</blockquote>
 <p><strong>出題者意圖：</strong></p>
 <ol>
 <li>測驗線性內插的正確執行（$P = 270$ 在 180~360 之間）</li>
@@ -470,16 +486,118 @@ $$0.0044\,d_b\,f_y = 0.0044\times0.0322\times4200 = 0.595 \text{ m}$$</p>
 <p>$$L_p = 0.08L + 0.022\,d_b\,f_y \quad (L,\,d_b \text{ in m},\, f_y \text{ in MPa})$$</p>
 <p>轉換：$f_y = 4200 \text{ kgf/cm}^2 \approx 412 \text{ MPa}$，$d_b = 0.0322 \text{ m}$</p>
 <p>$$\Rightarrow 0.022 \times 0.0322 \times 412 = 0.292 \text{ m} \approx 0.297 \text{ m} \quad\checkmark$$</p>
-<h3>爭議點 2：$M = 232.5$ tf·m 的角色</h3>
-<p>本題提供 $M = 232.5$ tf·m 是用來確認柱底已進入塑性（因 $M > M_y = 220$ tf·m），以及確認尚未達極限（$M < M_u = 245$ tf·m）。韌性需求的<strong>計算</strong>則依規範使用雙線性模型的 $\phi_y$、$\phi_u$、$M_y$、$M_u$，並非直接使用 232.5 tf·m。</p>
+<h3>爭議點 2：$M = 232.5$ tf·m 的角色——兩種讀法都要會（本題最值得留檔處）</h3>
+<p><strong>關鍵觀察：</strong> $M = 232.5 = \dfrac{220 + 245}{2}$，<strong>恰好是內插後 $M_y$ 與 $M_u$ 的正中點</strong>。<br />
+出題者隨手挑一個彎矩不會這麼剛好；這強烈暗示 232.5 是要被「用」的，而不只是拿來確認已降伏。<br />
+但原卷印出的公式（$\delta_u = \frac{M_u}{M_y}\delta_y + \ldots$，下標全是 $u$）又明明是<strong>極限狀態</strong>的算式。</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th><strong>讀法 A（本解主線）</strong></th>
+<th>讀法 B（依 $M = 232.5$ 的「需求」）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>依據</td>
+<td>照原卷印出的公式逐字代入（下標 $u$）</td>
+<td>「需求」＝在實際承受的 $M = 232.5$ 之狀態評估</td>
+</tr>
+<tr>
+<td>曲率</td>
+<td>$\phi_u = 0.020$ rad/m</td>
+<td>$\phi_d = \phi_y + \dfrac{232.5-220}{245-220}(\phi_u-\phi_y) = \mathbf{0.0125}$ rad/m</td>
+</tr>
+<tr>
+<td>$\mu_\phi$</td>
+<td>$0.020/0.005 = \mathbf{4.00}$</td>
+<td>$0.0125/0.005 = \mathbf{2.50}$</td>
+</tr>
+<tr>
+<td>位移</td>
+<td>$\delta_u = 4.491$ cm</td>
+<td>$\delta_d = \dfrac{232.5}{220}\delta_y + (0.0125-0.005)L_p(L-0.5L_p) = \mathbf{3.099}$ cm</td>
+</tr>
+<tr>
+<td>$\mu_\theta = \mu$</td>
+<td>$4.491/1.707 = \mathbf{2.63}$</td>
+<td>$3.099/1.707 = \mathbf{1.82}$</td>
+</tr>
+<tr>
+<td>名稱正確性</td>
+<td>算出來其實是<strong>韌性容量</strong></td>
+<td>才是嚴格意義的<strong>韌性需求</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>採 A 為主線的理由：</strong> 題幹明寫「請<strong>根據規範所列公式如下</strong>……評估」，而印出來的公式下標就是 $u$；<br />
+照字面代入是最不會被扣分的作法。$M = 232.5$ 則用來確認柱底<strong>確實已降伏</strong>（$232.5 > M_y = 220$）<br />
+且<strong>尚未達極限</strong>（$232.5 < M_u = 245$）——這是「可以把它當塑鉸來算」的前提，本身就是必要的一步。</p>
+<p><strong>考場建議：兩個都寫。</strong> 先照公式給 A（$\mu_\phi = 4.0$、$\mu_\theta = \mu = 2.63$），<br />
+再補一句「若『需求』係指在 $M = 232.5$ tf·m 之實際狀態，則 $\mu_\phi = 2.5$、$\mu_\theta = \mu = 1.82$」。<br />
+規範用語上，A 算的是<strong>容量</strong>、B 算的是<strong>需求</strong>，而耐震評估的判準正是「容量 $\ge$ 需求」——<br />
+本題兩者相除 $2.63 / 1.82 = 1.44$，代表尚有 44% 的韌性餘裕，這句話寫上去很加分。</p>
 <h3>進階：三層韌性的物理意義</h3>
 <p>$$\mu_\phi = 4.0 \gg \mu_\theta = \mu = 2.63$$</p>
 <p>這是因為：</p>
 <ul>
 <li>$\mu_\phi$ 只看<strong>斷面塑鉸點</strong>的曲率比（局部），$\phi_u/\phi_y$ 直接由雙線性模型讀出。</li>
 <li>$\mu$ 看的是<strong>整體頂點位移</strong>（全局），塑鉸區只是 $L_p = 0.595$ m 的一段，其貢獻被稀釋於整根 $L = 3.2$ m 的柱中。</li>
-<li>兩者關係：$\mu \approx 1 + (\mu_\phi - 1) \times \lambda$，其中 $\lambda = \frac{3L_p(1 - 0.5L_p/L)}{L} < 1$。</li>
-</ul></main>
+<li>兩者關係：$\mu \approx 1 + (\mu_\phi - 1)\,\lambda$，其中 $\lambda = 3\dfrac{L_p}{L}\!\left(1 - 0.5\dfrac{L_p}{L}\right) < 1$。</li>
+</ul>
+<p>驗算：$\lambda = 3\times\dfrac{0.595}{3.2}\times\left(1 - 0.5\times\dfrac{0.595}{3.2}\right) = 3\times0.1859\times0.9070 = 0.506$</p>
+<p>$$\mu \approx 1 + (4.0-1)\times0.506 = \mathbf{2.518}$$</p>
+<p>比主線的 2.632 略小——差額來自本題公式<strong>多了一項應變硬化</strong> $\dfrac{M_u}{M_y}\delta_y$（$M_u/M_y = 1.114$）。<br />
+  若把硬化拿掉（$M_u/M_y = 1$）：$\delta_u = 0.01707 + 0.02590 = 0.04297$ m，$\mu = 2.518$ ✓ 與近似式完全吻合。<br />
+<strong>這個交叉驗算很值得寫</strong>——它證明你懂公式裡每一項在做什麼。</p>
+<hr />
+<h2>6. 依最新規範對照</h2>
+<h3>6.1 本題所引規範本身就是現行版</h3>
+<p>「<strong>公路橋梁耐震評估與補強設計規範</strong>」於民國 109 年底定稿、<strong>110 年 3 月 23 日</strong>由交通部以<br />
+交技(110)字第 1105003536 號令頒布（交通部部頒規範網頁之更新日期為 110-03-30）。<br />
+截至 2026 年 8 月，<strong>交通部並未再發布更新版本</strong>，故本題引用的即為現行規範，<br />
+「依最新規範計算」與依原卷規範計算<strong>完全相同</strong>，三個答案不變。</p>
+<h3>6.2 與建築物系統（土木 401-112）的分工——常被混用</h3>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>公路橋梁耐震（本題）</th>
+<th>建築物（土木 401-112／建築物耐震設計規範）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>韌性的表達</td>
+<td>分三層：$\mu_\phi$（斷面）→ $\mu_\theta$（構件）→ $\mu_\Delta$（整體）</td>
+<td>以<strong>結構系統韌性容量 $R$</strong> 與 $F_u$ 折減地震力</td>
+</tr>
+<tr>
+<td>塑鉸長度</td>
+<td>明訂 $L_p = 0.08L + 0.0022d_bf_y \ge 0.0044d_bf_y$（$L,d_b$ 用 m、$f_y$ 用 kgf/cm²）</td>
+<td>401 未訂 $L_p$；耐震設計以 $l_o$（圍束區長度）處理</td>
+</tr>
+<tr>
+<td>評估方式</td>
+<td>容量／需求比對（Pushover 導向）</td>
+<td>強度設計（$\phi S_n \ge U$）＋ 韌性細節規定</td>
+</tr>
+<tr>
+<td>圍束需求</td>
+<td>依曲率韌性需求反算 $\rho_s$</td>
+<td>$A_{sh}$ 三式取大（Table 18.7.5.4）</td>
+</tr>
+</tbody>
+</table>
+<p><strong>考場提醒：</strong> 看到「$\mu_\phi$、$\mu_\theta$、$\mu_\Delta$」「$L_p$」「反曲點」就是<strong>橋梁系統</strong>；<br />
+看到「$A_{sh}$、$s_o$、$l_o$、$1.25f_y$、$M_{pr}$」就是<strong>建築系統</strong>。兩套公式不可互相代入。</p>
+<h3>6.3 $L_p$ 公式的來源與單位（複核確認）</h3>
+<p>原式為 Priestley &amp; Park (1987)：$L_p = 0.08L + 0.022\,d_b f_{ye} \ge 0.044\,d_b f_{ye}$（$L,d_b$：m；$f_{ye}$：MPa）。<br />
+換成 kgf/cm²：$0.022/10.197 = 0.002157 \approx \mathbf{0.0022}$、$0.044/10.197 = 0.004315 \approx \mathbf{0.0044}$ ✓<br />
+與規範印出的係數完全吻合——<strong>代入時 $f_y$ 直接用 4200 kgf/cm²，不要再換算成 MPa</strong>。</p>
+<p>本題 $0.08L = 0.256$ m 只佔 43%，<strong>下限式 $0.0044d_bf_y = 0.595$ m 控制</strong>（大 7.5%）。<br />
+$L$ 越短、主筋越粗、$f_y$ 越高，下限越容易控制——這是本題刻意設計的考點。</p></main>
 <footer>來源：raw/solutions/RC-2022-4/RC-2022-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

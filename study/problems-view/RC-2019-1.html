@@ -43,28 +43,34 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>斷面幾何（依附圖）：</strong></p>
 <p><img alt="RC-2019-1 題目附圖：矩形單筋梁斷面，寬度 b=50 cm，有效深度 d=63 cm，混凝土保護層至鋼筋形心 7 cm，總深度 h=70 cm，底部配置單層拉力鋼筋 As" src="../../raw/solutions/RC-2019-1/RC-2019-1-fig-1.png" /></p>
 <p><em>圖說：矩形斷面，寬 b = 50 cm，有效深度 d = 63 cm（鋼筋單層配置），保護層至形心距離 7 cm，總梁深 h = 70 cm。鋼筋量 As 為未知數。</em></p>
-<p><strong>材料強度：</strong><br />
-- 混凝土抗壓強度：$f'_c = 210\ \text{kgf/cm}^2$<br />
-- 鋼筋降伏應力：$f_y = 4{,}200\ \text{kgf/cm}^2$</p>
+<p><strong>材料強度：</strong></p>
+<ul>
+<li>混凝土抗壓強度：$f'_c = 210\ \text{kgf/cm}^2$</li>
+<li>鋼筋降伏應力：$f_y = 4{,}200\ \text{kgf/cm}^2$</li>
+</ul>
 <p><strong>規範：</strong> 土木 401-100（CNS 1480）</p>
 <p><strong>提示（來自原題）：</strong> 強度折減因數 $\phi$ 界於 0.65 與 0.9 之間（即過渡區）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 本題測驗考生能否在 $\phi$ 值未知（過渡區）的情況下，正確建立 $\phi$–$A_s$–$\varepsilon_t$ 的聯立方程，透過<strong>代入消元</strong>化為二次方程求解 $A_s$，而非直接假設 $\phi = 0.9$。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 強迫考生理解 $\phi$ 值不是固定的，需由應變條件決定<br />
-2. 測試是否知道過渡區 $\phi$ 的線性內插公式<br />
-3. 透過「$\phi$ 界於 0.65 與 0.9」的提示，告知考生：假設 $\phi = 0.9$ 算出的答案不對，直接假設 $\phi = 0.65$ 也不對<br />
-4. 考察將多個方程式聯立整理後求解的代數能力</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>強迫考生理解 $\phi$ 值不是固定的，需由應變條件決定</li>
+<li>測試是否知道過渡區 $\phi$ 的線性內插公式</li>
+<li>透過「$\phi$ 界於 0.65 與 0.9」的提示，告知考生：假設 $\phi = 0.9$ 算出的答案不對，直接假設 $\phi = 0.65$ 也不對</li>
+<li>考察將多個方程式聯立整理後求解的代數能力</li>
+</ol>
 <p><strong>陷阱所在：</strong> 若直接假設 $\phi = 0.9$，求出 $A_s$ 後驗算 $\varepsilon_t < 0.005$，發現矛盾——表示需要用過渡區公式重解，否則白費工夫。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫（五步驟）：</strong><br />
-1. 確認 $\beta_1$（依 $f'_c$ 決定）<br />
-2. 以 $A_s$ 為未知數，將 $a$、$c$、$\varepsilon_t$ 全部表示為 $A_s$ 的函數<br />
-3. 將過渡區 $\phi$ 公式也表示為 $A_s$ 的函數<br />
-4. 代入 $\phi M_n = M_u$ 展開，化為二次方程求 $A_s$<br />
-5. 驗算 $\varepsilon_t$ 落在過渡區（$\varepsilon_y < \varepsilon_t < 0.005$），確認合法</p>
+<p><strong>作戰計畫（五步驟）：</strong></p>
+<ol>
+<li>確認 $\beta_1$（依 $f'_c$ 決定）</li>
+<li>以 $A_s$ 為未知數，將 $a$、$c$、$\varepsilon_t$ 全部表示為 $A_s$ 的函數</li>
+<li>將過渡區 $\phi$ 公式也表示為 $A_s$ 的函數</li>
+<li>代入 $\phi M_n = M_u$ 展開，化為二次方程求 $A_s$</li>
+<li>驗算 $\varepsilon_t$ 落在過渡區（$\varepsilon_y < \varepsilon_t < 0.005$），確認合法</li>
+</ol>
 <p><strong>關鍵陷阱與應對：</strong></p>
 <table>
 <thead>
@@ -254,7 +260,7 @@ $$</p>
 <tbody>
 <tr>
 <td>方程式</td>
-<td>$0.05177\,A_s^2 - 7.031\,A_s + 213.1 = 0$</td>
+<td>$0.05177\,A_s^2 - 7.031\,A_s + 212.69 = 0$</td>
 <td></td>
 </tr>
 <tr>
@@ -328,18 +334,18 @@ $$</p>
 <p>$$\phi \cdot A_s \cdot f_y \cdot \left(d - \frac{a}{2}\right) = M_u$$</p>
 <p>$$\left(0.220\,A_s + 29.02\right) \times 4200 \times \left(63 - 0.2353\,A_s\right) = 8{,}572{,}000$$</p>
 <p>兩側除以 4200：</p>
-<p>$$\left(0.220\,A_s + 29.02\right)\left(63 - 0.2353\,A_s\right) = 2041.4$$</p>
+<p>$$\left(0.220\,A_s + 29.02\right)\left(63 - 0.2353\,A_s\right) = \frac{8{,}572{,}000}{4200} = 2040.95$$</p>
 <p>展開左側：</p>
-<p>$$\underbrace{0.220 \times 63}_{13.86}\,A_s - \underbrace{0.220 \times 0.2353}_{0.05177}\,A_s^2 + \underbrace{29.02 \times 63}_{1828.3} - \underbrace{29.02 \times 0.2353}_{6.829}\,A_s = 2041.4$$</p>
+<p>$$\underbrace{0.220 \times 63}_{13.86}\,A_s - \underbrace{0.220 \times 0.2353}_{0.05177}\,A_s^2 + \underbrace{29.02 \times 63}_{1828.3} - \underbrace{29.02 \times 0.2353}_{6.829}\,A_s = 2040.95$$</p>
 <p>整理：</p>
-<p>$$-0.05177\,A_s^2 + (13.86 - 6.829)\,A_s + 1828.3 = 2041.4$$</p>
-<p>$$\boxed{0.05177\,A_s^2 - 7.031\,A_s + 213.1 = 0}$$</p>
+<p>$$-0.05177\,A_s^2 + (13.86 - 6.829)\,A_s + 1828.3 = 2040.95$$</p>
+<p>$$\boxed{0.05177\,A_s^2 - 7.031\,A_s + 212.69 = 0}$$</p>
 <hr />
 <h3>4.5 求解二次方程</h3>
-<p>$$A_s = \frac{7.031 \pm \sqrt{7.031^2 - 4 \times 0.05177 \times 213.1}}{2 \times 0.05177}$$</p>
-<p>$$= \frac{7.031 \pm \sqrt{49.43 - 44.14}}{0.10354}$$</p>
-<p>$$= \frac{7.031 \pm \sqrt{5.29}}{0.10354}$$</p>
-<p>$$= \frac{7.031 \pm 2.300}{0.10354}$$</p>
+<p>$$A_s = \frac{7.031 \pm \sqrt{7.031^2 - 4 \times 0.05177 \times 212.69}}{2 \times 0.05177}$$</p>
+<p>$$= \frac{7.031 \pm \sqrt{49.435 - 44.045}}{0.10354}$$</p>
+<p>$$= \frac{7.031 \pm \sqrt{5.390}}{0.10354}$$</p>
+<p>$$= \frac{7.031 \pm 2.322}{0.10354}$$</p>
 <table>
 <thead>
 <tr>
@@ -351,29 +357,39 @@ $$</p>
 <tbody>
 <tr>
 <td>取 $+$</td>
-<td>$(7.031 + 2.300)/0.10354 = 90.1\ \text{cm}^2$</td>
+<td>$(7.031 + 2.322)/0.10354 = 90.3\ \text{cm}^2$</td>
 <td><strong>無效</strong>：代入後 $\varepsilon_t < \varepsilon_y$，鋼筋未降伏</td>
 </tr>
 <tr>
 <td>取 $-$</td>
-<td>$(7.031 - 2.300)/0.10354 = \mathbf{45.7}\ \text{cm}^2$</td>
+<td>$(7.031 - 2.322)/0.10354 = \mathbf{45.5}\ \text{cm}^2$</td>
 <td><strong>有效解</strong></td>
 </tr>
 </tbody>
 </table>
-<p>$$\boxed{A_s \approx 45.7\ \text{cm}^2}$$</p>
+<p>$$\boxed{A_s \approx 45.5\ \text{cm}^2}$$</p>
+<blockquote>
+<p><strong>精度說明：</strong> 上式的係數 $0.220$、$29.02$ 是四捨五入後的值。<br />
+不經二次式、直接以 $\phi M_n(A_s) = M_u$ 數值求根，得 $A_s = 45.52$ cm²，與 45.5 相差 0.04%。<br />
+兩者都可，<strong>但常數項務必用 $8{,}572{,}000/4200 = 2040.95$</strong>——寫成 2041.4 會把答案推到 45.7（偏差 0.4%）。</p>
+</blockquote>
 <hr />
 <h3>4.6 驗算</h3>
-<p>$$a = 0.4706 \times 45.7 = 21.51\ \text{cm}$$</p>
-<p>$$c = 21.51/0.85 = 25.31\ \text{cm}$$</p>
-<p>$$\varepsilon_t = 0.003 \times \frac{63 - 25.31}{25.31} = 0.003 \times 1.489 = 0.00447$$</p>
-<p>$$\varepsilon_y = 0.002059 < \varepsilon_t = 0.00447 < 0.005 \quad \checkmark \text{（過渡區確認）}$$</p>
-<p>$$\phi = 0.65 + \frac{0.00447 - 0.002059}{0.005 - 0.002059} \times 0.25 = 0.65 + \frac{0.002411}{0.002941} \times 0.25 = 0.65 + 0.205 = 0.855$$</p>
-<p>$$\phi M_n = 0.855 \times 45.7 \times 4200 \times (63 - 10.755) = 0.855 \times 45.7 \times 4200 \times 52.245$$</p>
-<p>$$= 0.855 \times 10{,}026{,}573 = 8{,}572{,}720\ \text{kgf·cm} \approx 85.73\ \text{tf·m} \approx 85.72\ \text{tf·m} \quad \checkmark$$</p>
+<p>以精解 $A_s = 45.52$ cm² 代回：</p>
+<p>$$a = 0.4706 \times 45.52 = 21.42\ \text{cm}$$</p>
+<p>$$c = 21.42/0.85 = 25.20\ \text{cm}$$</p>
+<p>$$\varepsilon_t = 0.003 \times \frac{63 - 25.20}{25.20} = 0.003 \times 1.4999 = 0.00450$$</p>
+<p>$$\varepsilon_y = 0.002059 < \varepsilon_t = 0.00450 < 0.005 \quad \checkmark \text{（過渡區確認，與題目提示相符）}$$</p>
+<p>$$\phi = 0.65 + \frac{0.00450 - 0.002059}{0.005 - 0.002059} \times 0.25 = 0.65 + \frac{0.002441}{0.002941} \times 0.25 = 0.65 + 0.2075 = 0.8575$$</p>
+<p>$$\phi M_n = 0.8575 \times 45.52 \times 4200 \times (63 - 10.71) = 0.8575 \times 191{,}184 \times 52.29$$</p>
+<p>$$= 0.8575 \times 9{,}997{,}130 = 8{,}572{,}200\ \text{kgf·cm} \approx 85.72\ \text{tf·m} = M_u \quad \checkmark$$</p>
+<p><strong>延性檢核（$\varepsilon_t \geq 0.004$）：</strong></p>
+<p>$$\varepsilon_t = 0.00450 \geq 0.004 \quad \checkmark\ \text{（僅高出 12\%，離梁的配筋上限很近）}$$</p>
+<p>土木 401-100 規定非預力梁 $\varepsilon_t \geq 0.004$。本題落在 $[0.004,\ 0.005]$ 之間——<br />
+<strong>既不是拉力控制（不能用 $\phi = 0.9$），也還沒超筋</strong>，正是出題者要考的那條窄帶。</p>
 <p><strong>最小鋼筋量驗核：</strong></p>
 <p>$$A_{s,\min} = \max\!\left(\frac{0.80\sqrt{f'_c}}{f_y},\, \frac{14}{f_y}\right) b_w d = \max(0.00276,\, 0.00333) \times 50 \times 63 = 10.49\ \text{cm}^2$$</p>
-<p>$$A_s = 45.7\ \text{cm}^2 \gg A_{s,\min} = 10.49\ \text{cm}^2 \quad \checkmark$$</p>
+<p>$$A_s = 45.5\ \text{cm}^2 \gg A_{s,\min} = 10.49\ \text{cm}^2 \quad \checkmark$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 本題解法的唯一性</h3>
@@ -384,9 +400,9 @@ $$</p>
 <p>$$\varepsilon_y = 4200/2{,}040{,}000 = 0.002059 \neq 0.002$$</p>
 <p>若誤用 $E_s = 2 \times 10^6$，則 $\varepsilon_y = 0.0021$，最終答案誤差不大（約 $A_s$ 差 1%），但規範上不精確。</p>
 <h3>5.3 高鋼筋比的實務意義</h3>
-<p>本題 $\rho = 45.7/(50 \times 63) = 0.01451$，對應的平衡鋼筋比：</p>
+<p>本題 $\rho = 45.5/(50 \times 63) = 0.01446$，對應的平衡鋼筋比：</p>
 <p>$$\rho_b = 0.85 \times 0.85 \times \frac{210}{4200} \times \frac{6120}{6120+4200} = 0.02143$$</p>
-<p>$\rho/\rho_b = 0.68$，鋼筋量偏高（約 $\rho_b$ 的 68%），接近過渡區邊界。實務設計上，若有條件應增大斷面或採用壓力筋以提升延性（使 $\varepsilon_t \geq 0.005$，$\phi = 0.9$）。</p></main>
+<p>$\rho/\rho_b = 0.675$，鋼筋量偏高（約 $\rho_b$ 的 68%），接近過渡區邊界。實務設計上，若有條件應增大斷面或採用壓力筋以提升延性（使 $\varepsilon_t \geq 0.005$，$\phi = 0.9$）。</p></main>
 <footer>來源：raw/solutions/RC-2019-1/RC-2019-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

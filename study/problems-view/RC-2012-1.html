@@ -32,42 +32,60 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>RC-2012-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h1>考題編號：RC-2012-1</h1>
-<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
-<strong>副分類：</strong> （無）
-<strong>設計法：</strong> WSD 容許應力設計法
-<strong>標籤：</strong> <code>先拉法</code> <code>有黏結腱</code> <code>懸臂梁</code> <code>初始階段應力</code> <code>偏心方向判斷</code> <code>容許應力檢核</code> <code>底纖維拉應力超限</code> <code>補救措施</code></p>
+<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
+<strong>副分類：</strong> （無）<br />
+<strong>設計法：</strong> WSD 容許應力設計法<br />
+<strong>標籤：</strong> <code>後拉法</code> <code>有黏裹腱</code> <code>懸臂梁</code> <code>初始階段應力</code> <code>偏心方向判斷</code> <code>容許應力檢核</code> <code>底纖維拉應力超限</code> <code>補救措施</code> <code>超限區段長度</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>一<strong>懸臂式純預力梁</strong>（cantilever prestressed beam），斷面 $b=30\ \text{cm}$，$h=90\ \text{cm}$，
-懸臂長 $L=610\ \text{cm}$。設置<strong>一排 3 根有黏裹（bonded）12.7 mm 直徑七線絞預力鋼鍵</strong>，
+<p>一<strong>懸臂式純預力梁</strong>（cantilever prestressed beam），斷面 $b=30\ \text{cm}$，$h=90\ \text{cm}$，<br />
+懸臂長 $L=610\ \text{cm}$。設置<strong>一排 3 根有黏裹（bonded）12.7 mm 直徑七線絞預力鋼鍵</strong>，<br />
 鋼鍵中心偏心距 $e=30\ \text{cm}$（<strong>全長固定偏心，不變</strong>）。</p>
-<p>初始階段（混凝土達 7 天強度時拉預力）：
-- 有效預應力：$f_{pi} = 0.75\,f_{pu}$
-- 所受載重：<strong>混凝土本身自重</strong></p>
+<blockquote>
+<p>⚠ <strong>工法判定勘誤（2026-08-22）：本題是「後拉法」，不是先拉法。</strong> 舊版標籤與內文寫「先拉法」，兩處原卷證據直接推翻：<br />
+① 原卷寫「<strong>在混凝土達 7 天強度時開始拉預力</strong>」——先拉法是<strong>先張拉鋼腱、再澆置混凝土</strong>，<br />
+不可能等混凝土硬化到 7 天強度才張拉；「等混凝土達某強度才張拉」是後拉法的定義性動作。<br />
+② 原卷註明「計算斷面性質，請<strong>忽略鋼鍵與套管所占有面積</strong>」——<strong>套管（sheath／duct）是後拉法專有</strong>，先拉法沒有套管。</p>
+<p>此更正不影響任何數值（題目已叫我們忽略孔洞、直接用全斷面 $30\times90$），但影響工法觀念、標籤，<br />
+且與 §5 的鋼腱應力上限討論（錨定裝置處 $0.70f_{pu}$ 只適用後拉法）直接相關。</p>
+</blockquote>
+<p>初始階段（混凝土達 7 天強度時拉預力）：</p>
+<ul>
+<li>有效預應力：$f_{pi} = 0.75\,f_{pu}$</li>
+<li>所受載重：<strong>混凝土本身自重</strong></li>
+</ul>
 <blockquote>
 <p><strong>試判斷鋼鍵偏心方向，並檢核初始階段混凝土應力是否超出規範規定。若有未通過者，說明補救措施。</strong></p>
 </blockquote>
-<p><strong>材料性質：</strong>
-- $f'<em ci="ci">c = 350\ \text{kgf/cm}^2$，$f'</em> = 0.7f'<em ci="ci">c = 245\ \text{kgf/cm}^2$
-- $E_c = 15{,}000\sqrt{f'_c}$，$w_c = 2.3\ \text{tf/m}^3$，$f_r = 2.0\sqrt{f'</em>$（開裂模數）
-- $f_{pu} = 19{,}000\ \text{kgf/cm}^2$，$f_{py} = 0.9\,f_{pu}$，$E_p = 2.04\times10^6\ \text{kgf/cm}^2$
-- 1 根 12.7 mm 七線絞預力鋼鍵：$A_{ps,1} = 98.71\ \text{mm}^2 = 0.9871\ \text{cm}^2$}</p>
-<p><strong>初始階段容許應力：</strong>
-- 壓應力 $\leq 0.60\,f'<em ci="ci">{ci}$
-- 拉應力 $\leq 0.80\sqrt{f'</em>$}</p>
+<p><strong>材料性質：</strong></p>
+<ul>
+<li>$f'_c = 350\ \text{kgf/cm}^2$，$f'_{ci} = 0.7f'_c = 245\ \text{kgf/cm}^2$</li>
+<li>$E_c = 15{,}000\sqrt{f'_c}$，$w_c = 2.3\ \text{tf/m}^3$，$f_r = 2.0\sqrt{f'_c}$（原卷給定之開裂模數式；初始階段應代入 $f'_{ci}$，見 §5④）</li>
+<li>$f_{pu} = 19{,}000\ \text{kgf/cm}^2$，$f_{py} = 0.9\,f_{pu}$，$E_p = 2.04\times10^6\ \text{kgf/cm}^2$</li>
+<li>1 根 12.7 mm 七線絞預力鋼鍵：$A_{ps,1} = 98.71\ \text{mm}^2 = 0.9871\ \text{cm}^2$</li>
+</ul>
+<p><strong>初始階段容許應力：</strong></p>
+<ul>
+<li>壓應力 $\leq 0.60\,f'_{ci}$</li>
+<li>拉應力 $\leq 0.80\sqrt{f'_{ci}}$</li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心精神：</strong>
-懸臂梁的彎矩方向與簡支梁<strong>相反</strong>（固定端受最大負彎矩／挑空端零彎矩）。
+<p><strong>核心精神：</strong><br />
+懸臂梁的彎矩方向與簡支梁<strong>相反</strong>（固定端受最大負彎矩／挑空端零彎矩）。<br />
 預力鋼鍵偏心方向必須配合彎矩分佈：鋼鍵應在<strong>重心以上</strong>，才能產生與重力彎矩相抗衡的壓應力。</p>
-<p>初始階段（initial stage）同時存在：
-1. <strong>高初始預力</strong>（$0.75\,f_{pu}$，尚未發生長期損失）→ 混凝土壓應力大
-2. <strong>低混凝土強度</strong>（7天強度 $f'_{ci}=0.7f'_c$）→ 容許值小</p>
-<p><strong>出題者意圖：</strong>
-1. 測試懸臂梁偏心方向的判斷能力（≠ 簡支梁）
-2. 測試初始階段需用 $f'_{ci}$ 而非 $f'_c$
-3. 測試全梁各斷面（固定端 + 自由端）均需檢核
-4. 考驗補救措施（彎腱 or 補充鋼筋）的判斷</p>
+<p>初始階段（initial stage）同時存在：</p>
+<ol>
+<li><strong>高初始預力</strong>（$0.75\,f_{pu}$，尚未發生長期損失）→ 混凝土壓應力大</li>
+<li><strong>低混凝土強度</strong>（7天強度 $f'_{ci}=0.7f'_c$）→ 容許值小</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測試懸臂梁偏心方向的判斷能力（≠ 簡支梁）</li>
+<li>測試初始階段需用 $f'_{ci}$ 而非 $f'_c$</li>
+<li>測試全梁各斷面（固定端 + 自由端）均需檢核</li>
+<li>考驗補救措施（彎腱 or 補充鋼筋）的判斷</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -124,7 +142,7 @@ Step 6：補救措施說明
 <p>$$\text{Step 3:}\quad w = w_c\times b\times h,\quad M_{sw} = \frac{wL^2}{2}\quad \text{（懸臂固定端）}$$</p>
 <p>$$\text{Step 4（固定端）:}\quad f_{top} = -\frac{P_i}{A} - \frac{P_i\cdot e}{S_t} + \frac{\boxed{M_{sw}}}{S_t}, \quad f_{bot} = -\frac{P_i}{A} + \frac{P_i\cdot e}{S_b} - \frac{\boxed{M_{sw}}}{S_b}$$</p>
 <p>$$\text{Step 4（自由端）:}\quad f_{top} = -\frac{\boxed{P_i}}{A} - \frac{\boxed{P_i}\cdot e}{S_t}, \quad f_{bot} = -\frac{\boxed{P_i}}{A} + \frac{\boxed{P_i}\cdot e}{S_b}$$</p>
-<p>$$\text{容許值:}\quad \text{壓} \leq 0.60f'<em ci="ci">{ci},\quad \text{拉} \leq 0.80\sqrt{f'</em>$$}</p>
+<p>$$\text{容許值:}\quad \text{壓} \leq 0.60f'_{ci},\quad \text{拉} \leq 0.80\sqrt{f'_{ci}}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -373,9 +391,11 @@ Step 6：補救措施說明
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 0：判斷偏心方向</h3>
-<p>懸臂梁在自重下的彎矩圖：
-- 固定端（牆端）：<strong>負彎矩</strong>最大 → 頂纖維拉力、底纖維壓力
-- 自由端：零彎矩</p>
+<p>懸臂梁在自重下的彎矩圖：</p>
+<ul>
+<li>固定端（牆端）：<strong>負彎矩</strong>最大 → 頂纖維拉力、底纖維壓力</li>
+<li>自由端：零彎矩</li>
+</ul>
 <p>為抵消頂纖維拉力，預力偏心應在重心<strong>上方</strong>，使偏心壓縮力矩在頂纖維產生壓應力。</p>
 <p>$$\boxed{\text{鋼鍵位於斷面重心上方 30 cm（e = 30 cm，向上）}}$$</p>
 <hr />
@@ -405,18 +425,18 @@ Step 6：補救措施說明
 <hr />
 <h3>Step 5：應力檢核</h3>
 <blockquote>
-<p><strong>符號規定：</strong> 壓應力為「−」（C），拉應力為「+」（T）
-<strong>應力公式（鋼鍵在重心上方 e）：</strong>
-$$f_{top} = -\frac{P_i}{A} - \frac{P_i e}{S_t} + \frac{M}{S_t}$$
-$$f_{bot} = -\frac{P_i}{A} + \frac{P_i e}{S_b} - \frac{M}{S_b}$$
-其中 $M &gt; 0$ 代表重力使固定端挑空形成的挑空彎矩量值。</p>
+<p><strong>符號規定：</strong> 壓應力為「−」（C），拉應力為「+」（T）<br />
+<strong>應力公式（鋼鍵在重心上方 e）：</strong><br />
+$$f_{top} = -\frac{P_i}{A} - \frac{P_i e}{S_t} + \frac{M}{S_t}$$<br />
+$$f_{bot} = -\frac{P_i}{A} + \frac{P_i e}{S_b} - \frac{M}{S_b}$$<br />
+其中 $M > 0$ 代表重力使固定端挑空形成的挑空彎矩量值。</p>
 </blockquote>
 <h4>▌固定端（$x = 0$，$M = M_{sw} = 1{,}155{,}371\ \text{kgf·cm}$）</h4>
 <p>$$f_{top} = -15.63 - 31.26 + 28.53 = \boxed{-18.36\ \text{kgf/cm}^2\ \text{(C)}} \leq 147\ ✓$$</p>
 <p>$$f_{bot} = -15.63 + 31.26 - 28.53 = \boxed{-12.90\ \text{kgf/cm}^2\ \text{(C)}} \leq 147\ ✓$$</p>
 <h4>▌自由端（$x = L$，$M = 0$）</h4>
 <p>$$f_{top} = -15.63 - 31.26 + 0 = \boxed{-46.89\ \text{kgf/cm}^2\ \text{(C)}} \leq 147\ ✓$$</p>
-<p>$$f_{bot} = -15.63 + 31.26 - 0 = \boxed{+15.63\ \text{kgf/cm}^2\ \text{(T)}} &gt; 12.52\ \mathbf{❌}$$</p>
+<p>$$f_{bot} = -15.63 + 31.26 - 0 = \boxed{+15.63\ \text{kgf/cm}^2\ \text{(T)}} > 12.52\ \mathbf{❌}$$</p>
 <hr />
 <h3>Step 6：結論彙整</h3>
 <table>
@@ -465,12 +485,24 @@ $$f_{bot} = -\frac{P_i}{A} + \frac{P_i e}{S_b} - \frac{M}{S_b}$$
 </tr>
 </tbody>
 </table>
-<p>$$\boxed{\text{自由端底纖維拉應力 15.63 kgf/cm}^2 &gt; 12.52\ \text{kgf/cm}^2 \text{（超限 3.11 kgf/cm}^2\text{）}}$$</p>
+<p>$$\boxed{\text{自由端底纖維拉應力 15.63 kgf/cm}^2 > 12.52\ \text{kgf/cm}^2 \text{（超限 3.11 kgf/cm}^2\text{）}}$$</p>
+<hr />
+<h3>Step 6b：超限的不是一個點，是一整段（2026-08-22 補算）</h3>
+<p>底纖維應力沿梁長是連續變化的。令 $\xi$ 為<strong>距自由端</strong>的距離，則 $M(\xi) = w\xi^2/2$：</p>
+<p>$$f_{bot}(\xi) = -\frac{P_i}{A} + \frac{P_ie}{S} - \frac{w\xi^2/2}{S}
+= 15.63 - 28.53\left(\frac{\xi}{610}\right)^2\ \text{（拉為正）}$$</p>
+<p>令 $f_{bot}(\xi) = 12.52$：</p>
+<p>$$\left(\frac{\xi}{610}\right)^2 = \frac{15.63-12.52}{28.53} = 0.1090
+\;\Rightarrow\; \xi = 610\times0.3302 = \boxed{201\ \text{cm}}$$</p>
+<p><strong>即自由端起算 201 cm（約梁長 1/3）的整段底纖維都超出容許拉應力</strong>，<br />
+補救措施必須涵蓋這一整段，不能只在自由端點補幾根鋼筋。<br />
+（同理可算「$f_{bot} = 0$ 的位置」：$\xi = 610\sqrt{15.63/28.53} = 452$ cm，<br />
+自由端起 452 cm 以內底纖維皆為拉應力。）</p>
 <hr />
 <h3>Step 7：補救措施</h3>
 <p><strong>原因：</strong> 自由端無外力矩，上偏心鋼鍵在底纖維產生淨拉力，超過容許拉應力。</p>
 <h4>▌補救方案一（推薦）：採用彎折（harped）或拋物線腱型</h4>
-<p>將鋼鍵改為<strong>變偏心</strong>設計：固定端 $e=30\ \text{cm}$（向上），自由端 $e=0$（過重心）。
+<p>將鋼鍵改為<strong>變偏心</strong>設計：固定端 $e=30\ \text{cm}$（向上），自由端 $e=0$（過重心）。<br />
 自由端底纖維應力：</p>
 <p>$$f_{bot,\text{free}} = -\frac{P_i}{A} + \frac{P_i\times0}{S_b} = -15.63\ \text{kgf/cm}^2 \quad \text{（全壓）✓}$$</p>
 <p>此法從根本消除自由端底纖維拉力，且不增加材料用量。</p>
@@ -480,20 +512,165 @@ $$f_{bot} = -\frac{P_i}{A} + \frac{P_i e}{S_b} - \frac{M}{S_b}$$
 <p>$$y_{NA} = h\times\frac{f_{bot}}{f_{bot}+|f_{top}|} = 90\times\frac{15.63}{15.63+46.89} = 90\times0.25 = 22.5\ \text{cm}$$</p>
 <p>底部拉力合力：</p>
 <p>$$T = \frac{1}{2}\times f_{bot}\times y_{NA}\times b = \frac{1}{2}\times15.63\times22.5\times30 = 5{,}276\ \text{kgf}$$</p>
-<p>所需補充鋼筋（取 $f_s = 0.5\,f_y = 2{,}100\ \text{kgf/cm}^2$）：</p>
-<p>$$A_s = \frac{T}{f_s} = \frac{5{,}276}{2{,}100} = \boxed{2.51\ \text{cm}^2}$$</p>
-<p>配置 2 根 D13（$2\times1.27=2.54\ \text{cm}^2$）放置於梁底，延伸至自由端，即可滿足需求。</p>
+<p>所需補充鋼筋。<strong>鋼筋應力的取法要引對條文</strong>：土木 401-110 §24.5.3.2 解說／ACI 318-19 R24.5.3.2 規定<br />
+「以未開裂斷面算出的全部拉力由握裹鋼筋承擔，其應力取 $0.6f_y$，但不得大於 2,100 kgf/cm²（210 MPa）」：</p>
+<p>$$f_s = \min(0.6f_y,\ 2{,}100) = \min(0.6\times4{,}200,\ 2{,}100) = \min(2{,}520,\ 2{,}100) = 2{,}100\ \text{kgf/cm}^2$$</p>
+<p>$$A_s = \frac{T}{f_s} = \frac{5{,}275}{2{,}100} = \boxed{2.51\ \text{cm}^2}$$</p>
+<p>配置 2 根 D13（$2\times1.27=2.54\ \text{cm}^2$）放置於梁底，<strong>由自由端延伸至少 201 cm</strong>（超限區段，見 Step 6b）<br />
+再加上伸展長度 $\ell_d$，即可滿足需求。</p>
+<blockquote>
+<p><strong>兩點註記：</strong> ① $f_y$ 原卷<strong>未給定</strong>，此處假設 $f_y = 4{,}200$ kgf/cm²（作答時須寫明）。<br />
+舊版寫「取 $f_s = 0.5f_y = 2100$」數值恰好相同，但<strong>依據是錯的</strong>——規範寫的是 $0.6f_y$ 加 2,100 的絕對上限，<br />
+若題目給 $f_y = 2{,}800$，正解是 $0.6\times2800 = 1{,}680$（不是 $0.5\times2800=1{,}400$），答案就會不同。<br />
+② 承擔的是<strong>全部拉力 $T$</strong>，不是只承擔超出容許值的那 3.11 kgf/cm² 部分——這是規範的明文要求。</p>
+</blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 初始階段 vs 服務階段</strong></p>
-<p>初始階段預力最大（$P_i = 0.75\,f_{pu}$），混凝土強度最低（$f'<em ci="ci">{ci}$），是設計的不利狀態。
-長期服務階段：預力損失後 $P_e &lt; P_i$，且 $f'_c &gt; f'</em>$，應力往往更為有利。
+<p>初始階段預力最大（$P_i = 0.75\,f_{pu}$），混凝土強度最低（$f'_{ci}$），是設計的不利狀態。<br />
+長期服務階段：預力損失後 $P_e < P_i$，且 $f'_c > f'_{ci}$，應力往往更為有利。<br />
 → 兩個階段<strong>均需獨立檢核</strong>。</p>
 <p><strong>② 自由端「無矩」的陷阱</strong></p>
 <p>對於<strong>簡支梁</strong>，端部（支點）也是無矩點，但支點有支反力平衡；懸臂梁自由端無任何力的平衡，純粹由預力作用。偏心上移後，底纖維完全靠預力偏心拉伸，無重力矩的「遮蔽」，此節點成為底纖維控制斷面。</p>
 <p><strong>③ 考場快速估算：超限量</strong></p>
-<p>$$\Delta f = f_{bot,\text{free}} - f_{allow,T} = 15.63 - 12.52 = 3.11\ \text{kgf/cm}^2$$</p>
-<p>若用方案二補鋼筋，需針對<strong>全部底部拉力</strong>（不只超限部分）設計補充鋼筋，這是規範的保守要求。</p></main>
+<p>$$\Delta f = f_{bot,\text{free}} - f_{allow,T} = 15.63 - 12.52 = 3.11\ \text{kgf/cm}^2\ (\text{超出 } 24.8\%)$$</p>
+<p>若用方案二補鋼筋，需針對<strong>全部底部拉力</strong>（不只超限部分）設計補充鋼筋，這是規範的明文要求。</p>
+<p><strong>④ 原卷給了 $f_r = 2.0\sqrt{f'_c}$ 卻沒人用——它其實是判「會不會裂」的鑰匙（2026-08-22 補）</strong></p>
+<p>舊版全文沒有用到題目給的開裂模數，這是個未用的已知條件（通常代表漏了一個小題意）。<br />
+初始階段應以 7 天強度代入：</p>
+<p>$$f_r = 2.0\sqrt{f'_{ci}} = 2.0\sqrt{245} = 31.3\ \text{kgf/cm}^2
+\qquad(\text{若代 } f'_c：2.0\sqrt{350} = 37.4)$$</p>
+<p>$$f_{bot,\text{free}} = 15.63 < f_r = 31.3\ \Rightarrow\ \textbf{斷面尚未開裂}$$</p>
+<p>這個判斷決定了補救措施的<strong>性質</strong>：</p>
+<table>
+<thead>
+<tr>
+<th>若 $f_{bot} < f_r$（本題）</th>
+<th>若 $f_{bot} > f_r$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>斷面完好，只是<strong>超出容許值</strong>（規範為耐久性設下的較嚴門檻）</td>
+<td>已產生實際裂縫</td>
+</tr>
+<tr>
+<td>補救＝配握裹鋼筋承擔拉力（方案二）或改腱型（方案一），<strong>不必重新設計斷面</strong></td>
+<td>必須降預力／改腱型／加深斷面，補鋼筋救不回來</td>
+</tr>
+<tr>
+<td>未開裂全斷面彈性分析（本題整套算法）<strong>成立</strong></td>
+<td>未開裂分析失效，須用開裂斷面</td>
+</tr>
+</tbody>
+</table>
+<p><strong>作答時務必寫出這一段</strong>——它證明你知道「容許應力」與「開裂強度」是兩個不同的門檻。</p>
+<p><strong>⑤ 初始鋼腱應力 $f_{pi} = 0.75f_{pu}$ 合不合規範？——新舊制答案不同（2026-08-22 補）</strong></p>
+<p>$f_{pi} = 0.75\times19{,}000 = 14{,}250$ kgf/cm²，$f_{py} = 0.9f_{pu} = 17{,}100$ kgf/cm²。</p>
+<table>
+<thead>
+<tr>
+<th>規範版本</th>
+<th>條文</th>
+<th>限制值</th>
+<th style="text-align: center;">判定</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>ACI 318-11／土木 401-100（原卷 101 年當時）</strong></td>
+<td>§18.5.1(b) 傳遞後立即</td>
+<td>$\min(0.82f_{py},\ 0.74f_{pu}) = \min(14{,}022,\ 14{,}060) = 14{,}022$</td>
+<td style="text-align: center;">❌ 超 1.6%</td>
+</tr>
+<tr>
+<td><strong>ACI 318-14/19／土木 401-110/112（現行）</strong></td>
+<td>Table 20.3.2.5.1(a) 張拉時</td>
+<td>$\min(0.80f_{pu},\ 0.94f_{py}) = \min(15{,}200,\ 16{,}074) = 15{,}200$</td>
+<td style="text-align: center;">✅ 通過</td>
+</tr>
+<tr>
+<td><strong>同上</strong></td>
+<td>Table 20.3.2.5.1(b) <strong>後拉法錨定裝置與續接器處</strong>傳遞後立即</td>
+<td>$0.70f_{pu} = 13{,}300$</td>
+<td style="text-align: center;">❌ 錨定區超 7.1%</td>
+</tr>
+</tbody>
+</table>
+<p><strong>現行規範已刪除「傳遞後 $0.82f_{py}$／$0.74f_{pu}$」這條通則</strong>，改為只管兩件事：張拉時的上限，<br />
+以及<strong>後拉法錨定裝置處</strong>的傳遞後上限。因此依最新規範：</p>
+<ul>
+<li>本題檢核的<strong>梁身斷面</strong>（固定端、自由端）：$f_{pi} = 14{,}250$ 完全合法，四個應力值與結論不變 ✓</li>
+<li>但<strong>錨定區</strong>（後拉法特有）另須滿足 $0.70f_{pu} = 13{,}300$，本題數值超出，<br />
+  實務上須改用較低的初拉應力、或改採高強度錨定系統／局部加強。</li>
+</ul>
+<p>這正是把工法從「先拉」更正為「後拉」之後才浮現的檢核項——先拉法根本沒有錨定裝置這一條。</p>
+<hr />
+<h2>6. 依最新規範對照（土木 401-112／ACI 318-19）</h2>
+<p><strong>結論：四個應力值、超限判定與兩個補救方案全部不變；新增兩項檢核、修正一項依據。</strong></p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>原卷（101 年，土木 401-100 世代）</th>
+<th>土木 401-112／ACI 318-19</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>傳遞後容許<strong>壓</strong>應力</td>
+<td>$0.60f'_{ci} = 147$（原卷給定）</td>
+<td>$0.60f'_{ci}$；<strong>簡支構材端部</strong>放寬為 $0.70f'_{ci}$（§24.5.3.1）</td>
+<td>懸臂梁不適用端部放寬，仍取 147 ✓ <strong>不變</strong></td>
+</tr>
+<tr>
+<td>傳遞後容許<strong>拉</strong>應力</td>
+<td>$0.80\sqrt{f'_{ci}} = 12.52$（原卷給定）</td>
+<td>$0.80\sqrt{f'_{ci}}$（kgf 制）＝$0.25\sqrt{f'_{ci}}$（MPa 制）；簡支構材端部 $1.60\sqrt{f'_{ci}}$</td>
+<td><strong>不變</strong>，自由端仍 ❌ 超限</td>
+</tr>
+<tr>
+<td>彈性應力疊加</td>
+<td>$f = P/A \pm Pe/S \mp M/S$</td>
+<td>未改</td>
+<td><strong>不變</strong></td>
+</tr>
+<tr>
+<td>超出容許拉應力之處置</td>
+<td>配補充鋼筋</td>
+<td>§24.5.3.2：<strong>須配握裹鋼筋承擔未開裂斷面算出的全部拉力</strong>，$f_s = 0.6f_y \le 2{,}100$ kgf/cm²</td>
+<td><strong>依據修正</strong>（舊寫 $0.5f_y$），本題 $A_s = 2.51$ cm² 不變</td>
+</tr>
+<tr>
+<td>鋼腱張拉時應力上限</td>
+<td>$\min(0.80f_{pu},\,0.94f_{py})$</td>
+<td>同（Table 20.3.2.5.1(a)）＝15,200 → 14,250 ✓</td>
+<td><strong>不變</strong></td>
+</tr>
+<tr>
+<td>鋼腱傳遞後應力上限</td>
+<td>$\min(0.82f_{py},\,0.74f_{pu}) = 14{,}022$ → ❌</td>
+<td><strong>通則已刪除</strong>；改為後拉法<strong>錨定裝置處</strong> $0.70f_{pu} = 13{,}300$ → 錨定區 ❌</td>
+<td><strong>判定改變</strong>：梁身合法，錨定區仍需處理</td>
+</tr>
+<tr>
+<td>開裂模數</td>
+<td>$f_r = 2.0\sqrt{f'_c}$（原卷給定）</td>
+<td>$0.62\lambda\sqrt{f'_c}$ MPa ＝ $2.0\sqrt{f'_c}$ kgf/cm²（§19.2.3.1）</td>
+<td><strong>不變</strong>，新增未開裂判定</td>
+</tr>
+<tr>
+<td>使用階段分級</td>
+<td>舊制無分級</td>
+<td>Class U／T／C（§24.5.2.1）——本題只問初始階段，未觸發</td>
+<td>延伸題型</td>
+</tr>
+</tbody>
+</table>
+<p><strong>一句話：</strong> 最新規範沒動初始階段的容許應力，動的是<strong>鋼腱應力上限的管制方式</strong><br />
+（從「管整支腱」改為「管張拉端與錨定裝置」）以及<strong>補充鋼筋的應力取值依據</strong>。<br />
+兩者都因為本題實為<strong>後拉法</strong>而變得相關。</p></main>
 <footer>來源：raw/solutions/RC-2012-1/RC-2012-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

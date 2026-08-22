@@ -12,7 +12,7 @@ RC-2015-1 對稱雙排配筋方形柱・最大彎矩（平衡點） — 解題�
   3. FIGURES 表寫明每張圖攔什麼錯。
 """
 import sys, os, math
-sys.path.insert(0, "/mnt/skills/user/struct-diagram/scripts")
+sys.path.insert(0, os.environ.get("STRUCTDRAW_DIR", "/mnt/skills/user/struct-diagram/scripts"))
 
 from structdraw import Canvas, C, compose, esc
 
@@ -68,8 +68,9 @@ def section_forces(c):
         Mn += F * (HH / 2 - di)
         bars.append(dict(d=di, eps=eps, fs=fs, f_net=f_net, F=F))
     eps_t = EPS_CU * (D - c) / c                          # 最外層拉應變（拉為正）
-    # phi：依 RC-2015-1.md §4 Step 7 的慣例（壓力控制界限取 0.002）
-    phi = 0.65 + (eps_t - 0.002) / 0.003 * 0.25
+    # phi：依 wiki/code-ref/ACI-318.md §21.2.2 的現行式
+    #      壓力控制 eps_t <= eps_ty；過渡區 eps_ty < eps_t < 0.005；eps_ty = fy/Es
+    phi = 0.65 + 0.25 * (eps_t - EPSY) / (0.005 - EPSY)
     phi = max(0.65, min(0.90, phi))
     return dict(c=c, a=a, Cc=Cc, bars=bars, Pn=Pn, Mn=Mn, eps_t=eps_t, phi=phi,
                 Pn_tf=Pn * KGF_TF, Mn_tfm=Mn * KGCM_TFM,
@@ -438,8 +439,8 @@ def main():
         ("T_s",     -BAL["bars"][1]["F"] * KGF_TF, 136.80, 0.05),
         ("P_n,b",   BAL["Pn_tf"],                430.7,   0.2),
         ("M_n,max", BAL["Mn_tfm"],               135.85,  0.05),
-        ("phi",     BAL["phi"],                  0.655,   0.001),
-        ("phiM_n",  BAL["fMn_tfm"],              88.98,   0.1),
+        ("phi",     BAL["phi"],                  0.650,   0.001),
+        ("phiM_n",  BAL["fMn_tfm"],              88.30,   0.1),
         ("phiP_n,max", FPN_MAX * KGF_TF,         689.1,   0.5),
     ]
     print("── 與 RC-2015-1.md §4 對帳 ──")

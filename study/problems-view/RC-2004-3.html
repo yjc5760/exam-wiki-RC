@@ -71,6 +71,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <hr />
+<p><img alt="RC-2004-3 柱斷面 50×50 cm，外箍加兩支繫筋，標示核心尺寸 hc=42 cm、繫筋水平間距 hx=18.46 cm 與每方向有效三腿" src="../../raw/solutions/RC-2004-3/figs/RC-2004-3-fig-1-section.svg" /></p>
+<p><em>圖 1　柱斷面與圍束幾何。$h_c$ 與 $A_{ch}$ 都量到箍筋</em><em>外緣</em><em>（同一基準才可寫 $A_{ch} = h_c^2$）；圖上把兩支繫筋分色，可攔下「把斷面全部 6 腿算給同一方向」這個常見錯。</em></p>
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> ACI 耐震柱圍束箍筋（Ash）公式控制間距——從「提供的 $A_{sh}$」反推「最大允許間距 $s$」。</p>
 <p><strong>測驗重點：</strong></p>
@@ -84,27 +86,31 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>作戰計畫：</strong></p>
 <ol>
 <li>計算斷面幾何：$A_g$、$h_c$、$A_{ch}$</li>
-<li>確定 $A_{sh,\text{provided}}$（每方向的 D13 條數）</li>
-<li>由 Ash 公式推算最大 $s$（兩式均算，取小值）</li>
-<li>與規範間距上限比較，取最終控制值</li>
+<li>確定 $A_{sh,\text{provided}}$（每方向的 D13 腿數）</li>
+<li>由兩條 $A_{sh}$ 公式各反推最大 $s$，<strong>取小者</strong></li>
+<li>算規範的三項間距上限（含 $s_x$），與上一步一起取<strong>最小值</strong></li>
+<li>最終答案<strong>無條件捨去</strong>取實務整數</li>
 </ol>
-<p><strong>關鍵陷阱（3 個）：</strong></p>
+<p><strong>關鍵陷阱（5 個）：</strong></p>
 <ul>
-<li>⚠ <strong>$h_c$ 的定義</strong>：$h_c$ = 中心到中心箍筋距離 ≈ 柱寬 − 2 × 覆蓋層 = 50 − 8 = 42 cm（以覆蓋層 4 cm 計）</li>
-<li>⚠ <strong>$A_{sh}$ 只計算「對該方向有貢獻」的腱</strong>：檢核 X 方向時，只算 Y 方向的腱腿（外箍 2 腿 + Y 方向繫筋 1 條）= 3 根 D13</li>
-<li>⚠ <strong>公式一（含 $A_g/A_{ch}$）通常比公式二更嚴</strong>：本題亦然，控制間距</li>
+<li>⚠ <strong>$h_c$ 與 $A_{ch}$ 的量法必須一致</strong>：本解採現行規範，兩者都量到<strong>箍筋外緣</strong>，$h_c = b - 2c = 50 - 8 = 42$ cm、$A_{ch} = h_c^2 = 1764$ cm²。（舊版 ACI 318-99 的 $h_c$ 是箍筋<strong>中心距</strong> $= 42 - d_{tie} = 40.73$ cm，但 $A_{ch}$ 仍量到外緣——若採舊版，$A_{ch} \ne h_c^2$，不可混寫。）</li>
+<li>⚠ <strong>保護層 4 cm 是假設</strong>：題目沒給，依規範非受候柱之淨保護層採 4 cm，須在卷面上寫明。</li>
+<li>⚠ <strong>$A_{sh}$ 只計算「對該方向有貢獻」的腿</strong>：檢核 X 方向時只算 Y 方向的腿（外箍 2 腿 + Y 向繫筋 1 支）= 3 根 D13</li>
+<li>⚠ <strong>公式一不是永遠較嚴</strong>：門檻是 $A_g/A_{ch} > 1.3$。本題 50 cm 方柱為 1.417 → 公式一控制；邊長超過約 65 cm 就換公式二控制（見 §5①）。</li>
+<li>⚠ <strong>間距上限只能捨去不能進位</strong>：$7.36 \to 7.4$ 是錯的，$7.4 > 7.36$ 已經違規。</li>
 </ul>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
 <p>求滿足兩個 $A_{sh}$ 公式及規範間距要求的最大箍筋間距 $s$（cm）。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$\text{Step 1: } h_c = b - 2 \times \text{cover} = 50 - 8 = 42\ \text{cm}$$</p>
-<p>$$\text{Step 2: } A_{ch} = h_c^2 = 42^2 = 1764\ \text{cm}^2$$</p>
+<p>$$\text{Step 1: } h_c = b - 2\,c_{\text{cover}} = 50 - 8 = 42\ \text{cm}\quad(\text{量到箍筋外緣})$$</p>
+<p>$$\text{Step 2: } A_{ch} = h_c^2 = 42^2 = 1764\ \text{cm}^2\quad(\text{同一基準，故可直接平方})$$</p>
 <p>$$\text{Step 3: } A_{sh,\text{provided}} = n_{legs} \times a_b = 3 \times 1.29 = 3.87\ \text{cm}^2$$</p>
 <p>$$\text{Step 4 (公式一): } s \le \frac{A_{sh}}{0.3 \cdot h_c \cdot \dfrac{f'_c}{f_{yh}} \cdot \left(\dfrac{A_g}{A_{ch}}-1\right)}$$</p>
 <p>$$\text{Step 5 (公式二): } s \le \frac{A_{sh}}{0.09 \cdot h_c \cdot \dfrac{f'_c}{f_{yh}}}$$</p>
-<p>$$\text{Step 6 (規範上限): } s \le \min\!\left(\frac{b}{4},\ 6d_b,\ 150\ \text{mm}\right)$$</p>
+<p>$$\text{Step 6 (規範上限): } s \le \min\!\left(\frac{b}{4},\ 6d_b,\ s_x\right),\quad s_x = 10 + \frac{35 - h_x}{3}\ \text{(cm)},\ 10 \le s_x \le 15$$</p>
+<p>$$\text{Step 7 (取值): } s = \left\lfloor \min(\text{Step 4},\ \text{Step 5},\ \text{Step 6}) \right\rfloor \quad(\text{無條件捨去})$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -174,7 +180,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$s_{\max,F1}$</td>
-<td>公式一反推 = 7.4 cm</td>
+<td>公式一反推 = <strong>7.36 cm</strong>（控制；只能捨去，不可寫 7.4）</td>
 <td></td>
 </tr>
 <tr>
@@ -211,7 +217,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>規範最大間距三條件</td>
-<td>$s \le \min(b/4,\ 6d_b,\ 150\ \text{mm})$；本題以 $b/4 = 12.5\ \text{cm}$ 控制</td>
+<td>$s \le \min(b/4,\ 6d_b,\ s_x)$，$s_x = 10+\frac{35-h_x}{3}$；本題 $h_x = 18.46 \to s_x = 15.51 \to 15$，以 $b/4 = 12.5\ \text{cm}$ 控制</td>
 <td></td>
 </tr>
 </tbody>
@@ -220,8 +226,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>4. 步驟化詳細計算過程</h2>
 <h3>① 斷面幾何參數</h3>
 <p>$$A_g = 50 \times 50 = 2500\ \text{cm}^2$$</p>
-<p>覆蓋層至 D13 箍筋外緣 = 4 cm（標準覆蓋），故：</p>
-<p>$$h_c = 50 - 2 \times 4 = 42\ \text{cm}$$</p>
+<p><strong>保護層：題目未給定。</strong> 依規範，非受候環境之柱淨保護層取 $c_{\text{cover}} = 4$ cm（量至 D13 箍筋外緣）——這是假設，作答時必須寫出來。</p>
+<p>$$h_c = 50 - 2 \times 4 = 42\ \text{cm}\quad(\text{箍筋外緣至外緣})$$</p>
+<blockquote>
+<p><strong>量法說明：</strong> 本解採現行規範慣例，$h_c$ 與 $A_{ch}$ <strong>同樣量到箍筋外緣</strong>，所以 $A_{ch} = h_c^2$ 成立。<br />
+舊版 ACI 318-99 把 $h_c$ 定義為箍筋<strong>中心至中心</strong>（$= 42 - 1.27 = 40.73$ cm），而 $A_{ch}$ 仍量到外緣；<br />
+那套定義下 $A_{ch} \ne h_c^2$，且 $s$ 會放寬到 7.59 cm。<strong>兩套不可混用</strong>——本庫統一採外緣。</p>
+</blockquote>
 <p>$$A_{ch} = 42 \times 42 = 1764\ \text{cm}^2$$</p>
 <p>$$\frac{A_g}{A_{ch}} - 1 = \frac{2500}{1764} - 1 = 1.417 - 1 = 0.417$$</p>
 <hr />
@@ -267,9 +278,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$3.87 \ge 0.09 \times s \times 42 \times \frac{280}{2800} = 0.378s$$</p>
 <p>$$s \le \frac{3.87}{0.378} = \boxed{10.24\ \text{cm}}$$</p>
 <hr />
-<h3>⑤ 規範最大間距（ACI 318-99 Section 21.4.4）</h3>
-<p>$$s_{\max} = \min\!\left(\frac{b_{\min}}{4},\ 6d_b,\ 150\ \text{mm}\right)$$</p>
-<p>$$= \min\!\left(\frac{50}{4},\ 6 \times 2.54,\ 15\right) = \min(12.5,\ 15.2,\ 15) = 12.5\ \text{cm}$$</p>
+<h3>⑤ 規範最大間距（耐震特別規定的間距條款）</h3>
+<p>三項條件取最小，其中第三項 $s_x$ 要由繫筋水平間距 $h_x$ 算出，不是固定 15 cm：</p>
+<p><strong>(i) 柱最小邊長的 1/4：</strong> $\dfrac{50}{4} = 12.5$ cm</p>
+<p><strong>(ii) 主筋直徑的 6 倍：</strong> $6 \times 2.54 = 15.24$ cm</p>
+<p><strong>(iii) $s_x$（依繫筋密度放寬／收緊）：</strong></p>
+<p>先求 $h_x$ ＝ 受繫筋或箍筋轉角支承的主筋<strong>水平中心間距</strong>。角筋中心到角筋中心：</p>
+<p>$$50 - 2\left(c_{\text{cover}} + d_{tie} + \frac{d_b}{2}\right) = 50 - 2(4 + 1.27 + 1.27) = 36.92\ \text{cm}$$</p>
+<p>每面 3 根主筋（兩角 + 中點各 1），故相鄰支承點間距：</p>
+<p>$$h_x = \frac{36.92}{2} = 18.46\ \text{cm} \;<\; 35\ \text{cm}\quad\checkmark\ (\text{規範要求 } h_x \le 35\ \text{cm})$$</p>
+<p>$$s_x = 10 + \frac{35 - h_x}{3} = 10 + \frac{35 - 18.46}{3} = 10 + 5.51 = 15.51\ \text{cm} \;\Rightarrow\; \text{取上限 } 15\ \text{cm}$$</p>
+<p><strong>合計：</strong></p>
+<p>$$s_{\max,\text{code}} = \min(12.5,\ 15.24,\ 15) = \boxed{12.5\ \text{cm}}$$</p>
+<blockquote>
+<p>本題 $s_x$ 算出來超過上限，所以結果與「直接寫 15 cm」相同——但那是巧合。<br />
+若換成每面只有 2 根主筋的斷面（$h_x = 25$ cm），$s_x = 13.3$ cm，直接寫 15 cm 就<strong>不保守</strong>了。</p>
+</blockquote>
 <hr />
 <h3>⑥ 控制間距</h3>
 <table>
@@ -281,36 +305,93 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </thead>
 <tbody>
 <tr>
-<td>公式一（$A_g/A_{ch}$ 比值項）</td>
-<td style="text-align: center;"><strong>7.4 cm</strong>（控制）</td>
+<td>公式一（含 $A_g/A_{ch}-1$ 項）</td>
+<td style="text-align: center;"><strong>7.36 cm ← 控制</strong></td>
 </tr>
 <tr>
-<td>公式二</td>
-<td style="text-align: center;">10.2 cm</td>
+<td>公式二（$0.09$ 式）</td>
+<td style="text-align: center;">10.24 cm</td>
 </tr>
 <tr>
-<td>規範最大間距</td>
+<td>規範間距上限 $\min(b/4,\ 6d_b,\ s_x)$</td>
 <td style="text-align: center;">12.5 cm</td>
 </tr>
 </tbody>
 </table>
-<p>$$\boxed{s \le 7.4\ \text{cm}}$$</p>
-<p>實際使用：<strong>$s = 7\ \text{cm}$</strong>（或 $s = 7.5\ \text{cm}$，可酌情選取 $\le 7.4\ \text{cm}$）</p>
+<p>$$\boxed{s \le 7.36\ \text{cm}}$$</p>
+<p><strong>實際採用：$s = 7$ cm。</strong></p>
+<blockquote>
+<p>⚠ 間距上限<strong>只能無條件捨去</strong>。寫成「$s \le 7.4$ cm」是把 7.36 進位，而 $7.4 > 7.36$ 本身就違規；<br />
+取 $s = 7.5$ cm 更是直接不滿足公式一。實務整數只能取 <strong>7 cm</strong>。<br />
+（若採舊版 ACI 318-99 的 $h_c = 40.73$ cm，上限為 7.59 cm，7.5 cm 才合法——但本庫已統一採外緣定義。）</p>
+</blockquote>
+<p><strong>加密區以外的間距：</strong> 題目問「間距該如何」，完整答案要含非加密區：</p>
+<p>$$s \le \min(6d_b,\ 15\ \text{cm}) = \min(15.24,\ 15) = 15\ \text{cm}$$</p>
 <hr />
+<p><img alt="RC-2004-3 五個間距上限的長條比較：公式一 7.36 cm 控制，公式二 10.24、b/4 為 12.5、6db 為 15.24、sx 為 15 cm，並標出 7.4 與 7.5 已越線" src="../../raw/solutions/RC-2004-3/figs/RC-2004-3-fig-2-spacing.svg" /></p>
+<p><em>圖 2　五個間距上限與最終控制值。$s_x$ 那一列提醒它不是固定 15 cm 而要由 $h_x$ 算；下方三格把「寫 7.4」「取 7.5」「取 7」並排，可攔下把 7.36 進位後仍自認合格的錯誤。</em></p>
 <h2>5. 關鍵爭議點與進階探討</h2>
 <p><strong>① 公式一 vs 公式二的控制條件</strong></p>
-<p>公式一含 $(A_g/A_{ch} - 1)$ 項，物理意義是：柱核心面積越小（覆蓋層越厚），需要越多圍束箍筋。本題 $A_g/A_{ch} = 1.417$，比值項 $= 0.417$；<br />
-比較：$0.3 \times 0.417 = 0.125 > 0.09$，故公式一永遠較公式二嚴，控制設計。</p>
+<p>公式一含 $(A_g/A_{ch} - 1)$ 項，物理意義是：<strong>蓋層佔比越大，剝落後損失越多，就要越多圍束箍筋來補</strong>。<br />
+兩式的分界很單純——公式一控制的條件是</p>
+<p>$$0.3\left(\frac{A_g}{A_{ch}} - 1\right) > 0.09 \quad\Longleftrightarrow\quad \frac{A_g}{A_{ch}} > 1.3$$</p>
+<p>本題 $A_g/A_{ch} = 1.417 > 1.3$，$0.3\times0.417 = 0.125 > 0.09$ → 公式一控制。</p>
+<p><strong>但這不是「永遠」。</strong> 保護層固定 4 cm 時，$A_g/A_{ch}$ 隨柱變大而變小：</p>
+<table>
+<thead>
+<tr>
+<th style="text-align: right;">柱邊長 $b$</th>
+<th style="text-align: right;">$A_g/A_{ch}$</th>
+<th style="text-align: right;">$0.3(A_g/A_{ch}-1)$</th>
+<th style="text-align: left;">控制式</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style="text-align: right;">50 cm（本題）</td>
+<td style="text-align: right;">1.417</td>
+<td style="text-align: right;">0.1252</td>
+<td style="text-align: left;">公式一</td>
+</tr>
+<tr>
+<td style="text-align: right;">65 cm</td>
+<td style="text-align: right;">1.300</td>
+<td style="text-align: right;">0.0901</td>
+<td style="text-align: left;">公式一（臨界）</td>
+</tr>
+<tr>
+<td style="text-align: right;">70 cm</td>
+<td style="text-align: right;">1.275</td>
+<td style="text-align: right;">0.0824</td>
+<td style="text-align: left;"><strong>公式二</strong></td>
+</tr>
+<tr>
+<td style="text-align: right;">100 cm</td>
+<td style="text-align: right;">1.181</td>
+<td style="text-align: right;">0.0544</td>
+<td style="text-align: left;"><strong>公式二</strong></td>
+</tr>
+</tbody>
+</table>
+<p><strong>邊長超過約 65 cm 的方柱就改由公式二控制</strong>——這是實務上很常見的尺寸。<br />
+背「公式一永遠較嚴」會在大斷面柱直接失分；正確的記法是先比 $A_g/A_{ch}$ 有沒有超過 1.3。</p>
 <p><strong>② 繫筋貢獻方向的正確計算</strong></p>
-<p>一根 Y 方向繫筋只對<strong>檢核 X 方向</strong>的 $A_{sh}$ 有貢獻（相反亦然）。若誤將所有 D13 截面積加總（共 4 根 × 1.29 = 5.16 cm²）用於同一方向計算，將高估 $A_{sh}$，低估所需間距，是考場常見錯誤。</p>
+<p>一根 Y 方向繫筋只對<strong>檢核 X 方向</strong>的 $A_{sh}$ 有貢獻（相反亦然）。本斷面一共有 6 腿 D13（外箍 4 腿 + 繫筋 2 支），但<strong>每個方向只能算 3 腿</strong>。</p>
+<p>兩種常見誤算：</p>
+<ul>
+<li>把兩支繫筋都算給同一方向 → 4 腿 $= 5.16$ cm²，$s$ 高估到 9.8 cm</li>
+<li>把全斷面 6 腿全部加總 → $7.74$ cm²，$s$ 高估到 14.7 cm（比規範上限還鬆）</li>
+</ul>
+<p>都會低估所需圍束、高估可用間距。</p>
 <p><strong>③ 若無繫筋（僅外箍）</strong></p>
 <p>若只有外閉合箍筋（$A_{sh} = 2 \times 1.29 = 2.58\ \text{cm}^2$）：<br />
 $$s \le \frac{2.58}{0.526} = 4.9\ \text{cm}$$<br />
-外箍加繫筋後提升到 7.4 cm，說明繫筋對改善施工可行性（間距放寬）有實質幫助。</p>
+外箍加繫筋後放寬到 7.36 cm（＋50%），說明繫筋對施工可行性有實質幫助——4.9 cm 的箍筋間距，混凝土幾乎灌不下去。</p>
 <p><strong>④ 密箍區長度（附加知識）</strong></p>
 <p>除間距外，耐震規範要求密箍區長度 $l_o$：<br />
 $$l_o \ge \max\!\left(\frac{l_n}{6},\ \text{柱最大邊長},\ 450\ \text{mm}\right) = \max\!\left(\frac{l_n}{6},\ 50\ \text{cm},\ 45\ \text{cm}\right) = \max\!\left(\frac{l_n}{6},\ 50\right)\ \text{cm}$$<br />
-本題未提供柱淨高，故不計算，但考場應能說明此要求。</p></main>
+本題未提供柱淨高，故不計算，但考場應能說明此要求。</p>
+<p><em>圖解補繪：2026-08-21（向量圖 2 張，腳本 <code>figs/gen_RC-2004-3.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2004-3/RC-2004-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

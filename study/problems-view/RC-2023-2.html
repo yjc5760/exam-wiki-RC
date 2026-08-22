@@ -36,7 +36,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> USD強度設計法<br />
-<strong>標籤：</strong> <code>T形梁</code> <code>雙筋梁</code> <code>壓力鋼筋未降伏</code> <code>應變相容</code> <code>雙排配筋</code> <code>有效深度計算</code> <code>Whitney應力塊</code> <code>翼板內中性軸</code></p>
+<strong>標籤：</strong> <code>T形梁</code> <code>雙筋梁</code> <code>壓力鋼筋未降伏</code> <code>應變相容</code> <code>雙排配筋</code> <code>有效深度計算</code> <code>Whitney應力塊</code> <code>翼板內中性軸</code> <code>鋼筋間距檢核</code> <code>題目條件互相矛盾</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>鋼筋混凝土 T 型雙筋梁，斷面條件如下：</p>
@@ -93,18 +93,25 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 - D10 箍筋直徑 = 0.96 cm（取 <strong>1.0 cm</strong> 簡化）<br />
 - 雙排拉力鋼筋層間淨距 = <strong>2.5 cm</strong>（規範下限）<br />
 - 壓力鋼筋假設單排，<strong>$d' = 6 \text{ cm}$</strong>（壓力鋼筋尺寸未給定，依最小覆蓋估算）</p>
+<p>⚠ <strong>原卷的兩個條件互相矛盾：</strong> 「8 根 D32 採雙排排列」（即 4+4）與「間距均依規範最小值」<br />
+在 $b_w = 30$ cm 下<strong>無法同時成立</strong>（每排 4 根的淨間距只有 2.37 cm &lt; $d_b$ = 3.22 cm）。<br />
+本解依原卷文字採 4+4；若嚴守間距須改三排，$\phi M_n$ 降為 130.6 tf·m。詳見 §5 ①。</p>
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 雙筋梁的設計強度需同時考慮三個力：混凝土壓力 $C_c$、壓力鋼筋力 $C_s$、拉力鋼筋力 $T$，且壓力鋼筋是否降伏需通過<strong>應變相容</strong>驗算，不能直接假設。</p>
-<p><strong>出題者測驗的能力：</strong><br />
-1. 能否正確算出雙排鋼筋的有效深度 $d$（規範最小覆蓋 + 層間距）<br />
-2. 能否識別「壓力鋼筋未降伏」並進行應變相容迭代求解<br />
-3. T 形梁壓縮區面積的正確處理（先判斷 $a$ vs. $h_f$，再決定是否需要 T 形面積計算）</p>
-<p><strong>常見陷阱：</strong><br />
-- 直接假設壓力鋼筋降伏，不驗算 $\varepsilon'_s$<br />
-- 誤把中性軸深度 $c$ 與應力塊深度 $a$ 拿去跟 $h_f$ 比較（應比較的是 $a$）<br />
-- 忘記壓力鋼筋貢獻的混凝土扣除項（淨壓力應為 $A_s'(f'_s - 0.85f'_c)$）</p>
+<p><strong>出題者測驗的能力：</strong></p>
+<ol>
+<li>能否正確算出雙排鋼筋的有效深度 $d$（規範最小覆蓋 + 層間距）</li>
+<li>能否識別「壓力鋼筋未降伏」並進行應變相容迭代求解</li>
+<li>T 形梁壓縮區面積的正確處理（先判斷 $a$ vs. $h_f$，再決定是否需要 T 形面積計算）</li>
+</ol>
+<p><strong>常見陷阱：</strong></p>
+<ul>
+<li>直接假設壓力鋼筋降伏，不驗算 $\varepsilon'_s$</li>
+<li>誤把中性軸深度 $c$ 與應力塊深度 $a$ 拿去跟 $h_f$ 比較（應比較的是 $a$）</li>
+<li>忘記壓力鋼筋貢獻的混凝土扣除項（淨壓力應為 $A_s'(f'_s - 0.85f'_c)$）</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -150,6 +157,11 @@ Step 6：確認 φ（判斷 εt）→ 輸出 φMn
 <td>⚠ 雙排鋼筋的 $d$ 計算</td>
 <td>雙排重心不等於單排位置</td>
 <td>取兩排形心的加權平均</td>
+</tr>
+<tr>
+<td>⚠ 沒檢查每排放不放得下</td>
+<td>4 根 D32 在 $b_w = 30$ 的淨間距只有 2.37 cm，<strong>違反 $s \geq d_b$</strong></td>
+<td>$s = \dfrac{b_w - 2c - 2d_s - nd_b}{n-1} \geq \max(d_b,\ 2.5)$，見 §5 ①</td>
 </tr>
 </tbody>
 </table>
@@ -492,17 +504,85 @@ Step 6：確認 φ（判斷 εt）→ 輸出 φMn
 </table>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>1. 壓力鋼筋尺寸未給定的處理</strong></p>
+<p><strong>1. ⚠ 原卷「雙排排列」與「間距取規範最小值」互相矛盾</strong></p>
+<p>原卷（112 年第二題）寫「縱向拉鋼筋 8 根 D32 <strong>採雙排排列</strong>……鋼筋保護層及上下層間距<strong>均依規範最小值</strong>之規定」。<br />
+但每排 4 根 D32 在 $b_w = 30$ cm 內的淨間距為：</p>
+<p>$$s_{\text{clear}} = \frac{b_w - 2c_{\text{cover}} - 2d_{\text{stirrup}} - 4d_b}{3}
+= \frac{30 - 2(4) - 2(1.0) - 4(3.22)}{3} = \frac{7.12}{3} = 2.37 \text{ cm}$$</p>
+<p>$$2.37 \text{ cm} < \max(d_b,\ 2.5 \text{ cm}) = 3.22 \text{ cm} \quad ✗\ \textbf{不符規範}$$</p>
+<p>改為每排 3 根則 $s = \dfrac{20 - 3(3.22)}{2} = 5.17$ cm ✓ 通過。也就是說：<br />
+<strong>「雙排」與「間距合規」在本斷面二選一，不可能同時成立。</strong></p>
+<p><strong>兩種處理的完整對照：</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th style="text-align: right;">4+4（本解，依原卷文字）</th>
+<th style="text-align: right;">3+3+2（三排，嚴守間距）</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>底排／次排／第三排形心</td>
+<td style="text-align: right;">6.61 ／ 12.33 cm</td>
+<td style="text-align: right;">6.61 ／ 12.33 ／ 18.05 cm</td>
+</tr>
+<tr>
+<td>$\bar y_s$</td>
+<td style="text-align: right;">9.47 cm</td>
+<td style="text-align: right;">11.62 cm</td>
+</tr>
+<tr>
+<td>$d$</td>
+<td style="text-align: right;">60.53 cm</td>
+<td style="text-align: right;">58.38 cm</td>
+</tr>
+<tr>
+<td>$c$</td>
+<td style="text-align: right;">12.19 cm</td>
+<td style="text-align: right;">12.19 cm（<strong>不變</strong>）</td>
+</tr>
+<tr>
+<td>$a$</td>
+<td style="text-align: right;">10.36 cm</td>
+<td style="text-align: right;">10.36 cm（<strong>不變</strong>）</td>
+</tr>
+<tr>
+<td>$f'_s$</td>
+<td style="text-align: right;">3,107 kgf/cm²</td>
+<td style="text-align: right;">3,107（<strong>不變</strong>）</td>
+</tr>
+<tr>
+<td>$M_n$</td>
+<td style="text-align: right;">151.0 tf·m</td>
+<td style="text-align: right;">145.1 tf·m</td>
+</tr>
+<tr>
+<td>$\phi M_n$</td>
+<td style="text-align: right;"><strong>136 tf·m</strong></td>
+<td style="text-align: right;"><strong>130.6 tf·m（−3.9%）</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>為什麼 $c$、$a$、$f'_s$ 完全不變？</strong> 它們只由<strong>力平衡</strong>（$C_c + C_{s,\text{net}} = A_sf_y$）決定，<br />
+與 $d$ 無關；$d$ 只進到<strong>力臂</strong>。所以換排列只改彎矩、不改中性軸——這個結構值得記住。</p>
+</blockquote>
+<p><strong>考場建議：</strong> 依原卷文字寫 4+4（坊間解答通行），但<strong>在卷面加一句</strong><br />
+「註：4 根 D32 於 $b_w=30$ 之淨間距 2.37 cm 未達 $d_b$，本解依題意仍採雙排」，<br />
+把矛盾點出來反而顯示有做間距檢核。</p>
+<p><strong>2. 壓力鋼筋尺寸未給定的處理</strong></p>
 <p>本題未明示壓力鋼筋尺寸，故 $d'$ 需假設。若改用 $d' = 6.5$ cm（如 D29 bars），則 $c$ 略有變化但 $\phi M_n$ 差異在 1% 以內，不影響最終有效位數。考場上應明確寫出假設值。</p>
-<p><strong>2. 中性軸在翼板以外的情境（本題不需，但需能判斷）</strong></p>
+<p><strong>3. 中性軸在翼板以外的情境（本題不需，但需能判斷）</strong></p>
 <p>若無壓力鋼筋時：$a = 12.77$ cm，仍 $< h_f = 15$ cm，翼板完全足夠。本題有壓力鋼筋後 $a$ 更小。因此本題全程用 $b_e = 90$ cm 是正確的。若 $a > h_f$，才需要分離 $A_{sf}$（翼板部分）與 $A_{sw}$（腹板部分）分別計算。</p>
-<p><strong>3. 為何 $C_{s,\text{net}} = A_s'(f'_s - 0.85f'_c)$？</strong></p>
+<p><strong>4. 為何 $C_{s,\text{net}} = A_s'(f'_s - 0.85f'_c)$？</strong></p>
 <p>壓力鋼筋面積所在位置，Whitney 應力塊原本就有 $0.85f'_c$ 的混凝土壓力貢獻。若計算 $C_c$ 時已包含整個寬度（包括鋼筋所在位置），則壓力鋼筋只能提供「額外的」壓力，即 $A_s'(f'_s - 0.85f'_c)$。</p>
-<p><strong>4. 考場最安全作法</strong></p>
+<p><strong>5. 考場最安全作法</strong></p>
 <ol>
 <li>先假設壓力鋼筋降伏 → 快速試算 $c$ → 驗算 $\varepsilon'_s$</li>
 <li>若 $\varepsilon'_s < \varepsilon_y$，才建立二次方程求 $c$（不要跳過這個試驗步驟）</li>
 <li>翼板判斷：永遠比較 $a$ 與 $h_f$，而非 $c$ 與 $h_f$</li>
+<li>算完 $d$ <strong>順手驗一次每排的淨間距</strong>——本題正是靠這一步才看得出原卷條件矛盾</li>
 </ol></main>
 <footer>來源：raw/solutions/RC-2023-2/RC-2023-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>

@@ -35,49 +35,63 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
 <strong>副分類：</strong> <code>RC-U4-3</code> 預力損失<br />
 <strong>設計法：</strong> WSD 工作應力設計法<br />
-<strong>標籤：</strong> <code>後拉法</code> <code>有黏結腱</code> <code>合成斷面</code> <code>三斷面分析</code> <code>淨斷面</code> <code>變換斷面</code> <code>鋼腱應力</code> <code>上下緣應力</code> <code>施預力階段</code> <code>全載重階段</code> <code>n值</code> <code>相容性</code></p>
+<strong>標籤：</strong> <code>後拉法</code> <code>有黏結腱</code> <code>合成斷面</code> <code>三斷面分析</code> <code>淨斷面</code> <code>變換斷面</code> <code>鋼腱應力</code> <code>上下緣應力</code> <code>施預力階段</code> <code>全載重階段</code> <code>n值相容性</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>後拉法（後張法）預力混凝土梁斷面，給定：</p>
-<p><strong>預力與載重：</strong>
-- 起始預力：$F_i = 250$ tf，有效預力：$F_0 = 220$ tf
-- 梁重彎矩：$M_G = 30$ tf·m = 3,000,000 kgf·cm
-- 版重彎矩：$M_S = 15$ tf·m = 1,500,000 kgf·cm
-- 活載重彎矩：$M_L = 70$ tf·m = 7,000,000 kgf·cm</p>
+<p><strong>預力與載重：</strong></p>
+<ul>
+<li>起始預力：$F_i = 250$ tf，有效預力：$F_0 = 220$ tf</li>
+<li>梁重彎矩：$M_G = 30$ tf·m = 3,000,000 kgf·cm</li>
+<li>版重彎矩：$M_S = 15$ tf·m = 1,500,000 kgf·cm</li>
+<li>活載重彎矩：$M_L = 70$ tf·m = 7,000,000 kgf·cm</li>
+</ul>
 <p><strong>材料：</strong> $n = E_p/E_c = 6$，$A_{sp} = 24$ cm²</p>
-<p><strong>淨斷面（施預力時用）：</strong>
+<p><strong>淨斷面（施預力時用）：</strong><br />
 $A_{c1} = 2500$ cm²，$Z_{t1} = 40000$ cm³，$Z_{b1} = 39000$ cm³，$I_1 = 1{,}800{,}000$ cm⁴，$e_{p1} = 25$ cm</p>
-<p><strong>變換斷面（有效預力 + 梁上載重用）：</strong>
+<p><strong>變換斷面（有效預力 + 梁上載重用）：</strong><br />
 $A_{c2} = 2800$ cm²，$Z_{t2} = 41000$ cm³，$Z_{b2} = 43000$ cm³，$I_2 = 1{,}900{,}000$ cm⁴，$e_{p2} = 24$ cm</p>
-<p><strong>合成斷面（活載重用）：</strong>
+<p><strong>合成斷面（活載重用）：</strong><br />
 $A_{c3} = 3900$ cm²，$Z_{t3} = 137000$ cm³，$Z_{b3} = 74000$ cm³，$I_3 = 4{,}300{,}000$ cm⁴，$e_{p3} = 39$ cm</p>
 <p><strong>求：</strong> 施預力時及全部載重作用時之<strong>鋼腱應力</strong>及<strong>上下緣混凝土應力</strong>。（20 分）</p>
 <blockquote>
 <p>本題為純文字題，無附圖，無截圖需求。</p>
+<p><strong>原卷原文（100 年第五題）核對：</strong> 「若後拉法預力混凝土梁斷面承受之起始預力 $F_i$＝250 tf，<br />
+有效預力 $F_0$＝220 tf……請分析此梁斷面在施預力時及全部載重作用時之鋼腱應力及上下緣混凝土應力。」<br />
+三組斷面性質與 $n=6$、$A_{sp}=24$ cm² 均與上表逐字相符（已比對 <code>raw/exams/RC-2011_鋼筋混凝土設計與預力.pdf</code> 背面）。<br />
+原卷<strong>未指定規範版本</strong>，亦未給容許應力；本題是純分析題，不含驗算。</p>
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong>
-- 後拉法複合（合成）斷面預力梁，荷重分三階段施加，各階段用不同斷面：
-  1. <strong>施預力時</strong>（灌漿前）：淨斷面 → $F_i + M_G$
-  2. <strong>有效預力 + 恆載</strong>（灌漿後）：變換斷面 → $F_0 + M_G + M_S$
-  3. <strong>加活載</strong>（合成後）：合成斷面 → $M_L$</p>
+<p><strong>核心觀念：</strong></p>
 <ul>
-<li><strong>鋼腱應力計算</strong>：後拉法鋼腱（有黏結）與混凝土相容，鋼腱應力 = 基礎值（$F_0/A_{sp}$）+ $n \times$ 重力引起之混凝土應力變化（在腱位）</li>
+<li>後拉法複合（合成）斷面預力梁，荷重分三階段施加，各階段用不同斷面：</li>
+<li><strong>施預力時</strong>（灌漿前）：淨斷面 → $F_i + M_G$</li>
+<li><strong>有效預力 + 恆載</strong>（灌漿後）：變換斷面 → $F_0 + M_G + M_S$</li>
+<li>
+<p><strong>加活載</strong>（合成後）：合成斷面 → $M_L$</p>
+</li>
+<li>
+<p><strong>鋼腱應力計算</strong>：後拉法鋼腱（有黏結）與混凝土相容，鋼腱應力 = 基礎值（$F_0/A_{sp}$）+ $n \times$ 重力引起之混凝土應力變化（在腱位）</p>
+</li>
 </ul>
-<p><strong>出題者意圖：</strong>
-1. 測驗三種斷面的正確使用時機
-2. 測驗預力梁彈性應力疊加（壓正拉負）的符號判斷
-3. 測驗鋼腱相容性公式求腱應力（不能直接用 $F/A_{sp}$）</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗三種斷面的正確使用時機</li>
+<li>測驗預力梁彈性應力疊加（壓正拉負）的符號判斷</li>
+<li>測驗鋼腱相容性公式求腱應力（不能直接用 $F/A_{sp}$）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong>
-1. <strong>施預力時</strong>：用淨斷面 + $F_i$ + $M_G$ → 算 fc_top、fc_bot；腱應力 = $F_i/A_{sp}$
-2. <strong>全部載重時</strong>：
-   - Step A：變換斷面，$F_0 + (M_G + M_S)$ → 算上下緣應力分量
-   - Step B：合成斷面，$M_L$ → 算上下緣應力分量
-   - 疊加：fc_top_total、fc_bot_total
-   - 腱應力：$F_0/A_{sp}$ + $n \times$（腱位混凝土應力變化）</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li><strong>施預力時</strong>：用淨斷面 + $F_i$ + $M_G$ → 算 fc_top、fc_bot；腱應力 = $F_i/A_{sp}$</li>
+<li><strong>全部載重時</strong>：</li>
+<li>Step A：變換斷面，$F_0 + (M_G + M_S)$ → 算上下緣應力分量</li>
+<li>Step B：合成斷面，$M_L$ → 算上下緣應力分量</li>
+<li>疊加：fc_top_total、fc_bot_total</li>
+<li>腱應力：$F_0/A_{sp}$ + $n \times$（腱位混凝土應力變化）</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -363,7 +377,7 @@ $A_{c3} = 3900$ cm²，$Z_{t3} = 137000$ cm³，$Z_{b3} = 74000$ cm³，$I_3 = 4
 <p>作用載重：$F_i = 250{,}000$ kgf + $M_G = 3{,}000{,}000$ kgf·cm</p>
 <hr />
 <h4>① 混凝土上緣應力</h4>
-<p>$$f_{c,top}^{(1)} = \underbrace{\frac{F_i}{A_{c1}}}<em p1="p1">{\text{軸壓}} - \underbrace{\frac{F_i\,e</em>}}{Z_{t1}}<em t1="t1">{\text{偏心→上緣張}} + \underbrace{\frac{M_G}{Z</em>$$}}}_{\text{重力→上緣壓}</p>
+<p>$$f_{c,top}^{(1)} = \underbrace{\frac{F_i}{A_{c1}}}_{\text{軸壓}} - \underbrace{\frac{F_i\,e_{p1}}{Z_{t1}}}_{\text{偏心→上緣張}} + \underbrace{\frac{M_G}{Z_{t1}}}_{\text{重力→上緣壓}}$$</p>
 <p>$$= \frac{250{,}000}{2500} - \frac{250{,}000\times25}{40{,}000} + \frac{3{,}000{,}000}{40{,}000}$$</p>
 <p>$$= 100 - 156.25 + 75 = \boxed{18.75 \text{ kgf/cm}^2 \text{（壓）}}$$</p>
 <hr />
@@ -381,19 +395,19 @@ $A_{c3} = 3900$ cm²，$Z_{t3} = 137000$ cm³，$Z_{b3} = 74000$ cm³，$I_3 = 4
 <hr />
 <h4>Step A：變換斷面，$F_0 + (M_G + M_S)$</h4>
 <p>$(M_G + M_S) = (3{,}000{,}000 + 1{,}500{,}000) = 4{,}500{,}000$ kgf·cm</p>
-<p><strong>上緣（beam section only）：</strong>
+<p><strong>上緣（beam section only）：</strong><br />
 $$f_A^{top} = \frac{F_0}{A_{c2}} - \frac{F_0\,e_{p2}}{Z_{t2}} + \frac{M_G+M_S}{Z_{t2}}$$</p>
 <p>$$= \frac{220{,}000}{2800} - \frac{220{,}000\times24}{41{,}000} + \frac{4{,}500{,}000}{41{,}000}$$</p>
 <p>$$= 78.57 - 128.78 + 109.76 = +59.55 \text{ kgf/cm}^2$$</p>
-<p><strong>下緣（beam section only）：</strong>
+<p><strong>下緣（beam section only）：</strong><br />
 $$f_A^{bot} = \frac{F_0}{A_{c2}} + \frac{F_0\,e_{p2}}{Z_{b2}} - \frac{M_G+M_S}{Z_{b2}}$$</p>
 <p>$$= 78.57 + \frac{220{,}000\times24}{43{,}000} - \frac{4{,}500{,}000}{43{,}000}$$</p>
 <p>$$= 78.57 + 122.79 - 104.65 = +96.71 \text{ kgf/cm}^2$$</p>
 <hr />
 <h4>Step B：合成斷面，$M_L$（僅活載重）</h4>
-<p><strong>上緣：</strong>
+<p><strong>上緣：</strong><br />
 $$f_B^{top} = +\frac{M_L}{Z_{t3}} = +\frac{7{,}000{,}000}{137{,}000} = +51.09 \text{ kgf/cm}^2 \text{（壓）}$$</p>
-<p><strong>下緣：</strong>
+<p><strong>下緣：</strong><br />
 $$f_B^{bot} = -\frac{M_L}{Z_{b3}} = -\frac{7{,}000{,}000}{74{,}000} = -94.59 \text{ kgf/cm}^2 \text{（拉）}$$</p>
 <hr />
 <h4>全部載重時合計混凝土應力</h4>
@@ -405,16 +419,16 @@ $$f_B^{bot} = -\frac{M_L}{Z_{b3}} = -\frac{7{,}000{,}000}{74{,}000} = -94.59 \te
 <hr />
 <h4>全部載重時鋼腱應力（相容性法）</h4>
 <p>有黏結後拉法灌漿後，腱與混凝土相容。重力使腱位混凝土<strong>受張</strong>，腱隨之<strong>拉伸</strong>，腱應力增加。</p>
-<p><strong>基礎腱應力（有效預力）：</strong>
+<p><strong>基礎腱應力（有效預力）：</strong><br />
 $$f_{s,base} = \frac{F_0}{A_{sp}} = \frac{220{,}000}{24} = 9{,}167 \text{ kgf/cm}^2$$</p>
 <p><strong>腱位混凝土因重力產生之張力（$e_p$ 以下為張力區）：</strong></p>
-<p>在變換斷面（腱位 $e_{p2} = 24$ cm below beam centroid）：
+<p>在變換斷面（腱位 $e_{p2} = 24$ cm below beam centroid）：<br />
 $$\sigma_{c,p}^{A} = -\frac{(M_G+M_S)\,e_{p2}}{I_2} = -\frac{4{,}500{,}000\times24}{1{,}900{,}000} = -56.84 \text{ kgf/cm}^2 \text{（張）}$$</p>
-<p>在合成斷面（腱位 $e_{p3} = 39$ cm below composite centroid）：
+<p>在合成斷面（腱位 $e_{p3} = 39$ cm below composite centroid）：<br />
 $$\sigma_{c,p}^{B} = -\frac{M_L\,e_{p3}}{I_3} = -\frac{7{,}000{,}000\times39}{4{,}300{,}000} = -63.49 \text{ kgf/cm}^2 \text{（張）}$$</p>
-<p>總重力張力（腱位）：
+<p>總重力張力（腱位）：<br />
 $$\sigma_{c,p}^{grav} = -56.84 + (-63.49) = -120.33 \text{ kgf/cm}^2 \text{（張）}$$</p>
-<p>混凝土受張 → 拉伸 → 腱也拉伸 → 腱應力<strong>增加</strong>：
+<p>混凝土受張 → 拉伸 → 腱也拉伸 → 腱應力<strong>增加</strong>：<br />
 $$\Delta f_s = n \times \left|\sigma_{c,p}^{grav}\right| = 6 \times 120.33 = +722 \text{ kgf/cm}^2$$</p>
 <p>$$\boxed{f_s^{(2)} = f_{s,base} + \Delta f_s = 9{,}167 + 722 = 9{,}889 \text{ kgf/cm}^2 \text{（拉）}}$$</p>
 <hr />
@@ -456,22 +470,29 @@ $$\Delta f_s = n \times \left|\sigma_{c,p}^{grav}\right| = 6 \times 120.33 = +72
 </thead>
 <tbody>
 <tr>
-<td>淨斷面（淨 $A_{c1}$）</td>
-<td>混凝土 - 導管孔</td>
+<td>淨斷面（$A_{c1}=2500$）</td>
+<td>全斷面混凝土 − 導管孔</td>
 <td>後拉法施拉時（灌漿前）</td>
 </tr>
 <tr>
-<td>變換斷面（$A_{c2} = A_{c1} + n A_{sp}$）</td>
-<td>淨混凝土 + 轉換鋼腱</td>
+<td>變換斷面（$A_{c2}=2800$）</td>
+<td><strong>全斷面混凝土</strong>（孔已灌漿填實）＋ $(n-1)A_{sp}$</td>
 <td>灌漿後，合成前（恆載作用）</td>
 </tr>
 <tr>
-<td>合成斷面（$A_{c3}$）</td>
-<td>梁變換斷面 + 樓版（部分合成）</td>
+<td>合成斷面（$A_{c3}=3900$）</td>
+<td>梁變換斷面 ＋ 轉換樓版</td>
 <td>版澆置並達強度後（活載作用）</td>
 </tr>
 </tbody>
 </table>
+<blockquote>
+<p>⚠ <strong>勘誤（2026-08-22）：</strong> 舊版本頁寫「$A_{c2} = A_{c1} + n\,A_{sp}$」，代入即 $2500 + 6\times24 = 2644 \ne 2800$，<strong>與題給數字矛盾</strong>。<br />
+正確關係是 $A_{c2} = A_g + (n-1)A_{sp}$，其中 $A_g$ 為<strong>含導管孔在內</strong>的全斷面積：<br />
+$A_g = A_{c2} - (n-1)A_{sp} = 2800 - 5\times24 = 2680$ cm²，回推導管孔面積 $= 2680 - 2500 = 180$ cm²（合理）。<br />
+兩個要點：① 灌漿後孔洞已被漿體填實，<strong>要把孔加回來</strong>；② 轉換鋼腱只加 $(n-1)A_{sp}$，<br />
+因為鋼腱佔的那塊混凝土已經算過一次，不能重複計入（$nA_{sp}$ 是先拉法「不扣佔位」時的錯誤寫法）。</p>
+</blockquote>
 <p><strong>② 腱應力的物理直覺</strong></p>
 <table>
 <thead>
@@ -499,19 +520,146 @@ $$\Delta f_s = n \times \left|\sigma_{c,p}^{grav}\right| = 6 \times 120.33 = +72
 </tr>
 </tbody>
 </table>
-<p><strong>③ 下緣應力幾乎為零的設計意義</strong></p>
+<p><strong>③ 腱應力「重力應力變化」的起算點——方法歧義留檔</strong></p>
+<p>$f_s^{(2)} = F_0/A_{sp} + n\,\Delta f_c$ 的 $\Delta f_c$ 是「<strong>從哪個狀態算起</strong>」的變化量，題目沒講清楚，有兩個讀法：</p>
+<table>
+<thead>
+<tr>
+<th>讀法</th>
+<th>$\Delta f_c$ 內容</th>
+<th style="text-align: center;">$\Delta f_s$</th>
+<th style="text-align: center;">$f_s^{(2)}$</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>A（本解主線）</strong></td>
+<td>$(M_G+M_S)e_{p2}/I_2 + M_L e_{p3}/I_3 = 120.33$</td>
+<td style="text-align: center;">$+722$</td>
+<td style="text-align: center;"><strong>9,889 kgf/cm²</strong></td>
+</tr>
+<tr>
+<td>B（$F_0$ 定義在 $M_G$ 已作用之後）</td>
+<td>$M_S e_{p2}/I_2 + M_L e_{p3}/I_3 = 82.44$</td>
+<td style="text-align: center;">$+495$</td>
+<td style="text-align: center;">9,661 kgf/cm²</td>
+</tr>
+</tbody>
+</table>
+<p><strong>採 A 的理由：</strong> 本解算混凝土應力時，$(M_G+M_S)$ <strong>整包</strong>放在變換斷面上（見 Step A）；<br />
+腱應力若只認 $M_S$，就會與同一張表的混凝土應力用了不同的載重分配，內部不自洽。<br />
+嚴格說 $M_G$ 是灌漿前施加的（該用淨斷面），讀法 B 較合物理，但差 2.3%，且會讓兩組答案脫鉤。<br />
+<strong>考場作法：</strong> 寫 A，並用一句話註明「$M_G$ 若視為灌漿前已作用，$f_s^{(2)} = 9{,}661$」。</p>
+<p><strong>④ 下緣應力幾乎為零的設計意義</strong></p>
 <p>$f_{c,bot}^{(2)} = 2.12$ kgf/cm²（壓）≈ 0</p>
-<p>這表示此梁設計為「在最大活載重下，底纖維恰好接近零壓」，是預力梁 WSD 設計中常見的「四控制條件」之一：
-- 施拉時底纖維壓應力 ≤ $0.6f'<em ci="ci">{ci}$
-- 施拉時頂纖維拉應力 ≤ $0.25\sqrt{f'</em>$
-- 使用時底纖維拉應力 ≤ $0.5\sqrt{f'_c}$（甚至取 0）
-- 使用時頂纖維壓應力 ≤ $0.45f'_c$}</p>
-<p><strong>④ 考場速解提示</strong></p>
-<p>本題計算量大，建議：
-1. 先整理各分量表格（每行對應一個效應）
-2. 符號方向判斷後統一方向再代入，不要每項都重推
-3. 腱應力計算只需：$F_0/A_{sp}$ + $n \times$ 重力在腱位的張應力
-4. 最後彙整成果表（上下緣 + 腱應力），得分率最高</p></main>
+<p>這表示此梁設計為「在最大活載重下，底纖維恰好接近零壓」，是預力梁 WSD 設計中的「四控制條件」。<br />
+<strong>注意單位制</strong>——下列係數為 <strong>kgf/cm² 制</strong>（舊版本頁誤植成 MPa 制的 0.25／0.5／0.45，與全文的 kgf/cm² 混用）：</p>
+<table>
+<thead>
+<tr>
+<th>控制條件</th>
+<th>kgf/cm² 制</th>
+<th>對應 SI（MPa）制</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>傳遞後底纖維壓應力</td>
+<td>$\le 0.60f'_{ci}$（簡支構材端部 $0.70f'_{ci}$）</td>
+<td>同</td>
+</tr>
+<tr>
+<td>傳遞後頂纖維拉應力</td>
+<td>$\le 0.80\sqrt{f'_{ci}}$（端部 $1.60\sqrt{f'_{ci}}$）</td>
+<td>$0.25\sqrt{f'_{ci}}$／$0.50\sqrt{f'_{ci}}$</td>
+</tr>
+<tr>
+<td>使用時底纖維拉應力（Class U）</td>
+<td>$\le 2.0\sqrt{f'_c}$（Class T 上限 $3.2\sqrt{f'_c}$）</td>
+<td>$0.62\sqrt{f'_c}$／$1.0\sqrt{f'_c}$</td>
+</tr>
+<tr>
+<td>使用時頂纖維壓應力</td>
+<td>持續載重 $\le 0.45f'_c$；含瞬時活載 $\le 0.60f'_c$</td>
+<td>同</td>
+</tr>
+</tbody>
+</table>
+<p><strong>⑤ 考場速解提示</strong></p>
+<p>本題計算量大，建議：</p>
+<ol>
+<li>先整理各分量表格（每行對應一個效應）</li>
+<li>符號方向判斷後統一方向再代入，不要每項都重推</li>
+<li>腱應力計算只需：$F_0/A_{sp}$ + $n \times$ 重力在腱位的張應力</li>
+<li>最後彙整成果表（上下緣 + 腱應力），得分率最高</li>
+</ol>
+<hr />
+<h2>6. 依最新規範對照（土木 401-112／ACI 318-19）</h2>
+<p><strong>結論：主線六個答案完全不變。</strong> 本題是純彈性疊加分析，不涉及任何強度公式，<br />
+最新規範改動的是「容許應力的分級」與「條文編號」，不是應力計算方式。</p>
+<table>
+<thead>
+<tr>
+<th>項目</th>
+<th>原解所用</th>
+<th>土木 401-112／ACI 318-19</th>
+<th>影響</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>彈性應力疊加 $f = F/A \pm Fe/Z \mp M/Z$</td>
+<td>同</td>
+<td>§24.5 未改（材料力學式）</td>
+<td>無</td>
+</tr>
+<tr>
+<td>三斷面時序（淨→變換→合成）</td>
+<td>同</td>
+<td>§24.5.2.1 及解說未改</td>
+<td>無</td>
+</tr>
+<tr>
+<td>有黏結腱之應變相容 $\Delta f_s = n\Delta f_c$</td>
+<td>同</td>
+<td>未改</td>
+<td>無</td>
+</tr>
+<tr>
+<td>傳遞後容許壓應力</td>
+<td>$0.60f'_{ci}$</td>
+<td>$0.60f'_{ci}$，簡支構材<strong>端部</strong> $0.70f'_{ci}$（§24.5.3.1）</td>
+<td>本題未要求驗算</td>
+</tr>
+<tr>
+<td>傳遞後容許拉應力</td>
+<td>—</td>
+<td>$0.80\sqrt{f'_{ci}}$；端部 $1.60\sqrt{f'_{ci}}$（kgf/cm² 制）</td>
+<td>同上</td>
+</tr>
+<tr>
+<td>使用階段拉應力</td>
+<td>舊制單一上限</td>
+<td>改為 <strong>Class U／T／C 三級</strong>：$\le 2.0\sqrt{f'_c}$（U，未開裂分析有效）／$\le 3.2\sqrt{f'_c}$（T）／超過為 C（須開裂斷面分析）</td>
+<td>本題下緣為壓（+2.12），屬 Class U，未開裂彈性分析成立 ✓</td>
+</tr>
+<tr>
+<td>使用階段壓應力</td>
+<td>—</td>
+<td>持續載重 $0.45f'_c$、含瞬時活載 $0.60f'_c$（§24.5.4）</td>
+<td>本題未給 $f'_c$，無法驗算</td>
+</tr>
+<tr>
+<td>條文編號</td>
+<td>ACI 318-99 §18.4</td>
+<td>ACI 318-19 §24.5（使用性）、§20.3.2.5（腱應力上限）</td>
+<td>僅編號</td>
+</tr>
+</tbody>
+</table>
+<p><strong>唯一值得補寫的一句：</strong> 全載下緣 $+2.12$ kgf/cm²（壓）代表斷面<strong>始終未開裂</strong>，<br />
+故整題採未開裂全斷面性質（$Z$、$I$）是合法的——這正是 318-19 Class U 的成立條件。<br />
+若下緣算出的是拉應力且超過 $2.0\sqrt{f'_c}$，本題這套「三斷面彈性疊加」就整個失效，必須改用開裂斷面。</p></main>
 <footer>來源：raw/solutions/RC-2011-5/RC-2011-5.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
