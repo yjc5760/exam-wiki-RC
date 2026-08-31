@@ -413,6 +413,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$M_u = 1.2 M_D + 1.6 M_L = 1.2 \times 12 + 1.6 \times 35 = 14.4 + 56.0 = \boxed{70.4 \text{ tf·m} = 7{,}040{,}000 \text{ kgf·cm}}$$</p>
 <h3>Step 2：T 形梁有效翼板寬</h3>
 <p>$$b = \min\!\left(\frac{L}{4},\ b_w + 16h_f,\ \text{梁間距}\right) = \min\!\left(\frac{600}{4},\ 30+16\times12,\ 600\right) = \min(150,\ 222,\ 600) = \boxed{150 \text{ cm}}$$</p>
+<p><img alt="RC-2007-1 有效翼板寬三條件長條比較：L/4 = 150 cm 控制、bw+16hf = 222 cm、梁間距 = 600 cm" src="../../raw/solutions/RC-2007-1/figs/RC-2007-1-fig-1-flange-width.svg" /></p>
+<p><em>圖 1　有效翼板寬取三者最小。長條長度就是三個候選值的比例，一眼看出 $L/4$ 控制——這張圖攔下「取最大」或「漏掉某一條」，取錯會讓後面的 $a$ 與翼板判斷全部失真。</em></p>
 <h3>Step 3：假設中性軸在翼板（$a \leq h_f = 12$ cm），以矩形梁求 $A_s$</h3>
 <p>先假設 $\phi = 0.9$（拉力控制），則需求標稱彎矩：<br />
 $$M_n = \frac{M_u}{\phi} = \frac{7{,}040{,}000}{0.9} = 7{,}822{,}222 \text{ kgf·cm}$$</p>
@@ -453,6 +455,8 @@ $$y_2 = 6.44 + 2.87 + 2.87 = 12.18 \text{ cm} \quad (\text{第二排})$$</p>
 <p><strong>實際有效深度（兩排 3+3 加權平均）：</strong><br />
 $$\bar{y}_{steel} = \frac{3 \times 6.44 + 3 \times 12.18}{6} = \frac{19.32 + 36.54}{6} = \frac{55.86}{6} = 9.31 \text{ cm}$$</p>
 <p>$$d_{actual} = h - \bar{y}_{steel} = 60 - 9.31 = \boxed{50.69 \text{ cm}}$$</p>
+<p><img alt="RC-2007-1 單排 6 根 D29 淨間距僅 0.56 cm 不合規，改兩排 3+3 後淨間距 5.70 cm 合規，實際有效深度由 53.5 降為 50.69 cm" src="../../raw/solutions/RC-2007-1/figs/RC-2007-1-fig-2-bar-layout.svg" /></p>
+<p><em>圖 2　排列決定有效深度。題給 $d = 53.5$ cm 是「假設單排」的估算起點，放兩排後降到 50.69 cm——這張圖攔下「拿題給的 $d$ 直接交卷、不回頭重驗 $\phi M_n$」。</em></p>
 <h3>Step 7：以實際 $d$ 重新驗算 $\phi M_n \geq M_u$</h3>
 <p>$$a = \frac{A_{s,prov} \times f_y}{0.85 f'_c \times b} = \frac{38.81 \times 4200}{0.85 \times 280 \times 150} = \frac{163{,}002}{35{,}700} = 4.566 \text{ cm}$$</p>
 <p>$$\phi M_n = \phi \times A_{s,prov} \times f_y \times \left(d_{actual} - \frac{a}{2}\right) = 0.9 \times 163{,}002 \times \left(50.69 - 2.28\right)$$</p>
@@ -551,6 +555,8 @@ $$\bar{y}_{steel} = \frac{3 \times 6.44 + 3 \times 12.18}{6} = \frac{19.32 + 36.
 </tr>
 </tbody>
 </table>
+<p><img alt="RC-2007-1 φMn 對層間淨距假設的敏感度曲線：2.5 cm 得 71.30、2.87 cm 得 71.03、3.73 cm 以上就低於 Mu = 70.4 tf·m" src="../../raw/solutions/RC-2007-1/figs/RC-2007-1-fig-3-sensitivity.svg" /></p>
+<p><em>圖 3　0.9% 的餘裕有多脆弱。層間淨距只要從 2.87 放寬到 3.73 cm，6-D29 就不夠了——這張圖攔下「只算一個假設就宣告設計 OK」。</em></p>
 <p><strong>卷面建議：</strong> 把層間距的假設值<strong>明寫出來</strong>，並附上 $\phi M_n$ 與 $M_u$ 的比較。<br />
 若採更保守的 $d$（低於約 50.2 cm）則 6 根不足，須改配 <strong>7-D29</strong>：</p>
 <p>$$A_{s,prov} = 7 \times 6.469 = 45.28 \text{ cm}^2,\quad a = 5.33 \text{ cm}$$</p>
@@ -561,7 +567,9 @@ $$\bar{y}_{steel} = \frac{3 \times 6.44 + 3 \times 12.18}{6} = \frac{19.32 + 36.
 <h3>最大鋼筋量驗算（延性確認）</h3>
 <p>$$c_{actual} = 4.566 / 0.85 = 5.37 \text{ cm}$$</p>
 <p>$$\varepsilon_t = 0.003 \times (50.69 - 5.37)/5.37 = 0.003 \times 8.44 = 0.0253 \gg 0.005 \quad \checkmark$$</p>
-<p>為拉力控制斷面，$\phi = 0.9$ 確認，且鋼筋量遠低於最大限制。</p></main>
+<p>為拉力控制斷面，$\phi = 0.9$ 確認，且鋼筋量遠低於最大限制。</p>
+<hr />
+<p><em>圖解補繪：2026-08-31（向量圖 3 張，腳本 <code>figs/gen_RC-2007-1.py</code>，可重跑；腳本檔尾對 §4／§5 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2007-1/RC-2007-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

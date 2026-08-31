@@ -98,6 +98,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 本解依原卷文字採 4+4；若嚴守間距須改三排，$\phi M_n$ 降為 130.6 tf·m。詳見 §5 ①。</p>
 </blockquote>
 <hr />
+<p><img alt="RC-2023-2 T形雙筋梁斷面：翼板 90×15 cm、腹板 30 cm、8-D32 分 4+4 兩排，右格放大顯示底排 4 根 D32 的淨間距只有 2.37 cm，小於 max(db, 2.5) = 3.22 cm" src="../../raw/solutions/RC-2023-2/figs/RC-2023-2-fig-1-section.svg" /></p>
+<p><em>圖 1　斷面配筋與淨間距檢核。原卷「雙排排列」與「間距依規範最小值」在 $b_w = 30$ cm 下無法並存——這張圖攔下「算完 $d$ 就往下走、從不回頭驗每排放不放得下」。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 雙筋梁的設計強度需同時考慮三個力：混凝土壓力 $C_c$、壓力鋼筋力 $C_s$、拉力鋼筋力 $T$，且壓力鋼筋是否降伏需通過<strong>應變相容</strong>驗算，不能直接假設。</p>
 <p><strong>出題者測驗的能力：</strong></p>
@@ -431,6 +433,8 @@ Step 6：確認 φ（判斷 εt）→ 輸出 φMn
 <p><strong>確認壓力鋼筋應力（不超過 $f_y$）：</strong></p>
 <p>$$f'_s = \frac{6{,}120 \times (12.19 - 6)}{12.19} = \frac{6{,}120 \times 6.19}{12.19} = \frac{37{,}883}{12.19} = 3{,}108 \text{ kgf/cm}^2 < f_y \checkmark$$</p>
 <hr />
+<p><img alt="RC-2023-2 三聯圖：T形斷面、應變分佈（c = 12.19 cm，壓力鋼筋應變 0.001523 小於 εy）、Whitney 等值應力塊（a = 10.36 cm 小於 hf = 15 cm）" src="../../raw/solutions/RC-2023-2/figs/RC-2023-2-fig-2-strain-stress.svg" /></p>
+<p><em>圖 2　中性軸與應力塊。垂直尺度三格共用，故 $c = 12.19$ 與 $a = 10.36$ 的相對深度是真的——判斷翼板夠不夠要拿 $a$ 去比 $h_f$，拿 $c$ 去比會誤判；圖上同時標出 $\varepsilon'_s$ 落在 $\varepsilon_y$ 以下，攔下「壓力鋼筋逕自假設降伏」。</em></p>
 <h3>Step 4：計算各合力</h3>
 <p>$$C_c = 0.85 \times 280 \times 90 \times 10.36 = 21{,}420 \times 10.36 = 221{,}911 \text{ kgf}$$</p>
 <p>$$C_{s,\text{net}} = A_s'(f'_s - 0.85f'_c) = 18 \times (3{,}108 - 238) = 18 \times 2{,}870 = 51{,}660 \text{ kgf}$$</p>
@@ -568,6 +572,8 @@ Step 6：確認 φ（判斷 εt）→ 輸出 φMn
 <p><strong>為什麼 $c$、$a$、$f'_s$ 完全不變？</strong> 它們只由<strong>力平衡</strong>（$C_c + C_{s,\text{net}} = A_sf_y$）決定，<br />
 與 $d$ 無關；$d$ 只進到<strong>力臂</strong>。所以換排列只改彎矩、不改中性軸——這個結構值得記住。</p>
 </blockquote>
+<p><img alt="RC-2023-2 4+4 與 3+3+2 兩種排列對照：兩圖的中性軸 c = 12.19 cm 完全相同，只有 d 從 60.53 降到 58.38 cm，φMn 從 135.9 降到 130.6 tf·m" src="../../raw/solutions/RC-2023-2/figs/RC-2023-2-fig-3-layout.svg" /></p>
+<p><em>圖 3　換排列只改力臂。兩格畫的是同一條中性軸——$c$ 由力平衡定出，與 $d$ 無關；這張圖攔下「以為改排列會連中性軸一起變」而把整題重算一遍的錯。</em></p>
 <p><strong>考場建議：</strong> 依原卷文字寫 4+4（坊間解答通行），但<strong>在卷面加一句</strong><br />
 「註：4 根 D32 於 $b_w=30$ 之淨間距 2.37 cm 未達 $d_b$，本解依題意仍採雙排」，<br />
 把矛盾點出來反而顯示有做間距檢核。</p>
@@ -583,7 +589,9 @@ Step 6：確認 φ（判斷 εt）→ 輸出 φMn
 <li>若 $\varepsilon'_s < \varepsilon_y$，才建立二次方程求 $c$（不要跳過這個試驗步驟）</li>
 <li>翼板判斷：永遠比較 $a$ 與 $h_f$，而非 $c$ 與 $h_f$</li>
 <li>算完 $d$ <strong>順手驗一次每排的淨間距</strong>——本題正是靠這一步才看得出原卷條件矛盾</li>
-</ol></main>
+</ol>
+<hr />
+<p><em>圖解補繪：2026-08-31（向量圖 3 張，腳本 <code>figs/gen_RC-2023-2.py</code>，可重跑；腳本檔尾對 §4／§5 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2023-2/RC-2023-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

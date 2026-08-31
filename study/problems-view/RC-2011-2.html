@@ -50,6 +50,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>(一)</strong> 已知 $A_s = 0.9A_{sb}$（$A_{sb}$ 為此 T 型梁之平衡鋼筋量），求設計彎矩強度 $\phi M_n$。（15 分）</p>
 <p><strong>(二)</strong> 求斷面韌性容量 $\mu_\phi = \phi_u / \phi_y$，其中 $\phi_u$ 及 $\phi_y$ 分別為極限曲率及降伏曲率。（10 分）</p>
 <hr />
+<p><img alt="RC-2011-2 T形斷面兩種尺寸讀法對照：本解 h=100／d=90 與直讀尺寸鏈 h=110／d=100，兩者 φMn 差 20% 但 μφ 幾乎相同" src="../../raw/solutions/RC-2011-2/figs/RC-2011-2-fig-1-section.svg" /></p>
+<p><em>圖 1　附圖尺寸鏈的兩種讀法（向量重繪）。先把「$d$ 到底是 90 還是 100」講清楚再算，這張圖攔下「照尺寸鏈直讀卻沒察覺與圖面比例矛盾」——兩種讀法的 $\phi M_n$ 差 20%。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong></p>
 <ul>
@@ -397,6 +399,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 本題為純分析題（題目直接指定 $A_s = 0.9A_{sb}$），故仍照算 $\phi M_n$。</p>
 </blockquote>
 <hr />
+<p><img alt="RC-2011-2 淨拉應變帶狀圖：εty = 0.002059、0.004、0.005 三個界限，本題 εt = 0.002771 落在「梁不得使用」區間" src="../../raw/solutions/RC-2011-2/figs/RC-2011-2-fig-2-et-band.svg" /></p>
+<p><em>圖 2　$\varepsilon_t$ 落在哪一段。$\phi$ 必須內插得 0.7105 而非 0.90，且 $\varepsilon_t = 0.002771$ 未達 0.004——這張圖攔下「$A_s < A_{sb}$ 就當合法」與「$\phi$ 逕取 0.9」兩個錯，本題真正的得分點在這裡。</em></p>
 <h4>Step 6：計算 $M_n$（對 $A_s$ 形心取矩）</h4>
 <p><strong>策略：</strong> 將壓力分為腹板矩形塊 + 翼板外挑矩形塊（均勻應力 $0.85f'_c$）：</p>
 <p>$$C_{c,\text{web}} = 0.85\times350\times b_w\times a = 297.5\times40\times37.43 = 445{,}393 \text{ kgf}$$</p>
@@ -436,6 +440,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>物理意義：</strong> $A_s = 0.9A_{sb}$ 為高配筋（接近平衡破壞），$\varepsilon_t$ 僅略高於 $\varepsilon_y$，故延性極為有限（$\mu_\phi\approx1.53$）。相較而言，低配筋梁（$A_s\approx0.3A_{sb}$）的 $\mu_\phi$ 通常可達 5–10。</p>
 </blockquote>
 <hr />
+<p><img alt="RC-2011-2 彈性中性軸 kyd = 40.95 cm 與 Whitney 塑性中性軸 cu = 46.79 cm 的兩張應變圖，分別對應 φy = 4.198e-5 與 φu = 6.412e-5 rad/cm" src="../../raw/solutions/RC-2011-2/figs/RC-2011-2-fig-3-curvature.svg" /></p>
+<p><em>圖 3　兩個中性軸不是同一條。$\phi_y$ 用彈性轉換斷面（幾何量）、$\phi_u$ 用 Whitney 塑性（力平衡量），圖上兩條 N.A. 深度不同——這張圖攔下「$\phi_y$ 與 $\phi_u$ 共用同一個 $c$」，也攔下「矩形應力塊力臂大所以中性軸更深」這種因果講反的說法。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① $A_{sb}$ 為何遠大於單純腹板矩形梁？</strong></p>
 <p>先算純腹板矩形梁的平衡鋼筋比：</p>
@@ -566,7 +572,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p>考場上若對圖存疑，<strong>寫明「本解讀 $d = 90$ cm」即可</strong>，不會因此失分。</p></main>
+<p>考場上若對圖存疑，<strong>寫明「本解讀 $d = 90$ cm」即可</strong>，不會因此失分。</p>
+<hr />
+<p><em>圖解補繪：2026-08-31（向量圖 3 張，腳本 <code>figs/gen_RC-2011-2.py</code>，可重跑；腳本檔尾對 §4／§5 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2011-2/RC-2011-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

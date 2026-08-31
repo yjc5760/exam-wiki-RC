@@ -319,6 +319,8 @@ $$</p>
 <p>底部鋼筋淨拉應變：</p>
 <p>$$\varepsilon_t = 0.003 \cdot \frac{d - c}{c} = 0.003 \cdot \frac{63 - 0.5536\,A_s}{0.5536\,A_s} = \frac{0.003 \times 63}{0.5536\,A_s} - 0.003 = \frac{0.3414}{A_s} - 0.003$$</p>
 <hr />
+<p><img alt="RC-2019-1 單筋矩形梁三聯圖：斷面 50×70 cm、應變分佈 c = 25.20 cm 與 εt = 0.00450、Whitney 應力塊 a = 21.42 cm" src="../../raw/solutions/RC-2019-1/figs/RC-2019-1-fig-1-section.svg" /></p>
+<p><em>圖 1　斷面／應變／等值應力塊。垂直尺度三格共用，$a = \beta_1 c$ 永遠比 $c$ 淺——圖上若 $a$ 比 $c$ 深就是 $\beta_1$ 用錯，這是檢查 $a$、$c$ 有沒有代反最快的方式。</em></p>
 <h3>4.3 建立過渡區 $\phi$ 與 $A_s$ 的關係</h3>
 <p>由題目提示確認為過渡區（$\varepsilon_y < \varepsilon_t < 0.005$），套入線性內插公式：</p>
 <p>$$\phi = 0.65 + \frac{\varepsilon_t - \varepsilon_y}{0.005 - \varepsilon_y} \times 0.25$$</p>
@@ -329,6 +331,8 @@ $$</p>
 <p>$$= 0.65 + \frac{29.02}{A_s} - 0.430$$</p>
 <p>$$\boxed{\phi = 0.220 + \frac{29.02}{A_s}}$$</p>
 <hr />
+<p><img alt="RC-2019-1 φ 與 εt 的三段關係圖：εty = 0.002059 以下 φ = 0.65，0.005 以上 φ = 0.90，本題 εt = 0.00450 內插得 φ = 0.8575" src="../../raw/solutions/RC-2019-1/figs/RC-2019-1-fig-2-phi-et.svg" /></p>
+<p><em>圖 2　過渡區內插。$\varepsilon_{ty} = f_y/E_s = 0.002059$ 不是 0.002，且 $\varepsilon_t$ 越大 $\phi$ 越大——這張圖攔下內插方向記反與端點值取錯兩種錯。</em></p>
 <h3>4.4 代入彎矩方程，化簡為二次方程</h3>
 <p>設計強度條件：$\phi M_n = M_u$</p>
 <p>$$\phi \cdot A_s \cdot f_y \cdot \left(d - \frac{a}{2}\right) = M_u$$</p>
@@ -374,6 +378,8 @@ $$</p>
 兩者都可，<strong>但常數項務必用 $8{,}572{,}000/4200 = 2040.95$</strong>——寫成 2041.4 會把答案推到 45.7（偏差 0.4%）。</p>
 </blockquote>
 <hr />
+<p><img alt="RC-2019-1 φMn 隨 As 變化的曲線與 Mu 水平線：代數解在 45.5 與 90.3 cm² 兩處相交，大根落在鋼筋未降伏的灰色區" src="../../raw/solutions/RC-2019-1/figs/RC-2019-1-fig-3-roots.svg" /></p>
+<p><em>圖 3　為什麼大根必須捨棄。實線是 $\phi$ 被夾在 0.65～0.90 的物理解，灰虛線才是二次方程本體（把內插式外推）——大根 90.3 cm² 只存在於虛線上，該處 $\varepsilon_t < \varepsilon_{ty}$，鋼筋根本沒降伏。</em></p>
 <h3>4.6 驗算</h3>
 <p>以精解 $A_s = 45.52$ cm² 代回：</p>
 <p>$$a = 0.4706 \times 45.52 = 21.42\ \text{cm}$$</p>
@@ -388,8 +394,8 @@ $$</p>
 <p>土木 401-100 規定非預力梁 $\varepsilon_t \geq 0.004$。本題落在 $[0.004,\ 0.005]$ 之間——<br />
 <strong>既不是拉力控制（不能用 $\phi = 0.9$），也還沒超筋</strong>，正是出題者要考的那條窄帶。</p>
 <p><strong>最小鋼筋量驗核：</strong></p>
-<p>$$A_{s,\min} = \max\!\left(\frac{0.80\sqrt{f'_c}}{f_y},\, \frac{14}{f_y}\right) b_w d = \max(0.00276,\, 0.00333) \times 50 \times 63 = 10.49\ \text{cm}^2$$</p>
-<p>$$A_s = 45.5\ \text{cm}^2 \gg A_{s,\min} = 10.49\ \text{cm}^2 \quad \checkmark$$</p>
+<p>$$A_{s,\min} = \max\!\left(\frac{0.80\sqrt{f'_c}}{f_y},\, \frac{14}{f_y}\right) b_w d = \max(0.00276,\, 0.00333) \times 50 \times 63 = 10.50\ \text{cm}^2$$</p>
+<p>$$A_s = 45.5\ \text{cm}^2 \gg A_{s,\min} = 10.50\ \text{cm}^2 \quad \checkmark$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 本題解法的唯一性</h3>
@@ -402,7 +408,9 @@ $$</p>
 <h3>5.3 高鋼筋比的實務意義</h3>
 <p>本題 $\rho = 45.5/(50 \times 63) = 0.01446$，對應的平衡鋼筋比：</p>
 <p>$$\rho_b = 0.85 \times 0.85 \times \frac{210}{4200} \times \frac{6120}{6120+4200} = 0.02143$$</p>
-<p>$\rho/\rho_b = 0.675$，鋼筋量偏高（約 $\rho_b$ 的 68%），接近過渡區邊界。實務設計上，若有條件應增大斷面或採用壓力筋以提升延性（使 $\varepsilon_t \geq 0.005$，$\phi = 0.9$）。</p></main>
+<p>$\rho/\rho_b = 0.675$，鋼筋量偏高（約 $\rho_b$ 的 68%），接近過渡區邊界。實務設計上，若有條件應增大斷面或採用壓力筋以提升延性（使 $\varepsilon_t \geq 0.005$，$\phi = 0.9$）。</p>
+<hr />
+<p><em>圖解補繪：2026-08-31（向量圖 3 張，腳本 <code>figs/gen_RC-2019-1.py</code>，可重跑；腳本檔尾對 §4／§5 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2019-1/RC-2019-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，

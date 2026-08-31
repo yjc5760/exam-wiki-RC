@@ -490,6 +490,8 @@ A_s(c) = \frac{C_c + C'_s}{f_y}$$</p>
 M_n:\ 139.55 \to 127.53\ (-8.6\%)$$</p>
 <p>$\varphi$ 漲得比 $M_n$ 掉得快 → 乘積<strong>單調上升</strong>；$\varepsilon_t > 0.005$ 後 $\varphi$ 被<strong>截平</strong>在 0.90、$M_n$ 繼續下降 → 乘積單調下降。<br />
 兩段夾出的極大值落在<strong>折點</strong>上，不是導數為零的平滑極值，<strong>故不能用微分求，要分段判斷</strong>。</p>
+<p><img alt="RC-2015-2 φMn 隨 εt 的掃描曲線：峰值落在 εt = 0.005 的折點上得 114.8 tf·m，延性下限 εt = 0.004 只有 113.7 tf·m" src="../../raw/solutions/RC-2015-2/figs/RC-2015-2-fig-1-scan.svg" /></p>
+<p><em>圖 1　折點極大值。$\varphi$ 在 $[0.004,\ 0.005]$ 漲 10.4%、$M_n$ 只掉 8.6%，乘積一路上升到 $\varphi$ 觸頂被截平為止——這張圖攔下「把最大鋼筋量當成最大設計彎矩」，也說明為何此處不能用微分求極值。</em></p>
 <h4>Step 5：Part (一) 結論</h4>
 <p>$$\boxed{\varphi M_{n,\max} = 114.8 \text{ tf·m}\quad(A_s = 56.27 \text{ cm}^2,\ c = 23.63 \text{ cm},\ \varepsilon_t = 0.005,\ \varphi = 0.90)}$$</p>
 <blockquote>
@@ -515,6 +517,8 @@ M_n:\ 139.55 \to 127.53\ (-8.6\%)$$</p>
 <p><strong>驗證假設：</strong> $c_u = 5.69 \text{ cm} < d' = 7 \text{ cm}$ ✓</p>
 <p>A's 拉力應變：$\varepsilon'_{s} = 0.003(7-5.69)/5.69 = 0.000691 < \varepsilon_y$ ✓（未降伏，與計算一致）</p>
 <p>$$\varphi_u = \frac{\varepsilon_{cu}}{c_u} = \frac{0.003}{5.69} = \boxed{5.27 \times 10^{-4} \text{ rad/cm}}$$</p>
+<p><img alt="RC-2015-2 最小拉力鋼筋時 cu = 5.69 cm 小於 d' = 7 cm，壓力鋼筋落入拉力區，斷面上兩排鋼筋同時受拉" src="../../raw/solutions/RC-2015-2/figs/RC-2015-2-fig-2-part2.svg" /></p>
+<p><em>圖 2　「壓力鋼筋」變成拉力鋼筋。$c_u = 5.69 < d' = 7$ cm 時平衡方程式必須改寫，對 $C_c$ 作用線取矩時兩個拉力都要算——這張圖攔下「Part (二) 沿用 Part (一) 的壓力鋼筋平衡式」。</em></p>
 <h4>Step 3：降伏曲率 $\varphi_y$（彈性轉換斷面法，n=7）</h4>
 <blockquote>
 <p><strong>注意：</strong> φy 用<strong>彈性分析</strong>，此時 As 很小，ky 值小（NA 在上方），A's 在壓力區（kyd &gt; d' = 7 cm，需驗證）。</p>
@@ -632,13 +636,17 @@ M_n:\ 139.55 \to 127.53\ (-8.6\%)$$</p>
 </tbody>
 </table>
 <p>高強度與高韌性是相互抵換的設計目標，地震區設計應在兩者之間取得平衡。</p>
+<p><img alt="RC-2015-2 強度與韌性抵換曲線：最大彎矩點 μ=2.21／φMn=114.8、延性下限 μ=1.87／113.7、最大韌性點 μ=13.0／18.6 tf·m" src="../../raw/solutions/RC-2015-2/figs/RC-2015-2-fig-3-tradeoff.svg" /></p>
+<p><em>圖 3　兩個小題是同一條曲線的兩個端點。從 (一) 走到 (二)，韌性漲 5.9 倍、強度只剩 16%——這張圖攔下「以為兩問可以同時最佳化」。</em></p>
 <blockquote>
 <p><strong>（二）的 $\varphi M_n$ 怎麼算的：</strong> $c_u = 5.685$、$a = 4.548$ cm；此時 $A'_s$ 落在拉力區提供<br />
 $T' = 10.134 \times 1{,}416 = 14{,}351$ kgf，$T = A_{s,\min}f_y = 33{,}001$ kgf。對 $C_c$ 作用線取矩：<br />
 $M_n = 33{,}001(63-2.27) + 14{,}351(7-2.27) = 2{,}071{,}900$ kgf·cm $= 20.7$ tf·m；<br />
 $\varepsilon_t = 0.0302 \Rightarrow \varphi = 0.90 \Rightarrow \varphi M_n = 18.6$ tf·m。<br />
 <strong>兩個拉力都要取矩</strong>——只算 $A_{s,\min}$ 那一項會少掉 3%。</p>
-</blockquote></main>
+</blockquote>
+<hr />
+<p><em>圖解補繪：2026-08-31（向量圖 3 張，腳本 <code>figs/gen_RC-2015-2.py</code>，可重跑；腳本檔尾對 §4／§5 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2015-2/RC-2015-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
