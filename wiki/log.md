@@ -1502,3 +1502,11 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
 - 五個 `.md` 均為 CRLF，插圖與訂正全程以位元組層級處理，換行未被轉換。
 - 本次未在使用者端執行 `py_compile`（上一輪產生的 `__pycache__` 無法以 `rm` 移除，
   已於 8/31 移至 `_to_delete/pycache_20260831/`，待使用者自行刪除）。
+
+## 2026-09-02
+
+### 完成事項
+
+- 新增 RC 梁題 5 題（RC-2009-3, RC-2014-3, RC-2017-2, RC-2020-2, RC-2023-3）的 struct-diagram 向量圖解。
+- 將圖片產生結果與註解，更新至對應的 .md 與 study/problems-view/ 的 .html 檔案中。
+- 更新 scripts/apply_figs.py 的圖解中繼資料與註解。

@@ -95,6 +95,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>臨界斷面的最大偏心量 $e$（使扭力仍可忽略）</li>
 </ol>
 <hr />
+<p><img alt="RC-2023-3 懸臂梁立面與斷面：跨度 350 cm、偏心均佈載重 2.5 tf/m，臨界斷面距固定端 d=53 cm 處 Vu=7.425 tf，斷面 35×60 cm 標示偏心量 e 與 T=V·e" src="../../raw/solutions/RC-2023-3/figs/RC-2023-3-fig-1-beam.svg" /></p>
+<p><em>圖 1　懸臂梁的臨界斷面與偏心量。$d$ 偏移三條件逐條成立才取距固定端 $d$ 處（判準是條件，不是構件名稱）；圖右下的 $\phi V_c > V_u > 0.5\phi V_c$ 說明 D13 閉合箍是</em><em>最小鋼筋量</em><em>要求，不是為了承受扭力。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 偏心垂直載重同時產生<strong>剪力 $V$</strong> 與<strong>扭矩 $T = V\cdot e$</strong>。若 $T_u < \phi T_{th}$（規範的扭力忽略門檻，約為裂縫扭矩的 1/4），則扭力效應可在設計中忽略，只需設計剪力。反過來讀，就能由門檻反推「最大容許偏心量」。</p>
 <p><strong>出題者測驗：</strong></p>
@@ -135,7 +137,7 @@ Step 5：由 Tu = Vu × e ≤ φTth → 求 e_max
 </tr>
 <tr>
 <td>⚠ <strong>扭矩門檻公式的單位</strong></td>
-<td>規範式 $T_{th} = \frac{\sqrt{f'_c}}{12}\frac{A_{cp}^2}{p_{cp}}$ 是 SI（MPa, mm, N·mm）。直接把 kgf/cm² 與 cm 代進去會<strong>低估 3.77 倍</strong></td>
+<td>規範式 $T_{th} = \frac{\sqrt{f'_c}}{12}\frac{A_{cp}^2}{p_{cp}}$ 是 SI（MPa, mm, N·mm）。直接把 kgf/cm² 與 cm 代進去會<strong>低估 3.19 倍</strong></td>
 <td>換算至 SI 計算，或改用 kgf 制等效係數 <strong>0.265</strong></td>
 </tr>
 <tr>
@@ -419,7 +421,7 @@ Step 5：由 Tu = Vu × e ≤ φTth → 求 e_max
 <blockquote>
 <p>⚠ <strong>兩個單位陷阱一次踩到就整題錯：</strong><br />
 ① 若把 kgf/cm² 與 cm 直接代進 SI 式 $\frac{\sqrt{f'_c}}{12}\frac{A_{cp}^2}{p_{cp}}$，得<br />
-$\frac{16.733}{12}\times23{,}211 = 32{,}363$ kgf·cm，<strong>低估 3.77 倍</strong>（$e_{\max}$ 也跟著低估成 3.3 cm）。<br />
+$\frac{16.733}{12}\times23{,}211 = 32{,}363$ kgf·cm，<strong>低估 3.19 倍</strong>（$e_{\max}$ 也跟著低估成 3.3 cm）。<br />
 ② $77{,}515$ kgf·cm $= \mathbf{0.775}$ tf·m。$1\ \text{tf·m} = 10^5\ \text{kgf·cm}$，不是 $10^4$。</p>
 </blockquote>
 <hr />
@@ -481,6 +483,10 @@ $\frac{16.733}{12}\times23{,}211 = 32{,}363$ kgf·cm，<strong>低估 3.77 倍</
 </tbody>
 </table>
 <hr />
+<p><img alt="RC-2023-3 扭矩四個量級長條比較：誤把 kgf 制代入 SI 式得 0.324、φTth=0.775、Tth=1.033、Tcr=4.134 tf·m" src="../../raw/solutions/RC-2023-3/figs/RC-2023-3-fig-2-threshold.svg" /></p>
+<p><em>圖 2　扭力門檻的單位陷阱。同一條 $T_{th}$ 公式，kgf 制的等效係數是 $0.265$ 而不是 $1/12$，代錯就低估 3.19 倍、$e_{\max}$ 跟著從 10.44 cm 掉到 3.27 cm。圖上同時標出 $T_{th} = T_{cr}/4$ 的關係，避免把忽略門檻與裂縫扭矩混為一談。</em></p>
+<p><img alt="RC-2023-3 T=V·e 直線與 φTth 門檻圖：讀法 A（Vu=7.425 tf）於 e=10.44 cm 觸及門檻，讀法 B（容量 61.7 tf）於 e=1.26 cm 即觸及，門檻以下為扭力可忽略區" src="../../raw/solutions/RC-2023-3/figs/RC-2023-3-fig-3-envelope.svg" /></p>
+<p><em>圖 3　把門檻反過來讀就是偏心量的上限。$T = e \cdot V$ 的比例與斷面位置 $x$ 無關，所以 $e_{\max} = 10.44$ cm 是</em><em>全梁通用</em><em>的限制值；圖上另畫出「所能承受」讀成容量時的那條陡線（$e = 1.26$ cm），一眼看出兩種讀法差了八倍。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>1. 題意歧義：「此梁斷面所能承受之最大設計剪力」該怎麼讀？（留檔）</strong></p>
 <p>中文「所能承受」字面上偏向<strong>容量</strong>，但本題的資料配置指向<strong>需求</strong>：</p>
@@ -517,7 +523,11 @@ $\frac{16.733}{12}\times23{,}211 = 32{,}363$ kgf·cm，<strong>低估 3.77 倍</
 <p><strong>2. 扭力門檻公式的單位問題（最容易整題錯的一步）</strong></p>
 <p>土木 401-110（＝ ACI 318-19 SI 版）的 $T_{th}$ 公式以 MPa、mm、N·mm 為基礎：</p>
 <p>$$T_{th} = 0.083\lambda\sqrt{f'_c}\,\frac{A_{cp}^2}{p_{cp}}\quad\left(0.083 \approx \frac{1}{12}\right)$$</p>
-<p>直接將 kgf/cm² 代入會缺少換算係數 $\sqrt{14.223} \times 0.0703^{-1}$ 的組合，導致 $T_{th}$ 低估約 3.77 倍。正確的 kgf 制等效式：</p>
+<p>直接將 kgf/cm² 與 cm 代入會缺少單位換算的組合因子<br />
+$1000/(\sqrt{10.197}\times 98.07) = 3.19$（＝ kgf 制係數 $0.265$ 除以 SI 係數 $1/12$），<br />
+導致 $T_{th}$ 低估約 <strong>3.19 倍</strong>（$103{,}354 / 32{,}363 = 3.19$）。<br />
+（注意 $\sqrt{14.223}=3.771$ 是「英制 psi ↔ kgf 制」的換算因子，用於推導下方的 $0.265$，<br />
+不是「SI 式誤代 kgf」所缺的因子；兩者不可混用。）正確的 kgf 制等效式：</p>
 <p>$$\boxed{T_{th} = 0.265\sqrt{f'_c}\,\frac{A_{cp}^2}{p_{cp}}}\quad[\text{kgf·cm};\ f'_c:\text{kgf/cm}^2;\ A_{cp}:\text{cm}^2;\ p_{cp}:\text{cm}]$$</p>
 <p>同理裂縫扭矩 $T_{cr} = 4\times T_{th} = 1.06\sqrt{f'_c}A_{cp}^2/p_{cp}$（kgf 制）。<strong>這兩個係數（0.265／1.06）建議背下來。</strong></p>
 <p><strong>3. 為何 $T_u = V_u \times e$ 在每個截面都成立？</strong></p>
@@ -593,7 +603,8 @@ $V_c$ 必須改用 $2.12\lambda_s\lambda\,\rho_w^{1/3}\sqrt{f'_c}b_wd$ 並乘上
 <li>記住 $A_{cp}$ ＝ 斷面全面積、$p_{cp}$ ＝ 外周長（不是箍筋中心線的 $A_{oh}$／$p_h$）</li>
 <li>$e_{\max}$ 的單位要一致（kgf·cm ÷ kgf = cm）</li>
 <li>「所能承受之最大設計剪力」若時間允許，<strong>需求（7.425 tf）與容量（61.7 tf）都寫</strong>，並各附一句理由</li>
-</ul></main>
+</ul>
+<p><em>圖解補繪：2026-09-02（向量圖 3 張，腳本 <code>figs/gen_RC-2023-3.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2023-3/RC-2023-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

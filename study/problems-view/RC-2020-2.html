@@ -69,6 +69,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 而且會錯過規範間距上限由 $d/2$ 落到 $d/4$ 的分支。</p>
 </blockquote>
 <hr />
+<p><img alt="RC-2020-2 倒 T 型梁題目重繪：側視圖 wu 箭頭終止於距梁頂 70 cm 的下翼板頂面，斷面為腹板 35×70 在上、翼板 100×20 在下，d=84 cm，D13 閉合箍" src="../../raw/solutions/RC-2020-2/figs/RC-2020-2-fig-1-beam.svg" /></p>
+<p><em>圖 1　倒 T 型梁題目重繪。側視圖的載重箭頭</em><em>止於下翼板頂面</em><em>而非梁頂——這一個像素高度就是本題全部 25 分的樞紐：讀成梁頂載重，小題(一)答成「可以」，小題(二)的間距會從 16.6 cm 放寬到 24.1 cm。</em></p>
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
 <p><strong>核心觀念：</strong></p>
 <ol>
@@ -476,6 +478,12 @@ $V_s = 47.4/0.75 - 26.07 = 37.13$ tf $< 2V_c$，$s_{\max} = \min(24.1,\,42) = 24
 </tbody>
 </table>
 <hr />
+<p><img alt="RC-2020-2 兩種載重位置的力流對照：左為梁頂載重形成直達支承的斜壓撐、臨界斷面在 x=d，右為下翼板載重須先由懸吊筋吊上壓力區、臨界斷面在支承面" src="../../raw/solutions/RC-2020-2/figs/RC-2020-2-fig-2-loadpath.svg" /></p>
+<p><em>圖 2　$d$ 偏移的物理基礎。左圖載重在壓力側，斜壓撐直接把力送到支承，端區不必靠腹筋跨越；右圖載重自拉力側進入，得先被懸吊筋吊上壓力區才形成壓撐，斜裂縫穿越整個端區。可攔下「簡支梁一律可偏移」這個把構件名稱當判準的反射動作。</em></p>
+<p><img alt="RC-2020-2 半跨剪力包絡線與三條水平門檻：支承面 60 tf、d 處 47.4 tf、φVc=19.6 tf、φ(Vc+Vs)=60.0 tf、Vu,max=5φVc=97.8 tf" src="../../raw/solutions/RC-2020-2/figs/RC-2020-2-fig-3-shear.svg" /></p>
+<p><em>圖 3　剪力需求與三條門檻。$\phi V_c$ 只是「不必配箍筋」的界線，真正的斷面容量天花板是 $V_{u,\max} = 5\phi V_c = 97.8$ tf；把 $\phi V_c$ 當成 $V_u$ 上限、或忘記 $V_{s,\max} = 4V_c$ 這條，小題(三)就答不出來。</em></p>
+<p><img alt="RC-2020-2 四個箍筋間距候選值長條比較：誤用 d/2 上限 42 cm、誤判載重在梁頂 24.08 cm、規範上限 d/4 為 21 cm、強度需求 16.58 cm 控制" src="../../raw/solutions/RC-2020-2/figs/RC-2020-2-fig-4-spacing.svg" /></p>
+<p><em>圖 4　四個候選間距同時攤開，長條越長＝越不安全。$V_s = 53.93$ tf 只超過 $2V_c = 52.15$ tf 三個百分點，規範上限就由 42 cm 腰斬為 21 cm；最終仍由強度需求 16.58 cm 控制。可攔下上限選錯分支、以及忘記與強度需求取小。</em></p>
 <h2>5. 關鍵爭議點與進階探討（Critical Issues &amp; Advanced Discussion）</h2>
 <p><strong>1. $d$ 偏移的本質，以及「倒 T 型梁」為何是反例</strong></p>
 <p>$d$ 偏移成立的物理基礎是：支承附近的斜壓撐（diagonal compression strut）把外力<strong>直接</strong>傳至支承，不必靠腹筋跨越斜裂縫。這要求載重進入斷面的位置在壓力側（梁頂）。</p>
@@ -589,7 +597,8 @@ $\lambda_s = \sqrt{2/(1+d/25)} \le 1$（$d$ 以 cm 計時為 $\sqrt{2/(1+d/25.4)
 <td style="text-align: center;">不需</td>
 </tr>
 </tbody>
-</table></main>
+</table>
+<p><em>圖解補繪：2026-09-02（向量圖 4 張，腳本 <code>figs/gen_RC-2020-2.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2020-2/RC-2020-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

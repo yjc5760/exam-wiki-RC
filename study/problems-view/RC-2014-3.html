@@ -75,6 +75,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <hr />
+<p><img alt="RC-2014-3 簡支梁載重／剪力圖／彎矩圖三聯，標出距支承面 d=60 cm 的臨界斷面與該處 Vu=9.50 tf、Mu=6.60 tf·m，彎矩圖繪於受拉側" src="../../raw/solutions/RC-2014-3/figs/RC-2014-3-fig-1-critical.svg" /></p>
+<p><em>圖 1　臨界斷面位置與該處的 $V_u$、$M_u$。臨界斷面自</em><em>支承面</em><em>起算 $d$（不是支承中心），$V_u \cdot d / M_u = 0.8636 \le 1.0$ 這道檢核在無軸力與軸拉時都要做——軸壓改用 $M_m$ 後才解除。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong><br />
 本題考的不是一條公式，而是<strong>規範對三種軸力狀態各有一條獨立路徑</strong>——考生必須先分流、再代值：</p>
@@ -519,6 +521,10 @@ $V_c = (8.366 + 2.375\times0.4230)\times1800 = 16{,}868\ \text{kgf} = 16.87$ tf�
 <p>（參考：簡化式 $V_{c,\text{simple}} = 15{,}963\ \text{kgf} = 15.96\ \text{tf}$；無軸力上限 $28.01$ tf）</p>
 <p><strong>趨勢檢核：</strong> 軸壓（32.40）&gt; 無軸力（18.75）&gt; 軸拉（10.57）✓ 單調且符合物理直覺。</p>
 <hr />
+<p><img alt="RC-2014-3 Vc 隨設計軸力變化曲線：軸拉側線性折減至 Nu=−73.9 tf 歸零，軸壓側於 Mm=0（Nu=24 tf）之後取加強上限，三個工作點 10.57／18.75／32.40 tf" src="../../raw/solutions/RC-2014-3/figs/RC-2014-3-fig-2-nu-curve.svg" /></p>
+<p><em>圖 2　$V_c$ 隨軸力的變化。軸壓不只讓詳細式的分子變大，</em><em>連天花板都一起抬高</em><em>（$\times\sqrt{1+0.0284N_u/A_g} = 1.1568$）；軸拉則是線性折減、到 $N_u = -73.9$ tf 就歸零。$N_u$ 符號寫反的話整條曲線會左右翻轉，一眼可辨。</em></p>
+<p><img alt="RC-2014-3 五個 Vc 候選值長條比較：軸拉 10.57、簡化式 15.96、無軸力詳細式 18.75、誤答漏乘加強因子 28.01、軸壓 32.40 tf" src="../../raw/solutions/RC-2014-3/figs/RC-2014-3-fig-3-compare.svg" /></p>
+<p><em>圖 3　三種軸力狀態的 $V_c$ 與一個標準錯誤答案並排。灰色那一列就是把 $0.93\sqrt{f'_c}b_wd = 28.01$ tf 當成軸壓時的上限——低估 13.6%，是這 25 分裡最容易掉的一格。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 為何軸壓 Case 2 的 $V_c$ 達到（且超過）基本上限</strong></p>
 <p>軸壓 $N_u$ 在梁的任一斷面產生一個抵銷外加彎矩的效應（$-N_u(4h-d)/8$）。當抵銷量超過外加彎矩（$M_m<0$），即表示斷面實質受壓，斜裂縫被壓閉，$V_c$ 達上限。而規範同時把上限本身乘上 $\sqrt{1+0.0284N_u/A_g}$，因為壓應力越高、可達到的抗剪應力也越高。本題兩者疊加後 $V_c = 32.40$ tf，是無軸力值的 1.73 倍。</p>
@@ -620,7 +626,8 @@ $V_c = (8.366 + 2.375\times0.4230)\times1800 = 16{,}868\ \text{kgf} = 16.87$ tf�
 <blockquote>
 <p><strong>考場提醒：</strong> 本題原卷已明訂土木 401-100 並附上 $M_m$ 公式，因此<strong>主線必須用 401-100</strong>。<br />
 上表僅供理解規範演進；若未來考題指定 401-112，$M_m$ 一律不再使用。</p>
-</blockquote></main>
+</blockquote>
+<p><em>圖解補繪：2026-09-02（向量圖 3 張，腳本 <code>figs/gen_RC-2014-3.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2014-3/RC-2014-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

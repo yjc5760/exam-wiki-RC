@@ -62,6 +62,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>$\phi = 1.0$（不考慮強度折減）</li>
 </ul>
 <hr />
+<p><img alt="RC-2009-3 深梁題目重繪：全長 170 cm 由七段尺寸鏈 20-30-20-30-20-30-20 組成，四段 20 為承壓鈑與載重鈑寬，中央 30 標註純彎區，支承跨度 150、剪力跨 50 cm" src="../../raw/solutions/RC-2009-3/figs/RC-2009-3-fig-1-beam.svg" /></p>
+<p><em>圖 1　七段尺寸鏈的正確讀法。四段 20 cm 是</em><em>鈑寬</em><em>、三段 30 cm 是淨距；「純彎區」必在兩載重鈑之間，所以 30 不可能是鈑寬。讀錯的話 $a$ 由 50 變 30、$\theta$ 由 45° 變 59°，桿力全錯，控制項也會從斜壓桿跳到 CCT 節點。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong></p>
 <ul>
@@ -592,6 +594,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>加寬梁寬 $b$：壓桿與節點容量正比增加、拉力桿不變 → 效果同 3。</li>
 </ol>
 <hr />
+<p><img alt="RC-2009-3 壓拉桿模式桁架圖：底部拉力桿 +0.5P 受拉、兩支斜壓桿 −0.7071P 受壓、頂部水平壓桿 −0.5P 受壓，力臂 z=50 cm，θ=45°" src="../../raw/solutions/RC-2009-3/figs/RC-2009-3-fig-2-stm.svg" /></p>
+<p><em>圖 2　STM 桁架與桿力。力臂 $z = h - h_c/2 - h_t/2 = 50$ cm，兩個節點高各扣一半是最常漏的一步；$\sqrt{T^2+R^2} = 0.7071P$ 恰等於斜壓桿力，可當成幾何與平衡都對的驗算。</em></p>
+<p><img alt="RC-2009-3 CCT 節點幾何三角形：承壓面 lb=20、背面 ht=20、斜壓桿面 ws=28.28 cm，三面應力同時給出 P≤136.0 tf，並比較桿身 fce=159.375 與節點面 fce=170" src="../../raw/solutions/RC-2009-3/figs/RC-2009-3-fig-3-node.svg" /></p>
+<p><em>圖 3　CCT 節點的三個面與 $w_s$ 的來源。$w_s = l_b\sin\theta + h_t\cos\theta$ 是幾何投影算出來的，不是量出來的；同一根斜壓桿還有兩個上限（桿身 $\beta_s$ 與節點面 $\beta_n$）要取小——本題 $159.375 < 170$，故桿身控制。可攔下「節點只驗承壓面」。</em></p>
+<p><img alt="RC-2009-3 五個限制條件的最大載重長條比較：斜向瓶形壓桿 127.5 tf 控制、CCT 節點 136.0、拉力桿降伏 144.6、CCC 節點與水平壓桿各 170.0 tf" src="../../raw/solutions/RC-2009-3/figs/RC-2009-3-fig-4-capacity.svg" /></p>
+<p><em>圖 4　五項限制同時攤開。最小者不只決定 $P_{\max} = 127.5$ tf，也決定破壞模式；CCT 只高 6.7%、拉力桿降伏高 13.4%，延性模式被兩個脆性模式擋在後面——這就是「本梁為壓力控制之脆性破壞」的圖形證據。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 尺寸鏈的兩種讀法與後果（本題最大風險）</strong></p>
 <table>
@@ -751,7 +759,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p><strong>術語對照要記：</strong> 318-19 把「棱柱形／瓶形」的分類改成「<strong>邊界壓桿（boundary strut）／內部壓桿（interior strut）</strong>」——本題頂部水平壓桿沿構材受壓邊界，屬邊界壓桿（1.0）；斜壓桿位於 D 區內部，屬內部壓桿（腹筋合規 0.75）。分類名稱換了，本題數值恰好不變，但<strong>無腹筋的懲罰從 0.60λ 加重到 0.4</strong>，這是 318-19 最實質的改變。</p>
 <p><strong>⑦ 考場重點：所有限制都要算，而且要分面</strong></p>
-<p>本題若只算「拉力桿 + 斜壓桿 + CCT 承壓面」三項會得到相同答案，但漏掉節點的背面與壓桿面就少了論述完整性；而 45° 時三面同值，正好是「算對了」的自我驗證。</p></main>
+<p>本題若只算「拉力桿 + 斜壓桿 + CCT 承壓面」三項會得到相同答案，但漏掉節點的背面與壓桿面就少了論述完整性；而 45° 時三面同值，正好是「算對了」的自我驗證。</p>
+<p><em>圖解補繪：2026-09-02（向量圖 4 張，腳本 <code>figs/gen_RC-2009-3.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2009-3/RC-2009-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
