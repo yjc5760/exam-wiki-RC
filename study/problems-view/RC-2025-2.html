@@ -49,6 +49,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </ul>
 <p><img alt="RC-2025-2 題目附圖：耐震梁斷面，寬60cm，總高76cm，頂層8-D32，底層6-D32，保護層9cm" src="../../raw/solutions/RC-2025-2/RC-2025-2-fig-1.png" /></p>
 <p><em>圖說：矩形梁斷面，b = 60 cm，h = 76 cm，d' = 9 cm（由頂/底面至鋼筋形心距）。柱面處頂層配置 8-D32（As,top = 65.12 cm²），底層配置 6-D32（As,bot = 48.84 cm²）。</em></p>
+<p><img alt="RC-2025-2 耐震梁斷面向量重繪：梁寬 60 cm、總高 76 cm，頂層 8-D32 與底層 6-D32 各單排，面至鋼筋形心 d'=9 cm 故 d=67 cm，斷面內為 D13 閉合箍加兩支繫筋共 4 腳（Av=5.08 cm²）" src="../../raw/solutions/RC-2025-2/figs/RC-2025-2-fig-1-section.svg" /></p>
+<p><em>圖 1　斷面向量重繪：$b_w = 60$、$h = 76$、頂 8-D32／底 6-D32 單排，以及 4 腳 D13 閉合箍（外箍 2 腳＋2 支繫筋）的實際位置。攔的是把 $d$ 直接取成 $h$、以及 $A_v$ 只算外箍 2 腳——這兩個錯在第一步就把後面全部帶偏。</em></p>
 <p><strong>配筋（柱面處）：</strong></p>
 <ul>
 <li>頂層：8-D32，$A_{s,top} = 8 \times 8.14 = 65.12\text{ cm}^2$</li>
@@ -74,7 +76,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>測試是否懂得用 $1.25f_y$（非 $f_y$）計算 $M_{pr}$</li>
 <li>測試能否判斷 $V_c = 0$ 的適用條件（地震剪力 &gt; $0.5V_u$）</li>
 <li>測試密箍區長度（$2h$）及最大間距（$d/4$, $6d_b$, $150\text{ mm}$ 取最小）</li>
-<li>測試是否記得第一支箍筋距柱面 $\leq s_o/2$</li>
+<li>測試是否記得第一支箍筋距柱面 $\le 5$ cm（耐震<strong>梁</strong>的規定；$s_o/2$ 是<strong>柱</strong>的規定，不可混用）</li>
 </ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -246,12 +248,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$M_{pr}^-$</td>
-<td>$65.12\times5250\times(67-11.97) = 188.2\text{ tf·m}$（頂筋受拉）</td>
+<td>$65.12\times5250\times(67-11.97) = 188.1\text{ tf·m}$（頂筋受拉）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$a_{bot}$</td>
-<td>$\frac{48.84\times5250}{0.85\times280\times60} = 17.95\text{ cm}$</td>
+<td>$\frac{48.84\times5250}{0.85\times280\times60} = 17.96\text{ cm}$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -273,7 +275,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>$V_{seis}$</td>
-<td>$(M_{pr}^- + M_{pr}^+)/l_n = 337.0/9 = 37.44\text{ tf}$</td>
+<td>$(M_{pr}^- + M_{pr}^+)/l_n = 336.9/9 = 37.43\text{ tf}$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -283,7 +285,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$V_u$</td>
-<td>$37.44 + 9.00 = 46.44\text{ tf}$（控制方向，重力與地震同向）</td>
+<td>$37.43 + 9.00 = 46.43\text{ tf}$（控制方向，重力與地震同向）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -300,12 +302,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>地震剪力比</td>
-<td>$37.44/46.44 = 80.6\% > 50\%$ → $V_c = 0$</td>
+<td>$37.43/46.43 = 80.6\% > 50\%$ → $V_c = 0$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$V_s \geq$</td>
-<td>$V_u/\phi = 46.44/0.75 = 61.92\text{ tf}$（全由箍筋承擔）</td>
+<td>$V_u/\phi = 46.43/0.75 = 61.91\text{ tf}$（全由箍筋承擔）</td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -327,7 +329,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$s_{req}$</td>
-<td>$A_v f_{yt} d/V_s = 5.08\times2800\times67/61920 = 15.4\text{ cm}$</td>
+<td>$A_v f_{yt} d/V_s = 5.08\times2800\times67/61910 = 15.4\text{ cm}$</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -393,20 +395,22 @@ $$A_{s,bot} = 6 \times 8.14 = 48.84\text{ cm}^2 \quad(\text{柱面底層，6-D32
 <p><strong>頂筋受拉（負彎矩，$M_{pr}^-$）：</strong></p>
 <p>$$a_{top} = \frac{A_{s,top} \cdot 1.25f_y}{0.85 f'_c b_w} = \frac{65.12 \times 5250}{0.85 \times 280 \times 60} = \frac{341{,}880}{14{,}280} = 23.94\text{ cm}$$</p>
 <p>$$M_{pr}^- = A_{s,top} \cdot 1.25f_y \cdot \left(d - \frac{a_{top}}{2}\right) = 65.12 \times 5250 \times (67 - 11.97)$$</p>
-<p>$$= 341{,}880 \times 55.03 = 18{,}816{,}000\text{ kgf·cm} = \boxed{188.2\text{ tf·m}}$$</p>
+<p>$$= 341{,}880 \times 55.0294 = 18{,}813{,}000\text{ kgf·cm} = \boxed{188.1\text{ tf·m}}$$</p>
 <p><strong>底筋受拉（正彎矩，$M_{pr}^+$）：</strong></p>
-<p>$$a_{bot} = \frac{48.84 \times 5250}{14{,}280} = \frac{256{,}410}{14{,}280} = 17.95\text{ cm}$$</p>
+<p>$$a_{bot} = \frac{48.84 \times 5250}{14{,}280} = \frac{256{,}410}{14{,}280} = 17.96\text{ cm}$$</p>
 <p>$$M_{pr}^+ = 48.84 \times 5250 \times (67 - 8.975) = 256{,}410 \times 58.025 = 14{,}882{,}000\text{ kgf·cm} = \boxed{148.8\text{ tf·m}}$$</p>
 <hr />
 <h3>【Step 3】計算耐震設計剪力 $V_u$</h3>
 <p>對稱兩端配筋，取控制方向（梁端負彎矩 + 梁端正彎矩，重力與地震同向）：</p>
 <p>$$\boxed{V_u = \frac{M_{pr,L}^- + M_{pr,R}^+}{l_n} + \frac{w_u l_n}{2}}$$</p>
-<p>$$= \frac{188.2 + 148.8}{9.0} + \frac{2.0 \times 9.0}{2} = \frac{337.0}{9.0} + 9.0 = 37.44 + 9.00 = \boxed{46.44\text{ tf}}$$</p>
-<p>（另一搖擺方向：$V_u = 37.44 - 9.00 = 28.44\text{ tf}$，不控制）</p>
+<p>$$= \frac{188.1 + 148.8}{9.0} + \frac{2.0 \times 9.0}{2} = \frac{336.9}{9.0} + 9.0 = 37.43 + 9.00 = \boxed{46.43\text{ tf}}$$</p>
+<p>（另一搖擺方向：$V_u = 37.43 - 9.00 = 28.43\text{ tf}$，不控制）</p>
+<p><img alt="RC-2025-2 兩個搖擺方向的梁自由體對照：淨跨 9 m 的梁承受 2 tf/m 均布載重，兩端塑鉸彎矩同向（頂筋受拉 188.1、底筋受拉 148.8 tf·m），搖擺向右時左端剪力 46.43 tf 控制、右端 28.43 tf，搖擺向左時互換" src="../../raw/solutions/RC-2025-2/figs/RC-2025-2-fig-2-sway.svg" /></p>
+<p><em>圖 2　兩個搖擺方向各自的梁自由體：兩端塑鉸彎矩同向、與重力載重疊加後兩端剪力一大一小。攔的是 $V_e$ 公式裡 $\pm$ 取錯邊（重力與地震同向的那一端才控制），以及用 $f_y$ 而非 $1.25f_y$ 算 $M_{pr}$。</em></p>
 <hr />
 <h3>【Step 4】判斷密箍區是否需 $V_c = 0$</h3>
-<p>地震引致剪力：$V_{seis} = (M_{pr}^- + M_{pr}^+)/l_n = 337.0/9.0 = 37.44\text{ tf}$</p>
-<p>$$\frac{V_{seis}}{V_u} = \frac{37.44}{46.44} = 80.6\% > 50\% \quad \Rightarrow \quad \boxed{V_c = 0 \text{（密箍區內）}}$$</p>
+<p>地震引致剪力：$V_{seis} = (M_{pr}^- + M_{pr}^+)/l_n = 336.9/9.0 = 37.43\text{ tf}$</p>
+<p>$$\frac{V_{seis}}{V_u} = \frac{37.43}{46.43} = 80.6\% > 50\% \quad \Rightarrow \quad \boxed{V_c = 0 \text{（密箍區內）}}$$</p>
 <blockquote>
 <p>📝 <strong>策略註解：</strong> 土木401-112 規定：當耐震引致剪力超過總設計剪力的 50% 時（且梁為無軸力構件），密箍區內 $V_c = 0$，由箍筋獨立承擔全部剪力。</p>
 </blockquote>
@@ -415,23 +419,23 @@ $$A_{s,bot} = 6 \times 8.14 = 48.84\text{ cm}^2 \quad(\text{柱面底層，6-D32
 <hr />
 <h3>【Step 5】計算所需 $V_s$ 與箍筋設計</h3>
 <p><strong>所需剪力強度：</strong></p>
-<p>$$V_s \geq \frac{V_u}{\phi} - V_c = \frac{46.44}{0.75} - 0 = \boxed{61.92\text{ tf} = 61{,}920\text{ kgf}}$$</p>
+<p>$$V_s \geq \frac{V_u}{\phi} - V_c = \frac{46.43}{0.75} - 0 = \boxed{61.91\text{ tf} = 61{,}910\text{ kgf}}$$</p>
 <p><strong>檢核最大剪力強度（$V_{s,max}$）：</strong></p>
 <p>$$V_{s,\max} = 2.12\sqrt{f'_c}\,b_w d \ (\text{kgf/cm}^2\text{ 制}) = 2.12\times16.733\times60\times67 = 142{,}600\ \text{kgf} = 142.6\text{ tf}$$</p>
 <p>$$61.92\text{ tf} \ll 142.6\text{ tf} \quad \checkmark \quad(\text{SI 制同式：} \tfrac{2}{3}\sqrt{f'_c}b_wd,\ f'_c\text{ in MPa}）$$</p>
 <p><strong>箍筋設計（採 4 腳 D13 閉合箍筋）：</strong></p>
 <p>$$A_v = 4 \times 1.27 = 5.08\text{ cm}^2$$</p>
 <p>由強度需求：</p>
-<p>$$s_{req} = \frac{A_v f_{yt} d}{V_s} = \frac{5.08 \times 2800 \times 67}{61{,}920} = \frac{953{,}072}{61{,}920} = 15.4\text{ cm}$$</p>
+<p>$$s_{req} = \frac{A_v f_{yt} d}{V_s} = \frac{5.08 \times 2800 \times 67}{61{,}910} = \frac{953{,}008}{61{,}910} = 15.39\text{ cm}$$</p>
 <hr />
 <h3>【Step 6】耐震間距限制（密箍區）</h3>
 <p>$$s_o = \min\left(\frac{d}{4},\;6d_{b,main},\;150\text{ mm}\right) = \min\left(\frac{67}{4},\;6\times3.22,\;15.0\right)$$</p>
 <p>$$= \min(16.75,\;19.32,\;15.0) = \boxed{15.0\text{ cm}} \quad \leftarrow 150\text{ mm 控制}$$</p>
-<p>強度需求 $s_{req} = 15.4\text{ cm}$，間距限制 $s_o = 15.0\text{ cm}$：</p>
+<p>強度需求 $s_{req} = 15.39\text{ cm}$，間距限制 $s_o = 15.0\text{ cm}$：</p>
 <p>$$\therefore \text{採用 } s = 15\text{ cm} \leq \min(s_{req},\; s_o) \quad \checkmark$$</p>
 <p><strong>驗算 $\phi V_s$：</strong></p>
-<p>$$\phi V_s = \phi \times \frac{A_v f_{yt} d}{s} = 0.75 \times \frac{5.08 \times 2800 \times 67}{15} = 0.75 \times 63{,}701 = 47{,}776\text{ kgf} = 47.8\text{ tf}$$</p>
-<p>$$\phi V_s = 47.8\text{ tf} \geq V_u = 46.44\text{ tf} \quad \checkmark$$</p>
+<p>$$\phi V_s = \phi \times \frac{A_v f_{yt} d}{s} = 0.75 \times \frac{5.08 \times 2800 \times 67}{15} = 0.75 \times 63{,}534 = 47{,}650\text{ kgf} = 47.7\text{ tf}$$</p>
+<p>$$\phi V_s = 47.7\text{ tf} \geq V_u = 46.43\text{ tf} \quad \checkmark$$</p>
 <hr />
 <h3>【Step 7】最小箍筋量驗核</h3>
 <blockquote>
@@ -508,6 +512,8 @@ $$A_{s,bot} = 6 \times 8.14 = 48.84\text{ cm}^2 \quad(\text{柱面底層，6-D32
 <p>$$V_c = 0.53\sqrt{f'_c}\,b_w d = 0.53\times16.733\times60\times67 = 35{,}652\ \text{kgf} = 35.65\ \text{tf}
 \quad \Rightarrow \quad \phi V_c = 26.74\ \text{tf}$$</p>
 <p>$\phi V_c = 26.7\ \text{tf} < 37.4\ \text{tf}$ ⇒ <strong>跨中也遠遠不足，全梁都必須配剪力筋。</strong></p>
+<p><img alt="RC-2025-2 全跨剪力設計包絡線：兩條搖擺方向直線取大得包絡線，柱面 46.43 tf、密箍區外緣 1.52 m 處 43.39 tf、跨中 4.5 m 處 37.43 tf 為最小值，並標出密箍區 4 腳 D13@15 的 φVs=47.65、一般區 2 腳 D13@20 的 φ(Vc+Vs)=44.61、φVc=26.74 三條門檻" src="../../raw/solutions/RC-2025-2/figs/RC-2025-2-fig-3-envelope.svg" /></p>
+<p><em>圖 3　全跨設計剪力包絡線與三條容量門檻，並標出柱面、密箍區外緣、跨中三個關鍵點。攔的是把跨中誤當「重力剪力」而放寬間距——圖上看得出跨中仍是 $\phi V_c$ 的 1.40 倍，全梁都必須配剪力筋。</em></p>
 <p><strong>一般區所需 $V_s$（以控制點 $x = 1.52$ m 計）：</strong></p>
 <p>$$V_s \geq \frac{V_e}{\phi} - V_c = \frac{43{,}394}{0.75} - 35{,}652 = 57{,}859 - 35{,}652 = 22{,}207\ \text{kgf}$$</p>
 <p>$$s \leq \frac{A_v f_{yt} d}{V_s} = \frac{2.54\times2800\times67}{22{,}207} = \frac{476{,}504}{22{,}207} = 21.5\ \text{cm}$$</p>
@@ -521,6 +527,8 @@ $$A_{s,bot} = 6 \times 8.14 = 48.84\text{ cm}^2 \quad(\text{柱面底層，6-D32
 </ul>
 <hr />
 <p>$$\boxed{\text{柱端密箍區（}2h = 152\text{ cm）：4 腳 D13 閉合箍筋，第一支距柱面 } \le 5\text{ cm，以後 @15 cm；其餘：2 腳 D13 @20 cm}}$$</p>
+<p><img alt="RC-2025-2 箍筋配置立面：梁跨 900 cm，兩端自柱面起 2h=152 cm 為密箍區，內配 4 腳 D13@15 共 10 支、第一支距柱面 5 cm，中間一般區配 2 腳 D13@20，並以尺寸線對照誤用 2d=134 cm 會短 18 cm" src="../../raw/solutions/RC-2025-2/figs/RC-2025-2-fig-4-detailing.svg" /></p>
+<p><em>圖 4　箍筋配置立面，箍筋位置與根數由第一支位置及 15／20 cm 間距現算。攔的是密箍區長度誤用 $2d$ 而非 $2h$，以及把「柱」的 $s_o/2$ 誤用到「梁」的第一支箍筋位置上。</em></p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>爭議1：$M_{pr}$ 計算中的 $d$ 值</strong></p>
@@ -648,7 +656,8 @@ $s_{req} = 15.4 \to 15.5$ cm，<strong>設計結論（15 cm）不變</strong>。
 <p><strong>與上一版（土木 401-110／ACI 318-14）的差異：</strong> 本題所有相關條文在 110 → 112 之間<strong>均未變動</strong>。<br />
 真正在 318-14 那一版才改掉的是「密箍區間距由 $8d_b$／$24d_{b,hoop}$／12 in 改為 $6d_b$／150 mm」——<br />
 若考的是 401-100 世代的舊題（如同庫 RC-2012-3），這一條要特別留意。</p>
-</blockquote></main>
+</blockquote>
+<p><em>圖解補繪：2026-09-07（向量圖 4 張，腳本 <code>figs/gen_RC-2025-2.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2025-2/RC-2025-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

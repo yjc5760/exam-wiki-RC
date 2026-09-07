@@ -144,7 +144,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\text{Step 2: } a = \frac{T}{0.85f'_c \cdot b_w},\quad M_{pr} = T \cdot \left(d - \frac{a}{2}\right)$$</p>
 <p>$$\text{Step 3: } V_{col} = \frac{\boxed{M_{pr}}}{H} \quad \text{（接頭梁彎矩由上下柱各半分擔，柱反曲點在樓層中高）}$$</p>
 <p>$$\text{Step 4: } V_{jh} = T - \boxed{V_{col}}$$</p>
-<p>$$\text{Step 5: } A_j = b_j \times h_c,\quad b_j = \min\!\left(b_c,\; b_w + 0.5h_c\right)$$</p>
+<p>$$\text{Step 5: } A_j = b_j \times h_c,\quad b_j = \min\!\big(b_w + h_c,\; b_w + 2x\big) \le b_c$$</p>
 <p>$$\text{Step 6: } \phi V_n = \phi \cdot \gamma \cdot \sqrt{f'_c} \cdot A_j \ge V_{jh} \;?$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -265,7 +265,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$\phi V_n$</td>
-<td>$0.85 \times 3.2 \times \sqrt{280} \times 3{,}600 = 163{,}800\ \text{kgf} = 163.8\ \text{t}$</td>
+<td>$0.85 \times 3.2 \times \sqrt{280} \times 3{,}600 = 163{,}851\ \text{kgf} = 163.8\ \text{tf}$</td>
 <td></td>
 </tr>
 </tbody>
@@ -337,6 +337,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>角柱（外）接頭的自由體：頂部梁筋拉力 $T$ 向接頭傳入，柱剪力 $V_{col}$ 反向：</p>
 <p>$$V_{jh} = T - V_{col} = 159{,}705 - 28{,}181 = \boxed{131{,}524\ \text{kgf} = 131.5\ \text{tf}}$$</p>
 <p>（內接頭則為 $V_{jh} = T_1 + C_2 - V_{col}$，本題單邊有梁故只有一項 $T$。）</p>
+<p><img alt="RC-2005-3 角柱接頭柱彎矩分擔與自由體：左格為柱線側視，60×60 柱貫穿接頭、僅右側單邊接梁（左側標明無梁），梁端傳入 102.86 tf·m 由上下柱各分擔 51.43 tf·m，上下反曲點各距接頭 182.5 cm、構成力偶臂 365 cm 而得 Vcol=28.18 tf；右格以虛線框住接頭加上半柱隔離體，梁頂筋拉力 159.71 tf 向右、柱剪力 28.18 tf 向左、接頭水平剪力 131.52 tf 向左" src="../../raw/solutions/RC-2005-3/figs/RC-2005-3-fig-1-joint-fbd.svg" /></p>
+<p><em>圖 1　左格把梁端 $M_{pr}$ 由上下柱等分、反曲點落在樓層中高、兩個反向的 $V_{col}$ 構成力偶臂 $H$ 畫在同一張；右格用虛線框住「接頭＋上半柱」隔離體並在兩個切斷面標出內力。攔的是 $V_{col}$ 寫成 $2M_{pr}/H$（力偶臂被誤當成 $H/2$），以及 $V_{jh}$ 寫成 $T + V_{col}$（$V_{col}$ 其實與 $T$ 反向，是減項）。</em></p>
 <hr />
 <h3>⑤ 有效接頭面積 $A_j$</h3>
 <p>土木 401-112 §15.6.3／ACI 318-19 §15.4.2.4：接頭有效寬度取</p>
@@ -353,16 +355,20 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>接頭分類：</strong> 角柱接頭在分析平面內僅單側有梁，<strong>不</strong>滿足「四面」「三面」或「一雙對面」受圍束<br />
 ⇒ 屬「<strong>其他</strong>」類。土木 401（及 101 年考卷原文）的三個 $\gamma$ 值（kgf/cm² 制）為</p>
 <p>$$\gamma = 5.3\ (\text{四面圍束}),\quad 3.9\ (\text{三面或一雙對面}),\quad \boxed{3.2}\ (\text{其他})$$</p>
+<p><img alt="RC-2005-3 接頭圍束分類四格俯視平面：受梁圍束面畫藍粗實線、未圍束面畫紅虛線。四面受梁圍束 γ=5.3、φVn=271.4 tf；三面或一雙對面 γ=3.9、φVn=199.7 tf；其他含角柱（本題，兩個正交方向各一根梁、任一分析平面內只遮住一面）γ=3.2、φVn=163.9 tf；屋頂層之其他（柱未延伸至接頭上方，ACI 318-19 新增）γ=2.2、φVn=112.6 tf" src="../../raw/solutions/RC-2005-3/figs/RC-2005-3-fig-2-gamma.svg" /></p>
+<p><em>圖 2　四格俯視平面，逐一畫出四面／三面／角柱／屋頂層角柱的梁遮蔽情形。攔的是角柱接頭被誤歸為「三面」或「四面」——角柱只在兩個正交方向各有一根梁，任一分析平面內都只遮住一面。</em></p>
 <p>（SI 制對應 $1.7 / 1.2 / 1.0\sqrt{f'_c}$ MPa；舊 psi 制 $20/15/12\sqrt{f'_c}$ psi。<br />
 舊版本頁把中間那項寫成 4.0，是 psi 制換算值；<strong>土木 401 印的是 3.9</strong>。）</p>
 <p>$$\phi V_n = \phi\,\gamma\sqrt{f'_c}\,A_j = 0.85 \times 3.2 \times \sqrt{280} \times 3{,}600
 = 0.85 \times 3.2 \times 16.733 \times 3{,}600$$</p>
-<p>$$= \boxed{163{,}848\ \text{kgf} = 163.8\ \text{tf}}\qquad(\phi = 0.85\ \text{為接頭剪力專用，§21.2.1})$$</p>
+<p>$$= \boxed{163{,}851\ \text{kgf} = 163.8\ \text{tf}}\qquad(\phi = 0.85\ \text{為接頭剪力專用，§21.2.1})$$</p>
 <hr />
 <h3>⑦ 強度驗核</h3>
 <p>$$V_{jh} = 131.5\ \text{tf} \ \le\ \phi V_n = 163.8\ \text{tf} \quad \checkmark$$</p>
 <p>$$\frac{V_{jh}}{\phi V_n} = \frac{131.5}{163.8} = 0.80 \quad (\text{利用率 80\%，餘裕 20\%})$$</p>
 <p><strong>結論：角柱接頭剪力強度符合要求。</strong></p>
+<p><img alt="RC-2005-3 角柱接頭剪力需求與容量比較，五列共用同一尺標並以 163.85 tf 為 100%：容量 φVn（γ=3.2，中間樓層）163.85 tf；需求 Vjh 約等於 T 的保守下限 159.71 tf、利用率 97%；主線需求 Vjh=T−Vcol 為 131.52 tf、利用率 80% 通過；容量 φVn（γ=2.2，屋頂層）112.65 tf 低於主線需求故不通過；需求 Vjh 改用 fy 不計超強為 104.83 tf、利用率 64%" src="../../raw/solutions/RC-2005-3/figs/RC-2005-3-fig-3-check.svg" /></p>
+<p><em>圖 3　把三個需求值與兩條容量線放在同一尺標上，百分比即為對主線容量的利用率。攔的是「只算中間樓層就宣告通過」與「餘裕很夠」兩種誤判：屋頂層容量會低於主線需求，而忽略 $V_{col}$ 的保守下限利用率已達 97%。</em></p>
 <hr />
 <h3>兩種讀法對照（供比對坊間解答）</h3>
 <table>
@@ -485,7 +491,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p>記憶：<strong>角柱 3.2、T 形 3.9、內柱 5.3</strong>。（$\times 3.193$ 由 MPa 換 kgf/cm²。）</p>
+<p>記憶：<strong>角柱 3.2、T 形 3.9、內柱 5.3</strong>。<br />
+（換算須乘 $\sqrt{10.197} = 3.193$：SI 的 $1.2/1.0/0.7$ 得 $3.83/3.19/2.24 \fallingdotseq 3.9/3.2/2.2$ ✓；但 <strong>5.3 是由 psi 制 $20\sqrt{f'_c}$ 換來</strong>（$20/3.771 = 5.30$），SI 的 1.7 換出來是 5.43。三套數值各自取整，<strong>不可互相反推</strong>。）</p>
 <p><strong>③ 角柱接頭為何是「其他」類？</strong></p>
 <p>規範看的是「梁把接頭的<strong>面</strong>遮住多少」：需梁寬 $\ge \frac34$ 柱寬且梁深不小於最深梁的 $\frac34$，<br />
 該面才算「受圍束」。角柱在<strong>兩個正交方向各只有一根梁</strong>，於任一分析平面內都只遮住一面<br />
@@ -591,8 +598,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>本題若為屋頂層角柱接頭：</strong></p>
-<p>$$\phi V_n = 0.85 \times 2.2 \times 16.733 \times 3{,}600 = 112{,}646\ \text{kgf} = \mathbf{112.6\ \text{tf}}$$</p>
-<p>$$V_{jh} = 131.5\ \text{tf}\ >\ \phi V_n = 112.6\ \text{tf} \quad ✗ \ \textbf{不通過（超出 17\%）}$$</p>
+<p>$$\phi V_n = 0.85 \times 2.2 \times 16.733 \times 3{,}600 = 112{,}648\ \text{kgf} = \mathbf{112.65\ \text{tf}}$$</p>
+<p>$$V_{jh} = 131.5\ \text{tf}\ >\ \phi V_n = 112.65\ \text{tf} \quad ✗ \ \textbf{不通過（超出 17\%）}$$</p>
 <p>原卷只說「一 RC 構架樓層高 365 cm」，<strong>沒有交代接頭在哪一層</strong>。</p>
 <ul>
 <li>若為<strong>中間樓層</strong>（柱上下連續）：$\gamma = 3.2$、$\phi V_n = 163.8$ tf ⇒ <strong>通過</strong>（本解主線）。</li>
@@ -601,10 +608,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <blockquote>
 <p>這是本題「依最新規範計算」唯一會改變<strong>結論</strong>的地方，作答時建議明寫假設：<br />
 「本解假設該角柱接頭位於<strong>中間樓層</strong>（柱延伸至接頭上方）；若為屋頂層接頭，<br />
-依 ACI 318-19 Table 18.8.4.3 之 $\gamma$ 應降為 $0.7\sqrt{f'_c}$（kgf 制 2.2），$\phi V_n = 112.6$ tf，將不通過。」</p>
+依 ACI 318-19 Table 18.8.4.3 之 $\gamma$ 應降為 $0.7\sqrt{f'_c}$（kgf 制 2.2），$\phi V_n = 112.65$ tf，將不通過。」</p>
 </blockquote>
 <p><strong>318-19 這樣改的理由：</strong> 屋頂層接頭上方沒有柱提供軸壓與圍束，斜壓桿無法閉合，<br />
-實驗顯示其剪力強度明顯低於中間層接頭——這是 318-14 → 318-19 在第 18 章最實質的修訂之一。</p></main>
+實驗顯示其剪力強度明顯低於中間層接頭——這是 318-14 → 318-19 在第 18 章最實質的修訂之一。</p>
+<p><em>圖解補繪：2026-09-07（向量圖 3 張，腳本 <code>figs/gen_RC-2005-3.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
 <footer>來源：raw/solutions/RC-2005-3/RC-2005-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

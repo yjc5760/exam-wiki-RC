@@ -170,7 +170,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <tr><td><b>A. 耐震梁</b></td><td>塑鉸區剪力筋設計</td><td>\(M_{pr}\to V_e\to V_c=0\to\) 密箍間距</td><td>RC-2025-2、RC-2016-2、RC-2012-2</td><td>§3</td></tr>
 <tr><td><b>B. 耐震柱</b></td><td>圍束箍筋與密箍區</td><td>\(A_{sh}\) 兩式取大；\(l_o\)、\(s\) 各三式</td><td>RC-2013-2、RC-2004-3、RC-2009-1</td><td>§4</td></tr>
 <tr><td><b>C. 強柱弱梁與柱剪力</b></td><td>機構驗核、柱設計剪力</td><td>\(\sum M_{nc}\ge\frac65\sum M_{nb}\)；\(V_u=\sum M_{pr}/l_n\)</td><td><a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a></td><td>§5</td></tr>
-<tr><td><b>D. 梁柱接頭</b></td><td>接頭剪力檢核</td><td>\(V_{jh}=T_{top}+T_{bot}-V_{col}\)；\(\phi\gamma\sqrt{f'_c}A_j\)</td><td>RC-2003-3、RC-2005-3、RC-2012-4、RC-2018-2</td><td>§6</td></tr>
+<tr><td><b>D. 梁柱接頭</b></td><td>接頭剪力檢核</td><td>內接頭 \(V_{jh}=T_{top}+C_{bot}-V_{col}\)、外接頭 \(V_{jh}=T_{top}-V_{col}\)；\(\phi\gamma\sqrt{f'_c}A_j\)（\(\phi=0.85\)）</td><td>RC-2003-3、RC-2005-3、RC-2012-4、RC-2018-2</td><td>§6</td></tr>
 <tr><td><b>E. 韌性量化與其他構件</b></td><td>韌性比、剪力牆、橫膈版、耐震搭接</td><td>\(\mu_\phi,\mu_\theta,\mu\)；\(L_p\)；牆與版的耐震規定</td><td>RC-2022-4、RC-2003-4、RC-2019-3、RC-2010-2</td><td>§2、§7</td></tr>
 </tbody>
 </table>
@@ -345,14 +345,14 @@ $$\alpha = \frac{270-180}{360-180} = 0.5
 <h4>③ 塑鉸長度（下限常常控制）</h4>
 $$L_p = \max\!\big(0.08L + 0.0022 d_b f_y,\; 0.0044 d_b f_y\big)$$
 $$= \max(0.08\times3.2 + 0.0022\times0.0322\times4200,\; 0.0044\times0.0322\times4200)$$
-$$= \max(0.256+0.297,\; 0.595) = \max(0.553,\; 0.595) = \mathbf{0.595\ m}$$
+$$= \max(0.256+0.2975,\; 0.5951) = \max(0.5535,\; 0.5951) = \mathbf{0.595\ m}$$
 
 <h4>④ 三個韌性比</h4>
-$$\delta_y = \frac{0.005\times3.2^2}{3} = 0.01707\ \text{m},\qquad \theta_y = \frac{0.01707}{3.2} = 0.005335\ \text{rad}$$
-$$\delta_u = \frac{245}{220}\times0.01707 + (0.020-0.005)\times0.595\times(3.2-0.298) = 0.01902 + 0.02591 = 0.04493\ \text{m}$$
+$$\delta_y = \frac{0.005\times3.2^2}{3} = 0.01707\ \text{m},\qquad \theta_y = \frac{0.01707}{3.2} = 0.005333\ \text{rad}$$
+$$\delta_u = \frac{245}{220}\times0.01707 + (0.020-0.005)\times0.595\times(3.2-0.2975) = 0.019006 + 0.025907 = 0.044913\ \text{m}$$
 $$\mu_\phi = \frac{0.020}{0.005} = \mathbf{4.00},\qquad
-\mu_\theta = \frac{0.01404}{0.005335} = \mathbf{2.63},\qquad
-\mu = \frac{0.04493}{0.01707} = \mathbf{2.63}$$
+\mu_\theta = \frac{0.014035}{0.005333} = \mathbf{2.63},\qquad
+\mu = \frac{0.044913}{0.017067} = \mathbf{2.63}$$
 
 <b>三個自我檢查：</b><br>
 ① \(\mu_\theta = \mu\) ✓（必然相等）<br>
@@ -424,9 +424,9 @@ $$\mu_\phi = \frac{0.020}{0.005} = \mathbf{4.00},\qquad
   <text x="450" y="248" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">剪力圖（RC-2025-2 實際數值，單位 tf）</text>
   <line x1="140" y1="300" x2="740" y2="300" stroke="#455a64" stroke-width="1.5"/>
   <path d="M140,264 L740,292 L740,300 L140,300 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
-  <text x="132" y="262" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">46.44</text>
-  <text x="750" y="292" font-size="12" fill="#1565c0" font-weight="700">28.44</text>
-  <text x="440" y="322" font-size="12" text-anchor="middle" fill="#607d8b">地震項 37.44（全跨定值）＋ 重力項 ±9.00（線性）</text>
+  <text x="132" y="262" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">46.43</text>
+  <text x="750" y="292" font-size="12" fill="#1565c0" font-weight="700">28.43</text>
+  <text x="440" y="322" font-size="12" text-anchor="middle" fill="#607d8b">地震項 37.43（全跨定值）＋ 重力項 ±9.00（線性）</text>
 </svg>
 <div class="cap">
 地震項 \(\left(M_{pr}^-+M_{pr}^+\right)/l_n\) 在全跨是<b>定值</b>（兩端彎矩方向相反的必然結果）；
@@ -456,31 +456,34 @@ $$1.25 f_y = 1.25\times4200 = 5250\ \text{kgf/cm}^2$$
 
 <h4>② 兩個方向的 M<sub>pr</sub>（頂底鋼筋量不同 → 必須各算一次）</h4>
 $$a_{top} = \frac{65.12\times5250}{0.85\times280\times60} = \frac{341{,}880}{14{,}280} = 23.94\ \text{cm}
-\;\Rightarrow\; M_{pr}^- = 341{,}880\times(67-11.97) = \mathbf{188.2\ tf·m}$$
-$$a_{bot} = \frac{48.84\times5250}{14{,}280} = 17.95\ \text{cm}
+\;\Rightarrow\; M_{pr}^- = 341{,}880\times(67-11.97) = \mathbf{188.1\ tf·m}$$
+$$a_{bot} = \frac{48.84\times5250}{14{,}280} = 17.96\ \text{cm}
 \;\Rightarrow\; M_{pr}^+ = 256{,}410\times(67-8.975) = \mathbf{148.8\ tf·m}$$
 
 <h4>③ 設計剪力</h4>
-$$V_{seis} = \frac{188.2+148.8}{9} = \frac{337.0}{9} = 37.44\ \text{tf},\qquad V_{grav} = \frac{2\times9}{2} = 9.00\ \text{tf}$$
-$$V_u = 37.44 + 9.00 = \mathbf{46.44\ tf}\quad(\text{控制端：地震與重力同向})$$
+$$V_{seis} = \frac{188.1+148.8}{9} = \frac{336.9}{9} = 37.43\ \text{tf},\qquad V_{grav} = \frac{2\times9}{2} = 9.00\ \text{tf}$$
+$$V_u = 37.43 + 9.00 = \mathbf{46.43\ tf}\quad(\text{控制端：地震與重力同向})$$
 
 <h4>④ V<sub>c</sub> = 0 判斷（兩個條件都要寫）</h4>
-$$\frac{V_{seis}}{V_u} = \frac{37.44}{46.44} = 80.6\% > 50\% \quad✓ \qquad
+$$\frac{V_{seis}}{V_u} = \frac{37.43}{46.43} = 80.6\% > 50\% \quad✓ \qquad
 N_u = 0 < \frac{A_g f'_c}{20} \quad✓ \;\Rightarrow\; V_c = 0$$
-$$V_s\ \text{需求} = \frac{V_u}{\phi} = \frac{46.44}{0.75} = 61.92\ \text{tf}\quad(\text{全部由箍筋承擔})$$
+$$V_s\ \text{需求} = \frac{V_u}{\phi} = \frac{46.43}{0.75} = 61.91\ \text{tf}\quad(\text{全部由箍筋承擔})$$
 
 <h4>⑤ 箍筋間距（強度需求 vs 耐震構造限制，取小）</h4>
 $$A_v = 4\times1.27 = 5.08\ \text{cm}^2\ (4\ \text{腳})
-\;\Rightarrow\; s_{req} = \frac{A_v f_{yt} d}{V_s} = \frac{5.08\times2800\times67}{61{,}920} = 15.4\ \text{cm}$$
+\;\Rightarrow\; s_{req} = \frac{A_v f_{yt} d}{V_s} = \frac{5.08\times2800\times67}{61{,}910} = 15.39\ \text{cm}$$
 $$s_{seis} = \min\!\left(\frac{d}{4},\; 6d_b,\; 150\ \text{mm}\right) = \min(16.8,\; 19.3,\; 15.0) = 15.0\ \text{cm}$$
 $$\Rightarrow s = 15\ \text{cm}\ \text{（密箍區）};\quad
-\text{密箍區長度} = 2h = 152\ \text{cm};\quad \text{第一支距柱面} \leq s/2 = 7.5\ \text{cm}$$
+\text{密箍區長度} = 2h = 152\ \text{cm};\quad \text{第一支距柱面} \leq 5\ \text{cm}\ (\text{梁：§18.6.4.4})$$
+
+<b>第一支箍筋別套錯構件：</b>耐震<b>梁</b>第一支箍筋距柱面 \(\le 50\) mm（§18.6.4.4）；
+\(s_o/2\) 是<b>柱</b>的規定（§18.7.5.3），兩者不可混用。<br>
 
 <b>三個自我檢查：</b><br>
-① \(M_{pr}^-/M_{pr}^+ = 188.2/148.8 = 1.27\)，與鋼筋量比 \(65.12/48.84 = 1.33\) 同一量級 ✓
+① \(M_{pr}^-/M_{pr}^+ = 188.1/148.8 = 1.26\)，與鋼筋量比 \(65.12/48.84 = 1.33\) 同一量級 ✓
 （不會完全相等，因為 \(a\) 不同；若差很多就算錯了）。<br>
 ② 地震剪力佔比 80.6% 遠大於 50% → \(V_c=0\) 幾乎必然。<b>耐震梁的 \(V_c=0\) 是常態，不是例外</b>。<br>
-③ \(s_{req} = 15.4\) 與 \(s_{seis} = 15.0\) 幾乎相同 → 這題的箍筋量「剛好」，是出題者調過的。
+③ \(s_{req} = 15.39\) 與 \(s_{seis} = 15.0\) 幾乎相同 → 這題的箍筋量「剛好」，是出題者調過的。
 若你算出 \(s_{req}\) 只有 5 cm 或高達 40 cm，回去檢查 \(A_v\) 的腳數與 \(f_{yt}\)。
 </div>
 
@@ -491,13 +494,17 @@ $$\Rightarrow s = 15\ \text{cm}\ \text{（密箍區）};\quad
 </div>
 
 <div class="trap">
-<b>陷阱二：箍筋間距的兩套限制混用</b><br>
-知識庫內對耐震梁密箍區間距有兩種寫法：<br>
-・\(\min(d/4,\; 8d_b,\; 24d_{b,tie},\; 300\text{ mm})\)（<code>code-ref/seismic-code.md</code>、ACI 318-19 §18.6.4.4）<br>
-・\(\min(d/4,\; 6d_b,\; 150\text{ mm})\)（<code>methods/SEISMIC-CAPACITY-METHOD.md</code>、RC-2025-2 解析所採，即土木 401 版）<br>
-兩者會給出不同答案（本題分別是 15.0 cm 與 16.8 cm 控制）。
-<b>作答時寫明採用的規範版本</b>；題目若指定「土木401-112」就用後者。
-這不是知識庫寫錯，是<b>規範版本差異</b>，考場上務必註明依據。
+<b>陷阱二：抄到舊版的箍筋間距</b><br>
+耐震梁密箍區間距有新舊兩套，差別在<b>規範世代</b>，不是兩個並存的選項：<br>
+・<b>舊制</b>（ACI 318-11 及更早／土木 401-100 世代）：\(\min(d/4,\; 8d_b,\; 24d_{b,tie},\; 300\text{ mm})\)
+→ 本題會由 \(d/4 = 16.8\) cm 控制<br>
+・<b>現行</b>（<b>318-14 起</b>／土木 401-110、401-112 §18.6.4.4）：\(\min(d/4,\; 6d_b,\; 150\text{ mm})\)，
+\(24d_{b,tie}\) 一項已刪去 → 本題由 <b>150 mm 控制，\(s = 15.0\) cm</b><br>
+<b>RC-2025-2 的原卷明訂「依土木 401-112 作答，未依規範者不予計分」</b>，
+所以那一題只有現行制是對的，沒有選擇空間。
+<span style="font-size:.92em;color:#6d4c41">
+（附記：本頁與 <code>concepts/SPECIAL-MOMENT-FRAME-BEAM.md</code> 原把舊制寫成「ACI 318-19 §18.6.4.4」，
+已於 <b>2026-09-07</b> 勘誤；<code>code-ref/seismic-code.md</code> 早在 2026-08-22 已改正。）</span>
 </div>
 
 <div class="trap">
@@ -719,16 +726,32 @@ RC-2012-3 用 \(b_c = 60-2\times6 = 48\)（保護層 6 cm 量到<b>主筋心</b>
 再大的地震也送不進更多力。所以：
 </p>
 
-$$V_u^{col} = \frac{M_{pr,top} + M_{pr,bot}}{l_n}\quad(\text{反曲點在柱淨高中點})$$
+$$V_u^{col} = \frac{M_{col,top} + M_{col,bot}}{l_n},\qquad M_{col} = \frac{\Sigma M_{pr,\text{beam at joint}}}{2}\ (\text{上下柱等勁度})$$
+
+<p>
+<b>分子是「柱端」的彎矩，不是「梁端」的 \(M_{pr}\)。</b>接頭處梁傳來的彎矩要由接頭上、下兩根柱分擔，
+所以 \(V_u^{col}\) 化簡後等於 \(\Sigma M_{pr,\text{beam at joint}}/l_n\) —— 分母是<b>一根柱</b>的淨高，分子是<b>一個接頭</b>的梁彎矩總和。
+</p>
 
 <div class="box">
 <b>手算：<a class="qlink" href="problems-view/RC-2012-3.html">RC-2012-3</a>（2012，30 分，把梁與柱串起來的觀念鏈題）</b><br>
 柱 60×60 cm、12-#7、保護層 6 cm（至主筋心）、\(l_n = 300\) cm、\(N_u = 50\) tf、
 4 腳 #4 箍筋（\(A_b=1.27\)）、\(f'_c=280\)、\(f_{yt}=4200\) kgf/cm²。<br>
-由前一題得梁端 \(M_{pr}^- = 75.5\)、\(M_{pr}^+ = 41.1\) tf·m。
+由前一題得梁端 \(M_{pr}^- = 75.52\)、\(M_{pr}^+ = 41.11\) tf·m。
 
-<h4>① 柱設計剪力（取最不利：上下端都發展 M<sub>pr</sub>⁻）</h4>
-$$V_u = \frac{75.5+75.5}{3.0} = \mathbf{50.33\ tf}$$
+<h4>① 柱設計剪力（接頭彎矩由上下柱分擔）</h4>
+$$\text{接頭平衡：}\ \Sigma M_{col} = \Sigma M_{pr,\text{beam at joint}} = M_{pr}^- = 75.52\ \text{tf·m}$$
+$$\text{上下柱等勁度}\Rightarrow\ M_{col,top} = M_{col,bot} = \frac{75.52}{2} = 37.76\ \text{tf·m}$$
+$$V_u = \frac{M_{col,top}+M_{col,bot}}{l_n} = \frac{37.76+37.76}{3.0}
+= \frac{\Sigma M_{pr,\text{beam at joint}}}{l_n} = \frac{75.52}{3.0} = \mathbf{25.17\ tf}$$
+
+<div class="trap">
+<b>陷阱：分子把梁的 M<sub>pr</sub> 算了兩次</b><br>
+分子是<b>一個接頭</b>的梁 \(M_{pr}\) 總和，不是上下兩個接頭的總和；
+寫成 \((75.52+75.52)/3.0 = 50.3\) tf 會<b>高估一倍</b>。
+接頭處梁傳來的彎矩由接頭上、下兩根柱依勁度分擔（等勁度各半），
+所以「上下柱端各有 37.76」與「一個接頭有 75.52」講的是<b>同一件事</b>，不可再乘二。
+</div>
 
 <h4>② 密箍區長度</h4>
 $$l_o = \max\!\left(\frac{l_n}{6},\; b_{\max},\; 45\right) = \max(50,\; 60,\; 45) = \mathbf{60\ cm}$$
@@ -751,8 +774,8 @@ $$N_u = 50\ \text{tf} < 50.4\ \text{tf} \;\Rightarrow\; V_c = 0\ \text{（只差
 本題是<b>圍束控制</b>，不是構造控制。若你算出圍束需求比幾何限制寬鬆，回去檢查 \(A_g/A_{ch}\)。<br>
 ② \(N_u\) 與門檻只差 0.8% —— 出題者故意設在臨界點，<b>務必把 50.4 算出來寫在紙上</b>，
 只寫「軸力小所以 \(V_c=0\)」拿不到分。<br>
-③ 柱剪力 50.33 tf 對 60×60 柱而言 \(v = 50330/(60\times54) \approx 15.5\) kgf/cm²，
-約 \(0.93\sqrt{f'_c}\)，屬合理範圍（\(V_n\) 上限約 \(2.65\sqrt{f'_c}b d\)）。
+③ 柱剪力 25.17 tf 對 60×60 柱而言 \(v = 25170/(60\times54) \approx 7.77\) kgf/cm²，
+約 \(0.46\sqrt{f'_c}\)，離 \(V_n\) 上限（約 \(2.65\sqrt{f'_c}b d\)）餘裕很大 —— 柱的剪應力水準本來就遠低於梁。
 </div>
 
 <div class="trap">
@@ -818,8 +841,8 @@ $$N_u = 50\ \text{tf} < 50.4\ \text{tf} \;\Rightarrow\; V_c = 0\ \text{（只差
 <div class="why">
 <b>為什麼接頭剪力遠大於柱剪力（量級感）</b><br>
 以 <a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a> 的角接頭為例（只有一側有梁）：
-\(V_{jh}/V_{col} = 81.9/45.9 = \mathbf{1.78}\) 倍。<br>
-若是<b>內接頭</b>（兩側都有梁），\(T_{bot}\) 也要加進來，比值輕易上到 4~6 倍。<br>
+\(V_{jh}/V_{col} = 131.5/28.18 = \mathbf{4.67}\) 倍。<br>
+若是<b>內接頭</b>（兩側都有梁），分子還要多一項 \(C_{bot}\)（另一側梁的壓力），\(V_{jh}\) 幾乎翻倍而 \(V_{col}\) 只增一部分 → 比值會<b>更高</b>。<br>
 物理原因：梁的彎矩靠「頂筋拉力 × 力臂」傳遞，而力臂（約 \(0.9d\)）比柱的力臂（約半層高）<b>短得多</b>
 → 同樣的彎矩，梁端的內力偶遠大於柱端的剪力。
 <b>所以「梁越深、鋼筋越多，接頭壓力越大」</b>，這也是為什麼深梁配大量頂筋的設計常在接頭卡住。
@@ -833,7 +856,7 @@ $$\phi V_{n} = \phi\,\gamma\sqrt{f'_c}\,A_j,\qquad \phi = 0.85$$
 <thead><tr><th>接頭類型（依有梁圍束的面數）</th><th>psi 制</th><th>MPa 制</th><th>kgf/cm² 制</th></tr></thead>
 <tbody>
 <tr><td>四面有梁（內接頭）</td><td>20</td><td>1.7</td><td><b>5.3</b></td></tr>
-<tr><td>三面或對面兩面有梁（T 形）</td><td>15</td><td>1.25</td><td><b>4.0</b></td></tr>
+<tr><td>三面或對面兩面有梁（T 形）</td><td>15</td><td>1.2</td><td><b>3.9</b></td></tr>
 <tr><td>其他（外接頭、角接頭）</td><td>12</td><td>1.0</td><td><b>3.2</b></td></tr>
 </tbody>
 </table>
@@ -845,8 +868,13 @@ $$\phi V_{n} = \phi\,\gamma\sqrt{f'_c}\,A_j,\qquad \phi = 0.85$$
 $$\text{psi} \to \text{kgf/cm}^2:\ \times\sqrt{0.0703} = 0.265
 \qquad \text{psi} \to \text{MPa}:\ \times\sqrt{0.006895} = 0.0830$$
 
-驗算：\(20\times0.265 = 5.30\)、\(15\times0.265 = 3.98\approx4.0\)、\(12\times0.265 = 3.18\approx3.2\) ✓<br>
-以及 \(20\times0.0830 = 1.66\approx1.7\)、\(15\times0.0830=1.25\)、\(12\times0.0830=1.00\) ✓<br>
+驗算（psi → kgf/cm²）：\(20\times0.265 = 5.30\)、\(15\times0.265 = 3.98\)、\(12\times0.265 = 3.18\) ✓<br>
+驗算（psi → MPa）：\(20\times0.0830 = 1.66\approx1.7\)、\(15\times0.0830 = 1.25\approx1.2\)、\(12\times0.0830 = 1.00\) ✓<br>
+<b>但三套數字是各規範自己取整的結果，不可互相反推。</b>
+從 MPa 換回 kgf/cm² 要乘 \(\sqrt{10.197} = 3.193\)：SI 的 \(1.7/1.2/1.0\) 得 \(5.43/3.83/3.19\)。
+土木 401 印的 <b>5.3／3.9／3.2</b> 裡，\(5.3\) 對得上 psi 路徑（\(20\times0.265 = 5.30\)）、
+\(3.9\) 對得上 SI 路徑（\(1.2\times3.193 = 3.83\)）—— 所以 T 形那一格是 <b>3.9，不是 4.0</b>
+（4.0 只是 psi 路徑 3.98 的進位，土木 401 並未採用）。<br>
 <b>這正是 RC-2005-3 解析裡「\(\gamma = 12\times0.265 = 3.18 \approx 3.2\)」那一行的來源。</b>
 </div>
 
@@ -862,7 +890,7 @@ $$\text{psi} \to \text{kgf/cm}^2:\ \times\sqrt{0.0703} = 0.265
 <span style="font-size:.92em;color:#6d4c41">
 （附記：本知識庫原有 <code>diagnosis/</code>、<code>code-ref/</code>、<code>traps/</code>、<code>philosophy/</code>、<code>methods/</code>
 共 8 檔的 γ 記載互相矛盾，已於 <b>2026-07-26</b> 依上述兩份 verified 解答全庫勘誤並記入
-<code>wiki/log.md</code>。現在全庫一致，可放心引用。）</span>
+<code>wiki/log.md</code>；本頁 T 形接頭一列於 <b>2026-09-07</b> 再修正為 3.9（原誤寫 4.0）。）</span>
 </div>
 
 <h3>6.3 手算：<a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a>（2005，20 分，接頭群唯一必練）</h3>
@@ -871,33 +899,40 @@ $$\text{psi} \to \text{kgf/cm}^2:\ \times\sqrt{0.0703} = 0.265
 <b>給定：</b>樓層高 \(H = 365\) cm，柱 60×60 cm，梁寬＝柱寬＝60 cm，梁 \(d = 70\) cm，
 梁拉力筋 6-#8（\(A_s = 30.42\) cm²），\(f'_c = 280\)、\(f_y = 4200\) kgf/cm²。求<b>角柱接頭</b>剪力強度檢核。
 
-<h4>① 梁鋼筋拉力</h4>
-$$T = A_s f_y = 30.42\times4200 = 127{,}764\ \text{kgf}$$
+<h4>① 梁鋼筋拉力（耐震取 1.25f<sub>y</sub>）</h4>
+$$T = 1.25\,A_s f_y = 1.25\times30.42\times4200 = 159{,}705\ \text{kgf}$$
+<b>依據：</b>\(V_{jh} = \gamma\sqrt{f'_c}A_j\) 這條檢核<b>只存在於耐震專章</b>，
+其配套規定即「接頭力須以梁受拉鋼筋 \(1.25f_y\) 計算」（土木 401-112 §15.6.2／ACI 318-19 §18.8.2.1）。<br>
 
-<h4>② 梁標稱彎矩（用來反推柱剪力）</h4>
-$$a = \frac{127{,}764}{0.85\times280\times60} = 8.95\ \text{cm}
-\;\Rightarrow\; M_n = 127{,}764\times\left(70-\frac{8.95}{2}\right) = 83.74\ \text{tf·m}$$
+<h4>② 梁可能彎矩強度 M<sub>pr</sub>（用來反推柱剪力）</h4>
+$$a = \frac{159{,}705}{0.85\times280\times60} = 11.18\ \text{cm}
+\;\Rightarrow\; M_{pr} = 159{,}705\times\left(70-\frac{11.18}{2}\right) = 102.86\ \text{tf·m}$$
 
-<h4>③ 柱剪力（反曲點在樓層中高）</h4>
-$$V_{col}\times\frac{H}{2} = M_n \;\Rightarrow\; V_{col} = \frac{2M_n}{H} = \frac{2\times8{,}374{,}165}{365} = 45{,}886\ \text{kgf} = 45.9\ \text{tf}$$
+<h4>③ 柱剪力（接頭彎矩由上下柱各半，反曲點在樓層中高）</h4>
+$$M_{col} = \frac{M_{pr}}{2} = 51.43\ \text{tf·m}
+\;\Rightarrow\; V_{col} = \frac{M_{pr}/2}{H/2} = \frac{M_{pr}}{H} = \frac{10{,}286{,}000}{365} = 28{,}181\ \text{kgf} = \mathbf{28.18\ tf}$$
+<b>檢查：</b>\(V_{col}\times H = 28.18\times3.65 = 102.9\) tf·m，應等於<b>一個接頭</b>的梁彎矩 ✓
+（寫成 \(2M/H\) 就會多算一倍）。<br>
 
 <h4>④ 接頭剪力需求（角接頭：只有一側有梁）</h4>
-$$V_{jh} = T - V_{col} = 127{,}764 - 45{,}886 = 81{,}878\ \text{kgf} = \mathbf{81.9\ tf}$$
+$$V_{jh} = T - V_{col} = 159{,}705 - 28{,}181 = 131{,}524\ \text{kgf} = \mathbf{131.5\ tf}$$
 
-<h4>⑤ 有效接頭面積</h4>
-$$b_j = \min\!\left(b_c,\; b_w + 0.5 h_c\right) = \min(60,\; 60+30) = 60\ \text{cm}
+<h4>⑤ 有效接頭面積（用規範原式，不用坊間簡化式）</h4>
+$$b_j = \min\!\left(b_w + h_c,\; b_w + 2x\right) \le b_c
+\;\Rightarrow\; \min(60+60,\; 60+0) = 60\ \text{cm}\ (\le b_c = 60)
 \;\Rightarrow\; A_j = 60\times60 = 3600\ \text{cm}^2$$
 
 <h4>⑥ 強度與檢核（角接頭 → γ = 3.2）</h4>
-$$\phi V_n = 0.85\times3.2\times\sqrt{280}\times3600 = 0.85\times3.2\times16.733\times3600 = 163{,}848\ \text{kgf} = \mathbf{163.8\ tf}$$
-$$V_{jh} = 81.9 \leq \phi V_n = 163.8 \quad✓\qquad \text{使用率} = 50\%$$
+$$\phi V_n = 0.85\times3.2\times\sqrt{280}\times3600 = 0.85\times3.2\times16.733\times3600 = 163{,}851\ \text{kgf} = \mathbf{163.8\ tf}$$
+$$V_{jh} = 131.5 \leq \phi V_n = 163.8 \quad✓\qquad \text{使用率} = 80\%$$
 
 <b>三個自我檢查：</b><br>
-① \(V_{jh}/V_{col} = 1.78\) → 落在「接頭剪力是柱剪力的 1.5~6 倍」的合理帶內 ✓<br>
-② \(b_j\) 三個候選（\(b_c\)、\(b_w+0.5h_c\)）都要寫出來再取小；梁寬＝柱寬時 \(b_j = b_c\) 是<b>必然</b>結果。<br>
-③ 本題以<b>標稱</b> \(f_y\) 計算 \(T\)（2005 年題，以 \(M_n\) 為基準）。
-依現行規範應以 \(T = 1.25 f_y A_s\)，\(V_{jh}\) 會放大 25%（→ 約 114 tf，仍小於 163.8 tf 而通過）。
-<b>作答時寫明你採用哪一種並說明理由</b>，兩種都能得分；沒交代才會被扣。
+① \(V_{jh}/V_{col} = 131.5/28.18 = \mathbf{4.67}\) 倍 → 落在「接頭剪力是柱剪力的好幾倍」的合理帶內 ✓<br>
+② \(b_j\) 兩個候選（\(b_w+h_c\)、\(b_w+2x\)）都要寫出來再取小，最後還要 \(\le b_c\)；
+梁寬＝柱寬（\(x = 0\)）時 \(b_j = b_c\) 是<b>必然</b>結果。<br>
+③ 若改以<b>標稱</b> \(f_y\) 計算（\(T = 127{,}764\) kgf、\(M_n = 83.72\) tf·m、\(V_{col} = 22.94\) tf），
+則 \(V_{jh} = 104.8\) tf、使用率 64% —— 兩種算法<b>結論都是通過</b>，但耐震主線（\(1.25f_y\)）只剩 20% 餘裕。
+<b>作答時寫明你採用哪一種並說明理由</b>；接頭題出自耐震專章，寫 \(1.25f_y\) 最安全。
 </div>
 </section>
 
@@ -1190,7 +1225,7 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 <tr><td>16</td><td>接頭剪力 Vjh</td><td>直接用 T = As·fy 當 Vjh</td><td>要扣柱剪力：Vjh = T_top + T_bot − Vcol</td><td><a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a></td></tr>
 <tr><td>17</td><td>接頭 T_top 與 T_bot</td><td>相減（以為方向相反）</td><td>對切面而言<b>同向</b> → 相加；只有 Vcol 是減項</td><td><a class="qlink" href="problems-view/RC-2003-3.html">RC-2003-3</a></td></tr>
 <tr><td>18</td><td>接頭 γ 係數</td><td>抄到不同單位制的數字</td><td>kgf/cm²：5.3／4.0／3.2；MPa：1.7／1.25／1.0；psi：20／15／12（知識庫內有三套矛盾值，見 §6.2）</td><td><a class="qlink" href="problems-view/RC-2005-3.html">RC-2005-3</a></td></tr>
-<tr><td>19</td><td>接頭 Aj</td><td>只寫一個 bj 候選</td><td>bj = min(bc, bw+0.5hc) 全部寫出再取小</td><td><a class="qlink" href="problems-view/RC-2012-4.html">RC-2012-4</a></td></tr>
+<tr><td>19</td><td>接頭 Aj</td><td>只寫一個 bj 候選、或用坊間簡化式</td><td>規範原式 bj = min(bw+hc, bw+2x) ≤ bc，兩個候選都寫出再取小（bw+0.5hc 是簡化式）</td><td><a class="qlink" href="problems-view/RC-2012-4.html">RC-2012-4</a></td></tr>
 <tr><td>20</td><td>強柱弱梁的 ΣMnb</td><td>用 1.25fy</td><td>用<b>標稱</b> fy（超強餘裕已含在 6/5 裡）；知識庫 code-ref 有相反寫法，作答註明依據</td><td>§1.2</td></tr>
 <tr><td>21</td><td>強柱弱梁通過就不配柱密箍</td><td>以為 6/5 是絕對保證</td><td>6/5 只降低機率；柱端仍必須有 lo 與 Ash（且柱底一定出鉸）</td><td>§5.1</td></tr>
 <tr><td>22</td><td>韌性題的 L</td><td>用全柱高 lu</td><td>L = 塑鉸到<b>反曲點</b>；雙曲率柱 L = lu/2（δy 差 4 倍）</td><td><a class="qlink" href="problems-view/RC-2022-4.html">RC-2022-4</a></td></tr>
@@ -1249,7 +1284,7 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 <details><summary>10. 為什麼接頭剪力可以是柱剪力的好幾倍？</summary>
 <p>梁彎矩靠「頂筋拉力 × 力臂（約 0.9d）」傳遞，柱剪力的力臂是<b>半層高</b>，長得多。
 同樣的彎矩，力臂短的那一側內力大得多。而且 T_top 與 C_bot 對切面同向 → 相加。
-RC-2005-3 的角接頭是 1.78 倍，內接頭可到 4~6 倍。（§6.1）</p></details>
+RC-2005-3 的角接頭就有 4.67 倍（\(T\) 取 \(1.25f_y\)、\(V_{col}=M_{pr}/H\)），內接頭把 \(T_{bot}\) 也加進來後更高。（§6.1）</p></details>
 
 <details><summary>11. γ 係數為什麼會有 5.3 / 1.7 / 20 三種數字？</summary>
 <p>同一組值的三種單位制。\(k\sqrt{f'_c}\) 型係數換單位時係數本身會變：
@@ -1274,7 +1309,7 @@ psi → kgf/cm² 乘 \(\sqrt{0.0703}=0.265\)、psi → MPa 乘 \(\sqrt{0.006895}
 <div class="box">
 <b>為什麼選它：</b>本單元唯一「從 Mpr 一路做到箍筋間距與密箍區長度」的完整流程題，
 而且是最新年份。2016-2、2012-2 都是它的子集 —— 練這一題等於練那兩題。
-數字也被出題者調過（\(s_{req}=15.4\) vs \(s_{seis}=15.0\)），逼你兩個限制都算。<br>
+數字也被出題者調過（\(s_{req}=15.39\) vs \(s_{seis}=15.0\)），逼你兩個限制都算。<br>
 <b>先讀：</b>§1.1、§3.1、§3.2<br>
 <b>做完要能回答：</b>①為什麼 Mpr⁻ 和 Mpr⁺ 要各算一次？②為什麼同一題出現 φ=1.0 與 φ=0.75？
 ③密箍區為什麼是 2h 不是 2d？
