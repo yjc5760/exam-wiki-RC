@@ -1,1660 +1,1670 @@
-# Wiki 操作紀錄
+﻿# Wiki æ“ä½œç´€éŒ„
 
-> append-only，請勿刪除已有紀錄
+> append-onlyï¼Œè«‹å‹¿åˆªé™¤å·²æœ‰ç´€éŒ„
 
 ---
 
 ## 2026-05-29
 
-- **[INIT]** 從 exam-wiki-SS 克隆，全面改寫為 RC 科目（鋼筋混凝土設計與預力）
-  - 改寫 CLAUDE.md（身份層）、CLAUDE-SOLVE.md（解題規範）、CLAUDE-SPEC.md（命名規格）
-  - 改寫 CLAUDE-CODE.md（Runbook）、README.md（導覽）
-  - 重建 wiki/index.md（RC 七層架構）、wiki/by-year.md（2002–2025 空白表格）
-  - 重建 raw/json/question_index.json（空白索引）、concepts.json（RC 核心概念）
-  - 科目代碼：RC｜題目編號格式：RC-YYYY-N
+- **[INIT]** å¾ž exam-wiki-SS å…‹éš†ï¼Œå…¨é¢æ”¹å¯«ç‚º RC ç§‘ç›®ï¼ˆé‹¼ç­‹æ··å‡åœŸè¨­è¨ˆèˆ‡é åŠ›ï¼‰
+  - æ”¹å¯« CLAUDE.mdï¼ˆèº«ä»½å±¤ï¼‰ã€CLAUDE-SOLVE.mdï¼ˆè§£é¡Œè¦ç¯„ï¼‰ã€CLAUDE-SPEC.mdï¼ˆå‘½åè¦æ ¼ï¼‰
+  - æ”¹å¯« CLAUDE-CODE.mdï¼ˆRunbookï¼‰ã€README.mdï¼ˆå°Žè¦½ï¼‰
+  - é‡å»º wiki/index.mdï¼ˆRC ä¸ƒå±¤æž¶æ§‹ï¼‰ã€wiki/by-year.mdï¼ˆ2002â€“2025 ç©ºç™½è¡¨æ ¼ï¼‰
+  - é‡å»º raw/json/question_index.jsonï¼ˆç©ºç™½ç´¢å¼•ï¼‰ã€concepts.jsonï¼ˆRC æ ¸å¿ƒæ¦‚å¿µï¼‰
+  - ç§‘ç›®ä»£ç¢¼ï¼šRCï½œé¡Œç›®ç·¨è™Ÿæ ¼å¼ï¼šRC-YYYY-N
 
 ## 2026-06-07
 
-- **[INGEST-BATCH]** 批次 ingest 94 題（所有 verificationStatus=verified 且 hasSolution=true）
-  - 生成 wiki/problems/ 共 94 個頁面
-  - 重建 wiki/index.md（依 RC-UN-n 分類，含題目連結表格）
-  - 重建 wiki/by-year.md（2002–2025 年，含題號連結）
-  - 涵蓋年份：2002–2025
+- **[INGEST-BATCH]** æ‰¹æ¬¡ ingest 94 é¡Œï¼ˆæ‰€æœ‰ verificationStatus=verified ä¸” hasSolution=trueï¼‰
+  - ç”Ÿæˆ wiki/problems/ å…± 94 å€‹é é¢
+  - é‡å»º wiki/index.mdï¼ˆä¾ RC-UN-n åˆ†é¡žï¼Œå«é¡Œç›®é€£çµè¡¨æ ¼ï¼‰
+  - é‡å»º wiki/by-year.mdï¼ˆ2002â€“2025 å¹´ï¼Œå«é¡Œè™Ÿé€£çµï¼‰
+  - æ¶µè“‹å¹´ä»½ï¼š2002â€“2025
 
 ## 2026-06-07
 
-- **[COMPILE-ALL]** 完整重新編譯 wiki 知識庫
-  - 生成 wiki/concepts/：10 個概念頁面
-  - 生成 wiki/methods/：4 個解題方法論頁面
-  - 確認 wiki/queries/ 存在
-  - 建立 wiki/philosophy/index.md
-  - wiki/problems/（94題）已於本日批次 ingest 完成
-  - 未覆蓋：diagnosis/ · failure-modes/ · materials/ · code-ref/（Cowork 直接維護）
+- **[COMPILE-ALL]** å®Œæ•´é‡æ–°ç·¨è­¯ wiki çŸ¥è­˜åº«
+  - ç”Ÿæˆ wiki/concepts/ï¼š10 å€‹æ¦‚å¿µé é¢
+  - ç”Ÿæˆ wiki/methods/ï¼š4 å€‹è§£é¡Œæ–¹æ³•è«–é é¢
+  - ç¢ºèª wiki/queries/ å­˜åœ¨
+  - å»ºç«‹ wiki/philosophy/index.md
+  - wiki/problems/ï¼ˆ94é¡Œï¼‰å·²æ–¼æœ¬æ—¥æ‰¹æ¬¡ ingest å®Œæˆ
+  - æœªè¦†è“‹ï¼šdiagnosis/ Â· failure-modes/ Â· materials/ Â· code-ref/ï¼ˆCowork ç›´æŽ¥ç¶­è­·ï¼‰
 
 ## 2026-06-07
 
-- **[LINT-FIX]** 修復全部 7 項 lint 問題：
-  - 概念頁補充：DUCTILE-FAILURE, LONG-COLUMN-MOMENT-MAGNIFIER, LONG-TERM-DEFLECTION, CREEP-SHRINKAGE, SPECIAL-MOMENT-FRAME-BEAM, SPECIAL-MOMENT-FRAME-COLUMN（6 頁）
-  - 圖說補充：RC-2024-4-fig-1、RC-2025-3-fig-1（圖說缺漏）；RC-2023-4 加入 eqn-1.png 引用與 LaTeX 圖說
-  - diagnosis/ 建立：beam-flexure, column-pm, shear-torsion, prestress, deflection-crack（5 頁）
-  - failure-modes/ 建立：flexure, shear, crushing, deflection, cracking（5 頁）
-  - materials/ 建立：concrete-stress-strain, steel-yielding, creep-shrinkage, prestress-strand（4 頁）
-  - P-M 互動圖生成：10 個柱設計題（RC-2002-2 等），更新 hasViz=true
+- **[LINT-FIX]** ä¿®å¾©å…¨éƒ¨ 7 é … lint å•é¡Œï¼š
+  - æ¦‚å¿µé è£œå……ï¼šDUCTILE-FAILURE, LONG-COLUMN-MOMENT-MAGNIFIER, LONG-TERM-DEFLECTION, CREEP-SHRINKAGE, SPECIAL-MOMENT-FRAME-BEAM, SPECIAL-MOMENT-FRAME-COLUMNï¼ˆ6 é ï¼‰
+  - åœ–èªªè£œå……ï¼šRC-2024-4-fig-1ã€RC-2025-3-fig-1ï¼ˆåœ–èªªç¼ºæ¼ï¼‰ï¼›RC-2023-4 åŠ å…¥ eqn-1.png å¼•ç”¨èˆ‡ LaTeX åœ–èªª
+  - diagnosis/ å»ºç«‹ï¼šbeam-flexure, column-pm, shear-torsion, prestress, deflection-crackï¼ˆ5 é ï¼‰
+  - failure-modes/ å»ºç«‹ï¼šflexure, shear, crushing, deflection, crackingï¼ˆ5 é ï¼‰
+  - materials/ å»ºç«‹ï¼šconcrete-stress-strain, steel-yielding, creep-shrinkage, prestress-strandï¼ˆ4 é ï¼‰
+  - P-M äº’å‹•åœ–ç”Ÿæˆï¼š10 å€‹æŸ±è¨­è¨ˆé¡Œï¼ˆRC-2002-2 ç­‰ï¼‰ï¼Œæ›´æ–° hasViz=true
 
 ## 2026-06-07
 
-- **[CLEANUP]** 清除 SS 鋼結構殘留：186 個檔案（problems/98 + concepts/58 + methods/19 + traps/11）
-- **[CONCEPTS]** concepts.json 新增 7 個高頻概念（SHEAR-STRENGTH、TORSION-DESIGN、PUNCHING-SHEAR、SEISMIC-DESIGN、DEVELOPMENT-LENGTH、DEFLECTION-CONTROL、CRACK-WIDTH）
-- **[FIX]** RC-2012-2 verificationStatus 改回 unverified（hasSolution=false，狀態矛盾修正）
-- **[QUERY]** 建立 wiki/queries/題庫缺口報告（2017整年缺失、RC-2016-3、RC-2012-2）
+- **[CLEANUP]** æ¸…é™¤ SS é‹¼çµæ§‹æ®˜ç•™ï¼š186 å€‹æª”æ¡ˆï¼ˆproblems/98 + concepts/58 + methods/19 + traps/11ï¼‰
+- **[CONCEPTS]** concepts.json æ–°å¢ž 7 å€‹é«˜é »æ¦‚å¿µï¼ˆSHEAR-STRENGTHã€TORSION-DESIGNã€PUNCHING-SHEARã€SEISMIC-DESIGNã€DEVELOPMENT-LENGTHã€DEFLECTION-CONTROLã€CRACK-WIDTHï¼‰
+- **[FIX]** RC-2012-2 verificationStatus æ”¹å›ž unverifiedï¼ˆhasSolution=falseï¼Œç‹€æ…‹çŸ›ç›¾ä¿®æ­£ï¼‰
+- **[QUERY]** å»ºç«‹ wiki/queries/é¡Œåº«ç¼ºå£å ±å‘Šï¼ˆ2017æ•´å¹´ç¼ºå¤±ã€RC-2016-3ã€RC-2012-2ï¼‰
 
 ## 2026-06-07
 
-- **[REINDEX+INGEST]** 題庫補齊，新增 6 題（RC-2012-2、RC-2016-3、RC-2017-1~4）
-  - question_index.json：共 100 題（verified+hasSolution：100 題）
-  - wiki/problems/：新增 6 個頁面
-  - wiki/by-year.md、wiki/index.md：重建完成
-  - 題庫缺口報告更新：無缺口
+- **[REINDEX+INGEST]** é¡Œåº«è£œé½Šï¼Œæ–°å¢ž 6 é¡Œï¼ˆRC-2012-2ã€RC-2016-3ã€RC-2017-1~4ï¼‰
+  - question_index.jsonï¼šå…± 100 é¡Œï¼ˆverified+hasSolutionï¼š100 é¡Œï¼‰
+  - wiki/problems/ï¼šæ–°å¢ž 6 å€‹é é¢
+  - wiki/by-year.mdã€wiki/index.mdï¼šé‡å»ºå®Œæˆ
+  - é¡Œåº«ç¼ºå£å ±å‘Šæ›´æ–°ï¼šç„¡ç¼ºå£
 
 ## 2026-06-07
 
-- **[CLEANUP-2]** 清除 SS 殘留 56 個（code-ref/22、philosophy/10、diagnosis/8、failure-modes/5、materials/5、queries/6）
-- **[REBUILD]** 重建各目錄 RC 版 index.md（6 個目錄）
-- **[ADD]** 補建 wiki/diagnosis/seismic.md
+- **[CLEANUP-2]** æ¸…é™¤ SS æ®˜ç•™ 56 å€‹ï¼ˆcode-ref/22ã€philosophy/10ã€diagnosis/8ã€failure-modes/5ã€materials/5ã€queries/6ï¼‰
+- **[REBUILD]** é‡å»ºå„ç›®éŒ„ RC ç‰ˆ index.mdï¼ˆ6 å€‹ç›®éŒ„ï¼‰
+- **[ADD]** è£œå»º wiki/diagnosis/seismic.md
 
 ## 2026-06-08
 
-- **[COMPILE-ALL]** 全面重建 wiki 知識庫（compile-all + ingest 完整驗證）
-  - 確認 wiki/concepts/：17 個概念頁面（BALANCED-REINFORCEMENT-RATIO 至 CRACK-WIDTH 全部存在）
-  - 確認 wiki/problems/：100 個題目頁面（2002–2025 全部 verified 題目）
-  - 重建 wiki/index.md：採七層知識架構 + 四單元分類導航格式，含全部 100 題連結
-  - 確認 wiki/by-year.md：2002–2025 完整年份表格（無需修改）
-  - **[NEW]** 建立 wiki/traps/：13 個陷阱頁面 + index.md（T形梁、φ值、耐震Ve、預力fps、預力損失、扭力門檻、衝剪、細長柱、平衡鋼筋比、雙筋梁壓力筋、梁柱接頭、剪力臨界斷面、有效慣性矩）
-  - **[LINT]** 執行 16 項健檢，結果：11項PASS、2項WARNING、3項SKIP（需bash）；完整報告：wiki/queries/lint-report-2026-06-08.md
-  - **[FIX-1]** 同步 STIRRUP-DESIGN 至 concepts.json（第 18 個概念）
-  - **[FIX-2]** 建立 wiki/code-ref/ 實體頁面（ACI-318.md、CNS-1480.md、seismic-code.md），更新 index.md；code-ref 從 stub 升格為完整規範速查層
-  - 操作者：Cowork
+- **[COMPILE-ALL]** å…¨é¢é‡å»º wiki çŸ¥è­˜åº«ï¼ˆcompile-all + ingest å®Œæ•´é©—è­‰ï¼‰
+  - ç¢ºèª wiki/concepts/ï¼š17 å€‹æ¦‚å¿µé é¢ï¼ˆBALANCED-REINFORCEMENT-RATIO è‡³ CRACK-WIDTH å…¨éƒ¨å­˜åœ¨ï¼‰
+  - ç¢ºèª wiki/problems/ï¼š100 å€‹é¡Œç›®é é¢ï¼ˆ2002â€“2025 å…¨éƒ¨ verified é¡Œç›®ï¼‰
+  - é‡å»º wiki/index.mdï¼šæŽ¡ä¸ƒå±¤çŸ¥è­˜æž¶æ§‹ + å››å–®å…ƒåˆ†é¡žå°Žèˆªæ ¼å¼ï¼Œå«å…¨éƒ¨ 100 é¡Œé€£çµ
+  - ç¢ºèª wiki/by-year.mdï¼š2002â€“2025 å®Œæ•´å¹´ä»½è¡¨æ ¼ï¼ˆç„¡éœ€ä¿®æ”¹ï¼‰
+  - **[NEW]** å»ºç«‹ wiki/traps/ï¼š13 å€‹é™·é˜±é é¢ + index.mdï¼ˆTå½¢æ¢ã€Ï†å€¼ã€è€éœ‡Veã€é åŠ›fpsã€é åŠ›æå¤±ã€æ‰­åŠ›é–€æª»ã€è¡å‰ªã€ç´°é•·æŸ±ã€å¹³è¡¡é‹¼ç­‹æ¯”ã€é›™ç­‹æ¢å£“åŠ›ç­‹ã€æ¢æŸ±æŽ¥é ­ã€å‰ªåŠ›è‡¨ç•Œæ–·é¢ã€æœ‰æ•ˆæ…£æ€§çŸ©ï¼‰
+  - **[LINT]** åŸ·è¡Œ 16 é …å¥æª¢ï¼Œçµæžœï¼š11é …PASSã€2é …WARNINGã€3é …SKIPï¼ˆéœ€bashï¼‰ï¼›å®Œæ•´å ±å‘Šï¼šwiki/queries/lint-report-2026-06-08.md
+  - **[FIX-1]** åŒæ­¥ STIRRUP-DESIGN è‡³ concepts.jsonï¼ˆç¬¬ 18 å€‹æ¦‚å¿µï¼‰
+  - **[FIX-2]** å»ºç«‹ wiki/code-ref/ å¯¦é«”é é¢ï¼ˆACI-318.mdã€CNS-1480.mdã€seismic-code.mdï¼‰ï¼Œæ›´æ–° index.mdï¼›code-ref å¾ž stub å‡æ ¼ç‚ºå®Œæ•´è¦ç¯„é€ŸæŸ¥å±¤
+  - æ“ä½œè€…ï¼šCowork
 
 ## 2026-06-09
 
-- **[COMPILE-ALL]** 全面重建 wiki 知識庫（全部修正），compile-all 第二次完整執行
-  - 全部 100 題 wiki/problems/ 頁面確認（2002–2025 年，100 題均 verified）
-  - **[CONCEPTS]** 24 個概念頁面全部以 §7.2 完整格式重新生成：
-    - BALANCED-REINFORCEMENT-RATIO、WHITNEY-STRESS-BLOCK、BETA1-FACTOR
-    - PM-INTERACTION-DIAGRAM、BALANCED-POINT、EFFECTIVE-MOMENT-OF-INERTIA
-    - CRACKING-MOMENT、PRESTRESS-LOSS、EFFECTIVE-PRESTRESS、STRONG-COLUMN-WEAK-BEAM
-    - SHEAR-STRENGTH、TORSION-DESIGN、PUNCHING-SHEAR、SEISMIC-DESIGN
-    - DEVELOPMENT-LENGTH、DEFLECTION-CONTROL、CRACK-WIDTH、STIRRUP-DESIGN
-    - DUCTILE-FAILURE、LONG-COLUMN-MOMENT-MAGNIFIER、LONG-TERM-DEFLECTION
-    - CREEP-SHRINKAGE、SPECIAL-MOMENT-FRAME-BEAM、SPECIAL-MOMENT-FRAME-COLUMN
-  - 格式特徵：每頁含完整 LaTeX 公式（$$...$$）、定義段落、前置概念、相關概念、常見陷阱、出現題目表格
-  - **[INDEX]** 重建 wiki/index.md：七層知識架構表 + 24 概念快速導覽表（依四單元分類）+ 全 100 題連結
-  - **[BY-YEAR]** 重建 wiki/by-year.md：2002–2025 年全 100 題，改為 [[RC-YYYY-N]] Obsidian 連結格式
-  - 操作者：Cowork
+- **[COMPILE-ALL]** å…¨é¢é‡å»º wiki çŸ¥è­˜åº«ï¼ˆå…¨éƒ¨ä¿®æ­£ï¼‰ï¼Œcompile-all ç¬¬äºŒæ¬¡å®Œæ•´åŸ·è¡Œ
+  - å…¨éƒ¨ 100 é¡Œ wiki/problems/ é é¢ç¢ºèªï¼ˆ2002â€“2025 å¹´ï¼Œ100 é¡Œå‡ verifiedï¼‰
+  - **[CONCEPTS]** 24 å€‹æ¦‚å¿µé é¢å…¨éƒ¨ä»¥ Â§7.2 å®Œæ•´æ ¼å¼é‡æ–°ç”Ÿæˆï¼š
+    - BALANCED-REINFORCEMENT-RATIOã€WHITNEY-STRESS-BLOCKã€BETA1-FACTOR
+    - PM-INTERACTION-DIAGRAMã€BALANCED-POINTã€EFFECTIVE-MOMENT-OF-INERTIA
+    - CRACKING-MOMENTã€PRESTRESS-LOSSã€EFFECTIVE-PRESTRESSã€STRONG-COLUMN-WEAK-BEAM
+    - SHEAR-STRENGTHã€TORSION-DESIGNã€PUNCHING-SHEARã€SEISMIC-DESIGN
+    - DEVELOPMENT-LENGTHã€DEFLECTION-CONTROLã€CRACK-WIDTHã€STIRRUP-DESIGN
+    - DUCTILE-FAILUREã€LONG-COLUMN-MOMENT-MAGNIFIERã€LONG-TERM-DEFLECTION
+    - CREEP-SHRINKAGEã€SPECIAL-MOMENT-FRAME-BEAMã€SPECIAL-MOMENT-FRAME-COLUMN
+  - æ ¼å¼ç‰¹å¾µï¼šæ¯é å«å®Œæ•´ LaTeX å…¬å¼ï¼ˆ$$...$$ï¼‰ã€å®šç¾©æ®µè½ã€å‰ç½®æ¦‚å¿µã€ç›¸é—œæ¦‚å¿µã€å¸¸è¦‹é™·é˜±ã€å‡ºç¾é¡Œç›®è¡¨æ ¼
+  - **[INDEX]** é‡å»º wiki/index.mdï¼šä¸ƒå±¤çŸ¥è­˜æž¶æ§‹è¡¨ + 24 æ¦‚å¿µå¿«é€Ÿå°Žè¦½è¡¨ï¼ˆä¾å››å–®å…ƒåˆ†é¡žï¼‰+ å…¨ 100 é¡Œé€£çµ
+  - **[BY-YEAR]** é‡å»º wiki/by-year.mdï¼š2002â€“2025 å¹´å…¨ 100 é¡Œï¼Œæ”¹ç‚º [[RC-YYYY-N]] Obsidian é€£çµæ ¼å¼
+  - æ“ä½œè€…ï¼šCowork
 
 ## 2026-06-09
 
-- **[METHODS]** 建立 wiki/methods/ 完整解題方法論目錄（Layer 3）
-  - 新建 index.md：列出 8 個方法論頁面
-  - 新建 WHITNEY-STRESS-BLOCK-METHOD.md（等值矩形應力塊，RC-U1-1/U1-2）
-  - 升級 PM-INTERACTION-DIAGRAM.md（原 stub → 完整版含 LaTeX 公式與出現題目表）
-  - 新建 MOMENT-MAGNIFIER.md（長柱放大彎矩法，RC-U1-3）
-  - 新建 EFFECTIVE-INERTIA.md（有效慣性矩撓度計算法，RC-U3-1）
-  - 新建 PRESTRESS-LOSS-CALC.md（預力損失計算流程，RC-U4-3）
-  - 新建 T-BEAM-ANALYSIS.md（T 形梁彎矩強度分析法，RC-U1-1）
-  - 新建 FRICTION-LOSS-METHOD.md（摩擦損失計算法，RC-U4-3）
-  - 新建 SEISMIC-CAPACITY-METHOD.md（耐震能力設計法，RC-U3-3）
-  - 知識庫健康狀態：wiki/ 七層架構全部完整，無缺漏
-  - 操作者：Cowork
+- **[METHODS]** å»ºç«‹ wiki/methods/ å®Œæ•´è§£é¡Œæ–¹æ³•è«–ç›®éŒ„ï¼ˆLayer 3ï¼‰
+  - æ–°å»º index.mdï¼šåˆ—å‡º 8 å€‹æ–¹æ³•è«–é é¢
+  - æ–°å»º WHITNEY-STRESS-BLOCK-METHOD.mdï¼ˆç­‰å€¼çŸ©å½¢æ‡‰åŠ›å¡Šï¼ŒRC-U1-1/U1-2ï¼‰
+  - å‡ç´š PM-INTERACTION-DIAGRAM.mdï¼ˆåŽŸ stub â†’ å®Œæ•´ç‰ˆå« LaTeX å…¬å¼èˆ‡å‡ºç¾é¡Œç›®è¡¨ï¼‰
+  - æ–°å»º MOMENT-MAGNIFIER.mdï¼ˆé•·æŸ±æ”¾å¤§å½ŽçŸ©æ³•ï¼ŒRC-U1-3ï¼‰
+  - æ–°å»º EFFECTIVE-INERTIA.mdï¼ˆæœ‰æ•ˆæ…£æ€§çŸ©æ’“åº¦è¨ˆç®—æ³•ï¼ŒRC-U3-1ï¼‰
+  - æ–°å»º PRESTRESS-LOSS-CALC.mdï¼ˆé åŠ›æå¤±è¨ˆç®—æµç¨‹ï¼ŒRC-U4-3ï¼‰
+  - æ–°å»º T-BEAM-ANALYSIS.mdï¼ˆT å½¢æ¢å½ŽçŸ©å¼·åº¦åˆ†æžæ³•ï¼ŒRC-U1-1ï¼‰
+  - æ–°å»º FRICTION-LOSS-METHOD.mdï¼ˆæ‘©æ“¦æå¤±è¨ˆç®—æ³•ï¼ŒRC-U4-3ï¼‰
+  - æ–°å»º SEISMIC-CAPACITY-METHOD.mdï¼ˆè€éœ‡èƒ½åŠ›è¨­è¨ˆæ³•ï¼ŒRC-U3-3ï¼‰
+  - çŸ¥è­˜åº«å¥åº·ç‹€æ…‹ï¼šwiki/ ä¸ƒå±¤æž¶æ§‹å…¨éƒ¨å®Œæ•´ï¼Œç„¡ç¼ºæ¼
+  - æ“ä½œè€…ï¼šCowork
 
 ## 2026-06-10
 
-- **[FREQUENCY]** 執行 frequency 指令，生成 wiki/queries/frequency-20260610.md
-  - 統計全 100 題（2002–2025）各 topicId 出現頻次（primary + secondary）
-  - 結果：RC-U1-1=22、RC-U4-1=21、RC-U1-2=19、RC-U3-3=16、RC-U2-1=16
-  - 操作者：Cowork
+- **[FREQUENCY]** åŸ·è¡Œ frequency æŒ‡ä»¤ï¼Œç”Ÿæˆ wiki/queries/frequency-20260610.md
+  - çµ±è¨ˆå…¨ 100 é¡Œï¼ˆ2002â€“2025ï¼‰å„ topicId å‡ºç¾é »æ¬¡ï¼ˆprimary + secondaryï¼‰
+  - çµæžœï¼šRC-U1-1=22ã€RC-U4-1=21ã€RC-U1-2=19ã€RC-U3-3=16ã€RC-U2-1=16
+  - æ“ä½œè€…ï¼šCowork
 
-- **[PREDICT]** 執行 predict 指令，生成 wiki/queries/predict-2026-20260610.md
-  - 基於頻次統計＋近年趨勢＋補考點分析推測 2026 高機率考題
-  - 優先補考點：RC-U3-1（8 年未考）、RC-U4-3（7 年未考）、RC-U1-3（10 年未考）
-  - 操作者：Cowork
+- **[PREDICT]** åŸ·è¡Œ predict æŒ‡ä»¤ï¼Œç”Ÿæˆ wiki/queries/predict-2026-20260610.md
+  - åŸºæ–¼é »æ¬¡çµ±è¨ˆï¼‹è¿‘å¹´è¶¨å‹¢ï¼‹è£œè€ƒé»žåˆ†æžæŽ¨æ¸¬ 2026 é«˜æ©ŸçŽ‡è€ƒé¡Œ
+  - å„ªå…ˆè£œè€ƒé»žï¼šRC-U3-1ï¼ˆ8 å¹´æœªè€ƒï¼‰ã€RC-U4-3ï¼ˆ7 å¹´æœªè€ƒï¼‰ã€RC-U1-3ï¼ˆ10 å¹´æœªè€ƒï¼‰
+  - æ“ä½œè€…ï¼šCowork
 
-- **[RAW-METHODS]** 補建 raw/solutions/methods/ 來源檔案（4 個方法論 .md）
-  - 新建 raw/solutions/methods/effective-inertia-deflection/effective-inertia-deflection.md
-  - 新建 raw/solutions/methods/moment-magnifier-method/moment-magnifier-method.md
-  - 新建 raw/solutions/methods/prestress-loss-calculation/prestress-loss-calculation.md
-  - 新建 raw/solutions/methods/pm-interaction-diagram/pm-interaction-diagram.md
-  - 修正 raw/→wiki/ 單向資料流缺口，4 個 wiki/methods/ 頁面現有對應原始檔
-  - 操作者：Cowork
+- **[RAW-METHODS]** è£œå»º raw/solutions/methods/ ä¾†æºæª”æ¡ˆï¼ˆ4 å€‹æ–¹æ³•è«– .mdï¼‰
+  - æ–°å»º raw/solutions/methods/effective-inertia-deflection/effective-inertia-deflection.md
+  - æ–°å»º raw/solutions/methods/moment-magnifier-method/moment-magnifier-method.md
+  - æ–°å»º raw/solutions/methods/prestress-loss-calculation/prestress-loss-calculation.md
+  - æ–°å»º raw/solutions/methods/pm-interaction-diagram/pm-interaction-diagram.md
+  - ä¿®æ­£ raw/â†’wiki/ å–®å‘è³‡æ–™æµç¼ºå£ï¼Œ4 å€‹ wiki/methods/ é é¢ç¾æœ‰å°æ‡‰åŽŸå§‹æª”
+  - æ“ä½œè€…ï¼šCowork
 
-- **[TRAPS-BACKLINKS]** 建立 traps↔problems 雙向連結
-  - 讀取全部 13 個 wiki/traps/ 陷阱頁，建立完整 trap→problem 對應表
-  - 在 52 個 wiki/problems/ 頁末尾加入「## 相關陷阱」反向連結區塊
-  - 涵蓋陷阱：T-BEAM-EFFECTIVE-WIDTH、BALANCED-RATIO-BOUNDARY、PHI-FACTOR-TRANSITION、COMPRESSION-STEEL-YIELDING、SHEAR-CRITICAL-SECTION、TORSION-THRESHOLD、DEFLECTION-EFFECTIVE-INERTIA、PUNCHING-SHEAR-CRITICAL、SEISMIC-BEAM-VE、JOINT-SHEAR-EFFECTIVE-AREA、LONG-COLUMN-SLENDERNESS、PRESTRESS-LOSS-SEQUENCE、PRESTRESS-FPS-FORMULA
-  - wiki/traps/ 雙向連結完整度：13/13 陷阱頁均建立反向連結
-  - 操作者：Cowork
+- **[TRAPS-BACKLINKS]** å»ºç«‹ trapsâ†”problems é›™å‘é€£çµ
+  - è®€å–å…¨éƒ¨ 13 å€‹ wiki/traps/ é™·é˜±é ï¼Œå»ºç«‹å®Œæ•´ trapâ†’problem å°æ‡‰è¡¨
+  - åœ¨ 52 å€‹ wiki/problems/ é æœ«å°¾åŠ å…¥ã€Œ## ç›¸é—œé™·é˜±ã€åå‘é€£çµå€å¡Š
+  - æ¶µè“‹é™·é˜±ï¼šT-BEAM-EFFECTIVE-WIDTHã€BALANCED-RATIO-BOUNDARYã€PHI-FACTOR-TRANSITIONã€COMPRESSION-STEEL-YIELDINGã€SHEAR-CRITICAL-SECTIONã€TORSION-THRESHOLDã€DEFLECTION-EFFECTIVE-INERTIAã€PUNCHING-SHEAR-CRITICALã€SEISMIC-BEAM-VEã€JOINT-SHEAR-EFFECTIVE-AREAã€LONG-COLUMN-SLENDERNESSã€PRESTRESS-LOSS-SEQUENCEã€PRESTRESS-FPS-FORMULA
+  - wiki/traps/ é›™å‘é€£çµå®Œæ•´åº¦ï¼š13/13 é™·é˜±é å‡å»ºç«‹åå‘é€£çµ
+  - æ“ä½œè€…ï¼šCowork
 
 ## 2026-06-11
 
-- **[HEALTH-CHECK]** 知識庫一致性健檢（補完 2026-06-08 lint 報告的 4 項 SKIP 掃描）
-  - hasViz 比對：索引 14 題 hasViz=true ↔ raw/solutions/ 實際 16 個 *-viz.html（RC-2014-2、RC-2014-4 各 2 個），完全一致 ✅
-  - hasHandwritten 比對：索引 0 題 ↔ 實際 0 個 *hand*.png，一致 ✅
-  - 圖說掃描：59 個含 fig-*.png 的解析檔全部具備「圖說：」段落 ✅
-  - lint 待補清單覆核：code-ref 實體頁 ✅、STIRRUP-DESIGN 已入 concepts.json ✅、raw methods 來源 ✅（均已於 06-08~06-10 解決）
-  - 結論：資料層無待修項
-  - 操作者：Cowork
+- **[HEALTH-CHECK]** çŸ¥è­˜åº«ä¸€è‡´æ€§å¥æª¢ï¼ˆè£œå®Œ 2026-06-08 lint å ±å‘Šçš„ 4 é … SKIP æŽƒæï¼‰
+  - hasViz æ¯”å°ï¼šç´¢å¼• 14 é¡Œ hasViz=true â†” raw/solutions/ å¯¦éš› 16 å€‹ *-viz.htmlï¼ˆRC-2014-2ã€RC-2014-4 å„ 2 å€‹ï¼‰ï¼Œå®Œå…¨ä¸€è‡´ âœ…
+  - hasHandwritten æ¯”å°ï¼šç´¢å¼• 0 é¡Œ â†” å¯¦éš› 0 å€‹ *hand*.pngï¼Œä¸€è‡´ âœ…
+  - åœ–èªªæŽƒæï¼š59 å€‹å« fig-*.png çš„è§£æžæª”å…¨éƒ¨å…·å‚™ã€Œåœ–èªªï¼šã€æ®µè½ âœ…
+  - lint å¾…è£œæ¸…å–®è¦†æ ¸ï¼šcode-ref å¯¦é«”é  âœ…ã€STIRRUP-DESIGN å·²å…¥ concepts.json âœ…ã€raw methods ä¾†æº âœ…ï¼ˆå‡å·²æ–¼ 06-08~06-10 è§£æ±ºï¼‰
+  - çµè«–ï¼šè³‡æ–™å±¤ç„¡å¾…ä¿®é …
+  - æ“ä½œè€…ï¼šCowork
 
-- **[DASHBOARD]** 建立知識庫儀表板（新增使用者入口）
-  - 新建 index.html（離線單檔，雙擊即用）：題庫瀏覽（年份/單元/考點/設計法/標籤/關鍵字篩選）、考點統計圖、近5年走向、高頻標籤、讀書進度追蹤（localStorage）、七層架構導覽、16 指令速查
-  - 新建 dashboard-data.js（question_index.json 快照，100 題）
-  - 新增指令 REFRESH-DASHBOARD（觸發語句「更新儀表板資料」），登錄於 CLAUDE-CODE.md
-  - 操作者：Cowork
+- **[DASHBOARD]** å»ºç«‹çŸ¥è­˜åº«å„€è¡¨æ¿ï¼ˆæ–°å¢žä½¿ç”¨è€…å…¥å£ï¼‰
+  - æ–°å»º index.htmlï¼ˆé›¢ç·šå–®æª”ï¼Œé›™æ“Šå³ç”¨ï¼‰ï¼šé¡Œåº«ç€è¦½ï¼ˆå¹´ä»½/å–®å…ƒ/è€ƒé»ž/è¨­è¨ˆæ³•/æ¨™ç±¤/é—œéµå­—ç¯©é¸ï¼‰ã€è€ƒé»žçµ±è¨ˆåœ–ã€è¿‘5å¹´èµ°å‘ã€é«˜é »æ¨™ç±¤ã€è®€æ›¸é€²åº¦è¿½è¹¤ï¼ˆlocalStorageï¼‰ã€ä¸ƒå±¤æž¶æ§‹å°Žè¦½ã€16 æŒ‡ä»¤é€ŸæŸ¥
+  - æ–°å»º dashboard-data.jsï¼ˆquestion_index.json å¿«ç…§ï¼Œ100 é¡Œï¼‰
+  - æ–°å¢žæŒ‡ä»¤ REFRESH-DASHBOARDï¼ˆè§¸ç™¼èªžå¥ã€Œæ›´æ–°å„€è¡¨æ¿è³‡æ–™ã€ï¼‰ï¼Œç™»éŒ„æ–¼ CLAUDE-CODE.md
+  - æ“ä½œè€…ï¼šCowork
 
-- **[DASHBOARD-v2]** 儀表板新增站內解析閱讀器
-  - 「完整解析」改於站內彈窗開啟：內建 Markdown 渲染器（標題/表格/清單/引用/程式碼區塊/圖片）＋ KaTeX 公式渲染（$...$ 與 $$...$$，CDN 載入、離線時顯示原始 LaTeX）
-  - 因瀏覽器 file:// 安全限制，採 File System Access API：首次使用授權選擇 exam-wiki-RC 資料夾一次（儲存於 IndexedDB），即可讀取所有解析檔與附圖
-  - 題目附圖以 Blob URL 載入；解析內 .md 相對連結可於閱讀器內跳轉
-  - 移除題卡「wiki 題目頁」連結（依使用者要求）；知識庫導覽卡片也改走站內閱讀器
-  - 操作者：Cowork
+- **[DASHBOARD-v2]** å„€è¡¨æ¿æ–°å¢žç«™å…§è§£æžé–±è®€å™¨
+  - ã€Œå®Œæ•´è§£æžã€æ”¹æ–¼ç«™å…§å½ˆçª—é–‹å•Ÿï¼šå…§å»º Markdown æ¸²æŸ“å™¨ï¼ˆæ¨™é¡Œ/è¡¨æ ¼/æ¸…å–®/å¼•ç”¨/ç¨‹å¼ç¢¼å€å¡Š/åœ–ç‰‡ï¼‰ï¼‹ KaTeX å…¬å¼æ¸²æŸ“ï¼ˆ$...$ èˆ‡ $$...$$ï¼ŒCDN è¼‰å…¥ã€é›¢ç·šæ™‚é¡¯ç¤ºåŽŸå§‹ LaTeXï¼‰
+  - å› ç€è¦½å™¨ file:// å®‰å…¨é™åˆ¶ï¼ŒæŽ¡ File System Access APIï¼šé¦–æ¬¡ä½¿ç”¨æŽˆæ¬Šé¸æ“‡ exam-wiki-RC è³‡æ–™å¤¾ä¸€æ¬¡ï¼ˆå„²å­˜æ–¼ IndexedDBï¼‰ï¼Œå³å¯è®€å–æ‰€æœ‰è§£æžæª”èˆ‡é™„åœ–
+  - é¡Œç›®é™„åœ–ä»¥ Blob URL è¼‰å…¥ï¼›è§£æžå…§ .md ç›¸å°é€£çµå¯æ–¼é–±è®€å™¨å…§è·³è½‰
+  - ç§»é™¤é¡Œå¡ã€Œwiki é¡Œç›®é ã€é€£çµï¼ˆä¾ä½¿ç”¨è€…è¦æ±‚ï¼‰ï¼›çŸ¥è­˜åº«å°Žè¦½å¡ç‰‡ä¹Ÿæ”¹èµ°ç«™å…§é–±è®€å™¨
+  - æ“ä½œè€…ï¼šCowork
 
-- **[DASHBOARD-v3]** 解析閱讀器新增「匯出 PDF」按鈕
-  - 採瀏覽器原生列印管道（目的地選「另存為 PDF」）：向量文字、中文與 KaTeX 公式完整保留、離線可用
-  - 列印樣式僅輸出解析內容＋標頭（題號、來源路徑、匯出日期）；表格/圖片/公式避免跨頁截斷
-  - 匯出時自動以題號設定預設 PDF 檔名
-  - 操作者：Cowork
+- **[DASHBOARD-v3]** è§£æžé–±è®€å™¨æ–°å¢žã€ŒåŒ¯å‡º PDFã€æŒ‰éˆ•
+  - æŽ¡ç€è¦½å™¨åŽŸç”Ÿåˆ—å°ç®¡é“ï¼ˆç›®çš„åœ°é¸ã€Œå¦å­˜ç‚º PDFã€ï¼‰ï¼šå‘é‡æ–‡å­—ã€ä¸­æ–‡èˆ‡ KaTeX å…¬å¼å®Œæ•´ä¿ç•™ã€é›¢ç·šå¯ç”¨
+  - åˆ—å°æ¨£å¼åƒ…è¼¸å‡ºè§£æžå…§å®¹ï¼‹æ¨™é ­ï¼ˆé¡Œè™Ÿã€ä¾†æºè·¯å¾‘ã€åŒ¯å‡ºæ—¥æœŸï¼‰ï¼›è¡¨æ ¼/åœ–ç‰‡/å…¬å¼é¿å…è·¨é æˆªæ–·
+  - åŒ¯å‡ºæ™‚è‡ªå‹•ä»¥é¡Œè™Ÿè¨­å®šé è¨­ PDF æª”å
+  - æ“ä½œè€…ï¼šCowork
 
-- **[METHODS-CONSOLIDATION]** 整併 wiki/methods/ 雙命名體系（lint 後續優化）
-  - 問題：methods/ 同時存在大寫頁（8 個，06-09 建立、index 引用、無 raw 來源）與 kebab 頁（3 個，06-10 raw 對應版），4 組內容重複；且多數大寫頁「出現題目」表與 question_index 不符（如 EFFECTIVE-INERTIA 原列 4 題中 3 題為剪力牆/預力/扭力題）
-  - 整併為 8 個 kebab-case 方法頁（符合 CLAUDE-SPEC 命名規範）：whitney-stress-block-method、pm-interaction-diagram、moment-magnifier-method、t-beam-analysis、effective-inertia-deflection、seismic-capacity-method、prestress-loss-calculation、friction-loss-method
-  - 所有「出現題目」表依 question_index.json 標籤重新核實重建
-  - 補建 4 個 raw 來源：whitney-stress-block-method、t-beam-analysis、friction-loss-method、seismic-capacity-method；更新既有 4 個 raw 來源為完整版（與 wiki 頁同步）
-  - 重寫 wiki/methods/index.md（8 法索引）
-  - MOMENT-MAGNIFIER.md、EFFECTIVE-INERTIA.md、PRESTRESS-LOSS-CALC.md 改為廢棄轉址 stub
-  - 操作者：Cowork
+- **[METHODS-CONSOLIDATION]** æ•´ä½µ wiki/methods/ é›™å‘½åé«”ç³»ï¼ˆlint å¾ŒçºŒå„ªåŒ–ï¼‰
+  - å•é¡Œï¼šmethods/ åŒæ™‚å­˜åœ¨å¤§å¯«é ï¼ˆ8 å€‹ï¼Œ06-09 å»ºç«‹ã€index å¼•ç”¨ã€ç„¡ raw ä¾†æºï¼‰èˆ‡ kebab é ï¼ˆ3 å€‹ï¼Œ06-10 raw å°æ‡‰ç‰ˆï¼‰ï¼Œ4 çµ„å…§å®¹é‡è¤‡ï¼›ä¸”å¤šæ•¸å¤§å¯«é ã€Œå‡ºç¾é¡Œç›®ã€è¡¨èˆ‡ question_index ä¸ç¬¦ï¼ˆå¦‚ EFFECTIVE-INERTIA åŽŸåˆ— 4 é¡Œä¸­ 3 é¡Œç‚ºå‰ªåŠ›ç‰†/é åŠ›/æ‰­åŠ›é¡Œï¼‰
+  - æ•´ä½µç‚º 8 å€‹ kebab-case æ–¹æ³•é ï¼ˆç¬¦åˆ CLAUDE-SPEC å‘½åè¦ç¯„ï¼‰ï¼šwhitney-stress-block-methodã€pm-interaction-diagramã€moment-magnifier-methodã€t-beam-analysisã€effective-inertia-deflectionã€seismic-capacity-methodã€prestress-loss-calculationã€friction-loss-method
+  - æ‰€æœ‰ã€Œå‡ºç¾é¡Œç›®ã€è¡¨ä¾ question_index.json æ¨™ç±¤é‡æ–°æ ¸å¯¦é‡å»º
+  - è£œå»º 4 å€‹ raw ä¾†æºï¼šwhitney-stress-block-methodã€t-beam-analysisã€friction-loss-methodã€seismic-capacity-methodï¼›æ›´æ–°æ—¢æœ‰ 4 å€‹ raw ä¾†æºç‚ºå®Œæ•´ç‰ˆï¼ˆèˆ‡ wiki é åŒæ­¥ï¼‰
+  - é‡å¯« wiki/methods/index.mdï¼ˆ8 æ³•ç´¢å¼•ï¼‰
+  - MOMENT-MAGNIFIER.mdã€EFFECTIVE-INERTIA.mdã€PRESTRESS-LOSS-CALC.md æ”¹ç‚ºå»¢æ£„è½‰å€ stub
+  - æ“ä½œè€…ï¼šCowork
 
-- **[ARCHIVE]** raw/json/ 暫存檔歸檔至 study/_archive/
-  - pdf_text.txt、pdf_2016_blocks.txt、pdf_2016_text.txt 已複製到 study/_archive/（附 README 說明）
-  - 操作者：Cowork
+- **[ARCHIVE]** raw/json/ æš«å­˜æª”æ­¸æª”è‡³ study/_archive/
+  - pdf_text.txtã€pdf_2016_blocks.txtã€pdf_2016_text.txt å·²è¤‡è£½åˆ° study/_archive/ï¼ˆé™„ README èªªæ˜Žï¼‰
+  - æ“ä½œè€…ï¼šCowork
 
-- **[PENDING-DELETE]** 待刪除清單（沙箱環境因磁碟空間不足無法啟動，刪除作業暫緩）
-  - raw/json/pdf_text.txt、raw/json/pdf_2016_blocks.txt、raw/json/pdf_2016_text.txt（已歸檔至 study/_archive/）
-  - wiki/methods/MOMENT-MAGNIFIER.md、EFFECTIVE-INERTIA.md、PRESTRESS-LOSS-CALC.md（廢棄轉址 stub）
-  - raw/solutions/RC-2015-1 ~ RC-2015-4 等資料夾內的 .placeholder 空檔
-  - 檔名大小寫正規化：PM-INTERACTION-DIAGRAM.md → pm-interaction-diagram.md 等 5 檔（Windows 大小寫不敏感，連結已可解析，僅顯示名稱待改）
-  - 環境恢復後對 Cowork 說「清理待刪除檔案」即可執行
-  - 操作者：Cowork
-- [2026-06-29] ingest RC-2023-1: �ɥR PDF �P��s��ı�ƹϪ�
+- **[PENDING-DELETE]** å¾…åˆªé™¤æ¸…å–®ï¼ˆæ²™ç®±ç’°å¢ƒå› ç£ç¢Ÿç©ºé–“ä¸è¶³ç„¡æ³•å•Ÿå‹•ï¼Œåˆªé™¤ä½œæ¥­æš«ç·©ï¼‰
+  - raw/json/pdf_text.txtã€raw/json/pdf_2016_blocks.txtã€raw/json/pdf_2016_text.txtï¼ˆå·²æ­¸æª”è‡³ study/_archive/ï¼‰
+  - wiki/methods/MOMENT-MAGNIFIER.mdã€EFFECTIVE-INERTIA.mdã€PRESTRESS-LOSS-CALC.mdï¼ˆå»¢æ£„è½‰å€ stubï¼‰
+  - raw/solutions/RC-2015-1 ~ RC-2015-4 ç­‰è³‡æ–™å¤¾å…§çš„ .placeholder ç©ºæª”
+  - æª”åå¤§å°å¯«æ­£è¦åŒ–ï¼šPM-INTERACTION-DIAGRAM.md â†’ pm-interaction-diagram.md ç­‰ 5 æª”ï¼ˆWindows å¤§å°å¯«ä¸æ•æ„Ÿï¼Œé€£çµå·²å¯è§£æžï¼Œåƒ…é¡¯ç¤ºåç¨±å¾…æ”¹ï¼‰
+  - ç’°å¢ƒæ¢å¾©å¾Œå° Cowork èªªã€Œæ¸…ç†å¾…åˆªé™¤æª”æ¡ˆã€å³å¯åŸ·è¡Œ
+  - æ“ä½œè€…ï¼šCowork
+- [2026-06-29] ingest RC-2023-1: ï¿½É¥R PDF ï¿½Pï¿½ï¿½sï¿½ï¿½Ä±ï¿½Æ¹Ïªï¿½
 
 ## 2026-07-01
 
-- **[DASHBOARD-v4]** 考點統計頁籤改為 frequency 指令格式；補充筆記 PDF 改為靜態資料驅動
-  - 「考點統計」頁籤重寫為 frequency 指令輸出格式：高頻考點 Top10（主＋副）、各單元命題比例、近5年趨勢動態列表；移除原「設計法分布」與「高頻標籤 Top20」兩張卡片
-  - dashboard-data.js 資料格式新增第 7 個欄位 pdf（補充筆記檔名陣列）；index.html 移除「📎 掃描補充 PDF」按鈕與前端即時掃描機制（injectPdfButtons/pdfCache/listDir），改為依靜態資料直接顯示「📎 補充筆記 PDF」按鈕
-  - 同步更新 CLAUDE-CODE.md（REFRESH-DASHBOARD 規格）、CLAUDE-SPEC.md（補充筆記 PDF 說明）、CLAUDE.md（CHANGELOG）
-  - 操作者：Cowork
+- **[DASHBOARD-v4]** è€ƒé»žçµ±è¨ˆé ç±¤æ”¹ç‚º frequency æŒ‡ä»¤æ ¼å¼ï¼›è£œå……ç­†è¨˜ PDF æ”¹ç‚ºéœæ…‹è³‡æ–™é©…å‹•
+  - ã€Œè€ƒé»žçµ±è¨ˆã€é ç±¤é‡å¯«ç‚º frequency æŒ‡ä»¤è¼¸å‡ºæ ¼å¼ï¼šé«˜é »è€ƒé»ž Top10ï¼ˆä¸»ï¼‹å‰¯ï¼‰ã€å„å–®å…ƒå‘½é¡Œæ¯”ä¾‹ã€è¿‘5å¹´è¶¨å‹¢å‹•æ…‹åˆ—è¡¨ï¼›ç§»é™¤åŽŸã€Œè¨­è¨ˆæ³•åˆ†å¸ƒã€èˆ‡ã€Œé«˜é »æ¨™ç±¤ Top20ã€å…©å¼µå¡ç‰‡
+  - dashboard-data.js è³‡æ–™æ ¼å¼æ–°å¢žç¬¬ 7 å€‹æ¬„ä½ pdfï¼ˆè£œå……ç­†è¨˜æª”åé™£åˆ—ï¼‰ï¼›index.html ç§»é™¤ã€ŒðŸ“Ž æŽƒæè£œå…… PDFã€æŒ‰éˆ•èˆ‡å‰ç«¯å³æ™‚æŽƒææ©Ÿåˆ¶ï¼ˆinjectPdfButtons/pdfCache/listDirï¼‰ï¼Œæ”¹ç‚ºä¾éœæ…‹è³‡æ–™ç›´æŽ¥é¡¯ç¤ºã€ŒðŸ“Ž è£œå……ç­†è¨˜ PDFã€æŒ‰éˆ•
+  - åŒæ­¥æ›´æ–° CLAUDE-CODE.mdï¼ˆREFRESH-DASHBOARD è¦æ ¼ï¼‰ã€CLAUDE-SPEC.mdï¼ˆè£œå……ç­†è¨˜ PDF èªªæ˜Žï¼‰ã€CLAUDE.mdï¼ˆCHANGELOGï¼‰
+  - æ“ä½œè€…ï¼šCowork
 
-- **[REFRESH-DASHBOARD]** 重新生成 dashboard-data.js
-  - 掃描 raw/json/question_index.json：100 題（無變動）
-  - 掃描 raw/solutions/RC-*/*-viz.html：18 個互動圖檔（無變動，維持既有 15 題的 viz 對應）
-  - 掃描 raw/solutions/RC-*/*.pdf：新發現 RC-2023-1 資料夾下 2 個補充 PDF（RC-2023-1.pdf、RC-2023-1_補充.pdf），已寫入 dashboard-data.js pdf 欄位；其餘 99 題維持 []
-  - 核對 raw/json/syllabus_taxonomy.json（RC 分類樹）：window.RC_TOPICS／window.RC_UNITS 內容一致，無需更動
-  - 操作者：Cowork
+- **[REFRESH-DASHBOARD]** é‡æ–°ç”Ÿæˆ dashboard-data.js
+  - æŽƒæ raw/json/question_index.jsonï¼š100 é¡Œï¼ˆç„¡è®Šå‹•ï¼‰
+  - æŽƒæ raw/solutions/RC-*/*-viz.htmlï¼š18 å€‹äº’å‹•åœ–æª”ï¼ˆç„¡è®Šå‹•ï¼Œç¶­æŒæ—¢æœ‰ 15 é¡Œçš„ viz å°æ‡‰ï¼‰
+  - æŽƒæ raw/solutions/RC-*/*.pdfï¼šæ–°ç™¼ç¾ RC-2023-1 è³‡æ–™å¤¾ä¸‹ 2 å€‹è£œå…… PDFï¼ˆRC-2023-1.pdfã€RC-2023-1_è£œå…….pdfï¼‰ï¼Œå·²å¯«å…¥ dashboard-data.js pdf æ¬„ä½ï¼›å…¶é¤˜ 99 é¡Œç¶­æŒ []
+  - æ ¸å° raw/json/syllabus_taxonomy.jsonï¼ˆRC åˆ†é¡žæ¨¹ï¼‰ï¼šwindow.RC_TOPICSï¼window.RC_UNITS å…§å®¹ä¸€è‡´ï¼Œç„¡éœ€æ›´å‹•
+  - æ“ä½œè€…ï¼šCowork
 
-## 2026-07-10 STUDY（子項層級 ×5）
+## 2026-07-10 STUDYï¼ˆå­é …å±¤ç´š Ã—5ï¼‰
 
-- 指令：`study RC-U1-1`、`study RC-U1-2`、`study RC-U2-1`、`study RC-U3-3`、`study RC-U4-1`
-- 產出（七區塊互動 HTML，KaTeX 渲染、自含檔案）：
-  - study/study-RC-U1-1.html — 梁彎矩強度分析與設計（主 19 題／相關 22 題，排名 1，近6年 5/6）
-  - study/study-RC-U1-2.html — 柱強度分析與設計（主 12／相關 20，排名 4，近6年 3/6）
-  - study/study-RC-U2-1.html — 剪力強度分析與設計（主 7／相關 16，排名 6，近6年 5/6）
-  - study/study-RC-U3-3.html — 韌性要求與耐震設計（主 16／相關 18，排名 2，近6年 2/6）
-  - study/study-RC-U4-1.html — 預力梁斷面應力分析（主 13／相關 21，排名 3，近6年 5/6）
-- 資料來源：raw/json/question_index.json（100 題，2002–2025，全數 verified）
-- 考題連結格式：`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`（符合 CLAUDE-CODE.md STUDY 規格）
-- 驗證：五頁題數與索引一致（22/20/16/18/21）、題號全數存在且相關、JS 語法檢查通過（node --check）
-- 互動計算器：U1-1 矩形梁 φMn／U1-2 柱 P-M 強度點／U2-1 梁剪力檢核／U3-3 圍束箍筋 Ash／U4-1 預力梁兩階段應力
-- 操作者：Cowork
+- æŒ‡ä»¤ï¼š`study RC-U1-1`ã€`study RC-U1-2`ã€`study RC-U2-1`ã€`study RC-U3-3`ã€`study RC-U4-1`
+- ç”¢å‡ºï¼ˆä¸ƒå€å¡Šäº’å‹• HTMLï¼ŒKaTeX æ¸²æŸ“ã€è‡ªå«æª”æ¡ˆï¼‰ï¼š
+  - study/study-RC-U1-1.html â€” æ¢å½ŽçŸ©å¼·åº¦åˆ†æžèˆ‡è¨­è¨ˆï¼ˆä¸» 19 é¡Œï¼ç›¸é—œ 22 é¡Œï¼ŒæŽ’å 1ï¼Œè¿‘6å¹´ 5/6ï¼‰
+  - study/study-RC-U1-2.html â€” æŸ±å¼·åº¦åˆ†æžèˆ‡è¨­è¨ˆï¼ˆä¸» 12ï¼ç›¸é—œ 20ï¼ŒæŽ’å 4ï¼Œè¿‘6å¹´ 3/6ï¼‰
+  - study/study-RC-U2-1.html â€” å‰ªåŠ›å¼·åº¦åˆ†æžèˆ‡è¨­è¨ˆï¼ˆä¸» 7ï¼ç›¸é—œ 16ï¼ŒæŽ’å 6ï¼Œè¿‘6å¹´ 5/6ï¼‰
+  - study/study-RC-U3-3.html â€” éŸŒæ€§è¦æ±‚èˆ‡è€éœ‡è¨­è¨ˆï¼ˆä¸» 16ï¼ç›¸é—œ 18ï¼ŒæŽ’å 2ï¼Œè¿‘6å¹´ 2/6ï¼‰
+  - study/study-RC-U4-1.html â€” é åŠ›æ¢æ–·é¢æ‡‰åŠ›åˆ†æžï¼ˆä¸» 13ï¼ç›¸é—œ 21ï¼ŒæŽ’å 3ï¼Œè¿‘6å¹´ 5/6ï¼‰
+- è³‡æ–™ä¾†æºï¼šraw/json/question_index.jsonï¼ˆ100 é¡Œï¼Œ2002â€“2025ï¼Œå…¨æ•¸ verifiedï¼‰
+- è€ƒé¡Œé€£çµæ ¼å¼ï¼š`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`ï¼ˆç¬¦åˆ CLAUDE-CODE.md STUDY è¦æ ¼ï¼‰
+- é©—è­‰ï¼šäº”é é¡Œæ•¸èˆ‡ç´¢å¼•ä¸€è‡´ï¼ˆ22/20/16/18/21ï¼‰ã€é¡Œè™Ÿå…¨æ•¸å­˜åœ¨ä¸”ç›¸é—œã€JS èªžæ³•æª¢æŸ¥é€šéŽï¼ˆnode --checkï¼‰
+- äº’å‹•è¨ˆç®—å™¨ï¼šU1-1 çŸ©å½¢æ¢ Ï†Mnï¼U1-2 æŸ± P-M å¼·åº¦é»žï¼U2-1 æ¢å‰ªåŠ›æª¢æ ¸ï¼U3-3 åœæŸç®ç­‹ Ashï¼U4-1 é åŠ›æ¢å…©éšŽæ®µæ‡‰åŠ›
+- æ“ä½œè€…ï¼šCowork
 
 ## 2026-07-19
 
-- **[UI-UPDATE]** 於 `study/` 目錄下的 5 個 `study-RC-U*.html` 主題總覽區塊右側，新增「Keynote」按鈕，並分別連結至對應的 PDF 講義檔案。
-- 操作者：Cowork
+- **[UI-UPDATE]** æ–¼ `study/` ç›®éŒ„ä¸‹çš„ 5 å€‹ `study-RC-U*.html` ä¸»é¡Œç¸½è¦½å€å¡Šå³å´ï¼Œæ–°å¢žã€ŒKeynoteã€æŒ‰éˆ•ï¼Œä¸¦åˆ†åˆ¥é€£çµè‡³å°æ‡‰çš„ PDF è¬›ç¾©æª”æ¡ˆã€‚
+- æ“ä½œè€…ï¼šCowork
 
-## 2026-07-25 UNIT-LECTURE（RC-U1-1 觀念講義）
+## 2026-07-25 UNIT-LECTUREï¼ˆRC-U1-1 è§€å¿µè¬›ç¾©ï¼‰
 
-- 觸發：`生成 RC-U1-1 講義`（外部 `unit-lecture` skill，非本知識庫 16 指令之一）
-- 產出：
-  - `study/lecture-RC-U1-1.html` — 理解導向觀念講義，13 節（§0 全景 → §12 精選 5 題），10 張內嵌 SVG 圖解
-  - `study/lecture-RC-U1-1.pdf` — 21 頁 A4 可列印版（MathJax→SVG + WeasyPrint）
-  - `study/assets/katex/` — 離線 KaTeX（約 600 KB），本科所有 lecture 頁共用，勿刪
-- 定位：與 `study/study-RC-U1-1.html`（速查頁）**並存不覆蓋**；速查頁供練題時查，講義供練題前建立物理直覺
-- 內容主軸：核心對立「強度＝力的平衡／安全＝應變的幾何」；每個規範常數追來源
-  （0.85 ← Rüsch 持續載重效應；β₁=2k₂ ← 應力分布形心；6120 ← εcu·Es；3/7 ← 0.003/0.007；ρmin 的 √f'c ← 破裂模數 fr=2√f'c）
-- 涵蓋題數：19 主分類 + 3 副分類 = 22 題（2002–2024），全數 verified
-- 精選 5 題：RC-2023-2、RC-2011-2、RC-2007-1、RC-2015-2、RC-2016-1
-  （誠實標註未涵蓋：RC-2014-1 過筋梁、RC-2014-2 M-φ 三階段、RC-2015-3 負彎矩 T 形梁、RC-2022-2 材料經濟性）
-- 考題連結格式：`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`（同 STUDY 規格）
-- 驗證：22 題號與 question_index.json 完全對齊（無缺漏／誤植／年份錯誤，解析檔皆存在）；
-  29 項數值以 Python 重算吻合（β₁ 分段、φ 內插、ρb/ρmax/ρmin 比值、RC-2023-1 曲率延展比算例 μφ=3.61→4.96）；
-  PDF 抽查 9 頁確認無 MathJax 黑方框、SVG 文字無溢出；節號交叉引用完整
-- 連動修改：README.md（快速導航＋檔案地圖）、CLAUDE.md（資料夾結構＋CHANGELOG）、
-  檔案架構索引表.md（study/ 與 assets/ 兩列）、CLAUDE-CODE.md（STUDY 段落加交叉註記，未新增指令）、
-  study/study-RC-U1-1.html（新增「觀念講義」按鈕）
-- 操作者：Cowork
-- 2026-07-25｜FIX｜**單位係數勘誤（跨科稽核發現）**。於 exam-wiki-SS 修正一批公式單位錯誤後，回頭稽核六科知識庫，在 RC 發現兩處：
-  1. `wiki/code-ref/CNS-1480.md` §混凝土彈性模數：`Ec = 4270√f'c (kgf/cm²) ≈ 15100√f'c (MPa)` —— **兩個單位標籤對調**，且 kgf/cm² 制係數誤植為 4270。正確為 `Ec = 15100√f'c (kgf/cm²) = 4700√f'c (MPa)`。原式誤差達 3.2～3.5 倍，會直接毀掉撓度與轉換斷面計算。已改正並加入驗算示例（f'c=280 kgf/cm² 時兩制應同得約 25 萬 kgf/cm²）與記憶法（係數大的配單位小的）。
-  2. `f_r` 的 MPa 制係數不一致：`wiki/code-ref/CNS-1480.md` 與驗證解答 RC-2018-4 均為 `0.623√f'c`，但 `wiki/concepts/GLOSSARY.md`、`wiki/traps/DEFLECTION-EFFECTIVE-INERTIA.md`、`wiki/methods/effective-inertia-deflection.md` 寫成 `0.7√f'c`（差 12%；0.7 為 ACI 318-99 舊版值）。依規則 2 以驗證解答為準，已將 GLOSSARY 與 traps 兩檔改為 0.623。
-  驗算方式：以 f'c = 280 kgf/cm² = 27.5 MPa 雙制互換確認；fr 以 2.0√f'c(kgf/cm²) 為錨點換算得 0.626 ≈ 0.623。
-  ⚠️ **未完成**：`wiki/methods/effective-inertia-deflection.md` 的 `0.7` 尚未修正，因其 compile 來源在 `raw/solutions/methods/effective-inertia-deflection/`，而 RC 的規則 1 目前尚未開放 methods 例外（SS 已於同日開放）。待決定是否比照 SS 修改 RC 的 CLAUDE.md 規則 1。
-  同時確認：SS 的 ASD/LTB 係數錯誤（703,000 / 1,170,000 / 1,055,000、Lp=300ry、Lr 分母、λ 138/322）**未擴散**至 RC/SA/SD/SM/MM 任一科（該類公式為鋼結構專有）。
-- 2026-07-25｜HARNESS + FIX｜規則 1 例外擴充（比照 SS）：`raw/` 唯讀例外增列 `raw/solutions/methods/`，並訂三項條件（驗算／同步 wiki／記 log）；`CLAUDE.md`（規則 1、結構圖 🔒/✏️ 標記、單向資料流、CHANGELOG）與 `CLAUDE-CODE.md`（新增 FIX-METHOD 流程）同步更新。依此完成前一筆待辦：`raw/solutions/methods/effective-inertia-deflection/` 的 `f_r = 0.7√f'c (MPa)` 已改為 `0.623√f'c` 並同步覆蓋 `wiki/methods/`。至此 RC 全庫 6 處 f_r 定義一致（0.623），與驗證解答 RC-2018-4 相符。
-- 2026-07-26｜FIX｜**梁柱接頭 γ 係數全庫勘誤（8 檔 15 處）**：撰寫 RC-U3-3 觀念講義時發現全庫對 `φVn = φγ√f'c·Aj` 的 γ 存在**三套互相矛盾**的數字。
-  **錯在哪：**
-  1. `wiki/code-ref/ACI-318.md` §18.8.4.2、`wiki/code-ref/seismic-code.md`、`wiki/traps/JOINT-SHEAR-EFFECTIVE-AREA.md`：寫成 `1.0 / 0.75 / 0.50`（另加「僅一面有梁 0.30」）—— **不對應任何常用單位制**。
-  2. `wiki/diagnosis/seismic.md`：寫成 `3.2（內）/ 2.4（邊）/ 1.6（角）` —— 數字**整組往下移了一階**；3.2 實為「其他類接頭」的值，被誤標為內接頭。
-  3. `wiki/code-ref/CNS-1480.md`：把差異歸因於「舊 CNS/ACI-318-99 用 4.0/3.2/2.4 vs 新 ACI-318-08 用 1.0/0.75/0.50」—— **歸因錯誤**，差異來自單位制而非規範版本；且兩欄數字皆有誤。
-  4. `wiki/philosophy/seismic-philosophy.md`：RC-2018-2 標為 `γ=1.6（外接頭）`（應為 3.2）；RC-2005-3 標為 `γ=3.2（內接頭筆誤需判斷）`（該題本就是**外／角接頭**，3.2 正確，原註解反而把正確值說成筆誤）。
-  5. `raw/solutions/methods/seismic-capacity-method/` 與 `wiki/methods/SEISMIC-CAPACITY-METHOD.md`：`1.7 / 1.2 / 1.0` 數值接近正確（MPa 制）但**未標單位制**，且 1.2 應為 1.25 —— 正是全庫混淆的根源。
-  **改成什麼：** 八個檔案統一改為三單位制對照表 —— 四面有梁（內接頭）`psi 20 / MPa 1.7 / kgf-cm² 5.3`；三面或對面兩面（T 形）`15 / 1.25 / 4.0`；其他（外／角接頭）`12 / 1.0 / 3.2`，並註明「同一組值的三種單位制，非三套規範」與「作答須寫明單位制」。
-  **怎麼驗證的（依規則 2，以 verified 解答為錨點）：**
-  - `wiki/problems/RC-2005-3.md`（verified）明載「角柱（外接頭）=3.2、T 形接頭=4.0、十字形（內接頭）=5.3」，並附推導 `γ = 12 psi^0.5 × 0.265 = 3.18 ≈ 3.2`。
-  - `wiki/problems/RC-2003-3.md`（verified）明載「內部接頭四面有梁圍束，γ=5.3（kgf/cm² 制，對應 ACI psi 制之 20）」。
-  - 量綱換算獨立重算：psi→kgf/cm² 乘 √0.0703 = 0.2651（20→5.303、15→3.977、12→3.182）；psi→MPa 乘 √0.006895 = 0.08304（20→1.661、15→1.246、12→0.996）。三組值互相自洽。
-  - 註記：RC-2018-2 內柱寫 5.4 屬換算取捨（5.303 進位），已於表下說明，不視為衝突。
-  **順帶修正（同檔同性質、同樣以 verified 解答驗證）：** `wiki/diagnosis/seismic.md` 柱密箍區間距的第三條件寫成固定 `14cm`，與 RC-2013-2、RC-2012-3 兩份 verified 解答所用 `so = 10+(35-hx)/3 ≤ 15cm` 不符，已改正。
-  **規則遵循：** `code-ref/`、`diagnosis/` 屬規則 4 例外，可直接維護；`raw/solutions/methods/` 依規則 1 例外修改，已完成驗算＋同步覆蓋 `wiki/methods/`＋本筆紀錄三項條件。`traps/`、`philosophy/` 雖非規則 4 例外，但經核對 CLAUDE-CODE.md 的 COMPILE-ALL 步驟，其生成清單僅含 concepts/ · methods/ · problems/ · index.md · by-year.md，**不會重新生成 traps/ 與 philosophy/**（INGEST 僅更新 traps 的「出現題目」表格），故直接修正不會被蓋回，且其內容原本即與自身來源（verified 解答）矛盾。
-  **未處理／待確認：** `wiki/diagnosis/seismic.md` 梁密箍區長度寫 `lo = max(2h, ln/4, 450mm)`，但 ACI 318 §18.6.4.1 與 RC-2025-2 verified 解析均為單一條件 `2h`；因不確定 `ln/4, 450mm` 是否引自其他規範（如中等抗彎構架），暫未更動，待使用者確認。
-- 2026-07-26｜FIX｜**梁密箍區長度 lo 勘誤（承前一筆待確認事項，使用者裁示依 ACI 318 §18.6.4.1 修正）**：
-  **錯在哪：** `wiki/diagnosis/seismic.md` 決策樹將特殊矩形框架梁的密箍區長度寫成 `lo = max(2h, ln/4, 450mm)（梁端）`。
-  ACI 318 §18.6.4.1 對**梁**只有**單一條件**：自支承構材面向跨中量起 `2h`（h 為梁全高）；
-  `ln/6`、`450mm` 是**柱**的規定（§18.7.5.1 `lo ≥ max(h, lu/6, 450mm)`），`ln/4` 則不屬於任一條。
-  **改成什麼：** 改為 `lo = 2h（單一條件，自柱面量起）`，並加註「梁沒有 ln/6、ln/4 或 450mm，那是柱 §18.7.5.1」；
-  同檔「常見陷阱」條目由籠統的「梁和柱的密箍區定義不同」改寫為明列兩者公式與條文號。
-  **怎麼驗證的：** ① 條文對照 ACI 318 §18.6.4.1（梁）vs §18.7.5.1（柱）；
-  ② 驗證解答 `RC-2025-2` 明載「密箍區：自柱面算起 2h」（單一條件）；
-  ③ 反向核對柱題 `RC-2012-3`、`RC-2013-2`、`RC-2009-1` 三份 verified 解答，其 `max(..., lu/6, 45cm)` 三式取大**均為柱**，證實三條件屬柱而非梁。
-  **全庫掃描結果：** 修正後全庫已無 `ln/4` 記載；`code-ref/ACI-318.md` §18.6.4.4、`code-ref/seismic-code.md`、
-  `concepts/SPECIAL-MOMENT-FRAME-BEAM.md`、`methods/SEISMIC-CAPACITY-METHOD.md` 對梁均已正確寫為 `≥ 2h`，無須更動。
-  **⚠️ 未更動（受規則 1、2 保護，僅記錄）：** `raw/solutions/RC-2016-2/RC-2016-2.md` 第 63／140／258／353 行寫
-  `lo = max(2h, ln/6, 45cm)` 並標註「ACI 318-14 §18.6.4.1」—— 條文號與三條件不符（三條件應屬 §18.7.5.1 柱）。
-  惟該題實算 `max(140, 125, 45) = 140 cm` 由 `2h` 控制，**最終答案 140 cm 不受影響**，
-  依規則 2（verifiedSolution 為最終答案，不可質疑或重算）不予更動；其 ingest 副本 `wiki/problems/RC-2016-2.md` 亦同步保留原樣。
-  若日後決定修訂該題敘述，須經使用者確認後再動 raw 端。
-- 2026-07-26｜FIX｜**剪力臨界斷面「d 偏移」判準改寫為條件式（`wiki/traps/SHEAR-CRITICAL-SECTION.md`）**：
-  **錯在哪：** 原頁把「倒 T 型梁」直接列入「不可使用此有利規定（必須取支承面）」清單，寫成**構件形狀 → 結論**。
-  但唯一的證據來源 `RC-2020-2`（verified）判定該題倒 T 梁**可以**採 d 偏移，理由是「均佈載重施加於梁頂部（壓力側），並非自下翼板懸吊」，
-  並附完整物理說明（「若載重從拉力側懸吊進入腹板，斜壓撐機制就不成立」）與實務註記。原頁敘述與自身來源矛盾。
-  另原頁「可取 d 處」只列兩個條件（支承提供壓力、支承限制開裂），與 ACI 318 §9.4.3.2 的三條件不符（漏了「無集中載重」，且第二條非規範文字）。
-  **改成什麼：**
-  ① 「臨界斷面規則」段改以 ACI 318 §9.4.3.2 **三條件 (a)(b)(c)** 為主體（支承反力產生壓力／載重在頂面／區間內無集中載重），
-     並加註「判準是條件，不是構件名稱」；原有的構件案例改列為「典型會違反哪一條」。
-  ② 倒 T 型梁改為條件式：違反的是 (b)，且明確指出「同樣是倒 T 梁，載重在頂面則仍可用」。
-  ③ 「梁端搭接接頭」非 §9.4.3.2 列舉條件，標示為**實務補充考量**，保留但要求採用時註明依據（未刪除原有內容）。
-  ④ 常見陷阱表同步改寫；「出現題目」表補上 RC-2023-3。
-  **⚠️ 同時揭露一項知識庫內部衝突（未判定、未更動任何 raw 內容）：**
-  懸臂梁能否採 d 偏移，兩份 verified 解答處理**相反** ——
-  `RC-2006-1` 取固定端面不折減（理由：固定端剪力最大、無斜壓桿效應）；
-  `RC-2023-3` 取距固定端 d 處（理由：ACI 9.4.3.2 固定端反力向上、端區受壓，條件 (a) 成立）。
-  依**規則 2**（verifiedSolution 為最終答案，不可質疑或重算），本次修改**不判定何者為準**，
-  改為在 traps 頁與講義中並陳兩者及其理由，並提示作答時須寫出條件判斷過程。
-  **此項若要收斂，須由使用者裁示；在裁示前 raw/solutions/ 兩題均維持原狀。**
-  **怎麼驗證的：** ① 對照 ACI 318 §9.4.3.2 三條件；② 逐字核對 RC-2020-2、RC-2006-1、RC-2023-3 三份 verified 解答的原文理由；
-  ③ 全庫掃描確認無其他檔案重複「倒 T 梁一律不可」的敘述。
-  **規則遵循：** `traps/` 非規則 4 例外目錄，但經核對 CLAUDE-CODE.md，COMPILE-ALL 的生成清單僅含
-  concepts/ · methods/ · problems/ · index.md · by-year.md（INGEST 僅更新 traps 頁的「出現題目」表格），
-  **不會重新生成 traps/ 頁面本體**，故直接修正不會被蓋回。同步更新 `study/lecture-RC-U2-1.html` §4.1。
-- 2026-07-26｜FIX（**使用者單次授權修改 raw/solutions/，不含數值**）｜**懸臂梁 d 偏移判準收斂：RC-2006-1 與 RC-2023-3 論證統一為 ACI 318 §9.4.3.2 三條件**
-  **背景：** 前一筆紀錄揭露兩份 verified 解答對「懸臂梁能否採 d 偏移」處理相反。經與使用者確認後裁示收斂。
-  **授權範圍（使用者明示）：** 僅修改**理由文字**，兩題的**答案與所有數值一律不動** ——
-  RC-2006-1 維持 $V_u = 19{,}913$ kgf、$V_s = 16{,}704$ kgf、$s = 13.2$ cm；RC-2023-3 維持 $V_u = 7.425$ tf、$e_{\max} = 10.4$ cm。
-  因未更動 verifiedSolution，**規則 2 未被觸及**。
-  **錯在哪（僅 RC-2006-1 的論證結構）：** 原文「懸臂梁均布載重的剪力由自由端向固定端遞增，固定端最大，且無斜壓桿效應，故臨界斷面應取在固定端面」——
-  ① 「固定端剪力最大」是**事實正確但推論無效**：簡支梁 $V(x)=w(L/2-x)$ 同樣是支承面最大、向內遞減，卻可採 d 偏移；
-     d 偏移規定的前提本來就是「支承面剪力最大」，此句無法區分兩者。
-  ② 「無斜壓桿效應」是實質論點，但對「與柱／牆同澆、載重在頂面」的懸臂梁站不住腳（頂面載重可沿斜壓桿走到固定端底部的壓力弦，即反力交入柱之處）。
-  **改成什麼：**
-  ・`raw/solutions/RC-2006-1/`：第 5 節改為 §9.4.3.2 三條件對照表，結論改為「**條件 (a)（支承細節）題目未明示、無法確認 → 保守取固定端面**」；
-    加註「勿用錯理由」方塊點出上述 ① 的邏輯瑕疵；並列出若 (a) 成立則 $s = 15.2$ cm（供對照，非答案）。陷阱列與計算段標註同步。
-  ・`raw/solutions/RC-2023-3/`：Step 1 與 L3 知識點補上三條件逐一檢核 (a)✓(b)✓(c)✓，並註明「判準是條件不是構件名稱」。
-  ・兩題互相加上交叉連結。
-  **同步更新：** `wiki/problems/RC-2006-1.md`（ingest 副本敘述）、`study/problems-view/RC-2006-1.html` 與 `RC-2023-3.html`（重新產生）、
-  `wiki/traps/SHEAR-CRITICAL-SECTION.md`（懸臂梁段由「兩份解答衝突」改為「條件不同」）、`study/lecture-RC-U2-1.html` §4.1 與 PDF。
-  **怎麼驗證的：** ① 條文對照 ACI 318 §9.4.3.2 三條件；② 邏輯反證（簡支梁同為支承面最大卻可折減）；
-  ③ 數值重算確認兩題答案未變（13.2 cm、7.425 tf、10.4 cm 皆與原解一致）；④ 全庫掃描確認舊理由字串已無殘留。
-  **⚠️ 規則狀態：** 本次修改 `raw/solutions/RC-YYYY-N/` 屬**使用者單次授權**，`CLAUDE.md` 規則 1 **維持原文未擴充例外**（使用者裁示）。
-  日後同類勘誤仍須逐次取得授權。
+- è§¸ç™¼ï¼š`ç”Ÿæˆ RC-U1-1 è¬›ç¾©`ï¼ˆå¤–éƒ¨ `unit-lecture` skillï¼Œéžæœ¬çŸ¥è­˜åº« 16 æŒ‡ä»¤ä¹‹ä¸€ï¼‰
+- ç”¢å‡ºï¼š
+  - `study/lecture-RC-U1-1.html` â€” ç†è§£å°Žå‘è§€å¿µè¬›ç¾©ï¼Œ13 ç¯€ï¼ˆÂ§0 å…¨æ™¯ â†’ Â§12 ç²¾é¸ 5 é¡Œï¼‰ï¼Œ10 å¼µå…§åµŒ SVG åœ–è§£
+  - `study/lecture-RC-U1-1.pdf` â€” 21 é  A4 å¯åˆ—å°ç‰ˆï¼ˆMathJaxâ†’SVG + WeasyPrintï¼‰
+  - `study/assets/katex/` â€” é›¢ç·š KaTeXï¼ˆç´„ 600 KBï¼‰ï¼Œæœ¬ç§‘æ‰€æœ‰ lecture é å…±ç”¨ï¼Œå‹¿åˆª
+- å®šä½ï¼šèˆ‡ `study/study-RC-U1-1.html`ï¼ˆé€ŸæŸ¥é ï¼‰**ä¸¦å­˜ä¸è¦†è“‹**ï¼›é€ŸæŸ¥é ä¾›ç·´é¡Œæ™‚æŸ¥ï¼Œè¬›ç¾©ä¾›ç·´é¡Œå‰å»ºç«‹ç‰©ç†ç›´è¦º
+- å…§å®¹ä¸»è»¸ï¼šæ ¸å¿ƒå°ç«‹ã€Œå¼·åº¦ï¼åŠ›çš„å¹³è¡¡ï¼å®‰å…¨ï¼æ‡‰è®Šçš„å¹¾ä½•ã€ï¼›æ¯å€‹è¦ç¯„å¸¸æ•¸è¿½ä¾†æº
+  ï¼ˆ0.85 â† RÃ¼sch æŒçºŒè¼‰é‡æ•ˆæ‡‰ï¼›Î²â‚=2kâ‚‚ â† æ‡‰åŠ›åˆ†å¸ƒå½¢å¿ƒï¼›6120 â† ÎµcuÂ·Esï¼›3/7 â† 0.003/0.007ï¼›Ïmin çš„ âˆšf'c â† ç ´è£‚æ¨¡æ•¸ fr=2âˆšf'cï¼‰
+- æ¶µè“‹é¡Œæ•¸ï¼š19 ä¸»åˆ†é¡ž + 3 å‰¯åˆ†é¡ž = 22 é¡Œï¼ˆ2002â€“2024ï¼‰ï¼Œå…¨æ•¸ verified
+- ç²¾é¸ 5 é¡Œï¼šRC-2023-2ã€RC-2011-2ã€RC-2007-1ã€RC-2015-2ã€RC-2016-1
+  ï¼ˆèª å¯¦æ¨™è¨»æœªæ¶µè“‹ï¼šRC-2014-1 éŽç­‹æ¢ã€RC-2014-2 M-Ï† ä¸‰éšŽæ®µã€RC-2015-3 è² å½ŽçŸ© T å½¢æ¢ã€RC-2022-2 ææ–™ç¶“æ¿Ÿæ€§ï¼‰
+- è€ƒé¡Œé€£çµæ ¼å¼ï¼š`../index.html#md=raw/solutions/RC-YYYY-N/RC-YYYY-N.md&t=RC-YYYY-N`ï¼ˆåŒ STUDY è¦æ ¼ï¼‰
+- é©—è­‰ï¼š22 é¡Œè™Ÿèˆ‡ question_index.json å®Œå…¨å°é½Šï¼ˆç„¡ç¼ºæ¼ï¼èª¤æ¤ï¼å¹´ä»½éŒ¯èª¤ï¼Œè§£æžæª”çš†å­˜åœ¨ï¼‰ï¼›
+  29 é …æ•¸å€¼ä»¥ Python é‡ç®—å»åˆï¼ˆÎ²â‚ åˆ†æ®µã€Ï† å…§æ’ã€Ïb/Ïmax/Ïmin æ¯”å€¼ã€RC-2023-1 æ›²çŽ‡å»¶å±•æ¯”ç®—ä¾‹ Î¼Ï†=3.61â†’4.96ï¼‰ï¼›
+  PDF æŠ½æŸ¥ 9 é ç¢ºèªç„¡ MathJax é»‘æ–¹æ¡†ã€SVG æ–‡å­—ç„¡æº¢å‡ºï¼›ç¯€è™Ÿäº¤å‰å¼•ç”¨å®Œæ•´
+- é€£å‹•ä¿®æ”¹ï¼šREADME.mdï¼ˆå¿«é€Ÿå°Žèˆªï¼‹æª”æ¡ˆåœ°åœ–ï¼‰ã€CLAUDE.mdï¼ˆè³‡æ–™å¤¾çµæ§‹ï¼‹CHANGELOGï¼‰ã€
+  æª”æ¡ˆæž¶æ§‹ç´¢å¼•è¡¨.mdï¼ˆstudy/ èˆ‡ assets/ å…©åˆ—ï¼‰ã€CLAUDE-CODE.mdï¼ˆSTUDY æ®µè½åŠ äº¤å‰è¨»è¨˜ï¼Œæœªæ–°å¢žæŒ‡ä»¤ï¼‰ã€
+  study/study-RC-U1-1.htmlï¼ˆæ–°å¢žã€Œè§€å¿µè¬›ç¾©ã€æŒ‰éˆ•ï¼‰
+- æ“ä½œè€…ï¼šCowork
+- 2026-07-25ï½œFIXï½œ**å–®ä½ä¿‚æ•¸å‹˜èª¤ï¼ˆè·¨ç§‘ç¨½æ ¸ç™¼ç¾ï¼‰**ã€‚æ–¼ exam-wiki-SS ä¿®æ­£ä¸€æ‰¹å…¬å¼å–®ä½éŒ¯èª¤å¾Œï¼Œå›žé ­ç¨½æ ¸å…­ç§‘çŸ¥è­˜åº«ï¼Œåœ¨ RC ç™¼ç¾å…©è™•ï¼š
+  1. `wiki/code-ref/CNS-1480.md` Â§æ··å‡åœŸå½ˆæ€§æ¨¡æ•¸ï¼š`Ec = 4270âˆšf'c (kgf/cmÂ²) â‰ˆ 15100âˆšf'c (MPa)` â€”â€” **å…©å€‹å–®ä½æ¨™ç±¤å°èª¿**ï¼Œä¸” kgf/cmÂ² åˆ¶ä¿‚æ•¸èª¤æ¤ç‚º 4270ã€‚æ­£ç¢ºç‚º `Ec = 15100âˆšf'c (kgf/cmÂ²) = 4700âˆšf'c (MPa)`ã€‚åŽŸå¼èª¤å·®é” 3.2ï½ž3.5 å€ï¼Œæœƒç›´æŽ¥æ¯€æŽ‰æ’“åº¦èˆ‡è½‰æ›æ–·é¢è¨ˆç®—ã€‚å·²æ”¹æ­£ä¸¦åŠ å…¥é©—ç®—ç¤ºä¾‹ï¼ˆf'c=280 kgf/cmÂ² æ™‚å…©åˆ¶æ‡‰åŒå¾—ç´„ 25 è¬ kgf/cmÂ²ï¼‰èˆ‡è¨˜æ†¶æ³•ï¼ˆä¿‚æ•¸å¤§çš„é…å–®ä½å°çš„ï¼‰ã€‚
+  2. `f_r` çš„ MPa åˆ¶ä¿‚æ•¸ä¸ä¸€è‡´ï¼š`wiki/code-ref/CNS-1480.md` èˆ‡é©—è­‰è§£ç­” RC-2018-4 å‡ç‚º `0.623âˆšf'c`ï¼Œä½† `wiki/concepts/GLOSSARY.md`ã€`wiki/traps/DEFLECTION-EFFECTIVE-INERTIA.md`ã€`wiki/methods/effective-inertia-deflection.md` å¯«æˆ `0.7âˆšf'c`ï¼ˆå·® 12%ï¼›0.7 ç‚º ACI 318-99 èˆŠç‰ˆå€¼ï¼‰ã€‚ä¾è¦å‰‡ 2 ä»¥é©—è­‰è§£ç­”ç‚ºæº–ï¼Œå·²å°‡ GLOSSARY èˆ‡ traps å…©æª”æ”¹ç‚º 0.623ã€‚
+  é©—ç®—æ–¹å¼ï¼šä»¥ f'c = 280 kgf/cmÂ² = 27.5 MPa é›™åˆ¶äº’æ›ç¢ºèªï¼›fr ä»¥ 2.0âˆšf'c(kgf/cmÂ²) ç‚ºéŒ¨é»žæ›ç®—å¾— 0.626 â‰ˆ 0.623ã€‚
+  âš ï¸ **æœªå®Œæˆ**ï¼š`wiki/methods/effective-inertia-deflection.md` çš„ `0.7` å°šæœªä¿®æ­£ï¼Œå› å…¶ compile ä¾†æºåœ¨ `raw/solutions/methods/effective-inertia-deflection/`ï¼Œè€Œ RC çš„è¦å‰‡ 1 ç›®å‰å°šæœªé–‹æ”¾ methods ä¾‹å¤–ï¼ˆSS å·²æ–¼åŒæ—¥é–‹æ”¾ï¼‰ã€‚å¾…æ±ºå®šæ˜¯å¦æ¯”ç…§ SS ä¿®æ”¹ RC çš„ CLAUDE.md è¦å‰‡ 1ã€‚
+  åŒæ™‚ç¢ºèªï¼šSS çš„ ASD/LTB ä¿‚æ•¸éŒ¯èª¤ï¼ˆ703,000 / 1,170,000 / 1,055,000ã€Lp=300ryã€Lr åˆ†æ¯ã€Î» 138/322ï¼‰**æœªæ“´æ•£**è‡³ RC/SA/SD/SM/MM ä»»ä¸€ç§‘ï¼ˆè©²é¡žå…¬å¼ç‚ºé‹¼çµæ§‹å°ˆæœ‰ï¼‰ã€‚
+- 2026-07-25ï½œHARNESS + FIXï½œè¦å‰‡ 1 ä¾‹å¤–æ“´å……ï¼ˆæ¯”ç…§ SSï¼‰ï¼š`raw/` å”¯è®€ä¾‹å¤–å¢žåˆ— `raw/solutions/methods/`ï¼Œä¸¦è¨‚ä¸‰é …æ¢ä»¶ï¼ˆé©—ç®—ï¼åŒæ­¥ wikiï¼è¨˜ logï¼‰ï¼›`CLAUDE.md`ï¼ˆè¦å‰‡ 1ã€çµæ§‹åœ– ðŸ”’/âœï¸ æ¨™è¨˜ã€å–®å‘è³‡æ–™æµã€CHANGELOGï¼‰èˆ‡ `CLAUDE-CODE.md`ï¼ˆæ–°å¢ž FIX-METHOD æµç¨‹ï¼‰åŒæ­¥æ›´æ–°ã€‚ä¾æ­¤å®Œæˆå‰ä¸€ç­†å¾…è¾¦ï¼š`raw/solutions/methods/effective-inertia-deflection/` çš„ `f_r = 0.7âˆšf'c (MPa)` å·²æ”¹ç‚º `0.623âˆšf'c` ä¸¦åŒæ­¥è¦†è“‹ `wiki/methods/`ã€‚è‡³æ­¤ RC å…¨åº« 6 è™• f_r å®šç¾©ä¸€è‡´ï¼ˆ0.623ï¼‰ï¼Œèˆ‡é©—è­‰è§£ç­” RC-2018-4 ç›¸ç¬¦ã€‚
+- 2026-07-26ï½œFIXï½œ**æ¢æŸ±æŽ¥é ­ Î³ ä¿‚æ•¸å…¨åº«å‹˜èª¤ï¼ˆ8 æª” 15 è™•ï¼‰**ï¼šæ’°å¯« RC-U3-3 è§€å¿µè¬›ç¾©æ™‚ç™¼ç¾å…¨åº«å° `Ï†Vn = Ï†Î³âˆšf'cÂ·Aj` çš„ Î³ å­˜åœ¨**ä¸‰å¥—äº’ç›¸çŸ›ç›¾**çš„æ•¸å­—ã€‚
+  **éŒ¯åœ¨å“ªï¼š**
+  1. `wiki/code-ref/ACI-318.md` Â§18.8.4.2ã€`wiki/code-ref/seismic-code.md`ã€`wiki/traps/JOINT-SHEAR-EFFECTIVE-AREA.md`ï¼šå¯«æˆ `1.0 / 0.75 / 0.50`ï¼ˆå¦åŠ ã€Œåƒ…ä¸€é¢æœ‰æ¢ 0.30ã€ï¼‰â€”â€” **ä¸å°æ‡‰ä»»ä½•å¸¸ç”¨å–®ä½åˆ¶**ã€‚
+  2. `wiki/diagnosis/seismic.md`ï¼šå¯«æˆ `3.2ï¼ˆå…§ï¼‰/ 2.4ï¼ˆé‚Šï¼‰/ 1.6ï¼ˆè§’ï¼‰` â€”â€” æ•¸å­—**æ•´çµ„å¾€ä¸‹ç§»äº†ä¸€éšŽ**ï¼›3.2 å¯¦ç‚ºã€Œå…¶ä»–é¡žæŽ¥é ­ã€çš„å€¼ï¼Œè¢«èª¤æ¨™ç‚ºå…§æŽ¥é ­ã€‚
+  3. `wiki/code-ref/CNS-1480.md`ï¼šæŠŠå·®ç•°æ­¸å› æ–¼ã€ŒèˆŠ CNS/ACI-318-99 ç”¨ 4.0/3.2/2.4 vs æ–° ACI-318-08 ç”¨ 1.0/0.75/0.50ã€â€”â€” **æ­¸å› éŒ¯èª¤**ï¼Œå·®ç•°ä¾†è‡ªå–®ä½åˆ¶è€Œéžè¦ç¯„ç‰ˆæœ¬ï¼›ä¸”å…©æ¬„æ•¸å­—çš†æœ‰èª¤ã€‚
+  4. `wiki/philosophy/seismic-philosophy.md`ï¼šRC-2018-2 æ¨™ç‚º `Î³=1.6ï¼ˆå¤–æŽ¥é ­ï¼‰`ï¼ˆæ‡‰ç‚º 3.2ï¼‰ï¼›RC-2005-3 æ¨™ç‚º `Î³=3.2ï¼ˆå…§æŽ¥é ­ç­†èª¤éœ€åˆ¤æ–·ï¼‰`ï¼ˆè©²é¡Œæœ¬å°±æ˜¯**å¤–ï¼è§’æŽ¥é ­**ï¼Œ3.2 æ­£ç¢ºï¼ŒåŽŸè¨»è§£åè€ŒæŠŠæ­£ç¢ºå€¼èªªæˆç­†èª¤ï¼‰ã€‚
+  5. `raw/solutions/methods/seismic-capacity-method/` èˆ‡ `wiki/methods/SEISMIC-CAPACITY-METHOD.md`ï¼š`1.7 / 1.2 / 1.0` æ•¸å€¼æŽ¥è¿‘æ­£ç¢ºï¼ˆMPa åˆ¶ï¼‰ä½†**æœªæ¨™å–®ä½åˆ¶**ï¼Œä¸” 1.2 æ‡‰ç‚º 1.25 â€”â€” æ­£æ˜¯å…¨åº«æ··æ·†çš„æ ¹æºã€‚
+  **æ”¹æˆä»€éº¼ï¼š** å…«å€‹æª”æ¡ˆçµ±ä¸€æ”¹ç‚ºä¸‰å–®ä½åˆ¶å°ç…§è¡¨ â€”â€” å››é¢æœ‰æ¢ï¼ˆå…§æŽ¥é ­ï¼‰`psi 20 / MPa 1.7 / kgf-cmÂ² 5.3`ï¼›ä¸‰é¢æˆ–å°é¢å…©é¢ï¼ˆT å½¢ï¼‰`15 / 1.25 / 4.0`ï¼›å…¶ä»–ï¼ˆå¤–ï¼è§’æŽ¥é ­ï¼‰`12 / 1.0 / 3.2`ï¼Œä¸¦è¨»æ˜Žã€ŒåŒä¸€çµ„å€¼çš„ä¸‰ç¨®å–®ä½åˆ¶ï¼Œéžä¸‰å¥—è¦ç¯„ã€èˆ‡ã€Œä½œç­”é ˆå¯«æ˜Žå–®ä½åˆ¶ã€ã€‚
+  **æ€Žéº¼é©—è­‰çš„ï¼ˆä¾è¦å‰‡ 2ï¼Œä»¥ verified è§£ç­”ç‚ºéŒ¨é»žï¼‰ï¼š**
+  - `wiki/problems/RC-2005-3.md`ï¼ˆverifiedï¼‰æ˜Žè¼‰ã€Œè§’æŸ±ï¼ˆå¤–æŽ¥é ­ï¼‰=3.2ã€T å½¢æŽ¥é ­=4.0ã€åå­—å½¢ï¼ˆå…§æŽ¥é ­ï¼‰=5.3ã€ï¼Œä¸¦é™„æŽ¨å°Ž `Î³ = 12 psi^0.5 Ã— 0.265 = 3.18 â‰ˆ 3.2`ã€‚
+  - `wiki/problems/RC-2003-3.md`ï¼ˆverifiedï¼‰æ˜Žè¼‰ã€Œå…§éƒ¨æŽ¥é ­å››é¢æœ‰æ¢åœæŸï¼ŒÎ³=5.3ï¼ˆkgf/cmÂ² åˆ¶ï¼Œå°æ‡‰ ACI psi åˆ¶ä¹‹ 20ï¼‰ã€ã€‚
+  - é‡ç¶±æ›ç®—ç¨ç«‹é‡ç®—ï¼špsiâ†’kgf/cmÂ² ä¹˜ âˆš0.0703 = 0.2651ï¼ˆ20â†’5.303ã€15â†’3.977ã€12â†’3.182ï¼‰ï¼›psiâ†’MPa ä¹˜ âˆš0.006895 = 0.08304ï¼ˆ20â†’1.661ã€15â†’1.246ã€12â†’0.996ï¼‰ã€‚ä¸‰çµ„å€¼äº’ç›¸è‡ªæ´½ã€‚
+  - è¨»è¨˜ï¼šRC-2018-2 å…§æŸ±å¯« 5.4 å±¬æ›ç®—å–æ¨ï¼ˆ5.303 é€²ä½ï¼‰ï¼Œå·²æ–¼è¡¨ä¸‹èªªæ˜Žï¼Œä¸è¦–ç‚ºè¡çªã€‚
+  **é †å¸¶ä¿®æ­£ï¼ˆåŒæª”åŒæ€§è³ªã€åŒæ¨£ä»¥ verified è§£ç­”é©—è­‰ï¼‰ï¼š** `wiki/diagnosis/seismic.md` æŸ±å¯†ç®å€é–“è·çš„ç¬¬ä¸‰æ¢ä»¶å¯«æˆå›ºå®š `14cm`ï¼Œèˆ‡ RC-2013-2ã€RC-2012-3 å…©ä»½ verified è§£ç­”æ‰€ç”¨ `so = 10+(35-hx)/3 â‰¤ 15cm` ä¸ç¬¦ï¼Œå·²æ”¹æ­£ã€‚
+  **è¦å‰‡éµå¾ªï¼š** `code-ref/`ã€`diagnosis/` å±¬è¦å‰‡ 4 ä¾‹å¤–ï¼Œå¯ç›´æŽ¥ç¶­è­·ï¼›`raw/solutions/methods/` ä¾è¦å‰‡ 1 ä¾‹å¤–ä¿®æ”¹ï¼Œå·²å®Œæˆé©—ç®—ï¼‹åŒæ­¥è¦†è“‹ `wiki/methods/`ï¼‹æœ¬ç­†ç´€éŒ„ä¸‰é …æ¢ä»¶ã€‚`traps/`ã€`philosophy/` é›–éžè¦å‰‡ 4 ä¾‹å¤–ï¼Œä½†ç¶“æ ¸å° CLAUDE-CODE.md çš„ COMPILE-ALL æ­¥é©Ÿï¼Œå…¶ç”Ÿæˆæ¸…å–®åƒ…å« concepts/ Â· methods/ Â· problems/ Â· index.md Â· by-year.mdï¼Œ**ä¸æœƒé‡æ–°ç”Ÿæˆ traps/ èˆ‡ philosophy/**ï¼ˆINGEST åƒ…æ›´æ–° traps çš„ã€Œå‡ºç¾é¡Œç›®ã€è¡¨æ ¼ï¼‰ï¼Œæ•…ç›´æŽ¥ä¿®æ­£ä¸æœƒè¢«è“‹å›žï¼Œä¸”å…¶å…§å®¹åŽŸæœ¬å³èˆ‡è‡ªèº«ä¾†æºï¼ˆverified è§£ç­”ï¼‰çŸ›ç›¾ã€‚
+  **æœªè™•ç†ï¼å¾…ç¢ºèªï¼š** `wiki/diagnosis/seismic.md` æ¢å¯†ç®å€é•·åº¦å¯« `lo = max(2h, ln/4, 450mm)`ï¼Œä½† ACI 318 Â§18.6.4.1 èˆ‡ RC-2025-2 verified è§£æžå‡ç‚ºå–®ä¸€æ¢ä»¶ `2h`ï¼›å› ä¸ç¢ºå®š `ln/4, 450mm` æ˜¯å¦å¼•è‡ªå…¶ä»–è¦ç¯„ï¼ˆå¦‚ä¸­ç­‰æŠ—å½Žæ§‹æž¶ï¼‰ï¼Œæš«æœªæ›´å‹•ï¼Œå¾…ä½¿ç”¨è€…ç¢ºèªã€‚
+- 2026-07-26ï½œFIXï½œ**æ¢å¯†ç®å€é•·åº¦ lo å‹˜èª¤ï¼ˆæ‰¿å‰ä¸€ç­†å¾…ç¢ºèªäº‹é …ï¼Œä½¿ç”¨è€…è£ç¤ºä¾ ACI 318 Â§18.6.4.1 ä¿®æ­£ï¼‰**ï¼š
+  **éŒ¯åœ¨å“ªï¼š** `wiki/diagnosis/seismic.md` æ±ºç­–æ¨¹å°‡ç‰¹æ®ŠçŸ©å½¢æ¡†æž¶æ¢çš„å¯†ç®å€é•·åº¦å¯«æˆ `lo = max(2h, ln/4, 450mm)ï¼ˆæ¢ç«¯ï¼‰`ã€‚
+  ACI 318 Â§18.6.4.1 å°**æ¢**åªæœ‰**å–®ä¸€æ¢ä»¶**ï¼šè‡ªæ”¯æ‰¿æ§‹æé¢å‘è·¨ä¸­é‡èµ· `2h`ï¼ˆh ç‚ºæ¢å…¨é«˜ï¼‰ï¼›
+  `ln/6`ã€`450mm` æ˜¯**æŸ±**çš„è¦å®šï¼ˆÂ§18.7.5.1 `lo â‰¥ max(h, lu/6, 450mm)`ï¼‰ï¼Œ`ln/4` å‰‡ä¸å±¬æ–¼ä»»ä¸€æ¢ã€‚
+  **æ”¹æˆä»€éº¼ï¼š** æ”¹ç‚º `lo = 2hï¼ˆå–®ä¸€æ¢ä»¶ï¼Œè‡ªæŸ±é¢é‡èµ·ï¼‰`ï¼Œä¸¦åŠ è¨»ã€Œæ¢æ²’æœ‰ ln/6ã€ln/4 æˆ– 450mmï¼Œé‚£æ˜¯æŸ± Â§18.7.5.1ã€ï¼›
+  åŒæª”ã€Œå¸¸è¦‹é™·é˜±ã€æ¢ç›®ç”±ç± çµ±çš„ã€Œæ¢å’ŒæŸ±çš„å¯†ç®å€å®šç¾©ä¸åŒã€æ”¹å¯«ç‚ºæ˜Žåˆ—å…©è€…å…¬å¼èˆ‡æ¢æ–‡è™Ÿã€‚
+  **æ€Žéº¼é©—è­‰çš„ï¼š** â‘  æ¢æ–‡å°ç…§ ACI 318 Â§18.6.4.1ï¼ˆæ¢ï¼‰vs Â§18.7.5.1ï¼ˆæŸ±ï¼‰ï¼›
+  â‘¡ é©—è­‰è§£ç­” `RC-2025-2` æ˜Žè¼‰ã€Œå¯†ç®å€ï¼šè‡ªæŸ±é¢ç®—èµ· 2hã€ï¼ˆå–®ä¸€æ¢ä»¶ï¼‰ï¼›
+  â‘¢ åå‘æ ¸å°æŸ±é¡Œ `RC-2012-3`ã€`RC-2013-2`ã€`RC-2009-1` ä¸‰ä»½ verified è§£ç­”ï¼Œå…¶ `max(..., lu/6, 45cm)` ä¸‰å¼å–å¤§**å‡ç‚ºæŸ±**ï¼Œè­‰å¯¦ä¸‰æ¢ä»¶å±¬æŸ±è€Œéžæ¢ã€‚
+  **å…¨åº«æŽƒæçµæžœï¼š** ä¿®æ­£å¾Œå…¨åº«å·²ç„¡ `ln/4` è¨˜è¼‰ï¼›`code-ref/ACI-318.md` Â§18.6.4.4ã€`code-ref/seismic-code.md`ã€
+  `concepts/SPECIAL-MOMENT-FRAME-BEAM.md`ã€`methods/SEISMIC-CAPACITY-METHOD.md` å°æ¢å‡å·²æ­£ç¢ºå¯«ç‚º `â‰¥ 2h`ï¼Œç„¡é ˆæ›´å‹•ã€‚
+  **âš ï¸ æœªæ›´å‹•ï¼ˆå—è¦å‰‡ 1ã€2 ä¿è­·ï¼Œåƒ…è¨˜éŒ„ï¼‰ï¼š** `raw/solutions/RC-2016-2/RC-2016-2.md` ç¬¬ 63ï¼140ï¼258ï¼353 è¡Œå¯«
+  `lo = max(2h, ln/6, 45cm)` ä¸¦æ¨™è¨»ã€ŒACI 318-14 Â§18.6.4.1ã€â€”â€” æ¢æ–‡è™Ÿèˆ‡ä¸‰æ¢ä»¶ä¸ç¬¦ï¼ˆä¸‰æ¢ä»¶æ‡‰å±¬ Â§18.7.5.1 æŸ±ï¼‰ã€‚
+  æƒŸè©²é¡Œå¯¦ç®— `max(140, 125, 45) = 140 cm` ç”± `2h` æŽ§åˆ¶ï¼Œ**æœ€çµ‚ç­”æ¡ˆ 140 cm ä¸å—å½±éŸ¿**ï¼Œ
+  ä¾è¦å‰‡ 2ï¼ˆverifiedSolution ç‚ºæœ€çµ‚ç­”æ¡ˆï¼Œä¸å¯è³ªç–‘æˆ–é‡ç®—ï¼‰ä¸äºˆæ›´å‹•ï¼›å…¶ ingest å‰¯æœ¬ `wiki/problems/RC-2016-2.md` äº¦åŒæ­¥ä¿ç•™åŽŸæ¨£ã€‚
+  è‹¥æ—¥å¾Œæ±ºå®šä¿®è¨‚è©²é¡Œæ•˜è¿°ï¼Œé ˆç¶“ä½¿ç”¨è€…ç¢ºèªå¾Œå†å‹• raw ç«¯ã€‚
+- 2026-07-26ï½œFIXï½œ**å‰ªåŠ›è‡¨ç•Œæ–·é¢ã€Œd åç§»ã€åˆ¤æº–æ”¹å¯«ç‚ºæ¢ä»¶å¼ï¼ˆ`wiki/traps/SHEAR-CRITICAL-SECTION.md`ï¼‰**ï¼š
+  **éŒ¯åœ¨å“ªï¼š** åŽŸé æŠŠã€Œå€’ T åž‹æ¢ã€ç›´æŽ¥åˆ—å…¥ã€Œä¸å¯ä½¿ç”¨æ­¤æœ‰åˆ©è¦å®šï¼ˆå¿…é ˆå–æ”¯æ‰¿é¢ï¼‰ã€æ¸…å–®ï¼Œå¯«æˆ**æ§‹ä»¶å½¢ç‹€ â†’ çµè«–**ã€‚
+  ä½†å”¯ä¸€çš„è­‰æ“šä¾†æº `RC-2020-2`ï¼ˆverifiedï¼‰åˆ¤å®šè©²é¡Œå€’ T æ¢**å¯ä»¥**æŽ¡ d åç§»ï¼Œç†ç”±æ˜¯ã€Œå‡ä½ˆè¼‰é‡æ–½åŠ æ–¼æ¢é ‚éƒ¨ï¼ˆå£“åŠ›å´ï¼‰ï¼Œä¸¦éžè‡ªä¸‹ç¿¼æ¿æ‡¸åŠã€ï¼Œ
+  ä¸¦é™„å®Œæ•´ç‰©ç†èªªæ˜Žï¼ˆã€Œè‹¥è¼‰é‡å¾žæ‹‰åŠ›å´æ‡¸åŠé€²å…¥è…¹æ¿ï¼Œæ–œå£“æ’æ©Ÿåˆ¶å°±ä¸æˆç«‹ã€ï¼‰èˆ‡å¯¦å‹™è¨»è¨˜ã€‚åŽŸé æ•˜è¿°èˆ‡è‡ªèº«ä¾†æºçŸ›ç›¾ã€‚
+  å¦åŽŸé ã€Œå¯å– d è™•ã€åªåˆ—å…©å€‹æ¢ä»¶ï¼ˆæ”¯æ‰¿æä¾›å£“åŠ›ã€æ”¯æ‰¿é™åˆ¶é–‹è£‚ï¼‰ï¼Œèˆ‡ ACI 318 Â§9.4.3.2 çš„ä¸‰æ¢ä»¶ä¸ç¬¦ï¼ˆæ¼äº†ã€Œç„¡é›†ä¸­è¼‰é‡ã€ï¼Œä¸”ç¬¬äºŒæ¢éžè¦ç¯„æ–‡å­—ï¼‰ã€‚
+  **æ”¹æˆä»€éº¼ï¼š**
+  â‘  ã€Œè‡¨ç•Œæ–·é¢è¦å‰‡ã€æ®µæ”¹ä»¥ ACI 318 Â§9.4.3.2 **ä¸‰æ¢ä»¶ (a)(b)(c)** ç‚ºä¸»é«”ï¼ˆæ”¯æ‰¿ååŠ›ç”¢ç”Ÿå£“åŠ›ï¼è¼‰é‡åœ¨é ‚é¢ï¼å€é–“å…§ç„¡é›†ä¸­è¼‰é‡ï¼‰ï¼Œ
+     ä¸¦åŠ è¨»ã€Œåˆ¤æº–æ˜¯æ¢ä»¶ï¼Œä¸æ˜¯æ§‹ä»¶åç¨±ã€ï¼›åŽŸæœ‰çš„æ§‹ä»¶æ¡ˆä¾‹æ”¹åˆ—ç‚ºã€Œå…¸åž‹æœƒé•åå“ªä¸€æ¢ã€ã€‚
+  â‘¡ å€’ T åž‹æ¢æ”¹ç‚ºæ¢ä»¶å¼ï¼šé•åçš„æ˜¯ (b)ï¼Œä¸”æ˜Žç¢ºæŒ‡å‡ºã€ŒåŒæ¨£æ˜¯å€’ T æ¢ï¼Œè¼‰é‡åœ¨é ‚é¢å‰‡ä»å¯ç”¨ã€ã€‚
+  â‘¢ ã€Œæ¢ç«¯æ­æŽ¥æŽ¥é ­ã€éž Â§9.4.3.2 åˆ—èˆ‰æ¢ä»¶ï¼Œæ¨™ç¤ºç‚º**å¯¦å‹™è£œå……è€ƒé‡**ï¼Œä¿ç•™ä½†è¦æ±‚æŽ¡ç”¨æ™‚è¨»æ˜Žä¾æ“šï¼ˆæœªåˆªé™¤åŽŸæœ‰å…§å®¹ï¼‰ã€‚
+  â‘£ å¸¸è¦‹é™·é˜±è¡¨åŒæ­¥æ”¹å¯«ï¼›ã€Œå‡ºç¾é¡Œç›®ã€è¡¨è£œä¸Š RC-2023-3ã€‚
+  **âš ï¸ åŒæ™‚æ­éœ²ä¸€é …çŸ¥è­˜åº«å…§éƒ¨è¡çªï¼ˆæœªåˆ¤å®šã€æœªæ›´å‹•ä»»ä½• raw å…§å®¹ï¼‰ï¼š**
+  æ‡¸è‡‚æ¢èƒ½å¦æŽ¡ d åç§»ï¼Œå…©ä»½ verified è§£ç­”è™•ç†**ç›¸å** â€”â€”
+  `RC-2006-1` å–å›ºå®šç«¯é¢ä¸æŠ˜æ¸›ï¼ˆç†ç”±ï¼šå›ºå®šç«¯å‰ªåŠ›æœ€å¤§ã€ç„¡æ–œå£“æ¡¿æ•ˆæ‡‰ï¼‰ï¼›
+  `RC-2023-3` å–è·å›ºå®šç«¯ d è™•ï¼ˆç†ç”±ï¼šACI 9.4.3.2 å›ºå®šç«¯ååŠ›å‘ä¸Šã€ç«¯å€å—å£“ï¼Œæ¢ä»¶ (a) æˆç«‹ï¼‰ã€‚
+  ä¾**è¦å‰‡ 2**ï¼ˆverifiedSolution ç‚ºæœ€çµ‚ç­”æ¡ˆï¼Œä¸å¯è³ªç–‘æˆ–é‡ç®—ï¼‰ï¼Œæœ¬æ¬¡ä¿®æ”¹**ä¸åˆ¤å®šä½•è€…ç‚ºæº–**ï¼Œ
+  æ”¹ç‚ºåœ¨ traps é èˆ‡è¬›ç¾©ä¸­ä¸¦é™³å…©è€…åŠå…¶ç†ç”±ï¼Œä¸¦æç¤ºä½œç­”æ™‚é ˆå¯«å‡ºæ¢ä»¶åˆ¤æ–·éŽç¨‹ã€‚
+  **æ­¤é …è‹¥è¦æ”¶æ–‚ï¼Œé ˆç”±ä½¿ç”¨è€…è£ç¤ºï¼›åœ¨è£ç¤ºå‰ raw/solutions/ å…©é¡Œå‡ç¶­æŒåŽŸç‹€ã€‚**
+  **æ€Žéº¼é©—è­‰çš„ï¼š** â‘  å°ç…§ ACI 318 Â§9.4.3.2 ä¸‰æ¢ä»¶ï¼›â‘¡ é€å­—æ ¸å° RC-2020-2ã€RC-2006-1ã€RC-2023-3 ä¸‰ä»½ verified è§£ç­”çš„åŽŸæ–‡ç†ç”±ï¼›
+  â‘¢ å…¨åº«æŽƒæç¢ºèªç„¡å…¶ä»–æª”æ¡ˆé‡è¤‡ã€Œå€’ T æ¢ä¸€å¾‹ä¸å¯ã€çš„æ•˜è¿°ã€‚
+  **è¦å‰‡éµå¾ªï¼š** `traps/` éžè¦å‰‡ 4 ä¾‹å¤–ç›®éŒ„ï¼Œä½†ç¶“æ ¸å° CLAUDE-CODE.mdï¼ŒCOMPILE-ALL çš„ç”Ÿæˆæ¸…å–®åƒ…å«
+  concepts/ Â· methods/ Â· problems/ Â· index.md Â· by-year.mdï¼ˆINGEST åƒ…æ›´æ–° traps é çš„ã€Œå‡ºç¾é¡Œç›®ã€è¡¨æ ¼ï¼‰ï¼Œ
+  **ä¸æœƒé‡æ–°ç”Ÿæˆ traps/ é é¢æœ¬é«”**ï¼Œæ•…ç›´æŽ¥ä¿®æ­£ä¸æœƒè¢«è“‹å›žã€‚åŒæ­¥æ›´æ–° `study/lecture-RC-U2-1.html` Â§4.1ã€‚
+- 2026-07-26ï½œFIXï¼ˆ**ä½¿ç”¨è€…å–®æ¬¡æŽˆæ¬Šä¿®æ”¹ raw/solutions/ï¼Œä¸å«æ•¸å€¼**ï¼‰ï½œ**æ‡¸è‡‚æ¢ d åç§»åˆ¤æº–æ”¶æ–‚ï¼šRC-2006-1 èˆ‡ RC-2023-3 è«–è­‰çµ±ä¸€ç‚º ACI 318 Â§9.4.3.2 ä¸‰æ¢ä»¶**
+  **èƒŒæ™¯ï¼š** å‰ä¸€ç­†ç´€éŒ„æ­éœ²å…©ä»½ verified è§£ç­”å°ã€Œæ‡¸è‡‚æ¢èƒ½å¦æŽ¡ d åç§»ã€è™•ç†ç›¸åã€‚ç¶“èˆ‡ä½¿ç”¨è€…ç¢ºèªå¾Œè£ç¤ºæ”¶æ–‚ã€‚
+  **æŽˆæ¬Šç¯„åœï¼ˆä½¿ç”¨è€…æ˜Žç¤ºï¼‰ï¼š** åƒ…ä¿®æ”¹**ç†ç”±æ–‡å­—**ï¼Œå…©é¡Œçš„**ç­”æ¡ˆèˆ‡æ‰€æœ‰æ•¸å€¼ä¸€å¾‹ä¸å‹•** â€”â€”
+  RC-2006-1 ç¶­æŒ $V_u = 19{,}913$ kgfã€$V_s = 16{,}704$ kgfã€$s = 13.2$ cmï¼›RC-2023-3 ç¶­æŒ $V_u = 7.425$ tfã€$e_{\max} = 10.4$ cmã€‚
+  å› æœªæ›´å‹• verifiedSolutionï¼Œ**è¦å‰‡ 2 æœªè¢«è§¸åŠ**ã€‚
+  **éŒ¯åœ¨å“ªï¼ˆåƒ… RC-2006-1 çš„è«–è­‰çµæ§‹ï¼‰ï¼š** åŽŸæ–‡ã€Œæ‡¸è‡‚æ¢å‡å¸ƒè¼‰é‡çš„å‰ªåŠ›ç”±è‡ªç”±ç«¯å‘å›ºå®šç«¯éžå¢žï¼Œå›ºå®šç«¯æœ€å¤§ï¼Œä¸”ç„¡æ–œå£“æ¡¿æ•ˆæ‡‰ï¼Œæ•…è‡¨ç•Œæ–·é¢æ‡‰å–åœ¨å›ºå®šç«¯é¢ã€â€”â€”
+  â‘  ã€Œå›ºå®šç«¯å‰ªåŠ›æœ€å¤§ã€æ˜¯**äº‹å¯¦æ­£ç¢ºä½†æŽ¨è«–ç„¡æ•ˆ**ï¼šç°¡æ”¯æ¢ $V(x)=w(L/2-x)$ åŒæ¨£æ˜¯æ”¯æ‰¿é¢æœ€å¤§ã€å‘å…§éžæ¸›ï¼Œå»å¯æŽ¡ d åç§»ï¼›
+     d åç§»è¦å®šçš„å‰ææœ¬ä¾†å°±æ˜¯ã€Œæ”¯æ‰¿é¢å‰ªåŠ›æœ€å¤§ã€ï¼Œæ­¤å¥ç„¡æ³•å€åˆ†å…©è€…ã€‚
+  â‘¡ ã€Œç„¡æ–œå£“æ¡¿æ•ˆæ‡‰ã€æ˜¯å¯¦è³ªè«–é»žï¼Œä½†å°ã€Œèˆ‡æŸ±ï¼ç‰†åŒæ¾†ã€è¼‰é‡åœ¨é ‚é¢ã€çš„æ‡¸è‡‚æ¢ç«™ä¸ä½è…³ï¼ˆé ‚é¢è¼‰é‡å¯æ²¿æ–œå£“æ¡¿èµ°åˆ°å›ºå®šç«¯åº•éƒ¨çš„å£“åŠ›å¼¦ï¼Œå³ååŠ›äº¤å…¥æŸ±ä¹‹è™•ï¼‰ã€‚
+  **æ”¹æˆä»€éº¼ï¼š**
+  ãƒ»`raw/solutions/RC-2006-1/`ï¼šç¬¬ 5 ç¯€æ”¹ç‚º Â§9.4.3.2 ä¸‰æ¢ä»¶å°ç…§è¡¨ï¼Œçµè«–æ”¹ç‚ºã€Œ**æ¢ä»¶ (a)ï¼ˆæ”¯æ‰¿ç´°ç¯€ï¼‰é¡Œç›®æœªæ˜Žç¤ºã€ç„¡æ³•ç¢ºèª â†’ ä¿å®ˆå–å›ºå®šç«¯é¢**ã€ï¼›
+    åŠ è¨»ã€Œå‹¿ç”¨éŒ¯ç†ç”±ã€æ–¹å¡Šé»žå‡ºä¸Šè¿° â‘  çš„é‚è¼¯ç‘•ç–µï¼›ä¸¦åˆ—å‡ºè‹¥ (a) æˆç«‹å‰‡ $s = 15.2$ cmï¼ˆä¾›å°ç…§ï¼Œéžç­”æ¡ˆï¼‰ã€‚é™·é˜±åˆ—èˆ‡è¨ˆç®—æ®µæ¨™è¨»åŒæ­¥ã€‚
+  ãƒ»`raw/solutions/RC-2023-3/`ï¼šStep 1 èˆ‡ L3 çŸ¥è­˜é»žè£œä¸Šä¸‰æ¢ä»¶é€ä¸€æª¢æ ¸ (a)âœ“(b)âœ“(c)âœ“ï¼Œä¸¦è¨»æ˜Žã€Œåˆ¤æº–æ˜¯æ¢ä»¶ä¸æ˜¯æ§‹ä»¶åç¨±ã€ã€‚
+  ãƒ»å…©é¡Œäº’ç›¸åŠ ä¸Šäº¤å‰é€£çµã€‚
+  **åŒæ­¥æ›´æ–°ï¼š** `wiki/problems/RC-2006-1.md`ï¼ˆingest å‰¯æœ¬æ•˜è¿°ï¼‰ã€`study/problems-view/RC-2006-1.html` èˆ‡ `RC-2023-3.html`ï¼ˆé‡æ–°ç”¢ç”Ÿï¼‰ã€
+  `wiki/traps/SHEAR-CRITICAL-SECTION.md`ï¼ˆæ‡¸è‡‚æ¢æ®µç”±ã€Œå…©ä»½è§£ç­”è¡çªã€æ”¹ç‚ºã€Œæ¢ä»¶ä¸åŒã€ï¼‰ã€`study/lecture-RC-U2-1.html` Â§4.1 èˆ‡ PDFã€‚
+  **æ€Žéº¼é©—è­‰çš„ï¼š** â‘  æ¢æ–‡å°ç…§ ACI 318 Â§9.4.3.2 ä¸‰æ¢ä»¶ï¼›â‘¡ é‚è¼¯åè­‰ï¼ˆç°¡æ”¯æ¢åŒç‚ºæ”¯æ‰¿é¢æœ€å¤§å»å¯æŠ˜æ¸›ï¼‰ï¼›
+  â‘¢ æ•¸å€¼é‡ç®—ç¢ºèªå…©é¡Œç­”æ¡ˆæœªè®Šï¼ˆ13.2 cmã€7.425 tfã€10.4 cm çš†èˆ‡åŽŸè§£ä¸€è‡´ï¼‰ï¼›â‘£ å…¨åº«æŽƒæç¢ºèªèˆŠç†ç”±å­—ä¸²å·²ç„¡æ®˜ç•™ã€‚
+  **âš ï¸ è¦å‰‡ç‹€æ…‹ï¼š** æœ¬æ¬¡ä¿®æ”¹ `raw/solutions/RC-YYYY-N/` å±¬**ä½¿ç”¨è€…å–®æ¬¡æŽˆæ¬Š**ï¼Œ`CLAUDE.md` è¦å‰‡ 1 **ç¶­æŒåŽŸæ–‡æœªæ“´å……ä¾‹å¤–**ï¼ˆä½¿ç”¨è€…è£ç¤ºï¼‰ã€‚
+  æ—¥å¾ŒåŒé¡žå‹˜èª¤ä»é ˆé€æ¬¡å–å¾—æŽˆæ¬Šã€‚
 
-## 2026-08-08 unit-formula-map：RC-U1-1 / RC-U1-2
+## 2026-08-08 unit-formula-mapï¼šRC-U1-1 / RC-U1-2
 
-- 新增 `study/formula-given-RC-U1-1.html` + `.pdf`（30 條公式：必背 24 / 別賭 6 / 通常會給 0）
-- 新增 `study/formula-given-RC-U1-2.html` + `.pdf`（30 條公式：必背 24 / 別賭 4 / 通常會給 2）
-- 證據來源：`raw/exams/` 民國 91–114 年共 24 份考卷（pdftotext 全年份抽取 + 92 年掃描影像卷逐頁目視判讀）
-- 交叉驗證：`verify.py` 卡片 ok 年份 vs 逐年矩陣 ✔，兩份皆「全部一致」
-- 兩頁互相加上導覽按鈕；CLAUDE.md / README.md / 檔案架構索引表.md 同步登錄第三種教材型態
+- æ–°å¢ž `study/formula-given-RC-U1-1.html` + `.pdf`ï¼ˆ30 æ¢å…¬å¼ï¼šå¿…èƒŒ 24 / åˆ¥è³­ 6 / é€šå¸¸æœƒçµ¦ 0ï¼‰
+- æ–°å¢ž `study/formula-given-RC-U1-2.html` + `.pdf`ï¼ˆ30 æ¢å…¬å¼ï¼šå¿…èƒŒ 24 / åˆ¥è³­ 4 / é€šå¸¸æœƒçµ¦ 2ï¼‰
+- è­‰æ“šä¾†æºï¼š`raw/exams/` æ°‘åœ‹ 91â€“114 å¹´å…± 24 ä»½è€ƒå·ï¼ˆpdftotext å…¨å¹´ä»½æŠ½å– + 92 å¹´æŽƒæå½±åƒå·é€é ç›®è¦–åˆ¤è®€ï¼‰
+- äº¤å‰é©—è­‰ï¼š`verify.py` å¡ç‰‡ ok å¹´ä»½ vs é€å¹´çŸ©é™£ âœ”ï¼Œå…©ä»½çš†ã€Œå…¨éƒ¨ä¸€è‡´ã€
+- å…©é äº’ç›¸åŠ ä¸Šå°Žè¦½æŒ‰éˆ•ï¼›CLAUDE.md / README.md / æª”æ¡ˆæž¶æ§‹ç´¢å¼•è¡¨.md åŒæ­¥ç™»éŒ„ç¬¬ä¸‰ç¨®æ•™æåž‹æ…‹
 
-## 2026-08-08 unit-formula-map：RC-U2-1 / RC-U3-3 / RC-U4-1
+## 2026-08-08 unit-formula-mapï¼šRC-U2-1 / RC-U3-3 / RC-U4-1
 
-- 新增 `study/formula-given-RC-U2-1.html` + `.pdf`（24 條：必背 20 / 別賭 3 / 通常會給 1）
-- 新增 `study/formula-given-RC-U3-3.html` + `.pdf`（27 條：必背 17 / 別賭 4 / 通常會給 6）
-- 新增 `study/formula-given-RC-U4-1.html` + `.pdf`（23 條：必背 14 / 別賭 4 / 通常會給 5）
-- 92 年掃描影像卷以 200 dpi 重新逐頁目視，確認第一題鋼絞線 σ-ε 曲線、第二題 λd 詳細式、第四題剪力牆門檻／φ=0.6／λdh 的原文內容
-- 交叉驗證：`verify.py` 三份皆「全部一致」；抽樣回查 93、102、107、108、112 年考卷原文確認 fps 與橫膈版 Vn 的標記
-- `formula-given-RC-U1-1/U1-2` 兩頁 nav 補上指向新三頁的按鈕；U1-2 的 Ash 卡片加註「同一條在 U3-3 列為別賭（98 年說明題沒給）」
+- æ–°å¢ž `study/formula-given-RC-U2-1.html` + `.pdf`ï¼ˆ24 æ¢ï¼šå¿…èƒŒ 20 / åˆ¥è³­ 3 / é€šå¸¸æœƒçµ¦ 1ï¼‰
+- æ–°å¢ž `study/formula-given-RC-U3-3.html` + `.pdf`ï¼ˆ27 æ¢ï¼šå¿…èƒŒ 17 / åˆ¥è³­ 4 / é€šå¸¸æœƒçµ¦ 6ï¼‰
+- æ–°å¢ž `study/formula-given-RC-U4-1.html` + `.pdf`ï¼ˆ23 æ¢ï¼šå¿…èƒŒ 14 / åˆ¥è³­ 4 / é€šå¸¸æœƒçµ¦ 5ï¼‰
+- 92 å¹´æŽƒæå½±åƒå·ä»¥ 200 dpi é‡æ–°é€é ç›®è¦–ï¼Œç¢ºèªç¬¬ä¸€é¡Œé‹¼çµžç·š Ïƒ-Îµ æ›²ç·šã€ç¬¬äºŒé¡Œ Î»d è©³ç´°å¼ã€ç¬¬å››é¡Œå‰ªåŠ›ç‰†é–€æª»ï¼Ï†=0.6ï¼Î»dh çš„åŽŸæ–‡å…§å®¹
+- äº¤å‰é©—è­‰ï¼š`verify.py` ä¸‰ä»½çš†ã€Œå…¨éƒ¨ä¸€è‡´ã€ï¼›æŠ½æ¨£å›žæŸ¥ 93ã€102ã€107ã€108ã€112 å¹´è€ƒå·åŽŸæ–‡ç¢ºèª fps èˆ‡æ©«è†ˆç‰ˆ Vn çš„æ¨™è¨˜
+- `formula-given-RC-U1-1/U1-2` å…©é  nav è£œä¸ŠæŒ‡å‘æ–°ä¸‰é çš„æŒ‰éˆ•ï¼›U1-2 çš„ Ash å¡ç‰‡åŠ è¨»ã€ŒåŒä¸€æ¢åœ¨ U3-3 åˆ—ç‚ºåˆ¥è³­ï¼ˆ98 å¹´èªªæ˜Žé¡Œæ²’çµ¦ï¼‰ã€
 
-## 2026-08-08 unit-exam-intel：RC-U1-1 / RC-U1-2 舊 study 頁重構為命題情報頁
+## 2026-08-08 unit-exam-intelï¼šRC-U1-1 / RC-U1-2 èˆŠ study é é‡æ§‹ç‚ºå‘½é¡Œæƒ…å ±é 
 
-### 重構了什麼、刪了哪些重複區段
+### é‡æ§‹äº†ä»€éº¼ã€åˆªäº†å“ªäº›é‡è¤‡å€æ®µ
 
-- `study/study-RC-U1-1.html`、`study/study-RC-U1-2.html` 由早期「七區段深度複習頁」改寫為
-  六區塊命題情報頁（出題概況／考點結構／考點漂移／題型走向／考題清單／命題風險），**檔名不變**
-  （`lecture-*`、`formula-given-*` 都連回這兩個檔名，改名要同步三處）。
-- 逐區段重疊盤點後的處置：
+- `study/study-RC-U1-1.html`ã€`study/study-RC-U1-2.html` ç”±æ—©æœŸã€Œä¸ƒå€æ®µæ·±åº¦è¤‡ç¿’é ã€æ”¹å¯«ç‚º
+  å…­å€å¡Šå‘½é¡Œæƒ…å ±é ï¼ˆå‡ºé¡Œæ¦‚æ³ï¼è€ƒé»žçµæ§‹ï¼è€ƒé»žæ¼‚ç§»ï¼é¡Œåž‹èµ°å‘ï¼è€ƒé¡Œæ¸…å–®ï¼å‘½é¡Œé¢¨éšªï¼‰ï¼Œ**æª”åä¸è®Š**
+  ï¼ˆ`lecture-*`ã€`formula-given-*` éƒ½é€£å›žé€™å…©å€‹æª”åï¼Œæ”¹åè¦åŒæ­¥ä¸‰è™•ï¼‰ã€‚
+- é€å€æ®µé‡ç–Šç›¤é»žå¾Œçš„è™•ç½®ï¼š
 
-  | 舊區段 | 重複於 | 處置 |
+  | èˆŠå€æ®µ | é‡è¤‡æ–¼ | è™•ç½® |
   |---|---|---|
-  | ① 命題分析 | 無 | 保留並擴充成六區塊 |
-  | ② 截面圖解 | lecture §2／§4／§5（U1-1）、§2～§5（U1-2） | 刪，改由 nav 連結 |
-  | ③ 解題流程圖 | lecture §8（U1-1）、§9（U1-2） | 刪，改由 nav 連結 |
-  | ④ 核心公式速查 | formula-given §二（多了逐年考卷給／背證據，是上位版） | 刪，改由按鈕連結 |
-  | ⑤ 考題清單 | lecture 精選題章節（無篩選、無渲染頁連結） | 保留並補上副考點與分群篩選 |
-  | ⑥ 高頻陷阱 Top 8 | lecture 陷阱總表 | 刪 |
-  | ⑦ 互動計算器 | 唯一內容 | **經使用者確認後刪除** |
+  | â‘  å‘½é¡Œåˆ†æž | ç„¡ | ä¿ç•™ä¸¦æ“´å……æˆå…­å€å¡Š |
+  | â‘¡ æˆªé¢åœ–è§£ | lecture Â§2ï¼Â§4ï¼Â§5ï¼ˆU1-1ï¼‰ã€Â§2ï½žÂ§5ï¼ˆU1-2ï¼‰ | åˆªï¼Œæ”¹ç”± nav é€£çµ |
+  | â‘¢ è§£é¡Œæµç¨‹åœ– | lecture Â§8ï¼ˆU1-1ï¼‰ã€Â§9ï¼ˆU1-2ï¼‰ | åˆªï¼Œæ”¹ç”± nav é€£çµ |
+  | â‘£ æ ¸å¿ƒå…¬å¼é€ŸæŸ¥ | formula-given Â§äºŒï¼ˆå¤šäº†é€å¹´è€ƒå·çµ¦ï¼èƒŒè­‰æ“šï¼Œæ˜¯ä¸Šä½ç‰ˆï¼‰ | åˆªï¼Œæ”¹ç”±æŒ‰éˆ•é€£çµ |
+  | â‘¤ è€ƒé¡Œæ¸…å–® | lecture ç²¾é¸é¡Œç« ç¯€ï¼ˆç„¡ç¯©é¸ã€ç„¡æ¸²æŸ“é é€£çµï¼‰ | ä¿ç•™ä¸¦è£œä¸Šå‰¯è€ƒé»žèˆ‡åˆ†ç¾¤ç¯©é¸ |
+  | â‘¥ é«˜é »é™·é˜± Top 8 | lecture é™·é˜±ç¸½è¡¨ | åˆª |
+  | â‘¦ äº’å‹•è¨ˆç®—å™¨ | å”¯ä¸€å…§å®¹ | **ç¶“ä½¿ç”¨è€…ç¢ºèªå¾Œåˆªé™¤** |
 
-- 依使用者指示一併處理：移除本次兩頁的 Keynote PDF 按鈕（`RC-U1-n_*.pdf` 仍保留在 `study/`，
-  只是不再從這兩頁連出）；`lecture-RC-U1-1.html` 補上缺漏的回連按鈕（命題分析／給背分界／本頁 PDF），
-  `lecture-RC-U1-2.html` 的「📊 速查頁」改名為「🔍 命題分析」並以「🎯 給／背分界」取代 Keynote 鍵。
-  註：`lecture-RC-U2-1/U3-3/U4-1` 與 `study-RC-U2-1/U3-3/U4-1` 的 Keynote 按鈕**本次未動**（不在本次單元範圍）。
+- ä¾ä½¿ç”¨è€…æŒ‡ç¤ºä¸€ä½µè™•ç†ï¼šç§»é™¤æœ¬æ¬¡å…©é çš„ Keynote PDF æŒ‰éˆ•ï¼ˆ`RC-U1-n_*.pdf` ä»ä¿ç•™åœ¨ `study/`ï¼Œ
+  åªæ˜¯ä¸å†å¾žé€™å…©é é€£å‡ºï¼‰ï¼›`lecture-RC-U1-1.html` è£œä¸Šç¼ºæ¼çš„å›žé€£æŒ‰éˆ•ï¼ˆå‘½é¡Œåˆ†æžï¼çµ¦èƒŒåˆ†ç•Œï¼æœ¬é  PDFï¼‰ï¼Œ
+  `lecture-RC-U1-2.html` çš„ã€ŒðŸ“Š é€ŸæŸ¥é ã€æ”¹åç‚ºã€ŒðŸ” å‘½é¡Œåˆ†æžã€ä¸¦ä»¥ã€ŒðŸŽ¯ çµ¦ï¼èƒŒåˆ†ç•Œã€å–ä»£ Keynote éµã€‚
+  è¨»ï¼š`lecture-RC-U2-1/U3-3/U4-1` èˆ‡ `study-RC-U2-1/U3-3/U4-1` çš„ Keynote æŒ‰éˆ•**æœ¬æ¬¡æœªå‹•**ï¼ˆä¸åœ¨æœ¬æ¬¡å–®å…ƒç¯„åœï¼‰ã€‚
 
-### 過程中修正的資料錯誤
+### éŽç¨‹ä¸­ä¿®æ­£çš„è³‡æ–™éŒ¯èª¤
 
-- **`study/problems-view/` 原僅 64／100 頁**，U1-1 的 22 題中有 17 題沒有渲染頁，
-  舊 study 頁只好連 `../index.html#md=raw/solutions/...`（瀏覽器拿到未渲染的純文字，公式與附圖全失效）。
-  已用 `outputs/build_problems_view.py`（markdown + 離線 KaTeX，與既有頁模板一致）補齊到 **100／100**，
-  兩頁題號一律改連 `problems-view/XX-YYYY-N.html` 並 `target="_blank"`。
-- **既有 64 頁的返回鍵是 `javascript:history.back()`**，在 `target="_blank"` 開的新分頁按了沒有反應
-  （新分頁沒有上一頁歷史）。全部改為「命題分析＋講義」雙鈕靜態連結，並注入「跟隨來源單元」腳本
-  （讀 `document.referrer`，來源是 `study-`／`lecture-`／`formula-given-RC-Un-m.html` 時覆寫兩鍵指向來源單元；
-  無 JS 或無 referrer 時靜態 href 保底）。
-- **`RC-2002-2.html`、`RC-2011-4.html` 兩頁的 `#9`（鋼筋號數）被舊轉檔器誤判為 Markdown 標題**，
-  頁面出現 `<h1>9 截面積 = 6.47 cm²…</h1>`。新轉檔器在送進 markdown 前把 `#` + 數字換成佔位字元，
-  轉完再還原，兩頁已重生並確認 `<h[1-6]>數字` 的誤判數為 0。
-- **舊 study-RC-U1-1 頁的觀察句寫「近 5 年連續出題（2020–2024）」**，但 2025 年考卷四題（RC-2025-1～4）
-  無一屬 U1-1，正確描述是「近 6 考年 5／6 年出題，2025 年整年缺席」。新頁 KPI 直接抄 `stats.py`。
-- **（僅記錄、未修改）** `raw/solutions/RC-2019-1/RC-2019-1.md` 與 `RC-2019-2/RC-2019-2.md` 的表頭
-  主分類寫成 `RC-U1`（缺子項號），正確應為 `RC-U1-1`、`RC-U1-2`。`question_index.json` 的
-  `primaryTopicId` 是對的，統計不受影響；因受規則 1、2 保護，個別題目解析未予更動。
+- **`study/problems-view/` åŽŸåƒ… 64ï¼100 é **ï¼ŒU1-1 çš„ 22 é¡Œä¸­æœ‰ 17 é¡Œæ²’æœ‰æ¸²æŸ“é ï¼Œ
+  èˆŠ study é åªå¥½é€£ `../index.html#md=raw/solutions/...`ï¼ˆç€è¦½å™¨æ‹¿åˆ°æœªæ¸²æŸ“çš„ç´”æ–‡å­—ï¼Œå…¬å¼èˆ‡é™„åœ–å…¨å¤±æ•ˆï¼‰ã€‚
+  å·²ç”¨ `outputs/build_problems_view.py`ï¼ˆmarkdown + é›¢ç·š KaTeXï¼Œèˆ‡æ—¢æœ‰é æ¨¡æ¿ä¸€è‡´ï¼‰è£œé½Šåˆ° **100ï¼100**ï¼Œ
+  å…©é é¡Œè™Ÿä¸€å¾‹æ”¹é€£ `problems-view/XX-YYYY-N.html` ä¸¦ `target="_blank"`ã€‚
+- **æ—¢æœ‰ 64 é çš„è¿”å›žéµæ˜¯ `javascript:history.back()`**ï¼Œåœ¨ `target="_blank"` é–‹çš„æ–°åˆ†é æŒ‰äº†æ²’æœ‰åæ‡‰
+  ï¼ˆæ–°åˆ†é æ²’æœ‰ä¸Šä¸€é æ­·å²ï¼‰ã€‚å…¨éƒ¨æ”¹ç‚ºã€Œå‘½é¡Œåˆ†æžï¼‹è¬›ç¾©ã€é›™éˆ•éœæ…‹é€£çµï¼Œä¸¦æ³¨å…¥ã€Œè·Ÿéš¨ä¾†æºå–®å…ƒã€è…³æœ¬
+  ï¼ˆè®€ `document.referrer`ï¼Œä¾†æºæ˜¯ `study-`ï¼`lecture-`ï¼`formula-given-RC-Un-m.html` æ™‚è¦†å¯«å…©éµæŒ‡å‘ä¾†æºå–®å…ƒï¼›
+  ç„¡ JS æˆ–ç„¡ referrer æ™‚éœæ…‹ href ä¿åº•ï¼‰ã€‚
+- **`RC-2002-2.html`ã€`RC-2011-4.html` å…©é çš„ `#9`ï¼ˆé‹¼ç­‹è™Ÿæ•¸ï¼‰è¢«èˆŠè½‰æª”å™¨èª¤åˆ¤ç‚º Markdown æ¨™é¡Œ**ï¼Œ
+  é é¢å‡ºç¾ `<h1>9 æˆªé¢ç© = 6.47 cmÂ²â€¦</h1>`ã€‚æ–°è½‰æª”å™¨åœ¨é€é€² markdown å‰æŠŠ `#` + æ•¸å­—æ›æˆä½”ä½å­—å…ƒï¼Œ
+  è½‰å®Œå†é‚„åŽŸï¼Œå…©é å·²é‡ç”Ÿä¸¦ç¢ºèª `<h[1-6]>æ•¸å­—` çš„èª¤åˆ¤æ•¸ç‚º 0ã€‚
+- **èˆŠ study-RC-U1-1 é çš„è§€å¯Ÿå¥å¯«ã€Œè¿‘ 5 å¹´é€£çºŒå‡ºé¡Œï¼ˆ2020â€“2024ï¼‰ã€**ï¼Œä½† 2025 å¹´è€ƒå·å››é¡Œï¼ˆRC-2025-1ï½ž4ï¼‰
+  ç„¡ä¸€å±¬ U1-1ï¼Œæ­£ç¢ºæè¿°æ˜¯ã€Œè¿‘ 6 è€ƒå¹´ 5ï¼6 å¹´å‡ºé¡Œï¼Œ2025 å¹´æ•´å¹´ç¼ºå¸­ã€ã€‚æ–°é  KPI ç›´æŽ¥æŠ„ `stats.py`ã€‚
+- **ï¼ˆåƒ…è¨˜éŒ„ã€æœªä¿®æ”¹ï¼‰** `raw/solutions/RC-2019-1/RC-2019-1.md` èˆ‡ `RC-2019-2/RC-2019-2.md` çš„è¡¨é ­
+  ä¸»åˆ†é¡žå¯«æˆ `RC-U1`ï¼ˆç¼ºå­é …è™Ÿï¼‰ï¼Œæ­£ç¢ºæ‡‰ç‚º `RC-U1-1`ã€`RC-U1-2`ã€‚`question_index.json` çš„
+  `primaryTopicId` æ˜¯å°çš„ï¼Œçµ±è¨ˆä¸å—å½±éŸ¿ï¼›å› å—è¦å‰‡ 1ã€2 ä¿è­·ï¼Œå€‹åˆ¥é¡Œç›®è§£æžæœªäºˆæ›´å‹•ã€‚
 
-### 由統計得出的命題觀察（全部可由 `scripts/stats.py` 複算）
+### ç”±çµ±è¨ˆå¾—å‡ºçš„å‘½é¡Œè§€å¯Ÿï¼ˆå…¨éƒ¨å¯ç”± `scripts/stats.py` è¤‡ç®—ï¼‰
 
-- **RC-U1-1**：主 19／副 3，佔全科 19.0%，全科排名 #1（#2 的 RC-U3-3 為 16 題）；24 考年中 14 年出現，
-  空窗年段 2008–2010、2012–2013、2017–2018；近 6 考年 5／6 年共 8 題。
-  漂移（前 9 題 2002–2015 → 後 10 題 2016–2024）：雙筋梁 2→3、鋼筋量限制 1→2、單筋矩形梁 2→2、
-  T 形梁 3→2、彎矩–曲率韌性 1→1。重心從「認斷面型式」移向「解邊界條件」——後段雙筋梁三題
-  （2022-1、2023-2、2024-2）全部是壓力筋**未**降伏，前段 2002-4 則是恰好降伏。
-  設計法：19 題全為 USD，本科無 ASD／LRFD 雙軌問題，故改以問法分軸（分析／設計／韌性／鋼筋量上下限）。
-- **RC-U1-2**：主 12／副 8，佔全科 12.0%，全科排名 #4（前為 RC-U4-1 13 題、後為 RC-U3-2 7 題）；
-  24 考年中 11 年出現，空窗年段 2006–2007、2012–2014、2022–2023；近 6 考年僅 2／6 年共 2 題。
-  漂移（前 6 題 2002–2011 → 後 6 題 2011–2024）：互制圖單點求解 2→3、細長柱 1→0，其餘四群持平。
-  重心從「建整條 P-M 互制圖」收斂成「解互制圖上的一個點」；細長柱主考點已移交 RC-U1-3
-  （2006-2、2016-3 的 primaryTopicId 皆為 U1-3），柱曲率韌性主考點自 2011-3 起空窗 14 年。
-  設計法：USD 11 題＋概念題 1 題（2011-1），後段無概念題。
-- 兩頁均以 `scripts/verify.py` 對帳通過（題號集合、主／副旗標、designMethod、篩選鈕數字、
-  KPI 四項、題號連結存在性、禁用寫法七項全過）。
+- **RC-U1-1**ï¼šä¸» 19ï¼å‰¯ 3ï¼Œä½”å…¨ç§‘ 19.0%ï¼Œå…¨ç§‘æŽ’å #1ï¼ˆ#2 çš„ RC-U3-3 ç‚º 16 é¡Œï¼‰ï¼›24 è€ƒå¹´ä¸­ 14 å¹´å‡ºç¾ï¼Œ
+  ç©ºçª—å¹´æ®µ 2008â€“2010ã€2012â€“2013ã€2017â€“2018ï¼›è¿‘ 6 è€ƒå¹´ 5ï¼6 å¹´å…± 8 é¡Œã€‚
+  æ¼‚ç§»ï¼ˆå‰ 9 é¡Œ 2002â€“2015 â†’ å¾Œ 10 é¡Œ 2016â€“2024ï¼‰ï¼šé›™ç­‹æ¢ 2â†’3ã€é‹¼ç­‹é‡é™åˆ¶ 1â†’2ã€å–®ç­‹çŸ©å½¢æ¢ 2â†’2ã€
+  T å½¢æ¢ 3â†’2ã€å½ŽçŸ©â€“æ›²çŽ‡éŸŒæ€§ 1â†’1ã€‚é‡å¿ƒå¾žã€Œèªæ–·é¢åž‹å¼ã€ç§»å‘ã€Œè§£é‚Šç•Œæ¢ä»¶ã€â€”â€”å¾Œæ®µé›™ç­‹æ¢ä¸‰é¡Œ
+  ï¼ˆ2022-1ã€2023-2ã€2024-2ï¼‰å…¨éƒ¨æ˜¯å£“åŠ›ç­‹**æœª**é™ä¼ï¼Œå‰æ®µ 2002-4 å‰‡æ˜¯æ°å¥½é™ä¼ã€‚
+  è¨­è¨ˆæ³•ï¼š19 é¡Œå…¨ç‚º USDï¼Œæœ¬ç§‘ç„¡ ASDï¼LRFD é›™è»Œå•é¡Œï¼Œæ•…æ”¹ä»¥å•æ³•åˆ†è»¸ï¼ˆåˆ†æžï¼è¨­è¨ˆï¼éŸŒæ€§ï¼é‹¼ç­‹é‡ä¸Šä¸‹é™ï¼‰ã€‚
+- **RC-U1-2**ï¼šä¸» 12ï¼å‰¯ 8ï¼Œä½”å…¨ç§‘ 12.0%ï¼Œå…¨ç§‘æŽ’å #4ï¼ˆå‰ç‚º RC-U4-1 13 é¡Œã€å¾Œç‚º RC-U3-2 7 é¡Œï¼‰ï¼›
+  24 è€ƒå¹´ä¸­ 11 å¹´å‡ºç¾ï¼Œç©ºçª—å¹´æ®µ 2006â€“2007ã€2012â€“2014ã€2022â€“2023ï¼›è¿‘ 6 è€ƒå¹´åƒ… 2ï¼6 å¹´å…± 2 é¡Œã€‚
+  æ¼‚ç§»ï¼ˆå‰ 6 é¡Œ 2002â€“2011 â†’ å¾Œ 6 é¡Œ 2011â€“2024ï¼‰ï¼šäº’åˆ¶åœ–å–®é»žæ±‚è§£ 2â†’3ã€ç´°é•·æŸ± 1â†’0ï¼Œå…¶é¤˜å››ç¾¤æŒå¹³ã€‚
+  é‡å¿ƒå¾žã€Œå»ºæ•´æ¢ P-M äº’åˆ¶åœ–ã€æ”¶æ–‚æˆã€Œè§£äº’åˆ¶åœ–ä¸Šçš„ä¸€å€‹é»žã€ï¼›ç´°é•·æŸ±ä¸»è€ƒé»žå·²ç§»äº¤ RC-U1-3
+  ï¼ˆ2006-2ã€2016-3 çš„ primaryTopicId çš†ç‚º U1-3ï¼‰ï¼ŒæŸ±æ›²çŽ‡éŸŒæ€§ä¸»è€ƒé»žè‡ª 2011-3 èµ·ç©ºçª— 14 å¹´ã€‚
+  è¨­è¨ˆæ³•ï¼šUSD 11 é¡Œï¼‹æ¦‚å¿µé¡Œ 1 é¡Œï¼ˆ2011-1ï¼‰ï¼Œå¾Œæ®µç„¡æ¦‚å¿µé¡Œã€‚
+- å…©é å‡ä»¥ `scripts/verify.py` å°å¸³é€šéŽï¼ˆé¡Œè™Ÿé›†åˆã€ä¸»ï¼å‰¯æ——æ¨™ã€designMethodã€ç¯©é¸éˆ•æ•¸å­—ã€
+  KPI å››é …ã€é¡Œè™Ÿé€£çµå­˜åœ¨æ€§ã€ç¦ç”¨å¯«æ³•ä¸ƒé …å…¨éŽï¼‰ã€‚
 
-## 2026-08-08 unit-exam-intel：RC-U2-1 / RC-U3-3 / RC-U4-1 舊 study 頁重構為命題情報頁
+## 2026-08-08 unit-exam-intelï¼šRC-U2-1 / RC-U3-3 / RC-U4-1 èˆŠ study é é‡æ§‹ç‚ºå‘½é¡Œæƒ…å ±é 
 
-### 重構了什麼、刪了哪些重複區段
+### é‡æ§‹äº†ä»€éº¼ã€åˆªäº†å“ªäº›é‡è¤‡å€æ®µ
 
-- `study/study-RC-U2-1.html`、`study-RC-U3-3.html`、`study-RC-U4-1.html` 由早期「七區段深度複習頁」
-  改寫為命題情報頁，**檔名不變**。處置沿用 U1-1／U1-2 這一輪已與使用者確認的原則：
-  ② 截面／構造圖解 → 刪（重複於 lecture 各章）；③ 解題流程圖 → 刪（lecture §8／§9）；
-  ④ 核心公式速查 → 刪（formula-given 是含逐年考卷證據的上位版）；⑥ 高頻陷阱 Top 8 → 刪（lecture 陷阱總表）；
-  ⑦ 互動計算器（U2-1 梁剪力檢核／U3-3 柱 Ash 檢核／U4-1 預力兩階段應力）→ **刪**；
-  ① 命題分析 → 保留並擴充；⑤ 考題清單 → 保留並補上副考點與分群篩選。
-- **U2-1 主考點只有 7 題（< 8），依 skill 規定跳過「考點漂移」區塊**，改在出題概況註腳寫一行趨勢描述，
-  並把該位置換成「剪力的角色：主考點 7 題 vs 副考點 9 題」表（依副考點的來源單元分類）。
-  故 U2-1 只有五個區塊，nav 也不放漂移連結。
-- 三份 `lecture-RC-U2-1/U3-3/U4-1.html` 的 nav：「📊 速查頁」改名「🔍 命題分析」，
-  「📄 Keynote」以「🎯 給／背分界」取代。至此 `study/` 底下已無任何 Keynote 按鈕
-  （`RC-U2-1_*.pdf` 等檔案仍保留在資料夾內，只是不再從教材頁連出）。
+- `study/study-RC-U2-1.html`ã€`study-RC-U3-3.html`ã€`study-RC-U4-1.html` ç”±æ—©æœŸã€Œä¸ƒå€æ®µæ·±åº¦è¤‡ç¿’é ã€
+  æ”¹å¯«ç‚ºå‘½é¡Œæƒ…å ±é ï¼Œ**æª”åä¸è®Š**ã€‚è™•ç½®æ²¿ç”¨ U1-1ï¼U1-2 é€™ä¸€è¼ªå·²èˆ‡ä½¿ç”¨è€…ç¢ºèªçš„åŽŸå‰‡ï¼š
+  â‘¡ æˆªé¢ï¼æ§‹é€ åœ–è§£ â†’ åˆªï¼ˆé‡è¤‡æ–¼ lecture å„ç« ï¼‰ï¼›â‘¢ è§£é¡Œæµç¨‹åœ– â†’ åˆªï¼ˆlecture Â§8ï¼Â§9ï¼‰ï¼›
+  â‘£ æ ¸å¿ƒå…¬å¼é€ŸæŸ¥ â†’ åˆªï¼ˆformula-given æ˜¯å«é€å¹´è€ƒå·è­‰æ“šçš„ä¸Šä½ç‰ˆï¼‰ï¼›â‘¥ é«˜é »é™·é˜± Top 8 â†’ åˆªï¼ˆlecture é™·é˜±ç¸½è¡¨ï¼‰ï¼›
+  â‘¦ äº’å‹•è¨ˆç®—å™¨ï¼ˆU2-1 æ¢å‰ªåŠ›æª¢æ ¸ï¼U3-3 æŸ± Ash æª¢æ ¸ï¼U4-1 é åŠ›å…©éšŽæ®µæ‡‰åŠ›ï¼‰â†’ **åˆª**ï¼›
+  â‘  å‘½é¡Œåˆ†æž â†’ ä¿ç•™ä¸¦æ“´å……ï¼›â‘¤ è€ƒé¡Œæ¸…å–® â†’ ä¿ç•™ä¸¦è£œä¸Šå‰¯è€ƒé»žèˆ‡åˆ†ç¾¤ç¯©é¸ã€‚
+- **U2-1 ä¸»è€ƒé»žåªæœ‰ 7 é¡Œï¼ˆ< 8ï¼‰ï¼Œä¾ skill è¦å®šè·³éŽã€Œè€ƒé»žæ¼‚ç§»ã€å€å¡Š**ï¼Œæ”¹åœ¨å‡ºé¡Œæ¦‚æ³è¨»è…³å¯«ä¸€è¡Œè¶¨å‹¢æè¿°ï¼Œ
+  ä¸¦æŠŠè©²ä½ç½®æ›æˆã€Œå‰ªåŠ›çš„è§’è‰²ï¼šä¸»è€ƒé»ž 7 é¡Œ vs å‰¯è€ƒé»ž 9 é¡Œã€è¡¨ï¼ˆä¾å‰¯è€ƒé»žçš„ä¾†æºå–®å…ƒåˆ†é¡žï¼‰ã€‚
+  æ•… U2-1 åªæœ‰äº”å€‹å€å¡Šï¼Œnav ä¹Ÿä¸æ”¾æ¼‚ç§»é€£çµã€‚
+- ä¸‰ä»½ `lecture-RC-U2-1/U3-3/U4-1.html` çš„ navï¼šã€ŒðŸ“Š é€ŸæŸ¥é ã€æ”¹åã€ŒðŸ” å‘½é¡Œåˆ†æžã€ï¼Œ
+  ã€ŒðŸ“„ Keynoteã€ä»¥ã€ŒðŸŽ¯ çµ¦ï¼èƒŒåˆ†ç•Œã€å–ä»£ã€‚è‡³æ­¤ `study/` åº•ä¸‹å·²ç„¡ä»»ä½• Keynote æŒ‰éˆ•
+  ï¼ˆ`RC-U2-1_*.pdf` ç­‰æª”æ¡ˆä»ä¿ç•™åœ¨è³‡æ–™å¤¾å…§ï¼Œåªæ˜¯ä¸å†å¾žæ•™æé é€£å‡ºï¼‰ã€‚
 
-### 過程中發現的資料問題（逐項）
+### éŽç¨‹ä¸­ç™¼ç¾çš„è³‡æ–™å•é¡Œï¼ˆé€é …ï¼‰
 
-- **`RC-2021-4` 的 `designMethod` 記為「概念題」，但解析內容是 WSD 容許應力計算題**
-  （後拉預鑄梁與場鑄板組成 T 型梁，求最大均布活載重，`raw/solutions/RC-2021-4/RC-2021-4.md`
-  表頭自己寫的是「WSD 工作應力法（容許應力設計法）」）。
-  本頁一律以 `question_index.json` 為準（`verify.py` 會強制比對），因此頁面上 U4-1 的
-  「近 6 考年 概念題 1 題」與「後段概念題 1 題」都含這一筆。
-  已在 `study-RC-U4-1.html` 的設計法區塊加上 ⚠️ 資料註記。**未逕行修改索引**，待確認後更正並重算。
-- **（僅記錄、未修改）** 解析 .md 表頭主分類缺子項號者再添兩例：
-  `RC-2019-3.md` 寫 `RC-U3`（應為 `RC-U3-3`）、`RC-2018-4.md` 寫 `RC-U4` 且把 `RC-U4-1` 放在副分類
-  （索引記的是 `primaryTopicId = RC-U4-1`，正確）。連同前一批的 `RC-2019-1`、`RC-2019-2`，
-  目前已知 4 例。索引皆正確，統計不受影響；因受規則 1、2 保護，個別題目解析未予更動。
-- 舊 U2-1／U3-3／U4-1 頁的觀察句未逐句留存比對（舊頁 ① 區已整段重寫），
-  但三頁的 KPI 與清單題數本次全部改由 `stats.py` 產生、`verify.py` 對帳。
+- **`RC-2021-4` çš„ `designMethod` è¨˜ç‚ºã€Œæ¦‚å¿µé¡Œã€ï¼Œä½†è§£æžå…§å®¹æ˜¯ WSD å®¹è¨±æ‡‰åŠ›è¨ˆç®—é¡Œ**
+  ï¼ˆå¾Œæ‹‰é é‘„æ¢èˆ‡å ´é‘„æ¿çµ„æˆ T åž‹æ¢ï¼Œæ±‚æœ€å¤§å‡å¸ƒæ´»è¼‰é‡ï¼Œ`raw/solutions/RC-2021-4/RC-2021-4.md`
+  è¡¨é ­è‡ªå·±å¯«çš„æ˜¯ã€ŒWSD å·¥ä½œæ‡‰åŠ›æ³•ï¼ˆå®¹è¨±æ‡‰åŠ›è¨­è¨ˆæ³•ï¼‰ã€ï¼‰ã€‚
+  æœ¬é ä¸€å¾‹ä»¥ `question_index.json` ç‚ºæº–ï¼ˆ`verify.py` æœƒå¼·åˆ¶æ¯”å°ï¼‰ï¼Œå› æ­¤é é¢ä¸Š U4-1 çš„
+  ã€Œè¿‘ 6 è€ƒå¹´ æ¦‚å¿µé¡Œ 1 é¡Œã€èˆ‡ã€Œå¾Œæ®µæ¦‚å¿µé¡Œ 1 é¡Œã€éƒ½å«é€™ä¸€ç­†ã€‚
+  å·²åœ¨ `study-RC-U4-1.html` çš„è¨­è¨ˆæ³•å€å¡ŠåŠ ä¸Š âš ï¸ è³‡æ–™è¨»è¨˜ã€‚**æœªé€•è¡Œä¿®æ”¹ç´¢å¼•**ï¼Œå¾…ç¢ºèªå¾Œæ›´æ­£ä¸¦é‡ç®—ã€‚
+- **ï¼ˆåƒ…è¨˜éŒ„ã€æœªä¿®æ”¹ï¼‰** è§£æž .md è¡¨é ­ä¸»åˆ†é¡žç¼ºå­é …è™Ÿè€…å†æ·»å…©ä¾‹ï¼š
+  `RC-2019-3.md` å¯« `RC-U3`ï¼ˆæ‡‰ç‚º `RC-U3-3`ï¼‰ã€`RC-2018-4.md` å¯« `RC-U4` ä¸”æŠŠ `RC-U4-1` æ”¾åœ¨å‰¯åˆ†é¡ž
+  ï¼ˆç´¢å¼•è¨˜çš„æ˜¯ `primaryTopicId = RC-U4-1`ï¼Œæ­£ç¢ºï¼‰ã€‚é€£åŒå‰ä¸€æ‰¹çš„ `RC-2019-1`ã€`RC-2019-2`ï¼Œ
+  ç›®å‰å·²çŸ¥ 4 ä¾‹ã€‚ç´¢å¼•çš†æ­£ç¢ºï¼Œçµ±è¨ˆä¸å—å½±éŸ¿ï¼›å› å—è¦å‰‡ 1ã€2 ä¿è­·ï¼Œå€‹åˆ¥é¡Œç›®è§£æžæœªäºˆæ›´å‹•ã€‚
+- èˆŠ U2-1ï¼U3-3ï¼U4-1 é çš„è§€å¯Ÿå¥æœªé€å¥ç•™å­˜æ¯”å°ï¼ˆèˆŠé  â‘  å€å·²æ•´æ®µé‡å¯«ï¼‰ï¼Œ
+  ä½†ä¸‰é çš„ KPI èˆ‡æ¸…å–®é¡Œæ•¸æœ¬æ¬¡å…¨éƒ¨æ”¹ç”± `stats.py` ç”¢ç”Ÿã€`verify.py` å°å¸³ã€‚
 
-### 由統計得出的命題觀察（全部可由 `scripts/stats.py` 複算）
+### ç”±çµ±è¨ˆå¾—å‡ºçš„å‘½é¡Œè§€å¯Ÿï¼ˆå…¨éƒ¨å¯ç”± `scripts/stats.py` è¤‡ç®—ï¼‰
 
-- **RC-U2-1（剪力）**：主 7／副 9，佔全科 7.0%，排名 #6；24 考年只出現 7 年，
-  **且沒有任何一年出過兩題**（2006、2009、2010、2014、2017、2020、2023 各一題），空窗年段多達七段。
-  7 題主考點全為 USD。**副考點 9 題比主考點還多**，來源為 U3-3 ×5、U2-2 ×2、U1-1 ×1、U4-4 ×1
-  ——剪力在本科主要是「當配角」，最大入口是耐震剪力鏈（M_pr → V_e → V_c=0 → 密箍）。
-  7 題主考點沒有一題是單純配箍筋，每題都另綁一個判斷（軸力修正／STM／介面剪力／倒 T 的 d 偏移／扭力門檻）。
-- **RC-U3-3（韌性與耐震）**：主 16／副 2，佔 16.0%，排名 #2；24 考年中 12 年出現，
-  空窗年段 2006–2008、2014–2015、2020–2021、2023–2024。出題高度成組：2012 年一年考 3 題
-  （2012-2 梁 → 2012-3 柱 → 2012-4 接頭，同一構架連環題），2003、2004 各 2 題。
-  漂移（前 8 題 2003–2012 → 後 8 題 2012–2025）：耐震梁 1→2、韌性觀念與細則 2→1，
-  柱圍束／接頭／牆體各持平。重心從「背耐震構造規定」移向「走完能力設計法的因果鏈」
-  ——後段 8 題有 6 題要先反推一個設計力才能開始算。
-  設計法：USD 12＋概念題 4；**概念題比例 25%（4／16）為全科 13 個單元最高**
-  （第二名 RC-U4-3 為 1／5＝20%，RC-U1-1 為 0%），此數字由索引全表統計得出。
-  柱圍束 A_sh 是本單元最高頻標籤（×3）卻自 2013-2 起空窗 12 年，是本頁風險排序第一名。
-- **RC-U4-1（預力斷面應力）**：主 13／副 8，佔 13.0%，排名 #3；24 考年中 13 年出現，
-  空窗年段僅 2015–2017、2019–2020、2024–2025 三段，是全科最規律的單元之一；
-  **清單 21 題有 19 題是考卷的第 4 或第 5 題（其中 17 題正好是第 4 題）**。
-  漂移（前 6 題 2003–2009 → 後 7 題 2011–2023）：組合斷面疊加 3→1、彈性應力與使用性 1→3、
-  開裂彎矩與極限強度 2→3。重心從「把組合斷面應力疊起來」移向「選對斷面、階段與 f_ps 公式」。
-  設計法：**WSD 7＋混合 4＋USD 1＋概念題 1**，是全科唯一必須準備兩套設計法的單元；
-  全科 100 題裡 WSD 共 16 題，**16 題全部落在 U4 單元群**（U4-1 七、U4-2 五、U4-3 四），
-  U1／U2／U3 一題都沒有；U4-1 的 8 題副考點在索引中亦全為 WSD。
-- 三頁均以 `scripts/verify.py` 對帳通過；另以獨立腳本重算漂移對切、設計法分布、近 6 考年、
-  副考點來源與分群唯一性，與頁面手寫表格逐格相符。
+- **RC-U2-1ï¼ˆå‰ªåŠ›ï¼‰**ï¼šä¸» 7ï¼å‰¯ 9ï¼Œä½”å…¨ç§‘ 7.0%ï¼ŒæŽ’å #6ï¼›24 è€ƒå¹´åªå‡ºç¾ 7 å¹´ï¼Œ
+  **ä¸”æ²’æœ‰ä»»ä½•ä¸€å¹´å‡ºéŽå…©é¡Œ**ï¼ˆ2006ã€2009ã€2010ã€2014ã€2017ã€2020ã€2023 å„ä¸€é¡Œï¼‰ï¼Œç©ºçª—å¹´æ®µå¤šé”ä¸ƒæ®µã€‚
+  7 é¡Œä¸»è€ƒé»žå…¨ç‚º USDã€‚**å‰¯è€ƒé»ž 9 é¡Œæ¯”ä¸»è€ƒé»žé‚„å¤š**ï¼Œä¾†æºç‚º U3-3 Ã—5ã€U2-2 Ã—2ã€U1-1 Ã—1ã€U4-4 Ã—1
+  â€”â€”å‰ªåŠ›åœ¨æœ¬ç§‘ä¸»è¦æ˜¯ã€Œç•¶é…è§’ã€ï¼Œæœ€å¤§å…¥å£æ˜¯è€éœ‡å‰ªåŠ›éˆï¼ˆM_pr â†’ V_e â†’ V_c=0 â†’ å¯†ç®ï¼‰ã€‚
+  7 é¡Œä¸»è€ƒé»žæ²’æœ‰ä¸€é¡Œæ˜¯å–®ç´”é…ç®ç­‹ï¼Œæ¯é¡Œéƒ½å¦ç¶ä¸€å€‹åˆ¤æ–·ï¼ˆè»¸åŠ›ä¿®æ­£ï¼STMï¼ä»‹é¢å‰ªåŠ›ï¼å€’ T çš„ d åç§»ï¼æ‰­åŠ›é–€æª»ï¼‰ã€‚
+- **RC-U3-3ï¼ˆéŸŒæ€§èˆ‡è€éœ‡ï¼‰**ï¼šä¸» 16ï¼å‰¯ 2ï¼Œä½” 16.0%ï¼ŒæŽ’å #2ï¼›24 è€ƒå¹´ä¸­ 12 å¹´å‡ºç¾ï¼Œ
+  ç©ºçª—å¹´æ®µ 2006â€“2008ã€2014â€“2015ã€2020â€“2021ã€2023â€“2024ã€‚å‡ºé¡Œé«˜åº¦æˆçµ„ï¼š2012 å¹´ä¸€å¹´è€ƒ 3 é¡Œ
+  ï¼ˆ2012-2 æ¢ â†’ 2012-3 æŸ± â†’ 2012-4 æŽ¥é ­ï¼ŒåŒä¸€æ§‹æž¶é€£ç’°é¡Œï¼‰ï¼Œ2003ã€2004 å„ 2 é¡Œã€‚
+  æ¼‚ç§»ï¼ˆå‰ 8 é¡Œ 2003â€“2012 â†’ å¾Œ 8 é¡Œ 2012â€“2025ï¼‰ï¼šè€éœ‡æ¢ 1â†’2ã€éŸŒæ€§è§€å¿µèˆ‡ç´°å‰‡ 2â†’1ï¼Œ
+  æŸ±åœæŸï¼æŽ¥é ­ï¼ç‰†é«”å„æŒå¹³ã€‚é‡å¿ƒå¾žã€ŒèƒŒè€éœ‡æ§‹é€ è¦å®šã€ç§»å‘ã€Œèµ°å®Œèƒ½åŠ›è¨­è¨ˆæ³•çš„å› æžœéˆã€
+  â€”â€”å¾Œæ®µ 8 é¡Œæœ‰ 6 é¡Œè¦å…ˆåæŽ¨ä¸€å€‹è¨­è¨ˆåŠ›æ‰èƒ½é–‹å§‹ç®—ã€‚
+  è¨­è¨ˆæ³•ï¼šUSD 12ï¼‹æ¦‚å¿µé¡Œ 4ï¼›**æ¦‚å¿µé¡Œæ¯”ä¾‹ 25%ï¼ˆ4ï¼16ï¼‰ç‚ºå…¨ç§‘ 13 å€‹å–®å…ƒæœ€é«˜**
+  ï¼ˆç¬¬äºŒå RC-U4-3 ç‚º 1ï¼5ï¼20%ï¼ŒRC-U1-1 ç‚º 0%ï¼‰ï¼Œæ­¤æ•¸å­—ç”±ç´¢å¼•å…¨è¡¨çµ±è¨ˆå¾—å‡ºã€‚
+  æŸ±åœæŸ A_sh æ˜¯æœ¬å–®å…ƒæœ€é«˜é »æ¨™ç±¤ï¼ˆÃ—3ï¼‰å»è‡ª 2013-2 èµ·ç©ºçª— 12 å¹´ï¼Œæ˜¯æœ¬é é¢¨éšªæŽ’åºç¬¬ä¸€åã€‚
+- **RC-U4-1ï¼ˆé åŠ›æ–·é¢æ‡‰åŠ›ï¼‰**ï¼šä¸» 13ï¼å‰¯ 8ï¼Œä½” 13.0%ï¼ŒæŽ’å #3ï¼›24 è€ƒå¹´ä¸­ 13 å¹´å‡ºç¾ï¼Œ
+  ç©ºçª—å¹´æ®µåƒ… 2015â€“2017ã€2019â€“2020ã€2024â€“2025 ä¸‰æ®µï¼Œæ˜¯å…¨ç§‘æœ€è¦å¾‹çš„å–®å…ƒä¹‹ä¸€ï¼›
+  **æ¸…å–® 21 é¡Œæœ‰ 19 é¡Œæ˜¯è€ƒå·çš„ç¬¬ 4 æˆ–ç¬¬ 5 é¡Œï¼ˆå…¶ä¸­ 17 é¡Œæ­£å¥½æ˜¯ç¬¬ 4 é¡Œï¼‰**ã€‚
+  æ¼‚ç§»ï¼ˆå‰ 6 é¡Œ 2003â€“2009 â†’ å¾Œ 7 é¡Œ 2011â€“2023ï¼‰ï¼šçµ„åˆæ–·é¢ç–ŠåŠ  3â†’1ã€å½ˆæ€§æ‡‰åŠ›èˆ‡ä½¿ç”¨æ€§ 1â†’3ã€
+  é–‹è£‚å½ŽçŸ©èˆ‡æ¥µé™å¼·åº¦ 2â†’3ã€‚é‡å¿ƒå¾žã€ŒæŠŠçµ„åˆæ–·é¢æ‡‰åŠ›ç–Šèµ·ä¾†ã€ç§»å‘ã€Œé¸å°æ–·é¢ã€éšŽæ®µèˆ‡ f_ps å…¬å¼ã€ã€‚
+  è¨­è¨ˆæ³•ï¼š**WSD 7ï¼‹æ··åˆ 4ï¼‹USD 1ï¼‹æ¦‚å¿µé¡Œ 1**ï¼Œæ˜¯å…¨ç§‘å”¯ä¸€å¿…é ˆæº–å‚™å…©å¥—è¨­è¨ˆæ³•çš„å–®å…ƒï¼›
+  å…¨ç§‘ 100 é¡Œè£¡ WSD å…± 16 é¡Œï¼Œ**16 é¡Œå…¨éƒ¨è½åœ¨ U4 å–®å…ƒç¾¤**ï¼ˆU4-1 ä¸ƒã€U4-2 äº”ã€U4-3 å››ï¼‰ï¼Œ
+  U1ï¼U2ï¼U3 ä¸€é¡Œéƒ½æ²’æœ‰ï¼›U4-1 çš„ 8 é¡Œå‰¯è€ƒé»žåœ¨ç´¢å¼•ä¸­äº¦å…¨ç‚º WSDã€‚
+- ä¸‰é å‡ä»¥ `scripts/verify.py` å°å¸³é€šéŽï¼›å¦ä»¥ç¨ç«‹è…³æœ¬é‡ç®—æ¼‚ç§»å°åˆ‡ã€è¨­è¨ˆæ³•åˆ†å¸ƒã€è¿‘ 6 è€ƒå¹´ã€
+  å‰¯è€ƒé»žä¾†æºèˆ‡åˆ†ç¾¤å”¯ä¸€æ€§ï¼Œèˆ‡é é¢æ‰‹å¯«è¡¨æ ¼é€æ ¼ç›¸ç¬¦ã€‚
 
-## 2026-08-20 subject-frequency-map：產出 RC 全科出題頻率熱圖 `study/frequency-RC.html`
+## 2026-08-20 subject-frequency-mapï¼šç”¢å‡º RC å…¨ç§‘å‡ºé¡Œé »çŽ‡ç†±åœ– `study/frequency-RC.html`
 
-### 產了什麼
+### ç”¢äº†ä»€éº¼
 
-- `study/frequency-RC.html`（單一自包含 HTML，無外部相依，25,319 字元），由
-  `subject-frequency-map/scripts/build_frequency.py` 從 `raw/json/question_index.json` ＋
-  `raw/json/syllabus_taxonomy.json` 產生，更新日期標記 2026-08-20。
-- 頁面內容：可切換「只看主考點／主＋副考點」的 14 子項 × 24 考年熱圖、排名總表
-  （主／副題數、佔全科、出現年數、最長空窗含年段、最後出現、近 6 考年、常見題號位置、現有教材）、
-  各單元權重表、五種情境的讀書順序建議。
-- 排名表教材欄由腳本掃描 `study/` 自動產生，本次偵測到 20 個綠色可點標籤
-  ＝ RC-U1-1、U1-2、U2-1、U3-3、U4-1 五個子項各有四種教材（命題分析／講義／給背分界／記憶片）齊全；
-  其餘 9 個出現過的子項四欄皆灰色（尚未製作）。
-- **對帳全過**：熱圖主考點格子總和 ＝ 題庫總題數 100、每列總和 ＝ 該子項主考點題數、
-  單元小計加總相符；無孤兒 `primaryTopicId`（索引與 taxonomy 的子項代碼完全對得起來），頁面未出現紅色警告框。
-- 目視 QA：headless Chromium 開啟，console 乾淨無錯誤；兩個模式各重畫一次皆正常
-  （主考點模式 42 顆橘點，切到主＋副後歸零並改為併入格值）；tooltip 題號格式正確
-  （例：`2005：RC-2005-2、(副)RC-2005-3`）。
+- `study/frequency-RC.html`ï¼ˆå–®ä¸€è‡ªåŒ…å« HTMLï¼Œç„¡å¤–éƒ¨ç›¸ä¾ï¼Œ25,319 å­—å…ƒï¼‰ï¼Œç”±
+  `subject-frequency-map/scripts/build_frequency.py` å¾ž `raw/json/question_index.json` ï¼‹
+  `raw/json/syllabus_taxonomy.json` ç”¢ç”Ÿï¼Œæ›´æ–°æ—¥æœŸæ¨™è¨˜ 2026-08-20ã€‚
+- é é¢å…§å®¹ï¼šå¯åˆ‡æ›ã€Œåªçœ‹ä¸»è€ƒé»žï¼ä¸»ï¼‹å‰¯è€ƒé»žã€çš„ 14 å­é … Ã— 24 è€ƒå¹´ç†±åœ–ã€æŽ’åç¸½è¡¨
+  ï¼ˆä¸»ï¼å‰¯é¡Œæ•¸ã€ä½”å…¨ç§‘ã€å‡ºç¾å¹´æ•¸ã€æœ€é•·ç©ºçª—å«å¹´æ®µã€æœ€å¾Œå‡ºç¾ã€è¿‘ 6 è€ƒå¹´ã€å¸¸è¦‹é¡Œè™Ÿä½ç½®ã€ç¾æœ‰æ•™æï¼‰ã€
+  å„å–®å…ƒæ¬Šé‡è¡¨ã€äº”ç¨®æƒ…å¢ƒçš„è®€æ›¸é †åºå»ºè­°ã€‚
+- æŽ’åè¡¨æ•™ææ¬„ç”±è…³æœ¬æŽƒæ `study/` è‡ªå‹•ç”¢ç”Ÿï¼Œæœ¬æ¬¡åµæ¸¬åˆ° 20 å€‹ç¶ è‰²å¯é»žæ¨™ç±¤
+  ï¼ RC-U1-1ã€U1-2ã€U2-1ã€U3-3ã€U4-1 äº”å€‹å­é …å„æœ‰å››ç¨®æ•™æï¼ˆå‘½é¡Œåˆ†æžï¼è¬›ç¾©ï¼çµ¦èƒŒåˆ†ç•Œï¼è¨˜æ†¶ç‰‡ï¼‰é½Šå…¨ï¼›
+  å…¶é¤˜ 9 å€‹å‡ºç¾éŽçš„å­é …å››æ¬„çš†ç°è‰²ï¼ˆå°šæœªè£½ä½œï¼‰ã€‚
+- **å°å¸³å…¨éŽ**ï¼šç†±åœ–ä¸»è€ƒé»žæ ¼å­ç¸½å’Œ ï¼ é¡Œåº«ç¸½é¡Œæ•¸ 100ã€æ¯åˆ—ç¸½å’Œ ï¼ è©²å­é …ä¸»è€ƒé»žé¡Œæ•¸ã€
+  å–®å…ƒå°è¨ˆåŠ ç¸½ç›¸ç¬¦ï¼›ç„¡å­¤å…’ `primaryTopicId`ï¼ˆç´¢å¼•èˆ‡ taxonomy çš„å­é …ä»£ç¢¼å®Œå…¨å°å¾—èµ·ä¾†ï¼‰ï¼Œé é¢æœªå‡ºç¾ç´…è‰²è­¦å‘Šæ¡†ã€‚
+- ç›®è¦– QAï¼šheadless Chromium é–‹å•Ÿï¼Œconsole ä¹¾æ·¨ç„¡éŒ¯èª¤ï¼›å…©å€‹æ¨¡å¼å„é‡ç•«ä¸€æ¬¡çš†æ­£å¸¸
+  ï¼ˆä¸»è€ƒé»žæ¨¡å¼ 42 é¡†æ©˜é»žï¼Œåˆ‡åˆ°ä¸»ï¼‹å‰¯å¾Œæ­¸é›¶ä¸¦æ”¹ç‚ºä½µå…¥æ ¼å€¼ï¼‰ï¼›tooltip é¡Œè™Ÿæ ¼å¼æ­£ç¢º
+  ï¼ˆä¾‹ï¼š`2005ï¼šRC-2005-2ã€(å‰¯)RC-2005-3`ï¼‰ã€‚
 
-### 由這張表得到的命題觀察（全部由 `build_frequency.py` 算出，未手打）
+### ç”±é€™å¼µè¡¨å¾—åˆ°çš„å‘½é¡Œè§€å¯Ÿï¼ˆå…¨éƒ¨ç”± `build_frequency.py` ç®—å‡ºï¼Œæœªæ‰‹æ‰“ï¼‰
 
-- **規模**：24 考年（2002–2025）、100 題、14 個子項，其中 13 個曾當過主考點。每年題數不一致，
-  故熱圖各欄總和 ＝ 該年題數。熱圖色階上限為 3（主考點與主＋副兩個模式皆同，`maxP = maxA = 3`）。
-- **單元權重**：RC-U1 33 題（33.0%）＞ RC-U3 29 題（29.0%）＞ RC-U4 24 題（24.0%）＞
-  RC-U2 14 題（14.0%）。最重的 U1 是最輕的 U2 的 **2.4 倍**。
-- **前五名**：U1-1 梁彎矩 19、U3-3 韌性與耐震 16、U4-1 預力斷面應力 13、U1-2 柱強度 12、
-  U3-2 樓版與基腳 7，**合計 67 題、佔全科 67.0%**——五個子項吃掉三分之二的題數。
-  其中 U1-1、U3-3、U4-1、U1-2 四個已有完整四種教材。
-- **工具型子項只有一個**：全科唯一副考點多於主考點的是 **U2-1 剪力（主 7／副 9）**。
-  這與 SM 那種「一半以上子項都是工具型」的結構不同：RC 的副考點分布相對集中，
-  切到「主＋副」模式後只有 U2-1 這一列明顯變深。
-- **0 題子項**：**U1-4 柱設計圖之應用**，24 個考年 0 題——命題大綱有列，考卷上從沒以它為主考點出現過，
-  可以直接跳過（排名表以粉紅底標示）。
-- **最長空窗**：U2-3 鋼筋錨定長度與斷點計算 **22 年**（2004–2025 空窗，最後出現 2003）、
-  U4-4 預力梁剪力 **20 年**（2002–2021 空窗，2022 回歸一次）、U4-3 預力損失 **10 年**（2006–2015）。
-  U3-1 梁工作性要求（含撓度、裂縫）主考點 6 題但已 8 年空窗（2010–2017），最後出現 2018。
-- **近 6 考年（2020–2025）共 24 題**，集中在少數幾列。
-- 本頁只用於**分配時間**，不作押題；押題請看各子項 `study-RC-Un-m.html` 的「命題風險排序」。
+- **è¦æ¨¡**ï¼š24 è€ƒå¹´ï¼ˆ2002â€“2025ï¼‰ã€100 é¡Œã€14 å€‹å­é …ï¼Œå…¶ä¸­ 13 å€‹æ›¾ç•¶éŽä¸»è€ƒé»žã€‚æ¯å¹´é¡Œæ•¸ä¸ä¸€è‡´ï¼Œ
+  æ•…ç†±åœ–å„æ¬„ç¸½å’Œ ï¼ è©²å¹´é¡Œæ•¸ã€‚ç†±åœ–è‰²éšŽä¸Šé™ç‚º 3ï¼ˆä¸»è€ƒé»žèˆ‡ä¸»ï¼‹å‰¯å…©å€‹æ¨¡å¼çš†åŒï¼Œ`maxP = maxA = 3`ï¼‰ã€‚
+- **å–®å…ƒæ¬Šé‡**ï¼šRC-U1 33 é¡Œï¼ˆ33.0%ï¼‰ï¼ž RC-U3 29 é¡Œï¼ˆ29.0%ï¼‰ï¼ž RC-U4 24 é¡Œï¼ˆ24.0%ï¼‰ï¼ž
+  RC-U2 14 é¡Œï¼ˆ14.0%ï¼‰ã€‚æœ€é‡çš„ U1 æ˜¯æœ€è¼•çš„ U2 çš„ **2.4 å€**ã€‚
+- **å‰äº”å**ï¼šU1-1 æ¢å½ŽçŸ© 19ã€U3-3 éŸŒæ€§èˆ‡è€éœ‡ 16ã€U4-1 é åŠ›æ–·é¢æ‡‰åŠ› 13ã€U1-2 æŸ±å¼·åº¦ 12ã€
+  U3-2 æ¨“ç‰ˆèˆ‡åŸºè…³ 7ï¼Œ**åˆè¨ˆ 67 é¡Œã€ä½”å…¨ç§‘ 67.0%**â€”â€”äº”å€‹å­é …åƒæŽ‰ä¸‰åˆ†ä¹‹äºŒçš„é¡Œæ•¸ã€‚
+  å…¶ä¸­ U1-1ã€U3-3ã€U4-1ã€U1-2 å››å€‹å·²æœ‰å®Œæ•´å››ç¨®æ•™æã€‚
+- **å·¥å…·åž‹å­é …åªæœ‰ä¸€å€‹**ï¼šå…¨ç§‘å”¯ä¸€å‰¯è€ƒé»žå¤šæ–¼ä¸»è€ƒé»žçš„æ˜¯ **U2-1 å‰ªåŠ›ï¼ˆä¸» 7ï¼å‰¯ 9ï¼‰**ã€‚
+  é€™èˆ‡ SM é‚£ç¨®ã€Œä¸€åŠä»¥ä¸Šå­é …éƒ½æ˜¯å·¥å…·åž‹ã€çš„çµæ§‹ä¸åŒï¼šRC çš„å‰¯è€ƒé»žåˆ†å¸ƒç›¸å°é›†ä¸­ï¼Œ
+  åˆ‡åˆ°ã€Œä¸»ï¼‹å‰¯ã€æ¨¡å¼å¾Œåªæœ‰ U2-1 é€™ä¸€åˆ—æ˜Žé¡¯è®Šæ·±ã€‚
+- **0 é¡Œå­é …**ï¼š**U1-4 æŸ±è¨­è¨ˆåœ–ä¹‹æ‡‰ç”¨**ï¼Œ24 å€‹è€ƒå¹´ 0 é¡Œâ€”â€”å‘½é¡Œå¤§ç¶±æœ‰åˆ—ï¼Œè€ƒå·ä¸Šå¾žæ²’ä»¥å®ƒç‚ºä¸»è€ƒé»žå‡ºç¾éŽï¼Œ
+  å¯ä»¥ç›´æŽ¥è·³éŽï¼ˆæŽ’åè¡¨ä»¥ç²‰ç´…åº•æ¨™ç¤ºï¼‰ã€‚
+- **æœ€é•·ç©ºçª—**ï¼šU2-3 é‹¼ç­‹éŒ¨å®šé•·åº¦èˆ‡æ–·é»žè¨ˆç®— **22 å¹´**ï¼ˆ2004â€“2025 ç©ºçª—ï¼Œæœ€å¾Œå‡ºç¾ 2003ï¼‰ã€
+  U4-4 é åŠ›æ¢å‰ªåŠ› **20 å¹´**ï¼ˆ2002â€“2021 ç©ºçª—ï¼Œ2022 å›žæ­¸ä¸€æ¬¡ï¼‰ã€U4-3 é åŠ›æå¤± **10 å¹´**ï¼ˆ2006â€“2015ï¼‰ã€‚
+  U3-1 æ¢å·¥ä½œæ€§è¦æ±‚ï¼ˆå«æ’“åº¦ã€è£‚ç¸«ï¼‰ä¸»è€ƒé»ž 6 é¡Œä½†å·² 8 å¹´ç©ºçª—ï¼ˆ2010â€“2017ï¼‰ï¼Œæœ€å¾Œå‡ºç¾ 2018ã€‚
+- **è¿‘ 6 è€ƒå¹´ï¼ˆ2020â€“2025ï¼‰å…± 24 é¡Œ**ï¼Œé›†ä¸­åœ¨å°‘æ•¸å¹¾åˆ—ã€‚
+- æœ¬é åªç”¨æ–¼**åˆ†é…æ™‚é–“**ï¼Œä¸ä½œæŠ¼é¡Œï¼›æŠ¼é¡Œè«‹çœ‹å„å­é … `study-RC-Un-m.html` çš„ã€Œå‘½é¡Œé¢¨éšªæŽ’åºã€ã€‚
 
-## 2026-08-20 struct-diagram 圖解整併 RC-2015-1；發現並修正 index.html 的 KaTeX 版本問題
+## 2026-08-20 struct-diagram åœ–è§£æ•´ä½µ RC-2015-1ï¼›ç™¼ç¾ä¸¦ä¿®æ­£ index.html çš„ KaTeX ç‰ˆæœ¬å•é¡Œ
 
-### 一、RC-2015-1 向量圖解整併
+### ä¸€ã€RC-2015-1 å‘é‡åœ–è§£æ•´ä½µ
 
-- `raw/solutions/RC-2015-1/files/` 內 struct-diagram 的產出整併回正本：新建 `figs/` 子資料夾，
-  收入 4 組 SVG＋2× PNG 與生成腳本 `gen_RC-2015-1.py`（可重跑）。
-  `files/` 殘留的已合併 md 與 `.patch` 移至 `files/_to_delete/`（device_bash 不能刪檔，待人工清除）。
-- 驗證後才套用：把 `RC-2015-1-figs.patch` 套到整併前的正本，結果與 `files/RC-2015-1.md`
-  **逐字元相同**，確認 patch 內容無夾帶未預期改動後才寫入。行尾維持 CRLF。
-- §1 依使用者決定改為**考卷原圖與向量重繪並列**（圖 1a／圖 1b），不以重繪取代截圖。
-- **數值修正（隨 patch 一併帶入，原值為四捨五入累積誤差）：**
-  $C'_s$ 127,126 → **127,112** kgf；$P_{n,b}$ 430,686 → **430,672** kgf；
-  $M_{n,\max}$ 13,585,411 → **13,585,103** kgf·cm；$\varphi M_{n,\max}$ 88.98 → **88.97** tf·m；
-  $\varphi P_{n,\max}$ 689,134 → **689,117** kgf。四捨五入後的結論值（135.85 tf·m、89.0 tf·m）不變。
-- **新增三節進階討論：** 純彎矩點補算（$c=8.60$ cm，$M_n=65.79$ tf·m，$\varphi M_n=59.21$ tf·m）；
-  $\varphi M_n$ 峰值不在平衡點（右移至 $\varepsilon_t=0.005$、$c=19.50$ cm，達 **104.08 tf·m**）；
-  原文「純彎矩（0, ~tf·m）」的空缺補為 59.2。
-- **下游同步三處：** `wiki/problems/RC-2015-1.md`（圖形區＋解題關鍵步驟數字＋兩條進階結論）、
-  `study/problems-view/RC-2015-1.html`（**由新正本完整重新渲染**，非手改）。
-  渲染器設定先以整併前的正本反推驗證：python-markdown `['tables','nl2br','fenced_code']`
-  ＋ 數學式遮罩／清單前補空行／圖片路徑補前綴三道處理，產出與現有 HTML 逐字元相同後才用於新版。
-- `CLAUDE-SPEC.md` 新增 **§5.1 向量圖解（`figs/`）規範**：命名、SVG/PNG 成對、腳本可重跑、
-  與考卷原圖並存、數值以腳本為準並同步三處；§3 允許檔案類型表與目錄同步加列。
-- 驗證：15 個圖片相對路徑全部存在；舊數值全庫零殘留；四檔 CRLF 未破壞；圖 3／圖 4 目視確認數值一致。
+- `raw/solutions/RC-2015-1/files/` å…§ struct-diagram çš„ç”¢å‡ºæ•´ä½µå›žæ­£æœ¬ï¼šæ–°å»º `figs/` å­è³‡æ–™å¤¾ï¼Œ
+  æ”¶å…¥ 4 çµ„ SVGï¼‹2Ã— PNG èˆ‡ç”Ÿæˆè…³æœ¬ `gen_RC-2015-1.py`ï¼ˆå¯é‡è·‘ï¼‰ã€‚
+  `files/` æ®˜ç•™çš„å·²åˆä½µ md èˆ‡ `.patch` ç§»è‡³ `files/_to_delete/`ï¼ˆdevice_bash ä¸èƒ½åˆªæª”ï¼Œå¾…äººå·¥æ¸…é™¤ï¼‰ã€‚
+- é©—è­‰å¾Œæ‰å¥—ç”¨ï¼šæŠŠ `RC-2015-1-figs.patch` å¥—åˆ°æ•´ä½µå‰çš„æ­£æœ¬ï¼Œçµæžœèˆ‡ `files/RC-2015-1.md`
+  **é€å­—å…ƒç›¸åŒ**ï¼Œç¢ºèª patch å…§å®¹ç„¡å¤¾å¸¶æœªé æœŸæ”¹å‹•å¾Œæ‰å¯«å…¥ã€‚è¡Œå°¾ç¶­æŒ CRLFã€‚
+- Â§1 ä¾ä½¿ç”¨è€…æ±ºå®šæ”¹ç‚º**è€ƒå·åŽŸåœ–èˆ‡å‘é‡é‡ç¹ªä¸¦åˆ—**ï¼ˆåœ– 1aï¼åœ– 1bï¼‰ï¼Œä¸ä»¥é‡ç¹ªå–ä»£æˆªåœ–ã€‚
+- **æ•¸å€¼ä¿®æ­£ï¼ˆéš¨ patch ä¸€ä½µå¸¶å…¥ï¼ŒåŽŸå€¼ç‚ºå››æ¨äº”å…¥ç´¯ç©èª¤å·®ï¼‰ï¼š**
+  $C'_s$ 127,126 â†’ **127,112** kgfï¼›$P_{n,b}$ 430,686 â†’ **430,672** kgfï¼›
+  $M_{n,\max}$ 13,585,411 â†’ **13,585,103** kgfÂ·cmï¼›$\varphi M_{n,\max}$ 88.98 â†’ **88.97** tfÂ·mï¼›
+  $\varphi P_{n,\max}$ 689,134 â†’ **689,117** kgfã€‚å››æ¨äº”å…¥å¾Œçš„çµè«–å€¼ï¼ˆ135.85 tfÂ·mã€89.0 tfÂ·mï¼‰ä¸è®Šã€‚
+- **æ–°å¢žä¸‰ç¯€é€²éšŽè¨Žè«–ï¼š** ç´”å½ŽçŸ©é»žè£œç®—ï¼ˆ$c=8.60$ cmï¼Œ$M_n=65.79$ tfÂ·mï¼Œ$\varphi M_n=59.21$ tfÂ·mï¼‰ï¼›
+  $\varphi M_n$ å³°å€¼ä¸åœ¨å¹³è¡¡é»žï¼ˆå³ç§»è‡³ $\varepsilon_t=0.005$ã€$c=19.50$ cmï¼Œé” **104.08 tfÂ·m**ï¼‰ï¼›
+  åŽŸæ–‡ã€Œç´”å½ŽçŸ©ï¼ˆ0, ~tfÂ·mï¼‰ã€çš„ç©ºç¼ºè£œç‚º 59.2ã€‚
+- **ä¸‹æ¸¸åŒæ­¥ä¸‰è™•ï¼š** `wiki/problems/RC-2015-1.md`ï¼ˆåœ–å½¢å€ï¼‹è§£é¡Œé—œéµæ­¥é©Ÿæ•¸å­—ï¼‹å…©æ¢é€²éšŽçµè«–ï¼‰ã€
+  `study/problems-view/RC-2015-1.html`ï¼ˆ**ç”±æ–°æ­£æœ¬å®Œæ•´é‡æ–°æ¸²æŸ“**ï¼Œéžæ‰‹æ”¹ï¼‰ã€‚
+  æ¸²æŸ“å™¨è¨­å®šå…ˆä»¥æ•´ä½µå‰çš„æ­£æœ¬åæŽ¨é©—è­‰ï¼špython-markdown `['tables','nl2br','fenced_code']`
+  ï¼‹ æ•¸å­¸å¼é®ç½©ï¼æ¸…å–®å‰è£œç©ºè¡Œï¼åœ–ç‰‡è·¯å¾‘è£œå‰ç¶´ä¸‰é“è™•ç†ï¼Œç”¢å‡ºèˆ‡ç¾æœ‰ HTML é€å­—å…ƒç›¸åŒå¾Œæ‰ç”¨æ–¼æ–°ç‰ˆã€‚
+- `CLAUDE-SPEC.md` æ–°å¢ž **Â§5.1 å‘é‡åœ–è§£ï¼ˆ`figs/`ï¼‰è¦ç¯„**ï¼šå‘½åã€SVG/PNG æˆå°ã€è…³æœ¬å¯é‡è·‘ã€
+  èˆ‡è€ƒå·åŽŸåœ–ä¸¦å­˜ã€æ•¸å€¼ä»¥è…³æœ¬ç‚ºæº–ä¸¦åŒæ­¥ä¸‰è™•ï¼›Â§3 å…è¨±æª”æ¡ˆé¡žåž‹è¡¨èˆ‡ç›®éŒ„åŒæ­¥åŠ åˆ—ã€‚
+- é©—è­‰ï¼š15 å€‹åœ–ç‰‡ç›¸å°è·¯å¾‘å…¨éƒ¨å­˜åœ¨ï¼›èˆŠæ•¸å€¼å…¨åº«é›¶æ®˜ç•™ï¼›å››æª” CRLF æœªç ´å£žï¼›åœ– 3ï¼åœ– 4 ç›®è¦–ç¢ºèªæ•¸å€¼ä¸€è‡´ã€‚
 
-### 二、KaTeX 版本問題（既有，非本次造成）
+### äºŒã€KaTeX ç‰ˆæœ¬å•é¡Œï¼ˆæ—¢æœ‰ï¼Œéžæœ¬æ¬¡é€ æˆï¼‰
 
-- 現象：`\text{}` 內的 `·`（U+00B7）被 KaTeX 轉為 `\cdotp`，而該指令在舊版**僅限數學模式**，
-  於文字模式成為未定義指令。此寫法全庫 **391 處、散在 136 個檔案**（`tf·m`、`kgf·cm` 等單位）。
-- 實測版本界線：**KaTeX ≤ 0.16.9 失敗，≥ 0.17.0 正常**（0.13.24／0.15.6／0.16.4／0.16.9／0.16.11
-  全部失敗；0.17.0／0.18.0／0.18.1 全部正常）。以 `markdown.math.macros` 把 `\cdotp` 映射成 `\cdot`
-  的偏方**實測無效**，因報錯發生在巨集展開之前。
-- 影響分流：`study/assets/katex/` 是 **0.18.1**，故 `study/` 底下 11 個頁面（含 problems-view）**渲染正常**；
-  **`index.html` 從 CDN 載入 `katex@0.16.11`**，落在失敗區間，且因 `throwOnError:false` 不跳錯，
-  而是靜默印出字面的 `kgf\cdotpcm`、`tf\cdotpm`——主儀表板的 md 預覽長期渲染錯誤而未被察覺。
-- **修正：** `index.html` 的 KaTeX 來源由 CDN 改為本機副本 `study/assets/katex/`（0.18.1），
-  與 `study/` 各頁同一份；離線亦可正常渲染（原本離線是降級為不渲染），並在該段加註「不可退回 0.16.x」的原因。
-  `mathHint` 提示文字同步改為「找不到 study/assets/katex/」。
-- 未處理：VS Code 內建 Markdown 預覽自帶舊版 KaTeX，仍會對 `·` 報 ParseError。
-  依使用者決定不處理——校稿一律以 `study/problems-view/` 與儀表板為準，VS Code 預覽僅作純文字編輯用。
+- ç¾è±¡ï¼š`\text{}` å…§çš„ `Â·`ï¼ˆU+00B7ï¼‰è¢« KaTeX è½‰ç‚º `\cdotp`ï¼Œè€Œè©²æŒ‡ä»¤åœ¨èˆŠç‰ˆ**åƒ…é™æ•¸å­¸æ¨¡å¼**ï¼Œ
+  æ–¼æ–‡å­—æ¨¡å¼æˆç‚ºæœªå®šç¾©æŒ‡ä»¤ã€‚æ­¤å¯«æ³•å…¨åº« **391 è™•ã€æ•£åœ¨ 136 å€‹æª”æ¡ˆ**ï¼ˆ`tfÂ·m`ã€`kgfÂ·cm` ç­‰å–®ä½ï¼‰ã€‚
+- å¯¦æ¸¬ç‰ˆæœ¬ç•Œç·šï¼š**KaTeX â‰¤ 0.16.9 å¤±æ•—ï¼Œâ‰¥ 0.17.0 æ­£å¸¸**ï¼ˆ0.13.24ï¼0.15.6ï¼0.16.4ï¼0.16.9ï¼0.16.11
+  å…¨éƒ¨å¤±æ•—ï¼›0.17.0ï¼0.18.0ï¼0.18.1 å…¨éƒ¨æ­£å¸¸ï¼‰ã€‚ä»¥ `markdown.math.macros` æŠŠ `\cdotp` æ˜ å°„æˆ `\cdot`
+  çš„åæ–¹**å¯¦æ¸¬ç„¡æ•ˆ**ï¼Œå› å ±éŒ¯ç™¼ç”Ÿåœ¨å·¨é›†å±•é–‹ä¹‹å‰ã€‚
+- å½±éŸ¿åˆ†æµï¼š`study/assets/katex/` æ˜¯ **0.18.1**ï¼Œæ•… `study/` åº•ä¸‹ 11 å€‹é é¢ï¼ˆå« problems-viewï¼‰**æ¸²æŸ“æ­£å¸¸**ï¼›
+  **`index.html` å¾ž CDN è¼‰å…¥ `katex@0.16.11`**ï¼Œè½åœ¨å¤±æ•—å€é–“ï¼Œä¸”å›  `throwOnError:false` ä¸è·³éŒ¯ï¼Œ
+  è€Œæ˜¯éœé»˜å°å‡ºå­—é¢çš„ `kgf\cdotpcm`ã€`tf\cdotpm`â€”â€”ä¸»å„€è¡¨æ¿çš„ md é è¦½é•·æœŸæ¸²æŸ“éŒ¯èª¤è€Œæœªè¢«å¯Ÿè¦ºã€‚
+- **ä¿®æ­£ï¼š** `index.html` çš„ KaTeX ä¾†æºç”± CDN æ”¹ç‚ºæœ¬æ©Ÿå‰¯æœ¬ `study/assets/katex/`ï¼ˆ0.18.1ï¼‰ï¼Œ
+  èˆ‡ `study/` å„é åŒä¸€ä»½ï¼›é›¢ç·šäº¦å¯æ­£å¸¸æ¸²æŸ“ï¼ˆåŽŸæœ¬é›¢ç·šæ˜¯é™ç´šç‚ºä¸æ¸²æŸ“ï¼‰ï¼Œä¸¦åœ¨è©²æ®µåŠ è¨»ã€Œä¸å¯é€€å›ž 0.16.xã€çš„åŽŸå› ã€‚
+  `mathHint` æç¤ºæ–‡å­—åŒæ­¥æ”¹ç‚ºã€Œæ‰¾ä¸åˆ° study/assets/katex/ã€ã€‚
+- æœªè™•ç†ï¼šVS Code å…§å»º Markdown é è¦½è‡ªå¸¶èˆŠç‰ˆ KaTeXï¼Œä»æœƒå° `Â·` å ± ParseErrorã€‚
+  ä¾ä½¿ç”¨è€…æ±ºå®šä¸è™•ç†â€”â€”æ ¡ç¨¿ä¸€å¾‹ä»¥ `study/problems-view/` èˆ‡å„€è¡¨æ¿ç‚ºæº–ï¼ŒVS Code é è¦½åƒ…ä½œç´”æ–‡å­—ç·¨è¼¯ç”¨ã€‚
 
-### 三、既有問題（本次未動，供日後處理）
+### ä¸‰ã€æ—¢æœ‰å•é¡Œï¼ˆæœ¬æ¬¡æœªå‹•ï¼Œä¾›æ—¥å¾Œè™•ç†ï¼‰
 
-- 全庫工作目錄為 CRLF、git 內儲存為 LF，`.gitattributes` 未設 `text=auto eol=lf`，
-  導致 `git status` 幾乎每個檔案都顯示 modified、diff 全檔翻紅（未經修改的 `RC-2002-1.md`
-  亦顯示 410 行全異動）。檢視實際改動須用 `git diff --ignore-cr-at-eol`；
-  本次真正改動為 4 檔 160 增 27 刪。修正需一次全庫規模的 commit，留待使用者決定。
+- å…¨åº«å·¥ä½œç›®éŒ„ç‚º CRLFã€git å…§å„²å­˜ç‚º LFï¼Œ`.gitattributes` æœªè¨­ `text=auto eol=lf`ï¼Œ
+  å°Žè‡´ `git status` å¹¾ä¹Žæ¯å€‹æª”æ¡ˆéƒ½é¡¯ç¤º modifiedã€diff å…¨æª”ç¿»ç´…ï¼ˆæœªç¶“ä¿®æ”¹çš„ `RC-2002-1.md`
+  äº¦é¡¯ç¤º 410 è¡Œå…¨ç•°å‹•ï¼‰ã€‚æª¢è¦–å¯¦éš›æ”¹å‹•é ˆç”¨ `git diff --ignore-cr-at-eol`ï¼›
+  æœ¬æ¬¡çœŸæ­£æ”¹å‹•ç‚º 4 æª” 160 å¢ž 27 åˆªã€‚ä¿®æ­£éœ€ä¸€æ¬¡å…¨åº«è¦æ¨¡çš„ commitï¼Œç•™å¾…ä½¿ç”¨è€…æ±ºå®šã€‚
 
-## 2026-08-20（補正）KaTeX `·` 問題：巨集偏方其實有效，前一則紀錄的判斷有誤
+## 2026-08-20ï¼ˆè£œæ­£ï¼‰KaTeX `Â·` å•é¡Œï¼šå·¨é›†åæ–¹å…¶å¯¦æœ‰æ•ˆï¼Œå‰ä¸€å‰‡ç´€éŒ„çš„åˆ¤æ–·æœ‰èª¤
 
-> 本則更正同日前一則「二、KaTeX 版本問題」中「以 `markdown.math.macros` 把 `\cdotp`
-> 映射成 `\cdot` 的偏方**實測無效**」的結論。該結論的**現象描述正確、歸因錯誤**：
-> 巨集其實有生效，錯的是映射目標。依規則 3 不刪改既有紀錄，於此補正。
+> æœ¬å‰‡æ›´æ­£åŒæ—¥å‰ä¸€å‰‡ã€ŒäºŒã€KaTeX ç‰ˆæœ¬å•é¡Œã€ä¸­ã€Œä»¥ `markdown.math.macros` æŠŠ `\cdotp`
+> æ˜ å°„æˆ `\cdot` çš„åæ–¹**å¯¦æ¸¬ç„¡æ•ˆ**ã€çš„çµè«–ã€‚è©²çµè«–çš„**ç¾è±¡æè¿°æ­£ç¢ºã€æ­¸å› éŒ¯èª¤**ï¼š
+> å·¨é›†å…¶å¯¦æœ‰ç”Ÿæ•ˆï¼ŒéŒ¯çš„æ˜¯æ˜ å°„ç›®æ¨™ã€‚ä¾è¦å‰‡ 3 ä¸åˆªæ”¹æ—¢æœ‰ç´€éŒ„ï¼Œæ–¼æ­¤è£œæ­£ã€‚
 
-- 重測發現：套用 `macros {"\cdotp":"\cdot"}` 後，錯誤訊息由
-  `Undefined control sequence: \cdotp` 變成 `Undefined control sequence: \cdot`
-  ——**代表巨集確實展開了**，只是 `\cdot` 與 `\cdotp` 同為數學模式專用指令，
-  在 `\text{}` 內一樣未定義，所以照樣失敗。前一則誤判為「報錯發生在巨集展開之前」。
-- **可行解：把 `·` 直接映射到 Unicode `⋅`（U+22C5 DOT OPERATOR）**，即
-  `"markdown.math.macros": { "·": "⋅" }`。實測：
-  - KaTeX 0.16.11（VS Code 內建同級）：全部通過，輸出 `kgf⋅cm`、`tf⋅m（標稱最大彎矩）`，
-    與 KaTeX 0.18.1 的**原生輸出逐字相同**。
-  - KaTeX 0.18.1（本庫 `study/assets/katex/`）：同樣通過，故日後升級不會反噬。
-  - 數學模式中原本就正常的 `·`（如 `5 · 3`）不受影響；表格內 `M_n (tf·m)`、
-    `kN·m`、`N·mm` 一併正常。
-- 其他候選皆不可用：`\textperiodcentered`、`\textbullet` 在 KaTeX 0.16.x 未定義；
-  `\char"00B7` 渲染出錯字；`\raisebox{0.25em}{.}` 變成句點；映射回 `·` 本身會無限展開。
-- 已產出 `.vscode/settings.json`（含完整原因註解，另關閉中文庫必然觸發的
-  非 ASCII 高亮橫幅）。**該檔無法由 Cowork 寫入**——遠端工具禁止寫 `.vscode`，
-  須由使用者自行建立或貼入使用者設定。
-- 影響範圍不變：此為 VS Code 預覽端的修法，不動 `raw/` 任何檔案，
-  `index.html` 改用本機 0.18.1 的修正仍然必要且已完成。
-
----
-
-## 2026-08-21 全庫 verificationStatus 一律改回 `unverified`
-
-- 使用者回報：`raw/solutions/` 部分解析內容有誤，需重新驗算。
-- 依 CLAUDE-SPEC.md §9，將 `raw/json/question_index.json` 中
-  **全部 100 題**的 `verificationStatus` 由 `verified` 改為 `unverified`（其餘欄位未動）。
-- 影響：依規格 `unverified` 不得 ingest；`wiki/problems/` 既有頁面保留不刪，
-  待逐題人工驗算通過後再逐題改回 `verified` 並重新 ingest。
-- `raw/solutions/*.md` 內文未修改；其中 RC-2018-2 / RC-2018-3 / RC-2018-4
-  的「驗算狀態」欄本來就標 `unverified`，與 JSON 一致。
+- é‡æ¸¬ç™¼ç¾ï¼šå¥—ç”¨ `macros {"\cdotp":"\cdot"}` å¾Œï¼ŒéŒ¯èª¤è¨Šæ¯ç”±
+  `Undefined control sequence: \cdotp` è®Šæˆ `Undefined control sequence: \cdot`
+  â€”â€”**ä»£è¡¨å·¨é›†ç¢ºå¯¦å±•é–‹äº†**ï¼Œåªæ˜¯ `\cdot` èˆ‡ `\cdotp` åŒç‚ºæ•¸å­¸æ¨¡å¼å°ˆç”¨æŒ‡ä»¤ï¼Œ
+  åœ¨ `\text{}` å…§ä¸€æ¨£æœªå®šç¾©ï¼Œæ‰€ä»¥ç…§æ¨£å¤±æ•—ã€‚å‰ä¸€å‰‡èª¤åˆ¤ç‚ºã€Œå ±éŒ¯ç™¼ç”Ÿåœ¨å·¨é›†å±•é–‹ä¹‹å‰ã€ã€‚
+- **å¯è¡Œè§£ï¼šæŠŠ `Â·` ç›´æŽ¥æ˜ å°„åˆ° Unicode `â‹…`ï¼ˆU+22C5 DOT OPERATORï¼‰**ï¼Œå³
+  `"markdown.math.macros": { "Â·": "â‹…" }`ã€‚å¯¦æ¸¬ï¼š
+  - KaTeX 0.16.11ï¼ˆVS Code å…§å»ºåŒç´šï¼‰ï¼šå…¨éƒ¨é€šéŽï¼Œè¼¸å‡º `kgfâ‹…cm`ã€`tfâ‹…mï¼ˆæ¨™ç¨±æœ€å¤§å½ŽçŸ©ï¼‰`ï¼Œ
+    èˆ‡ KaTeX 0.18.1 çš„**åŽŸç”Ÿè¼¸å‡ºé€å­—ç›¸åŒ**ã€‚
+  - KaTeX 0.18.1ï¼ˆæœ¬åº« `study/assets/katex/`ï¼‰ï¼šåŒæ¨£é€šéŽï¼Œæ•…æ—¥å¾Œå‡ç´šä¸æœƒåå™¬ã€‚
+  - æ•¸å­¸æ¨¡å¼ä¸­åŽŸæœ¬å°±æ­£å¸¸çš„ `Â·`ï¼ˆå¦‚ `5 Â· 3`ï¼‰ä¸å—å½±éŸ¿ï¼›è¡¨æ ¼å…§ `M_n (tfÂ·m)`ã€
+    `kNÂ·m`ã€`NÂ·mm` ä¸€ä½µæ­£å¸¸ã€‚
+- å…¶ä»–å€™é¸çš†ä¸å¯ç”¨ï¼š`\textperiodcentered`ã€`\textbullet` åœ¨ KaTeX 0.16.x æœªå®šç¾©ï¼›
+  `\char"00B7` æ¸²æŸ“å‡ºéŒ¯å­—ï¼›`\raisebox{0.25em}{.}` è®Šæˆå¥é»žï¼›æ˜ å°„å›ž `Â·` æœ¬èº«æœƒç„¡é™å±•é–‹ã€‚
+- å·²ç”¢å‡º `.vscode/settings.json`ï¼ˆå«å®Œæ•´åŽŸå› è¨»è§£ï¼Œå¦é—œé–‰ä¸­æ–‡åº«å¿…ç„¶è§¸ç™¼çš„
+  éž ASCII é«˜äº®æ©«å¹…ï¼‰ã€‚**è©²æª”ç„¡æ³•ç”± Cowork å¯«å…¥**â€”â€”é ç«¯å·¥å…·ç¦æ­¢å¯« `.vscode`ï¼Œ
+  é ˆç”±ä½¿ç”¨è€…è‡ªè¡Œå»ºç«‹æˆ–è²¼å…¥ä½¿ç”¨è€…è¨­å®šã€‚
+- å½±éŸ¿ç¯„åœä¸è®Šï¼šæ­¤ç‚º VS Code é è¦½ç«¯çš„ä¿®æ³•ï¼Œä¸å‹• `raw/` ä»»ä½•æª”æ¡ˆï¼Œ
+  `index.html` æ”¹ç”¨æœ¬æ©Ÿ 0.18.1 çš„ä¿®æ­£ä»ç„¶å¿…è¦ä¸”å·²å®Œæˆã€‚
 
 ---
 
-## 2026-08-21 RC-2015-1 修正：補上「最大極限彎矩載重 = 104.1 tf·m」的完整計算過程
+## 2026-08-21 å…¨åº« verificationStatus ä¸€å¾‹æ”¹å›ž `unverified`
 
-### 問題
-
-- 使用者回報：本題答案 104.1 tf·m 只出現在 §5 進階討論的一張兩列表格裡，**沒有計算過程**；
-  §4 主線把平衡點的 89.0 tf·m 當成答案，與題目問的「最大**極限**彎矩載重」不符。
-
-### 修正內容（正本 `raw/solutions/RC-2015-1/RC-2015-1.md`）
-
-- §4 由「單階段」改為**兩階段**：Step 1–7 平衡點（標稱峰值，中間對照）；
-  新增 Step 8（判斷 φMn 峰值位置）、Step 9（拉力控制界限六小步完整計算）、
-  Step 10（掃描 c 驗證單峰），並新增「答案」區塊。
-- 主線答案改為 $(\varphi M_n)_{\max} = 104.1$ tf·m（$c=19.50$ cm、$\varepsilon_t=0.005$、$\varphi P_n=224.6$ tf）。
-- 新增陷阱⑤「把 φ×標稱峰值當成最大極限彎矩」：$\max(\varphi M_n)=104.1 \neq \varphi\cdot\max(M_n)=89.0$。
-- §2、§3、§3.5 同步改寫（核心觀念雙峰值表、核心推論二、作戰計畫兩階段六步驟、
-  VHA 新增「拉力控制界限」層次與 Step 8–9 公式）。
-- 符號釐清：標稱峰值仍記 $M_{n,\max}$，設計峰值改記 $(\varphi M_n)_{\max}$，避免混用。
-
-### 過程中發現並更正的既有資料錯誤
-
-- §5「純彎矩點（補算）」原記 $f'_s = 605$ kgf/cm²，實際為 **428** kgf/cm²
-  （$c=8.60$ 時 $\varepsilon'_s = 0.003\times0.60/8.60 = 0.000210$，$f'_s = E_s\varepsilon'_s = 428$）。
-  $M_n = 65.79$、$\varphi M_n = 59.21$ 不受影響（$C'_s$ 僅約 1.4 tf），故只改該項並加註。
-- §4 Step 10 掃描表與 §5 各比值均由獨立腳本複算，與圖 2／圖 4 的 `gen_RC-2015-1.py` 結果一致，
-  既有向量圖**無須重繪**（圖 4 本來就把 φMn 峰值畫在 εt=0.005）。
-
-### 下游同步（依 figs-integration 的三處規則）
-
-- `wiki/problems/RC-2015-1.md`：標題、核心考點、解題關鍵步驟（7 步 → 15 步）、公式、陷阱全面改寫；
-  驗證狀態改標 `⏳ unverified`。
-- `study/problems-view/RC-2015-1.html`：以 python-markdown 管線重新產生 `<main>`；
-  **重跑前先用原 md 做過往返測試，確認可逐位元組還原既有頁面**，再套新內容。
-- `raw/json/question_index.json`：RC-2015-1 的 tags 增列「拉力控制界限」「設計強度峰值」；
-  `verificationStatus` 依使用者指示維持 `unverified`。
-- `wiki/index.md`、`wiki/by-year.md`：該題的一行描述由「平衡點最大彎矩」改為「最大極限彎矩載重（拉力控制界限）」。
-
-### 待辦
-
-- 其餘 99 個 `wiki/problems/*.md` 仍顯示 `✅ verified`，與 JSON 的 `unverified` 不一致，尚未批次同步。
+- ä½¿ç”¨è€…å›žå ±ï¼š`raw/solutions/` éƒ¨åˆ†è§£æžå…§å®¹æœ‰èª¤ï¼Œéœ€é‡æ–°é©—ç®—ã€‚
+- ä¾ CLAUDE-SPEC.md Â§9ï¼Œå°‡ `raw/json/question_index.json` ä¸­
+  **å…¨éƒ¨ 100 é¡Œ**çš„ `verificationStatus` ç”± `verified` æ”¹ç‚º `unverified`ï¼ˆå…¶é¤˜æ¬„ä½æœªå‹•ï¼‰ã€‚
+- å½±éŸ¿ï¼šä¾è¦æ ¼ `unverified` ä¸å¾— ingestï¼›`wiki/problems/` æ—¢æœ‰é é¢ä¿ç•™ä¸åˆªï¼Œ
+  å¾…é€é¡Œäººå·¥é©—ç®—é€šéŽå¾Œå†é€é¡Œæ”¹å›ž `verified` ä¸¦é‡æ–° ingestã€‚
+- `raw/solutions/*.md` å…§æ–‡æœªä¿®æ”¹ï¼›å…¶ä¸­ RC-2018-2 / RC-2018-3 / RC-2018-4
+  çš„ã€Œé©—ç®—ç‹€æ…‹ã€æ¬„æœ¬ä¾†å°±æ¨™ `unverified`ï¼Œèˆ‡ JSON ä¸€è‡´ã€‚
 
 ---
 
-## 2026-08-21（同日續）三件收尾：重建腳本入庫、驗證狀態全庫同步、柱題橫向複核
+## 2026-08-21 RC-2015-1 ä¿®æ­£ï¼šè£œä¸Šã€Œæœ€å¤§æ¥µé™å½ŽçŸ©è¼‰é‡ = 104.1 tfÂ·mã€çš„å®Œæ•´è¨ˆç®—éŽç¨‹
 
-### 一、新增 `scripts/gen_problems_view.py`
+### å•é¡Œ
 
-- 把 RC-2015-1 修正時用過、且經**逐位元組往返驗證**的 python-markdown 管線固化成腳本。
-- 預設**不吃全庫**：不給題號就什麼都不做，要全庫必須明寫 `--all`（避免順手改動上百頁）。
-- `--check` 可先比對不寫檔。
+- ä½¿ç”¨è€…å›žå ±ï¼šæœ¬é¡Œç­”æ¡ˆ 104.1 tfÂ·m åªå‡ºç¾åœ¨ Â§5 é€²éšŽè¨Žè«–çš„ä¸€å¼µå…©åˆ—è¡¨æ ¼è£¡ï¼Œ**æ²’æœ‰è¨ˆç®—éŽç¨‹**ï¼›
+  Â§4 ä¸»ç·šæŠŠå¹³è¡¡é»žçš„ 89.0 tfÂ·m ç•¶æˆç­”æ¡ˆï¼Œèˆ‡é¡Œç›®å•çš„ã€Œæœ€å¤§**æ¥µé™**å½ŽçŸ©è¼‰é‡ã€ä¸ç¬¦ã€‚
 
-### 二、`wiki/problems/*.md` 驗證狀態同步
+### ä¿®æ­£å…§å®¹ï¼ˆæ­£æœ¬ `raw/solutions/RC-2015-1/RC-2015-1.md`ï¼‰
 
-- 98 個摘要頁的 `✅ verified` → `⏳ unverified（2026-08-21 全庫改標，待逐題人工驗算）`，與 JSON 一致。
-- **未動 2 個**：RC-2015-1（已於前一則自帶註記）、RC-2023-1（見下方「發現的結構問題」）。
+- Â§4 ç”±ã€Œå–®éšŽæ®µã€æ”¹ç‚º**å…©éšŽæ®µ**ï¼šStep 1â€“7 å¹³è¡¡é»žï¼ˆæ¨™ç¨±å³°å€¼ï¼Œä¸­é–“å°ç…§ï¼‰ï¼›
+  æ–°å¢ž Step 8ï¼ˆåˆ¤æ–· Ï†Mn å³°å€¼ä½ç½®ï¼‰ã€Step 9ï¼ˆæ‹‰åŠ›æŽ§åˆ¶ç•Œé™å…­å°æ­¥å®Œæ•´è¨ˆç®—ï¼‰ã€
+  Step 10ï¼ˆæŽƒæ c é©—è­‰å–®å³°ï¼‰ï¼Œä¸¦æ–°å¢žã€Œç­”æ¡ˆã€å€å¡Šã€‚
+- ä¸»ç·šç­”æ¡ˆæ”¹ç‚º $(\varphi M_n)_{\max} = 104.1$ tfÂ·mï¼ˆ$c=19.50$ cmã€$\varepsilon_t=0.005$ã€$\varphi P_n=224.6$ tfï¼‰ã€‚
+- æ–°å¢žé™·é˜±â‘¤ã€ŒæŠŠ Ï†Ã—æ¨™ç¨±å³°å€¼ç•¶æˆæœ€å¤§æ¥µé™å½ŽçŸ©ã€ï¼š$\max(\varphi M_n)=104.1 \neq \varphi\cdot\max(M_n)=89.0$ã€‚
+- Â§2ã€Â§3ã€Â§3.5 åŒæ­¥æ”¹å¯«ï¼ˆæ ¸å¿ƒè§€å¿µé›™å³°å€¼è¡¨ã€æ ¸å¿ƒæŽ¨è«–äºŒã€ä½œæˆ°è¨ˆç•«å…©éšŽæ®µå…­æ­¥é©Ÿã€
+  VHA æ–°å¢žã€Œæ‹‰åŠ›æŽ§åˆ¶ç•Œé™ã€å±¤æ¬¡èˆ‡ Step 8â€“9 å…¬å¼ï¼‰ã€‚
+- ç¬¦è™Ÿé‡æ¸…ï¼šæ¨™ç¨±å³°å€¼ä»è¨˜ $M_{n,\max}$ï¼Œè¨­è¨ˆå³°å€¼æ”¹è¨˜ $(\varphi M_n)_{\max}$ï¼Œé¿å…æ··ç”¨ã€‚
 
-### 三、柱題橫向複核（10 道 P-M／平衡點相關題，逐題重算）
+### éŽç¨‹ä¸­ç™¼ç¾ä¸¦æ›´æ­£çš„æ—¢æœ‰è³‡æ–™éŒ¯èª¤
 
-結論：**沒有第二題犯 RC-2015-1 的同型錯誤**——其餘各題的軸力都由題目鎖定，不存在「峰值在哪」的問題。
-但複核過程抓到 5 類其他問題，均已修正：
+- Â§5ã€Œç´”å½ŽçŸ©é»žï¼ˆè£œç®—ï¼‰ã€åŽŸè¨˜ $f'_s = 605$ kgf/cmÂ²ï¼Œå¯¦éš›ç‚º **428** kgf/cmÂ²
+  ï¼ˆ$c=8.60$ æ™‚ $\varepsilon'_s = 0.003\times0.60/8.60 = 0.000210$ï¼Œ$f'_s = E_s\varepsilon'_s = 428$ï¼‰ã€‚
+  $M_n = 65.79$ã€$\varphi M_n = 59.21$ ä¸å—å½±éŸ¿ï¼ˆ$C'_s$ åƒ…ç´„ 1.4 tfï¼‰ï¼Œæ•…åªæ”¹è©²é …ä¸¦åŠ è¨»ã€‚
+- Â§4 Step 10 æŽƒæè¡¨èˆ‡ Â§5 å„æ¯”å€¼å‡ç”±ç¨ç«‹è…³æœ¬è¤‡ç®—ï¼Œèˆ‡åœ– 2ï¼åœ– 4 çš„ `gen_RC-2015-1.py` çµæžœä¸€è‡´ï¼Œ
+  æ—¢æœ‰å‘é‡åœ–**ç„¡é ˆé‡ç¹ª**ï¼ˆåœ– 4 æœ¬ä¾†å°±æŠŠ Ï†Mn å³°å€¼ç•«åœ¨ Îµt=0.005ï¼‰ã€‚
 
-| 題號 | 問題 | 處置 |
+### ä¸‹æ¸¸åŒæ­¥ï¼ˆä¾ figs-integration çš„ä¸‰è™•è¦å‰‡ï¼‰
+
+- `wiki/problems/RC-2015-1.md`ï¼šæ¨™é¡Œã€æ ¸å¿ƒè€ƒé»žã€è§£é¡Œé—œéµæ­¥é©Ÿï¼ˆ7 æ­¥ â†’ 15 æ­¥ï¼‰ã€å…¬å¼ã€é™·é˜±å…¨é¢æ”¹å¯«ï¼›
+  é©—è­‰ç‹€æ…‹æ”¹æ¨™ `â³ unverified`ã€‚
+- `study/problems-view/RC-2015-1.html`ï¼šä»¥ python-markdown ç®¡ç·šé‡æ–°ç”¢ç”Ÿ `<main>`ï¼›
+  **é‡è·‘å‰å…ˆç”¨åŽŸ md åšéŽå¾€è¿”æ¸¬è©¦ï¼Œç¢ºèªå¯é€ä½å…ƒçµ„é‚„åŽŸæ—¢æœ‰é é¢**ï¼Œå†å¥—æ–°å…§å®¹ã€‚
+- `raw/json/question_index.json`ï¼šRC-2015-1 çš„ tags å¢žåˆ—ã€Œæ‹‰åŠ›æŽ§åˆ¶ç•Œé™ã€ã€Œè¨­è¨ˆå¼·åº¦å³°å€¼ã€ï¼›
+  `verificationStatus` ä¾ä½¿ç”¨è€…æŒ‡ç¤ºç¶­æŒ `unverified`ã€‚
+- `wiki/index.md`ã€`wiki/by-year.md`ï¼šè©²é¡Œçš„ä¸€è¡Œæè¿°ç”±ã€Œå¹³è¡¡é»žæœ€å¤§å½ŽçŸ©ã€æ”¹ç‚ºã€Œæœ€å¤§æ¥µé™å½ŽçŸ©è¼‰é‡ï¼ˆæ‹‰åŠ›æŽ§åˆ¶ç•Œé™ï¼‰ã€ã€‚
+
+### å¾…è¾¦
+
+- å…¶é¤˜ 99 å€‹ `wiki/problems/*.md` ä»é¡¯ç¤º `âœ… verified`ï¼Œèˆ‡ JSON çš„ `unverified` ä¸ä¸€è‡´ï¼Œå°šæœªæ‰¹æ¬¡åŒæ­¥ã€‚
+
+---
+
+## 2026-08-21ï¼ˆåŒæ—¥çºŒï¼‰ä¸‰ä»¶æ”¶å°¾ï¼šé‡å»ºè…³æœ¬å…¥åº«ã€é©—è­‰ç‹€æ…‹å…¨åº«åŒæ­¥ã€æŸ±é¡Œæ©«å‘è¤‡æ ¸
+
+### ä¸€ã€æ–°å¢ž `scripts/gen_problems_view.py`
+
+- æŠŠ RC-2015-1 ä¿®æ­£æ™‚ç”¨éŽã€ä¸”ç¶“**é€ä½å…ƒçµ„å¾€è¿”é©—è­‰**çš„ python-markdown ç®¡ç·šå›ºåŒ–æˆè…³æœ¬ã€‚
+- é è¨­**ä¸åƒå…¨åº«**ï¼šä¸çµ¦é¡Œè™Ÿå°±ä»€éº¼éƒ½ä¸åšï¼Œè¦å…¨åº«å¿…é ˆæ˜Žå¯« `--all`ï¼ˆé¿å…é †æ‰‹æ”¹å‹•ä¸Šç™¾é ï¼‰ã€‚
+- `--check` å¯å…ˆæ¯”å°ä¸å¯«æª”ã€‚
+
+### äºŒã€`wiki/problems/*.md` é©—è­‰ç‹€æ…‹åŒæ­¥
+
+- 98 å€‹æ‘˜è¦é çš„ `âœ… verified` â†’ `â³ unverifiedï¼ˆ2026-08-21 å…¨åº«æ”¹æ¨™ï¼Œå¾…é€é¡Œäººå·¥é©—ç®—ï¼‰`ï¼Œèˆ‡ JSON ä¸€è‡´ã€‚
+- **æœªå‹• 2 å€‹**ï¼šRC-2015-1ï¼ˆå·²æ–¼å‰ä¸€å‰‡è‡ªå¸¶è¨»è¨˜ï¼‰ã€RC-2023-1ï¼ˆè¦‹ä¸‹æ–¹ã€Œç™¼ç¾çš„çµæ§‹å•é¡Œã€ï¼‰ã€‚
+
+### ä¸‰ã€æŸ±é¡Œæ©«å‘è¤‡æ ¸ï¼ˆ10 é“ P-Mï¼å¹³è¡¡é»žç›¸é—œé¡Œï¼Œé€é¡Œé‡ç®—ï¼‰
+
+çµè«–ï¼š**æ²’æœ‰ç¬¬äºŒé¡ŒçŠ¯ RC-2015-1 çš„åŒåž‹éŒ¯èª¤**â€”â€”å…¶é¤˜å„é¡Œçš„è»¸åŠ›éƒ½ç”±é¡Œç›®éŽ–å®šï¼Œä¸å­˜åœ¨ã€Œå³°å€¼åœ¨å“ªã€çš„å•é¡Œã€‚
+ä½†è¤‡æ ¸éŽç¨‹æŠ“åˆ° 5 é¡žå…¶ä»–å•é¡Œï¼Œå‡å·²ä¿®æ­£ï¼š
+
+| é¡Œè™Ÿ | å•é¡Œ | è™•ç½® |
 |------|------|------|
-| RC-2024-3 | §5 簡化法算術錯：$346{,}270$ 應為 $346{,}097$（$15.21\times238+10.14\times238=6{,}033$） | 已改，並補上分項 |
-| RC-2024-3 | 「偏向平衡點側」與實算不符（$P_b=136.6$、$P_0=541.5$、本題 $340.1$，位置比例 **0.50**） | 改為實數敘述 |
-| RC-2019-2 | 圖片 alt-text 的 $b$／$h$ 與圖說相反（alt 寫 b=70/h=50，圖說與計算用 h=70/b=50） | 改 alt；解題本體零錯誤 |
-| RC-2008-2 | 「平衡點…彎矩最大附近」未分標稱／設計 | 加「標稱」並補本斷面對照表（$\max M_n=87.68$ @ $c_b$ vs $\max\varphi M_n=64.90$ @ $\varepsilon_t=0.005$） |
-| RC-2011-1 | 步驟六「平滑連線」對**設計**曲線不成立（漏 $\varepsilon_t=0.005$ 折點與 $0.80\phi P_{n0}$ 截平） | 加註兩處不連續，並指向 RC-2015-1 |
-| RC-2011-1 | 步驟五取點漏掉 $c>h$ 段，且未指定必取 $c_b$ 與 $0.375d$ | 補三段掃描與兩個必取點 |
-| RC-2011-1 | $\phi P_{u,\max}$ 把 $\phi$ 計入兩次 | 改為 $P_{u,\max}=\phi P_{n,\max}$ |
-| RC-2011-1 | 純彎點直接假設 $\varphi=0.90$ | 改為須實算 $\varepsilon_t$ 再定 |
-| RC-2011-3 | 同一個 275,700 kgf 同時被標成 $P_n$ 與 $P_u$，L144 自相矛盾 | 符號統一，並新增 §5「題意歧義」 |
+| RC-2024-3 | Â§5 ç°¡åŒ–æ³•ç®—è¡“éŒ¯ï¼š$346{,}270$ æ‡‰ç‚º $346{,}097$ï¼ˆ$15.21\times238+10.14\times238=6{,}033$ï¼‰ | å·²æ”¹ï¼Œä¸¦è£œä¸Šåˆ†é … |
+| RC-2024-3 | ã€Œåå‘å¹³è¡¡é»žå´ã€èˆ‡å¯¦ç®—ä¸ç¬¦ï¼ˆ$P_b=136.6$ã€$P_0=541.5$ã€æœ¬é¡Œ $340.1$ï¼Œä½ç½®æ¯”ä¾‹ **0.50**ï¼‰ | æ”¹ç‚ºå¯¦æ•¸æ•˜è¿° |
+| RC-2019-2 | åœ–ç‰‡ alt-text çš„ $b$ï¼$h$ èˆ‡åœ–èªªç›¸åï¼ˆalt å¯« b=70/h=50ï¼Œåœ–èªªèˆ‡è¨ˆç®—ç”¨ h=70/b=50ï¼‰ | æ”¹ altï¼›è§£é¡Œæœ¬é«”é›¶éŒ¯èª¤ |
+| RC-2008-2 | ã€Œå¹³è¡¡é»žâ€¦å½ŽçŸ©æœ€å¤§é™„è¿‘ã€æœªåˆ†æ¨™ç¨±ï¼è¨­è¨ˆ | åŠ ã€Œæ¨™ç¨±ã€ä¸¦è£œæœ¬æ–·é¢å°ç…§è¡¨ï¼ˆ$\max M_n=87.68$ @ $c_b$ vs $\max\varphi M_n=64.90$ @ $\varepsilon_t=0.005$ï¼‰ |
+| RC-2011-1 | æ­¥é©Ÿå…­ã€Œå¹³æ»‘é€£ç·šã€å°**è¨­è¨ˆ**æ›²ç·šä¸æˆç«‹ï¼ˆæ¼ $\varepsilon_t=0.005$ æŠ˜é»žèˆ‡ $0.80\phi P_{n0}$ æˆªå¹³ï¼‰ | åŠ è¨»å…©è™•ä¸é€£çºŒï¼Œä¸¦æŒ‡å‘ RC-2015-1 |
+| RC-2011-1 | æ­¥é©Ÿäº”å–é»žæ¼æŽ‰ $c>h$ æ®µï¼Œä¸”æœªæŒ‡å®šå¿…å– $c_b$ èˆ‡ $0.375d$ | è£œä¸‰æ®µæŽƒæèˆ‡å…©å€‹å¿…å–é»ž |
+| RC-2011-1 | $\phi P_{u,\max}$ æŠŠ $\phi$ è¨ˆå…¥å…©æ¬¡ | æ”¹ç‚º $P_{u,\max}=\phi P_{n,\max}$ |
+| RC-2011-1 | ç´”å½Žé»žç›´æŽ¥å‡è¨­ $\varphi=0.90$ | æ”¹ç‚ºé ˆå¯¦ç®— $\varepsilon_t$ å†å®š |
+| RC-2011-3 | åŒä¸€å€‹ 275,700 kgf åŒæ™‚è¢«æ¨™æˆ $P_n$ èˆ‡ $P_u$ï¼ŒL144 è‡ªç›¸çŸ›ç›¾ | ç¬¦è™Ÿçµ±ä¸€ï¼Œä¸¦æ–°å¢ž Â§5ã€Œé¡Œæ„æ­§ç¾©ã€ |
 
-### 四、RC-2011-3 的題意歧義（**待人工定案**）
+### å››ã€RC-2011-3 çš„é¡Œæ„æ­§ç¾©ï¼ˆ**å¾…äººå·¥å®šæ¡ˆ**ï¼‰
 
-原卷（RC-2011 第三題）寫「$P_u=0.9P_b$，其中 $P_b$ 為…**標稱**軸壓強度」，而同卷第一題自行定義
-「$P_u$ 及 $M_u$ 分別為…**設計**軸力強度及設計彎矩強度」——出題者混寫兩個層次。兩種解讀都自洽：
+åŽŸå·ï¼ˆRC-2011 ç¬¬ä¸‰é¡Œï¼‰å¯«ã€Œ$P_u=0.9P_b$ï¼Œå…¶ä¸­ $P_b$ ç‚ºâ€¦**æ¨™ç¨±**è»¸å£“å¼·åº¦ã€ï¼Œè€ŒåŒå·ç¬¬ä¸€é¡Œè‡ªè¡Œå®šç¾©
+ã€Œ$P_u$ åŠ $M_u$ åˆ†åˆ¥ç‚ºâ€¦**è¨­è¨ˆ**è»¸åŠ›å¼·åº¦åŠè¨­è¨ˆå½ŽçŸ©å¼·åº¦ã€â€”â€”å‡ºé¡Œè€…æ··å¯«å…©å€‹å±¤æ¬¡ã€‚å…©ç¨®è§£è®€éƒ½è‡ªæ´½ï¼š
 
-| 解讀 | $c$ | $\varepsilon_t$ | $\varphi$ | $\varphi M_n$ | $\mu_\phi$ |
+| è§£è®€ | $c$ | $\varepsilon_t$ | $\varphi$ | $\varphi M_n$ | $\mu_\phi$ |
 |------|----:|----------------:|----------:|--------------:|-----------:|
-| A（現行、坊間通行） $P_n=0.9P_b$ | 29.61 | 0.002472 | 0.685 | 56.75 | 1.70 |
-| B（照字面） $\varphi P_n=0.9P_b$ | 39.63 | 0.001087 | 0.650 | **50.25** | **2.21** |
+| Aï¼ˆç¾è¡Œã€åŠé–“é€šè¡Œï¼‰ $P_n=0.9P_b$ | 29.61 | 0.002472 | 0.685 | 56.75 | 1.70 |
+| Bï¼ˆç…§å­—é¢ï¼‰ $\varphi P_n=0.9P_b$ | 39.63 | 0.001087 | 0.650 | **50.25** | **2.21** |
 
-另注意 Part (二) 的 $N=275{,}700/1.3$ **只有在解讀 B 下才嚴格成立**（$\gamma$ 應除設計值）。
-本頁暫採 A 並完整保留 B 的數字，待比對標準答案後擇一。
+å¦æ³¨æ„ Part (äºŒ) çš„ $N=275{,}700/1.3$ **åªæœ‰åœ¨è§£è®€ B ä¸‹æ‰åš´æ ¼æˆç«‹**ï¼ˆ$\gamma$ æ‡‰é™¤è¨­è¨ˆå€¼ï¼‰ã€‚
+æœ¬é æš«æŽ¡ A ä¸¦å®Œæ•´ä¿ç•™ B çš„æ•¸å­—ï¼Œå¾…æ¯”å°æ¨™æº–ç­”æ¡ˆå¾Œæ“‡ä¸€ã€‚
 
-### 五、φ 公式全庫兩式並存（**已就 RC-2015-1 定案，其餘待處理**）
+### äº”ã€Ï† å…¬å¼å…¨åº«å…©å¼ä¸¦å­˜ï¼ˆ**å·²å°± RC-2015-1 å®šæ¡ˆï¼Œå…¶é¤˜å¾…è™•ç†**ï¼‰
 
-- 舊式 $\varphi=0.65+\frac{\varepsilon_t-0.002}{0.003}\times0.25$（以 0.002 為壓力控制界限）
-- 現行式 $\varphi=0.65+0.25\frac{\varepsilon_t-\varepsilon_{ty}}{0.005-\varepsilon_{ty}}$（以 $\varepsilon_{ty}=f_y/E_s$ 為界）
+- èˆŠå¼ $\varphi=0.65+\frac{\varepsilon_t-0.002}{0.003}\times0.25$ï¼ˆä»¥ 0.002 ç‚ºå£“åŠ›æŽ§åˆ¶ç•Œé™ï¼‰
+- ç¾è¡Œå¼ $\varphi=0.65+0.25\frac{\varepsilon_t-\varepsilon_{ty}}{0.005-\varepsilon_{ty}}$ï¼ˆä»¥ $\varepsilon_{ty}=f_y/E_s$ ç‚ºç•Œï¼‰
 
-庫內 4 份用舊式（RC-2004-2、RC-2015-1、RC-2015-2、RC-2015-3）、4 份用現行式
-（RC-2011-1／-2／-3、RC-2019-1）。**`wiki/code-ref/ACI-318.md` §21.2.2 明文採現行式**，
-故以現行式為準。本次已把 **RC-2015-1** 改過來：平衡點 $\varepsilon_t=\varepsilon_{ty}$ 恰在壓力控制界限，
-$\varphi=0.650$（非 0.655），$\varphi M_n(c_b)$ 由 89.0 → **88.3** tf·m、$\varphi P_{n,b}$ 由 282.1 → **279.9** tf。
-**本題答案 104.1 tf·m 不受影響**（該點 $\varepsilon_t=0.005$，$\varphi=0.90$ 兩式相同）。
-RC-2004-2、RC-2015-2、RC-2015-3 尚未改，待統一。
+åº«å…§ 4 ä»½ç”¨èˆŠå¼ï¼ˆRC-2004-2ã€RC-2015-1ã€RC-2015-2ã€RC-2015-3ï¼‰ã€4 ä»½ç”¨ç¾è¡Œå¼
+ï¼ˆRC-2011-1ï¼-2ï¼-3ã€RC-2019-1ï¼‰ã€‚**`wiki/code-ref/ACI-318.md` Â§21.2.2 æ˜Žæ–‡æŽ¡ç¾è¡Œå¼**ï¼Œ
+æ•…ä»¥ç¾è¡Œå¼ç‚ºæº–ã€‚æœ¬æ¬¡å·²æŠŠ **RC-2015-1** æ”¹éŽä¾†ï¼šå¹³è¡¡é»ž $\varepsilon_t=\varepsilon_{ty}$ æ°åœ¨å£“åŠ›æŽ§åˆ¶ç•Œé™ï¼Œ
+$\varphi=0.650$ï¼ˆéž 0.655ï¼‰ï¼Œ$\varphi M_n(c_b)$ ç”± 89.0 â†’ **88.3** tfÂ·mã€$\varphi P_{n,b}$ ç”± 282.1 â†’ **279.9** tfã€‚
+**æœ¬é¡Œç­”æ¡ˆ 104.1 tfÂ·m ä¸å—å½±éŸ¿**ï¼ˆè©²é»ž $\varepsilon_t=0.005$ï¼Œ$\varphi=0.90$ å…©å¼ç›¸åŒï¼‰ã€‚
+RC-2004-2ã€RC-2015-2ã€RC-2015-3 å°šæœªæ”¹ï¼Œå¾…çµ±ä¸€ã€‚
 
-### 六、連帶修正的衍生層（原本仍寫舊說法）
+### å…­ã€é€£å¸¶ä¿®æ­£çš„è¡ç”Ÿå±¤ï¼ˆåŽŸæœ¬ä»å¯«èˆŠèªªæ³•ï¼‰
 
-- `wiki/concepts/PM-INTERACTION-DIAGRAM.md`：RC-2015-1 描述改寫；並修正一條**觀念錯誤**——
-  原寫「壓力控制區 φ 須依**軸力**插值（0.65 至 0.9）」，實際 φ 依 $\varepsilon_t$ 判定，
-  且壓力控制區內 φ 恆為 0.65 不內插。
-- `wiki/concepts/BALANCED-POINT.md`：補「平衡點只是標稱峰值」與 φ 內插上下界。
-- `wiki/methods/PM-INTERACTION-DIAGRAM.md`、`wiki/philosophy/usd-column-pm.md`：RC-2015-1 一行描述改寫。
-- `wiki/problems/RC-2015-1.md`、`RC-2011-3.md` 同步。
-- 6 個 problems-view 頁以新腳本重建。
+- `wiki/concepts/PM-INTERACTION-DIAGRAM.md`ï¼šRC-2015-1 æè¿°æ”¹å¯«ï¼›ä¸¦ä¿®æ­£ä¸€æ¢**è§€å¿µéŒ¯èª¤**â€”â€”
+  åŽŸå¯«ã€Œå£“åŠ›æŽ§åˆ¶å€ Ï† é ˆä¾**è»¸åŠ›**æ’å€¼ï¼ˆ0.65 è‡³ 0.9ï¼‰ã€ï¼Œå¯¦éš› Ï† ä¾ $\varepsilon_t$ åˆ¤å®šï¼Œ
+  ä¸”å£“åŠ›æŽ§åˆ¶å€å…§ Ï† æ†ç‚º 0.65 ä¸å…§æ’ã€‚
+- `wiki/concepts/BALANCED-POINT.md`ï¼šè£œã€Œå¹³è¡¡é»žåªæ˜¯æ¨™ç¨±å³°å€¼ã€èˆ‡ Ï† å…§æ’ä¸Šä¸‹ç•Œã€‚
+- `wiki/methods/PM-INTERACTION-DIAGRAM.md`ã€`wiki/philosophy/usd-column-pm.md`ï¼šRC-2015-1 ä¸€è¡Œæè¿°æ”¹å¯«ã€‚
+- `wiki/problems/RC-2015-1.md`ã€`RC-2011-3.md` åŒæ­¥ã€‚
+- 6 å€‹ problems-view é ä»¥æ–°è…³æœ¬é‡å»ºã€‚
 
-### 發現但**尚未處理**的兩件事
+### ç™¼ç¾ä½†**å°šæœªè™•ç†**çš„å…©ä»¶äº‹
 
-1. **`wiki/problems/RC-2023-1.md` 不是摘要頁**——它是 `raw/solutions/RC-2023-1/RC-2023-1.md` 的
-   **逐位元組完整複本**（7,879 bytes 相同），章節是 §1–§5 解析結構而非「題幹摘要／核心考點／…」。
-   違反「raw/solutions 為唯一正本」的規則，且會隨正本修改而漂移。需要重寫成正規摘要頁。
-2. **`study/problems-view/` 是歷次不同管線的混合體**。以 `gen_problems_view.py --check --all` 實測 100 頁：
-   20 頁與現行管線一致、34 頁未補清單空行（清單被壓成 `<br />` 沒有 `<ul>`）、2 頁未開 nl2br、
-   44 頁以上皆非。其中 **35 頁的數學式未遮罩就送進 markdown**，`&` `<` `>` 被轉義、`\\` 被吃掉，
-   **這些頁的 KaTeX 實際渲染失敗**（`\begin{cases}` 首當其衝）。清單見 log 附註或重跑 `--check --all`。
-   全庫重建會一次改動約 80 頁，應當成獨立批次作業。
+1. **`wiki/problems/RC-2023-1.md` ä¸æ˜¯æ‘˜è¦é **â€”â€”å®ƒæ˜¯ `raw/solutions/RC-2023-1/RC-2023-1.md` çš„
+   **é€ä½å…ƒçµ„å®Œæ•´è¤‡æœ¬**ï¼ˆ7,879 bytes ç›¸åŒï¼‰ï¼Œç« ç¯€æ˜¯ Â§1â€“Â§5 è§£æžçµæ§‹è€Œéžã€Œé¡Œå¹¹æ‘˜è¦ï¼æ ¸å¿ƒè€ƒé»žï¼â€¦ã€ã€‚
+   é•åã€Œraw/solutions ç‚ºå”¯ä¸€æ­£æœ¬ã€çš„è¦å‰‡ï¼Œä¸”æœƒéš¨æ­£æœ¬ä¿®æ”¹è€Œæ¼‚ç§»ã€‚éœ€è¦é‡å¯«æˆæ­£è¦æ‘˜è¦é ã€‚
+2. **`study/problems-view/` æ˜¯æ­·æ¬¡ä¸åŒç®¡ç·šçš„æ··åˆé«”**ã€‚ä»¥ `gen_problems_view.py --check --all` å¯¦æ¸¬ 100 é ï¼š
+   20 é èˆ‡ç¾è¡Œç®¡ç·šä¸€è‡´ã€34 é æœªè£œæ¸…å–®ç©ºè¡Œï¼ˆæ¸…å–®è¢«å£“æˆ `<br />` æ²’æœ‰ `<ul>`ï¼‰ã€2 é æœªé–‹ nl2brã€
+   44 é ä»¥ä¸Šçš†éžã€‚å…¶ä¸­ **35 é çš„æ•¸å­¸å¼æœªé®ç½©å°±é€é€² markdown**ï¼Œ`&` `<` `>` è¢«è½‰ç¾©ã€`\\` è¢«åƒæŽ‰ï¼Œ
+   **é€™äº›é çš„ KaTeX å¯¦éš›æ¸²æŸ“å¤±æ•—**ï¼ˆ`\begin{cases}` é¦–ç•¶å…¶è¡ï¼‰ã€‚æ¸…å–®è¦‹ log é™„è¨»æˆ–é‡è·‘ `--check --all`ã€‚
+   å…¨åº«é‡å»ºæœƒä¸€æ¬¡æ”¹å‹•ç´„ 80 é ï¼Œæ‡‰ç•¶æˆç¨ç«‹æ‰¹æ¬¡ä½œæ¥­ã€‚
 
 ---
 
-## 2026-08-21（同日續二）六題先驗算後補圖：RC-2011-3 / RC-2008-2 / RC-2010-1 / RC-2006-2 / RC-2017-1 / RC-2004-3
+## 2026-08-21ï¼ˆåŒæ—¥çºŒäºŒï¼‰å…­é¡Œå…ˆé©—ç®—å¾Œè£œåœ–ï¼šRC-2011-3 / RC-2008-2 / RC-2010-1 / RC-2006-2 / RC-2017-1 / RC-2004-3
 
-使用者要求「在畫圖前先檢查解題的正確性」。四題（RC-2010-1、RC-2017-1、RC-2006-2、RC-2004-3）
-以獨立 agent 深查、全部數字用 python3 重算並由本人複核；RC-2011-3、RC-2008-2 沿用前一則的結果。
-**結論：六題沒有一題能直接畫圖**，其中 RC-2010-1 的錯誤改變答案本身。
+ä½¿ç”¨è€…è¦æ±‚ã€Œåœ¨ç•«åœ–å‰å…ˆæª¢æŸ¥è§£é¡Œçš„æ­£ç¢ºæ€§ã€ã€‚å››é¡Œï¼ˆRC-2010-1ã€RC-2017-1ã€RC-2006-2ã€RC-2004-3ï¼‰
+ä»¥ç¨ç«‹ agent æ·±æŸ¥ã€å…¨éƒ¨æ•¸å­—ç”¨ python3 é‡ç®—ä¸¦ç”±æœ¬äººè¤‡æ ¸ï¼›RC-2011-3ã€RC-2008-2 æ²¿ç”¨å‰ä¸€å‰‡çš„çµæžœã€‚
+**çµè«–ï¼šå…­é¡Œæ²’æœ‰ä¸€é¡Œèƒ½ç›´æŽ¥ç•«åœ–**ï¼Œå…¶ä¸­ RC-2010-1 çš„éŒ¯èª¤æ”¹è®Šç­”æ¡ˆæœ¬èº«ã€‚
 
-### 一、RC-2010-1（圓形螺旋柱）——答案改變
+### ä¸€ã€RC-2010-1ï¼ˆåœ“å½¢èžºæ—‹æŸ±ï¼‰â€”â€”ç­”æ¡ˆæ”¹è®Š
 
-- **$P_u$ 公式漏掉 $0.85$。** 原式 $P_u = f'_{cc}(A_{ch}-A_{st}) + f_yA_{st}$。
-  決定性反證：令 $\rho_s = 0$（完全不配螺旋筋）代入得 1,649 tf $= 0.97P_y$——
-  沒有橫向鋼筋的柱在蓋層剝落後還留 97% 承載力，物理上不可能。
-  $0.85$ 是「圓柱試體強度→構材內實際強度」的折減，與撓曲的 Whitney 應力塊無關（原稿 §3 陷阱❸講錯），核心混凝土一樣要乘。
-- **改採 MacGregor 式**（使用者定案）：$P_u = 0.85f'_c(A_{ch}-A_{st}) + 4.1f_L A_{ch} + f_yA_{st}$。
-  這是唯一能反推出 $\rho_{s,\min}$ 係數 0.45（理論 0.4146）的一式，與檔案自述一致。
-- **$\rho_s$ 定義統一為 $4A_{sp}/(D_c s)$**（分母核心量到螺筋外緣，與 $A_{ch}$ 同基準，且保住 $f_L = \rho_s f_{yt}/2$ 恆等式）。
-  原稿用 $4A_{sp}/[(D_c-d_b)s]$，大 1.9% 且混用兩套基準。
-- **修正後的數字：** $\rho_s = 0.00747$、$f_L = 15.69$、$f'_{cc} = 414.3$、
-  蓋層損失 $233.9$ tf vs 圍束補償 $233.6$ tf、**$P_u = 1{,}697$ tf $\approx P_y = 1{,}697$ tf（差 0.02%，零餘裕）**。
-  原稿的 1,880 tf 與「$P_u > P_y$ ✅ 通過」作廢——它把 0.02% 的邊界講成 10.8% 的餘裕，
-  且與自己「$\rho_s < \rho_{s,\min}$ ❌」的判定互相矛盾。修正後兩項同時不通過，才自洽。
-- **螺距 $s = 10$ cm 不是題目給的。** agent 從原卷 PDF 取出第一題圖上的全部文字物件，
-  只有「主筋 12-#10」「#4 螺筋」「68 cm」「75 cm」四項，**無間距標註**（同卷第二題倒是有標「D13 @ 10 cm」）。
-  已改寫為明示的假設，並新增 §5⑤「不依賴假設的作法」（令 $\rho_s = \rho_{s,\min}$ 反推）。
-- 設計建議由 $s \le 9.4$ 改為 $s \le 9.20$ cm；$\phi P_{n,\max}$ 補上「$\rho_s$ 不足時不具螺旋柱優待」的但書。
-- 附圖 `RC-2010-1-pm-viz.html` 原本把**圓柱當成 75×75 方柱**（$A_g$ 高估 27%）且用橫箍柱的 0.80/0.65，
-  已改為等面積方形 66.47 cm、螺旋柱 0.85/0.75，並加上「本圖僅為形狀示意」的警語。
+- **$P_u$ å…¬å¼æ¼æŽ‰ $0.85$ã€‚** åŽŸå¼ $P_u = f'_{cc}(A_{ch}-A_{st}) + f_yA_{st}$ã€‚
+  æ±ºå®šæ€§åè­‰ï¼šä»¤ $\rho_s = 0$ï¼ˆå®Œå…¨ä¸é…èžºæ—‹ç­‹ï¼‰ä»£å…¥å¾— 1,649 tf $= 0.97P_y$â€”â€”
+  æ²’æœ‰æ©«å‘é‹¼ç­‹çš„æŸ±åœ¨è“‹å±¤å‰è½å¾Œé‚„ç•™ 97% æ‰¿è¼‰åŠ›ï¼Œç‰©ç†ä¸Šä¸å¯èƒ½ã€‚
+  $0.85$ æ˜¯ã€Œåœ“æŸ±è©¦é«”å¼·åº¦â†’æ§‹æå…§å¯¦éš›å¼·åº¦ã€çš„æŠ˜æ¸›ï¼Œèˆ‡æ’“æ›²çš„ Whitney æ‡‰åŠ›å¡Šç„¡é—œï¼ˆåŽŸç¨¿ Â§3 é™·é˜±â¸è¬›éŒ¯ï¼‰ï¼Œæ ¸å¿ƒæ··å‡åœŸä¸€æ¨£è¦ä¹˜ã€‚
+- **æ”¹æŽ¡ MacGregor å¼**ï¼ˆä½¿ç”¨è€…å®šæ¡ˆï¼‰ï¼š$P_u = 0.85f'_c(A_{ch}-A_{st}) + 4.1f_L A_{ch} + f_yA_{st}$ã€‚
+  é€™æ˜¯å”¯ä¸€èƒ½åæŽ¨å‡º $\rho_{s,\min}$ ä¿‚æ•¸ 0.45ï¼ˆç†è«– 0.4146ï¼‰çš„ä¸€å¼ï¼Œèˆ‡æª”æ¡ˆè‡ªè¿°ä¸€è‡´ã€‚
+- **$\rho_s$ å®šç¾©çµ±ä¸€ç‚º $4A_{sp}/(D_c s)$**ï¼ˆåˆ†æ¯æ ¸å¿ƒé‡åˆ°èžºç­‹å¤–ç·£ï¼Œèˆ‡ $A_{ch}$ åŒåŸºæº–ï¼Œä¸”ä¿ä½ $f_L = \rho_s f_{yt}/2$ æ†ç­‰å¼ï¼‰ã€‚
+  åŽŸç¨¿ç”¨ $4A_{sp}/[(D_c-d_b)s]$ï¼Œå¤§ 1.9% ä¸”æ··ç”¨å…©å¥—åŸºæº–ã€‚
+- **ä¿®æ­£å¾Œçš„æ•¸å­—ï¼š** $\rho_s = 0.00747$ã€$f_L = 15.69$ã€$f'_{cc} = 414.3$ã€
+  è“‹å±¤æå¤± $233.9$ tf vs åœæŸè£œå„Ÿ $233.6$ tfã€**$P_u = 1{,}697$ tf $\approx P_y = 1{,}697$ tfï¼ˆå·® 0.02%ï¼Œé›¶é¤˜è£•ï¼‰**ã€‚
+  åŽŸç¨¿çš„ 1,880 tf èˆ‡ã€Œ$P_u > P_y$ âœ… é€šéŽã€ä½œå»¢â€”â€”å®ƒæŠŠ 0.02% çš„é‚Šç•Œè¬›æˆ 10.8% çš„é¤˜è£•ï¼Œ
+  ä¸”èˆ‡è‡ªå·±ã€Œ$\rho_s < \rho_{s,\min}$ âŒã€çš„åˆ¤å®šäº’ç›¸çŸ›ç›¾ã€‚ä¿®æ­£å¾Œå…©é …åŒæ™‚ä¸é€šéŽï¼Œæ‰è‡ªæ´½ã€‚
+- **èžºè· $s = 10$ cm ä¸æ˜¯é¡Œç›®çµ¦çš„ã€‚** agent å¾žåŽŸå· PDF å–å‡ºç¬¬ä¸€é¡Œåœ–ä¸Šçš„å…¨éƒ¨æ–‡å­—ç‰©ä»¶ï¼Œ
+  åªæœ‰ã€Œä¸»ç­‹ 12-#10ã€ã€Œ#4 èžºç­‹ã€ã€Œ68 cmã€ã€Œ75 cmã€å››é …ï¼Œ**ç„¡é–“è·æ¨™è¨»**ï¼ˆåŒå·ç¬¬äºŒé¡Œå€’æ˜¯æœ‰æ¨™ã€ŒD13 @ 10 cmã€ï¼‰ã€‚
+  å·²æ”¹å¯«ç‚ºæ˜Žç¤ºçš„å‡è¨­ï¼Œä¸¦æ–°å¢ž Â§5â‘¤ã€Œä¸ä¾è³´å‡è¨­çš„ä½œæ³•ã€ï¼ˆä»¤ $\rho_s = \rho_{s,\min}$ åæŽ¨ï¼‰ã€‚
+- è¨­è¨ˆå»ºè­°ç”± $s \le 9.4$ æ”¹ç‚º $s \le 9.20$ cmï¼›$\phi P_{n,\max}$ è£œä¸Šã€Œ$\rho_s$ ä¸è¶³æ™‚ä¸å…·èžºæ—‹æŸ±å„ªå¾…ã€çš„ä½†æ›¸ã€‚
+- é™„åœ– `RC-2010-1-pm-viz.html` åŽŸæœ¬æŠŠ**åœ“æŸ±ç•¶æˆ 75Ã—75 æ–¹æŸ±**ï¼ˆ$A_g$ é«˜ä¼° 27%ï¼‰ä¸”ç”¨æ©«ç®æŸ±çš„ 0.80/0.65ï¼Œ
+  å·²æ”¹ç‚ºç­‰é¢ç©æ–¹å½¢ 66.47 cmã€èžºæ—‹æŸ± 0.85/0.75ï¼Œä¸¦åŠ ä¸Šã€Œæœ¬åœ–åƒ…ç‚ºå½¢ç‹€ç¤ºæ„ã€çš„è­¦èªžã€‚
 
-### 二、RC-2004-3（圍束箍筋）——建議值違反自己算出的上限
+### äºŒã€RC-2004-3ï¼ˆåœæŸç®ç­‹ï¼‰â€”â€”å»ºè­°å€¼é•åè‡ªå·±ç®—å‡ºçš„ä¸Šé™
 
-- $s \le 7.36$ cm 卻進位寫成 7.4 並建議「7 或 **7.5** cm」。間距上限只能**無條件捨去**，7.5 直接不合格 → 改為 $s = 7$ cm。
-- §5①「公式一**永遠**較公式二嚴」是錯的。門檻為 $A_g/A_{ch} > 1.3$：50/65 cm 方柱由公式一控制，
-  70/100 cm 就換公式二控制——邊長超過約 65 cm 的方柱都會翻轉。已補上對照表。
-- $h_c$ 定義自相矛盾（標「中心到中心」卻用外緣值 42）。**全庫統一量到箍筋外緣**（使用者定案），
-  故 $A_{ch} = h_c^2$ 成立；`RC-2009-1` 的舊版定義也一併加註統一。
-- 補上 $s_x = 10 + (35-h_x)/3$ 的完整推導（$h_x = 18.46 \to 15.51 \to$ 取上限 15，本題結果巧合相同）、
-  加密區外的 $s \le 15$ cm、以及「保護層 4 cm 是假設」的明示。
+- $s \le 7.36$ cm å»é€²ä½å¯«æˆ 7.4 ä¸¦å»ºè­°ã€Œ7 æˆ– **7.5** cmã€ã€‚é–“è·ä¸Šé™åªèƒ½**ç„¡æ¢ä»¶æ¨åŽ»**ï¼Œ7.5 ç›´æŽ¥ä¸åˆæ ¼ â†’ æ”¹ç‚º $s = 7$ cmã€‚
+- Â§5â‘ ã€Œå…¬å¼ä¸€**æ°¸é **è¼ƒå…¬å¼äºŒåš´ã€æ˜¯éŒ¯çš„ã€‚é–€æª»ç‚º $A_g/A_{ch} > 1.3$ï¼š50/65 cm æ–¹æŸ±ç”±å…¬å¼ä¸€æŽ§åˆ¶ï¼Œ
+  70/100 cm å°±æ›å…¬å¼äºŒæŽ§åˆ¶â€”â€”é‚Šé•·è¶…éŽç´„ 65 cm çš„æ–¹æŸ±éƒ½æœƒç¿»è½‰ã€‚å·²è£œä¸Šå°ç…§è¡¨ã€‚
+- $h_c$ å®šç¾©è‡ªç›¸çŸ›ç›¾ï¼ˆæ¨™ã€Œä¸­å¿ƒåˆ°ä¸­å¿ƒã€å»ç”¨å¤–ç·£å€¼ 42ï¼‰ã€‚**å…¨åº«çµ±ä¸€é‡åˆ°ç®ç­‹å¤–ç·£**ï¼ˆä½¿ç”¨è€…å®šæ¡ˆï¼‰ï¼Œ
+  æ•… $A_{ch} = h_c^2$ æˆç«‹ï¼›`RC-2009-1` çš„èˆŠç‰ˆå®šç¾©ä¹Ÿä¸€ä½µåŠ è¨»çµ±ä¸€ã€‚
+- è£œä¸Š $s_x = 10 + (35-h_x)/3$ çš„å®Œæ•´æŽ¨å°Žï¼ˆ$h_x = 18.46 \to 15.51 \to$ å–ä¸Šé™ 15ï¼Œæœ¬é¡Œçµæžœå·§åˆç›¸åŒï¼‰ã€
+  åŠ å¯†å€å¤–çš„ $s \le 15$ cmã€ä»¥åŠã€Œä¿è­·å±¤ 4 cm æ˜¯å‡è¨­ã€çš„æ˜Žç¤ºã€‚
 
-### 三、RC-2017-1（加大柱雙折線）——解法對，但附圖用了自己禁止的方法
+### ä¸‰ã€RC-2017-1ï¼ˆåŠ å¤§æŸ±é›™æŠ˜ç·šï¼‰â€”â€”è§£æ³•å°ï¼Œä½†é™„åœ–ç”¨äº†è‡ªå·±ç¦æ­¢çš„æ–¹æ³•
 
-- §4 確實對雙折線分區積分（$C_c = 133bc$），$M_{n,b} = 89.3$ tf·m 重算吻合；
-  掃描 $c = 5\sim90$ cm 確認 $M_n$ 極大值就在 $c_b$。**主體零錯誤。**
-- 但 `RC-2017-1-pm-viz.html` 用 `Cc = 0.85*fc*a*b`——正是 .md 自己列為「陷阱 #1」的做法，
-  $C_c$ 高估 **14.1%**、$P_{n,b}$ 高估 14.5%。已改寫為雙折線數值積分，
-  重算得 $P_b = 196.5$ tf、$M_b = 89.31$ tf·m、$\varphi M_b = 58.49$，與正文完全一致。
-- $e = 0$ 取 $0.8f'_c$ 得 634 tf 沒有論證。雙折線下 $P(\varepsilon)$ 的峰值在 $\varepsilon = 0.002$ 為 **745 tf**
-  （該處鋼筋 $f_s = 4{,}080 < f_y$ 尚未降伏）。已在 §4 Step 3 並陳兩個定義與完整數值表。
-- §5 爭議3「題目未明確說明 8 支 D25 的排列」是**事實錯誤**：考卷原文寫「分布於長向之兩邊，保護層 6.5cm」，
-  圖1 也畫得清楚。真正的歧義是**根數**（文字 8 支 vs 圖上含舊筋共 16 支），已改寫並附兩種讀法的完整數字。
-- fig-1 的 alt 描述一張不存在的雙 panel 圖（「左為原柱、右為加大後」），實際只有一張；已改。
+- Â§4 ç¢ºå¯¦å°é›™æŠ˜ç·šåˆ†å€ç©åˆ†ï¼ˆ$C_c = 133bc$ï¼‰ï¼Œ$M_{n,b} = 89.3$ tfÂ·m é‡ç®—å»åˆï¼›
+  æŽƒæ $c = 5\sim90$ cm ç¢ºèª $M_n$ æ¥µå¤§å€¼å°±åœ¨ $c_b$ã€‚**ä¸»é«”é›¶éŒ¯èª¤ã€‚**
+- ä½† `RC-2017-1-pm-viz.html` ç”¨ `Cc = 0.85*fc*a*b`â€”â€”æ­£æ˜¯ .md è‡ªå·±åˆ—ç‚ºã€Œé™·é˜± #1ã€çš„åšæ³•ï¼Œ
+  $C_c$ é«˜ä¼° **14.1%**ã€$P_{n,b}$ é«˜ä¼° 14.5%ã€‚å·²æ”¹å¯«ç‚ºé›™æŠ˜ç·šæ•¸å€¼ç©åˆ†ï¼Œ
+  é‡ç®—å¾— $P_b = 196.5$ tfã€$M_b = 89.31$ tfÂ·mã€$\varphi M_b = 58.49$ï¼Œèˆ‡æ­£æ–‡å®Œå…¨ä¸€è‡´ã€‚
+- $e = 0$ å– $0.8f'_c$ å¾— 634 tf æ²’æœ‰è«–è­‰ã€‚é›™æŠ˜ç·šä¸‹ $P(\varepsilon)$ çš„å³°å€¼åœ¨ $\varepsilon = 0.002$ ç‚º **745 tf**
+  ï¼ˆè©²è™•é‹¼ç­‹ $f_s = 4{,}080 < f_y$ å°šæœªé™ä¼ï¼‰ã€‚å·²åœ¨ Â§4 Step 3 ä¸¦é™³å…©å€‹å®šç¾©èˆ‡å®Œæ•´æ•¸å€¼è¡¨ã€‚
+- Â§5 çˆ­è­°3ã€Œé¡Œç›®æœªæ˜Žç¢ºèªªæ˜Ž 8 æ”¯ D25 çš„æŽ’åˆ—ã€æ˜¯**äº‹å¯¦éŒ¯èª¤**ï¼šè€ƒå·åŽŸæ–‡å¯«ã€Œåˆ†å¸ƒæ–¼é•·å‘ä¹‹å…©é‚Šï¼Œä¿è­·å±¤ 6.5cmã€ï¼Œ
+  åœ–1 ä¹Ÿç•«å¾—æ¸…æ¥šã€‚çœŸæ­£çš„æ­§ç¾©æ˜¯**æ ¹æ•¸**ï¼ˆæ–‡å­— 8 æ”¯ vs åœ–ä¸Šå«èˆŠç­‹å…± 16 æ”¯ï¼‰ï¼Œå·²æ”¹å¯«ä¸¦é™„å…©ç¨®è®€æ³•çš„å®Œæ•´æ•¸å­—ã€‚
+- fig-1 çš„ alt æè¿°ä¸€å¼µä¸å­˜åœ¨çš„é›™ panel åœ–ï¼ˆã€Œå·¦ç‚ºåŽŸæŸ±ã€å³ç‚ºåŠ å¤§å¾Œã€ï¼‰ï¼Œå¯¦éš›åªæœ‰ä¸€å¼µï¼›å·²æ”¹ã€‚
 
-### 四、RC-2006-2（細長柱）——數值全對，缺一個規範步驟
+### å››ã€RC-2006-2ï¼ˆç´°é•·æŸ±ï¼‰â€”â€”æ•¸å€¼å…¨å°ï¼Œç¼ºä¸€å€‹è¦ç¯„æ­¥é©Ÿ
 
-- $M_c = 36.5$ tf·m 逐項重算吻合，符號約定內部一致（318-02 原生組合），$I_{se}$ 的 6 根 @18 cm 沒數錯。
-- 缺 **$M_{2,\min} = P_u(1.5+0.03h) = 12.0$ tf·m** 的檢核（$27 > 12$ 不控制，答案不變，但卷面省略會扣分）；
-  已補上，並附「若由 $M_{2,\min}$ 控制則 $C_m$ 須取 1.0」的配套規定，以及 $kl_u/r < 100$、界限上限 40 兩項檢核。
-- §5 有一格 `$|M_1/M_2|$` 未跳脫 `|`，整張表不渲染；已改為 `\lvert…\rvert`。$E_c$ 精度 250,995 → 250,998。
-- **跨檔**：`methods/moment-magnifier-method` 把 318-14 新慣例（單曲度取負）配 318-02 舊公式，
-  照它自己的規則算本題會得「不需放大、$M_c = 27$」，與本題直接衝突。已補兩版對照表並修正 $C_m$ 表列與相關題連結。
+- $M_c = 36.5$ tfÂ·m é€é …é‡ç®—å»åˆï¼Œç¬¦è™Ÿç´„å®šå…§éƒ¨ä¸€è‡´ï¼ˆ318-02 åŽŸç”Ÿçµ„åˆï¼‰ï¼Œ$I_{se}$ çš„ 6 æ ¹ @18 cm æ²’æ•¸éŒ¯ã€‚
+- ç¼º **$M_{2,\min} = P_u(1.5+0.03h) = 12.0$ tfÂ·m** çš„æª¢æ ¸ï¼ˆ$27 > 12$ ä¸æŽ§åˆ¶ï¼Œç­”æ¡ˆä¸è®Šï¼Œä½†å·é¢çœç•¥æœƒæ‰£åˆ†ï¼‰ï¼›
+  å·²è£œä¸Šï¼Œä¸¦é™„ã€Œè‹¥ç”± $M_{2,\min}$ æŽ§åˆ¶å‰‡ $C_m$ é ˆå– 1.0ã€çš„é…å¥—è¦å®šï¼Œä»¥åŠ $kl_u/r < 100$ã€ç•Œé™ä¸Šé™ 40 å…©é …æª¢æ ¸ã€‚
+- Â§5 æœ‰ä¸€æ ¼ `$|M_1/M_2|$` æœªè·³è„« `|`ï¼Œæ•´å¼µè¡¨ä¸æ¸²æŸ“ï¼›å·²æ”¹ç‚º `\lvertâ€¦\rvert`ã€‚$E_c$ ç²¾åº¦ 250,995 â†’ 250,998ã€‚
+- **è·¨æª”**ï¼š`methods/moment-magnifier-method` æŠŠ 318-14 æ–°æ…£ä¾‹ï¼ˆå–®æ›²åº¦å–è² ï¼‰é… 318-02 èˆŠå…¬å¼ï¼Œ
+  ç…§å®ƒè‡ªå·±çš„è¦å‰‡ç®—æœ¬é¡Œæœƒå¾—ã€Œä¸éœ€æ”¾å¤§ã€$M_c = 27$ã€ï¼Œèˆ‡æœ¬é¡Œç›´æŽ¥è¡çªã€‚å·²è£œå…©ç‰ˆå°ç…§è¡¨ä¸¦ä¿®æ­£ $C_m$ è¡¨åˆ—èˆ‡ç›¸é—œé¡Œé€£çµã€‚
 
-### 五、向量圖解：六題共 17 張
+### äº”ã€å‘é‡åœ–è§£ï¼šå…­é¡Œå…± 17 å¼µ
 
-每張都對應一個具體的錯，產圖腳本檔尾對 §4 公佈值做 assert（六支腳本共 97 項檢核，在有 structdraw.py 的環境下全數通過）：
+æ¯å¼µéƒ½å°æ‡‰ä¸€å€‹å…·é«”çš„éŒ¯ï¼Œç”¢åœ–è…³æœ¬æª”å°¾å° Â§4 å…¬ä½ˆå€¼åš assertï¼ˆå…­æ”¯è…³æœ¬å…± 97 é …æª¢æ ¸ï¼Œåœ¨æœ‰ structdraw.py çš„ç’°å¢ƒä¸‹å…¨æ•¸é€šéŽï¼‰ï¼š
 
-| 題號 | 張數 | 最關鍵的一張 |
+| é¡Œè™Ÿ | å¼µæ•¸ | æœ€é—œéµçš„ä¸€å¼µ |
 |------|:---:|------|
-| RC-2010-1 | 3 | 圖 2 $P_y$/$P_u$ 三段分解——蓋層損失 233.9 vs 圍束補償 233.6，並把漏 0.85 的錯誤式並排讓它爆表 |
-| RC-2004-3 | 2 | 圖 2 五個間距上限長條圖，畫出 7.4 與 7.5 越線的位置 |
-| RC-2017-1 | 4 | 圖 3 雙折線分區積分 vs Whitney 疊圖，標出 $C_c$ 差 14.1% |
-| RC-2006-2 | 3 | 圖 2 單曲率 vs 雙曲率的變形＋彎矩圖對照 |
-| RC-2011-3 | 3 | 圖 3 $\phi_y$ 彈性 NA vs $\phi_u$ Whitney NA 雙應變圖 |
-| RC-2008-2 | 3 | 圖 3 P-M 四點定位，同時標標稱峰值 87.68 與設計峰值 64.90 |
+| RC-2010-1 | 3 | åœ– 2 $P_y$/$P_u$ ä¸‰æ®µåˆ†è§£â€”â€”è“‹å±¤æå¤± 233.9 vs åœæŸè£œå„Ÿ 233.6ï¼Œä¸¦æŠŠæ¼ 0.85 çš„éŒ¯èª¤å¼ä¸¦æŽ’è®“å®ƒçˆ†è¡¨ |
+| RC-2004-3 | 2 | åœ– 2 äº”å€‹é–“è·ä¸Šé™é•·æ¢åœ–ï¼Œç•«å‡º 7.4 èˆ‡ 7.5 è¶Šç·šçš„ä½ç½® |
+| RC-2017-1 | 4 | åœ– 3 é›™æŠ˜ç·šåˆ†å€ç©åˆ† vs Whitney ç–Šåœ–ï¼Œæ¨™å‡º $C_c$ å·® 14.1% |
+| RC-2006-2 | 3 | åœ– 2 å–®æ›²çŽ‡ vs é›™æ›²çŽ‡çš„è®Šå½¢ï¼‹å½ŽçŸ©åœ–å°ç…§ |
+| RC-2011-3 | 3 | åœ– 3 $\phi_y$ å½ˆæ€§ NA vs $\phi_u$ Whitney NA é›™æ‡‰è®Šåœ– |
+| RC-2008-2 | 3 | åœ– 3 P-M å››é»žå®šä½ï¼ŒåŒæ™‚æ¨™æ¨™ç¨±å³°å€¼ 87.68 èˆ‡è¨­è¨ˆå³°å€¼ 64.90 |
 
-- 新增 `scripts/apply_figs.py`：把圖與圖說插回正本（圖 1 到 §2 之前、其餘到 §5 之前）並重建 problems-view，**冪等**。
-- `render.py` 溢出／XML 檢查全數 0 個需修正；六題的 problems-view 已重建並通過 `--check`。
-- RC-2011-3 的圖採**解讀 A**（$P_n = 0.9P_b$，使用者定案），腳本檔頭已註明。
+- æ–°å¢ž `scripts/apply_figs.py`ï¼šæŠŠåœ–èˆ‡åœ–èªªæ’å›žæ­£æœ¬ï¼ˆåœ– 1 åˆ° Â§2 ä¹‹å‰ã€å…¶é¤˜åˆ° Â§5 ä¹‹å‰ï¼‰ä¸¦é‡å»º problems-viewï¼Œ**å†ªç­‰**ã€‚
+- `render.py` æº¢å‡ºï¼XML æª¢æŸ¥å…¨æ•¸ 0 å€‹éœ€ä¿®æ­£ï¼›å…­é¡Œçš„ problems-view å·²é‡å»ºä¸¦é€šéŽ `--check`ã€‚
+- RC-2011-3 çš„åœ–æŽ¡**è§£è®€ A**ï¼ˆ$P_n = 0.9P_b$ï¼Œä½¿ç”¨è€…å®šæ¡ˆï¼‰ï¼Œè…³æœ¬æª”é ­å·²è¨»æ˜Žã€‚
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. φ 公式仍有 3 份用舊式（RC-2004-2、RC-2015-2、RC-2015-3），未統一為現行式。
-2. `study/lecture-RC-U1-2.html` 的範例 D 仍寫 $P_u = 1{,}880$ tf，且「$\rho_{s,\min}$ 推導」段落用它自己的公式推不出來——需同步本次 RC-2010-1 的修正。
-3. `wiki/concepts/PM-INTERACTION-DIAGRAM.md` 等衍生層已於前一則修過，但 `RC-2010-1`、`RC-2004-3` 的相關概念頁尚未逐一比對。
-4. 前一則列出的兩件事（RC-2023-1 摘要頁是正本複本、problems-view 35 頁數學式壞掉）仍未處理。
+1. Ï† å…¬å¼ä»æœ‰ 3 ä»½ç”¨èˆŠå¼ï¼ˆRC-2004-2ã€RC-2015-2ã€RC-2015-3ï¼‰ï¼Œæœªçµ±ä¸€ç‚ºç¾è¡Œå¼ã€‚
+2. `study/lecture-RC-U1-2.html` çš„ç¯„ä¾‹ D ä»å¯« $P_u = 1{,}880$ tfï¼Œä¸”ã€Œ$\rho_{s,\min}$ æŽ¨å°Žã€æ®µè½ç”¨å®ƒè‡ªå·±çš„å…¬å¼æŽ¨ä¸å‡ºä¾†â€”â€”éœ€åŒæ­¥æœ¬æ¬¡ RC-2010-1 çš„ä¿®æ­£ã€‚
+3. `wiki/concepts/PM-INTERACTION-DIAGRAM.md` ç­‰è¡ç”Ÿå±¤å·²æ–¼å‰ä¸€å‰‡ä¿®éŽï¼Œä½† `RC-2010-1`ã€`RC-2004-3` çš„ç›¸é—œæ¦‚å¿µé å°šæœªé€ä¸€æ¯”å°ã€‚
+4. å‰ä¸€å‰‡åˆ—å‡ºçš„å…©ä»¶äº‹ï¼ˆRC-2023-1 æ‘˜è¦é æ˜¯æ­£æœ¬è¤‡æœ¬ã€problems-view 35 é æ•¸å­¸å¼å£žæŽ‰ï¼‰ä»æœªè™•ç†ã€‚
 
-## 2026-08-21 XCHECK：RC 梁題七題複核與改正
+## 2026-08-21 XCHECKï¼šRC æ¢é¡Œä¸ƒé¡Œè¤‡æ ¸èˆ‡æ”¹æ­£
 
-**範圍：** RC-2023-2、RC-2011-2、RC-2007-1、RC-2015-2、RC-2016-1、RC-2024-1、RC-2019-1
-（全為 RC-U1-1 梁彎矩，RC-2016-1 副分類 RC-U3-3）
-**方法：** 逐式獨立重算（Python，非重讀原文）＋比對 `raw/exams/` 原卷 PDF ＋放大附圖判讀 ＋比對全庫既有約定。
-完整報告：`複核報告_RC梁題七題_2026-08-21.md`（庫根目錄）。
+**ç¯„åœï¼š** RC-2023-2ã€RC-2011-2ã€RC-2007-1ã€RC-2015-2ã€RC-2016-1ã€RC-2024-1ã€RC-2019-1
+ï¼ˆå…¨ç‚º RC-U1-1 æ¢å½ŽçŸ©ï¼ŒRC-2016-1 å‰¯åˆ†é¡ž RC-U3-3ï¼‰
+**æ–¹æ³•ï¼š** é€å¼ç¨ç«‹é‡ç®—ï¼ˆPythonï¼Œéžé‡è®€åŽŸæ–‡ï¼‰ï¼‹æ¯”å° `raw/exams/` åŽŸå· PDF ï¼‹æ”¾å¤§é™„åœ–åˆ¤è®€ ï¼‹æ¯”å°å…¨åº«æ—¢æœ‰ç´„å®šã€‚
+å®Œæ•´å ±å‘Šï¼š`è¤‡æ ¸å ±å‘Š_RCæ¢é¡Œä¸ƒé¡Œ_2026-08-21.md`ï¼ˆåº«æ ¹ç›®éŒ„ï¼‰ã€‚
 
-### 一、RC-2015-2：主線答案改了（最嚴重的一件）
+### ä¸€ã€RC-2015-2ï¼šä¸»ç·šç­”æ¡ˆæ”¹äº†ï¼ˆæœ€åš´é‡çš„ä¸€ä»¶ï¼‰
 
-原解取「最大鋼筋量」$\varepsilon_t = 0.004$ 得 $\varphi M_n = 114.0$ tf·m。**答案位置錯**。
+åŽŸè§£å–ã€Œæœ€å¤§é‹¼ç­‹é‡ã€$\varepsilon_t = 0.004$ å¾— $\varphi M_n = 114.0$ tfÂ·mã€‚**ç­”æ¡ˆä½ç½®éŒ¯**ã€‚
 
-原卷寫「在**適當設置拉力鋼筋後**，此梁斷面可具有之最大設計彎矩強度」——$A_s$ 是可調變數，
-所求為 $\max_c[\varphi M_n]$。掃描結果峰值在**拉力控制界限** $\varepsilon_t = 0.005$：
+åŽŸå·å¯«ã€Œåœ¨**é©ç•¶è¨­ç½®æ‹‰åŠ›é‹¼ç­‹å¾Œ**ï¼Œæ­¤æ¢æ–·é¢å¯å…·æœ‰ä¹‹æœ€å¤§è¨­è¨ˆå½ŽçŸ©å¼·åº¦ã€â€”â€”$A_s$ æ˜¯å¯èª¿è®Šæ•¸ï¼Œ
+æ‰€æ±‚ç‚º $\max_c[\varphi M_n]$ã€‚æŽƒæçµæžœå³°å€¼åœ¨**æ‹‰åŠ›æŽ§åˆ¶ç•Œé™** $\varepsilon_t = 0.005$ï¼š
 
 | $\varepsilon_t$ | $A_s$ | $M_n$ | $\varphi$ | $\varphi M_n$ |
 |---|---|---|---|---|
 | 0.004 | 62.97 | 139.55 | 0.815 | 113.7 |
-| 0.005 | 56.27 | 127.53 | 0.900 | **114.8 ← 峰值** |
+| 0.005 | 56.27 | 127.53 | 0.900 | **114.8 â† å³°å€¼** |
 | 0.006 | 50.78 | 116.98 | 0.900 | 105.3 |
 
-$\varphi$ 相對自身漲 10.4%、$M_n$ 只掉 8.6% → 折點極大值。**用舊式 φ 算結論一樣**（113.97 < 114.78）。
-旁證：同卷第一題 RC-2015-1 用了一模一樣的句型（「在適當調整軸壓載重後…」），已於 2026-08-21 定案在拉力控制界限。
+$\varphi$ ç›¸å°è‡ªèº«æ¼² 10.4%ã€$M_n$ åªæŽ‰ 8.6% â†’ æŠ˜é»žæ¥µå¤§å€¼ã€‚**ç”¨èˆŠå¼ Ï† ç®—çµè«–ä¸€æ¨£**ï¼ˆ113.97 < 114.78ï¼‰ã€‚
+æ—è­‰ï¼šåŒå·ç¬¬ä¸€é¡Œ RC-2015-1 ç”¨äº†ä¸€æ¨¡ä¸€æ¨£çš„å¥åž‹ï¼ˆã€Œåœ¨é©ç•¶èª¿æ•´è»¸å£“è¼‰é‡å¾Œâ€¦ã€ï¼‰ï¼Œå·²æ–¼ 2026-08-21 å®šæ¡ˆåœ¨æ‹‰åŠ›æŽ§åˆ¶ç•Œé™ã€‚
 
-- 主線改為 114.8 tf·m（$A_s = 56.27$、$c = 23.63$、$\varphi = 0.90$），$\varepsilon_t = 0.004$ 保留為對照，附六列掃描表證明單峰。
-- §5 抵換表的「最大韌性 φMn 約 9.5 tf·m」**錯一倍**，實算 18.6（$M_n = 20.7$，$A'_s$ 落在拉力區的 14,351 kgf 那一項漏掉會少 3%）；同表 $\mu \approx 2.0$ 實算 1.87。整表重做。
-- φ 過渡區公式由舊式改為現行式（0.817 → 0.815）。**[[solve-design-vs-nominal]] 的待統一清單剩 RC-2004-2、RC-2015-3。**
+- ä¸»ç·šæ”¹ç‚º 114.8 tfÂ·mï¼ˆ$A_s = 56.27$ã€$c = 23.63$ã€$\varphi = 0.90$ï¼‰ï¼Œ$\varepsilon_t = 0.004$ ä¿ç•™ç‚ºå°ç…§ï¼Œé™„å…­åˆ—æŽƒæè¡¨è­‰æ˜Žå–®å³°ã€‚
+- Â§5 æŠµæ›è¡¨çš„ã€Œæœ€å¤§éŸŒæ€§ Ï†Mn ç´„ 9.5 tfÂ·mã€**éŒ¯ä¸€å€**ï¼Œå¯¦ç®— 18.6ï¼ˆ$M_n = 20.7$ï¼Œ$A'_s$ è½åœ¨æ‹‰åŠ›å€çš„ 14,351 kgf é‚£ä¸€é …æ¼æŽ‰æœƒå°‘ 3%ï¼‰ï¼›åŒè¡¨ $\mu \approx 2.0$ å¯¦ç®— 1.87ã€‚æ•´è¡¨é‡åšã€‚
+- Ï† éŽæ¸¡å€å…¬å¼ç”±èˆŠå¼æ”¹ç‚ºç¾è¡Œå¼ï¼ˆ0.817 â†’ 0.815ï¼‰ã€‚**[[solve-design-vs-nominal]] çš„å¾…çµ±ä¸€æ¸…å–®å‰© RC-2004-2ã€RC-2015-3ã€‚**
 
-### 二、RC-2011-2：兩個實質問題 + 算術
+### äºŒã€RC-2011-2ï¼šå…©å€‹å¯¦è³ªå•é¡Œ + ç®—è¡“
 
-1. **漏檢 $\varepsilon_t \geq 0.004$。** $\varepsilon_t = 0.002771 < 0.004$，依土木401／ACI §9.3.3.1
-   **$A_s = 0.9A_{sb}$ 是規範禁止的超筋斷面**。出題者給 0.9 就是要看這個。已補 §5 ②。
-2. **附圖尺寸鏈歧義。** 右側「10→90→10」是背對背箭頭的連續尺寸鏈，直讀為 $h=110$、$d=100$
-   → $\varphi M_n = 358.7$ tf·m。**定案採原讀法 $h=100$、$d=90$**：量像素後翼板 10 cm 與底部保護層 10 cm
-   都是 35～38 px、全高 354 px ≈ 101 cm，整張圖只有對 $h=100$ 才合比例，是「90」的下箭頭畫錯位置。
-   已在 §1 圖說與 §5 ⑥ 明寫歧義並留檔兩組數字。
-3. **算術：** $C_c$ 626,630 → **627,103**；連鎖修正 $A_{sb}$ 149.2→149.31、$A_s$ 134.3→134.38、
-   $a$ 37.40→37.43、$c_u$ 46.75→46.79、$\varepsilon_t$ 0.002775→0.002771、$\phi$ 0.711→0.7105、
-   $M_n$ 418.3→418.7、$\varphi M_n$ 297.4→**297.5**、$k_yd$ 40.94→40.95。$\mu_\phi$ 仍為 1.53。
-4. §5 ① 的 $A_{sb,\text{web}}=120.9$ 與 $A_{sb,\text{rect}}=121.1$ 自相矛盾（同一個量），統一為 120.97 並補 $\rho_b$ 推導。
-5. §5 ③ 「矩形應力塊力臂較大所以中性軸要更深」因果講反——$k_yd$ 是幾何量（轉換斷面一次矩），
-   與載重無關；$c_u$ 才由力平衡決定。已改寫，並註明兩者深淺無普適因果。
+1. **æ¼æª¢ $\varepsilon_t \geq 0.004$ã€‚** $\varepsilon_t = 0.002771 < 0.004$ï¼Œä¾åœŸæœ¨401ï¼ACI Â§9.3.3.1
+   **$A_s = 0.9A_{sb}$ æ˜¯è¦ç¯„ç¦æ­¢çš„è¶…ç­‹æ–·é¢**ã€‚å‡ºé¡Œè€…çµ¦ 0.9 å°±æ˜¯è¦çœ‹é€™å€‹ã€‚å·²è£œ Â§5 â‘¡ã€‚
+2. **é™„åœ–å°ºå¯¸éˆæ­§ç¾©ã€‚** å³å´ã€Œ10â†’90â†’10ã€æ˜¯èƒŒå°èƒŒç®­é ­çš„é€£çºŒå°ºå¯¸éˆï¼Œç›´è®€ç‚º $h=110$ã€$d=100$
+   â†’ $\varphi M_n = 358.7$ tfÂ·mã€‚**å®šæ¡ˆæŽ¡åŽŸè®€æ³• $h=100$ã€$d=90$**ï¼šé‡åƒç´ å¾Œç¿¼æ¿ 10 cm èˆ‡åº•éƒ¨ä¿è­·å±¤ 10 cm
+   éƒ½æ˜¯ 35ï½ž38 pxã€å…¨é«˜ 354 px â‰ˆ 101 cmï¼Œæ•´å¼µåœ–åªæœ‰å° $h=100$ æ‰åˆæ¯”ä¾‹ï¼Œæ˜¯ã€Œ90ã€çš„ä¸‹ç®­é ­ç•«éŒ¯ä½ç½®ã€‚
+   å·²åœ¨ Â§1 åœ–èªªèˆ‡ Â§5 â‘¥ æ˜Žå¯«æ­§ç¾©ä¸¦ç•™æª”å…©çµ„æ•¸å­—ã€‚
+3. **ç®—è¡“ï¼š** $C_c$ 626,630 â†’ **627,103**ï¼›é€£éŽ–ä¿®æ­£ $A_{sb}$ 149.2â†’149.31ã€$A_s$ 134.3â†’134.38ã€
+   $a$ 37.40â†’37.43ã€$c_u$ 46.75â†’46.79ã€$\varepsilon_t$ 0.002775â†’0.002771ã€$\phi$ 0.711â†’0.7105ã€
+   $M_n$ 418.3â†’418.7ã€$\varphi M_n$ 297.4â†’**297.5**ã€$k_yd$ 40.94â†’40.95ã€‚$\mu_\phi$ ä»ç‚º 1.53ã€‚
+4. Â§5 â‘  çš„ $A_{sb,\text{web}}=120.9$ èˆ‡ $A_{sb,\text{rect}}=121.1$ è‡ªç›¸çŸ›ç›¾ï¼ˆåŒä¸€å€‹é‡ï¼‰ï¼Œçµ±ä¸€ç‚º 120.97 ä¸¦è£œ $\rho_b$ æŽ¨å°Žã€‚
+5. Â§5 â‘¢ ã€ŒçŸ©å½¢æ‡‰åŠ›å¡ŠåŠ›è‡‚è¼ƒå¤§æ‰€ä»¥ä¸­æ€§è»¸è¦æ›´æ·±ã€å› æžœè¬›åâ€”â€”$k_yd$ æ˜¯å¹¾ä½•é‡ï¼ˆè½‰æ›æ–·é¢ä¸€æ¬¡çŸ©ï¼‰ï¼Œ
+   èˆ‡è¼‰é‡ç„¡é—œï¼›$c_u$ æ‰ç”±åŠ›å¹³è¡¡æ±ºå®šã€‚å·²æ”¹å¯«ï¼Œä¸¦è¨»æ˜Žå…©è€…æ·±æ·ºç„¡æ™®é©å› æžœã€‚
 
-### 三、RC-2016-1：結論對，過程有三處要補
+### ä¸‰ã€RC-2016-1ï¼šçµè«–å°ï¼ŒéŽç¨‹æœ‰ä¸‰è™•è¦è£œ
 
-1. **漏算梁端正彎矩。** $M_E = 16.5 > 0.9M_{D,\text{end}} = 8.44$，地震反向那端**翻號**成 $+8.06$ tf·m。
-   小於跨中 9.375 故底筋仍由跨中控制、答案不變，但組合表必須有這一格。已新增「組合四」與表列。
-2. **Step 7 不等式寫反**（原寫 $7.35 < 7.23$，實為 >），且 $A_s$ 單位打成 tf·m。已改寫為表格。
-3. **耐震底筋規定比的是彎矩強度不是面積。** 實算 $M_{n,\text{bot}}/M_{n,\text{top}} = 19.84/38.41 = 0.517 \geq 0.50$ ✓（僅餘 3%）；
-   面積比 0.535 較樂觀、**方向固定偏不保守**。新增 §4 Step 8。
-4. $\rho_{\max}$ 由舊制 $0.75\rho_b$（0.02137）改為 $\varepsilon_t \geq 0.004$（$A_{s,\max} = 45.52$ cm²），與 RC-2024-1 統一。
-5. 補 4-D22 的間距檢核（$s = 5.37$ cm ✓）與 $d = 63.9 \approx 63$ 的相符性。
+1. **æ¼ç®—æ¢ç«¯æ­£å½ŽçŸ©ã€‚** $M_E = 16.5 > 0.9M_{D,\text{end}} = 8.44$ï¼Œåœ°éœ‡åå‘é‚£ç«¯**ç¿»è™Ÿ**æˆ $+8.06$ tfÂ·mã€‚
+   å°æ–¼è·¨ä¸­ 9.375 æ•…åº•ç­‹ä»ç”±è·¨ä¸­æŽ§åˆ¶ã€ç­”æ¡ˆä¸è®Šï¼Œä½†çµ„åˆè¡¨å¿…é ˆæœ‰é€™ä¸€æ ¼ã€‚å·²æ–°å¢žã€Œçµ„åˆå››ã€èˆ‡è¡¨åˆ—ã€‚
+2. **Step 7 ä¸ç­‰å¼å¯«å**ï¼ˆåŽŸå¯« $7.35 < 7.23$ï¼Œå¯¦ç‚º >ï¼‰ï¼Œä¸” $A_s$ å–®ä½æ‰“æˆ tfÂ·mã€‚å·²æ”¹å¯«ç‚ºè¡¨æ ¼ã€‚
+3. **è€éœ‡åº•ç­‹è¦å®šæ¯”çš„æ˜¯å½ŽçŸ©å¼·åº¦ä¸æ˜¯é¢ç©ã€‚** å¯¦ç®— $M_{n,\text{bot}}/M_{n,\text{top}} = 19.84/38.41 = 0.517 \geq 0.50$ âœ“ï¼ˆåƒ…é¤˜ 3%ï¼‰ï¼›
+   é¢ç©æ¯” 0.535 è¼ƒæ¨‚è§€ã€**æ–¹å‘å›ºå®šåä¸ä¿å®ˆ**ã€‚æ–°å¢ž Â§4 Step 8ã€‚
+4. $\rho_{\max}$ ç”±èˆŠåˆ¶ $0.75\rho_b$ï¼ˆ0.02137ï¼‰æ”¹ç‚º $\varepsilon_t \geq 0.004$ï¼ˆ$A_{s,\max} = 45.52$ cmÂ²ï¼‰ï¼Œèˆ‡ RC-2024-1 çµ±ä¸€ã€‚
+5. è£œ 4-D22 çš„é–“è·æª¢æ ¸ï¼ˆ$s = 5.37$ cm âœ“ï¼‰èˆ‡ $d = 63.9 \approx 63$ çš„ç›¸ç¬¦æ€§ã€‚
 
-### 四、RC-2023-2：算式全對，但原卷條件互相矛盾
+### å››ã€RC-2023-2ï¼šç®—å¼å…¨å°ï¼Œä½†åŽŸå·æ¢ä»¶äº’ç›¸çŸ›ç›¾
 
-原卷同時要求「8 根 D32 **採雙排排列**」與「間距**均依規範最小值**」，在 $b_w = 30$ 下不可能同時成立：
+åŽŸå·åŒæ™‚è¦æ±‚ã€Œ8 æ ¹ D32 **æŽ¡é›™æŽ’æŽ’åˆ—**ã€èˆ‡ã€Œé–“è·**å‡ä¾è¦ç¯„æœ€å°å€¼**ã€ï¼Œåœ¨ $b_w = 30$ ä¸‹ä¸å¯èƒ½åŒæ™‚æˆç«‹ï¼š
 
-$$s_{\text{clear}} = \frac{30 - 8 - 2 - 4(3.22)}{3} = 2.37 \text{ cm} < d_b = 3.22 \text{ cm}\ ✗$$
+$$s_{\text{clear}} = \frac{30 - 8 - 2 - 4(3.22)}{3} = 2.37 \text{ cm} < d_b = 3.22 \text{ cm}\ âœ—$$
 
-三排（3+3+2）才合格，$d$ 由 60.53 掉到 58.38、$\varphi M_n$ 由 **136 → 130.6 tf·m（−3.9%）**。
-主線維持 4+4（依原卷文字、坊間通行），§1 與 §5 ① 明寫矛盾並附對照表。
-順帶記下一個結構：**換排列只改力臂，不改 $c$／$a$／$f'_s$**（後者由力平衡決定，與 $d$ 無關）。
+ä¸‰æŽ’ï¼ˆ3+3+2ï¼‰æ‰åˆæ ¼ï¼Œ$d$ ç”± 60.53 æŽ‰åˆ° 58.38ã€$\varphi M_n$ ç”± **136 â†’ 130.6 tfÂ·mï¼ˆâˆ’3.9%ï¼‰**ã€‚
+ä¸»ç·šç¶­æŒ 4+4ï¼ˆä¾åŽŸå·æ–‡å­—ã€åŠé–“é€šè¡Œï¼‰ï¼ŒÂ§1 èˆ‡ Â§5 â‘  æ˜Žå¯«çŸ›ç›¾ä¸¦é™„å°ç…§è¡¨ã€‚
+é †å¸¶è¨˜ä¸‹ä¸€å€‹çµæ§‹ï¼š**æ›æŽ’åˆ—åªæ”¹åŠ›è‡‚ï¼Œä¸æ”¹ $c$ï¼$a$ï¼$f'_s$**ï¼ˆå¾Œè€…ç”±åŠ›å¹³è¡¡æ±ºå®šï¼Œèˆ‡ $d$ ç„¡é—œï¼‰ã€‚
 
-### 五、RC-2019-1：進位
+### äº”ã€RC-2019-1ï¼šé€²ä½
 
-$M_u/f_y = 8{,}572{,}000/4200 = **2040.95**$（原寫 2041.4）→ 常數項 213.1 → **212.69** → $A_s$ 45.7 → **45.5**（精解 45.52）。
-原答案偏保守 0.4%、§4.6 自我驗算也自洽，但常數項本身是錯的。另補 $\varepsilon_t = 0.00450 \geq 0.004$ 的延性檢核。
+$M_u/f_y = 8{,}572{,}000/4200 = **2040.95**$ï¼ˆåŽŸå¯« 2041.4ï¼‰â†’ å¸¸æ•¸é … 213.1 â†’ **212.69** â†’ $A_s$ 45.7 â†’ **45.5**ï¼ˆç²¾è§£ 45.52ï¼‰ã€‚
+åŽŸç­”æ¡ˆåä¿å®ˆ 0.4%ã€Â§4.6 è‡ªæˆ‘é©—ç®—ä¹Ÿè‡ªæ´½ï¼Œä½†å¸¸æ•¸é …æœ¬èº«æ˜¯éŒ¯çš„ã€‚å¦è£œ $\varepsilon_t = 0.00450 \geq 0.004$ çš„å»¶æ€§æª¢æ ¸ã€‚
 
-### 六、判定無實質錯誤
+### å…­ã€åˆ¤å®šç„¡å¯¦è³ªéŒ¯èª¤
 
-**RC-2007-1、RC-2024-1** 全部複算相符。各補一件：
-- RC-2007-1：層間距寫法不一致（文字說取 3 cm、計算用 2.87）已統一；新增「餘裕只有 0.9%」的敏感度表
-  （層間距取 4.0 cm 時 $\varphi M_n = 70.20 < M_u$ 就不足），並註明備案 7-D29 **排不成 4+3**（$s = 2.84 < 2.87$）須三排。
-- RC-2024-1：新增高強度鋼筋的拉力控制界限說明（$\varepsilon_{ty}+0.003$，SD690 為 0.006382，不是 0.005）。
+**RC-2007-1ã€RC-2024-1** å…¨éƒ¨è¤‡ç®—ç›¸ç¬¦ã€‚å„è£œä¸€ä»¶ï¼š
+- RC-2007-1ï¼šå±¤é–“è·å¯«æ³•ä¸ä¸€è‡´ï¼ˆæ–‡å­—èªªå– 3 cmã€è¨ˆç®—ç”¨ 2.87ï¼‰å·²çµ±ä¸€ï¼›æ–°å¢žã€Œé¤˜è£•åªæœ‰ 0.9%ã€çš„æ•æ„Ÿåº¦è¡¨
+  ï¼ˆå±¤é–“è·å– 4.0 cm æ™‚ $\varphi M_n = 70.20 < M_u$ å°±ä¸è¶³ï¼‰ï¼Œä¸¦è¨»æ˜Žå‚™æ¡ˆ 7-D29 **æŽ’ä¸æˆ 4+3**ï¼ˆ$s = 2.84 < 2.87$ï¼‰é ˆä¸‰æŽ’ã€‚
+- RC-2024-1ï¼šæ–°å¢žé«˜å¼·åº¦é‹¼ç­‹çš„æ‹‰åŠ›æŽ§åˆ¶ç•Œé™èªªæ˜Žï¼ˆ$\varepsilon_{ty}+0.003$ï¼ŒSD690 ç‚º 0.006382ï¼Œä¸æ˜¯ 0.005ï¼‰ã€‚
 
-### 七、跨檔同步
+### ä¸ƒã€è·¨æª”åŒæ­¥
 
-- `wiki/code-ref/ACI-318.md` §21.2.1/21.2.2：拉力控制界限由固定 0.005 改為 $\varepsilon_{ty}+0.003$，
-  補 §9.3.3.1（梁 $\varepsilon_t \geq 0.004$）一列，並加高強度鋼筋警告框。
-- `wiki/problems/` 七頁摘要：標題答案、核心考點、關鍵步驟、陷阱、標籤全部同步。
-- `raw/json/question_index.json`：七題 `verificationStatus` 改 **verified**，`tags` 由正本 §標籤 重新抓取
-  （RC-2011-2 9→13、RC-2015-2 8→10、RC-2023-2 8→10）。
-- `study/problems-view/` 七頁以 `scripts/gen_problems_view.py` 單題重建，重跑 `--check` 得 **same=7**（管線冪等）。
-  未動 `--all`。
+- `wiki/code-ref/ACI-318.md` Â§21.2.1/21.2.2ï¼šæ‹‰åŠ›æŽ§åˆ¶ç•Œé™ç”±å›ºå®š 0.005 æ”¹ç‚º $\varepsilon_{ty}+0.003$ï¼Œ
+  è£œ Â§9.3.3.1ï¼ˆæ¢ $\varepsilon_t \geq 0.004$ï¼‰ä¸€åˆ—ï¼Œä¸¦åŠ é«˜å¼·åº¦é‹¼ç­‹è­¦å‘Šæ¡†ã€‚
+- `wiki/problems/` ä¸ƒé æ‘˜è¦ï¼šæ¨™é¡Œç­”æ¡ˆã€æ ¸å¿ƒè€ƒé»žã€é—œéµæ­¥é©Ÿã€é™·é˜±ã€æ¨™ç±¤å…¨éƒ¨åŒæ­¥ã€‚
+- `raw/json/question_index.json`ï¼šä¸ƒé¡Œ `verificationStatus` æ”¹ **verified**ï¼Œ`tags` ç”±æ­£æœ¬ Â§æ¨™ç±¤ é‡æ–°æŠ“å–
+  ï¼ˆRC-2011-2 9â†’13ã€RC-2015-2 8â†’10ã€RC-2023-2 8â†’10ï¼‰ã€‚
+- `study/problems-view/` ä¸ƒé ä»¥ `scripts/gen_problems_view.py` å–®é¡Œé‡å»ºï¼Œé‡è·‘ `--check` å¾— **same=7**ï¼ˆç®¡ç·šå†ªç­‰ï¼‰ã€‚
+  æœªå‹• `--all`ã€‚
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. φ 舊式仍有 2 份：RC-2004-2、RC-2015-3。
-2. 前兩則列出的兩件事（RC-2023-1 摘要頁是正本複本、problems-view 35 頁數學式壞掉）仍未處理。
-3. 本次七題皆無向量圖解（`figs/`），RC-2015-2 的 φMn–εt 掃描曲線與 RC-2011-2 的兩種尺寸讀法對照圖值得補。
-4. `_to_delete/patch-2026-08-21.tgz` 為本次套改用的暫存包，可刪。
+1. Ï† èˆŠå¼ä»æœ‰ 2 ä»½ï¼šRC-2004-2ã€RC-2015-3ã€‚
+2. å‰å…©å‰‡åˆ—å‡ºçš„å…©ä»¶äº‹ï¼ˆRC-2023-1 æ‘˜è¦é æ˜¯æ­£æœ¬è¤‡æœ¬ã€problems-view 35 é æ•¸å­¸å¼å£žæŽ‰ï¼‰ä»æœªè™•ç†ã€‚
+3. æœ¬æ¬¡ä¸ƒé¡Œçš†ç„¡å‘é‡åœ–è§£ï¼ˆ`figs/`ï¼‰ï¼ŒRC-2015-2 çš„ Ï†Mnâ€“Îµt æŽƒææ›²ç·šèˆ‡ RC-2011-2 çš„å…©ç¨®å°ºå¯¸è®€æ³•å°ç…§åœ–å€¼å¾—è£œã€‚
+4. `_to_delete/patch-2026-08-21.tgz` ç‚ºæœ¬æ¬¡å¥—æ”¹ç”¨çš„æš«å­˜åŒ…ï¼Œå¯åˆªã€‚
 
-## 2026-08-22 XCHECK：RC 剪力／扭力題五題複核與改正
+## 2026-08-22 XCHECKï¼šRC å‰ªåŠ›ï¼æ‰­åŠ›é¡Œäº”é¡Œè¤‡æ ¸èˆ‡æ”¹æ­£
 
-**範圍：** RC-2020-2、RC-2014-3、RC-2009-3、RC-2017-2、RC-2023-3（全為 RC-U2-1，副分類：RC-2017-2 → RC-U1-2、RC-2023-3 → RC-U2-2）
-**方法：** 逐式獨立重算（Python，非重讀原文）＋以 `pdftotext`／`pdftoppm` 取回 `raw/exams/` 原卷原文與附圖逐格判讀
-＋依使用者指示「原卷規範為主線＋最新規範（土木 401-112／ACI 318-19）對照」。
+**ç¯„åœï¼š** RC-2020-2ã€RC-2014-3ã€RC-2009-3ã€RC-2017-2ã€RC-2023-3ï¼ˆå…¨ç‚º RC-U2-1ï¼Œå‰¯åˆ†é¡žï¼šRC-2017-2 â†’ RC-U1-2ã€RC-2023-3 â†’ RC-U2-2ï¼‰
+**æ–¹æ³•ï¼š** é€å¼ç¨ç«‹é‡ç®—ï¼ˆPythonï¼Œéžé‡è®€åŽŸæ–‡ï¼‰ï¼‹ä»¥ `pdftotext`ï¼`pdftoppm` å–å›ž `raw/exams/` åŽŸå·åŽŸæ–‡èˆ‡é™„åœ–é€æ ¼åˆ¤è®€
+ï¼‹ä¾ä½¿ç”¨è€…æŒ‡ç¤ºã€ŒåŽŸå·è¦ç¯„ç‚ºä¸»ç·šï¼‹æœ€æ–°è¦ç¯„ï¼ˆåœŸæœ¨ 401-112ï¼ACI 318-19ï¼‰å°ç…§ã€ã€‚
 
-### 總表
+### ç¸½è¡¨
 
-| 題號 | 判定 | 主線答案（改後） | 改前 |
+| é¡Œè™Ÿ | åˆ¤å®š | ä¸»ç·šç­”æ¡ˆï¼ˆæ”¹å¾Œï¼‰ | æ”¹å‰ |
 |---|:---:|---|---|
-| RC-2020-2 | 🔴 主線錯 | (一) **不可** d 偏移；(二) $s_{\max}=16.6$ cm；(三) 97.8 tf | (一) 可以；(二) 24.1 cm；(三) 97.8 tf |
-| RC-2014-3 | 🔴 主線錯 | 18.75 / **32.40** / **10.57** tf | 18.75 / 28.01 / 16.87 tf |
-| RC-2009-3 | 🔴 幾何判讀錯 | $a=50$ cm、$\theta=45°$、$P_{\max}=$ **127.5 tf**（斜壓桿控制） | $a=30$、$\theta=59°$、136 tf（CCT 節點控制） |
-| RC-2017-2 | 🟠 定義不一致 | $V_u=$ **195.7 tf**、每側 **17 支 D19**、$L_{\min}=155$ cm | 100.8 tf、9 支、80 cm |
-| RC-2023-3 | 🟡 算術／單位 | 7.425 tf、$e=10.4$ cm（數值不變，修 $\phi V_c$ 與 tf·m 換算） | 同（$\phi V_c$ 12,370→12,336；$\phi T_{th}$ 7.745→**0.775** tf·m） |
+| RC-2020-2 | ðŸ”´ ä¸»ç·šéŒ¯ | (ä¸€) **ä¸å¯** d åç§»ï¼›(äºŒ) $s_{\max}=16.6$ cmï¼›(ä¸‰) 97.8 tf | (ä¸€) å¯ä»¥ï¼›(äºŒ) 24.1 cmï¼›(ä¸‰) 97.8 tf |
+| RC-2014-3 | ðŸ”´ ä¸»ç·šéŒ¯ | 18.75 / **32.40** / **10.57** tf | 18.75 / 28.01 / 16.87 tf |
+| RC-2009-3 | ðŸ”´ å¹¾ä½•åˆ¤è®€éŒ¯ | $a=50$ cmã€$\theta=45Â°$ã€$P_{\max}=$ **127.5 tf**ï¼ˆæ–œå£“æ¡¿æŽ§åˆ¶ï¼‰ | $a=30$ã€$\theta=59Â°$ã€136 tfï¼ˆCCT ç¯€é»žæŽ§åˆ¶ï¼‰ |
+| RC-2017-2 | ðŸŸ  å®šç¾©ä¸ä¸€è‡´ | $V_u=$ **195.7 tf**ã€æ¯å´ **17 æ”¯ D19**ã€$L_{\min}=155$ cm | 100.8 tfã€9 æ”¯ã€80 cm |
+| RC-2023-3 | ðŸŸ¡ ç®—è¡“ï¼å–®ä½ | 7.425 tfã€$e=10.4$ cmï¼ˆæ•¸å€¼ä¸è®Šï¼Œä¿® $\phi V_c$ èˆ‡ tfÂ·m æ›ç®—ï¼‰ | åŒï¼ˆ$\phi V_c$ 12,370â†’12,336ï¼›$\phi T_{th}$ 7.745â†’**0.775** tfÂ·mï¼‰ |
 
-### 一、RC-2020-2：附圖判讀改變小題(一)與(二)（最嚴重）
+### ä¸€ã€RC-2020-2ï¼šé™„åœ–åˆ¤è®€æ”¹è®Šå°é¡Œ(ä¸€)èˆ‡(äºŒ)ï¼ˆæœ€åš´é‡ï¼‰
 
-放大 `RC-2020-2-fig-1.png` 側視圖：全深 90 cm 對應 502 px，$w_u$ 的載重箭頭起始線在距梁頂 380 px ≈ 68 cm、
-箭頭尖端落在 70 cm 處——**正是下翼板頂面**。倒 T 型「獨立」梁的載重是壓在下翼板（拉力側）上，
-即承托梁（ledger beam）的懸吊式載重，§9.4.3.2 條件 (b)「載重施加於構材頂部或其附近」**不成立**。
+æ”¾å¤§ `RC-2020-2-fig-1.png` å´è¦–åœ–ï¼šå…¨æ·± 90 cm å°æ‡‰ 502 pxï¼Œ$w_u$ çš„è¼‰é‡ç®­é ­èµ·å§‹ç·šåœ¨è·æ¢é ‚ 380 px â‰ˆ 68 cmã€
+ç®­é ­å°–ç«¯è½åœ¨ 70 cm è™•â€”â€”**æ­£æ˜¯ä¸‹ç¿¼æ¿é ‚é¢**ã€‚å€’ T åž‹ã€Œç¨ç«‹ã€æ¢çš„è¼‰é‡æ˜¯å£“åœ¨ä¸‹ç¿¼æ¿ï¼ˆæ‹‰åŠ›å´ï¼‰ä¸Šï¼Œ
+å³æ‰¿æ‰˜æ¢ï¼ˆledger beamï¼‰çš„æ‡¸åŠå¼è¼‰é‡ï¼ŒÂ§9.4.3.2 æ¢ä»¶ (b)ã€Œè¼‰é‡æ–½åŠ æ–¼æ§‹æé ‚éƒ¨æˆ–å…¶é™„è¿‘ã€**ä¸æˆç«‹**ã€‚
 
-→ 臨界斷面取**支承面**，$V_u = w_uL/2 = 60$ tf（非 47.4 tf）。
-$V_s = 60/0.75-26.07 = 53.93$ tf，**超過 $2V_c = 52.15$ tf（僅 3.4%）**，
-規範上限因此從 $\min(d/2,60)=42$ 落到 $\min(d/4,30)=21$ cm；強度需求 $894{,}005/53{,}926 = 16.58$ cm 控制。
+â†’ è‡¨ç•Œæ–·é¢å–**æ”¯æ‰¿é¢**ï¼Œ$V_u = w_uL/2 = 60$ tfï¼ˆéž 47.4 tfï¼‰ã€‚
+$V_s = 60/0.75-26.07 = 53.93$ tfï¼Œ**è¶…éŽ $2V_c = 52.15$ tfï¼ˆåƒ… 3.4%ï¼‰**ï¼Œ
+è¦ç¯„ä¸Šé™å› æ­¤å¾ž $\min(d/2,60)=42$ è½åˆ° $\min(d/4,30)=21$ cmï¼›å¼·åº¦éœ€æ±‚ $894{,}005/53{,}926 = 16.58$ cm æŽ§åˆ¶ã€‚
 
-原文的 24.1 cm **偏不安全 45%**，且兩個分支（是否偏移、d/2 還是 d/4）同時錯。
-另修：$A_{v,\min}$ 係數 0.35 → **3.5**（原文低 10 倍，結論不變）；§5 新增懸吊鋼筋 $A_h \ge w_u/(\phi f_y) = 4.76$ cm²/m。
+åŽŸæ–‡çš„ 24.1 cm **åä¸å®‰å…¨ 45%**ï¼Œä¸”å…©å€‹åˆ†æ”¯ï¼ˆæ˜¯å¦åç§»ã€d/2 é‚„æ˜¯ d/4ï¼‰åŒæ™‚éŒ¯ã€‚
+å¦ä¿®ï¼š$A_{v,\min}$ ä¿‚æ•¸ 0.35 â†’ **3.5**ï¼ˆåŽŸæ–‡ä½Ž 10 å€ï¼Œçµè«–ä¸è®Šï¼‰ï¼›Â§5 æ–°å¢žæ‡¸åŠé‹¼ç­‹ $A_h \ge w_u/(\phi f_y) = 4.76$ cmÂ²/mã€‚
 
-### 二、RC-2014-3：軸壓上限漏乘修正因子、軸拉走錯路徑
+### äºŒã€RC-2014-3ï¼šè»¸å£“ä¸Šé™æ¼ä¹˜ä¿®æ­£å› å­ã€è»¸æ‹‰èµ°éŒ¯è·¯å¾‘
 
-**Case 2（軸壓）：** 土木 401-100 的軸壓上限是 $0.93\sqrt{f'_c}b_wd\sqrt{1+0.0284N_u/A_g}$，不是 $0.93\sqrt{f'_c}b_wd$。
-$N_u/A_g = 11.905$ → 因子 $\sqrt{1.3381} = 1.1568$ → $V_c = 28{,}011\times1.1568 = 32{,}402$ kgf。原文 28.01 tf **低估 13.5%**。
-（$M_m = -27{,}500 < 0$ 時規範規定直接取此上限，這一點原文是對的。）
+**Case 2ï¼ˆè»¸å£“ï¼‰ï¼š** åœŸæœ¨ 401-100 çš„è»¸å£“ä¸Šé™æ˜¯ $0.93\sqrt{f'_c}b_wd\sqrt{1+0.0284N_u/A_g}$ï¼Œä¸æ˜¯ $0.93\sqrt{f'_c}b_wd$ã€‚
+$N_u/A_g = 11.905$ â†’ å› å­ $\sqrt{1.3381} = 1.1568$ â†’ $V_c = 28{,}011\times1.1568 = 32{,}402$ kgfã€‚åŽŸæ–‡ 28.01 tf **ä½Žä¼° 13.5%**ã€‚
+ï¼ˆ$M_m = -27{,}500 < 0$ æ™‚è¦ç¯„è¦å®šç›´æŽ¥å–æ­¤ä¸Šé™ï¼Œé€™ä¸€é»žåŽŸæ–‡æ˜¯å°çš„ã€‚ï¼‰
 
-**Case 3（軸拉）：** $M_m$ 條文明寫「承受軸壓力之構材」。軸拉應走專用式
-$V_c = 0.53(1+0.0284N_u/A_g)\sqrt{f'_c}b_wd = 0.53\times0.6619\times16.733\times1800 = 10{,}566$ kgf。
-原文把 $N_u<0$ 代入 $M_m$ 得 16.87 tf，比**無軸拉**的簡化式 15.96 tf 還高，物理上站不住腳；
-該讀法已在正本 §4 Case 3 留檔（原卷「可能使用之公式」只印 $M_m$，故坊間有此解）。
+**Case 3ï¼ˆè»¸æ‹‰ï¼‰ï¼š** $M_m$ æ¢æ–‡æ˜Žå¯«ã€Œæ‰¿å—è»¸å£“åŠ›ä¹‹æ§‹æã€ã€‚è»¸æ‹‰æ‡‰èµ°å°ˆç”¨å¼
+$V_c = 0.53(1+0.0284N_u/A_g)\sqrt{f'_c}b_wd = 0.53\times0.6619\times16.733\times1800 = 10{,}566$ kgfã€‚
+åŽŸæ–‡æŠŠ $N_u<0$ ä»£å…¥ $M_m$ å¾— 16.87 tfï¼Œæ¯”**ç„¡è»¸æ‹‰**çš„ç°¡åŒ–å¼ 15.96 tf é‚„é«˜ï¼Œç‰©ç†ä¸Šç«™ä¸ä½è…³ï¼›
+è©²è®€æ³•å·²åœ¨æ­£æœ¬ Â§4 Case 3 ç•™æª”ï¼ˆåŽŸå·ã€Œå¯èƒ½ä½¿ç”¨ä¹‹å…¬å¼ã€åªå° $M_m$ï¼Œæ•…åŠé–“æœ‰æ­¤è§£ï¼‰ã€‚
 
-趨勢檢核：32.40（壓）> 18.75（無）> 10.57（拉）✓ 單調。
+è¶¨å‹¢æª¢æ ¸ï¼š32.40ï¼ˆå£“ï¼‰> 18.75ï¼ˆç„¡ï¼‰> 10.57ï¼ˆæ‹‰ï¼‰âœ“ å–®èª¿ã€‚
 
-### 三、RC-2009-3：原卷尺寸鏈讀錯，全題幾何重算
+### ä¸‰ã€RC-2009-3ï¼šåŽŸå·å°ºå¯¸éˆè®€éŒ¯ï¼Œå…¨é¡Œå¹¾ä½•é‡ç®—
 
-原卷底部是**七段連續尺寸鏈 20｜30｜20｜30｜20｜30｜20 = 170 cm**，四段 20 cm 是四塊鈑
-（左支承／左載重／右載重／右支承），且原圖把**「純彎區」標註在中央那段 30 cm 上**。
-故支承鈑中心 10／160、載重鈑中心 60／110 → $L = 150$ cm、$a = 50$ cm、$\theta = 45°$。
-原文讀成「支承至載重 = 30、純彎區 = 20」（$L = 80$、$\theta = 59°$），與圖上鈑位置矛盾，
-也讓題目給的「承壓鈑 20 cm」無處可用。
+åŽŸå·åº•éƒ¨æ˜¯**ä¸ƒæ®µé€£çºŒå°ºå¯¸éˆ 20ï½œ30ï½œ20ï½œ30ï½œ20ï½œ30ï½œ20 = 170 cm**ï¼Œå››æ®µ 20 cm æ˜¯å››å¡Šéˆ‘
+ï¼ˆå·¦æ”¯æ‰¿ï¼å·¦è¼‰é‡ï¼å³è¼‰é‡ï¼å³æ”¯æ‰¿ï¼‰ï¼Œä¸”åŽŸåœ–æŠŠ**ã€Œç´”å½Žå€ã€æ¨™è¨»åœ¨ä¸­å¤®é‚£æ®µ 30 cm ä¸Š**ã€‚
+æ•…æ”¯æ‰¿éˆ‘ä¸­å¿ƒ 10ï¼160ã€è¼‰é‡éˆ‘ä¸­å¿ƒ 60ï¼110 â†’ $L = 150$ cmã€$a = 50$ cmã€$\theta = 45Â°$ã€‚
+åŽŸæ–‡è®€æˆã€Œæ”¯æ‰¿è‡³è¼‰é‡ = 30ã€ç´”å½Žå€ = 20ã€ï¼ˆ$L = 80$ã€$\theta = 59Â°$ï¼‰ï¼Œèˆ‡åœ–ä¸Šéˆ‘ä½ç½®çŸ›ç›¾ï¼Œ
+ä¹Ÿè®“é¡Œç›®çµ¦çš„ã€Œæ‰¿å£“éˆ‘ 20 cmã€ç„¡è™•å¯ç”¨ã€‚
 
-重算（$T = 0.5P$、$F_{\text{diag}} = 0.7071P$、$w_s = 28.28$ cm）：
+é‡ç®—ï¼ˆ$T = 0.5P$ã€$F_{\text{diag}} = 0.7071P$ã€$w_s = 28.28$ cmï¼‰ï¼š
 
-| 限制 | 改後 | 改前 |
+| é™åˆ¶ | æ”¹å¾Œ | æ”¹å‰ |
 |---|:---:|:---:|
-| 斜壓桿（$\beta_s=0.75$） | **127.5 tf ← 控制** | 149.8 |
-| CCT 節點（承壓／背面／壓桿面三面同值） | 136.0 | 136.0 ← 原控制 |
-| 拉力桿降伏 | 144.6 | 241.1 |
-| CCC 節點／水平壓桿 | 170.0 | 170.0 / 283.3 |
+| æ–œå£“æ¡¿ï¼ˆ$\beta_s=0.75$ï¼‰ | **127.5 tf â† æŽ§åˆ¶** | 149.8 |
+| CCT ç¯€é»žï¼ˆæ‰¿å£“ï¼èƒŒé¢ï¼å£“æ¡¿é¢ä¸‰é¢åŒå€¼ï¼‰ | 136.0 | 136.0 â† åŽŸæŽ§åˆ¶ |
+| æ‹‰åŠ›æ¡¿é™ä¼ | 144.6 | 241.1 |
+| CCC ç¯€é»žï¼æ°´å¹³å£“æ¡¿ | 170.0 | 170.0 / 283.3 |
 
-45° 幾何使 CCT 三面同時為 136.0 tf，可當計算正確的自我驗證。破壞模式仍為脆性，但控制項改為**斜壓桿劈裂／壓碎**。
-§5 補：承壓鈑 20→30 cm 可把控制項推向拉力桿降伏（延性）。
+45Â° å¹¾ä½•ä½¿ CCT ä¸‰é¢åŒæ™‚ç‚º 136.0 tfï¼Œå¯ç•¶è¨ˆç®—æ­£ç¢ºçš„è‡ªæˆ‘é©—è­‰ã€‚ç ´å£žæ¨¡å¼ä»ç‚ºè„†æ€§ï¼Œä½†æŽ§åˆ¶é …æ”¹ç‚º**æ–œå£“æ¡¿åŠˆè£‚ï¼å£“ç¢Ž**ã€‚
+Â§5 è£œï¼šæ‰¿å£“éˆ‘ 20â†’30 cm å¯æŠŠæŽ§åˆ¶é …æŽ¨å‘æ‹‰åŠ›æ¡¿é™ä¼ï¼ˆå»¶æ€§ï¼‰ã€‚
 
-### 四、RC-2017-2：介面剪力定義改為與第一題一致（經使用者確認）
+### å››ã€RC-2017-2ï¼šä»‹é¢å‰ªåŠ›å®šç¾©æ”¹ç‚ºèˆ‡ç¬¬ä¸€é¡Œä¸€è‡´ï¼ˆç¶“ä½¿ç”¨è€…ç¢ºèªï¼‰
 
-原文用均勻 $0.8f'_c \times A_{\text{wing}} = 100.8$ tf，但 RC-2017-1 Part (c) 自己是用**雙折線分區積分**算的：
-$c_b = 37.66$ cm，轉折點 $x_{\text{peak}} = c_b/3 = 12.55$ cm **落在翼板（0～15 cm）之內**，
-翼板應力 168 → 210（峰值）→ 189.5，積分得 $C_{c,\text{wing}} = 114{,}454$ kgf（均勻假設低估 12.0%）。
-且壓力筋在 $d' = 6.5 < t_w = 15$，**整支埋在新混凝土內**，其 $C'_s = 81{,}288$ kgf 同樣必須跨越介面。
+åŽŸæ–‡ç”¨å‡å‹» $0.8f'_c \times A_{\text{wing}} = 100.8$ tfï¼Œä½† RC-2017-1 Part (c) è‡ªå·±æ˜¯ç”¨**é›™æŠ˜ç·šåˆ†å€ç©åˆ†**ç®—çš„ï¼š
+$c_b = 37.66$ cmï¼Œè½‰æŠ˜é»ž $x_{\text{peak}} = c_b/3 = 12.55$ cm **è½åœ¨ç¿¼æ¿ï¼ˆ0ï½ž15 cmï¼‰ä¹‹å…§**ï¼Œ
+ç¿¼æ¿æ‡‰åŠ› 168 â†’ 210ï¼ˆå³°å€¼ï¼‰â†’ 189.5ï¼Œç©åˆ†å¾— $C_{c,\text{wing}} = 114{,}454$ kgfï¼ˆå‡å‹»å‡è¨­ä½Žä¼° 12.0%ï¼‰ã€‚
+ä¸”å£“åŠ›ç­‹åœ¨ $d' = 6.5 < t_w = 15$ï¼Œ**æ•´æ”¯åŸ‹åœ¨æ–°æ··å‡åœŸå…§**ï¼Œå…¶ $C'_s = 81{,}288$ kgf åŒæ¨£å¿…é ˆè·¨è¶Šä»‹é¢ã€‚
 
-→ $V_u = 195{,}742$ kgf、$A_{vf} = 62.14$ cm²、**17 支 D19**（原卷 $A_b = 3.871$；用實際 D19 的 2.865 則需 22 支）。
-$V_n = 260{,}989$ kgf，介面應力上限 $0.2f'_c = 42.0$ kgf/cm² → $L_{\min} = 155.4$ cm、D19 @ 9 cm。
-三種定義（100.8／114.5／195.7 tf）已列表對照於正本 §5。
+â†’ $V_u = 195{,}742$ kgfã€$A_{vf} = 62.14$ cmÂ²ã€**17 æ”¯ D19**ï¼ˆåŽŸå· $A_b = 3.871$ï¼›ç”¨å¯¦éš› D19 çš„ 2.865 å‰‡éœ€ 22 æ”¯ï¼‰ã€‚
+$V_n = 260{,}989$ kgfï¼Œä»‹é¢æ‡‰åŠ›ä¸Šé™ $0.2f'_c = 42.0$ kgf/cmÂ² â†’ $L_{\min} = 155.4$ cmã€D19 @ 9 cmã€‚
+ä¸‰ç¨®å®šç¾©ï¼ˆ100.8ï¼114.5ï¼195.7 tfï¼‰å·²åˆ—è¡¨å°ç…§æ–¼æ­£æœ¬ Â§5ã€‚
 
-另修兩處：① $V_n$ 上限誤引「5.52 MPa」那一行（該行是**未粗糙化**用），粗糙面應為
-$\min(0.2f'_c,\ 3.3{+}0.08f'_c,\ 11\ \text{MPa})$，本題仍由 $0.2f'_c$ 控制故 $L_{\min}$ 數值不受影響；
-② 錨定不能當鋼筋伸展長度（D19 需 $\approx105$ cm），須走 ACI 318 第 17 章化學植筋＋新翼側彎鉤／頭錨。
-③ 記錄原卷自身筆誤：D19 的 $A_b$ 實為 2.865 cm²，3.871 是 D22。
-④ 工程結論：柱淨高 300 cm 時可用傳遞長度 ≈150 cm < 155.4 cm，本題真正被卡住的是介面應力上限，不是植筋量。
+å¦ä¿®å…©è™•ï¼šâ‘  $V_n$ ä¸Šé™èª¤å¼•ã€Œ5.52 MPaã€é‚£ä¸€è¡Œï¼ˆè©²è¡Œæ˜¯**æœªç²—ç³™åŒ–**ç”¨ï¼‰ï¼Œç²—ç³™é¢æ‡‰ç‚º
+$\min(0.2f'_c,\ 3.3{+}0.08f'_c,\ 11\ \text{MPa})$ï¼Œæœ¬é¡Œä»ç”± $0.2f'_c$ æŽ§åˆ¶æ•… $L_{\min}$ æ•¸å€¼ä¸å—å½±éŸ¿ï¼›
+â‘¡ éŒ¨å®šä¸èƒ½ç•¶é‹¼ç­‹ä¼¸å±•é•·åº¦ï¼ˆD19 éœ€ $\approx105$ cmï¼‰ï¼Œé ˆèµ° ACI 318 ç¬¬ 17 ç« åŒ–å­¸æ¤ç­‹ï¼‹æ–°ç¿¼å´å½Žé‰¤ï¼é ­éŒ¨ã€‚
+â‘¢ è¨˜éŒ„åŽŸå·è‡ªèº«ç­†èª¤ï¼šD19 çš„ $A_b$ å¯¦ç‚º 2.865 cmÂ²ï¼Œ3.871 æ˜¯ D22ã€‚
+â‘£ å·¥ç¨‹çµè«–ï¼šæŸ±æ·¨é«˜ 300 cm æ™‚å¯ç”¨å‚³éžé•·åº¦ â‰ˆ150 cm < 155.4 cmï¼Œæœ¬é¡ŒçœŸæ­£è¢«å¡ä½çš„æ˜¯ä»‹é¢æ‡‰åŠ›ä¸Šé™ï¼Œä¸æ˜¯æ¤ç­‹é‡ã€‚
 
-### 五、RC-2023-3：數值正確，修算術／單位並補題意歧義留檔
+### äº”ã€RC-2023-3ï¼šæ•¸å€¼æ­£ç¢ºï¼Œä¿®ç®—è¡“ï¼å–®ä½ä¸¦è£œé¡Œæ„æ­§ç¾©ç•™æª”
 
-- $\phi V_c$：12,370 → **12,336** kgf（$0.53\sqrt{280}\times35\times53\times0.75$）
-- $\phi T_{th} = 77{,}515$ kgf·cm $=$ **0.775** tf·m（原文寫 7.745 tf·m，差 10 倍；$1$ tf·m $= 10^5$ kgf·cm）
-- $T_{th}$ 由 103,262 → **103,354** kgf·cm（SI 路徑），kgf 制係數由 0.266 → **0.2652**（精確值），兩法互驗差 0.4%
-- $e_{\max} = 10.44$ cm（不變）
-- 新增「所能承受」的**題意歧義留檔**：讀法 A（需求，本解主線）7.425 tf → $e = 10.4$ cm；
-  讀法 B（容量）$5\phi V_c = 61.7$ tf → $e = 1.26$ cm。採 A 因讀法 B 會讓題給的 $W_u = 2.5$ tf/m 完全用不到；
-  但同庫 `RC-2020-2` 小題(三)「所能抵抗」確為容量題、句型幾乎相同，故建議考場兩者並寫。
+- $\phi V_c$ï¼š12,370 â†’ **12,336** kgfï¼ˆ$0.53\sqrt{280}\times35\times53\times0.75$ï¼‰
+- $\phi T_{th} = 77{,}515$ kgfÂ·cm $=$ **0.775** tfÂ·mï¼ˆåŽŸæ–‡å¯« 7.745 tfÂ·mï¼Œå·® 10 å€ï¼›$1$ tfÂ·m $= 10^5$ kgfÂ·cmï¼‰
+- $T_{th}$ ç”± 103,262 â†’ **103,354** kgfÂ·cmï¼ˆSI è·¯å¾‘ï¼‰ï¼Œkgf åˆ¶ä¿‚æ•¸ç”± 0.266 â†’ **0.2652**ï¼ˆç²¾ç¢ºå€¼ï¼‰ï¼Œå…©æ³•äº’é©—å·® 0.4%
+- $e_{\max} = 10.44$ cmï¼ˆä¸è®Šï¼‰
+- æ–°å¢žã€Œæ‰€èƒ½æ‰¿å—ã€çš„**é¡Œæ„æ­§ç¾©ç•™æª”**ï¼šè®€æ³• Aï¼ˆéœ€æ±‚ï¼Œæœ¬è§£ä¸»ç·šï¼‰7.425 tf â†’ $e = 10.4$ cmï¼›
+  è®€æ³• Bï¼ˆå®¹é‡ï¼‰$5\phi V_c = 61.7$ tf â†’ $e = 1.26$ cmã€‚æŽ¡ A å› è®€æ³• B æœƒè®“é¡Œçµ¦çš„ $W_u = 2.5$ tf/m å®Œå…¨ç”¨ä¸åˆ°ï¼›
+  ä½†åŒåº« `RC-2020-2` å°é¡Œ(ä¸‰)ã€Œæ‰€èƒ½æŠµæŠ—ã€ç¢ºç‚ºå®¹é‡é¡Œã€å¥åž‹å¹¾ä¹Žç›¸åŒï¼Œæ•…å»ºè­°è€ƒå ´å…©è€…ä¸¦å¯«ã€‚
 
-### 六、依最新規範對照（五題都加了 §5 專節）
+### å…­ã€ä¾æœ€æ–°è¦ç¯„å°ç…§ï¼ˆäº”é¡Œéƒ½åŠ äº† Â§5 å°ˆç¯€ï¼‰
 
-| 題號 | 原卷指定 | 401-112／ACI 318-19 下的答案 | 條文變動 |
+| é¡Œè™Ÿ | åŽŸå·æŒ‡å®š | 401-112ï¼ACI 318-19 ä¸‹çš„ç­”æ¡ˆ | æ¢æ–‡è®Šå‹• |
 |---|---|---|---|
-| RC-2020-2 | 108 年規範／401-100 | **相同**（16.6 cm／97.8 tf） | $d$ 偏移、間距門檻、$V_{s,\max}$、$A_{v,\min}$ 均未變 |
-| RC-2014-3 | 401-100 | **15.96／19.53／12.39 tf** | $M_m$ 法與軸拉專用式**全面廢除**，改線性項 $N_u/(6A_g)$ |
-| RC-2009-3 | ACI（未指版） | **相同**（127.5 tf） | $\beta_s$ 術語改「邊界／內部壓桿」、新增 $\beta_c$（本題 = 1.0）、無腹筋懲罰 $0.60\lambda \to 0.4$ |
-| RC-2017-2 | 401-100 | **相同**（195.7 tf／17 支） | 摩擦剪力法幾乎未改；318-19 明訂 $f_y \le 420$ MPa |
-| RC-2023-3 | 401-110 | **相同**（7.425 tf／10.4 cm） | 401-110 本即以 318-19 為藍本 |
+| RC-2020-2 | 108 å¹´è¦ç¯„ï¼401-100 | **ç›¸åŒ**ï¼ˆ16.6 cmï¼97.8 tfï¼‰ | $d$ åç§»ã€é–“è·é–€æª»ã€$V_{s,\max}$ã€$A_{v,\min}$ å‡æœªè®Š |
+| RC-2014-3 | 401-100 | **15.96ï¼19.53ï¼12.39 tf** | $M_m$ æ³•èˆ‡è»¸æ‹‰å°ˆç”¨å¼**å…¨é¢å»¢é™¤**ï¼Œæ”¹ç·šæ€§é … $N_u/(6A_g)$ |
+| RC-2009-3 | ACIï¼ˆæœªæŒ‡ç‰ˆï¼‰ | **ç›¸åŒ**ï¼ˆ127.5 tfï¼‰ | $\beta_s$ è¡“èªžæ”¹ã€Œé‚Šç•Œï¼å…§éƒ¨å£“æ¡¿ã€ã€æ–°å¢ž $\beta_c$ï¼ˆæœ¬é¡Œ = 1.0ï¼‰ã€ç„¡è…¹ç­‹æ‡²ç½° $0.60\lambda \to 0.4$ |
+| RC-2017-2 | 401-100 | **ç›¸åŒ**ï¼ˆ195.7 tfï¼17 æ”¯ï¼‰ | æ‘©æ“¦å‰ªåŠ›æ³•å¹¾ä¹Žæœªæ”¹ï¼›318-19 æ˜Žè¨‚ $f_y \le 420$ MPa |
+| RC-2023-3 | 401-110 | **ç›¸åŒ**ï¼ˆ7.425 tfï¼10.4 cmï¼‰ | 401-110 æœ¬å³ä»¥ 318-19 ç‚ºè—æœ¬ |
 
-### 七、施作內容（下游同步）
+### ä¸ƒã€æ–½ä½œå…§å®¹ï¼ˆä¸‹æ¸¸åŒæ­¥ï¼‰
 
-- `raw/solutions/{RC-2020-2,RC-2014-3,RC-2009-3,RC-2017-2,RC-2023-3}/*.md`：正本全面改寫（含 §1 附圖／原卷原文重述、§3.5 變數層次、§4 逐步計算、§5 最新規範對照）。
-- `wiki/problems/` 五頁摘要：H1 標題答案、核心考點、關鍵步驟、公式、陷阱、標籤、「依最新規範對照」段全部同步。
-- `raw/json/question_index.json`：五題 `tags` 依正本 §標籤重新抓取（2020-2 6→10、2014-3 8→10、2009-3 12→15、2017-2 7→11、2023-3 8→10）。`verificationStatus` 維持 `unverified`（待人工複核）。
-- `dashboard-data.js`：五題 tags 同步（100 列結構未動，已驗證每列 7 元素）。
-- `wiki/index.md`、`wiki/by-year.md`：五題一行說明改為含改後答案。
-- `study/problems-view/` 五頁以 `scripts/gen_problems_view.py` **單題**重建（written=5，未動 `--all`）。
-- `wiki/code-ref/ACI-318.md`：§22.5 剪力表整段重寫（原「含軸力修正 $= \frac{1}{6}\sqrt{f'_c}(1+N_u/14A_g)b_wd$」是錯的，
-  318-19 應為 $[0.53\lambda\sqrt{f'_c}+N_u/(6A_g)]b_wd$）；補 $\lambda_s$ 尺寸效應、$V_{s,\max}$、$A_{v,\min}$ kgf 制係數、
-  $d$ 偏移三條件、舊制 $M_m$／軸拉專用式對照框；§22.7 補 $T_{th}$ 的 kgf 制係數 0.265（$T_{cr} = 1.06$）；
-  新增 **§22.9 摩擦剪力法** 與 **第 23 章 壓拉桿模式** 兩節。
+- `raw/solutions/{RC-2020-2,RC-2014-3,RC-2009-3,RC-2017-2,RC-2023-3}/*.md`ï¼šæ­£æœ¬å…¨é¢æ”¹å¯«ï¼ˆå« Â§1 é™„åœ–ï¼åŽŸå·åŽŸæ–‡é‡è¿°ã€Â§3.5 è®Šæ•¸å±¤æ¬¡ã€Â§4 é€æ­¥è¨ˆç®—ã€Â§5 æœ€æ–°è¦ç¯„å°ç…§ï¼‰ã€‚
+- `wiki/problems/` äº”é æ‘˜è¦ï¼šH1 æ¨™é¡Œç­”æ¡ˆã€æ ¸å¿ƒè€ƒé»žã€é—œéµæ­¥é©Ÿã€å…¬å¼ã€é™·é˜±ã€æ¨™ç±¤ã€ã€Œä¾æœ€æ–°è¦ç¯„å°ç…§ã€æ®µå…¨éƒ¨åŒæ­¥ã€‚
+- `raw/json/question_index.json`ï¼šäº”é¡Œ `tags` ä¾æ­£æœ¬ Â§æ¨™ç±¤é‡æ–°æŠ“å–ï¼ˆ2020-2 6â†’10ã€2014-3 8â†’10ã€2009-3 12â†’15ã€2017-2 7â†’11ã€2023-3 8â†’10ï¼‰ã€‚`verificationStatus` ç¶­æŒ `unverified`ï¼ˆå¾…äººå·¥è¤‡æ ¸ï¼‰ã€‚
+- `dashboard-data.js`ï¼šäº”é¡Œ tags åŒæ­¥ï¼ˆ100 åˆ—çµæ§‹æœªå‹•ï¼Œå·²é©—è­‰æ¯åˆ— 7 å…ƒç´ ï¼‰ã€‚
+- `wiki/index.md`ã€`wiki/by-year.md`ï¼šäº”é¡Œä¸€è¡Œèªªæ˜Žæ”¹ç‚ºå«æ”¹å¾Œç­”æ¡ˆã€‚
+- `study/problems-view/` äº”é ä»¥ `scripts/gen_problems_view.py` **å–®é¡Œ**é‡å»ºï¼ˆwritten=5ï¼Œæœªå‹• `--all`ï¼‰ã€‚
+- `wiki/code-ref/ACI-318.md`ï¼šÂ§22.5 å‰ªåŠ›è¡¨æ•´æ®µé‡å¯«ï¼ˆåŽŸã€Œå«è»¸åŠ›ä¿®æ­£ $= \frac{1}{6}\sqrt{f'_c}(1+N_u/14A_g)b_wd$ã€æ˜¯éŒ¯çš„ï¼Œ
+  318-19 æ‡‰ç‚º $[0.53\lambda\sqrt{f'_c}+N_u/(6A_g)]b_wd$ï¼‰ï¼›è£œ $\lambda_s$ å°ºå¯¸æ•ˆæ‡‰ã€$V_{s,\max}$ã€$A_{v,\min}$ kgf åˆ¶ä¿‚æ•¸ã€
+  $d$ åç§»ä¸‰æ¢ä»¶ã€èˆŠåˆ¶ $M_m$ï¼è»¸æ‹‰å°ˆç”¨å¼å°ç…§æ¡†ï¼›Â§22.7 è£œ $T_{th}$ çš„ kgf åˆ¶ä¿‚æ•¸ 0.265ï¼ˆ$T_{cr} = 1.06$ï¼‰ï¼›
+  æ–°å¢ž **Â§22.9 æ‘©æ“¦å‰ªåŠ›æ³•** èˆ‡ **ç¬¬ 23 ç«  å£“æ‹‰æ¡¿æ¨¡å¼** å…©ç¯€ã€‚
 
-### 七之二（同日續）：橫向一致性掃描後的補正
+### ä¸ƒä¹‹äºŒï¼ˆåŒæ—¥çºŒï¼‰ï¼šæ©«å‘ä¸€è‡´æ€§æŽƒæå¾Œçš„è£œæ­£
 
-用 `grep -rln` 掃全庫哪些非 problems 頁面引用了這五題，發現三處與改後主線**直接矛盾**，一併同步：
+ç”¨ `grep -rln` æŽƒå…¨åº«å“ªäº›éž problems é é¢å¼•ç”¨äº†é€™äº”é¡Œï¼Œç™¼ç¾ä¸‰è™•èˆ‡æ”¹å¾Œä¸»ç·š**ç›´æŽ¥çŸ›ç›¾**ï¼Œä¸€ä½µåŒæ­¥ï¼š
 
-- `wiki/traps/SHEAR-CRITICAL-SECTION.md`：原文兩處把 RC-2020-2 當成「載重在頂面 → **仍可** $d$ 偏移」的
-  範例（還標了 verified），與改後結論完全相反。已改為「RC-2020-2 正是條件 (b) 不成立、**不可** 偏移的範例」，
-  並補上「兩種讀法相差 45%」與「務必放大附圖確認載重箭頭終止高度」。
-  另修同頁「忘記軸力的影響」一列：原寫「壓用 $140A_g$、拉用 $35A_g$」（$140$ 無出處），
-  已改為舊制的 $\sqrt{1+N_u/(35.2A_g)}$ 上限加強與軸拉專用式，並註明 318-19 改用 $N_u/(6A_g)$。
-- `wiki/concepts/SHEAR-STRENGTH.md`、`wiki/concepts/STIRRUP-DESIGN.md`、`wiki/philosophy/usd-shear.md`：
-  RC-2020-2／RC-2014-3／RC-2009-3／RC-2017-2 的一行說明改為含改後結論。
-- `study/study-RC-U2-1.html`（命題情報頁）：內嵌資料列中 RC-2020-2、RC-2014-3 兩題的
-  description 與 tags 同步（其餘三題該頁未列為主考點，無資料列）。
+- `wiki/traps/SHEAR-CRITICAL-SECTION.md`ï¼šåŽŸæ–‡å…©è™•æŠŠ RC-2020-2 ç•¶æˆã€Œè¼‰é‡åœ¨é ‚é¢ â†’ **ä»å¯** $d$ åç§»ã€çš„
+  ç¯„ä¾‹ï¼ˆé‚„æ¨™äº† verifiedï¼‰ï¼Œèˆ‡æ”¹å¾Œçµè«–å®Œå…¨ç›¸åã€‚å·²æ”¹ç‚ºã€ŒRC-2020-2 æ­£æ˜¯æ¢ä»¶ (b) ä¸æˆç«‹ã€**ä¸å¯** åç§»çš„ç¯„ä¾‹ã€ï¼Œ
+  ä¸¦è£œä¸Šã€Œå…©ç¨®è®€æ³•ç›¸å·® 45%ã€èˆ‡ã€Œå‹™å¿…æ”¾å¤§é™„åœ–ç¢ºèªè¼‰é‡ç®­é ­çµ‚æ­¢é«˜åº¦ã€ã€‚
+  å¦ä¿®åŒé ã€Œå¿˜è¨˜è»¸åŠ›çš„å½±éŸ¿ã€ä¸€åˆ—ï¼šåŽŸå¯«ã€Œå£“ç”¨ $140A_g$ã€æ‹‰ç”¨ $35A_g$ã€ï¼ˆ$140$ ç„¡å‡ºè™•ï¼‰ï¼Œ
+  å·²æ”¹ç‚ºèˆŠåˆ¶çš„ $\sqrt{1+N_u/(35.2A_g)}$ ä¸Šé™åŠ å¼·èˆ‡è»¸æ‹‰å°ˆç”¨å¼ï¼Œä¸¦è¨»æ˜Ž 318-19 æ”¹ç”¨ $N_u/(6A_g)$ã€‚
+- `wiki/concepts/SHEAR-STRENGTH.md`ã€`wiki/concepts/STIRRUP-DESIGN.md`ã€`wiki/philosophy/usd-shear.md`ï¼š
+  RC-2020-2ï¼RC-2014-3ï¼RC-2009-3ï¼RC-2017-2 çš„ä¸€è¡Œèªªæ˜Žæ”¹ç‚ºå«æ”¹å¾Œçµè«–ã€‚
+- `study/study-RC-U2-1.html`ï¼ˆå‘½é¡Œæƒ…å ±é ï¼‰ï¼šå…§åµŒè³‡æ–™åˆ—ä¸­ RC-2020-2ã€RC-2014-3 å…©é¡Œçš„
+  description èˆ‡ tags åŒæ­¥ï¼ˆå…¶é¤˜ä¸‰é¡Œè©²é æœªåˆ—ç‚ºä¸»è€ƒé»žï¼Œç„¡è³‡æ–™åˆ—ï¼‰ã€‚
 
-> 註：`wiki/traps/`、`wiki/concepts/`、`wiki/philosophy/` 依 CLAUDE.md 規則 4 屬 compile 輸出。
-> 本次比照 2026-08-21 XCHECK 的做法**手動同步**，以免下次 `compile-all` 之前 wiki 顯示與正本矛盾的內容；
-> 來源（`raw/solutions/`）已先改，故下次 compile-all 不會被蓋回舊結論。
+> è¨»ï¼š`wiki/traps/`ã€`wiki/concepts/`ã€`wiki/philosophy/` ä¾ CLAUDE.md è¦å‰‡ 4 å±¬ compile è¼¸å‡ºã€‚
+> æœ¬æ¬¡æ¯”ç…§ 2026-08-21 XCHECK çš„åšæ³•**æ‰‹å‹•åŒæ­¥**ï¼Œä»¥å…ä¸‹æ¬¡ `compile-all` ä¹‹å‰ wiki é¡¯ç¤ºèˆ‡æ­£æœ¬çŸ›ç›¾çš„å…§å®¹ï¼›
+> ä¾†æºï¼ˆ`raw/solutions/`ï¼‰å·²å…ˆæ”¹ï¼Œæ•…ä¸‹æ¬¡ compile-all ä¸æœƒè¢«è“‹å›žèˆŠçµè«–ã€‚
 
-### 驗證
+### é©—è­‰
 
-- `gen_problems_view.py . <五題> --check` → **same=5**（管線冪等、HTML 與正本一致）
-- `dashboard-data.js` 100 列全數 JSON 解析通過、每列 7 元素、行數 130 未變
-- `question_index.json` 100 題解析通過，僅 tags 陣列有差異
-- 關鍵新值已出現在 problems-view：16.6 cm／不可以（NO）／32,402／10,566／127,500／45°／195,742／17 支 D19／0.775／12,338
-- 舊值僅殘留在**刻意保留的對照段**（RC-2020-2 的 24.1 cm 對照、RC-2009-3 的 59° 讀法 B 對照）；
-  `7.745 tf·m`、`28,010 tf` 等錯誤值已清零
+- `gen_problems_view.py . <äº”é¡Œ> --check` â†’ **same=5**ï¼ˆç®¡ç·šå†ªç­‰ã€HTML èˆ‡æ­£æœ¬ä¸€è‡´ï¼‰
+- `dashboard-data.js` 100 åˆ—å…¨æ•¸ JSON è§£æžé€šéŽã€æ¯åˆ— 7 å…ƒç´ ã€è¡Œæ•¸ 130 æœªè®Š
+- `question_index.json` 100 é¡Œè§£æžé€šéŽï¼Œåƒ… tags é™£åˆ—æœ‰å·®ç•°
+- é—œéµæ–°å€¼å·²å‡ºç¾åœ¨ problems-viewï¼š16.6 cmï¼ä¸å¯ä»¥ï¼ˆNOï¼‰ï¼32,402ï¼10,566ï¼127,500ï¼45Â°ï¼195,742ï¼17 æ”¯ D19ï¼0.775ï¼12,338
+- èˆŠå€¼åƒ…æ®˜ç•™åœ¨**åˆ»æ„ä¿ç•™çš„å°ç…§æ®µ**ï¼ˆRC-2020-2 çš„ 24.1 cm å°ç…§ã€RC-2009-3 çš„ 59Â° è®€æ³• B å°ç…§ï¼‰ï¼›
+  `7.745 tfÂ·m`ã€`28,010 tf` ç­‰éŒ¯èª¤å€¼å·²æ¸…é›¶
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. 五題皆無向量圖解（`figs/`）。最值得補的三張：RC-2020-2 的「載重在下翼板 vs 梁頂」對照圖、
-   RC-2009-3 的尺寸鏈兩種讀法與 45° STM 桁架圖、RC-2017-2 的翼板雙折線應力分布積分圖。
-2. 五題 `verificationStatus` 仍為 `unverified`，待使用者人工驗算後通知改 `verified` 並 ingest。
-3. `RC-2014-3` 的 $M_m$ 軸拉讀法（16.87 tf）是否有坊間標準解答可交叉比對，尚未查證。
-4. 前幾則 log 列出的舊待辦（φ 舊式 RC-2004-2／RC-2015-3、problems-view 35 頁數學式壞掉）仍未處理。
+1. äº”é¡Œçš†ç„¡å‘é‡åœ–è§£ï¼ˆ`figs/`ï¼‰ã€‚æœ€å€¼å¾—è£œçš„ä¸‰å¼µï¼šRC-2020-2 çš„ã€Œè¼‰é‡åœ¨ä¸‹ç¿¼æ¿ vs æ¢é ‚ã€å°ç…§åœ–ã€
+   RC-2009-3 çš„å°ºå¯¸éˆå…©ç¨®è®€æ³•èˆ‡ 45Â° STM æ¡æž¶åœ–ã€RC-2017-2 çš„ç¿¼æ¿é›™æŠ˜ç·šæ‡‰åŠ›åˆ†å¸ƒç©åˆ†åœ–ã€‚
+2. äº”é¡Œ `verificationStatus` ä»ç‚º `unverified`ï¼Œå¾…ä½¿ç”¨è€…äººå·¥é©—ç®—å¾Œé€šçŸ¥æ”¹ `verified` ä¸¦ ingestã€‚
+3. `RC-2014-3` çš„ $M_m$ è»¸æ‹‰è®€æ³•ï¼ˆ16.87 tfï¼‰æ˜¯å¦æœ‰åŠé–“æ¨™æº–è§£ç­”å¯äº¤å‰æ¯”å°ï¼Œå°šæœªæŸ¥è­‰ã€‚
+4. å‰å¹¾å‰‡ log åˆ—å‡ºçš„èˆŠå¾…è¾¦ï¼ˆÏ† èˆŠå¼ RC-2004-2ï¼RC-2015-3ã€problems-view 35 é æ•¸å­¸å¼å£žæŽ‰ï¼‰ä»æœªè™•ç†ã€‚
 
 ---
 
-## 2026-08-22 XCHECK：RC 預力題五題複核與改正
+## 2026-08-22 XCHECKï¼šRC é åŠ›é¡Œäº”é¡Œè¤‡æ ¸èˆ‡æ”¹æ­£
 
-**範圍：** RC-2011-5、RC-2006-4、RC-2004-5、RC-2023-4、RC-2012-1（全為 RC-U4-1；副分類：2011-5→RC-U4-3、2006-4→RC-U4-2、2004-5→RC-U4-3）
-**方法：** 逐式獨立重算（Python，非重讀原文）＋以 `pdftotext -layout`／`pdftoppm` 取回 `raw/exams/` 原卷原文與附圖逐項判讀
-（2004、2006 兩份原卷缺 Adobe-CNS1 語言包，先裝 `poppler-data` 才能正確抽出中文）
-＋依使用者指示「**依最新規範（土木 401-112／ACI 318-19）計算**」，五題全部新增 §6 專節做逐條對照。
+**ç¯„åœï¼š** RC-2011-5ã€RC-2006-4ã€RC-2004-5ã€RC-2023-4ã€RC-2012-1ï¼ˆå…¨ç‚º RC-U4-1ï¼›å‰¯åˆ†é¡žï¼š2011-5â†’RC-U4-3ã€2006-4â†’RC-U4-2ã€2004-5â†’RC-U4-3ï¼‰
+**æ–¹æ³•ï¼š** é€å¼ç¨ç«‹é‡ç®—ï¼ˆPythonï¼Œéžé‡è®€åŽŸæ–‡ï¼‰ï¼‹ä»¥ `pdftotext -layout`ï¼`pdftoppm` å–å›ž `raw/exams/` åŽŸå·åŽŸæ–‡èˆ‡é™„åœ–é€é …åˆ¤è®€
+ï¼ˆ2004ã€2006 å…©ä»½åŽŸå·ç¼º Adobe-CNS1 èªžè¨€åŒ…ï¼Œå…ˆè£ `poppler-data` æ‰èƒ½æ­£ç¢ºæŠ½å‡ºä¸­æ–‡ï¼‰
+ï¼‹ä¾ä½¿ç”¨è€…æŒ‡ç¤ºã€Œ**ä¾æœ€æ–°è¦ç¯„ï¼ˆåœŸæœ¨ 401-112ï¼ACI 318-19ï¼‰è¨ˆç®—**ã€ï¼Œäº”é¡Œå…¨éƒ¨æ–°å¢ž Â§6 å°ˆç¯€åšé€æ¢å°ç…§ã€‚
 
-### 總表
+### ç¸½è¡¨
 
-| 題號 | 判定 | 主線答案（改後） | 改前 |
+| é¡Œè™Ÿ | åˆ¤å®š | ä¸»ç·šç­”æ¡ˆï¼ˆæ”¹å¾Œï¼‰ | æ”¹å‰ |
 |---|:---:|---|---|
-| RC-2011-5 | 🟡 算式全對，附註錯 | 18.75／183.34／10,417；110.64／2.12／**9,889**（不變） | 同 |
-| RC-2006-4 | 🔴 §5 容許值錯，壓應力判定反轉 | 梁頂 +161.6 壓 **✅通過**；梁底 −106.3 拉 → **Class C 已開裂** | 兩者皆判「❌超限」 |
-| RC-2004-5 | 🟡 主線全對，§5 數字打錯 | $M_{cr}=50.7$、$\phi M_n=66.3$ tf·m（不變） | 同 |
-| RC-2023-4 | 🔴 上限引錯＋主線漏算 | $M_n=$ **22.5 tf·m/m**（含 $A_{s,\min}$）；僅絞線 18.5 為對照 | 18.5 tf·m/m |
-| RC-2012-1 | 🔴 工法標記錯＋檢核不全 | 應力四值不變；工法 **先拉→後拉**；超限區段 **201 cm**；未開裂判定；錨定區 $0.70f_{pu}$ ❌ | 標為先拉法，只點自由端一點 |
+| RC-2011-5 | ðŸŸ¡ ç®—å¼å…¨å°ï¼Œé™„è¨»éŒ¯ | 18.75ï¼183.34ï¼10,417ï¼›110.64ï¼2.12ï¼**9,889**ï¼ˆä¸è®Šï¼‰ | åŒ |
+| RC-2006-4 | ðŸ”´ Â§5 å®¹è¨±å€¼éŒ¯ï¼Œå£“æ‡‰åŠ›åˆ¤å®šåè½‰ | æ¢é ‚ +161.6 å£“ **âœ…é€šéŽ**ï¼›æ¢åº• âˆ’106.3 æ‹‰ â†’ **Class C å·²é–‹è£‚** | å…©è€…çš†åˆ¤ã€ŒâŒè¶…é™ã€ |
+| RC-2004-5 | ðŸŸ¡ ä¸»ç·šå…¨å°ï¼ŒÂ§5 æ•¸å­—æ‰“éŒ¯ | $M_{cr}=50.7$ã€$\phi M_n=66.3$ tfÂ·mï¼ˆä¸è®Šï¼‰ | åŒ |
+| RC-2023-4 | ðŸ”´ ä¸Šé™å¼•éŒ¯ï¼‹ä¸»ç·šæ¼ç®— | $M_n=$ **22.5 tfÂ·m/m**ï¼ˆå« $A_{s,\min}$ï¼‰ï¼›åƒ…çµžç·š 18.5 ç‚ºå°ç…§ | 18.5 tfÂ·m/m |
+| RC-2012-1 | ðŸ”´ å·¥æ³•æ¨™è¨˜éŒ¯ï¼‹æª¢æ ¸ä¸å…¨ | æ‡‰åŠ›å››å€¼ä¸è®Šï¼›å·¥æ³• **å…ˆæ‹‰â†’å¾Œæ‹‰**ï¼›è¶…é™å€æ®µ **201 cm**ï¼›æœªé–‹è£‚åˆ¤å®šï¼›éŒ¨å®šå€ $0.70f_{pu}$ âŒ | æ¨™ç‚ºå…ˆæ‹‰æ³•ï¼Œåªé»žè‡ªç”±ç«¯ä¸€é»ž |
 
-### 一、RC-2023-4：兩處規範引用錯誤，其一改動主線答案（最嚴重）
+### ä¸€ã€RC-2023-4ï¼šå…©è™•è¦ç¯„å¼•ç”¨éŒ¯èª¤ï¼Œå…¶ä¸€æ”¹å‹•ä¸»ç·šç­”æ¡ˆï¼ˆæœ€åš´é‡ï¼‰
 
-**(1) $f_{ps}$ 上限配錯分支。** 無握裹腱的兩個分支是**公式＋上限成套**的
-（土木 401-110 §20.3.2.4.1／ACI 318-19 §20.3.2.4.1）：
+**(1) $f_{ps}$ ä¸Šé™é…éŒ¯åˆ†æ”¯ã€‚** ç„¡æ¡è£¹è…±çš„å…©å€‹åˆ†æ”¯æ˜¯**å…¬å¼ï¼‹ä¸Šé™æˆå¥—**çš„
+ï¼ˆåœŸæœ¨ 401-110 Â§20.3.2.4.1ï¼ACI 318-19 Â§20.3.2.4.1ï¼‰ï¼š
 
-| 跨深比 | $f_{ps}$ | 上限 |
+| è·¨æ·±æ¯” | $f_{ps}$ | ä¸Šé™ |
 |---|---|---|
-| $\ell/h \le 35$ | $f_{se}+700+f'_c/(100\rho_p)$ | $f_{se}+4200$（420 MPa）|
-| $\ell/h > 35$ | $f_{se}+700+f'_c/(300\rho_p)$ | $f_{se}+\mathbf{2100}$（210 MPa）|
+| $\ell/h \le 35$ | $f_{se}+700+f'_c/(100\rho_p)$ | $f_{se}+4200$ï¼ˆ420 MPaï¼‰|
+| $\ell/h > 35$ | $f_{se}+700+f'_c/(300\rho_p)$ | $f_{se}+\mathbf{2100}$ï¼ˆ210 MPaï¼‰|
 
-原文用 300 的公式配 4200 的上限（15,200），實際應為 13,100。$f_{ps}=12{,}119$ 兩者都過，
-**答案不變但檢核形同虛設**（餘裕由「21%」修正為 7.5%）。
-另：原文把判準寫成「簡支 vs. 懸臂」，規範判準是**跨深比**（$\ell/h=40$、$\ell/d_p=45.5$，兩種取法同分支）。
+åŽŸæ–‡ç”¨ 300 çš„å…¬å¼é… 4200 çš„ä¸Šé™ï¼ˆ15,200ï¼‰ï¼Œå¯¦éš›æ‡‰ç‚º 13,100ã€‚$f_{ps}=12{,}119$ å…©è€…éƒ½éŽï¼Œ
+**ç­”æ¡ˆä¸è®Šä½†æª¢æ ¸å½¢åŒè™›è¨­**ï¼ˆé¤˜è£•ç”±ã€Œ21%ã€ä¿®æ­£ç‚º 7.5%ï¼‰ã€‚
+å¦ï¼šåŽŸæ–‡æŠŠåˆ¤æº–å¯«æˆã€Œç°¡æ”¯ vs. æ‡¸è‡‚ã€ï¼Œè¦ç¯„åˆ¤æº–æ˜¯**è·¨æ·±æ¯”**ï¼ˆ$\ell/h=40$ã€$\ell/d_p=45.5$ï¼Œå…©ç¨®å–æ³•åŒåˆ†æ”¯ï¼‰ã€‚
 
-**(2) 漏算規範強制的最小握裹鋼筋（主線改變）。** 原卷寫「配置無握裹鋼絞線及**普通具握裹鋼筋，兩者間距均為 20 cm**」、
-給了 $f_y=4200$、卷首並明訂「依土木 401-110 作答，未依規範作答不予計分」。
-§7.6.2.3 對無握裹腱單向版強制 $A_{s,\min}=0.004A_{ct}$：
+**(2) æ¼ç®—è¦ç¯„å¼·åˆ¶çš„æœ€å°æ¡è£¹é‹¼ç­‹ï¼ˆä¸»ç·šæ”¹è®Šï¼‰ã€‚** åŽŸå·å¯«ã€Œé…ç½®ç„¡æ¡è£¹é‹¼çµžç·šåŠ**æ™®é€šå…·æ¡è£¹é‹¼ç­‹ï¼Œå…©è€…é–“è·å‡ç‚º 20 cm**ã€ã€
+çµ¦äº† $f_y=4200$ã€å·é¦–ä¸¦æ˜Žè¨‚ã€Œä¾åœŸæœ¨ 401-110 ä½œç­”ï¼Œæœªä¾è¦ç¯„ä½œç­”ä¸äºˆè¨ˆåˆ†ã€ã€‚
+Â§7.6.2.3 å°ç„¡æ¡è£¹è…±å–®å‘ç‰ˆå¼·åˆ¶ $A_{s,\min}=0.004A_{ct}$ï¼š
 
-$$A_{ct}=20\times12.5=250\ \text{cm}^2 \Rightarrow A_{s,\min}=1.00\ \text{cm}^2/\text{條帶}$$
+$$A_{ct}=20\times12.5=250\ \text{cm}^2 \Rightarrow A_{s,\min}=1.00\ \text{cm}^2/\text{æ¢å¸¶}$$
 $$T=17{,}815+4{,}200=22{,}015,\quad a=3.083,\quad c=4.111,\quad \varepsilon_t=0.0131$$
-$$M_n=22{,}015\times20.458\times5=\mathbf{22.5\ \text{tf·m/m}}\quad(\text{僅絞線 }18.5)$$
+$$M_n=22{,}015\times20.458\times5=\mathbf{22.5\ \text{tfÂ·m/m}}\quad(\text{åƒ…çµžç·š }18.5)$$
 
-改判理由：$f_y$ 在舊讀法下完全用不到；「兩者間距均為 20 cm」不算鋼筋就沒有意義；
-題目問的是 $M_n$（斷面完整標稱強度）。**兩讀法都已留檔於正本 §5-2，考場建議並寫。**
-此項改動最需人工複核，`verificationStatus` 維持 `unverified`。
+æ”¹åˆ¤ç†ç”±ï¼š$f_y$ åœ¨èˆŠè®€æ³•ä¸‹å®Œå…¨ç”¨ä¸åˆ°ï¼›ã€Œå…©è€…é–“è·å‡ç‚º 20 cmã€ä¸ç®—é‹¼ç­‹å°±æ²’æœ‰æ„ç¾©ï¼›
+é¡Œç›®å•çš„æ˜¯ $M_n$ï¼ˆæ–·é¢å®Œæ•´æ¨™ç¨±å¼·åº¦ï¼‰ã€‚**å…©è®€æ³•éƒ½å·²ç•™æª”æ–¼æ­£æœ¬ Â§5-2ï¼Œè€ƒå ´å»ºè­°ä¸¦å¯«ã€‚**
+æ­¤é …æ”¹å‹•æœ€éœ€äººå·¥è¤‡æ ¸ï¼Œ`verificationStatus` ç¶­æŒ `unverified`ã€‚
 
-### 二、RC-2006-4：容許應力係數自創，壓應力判定整個反轉
+### äºŒã€RC-2006-4ï¼šå®¹è¨±æ‡‰åŠ›ä¿‚æ•¸è‡ªå‰µï¼Œå£“æ‡‰åŠ›åˆ¤å®šæ•´å€‹åè½‰
 
-原文用 $0.4f'_c=140$ 與 $3\sqrt{f'_c}=56.1$——**這兩個係數在土木 401 與 ACI 318 任何版本都查不到**。
+åŽŸæ–‡ç”¨ $0.4f'_c=140$ èˆ‡ $3\sqrt{f'_c}=56.1$â€”â€”**é€™å…©å€‹ä¿‚æ•¸åœ¨åœŸæœ¨ 401 èˆ‡ ACI 318 ä»»ä½•ç‰ˆæœ¬éƒ½æŸ¥ä¸åˆ°**ã€‚
 
-| 位置 | 應力 | 正確容許值（§24.5） | 改前 | 改後 |
+| ä½ç½® | æ‡‰åŠ› | æ­£ç¢ºå®¹è¨±å€¼ï¼ˆÂ§24.5ï¼‰ | æ”¹å‰ | æ”¹å¾Œ |
 |---|---|---|:---:|:---:|
-| 梁頂（持續載重） | 125.9 | $0.45f'_c=157.5$ | ❌ | ✅ |
-| 梁頂（含瞬時活載） | 161.6 | $0.60f'_c=210$ | ❌ | ✅ |
-| 梁底（拉） | 106.3 | U $2.0\sqrt{f'_c}=37.4$／T $3.2\sqrt{f'_c}=59.9$ | ❌超限 | **Class C（已開裂）** |
+| æ¢é ‚ï¼ˆæŒçºŒè¼‰é‡ï¼‰ | 125.9 | $0.45f'_c=157.5$ | âŒ | âœ… |
+| æ¢é ‚ï¼ˆå«çž¬æ™‚æ´»è¼‰ï¼‰ | 161.6 | $0.60f'_c=210$ | âŒ | âœ… |
+| æ¢åº•ï¼ˆæ‹‰ï¼‰ | 106.3 | U $2.0\sqrt{f'_c}=37.4$ï¼T $3.2\sqrt{f'_c}=59.9$ | âŒè¶…é™ | **Class Cï¼ˆå·²é–‹è£‚ï¼‰** |
 
-真正的結論不是「壓應力超限」，而是 $f_{bot}=106.3$ 為 $f_r=2.0\sqrt{350}=37.4$ 的 **2.84 倍**，
-斷面在使用載重下必然開裂 → 屬 **Class C**，**未開裂全斷面彈性疊加只是名目值**，
-撓度須用 $I_{cr}$、須做裂縫控制。此註記為本題完整得分的關鍵。
-另修：版頂位置「35.93 cm」為筆誤（實際代入的 29.93 才對）；版頂容許壓應力 $0.4f'_{c2}=112 \to 0.60f'_{c2}=168$；
-$I_c$ 精算 4,188,695（原 4,188,623，差 0.002%）、$S_{c,top}=280{,}622$／$S_{c,bot}=64{,}369$（比值 4.36）；
-wiki 摘要頁「解題關鍵步驟 3」原本正負號寫顛倒、「圖形」誤記為「無」（實有 `RC-2006-4-fig-1.png`），一併更正。
-$\gamma_c=2400$ kgf/m³ 為原卷未給之假設，已在 §5 標明（改 2300 則為 +153.2／−97.9，Class C 結論不變）。
+çœŸæ­£çš„çµè«–ä¸æ˜¯ã€Œå£“æ‡‰åŠ›è¶…é™ã€ï¼Œè€Œæ˜¯ $f_{bot}=106.3$ ç‚º $f_r=2.0\sqrt{350}=37.4$ çš„ **2.84 å€**ï¼Œ
+æ–·é¢åœ¨ä½¿ç”¨è¼‰é‡ä¸‹å¿…ç„¶é–‹è£‚ â†’ å±¬ **Class C**ï¼Œ**æœªé–‹è£‚å…¨æ–·é¢å½ˆæ€§ç–ŠåŠ åªæ˜¯åç›®å€¼**ï¼Œ
+æ’“åº¦é ˆç”¨ $I_{cr}$ã€é ˆåšè£‚ç¸«æŽ§åˆ¶ã€‚æ­¤è¨»è¨˜ç‚ºæœ¬é¡Œå®Œæ•´å¾—åˆ†çš„é—œéµã€‚
+å¦ä¿®ï¼šç‰ˆé ‚ä½ç½®ã€Œ35.93 cmã€ç‚ºç­†èª¤ï¼ˆå¯¦éš›ä»£å…¥çš„ 29.93 æ‰å°ï¼‰ï¼›ç‰ˆé ‚å®¹è¨±å£“æ‡‰åŠ› $0.4f'_{c2}=112 \to 0.60f'_{c2}=168$ï¼›
+$I_c$ ç²¾ç®— 4,188,695ï¼ˆåŽŸ 4,188,623ï¼Œå·® 0.002%ï¼‰ã€$S_{c,top}=280{,}622$ï¼$S_{c,bot}=64{,}369$ï¼ˆæ¯”å€¼ 4.36ï¼‰ï¼›
+wiki æ‘˜è¦é ã€Œè§£é¡Œé—œéµæ­¥é©Ÿ 3ã€åŽŸæœ¬æ­£è² è™Ÿå¯«é¡›å€’ã€ã€Œåœ–å½¢ã€èª¤è¨˜ç‚ºã€Œç„¡ã€ï¼ˆå¯¦æœ‰ `RC-2006-4-fig-1.png`ï¼‰ï¼Œä¸€ä½µæ›´æ­£ã€‚
+$\gamma_c=2400$ kgf/mÂ³ ç‚ºåŽŸå·æœªçµ¦ä¹‹å‡è¨­ï¼Œå·²åœ¨ Â§5 æ¨™æ˜Žï¼ˆæ”¹ 2300 å‰‡ç‚º +153.2ï¼âˆ’97.9ï¼ŒClass C çµè«–ä¸è®Šï¼‰ã€‚
 
-### 三、RC-2012-1：工法標成「先拉法」，實為後拉法
+### ä¸‰ã€RC-2012-1ï¼šå·¥æ³•æ¨™æˆã€Œå…ˆæ‹‰æ³•ã€ï¼Œå¯¦ç‚ºå¾Œæ‹‰æ³•
 
-原卷兩處直接推翻：① 「**在混凝土達 7 天強度時開始拉預力**」——先拉法是先張拉後澆置，不可能等混凝土硬化才張拉；
-② 「忽略鋼鍵與**套管**所占有面積」——套管是後拉法專有。
-數值不受影響（題目已叫我們忽略孔洞），但影響標籤、觀念，且使 §5 的錨定區上限檢核變得相關。
+åŽŸå·å…©è™•ç›´æŽ¥æŽ¨ç¿»ï¼šâ‘  ã€Œ**åœ¨æ··å‡åœŸé” 7 å¤©å¼·åº¦æ™‚é–‹å§‹æ‹‰é åŠ›**ã€â€”â€”å…ˆæ‹‰æ³•æ˜¯å…ˆå¼µæ‹‰å¾Œæ¾†ç½®ï¼Œä¸å¯èƒ½ç­‰æ··å‡åœŸç¡¬åŒ–æ‰å¼µæ‹‰ï¼›
+â‘¡ ã€Œå¿½ç•¥é‹¼éµèˆ‡**å¥—ç®¡**æ‰€å æœ‰é¢ç©ã€â€”â€”å¥—ç®¡æ˜¯å¾Œæ‹‰æ³•å°ˆæœ‰ã€‚
+æ•¸å€¼ä¸å—å½±éŸ¿ï¼ˆé¡Œç›®å·²å«æˆ‘å€‘å¿½ç•¥å­”æ´žï¼‰ï¼Œä½†å½±éŸ¿æ¨™ç±¤ã€è§€å¿µï¼Œä¸”ä½¿ Â§5 çš„éŒ¨å®šå€ä¸Šé™æª¢æ ¸è®Šå¾—ç›¸é—œã€‚
 
-補三項原文缺漏：
-1. **超限是一整段**：$f_{bot}(\xi)=15.63-28.53(\xi/610)^2 > 12.52 \Rightarrow \xi < \mathbf{201}$ cm，
-   自由端起約梁長 1/3 全段超限（補充鋼筋須涵蓋此段＋$\ell_d$）。原文只點自由端一點。
-2. **題目給的 $f_r$ 全文未用**：$f_r=2.0\sqrt{f'_{ci}}=31.3 > 15.63$ → **斷面未開裂**，
-   故補救屬「配握裹鋼筋承擔拉力」而非重新設計斷面。這是原卷給 $f_r$ 的用意。
-3. **鋼腱應力上限新舊制答案不同**：$f_{pi}=0.75f_{pu}=14{,}250$，
-   舊制（318-11／401-100）「傳遞後 $\min(0.82f_{py},0.74f_{pu})=14{,}022$」→ ❌ 超 1.6%；
-   318-14 起**該通則已刪除**，改為張拉時 $\min(0.80f_{pu},0.94f_{py})=15{,}200$ → ✅，
-   但**後拉法錨定裝置處** $0.70f_{pu}=13{,}300$ → ❌ 超 7.1%。梁身斷面合法、錨定區須處理。
-另修：補充鋼筋應力依 §24.5.3.2 為 $f_s=\min(0.6f_y,\,2100)$（原文寫 $0.5f_y$，本題 $f_y=4200$ 巧合同值 2,100，
-但 $f_y$ 不同時會算錯）；$f_y$ 原卷未給，已標明為假設。
+è£œä¸‰é …åŽŸæ–‡ç¼ºæ¼ï¼š
+1. **è¶…é™æ˜¯ä¸€æ•´æ®µ**ï¼š$f_{bot}(\xi)=15.63-28.53(\xi/610)^2 > 12.52 \Rightarrow \xi < \mathbf{201}$ cmï¼Œ
+   è‡ªç”±ç«¯èµ·ç´„æ¢é•· 1/3 å…¨æ®µè¶…é™ï¼ˆè£œå……é‹¼ç­‹é ˆæ¶µè“‹æ­¤æ®µï¼‹$\ell_d$ï¼‰ã€‚åŽŸæ–‡åªé»žè‡ªç”±ç«¯ä¸€é»žã€‚
+2. **é¡Œç›®çµ¦çš„ $f_r$ å…¨æ–‡æœªç”¨**ï¼š$f_r=2.0\sqrt{f'_{ci}}=31.3 > 15.63$ â†’ **æ–·é¢æœªé–‹è£‚**ï¼Œ
+   æ•…è£œæ•‘å±¬ã€Œé…æ¡è£¹é‹¼ç­‹æ‰¿æ“”æ‹‰åŠ›ã€è€Œéžé‡æ–°è¨­è¨ˆæ–·é¢ã€‚é€™æ˜¯åŽŸå·çµ¦ $f_r$ çš„ç”¨æ„ã€‚
+3. **é‹¼è…±æ‡‰åŠ›ä¸Šé™æ–°èˆŠåˆ¶ç­”æ¡ˆä¸åŒ**ï¼š$f_{pi}=0.75f_{pu}=14{,}250$ï¼Œ
+   èˆŠåˆ¶ï¼ˆ318-11ï¼401-100ï¼‰ã€Œå‚³éžå¾Œ $\min(0.82f_{py},0.74f_{pu})=14{,}022$ã€â†’ âŒ è¶… 1.6%ï¼›
+   318-14 èµ·**è©²é€šå‰‡å·²åˆªé™¤**ï¼Œæ”¹ç‚ºå¼µæ‹‰æ™‚ $\min(0.80f_{pu},0.94f_{py})=15{,}200$ â†’ âœ…ï¼Œ
+   ä½†**å¾Œæ‹‰æ³•éŒ¨å®šè£ç½®è™•** $0.70f_{pu}=13{,}300$ â†’ âŒ è¶… 7.1%ã€‚æ¢èº«æ–·é¢åˆæ³•ã€éŒ¨å®šå€é ˆè™•ç†ã€‚
+å¦ä¿®ï¼šè£œå……é‹¼ç­‹æ‡‰åŠ›ä¾ Â§24.5.3.2 ç‚º $f_s=\min(0.6f_y,\,2100)$ï¼ˆåŽŸæ–‡å¯« $0.5f_y$ï¼Œæœ¬é¡Œ $f_y=4200$ å·§åˆåŒå€¼ 2,100ï¼Œ
+ä½† $f_y$ ä¸åŒæ™‚æœƒç®—éŒ¯ï¼‰ï¼›$f_y$ åŽŸå·æœªçµ¦ï¼Œå·²æ¨™æ˜Žç‚ºå‡è¨­ã€‚
 
-### 四、RC-2011-5：算式與六個答案全對，兩處附註錯
+### å››ã€RC-2011-5ï¼šç®—å¼èˆ‡å…­å€‹ç­”æ¡ˆå…¨å°ï¼Œå…©è™•é™„è¨»éŒ¯
 
-- §5① 表寫「$A_{c2}=A_{c1}+nA_{sp}$」→ $2500+6\times24=2644 \ne 2800$（**與題給矛盾**）。
-  正確為 $A_{c2}=A_g+(n-1)A_{sp}$，$A_g$ 含導管孔：回推 $A_g=2680$、導管孔 $=180$ cm²。
-  兩個要點：灌漿後孔要加回；鋼腱只加 $(n-1)$ 倍（$nA_{sp}$ 是先拉法不扣佔位的寫法）。
-- §5③「四控制條件」的係數是 **MPa 制**（0.25／0.5／0.45）混進全篇 kgf/cm² 文件，
-  已改為 kgf 制（$0.60f'_{ci}$、$0.80\sqrt{f'_{ci}}$、Class U $2.0\sqrt{f'_c}$、$0.45f'_c$／$0.60f'_c$）並附 SI 對照。
-- 新增**方法歧義留檔**：腱應力的 $\Delta f_c$ 起算點。主線（讀法 A，含 $M_G$）9,889 與混凝土應力算法一致；
-  若視 $M_G$ 為灌漿前已作用（讀法 B）則 $\Delta f_c=82.44$、$f_s=9{,}661$（差 2.3%）。兩組數字均留檔。
-- 逐項複算相符：18.75／183.33／10,416.7；59.547／96.711／51.095／−94.595 → 110.642／2.116；120.33×6=722。
+- Â§5â‘  è¡¨å¯«ã€Œ$A_{c2}=A_{c1}+nA_{sp}$ã€â†’ $2500+6\times24=2644 \ne 2800$ï¼ˆ**èˆ‡é¡Œçµ¦çŸ›ç›¾**ï¼‰ã€‚
+  æ­£ç¢ºç‚º $A_{c2}=A_g+(n-1)A_{sp}$ï¼Œ$A_g$ å«å°Žç®¡å­”ï¼šå›žæŽ¨ $A_g=2680$ã€å°Žç®¡å­” $=180$ cmÂ²ã€‚
+  å…©å€‹è¦é»žï¼šçŒæ¼¿å¾Œå­”è¦åŠ å›žï¼›é‹¼è…±åªåŠ  $(n-1)$ å€ï¼ˆ$nA_{sp}$ æ˜¯å…ˆæ‹‰æ³•ä¸æ‰£ä½”ä½çš„å¯«æ³•ï¼‰ã€‚
+- Â§5â‘¢ã€Œå››æŽ§åˆ¶æ¢ä»¶ã€çš„ä¿‚æ•¸æ˜¯ **MPa åˆ¶**ï¼ˆ0.25ï¼0.5ï¼0.45ï¼‰æ··é€²å…¨ç¯‡ kgf/cmÂ² æ–‡ä»¶ï¼Œ
+  å·²æ”¹ç‚º kgf åˆ¶ï¼ˆ$0.60f'_{ci}$ã€$0.80\sqrt{f'_{ci}}$ã€Class U $2.0\sqrt{f'_c}$ã€$0.45f'_c$ï¼$0.60f'_c$ï¼‰ä¸¦é™„ SI å°ç…§ã€‚
+- æ–°å¢ž**æ–¹æ³•æ­§ç¾©ç•™æª”**ï¼šè…±æ‡‰åŠ›çš„ $\Delta f_c$ èµ·ç®—é»žã€‚ä¸»ç·šï¼ˆè®€æ³• Aï¼Œå« $M_G$ï¼‰9,889 èˆ‡æ··å‡åœŸæ‡‰åŠ›ç®—æ³•ä¸€è‡´ï¼›
+  è‹¥è¦– $M_G$ ç‚ºçŒæ¼¿å‰å·²ä½œç”¨ï¼ˆè®€æ³• Bï¼‰å‰‡ $\Delta f_c=82.44$ã€$f_s=9{,}661$ï¼ˆå·® 2.3%ï¼‰ã€‚å…©çµ„æ•¸å­—å‡ç•™æª”ã€‚
+- é€é …è¤‡ç®—ç›¸ç¬¦ï¼š18.75ï¼183.33ï¼10,416.7ï¼›59.547ï¼96.711ï¼51.095ï¼âˆ’94.595 â†’ 110.642ï¼2.116ï¼›120.33Ã—6=722ã€‚
 
-### 五、RC-2004-5：主線全對，§5② 數字打亂
+### äº”ã€RC-2004-5ï¼šä¸»ç·šå…¨å°ï¼ŒÂ§5â‘¡ æ•¸å­—æ‰“äº‚
 
-- 複算相符：$\beta_1=0.80$、$f_{ce}=56.47$、$M_{cr}=5{,}069{,}695$ kgf·cm $=50.70$ tf·m、
-  $\rho_p=0.001925$、$f_{ps}=15{,}751.3$、$\omega_p=0.0866$、$a=8.154$、$M_n=73.67$、$\phi M_n=66.30$ tf·m。
-- §5② 「$\beta_1$ 若取 0.85 則 $f_{ps}=16{,}793$」**不可能**（大於 $f_{pu}=16{,}500$）。正確 **15,795**（$16{,}500\times0.9573$），
-  比 15,751 大 0.28%——原文那句「約 0.3%」反而是對的，只有數字打亂。
-- 補：$\varepsilon_t$ 判 $\phi$。$c=a/\beta_1=10.19$、$\varepsilon_t=0.003(80-10.19)/10.19=\mathbf{0.0206} \gg 0.005$ → $\phi=0.9$
-  （與舊制 $\omega_p \le 0.36\beta_1$ 同結論）。$\omega_p$ 判準為 ACI 318-99 舊制，現行已刪除，改用淨拉應變。
-- 補：近似式前提 $f_{se}\ge0.5f_{pu}$（本題 $0.6f_{pu}$ ✓）；有黏結腱**無 $f_{py}$ 上限**（上限只加在無黏結腱），
-  故 $f_{ps}=15{,}751 > f_{py}=14{,}025$ 合法。
-- 補：$\phi M_n/(1.2M_{cr})=66.30/60.84=1.09$，**餘裕僅 9%**，是脆性破壞警戒線的邊緣。
+- è¤‡ç®—ç›¸ç¬¦ï¼š$\beta_1=0.80$ã€$f_{ce}=56.47$ã€$M_{cr}=5{,}069{,}695$ kgfÂ·cm $=50.70$ tfÂ·mã€
+  $\rho_p=0.001925$ã€$f_{ps}=15{,}751.3$ã€$\omega_p=0.0866$ã€$a=8.154$ã€$M_n=73.67$ã€$\phi M_n=66.30$ tfÂ·mã€‚
+- Â§5â‘¡ ã€Œ$\beta_1$ è‹¥å– 0.85 å‰‡ $f_{ps}=16{,}793$ã€**ä¸å¯èƒ½**ï¼ˆå¤§æ–¼ $f_{pu}=16{,}500$ï¼‰ã€‚æ­£ç¢º **15,795**ï¼ˆ$16{,}500\times0.9573$ï¼‰ï¼Œ
+  æ¯” 15,751 å¤§ 0.28%â€”â€”åŽŸæ–‡é‚£å¥ã€Œç´„ 0.3%ã€åè€Œæ˜¯å°çš„ï¼Œåªæœ‰æ•¸å­—æ‰“äº‚ã€‚
+- è£œï¼š$\varepsilon_t$ åˆ¤ $\phi$ã€‚$c=a/\beta_1=10.19$ã€$\varepsilon_t=0.003(80-10.19)/10.19=\mathbf{0.0206} \gg 0.005$ â†’ $\phi=0.9$
+  ï¼ˆèˆ‡èˆŠåˆ¶ $\omega_p \le 0.36\beta_1$ åŒçµè«–ï¼‰ã€‚$\omega_p$ åˆ¤æº–ç‚º ACI 318-99 èˆŠåˆ¶ï¼Œç¾è¡Œå·²åˆªé™¤ï¼Œæ”¹ç”¨æ·¨æ‹‰æ‡‰è®Šã€‚
+- è£œï¼šè¿‘ä¼¼å¼å‰æ $f_{se}\ge0.5f_{pu}$ï¼ˆæœ¬é¡Œ $0.6f_{pu}$ âœ“ï¼‰ï¼›æœ‰é»çµè…±**ç„¡ $f_{py}$ ä¸Šé™**ï¼ˆä¸Šé™åªåŠ åœ¨ç„¡é»çµè…±ï¼‰ï¼Œ
+  æ•… $f_{ps}=15{,}751 > f_{py}=14{,}025$ åˆæ³•ã€‚
+- è£œï¼š$\phi M_n/(1.2M_{cr})=66.30/60.84=1.09$ï¼Œ**é¤˜è£•åƒ… 9%**ï¼Œæ˜¯è„†æ€§ç ´å£žè­¦æˆ’ç·šçš„é‚Šç·£ã€‚
 
-### 六、依最新規範對照（五題都加了 §6 專節）
+### å…­ã€ä¾æœ€æ–°è¦ç¯„å°ç…§ï¼ˆäº”é¡Œéƒ½åŠ äº† Â§6 å°ˆç¯€ï¼‰
 
-| 題號 | 原卷指定 | 401-112／ACI 318-19 下的答案 | 條文變動 |
+| é¡Œè™Ÿ | åŽŸå·æŒ‡å®š | 401-112ï¼ACI 318-19 ä¸‹çš„ç­”æ¡ˆ | æ¢æ–‡è®Šå‹• |
 |---|---|---|---|
-| RC-2011-5 | 未指定 | **相同**（六個值全不變） | 純彈性疊加未改；容許應力改 Class U/T/C 分級 |
-| RC-2006-4 | 未指定 | 應力值**相同**，但判定改寫：壓應力 ✅、拉應力 → **Class C** | $0.45/0.60f'_c$、$2.0/3.2\sqrt{f'_c}$、$I_{cr}$、裂縫控制 |
-| RC-2004-5 | 未指定（93 年為 318-99 世代） | **相同**（50.7／66.3） | $\omega_p \to \varepsilon_t$；$f_{ps}$ 式、$f_r$、$1.2M_{cr}$ 均未變 |
-| RC-2023-4 | 土木 401-110 | **22.5 tf·m/m**（含 $A_{s,\min}$） | 401-110 本即以 318-19 為藍本，條文未動；是原文引用錯 |
-| RC-2012-1 | 未指定（101 年為 401-100 世代） | 應力四值**相同**；鋼腱上限判定**改變** | 傳遞後通則刪除，改錨定裝置 $0.70f_{pu}$；補充筋 $0.6f_y\le2100$ |
+| RC-2011-5 | æœªæŒ‡å®š | **ç›¸åŒ**ï¼ˆå…­å€‹å€¼å…¨ä¸è®Šï¼‰ | ç´”å½ˆæ€§ç–ŠåŠ æœªæ”¹ï¼›å®¹è¨±æ‡‰åŠ›æ”¹ Class U/T/C åˆ†ç´š |
+| RC-2006-4 | æœªæŒ‡å®š | æ‡‰åŠ›å€¼**ç›¸åŒ**ï¼Œä½†åˆ¤å®šæ”¹å¯«ï¼šå£“æ‡‰åŠ› âœ…ã€æ‹‰æ‡‰åŠ› â†’ **Class C** | $0.45/0.60f'_c$ã€$2.0/3.2\sqrt{f'_c}$ã€$I_{cr}$ã€è£‚ç¸«æŽ§åˆ¶ |
+| RC-2004-5 | æœªæŒ‡å®šï¼ˆ93 å¹´ç‚º 318-99 ä¸–ä»£ï¼‰ | **ç›¸åŒ**ï¼ˆ50.7ï¼66.3ï¼‰ | $\omega_p \to \varepsilon_t$ï¼›$f_{ps}$ å¼ã€$f_r$ã€$1.2M_{cr}$ å‡æœªè®Š |
+| RC-2023-4 | åœŸæœ¨ 401-110 | **22.5 tfÂ·m/m**ï¼ˆå« $A_{s,\min}$ï¼‰ | 401-110 æœ¬å³ä»¥ 318-19 ç‚ºè—æœ¬ï¼Œæ¢æ–‡æœªå‹•ï¼›æ˜¯åŽŸæ–‡å¼•ç”¨éŒ¯ |
+| RC-2012-1 | æœªæŒ‡å®šï¼ˆ101 å¹´ç‚º 401-100 ä¸–ä»£ï¼‰ | æ‡‰åŠ›å››å€¼**ç›¸åŒ**ï¼›é‹¼è…±ä¸Šé™åˆ¤å®š**æ”¹è®Š** | å‚³éžå¾Œé€šå‰‡åˆªé™¤ï¼Œæ”¹éŒ¨å®šè£ç½® $0.70f_{pu}$ï¼›è£œå……ç­‹ $0.6f_y\le2100$ |
 
-### 七、施作內容（下游同步）
+### ä¸ƒã€æ–½ä½œå…§å®¹ï¼ˆä¸‹æ¸¸åŒæ­¥ï¼‰
 
-- `raw/solutions/{RC-2011-5,RC-2006-4,RC-2004-5,RC-2023-4,RC-2012-1}/*.md`：正本改寫
-  （§1 補原卷原文核對、勘誤框、§4 補步驟、§5 改寫爭議點、**新增 §6 依最新規範對照**）。
-- `wiki/problems/` 五頁摘要：標題／答案／核心考點／關鍵步驟／公式／陷阱／圖形欄／新增「依最新規範對照」段全部同步。
-- `raw/json/question_index.json`：RC-2023-4 tags 8→10（新增 `跨深比分支`／`fps上限2100`／`最小握裹鋼筋`，移除 `L/dp比值`）、
-  RC-2012-1 tags 8→9（`先拉法`→`後拉法`、`有黏結腱`→`有黏裹腱`、新增 `超限區段長度`）。其餘三題 tags 未動。
-  五題 `verificationStatus` 維持 `unverified`。
-- `dashboard-data.js`：同上兩題 tags 同步（100 列結構未動，已驗證每列 7 元素、行數 130 未變）。
-- `knowledge_graph.html`：同上兩題 `p(...)` 節點 tags 同步。
-- `wiki/index.md`、`wiki/by-year.md`：五題一行說明改為含改後答案。
-- `study/problems-view/` 五頁以 `scripts/gen_problems_view.py` **單題**重建（written=5，未動 `--all`）。
-- `study/study-RC-U4-1.html`：RC-2023-4、RC-2012-1、RC-2006-4 三筆內嵌資料列的 description 與 tags 同步。
-- `wiki/code-ref/ACI-318.md`：**RC-U4 段整段重寫**——修正條文編號錯位（有黏結為 §20.3.2.3、無黏結為 §20.3.2.4）；
-  補無黏結腱兩分支的**配對上限**（4200／2100）、$\gamma_p$ 取值表、$f_{se}\ge0.5f_{pu}$ 前提、有黏結腱無 $f_{py}$ 上限；
-  新增 **§20.3.2.5.1 鋼腱應力上限新舊制對照**、**§24.5 Class U/T/C 全表**、**§7.6.2.3 最小握裹鋼筋**、
-  **§21.2.2 預力構材 $\phi$**、**§9.6.2.1 $\phi M_n \ge 1.2M_{cr}$**、**後拉法三斷面定義**（含 $A_t=A_n+nA_{ps}$ 之勘誤）。
-- `wiki/traps/PRESTRESS-FPS-FORMULA.md`：公式對照段整段重寫（兩分支成套上限、$\gamma_p$ 表、前提、$A_{s,\min}$、
-  $\varepsilon_t$ 取代 $\omega_p$）；判斷流程重畫；陷阱表增列 5 列。
-- `wiki/philosophy/prestress-philosophy.md`：RC-2023-4 一行說明同步。
+- `raw/solutions/{RC-2011-5,RC-2006-4,RC-2004-5,RC-2023-4,RC-2012-1}/*.md`ï¼šæ­£æœ¬æ”¹å¯«
+  ï¼ˆÂ§1 è£œåŽŸå·åŽŸæ–‡æ ¸å°ã€å‹˜èª¤æ¡†ã€Â§4 è£œæ­¥é©Ÿã€Â§5 æ”¹å¯«çˆ­è­°é»žã€**æ–°å¢ž Â§6 ä¾æœ€æ–°è¦ç¯„å°ç…§**ï¼‰ã€‚
+- `wiki/problems/` äº”é æ‘˜è¦ï¼šæ¨™é¡Œï¼ç­”æ¡ˆï¼æ ¸å¿ƒè€ƒé»žï¼é—œéµæ­¥é©Ÿï¼å…¬å¼ï¼é™·é˜±ï¼åœ–å½¢æ¬„ï¼æ–°å¢žã€Œä¾æœ€æ–°è¦ç¯„å°ç…§ã€æ®µå…¨éƒ¨åŒæ­¥ã€‚
+- `raw/json/question_index.json`ï¼šRC-2023-4 tags 8â†’10ï¼ˆæ–°å¢ž `è·¨æ·±æ¯”åˆ†æ”¯`ï¼`fpsä¸Šé™2100`ï¼`æœ€å°æ¡è£¹é‹¼ç­‹`ï¼Œç§»é™¤ `L/dpæ¯”å€¼`ï¼‰ã€
+  RC-2012-1 tags 8â†’9ï¼ˆ`å…ˆæ‹‰æ³•`â†’`å¾Œæ‹‰æ³•`ã€`æœ‰é»çµè…±`â†’`æœ‰é»è£¹è…±`ã€æ–°å¢ž `è¶…é™å€æ®µé•·åº¦`ï¼‰ã€‚å…¶é¤˜ä¸‰é¡Œ tags æœªå‹•ã€‚
+  äº”é¡Œ `verificationStatus` ç¶­æŒ `unverified`ã€‚
+- `dashboard-data.js`ï¼šåŒä¸Šå…©é¡Œ tags åŒæ­¥ï¼ˆ100 åˆ—çµæ§‹æœªå‹•ï¼Œå·²é©—è­‰æ¯åˆ— 7 å…ƒç´ ã€è¡Œæ•¸ 130 æœªè®Šï¼‰ã€‚
+- `knowledge_graph.html`ï¼šåŒä¸Šå…©é¡Œ `p(...)` ç¯€é»ž tags åŒæ­¥ã€‚
+- `wiki/index.md`ã€`wiki/by-year.md`ï¼šäº”é¡Œä¸€è¡Œèªªæ˜Žæ”¹ç‚ºå«æ”¹å¾Œç­”æ¡ˆã€‚
+- `study/problems-view/` äº”é ä»¥ `scripts/gen_problems_view.py` **å–®é¡Œ**é‡å»ºï¼ˆwritten=5ï¼Œæœªå‹• `--all`ï¼‰ã€‚
+- `study/study-RC-U4-1.html`ï¼šRC-2023-4ã€RC-2012-1ã€RC-2006-4 ä¸‰ç­†å…§åµŒè³‡æ–™åˆ—çš„ description èˆ‡ tags åŒæ­¥ã€‚
+- `wiki/code-ref/ACI-318.md`ï¼š**RC-U4 æ®µæ•´æ®µé‡å¯«**â€”â€”ä¿®æ­£æ¢æ–‡ç·¨è™ŸéŒ¯ä½ï¼ˆæœ‰é»çµç‚º Â§20.3.2.3ã€ç„¡é»çµç‚º Â§20.3.2.4ï¼‰ï¼›
+  è£œç„¡é»çµè…±å…©åˆ†æ”¯çš„**é…å°ä¸Šé™**ï¼ˆ4200ï¼2100ï¼‰ã€$\gamma_p$ å–å€¼è¡¨ã€$f_{se}\ge0.5f_{pu}$ å‰æã€æœ‰é»çµè…±ç„¡ $f_{py}$ ä¸Šé™ï¼›
+  æ–°å¢ž **Â§20.3.2.5.1 é‹¼è…±æ‡‰åŠ›ä¸Šé™æ–°èˆŠåˆ¶å°ç…§**ã€**Â§24.5 Class U/T/C å…¨è¡¨**ã€**Â§7.6.2.3 æœ€å°æ¡è£¹é‹¼ç­‹**ã€
+  **Â§21.2.2 é åŠ›æ§‹æ $\phi$**ã€**Â§9.6.2.1 $\phi M_n \ge 1.2M_{cr}$**ã€**å¾Œæ‹‰æ³•ä¸‰æ–·é¢å®šç¾©**ï¼ˆå« $A_t=A_n+nA_{ps}$ ä¹‹å‹˜èª¤ï¼‰ã€‚
+- `wiki/traps/PRESTRESS-FPS-FORMULA.md`ï¼šå…¬å¼å°ç…§æ®µæ•´æ®µé‡å¯«ï¼ˆå…©åˆ†æ”¯æˆå¥—ä¸Šé™ã€$\gamma_p$ è¡¨ã€å‰æã€$A_{s,\min}$ã€
+  $\varepsilon_t$ å–ä»£ $\omega_p$ï¼‰ï¼›åˆ¤æ–·æµç¨‹é‡ç•«ï¼›é™·é˜±è¡¨å¢žåˆ— 5 åˆ—ã€‚
+- `wiki/philosophy/prestress-philosophy.md`ï¼šRC-2023-4 ä¸€è¡Œèªªæ˜ŽåŒæ­¥ã€‚
 
-> 註：`wiki/traps/`、`wiki/philosophy/`、`wiki/code-ref/` 中前兩者依 CLAUDE.md 規則 4 屬 compile 輸出。
-> 比照 2026-08-21／08-22 兩次 XCHECK 的做法**手動同步**，以免下次 `compile-all` 之前 wiki 顯示與正本矛盾；
-> 來源（`raw/solutions/`）已先改，故下次 compile-all 不會被蓋回舊結論。
+> è¨»ï¼š`wiki/traps/`ã€`wiki/philosophy/`ã€`wiki/code-ref/` ä¸­å‰å…©è€…ä¾ CLAUDE.md è¦å‰‡ 4 å±¬ compile è¼¸å‡ºã€‚
+> æ¯”ç…§ 2026-08-21ï¼08-22 å…©æ¬¡ XCHECK çš„åšæ³•**æ‰‹å‹•åŒæ­¥**ï¼Œä»¥å…ä¸‹æ¬¡ `compile-all` ä¹‹å‰ wiki é¡¯ç¤ºèˆ‡æ­£æœ¬çŸ›ç›¾ï¼›
+> ä¾†æºï¼ˆ`raw/solutions/`ï¼‰å·²å…ˆæ”¹ï¼Œæ•…ä¸‹æ¬¡ compile-all ä¸æœƒè¢«è“‹å›žèˆŠçµè«–ã€‚
 
-### 驗證
+### é©—è­‰
 
-- `gen_problems_view.py . <五題> --check` → **same=5**（管線冪等、HTML 與正本一致）
-- `question_index.json` 100 題 JSON 解析通過、moduleId 無重複，僅 tags 陣列有差異
-- `dashboard-data.js` 100 列全數 JSON 解析通過、每列 7 元素、行數 130 未變
-- 關鍵新值已出現在 problems-view：180（導管孔）／9,661（讀法 B）／0.45f'c／Class C／15,795／0.0206／
-  2100（上限）／22.5／201（超限區段）／0.70f_{pu}／後拉法
-- 舊錯值僅殘留在**刻意保留的對照段**（RC-2023-4 的 $f_{se}+4200$ 兩處係兩分支對照表；RC-2006-4 的 0.4f'c／3√f'c 係勘誤引述）
+- `gen_problems_view.py . <äº”é¡Œ> --check` â†’ **same=5**ï¼ˆç®¡ç·šå†ªç­‰ã€HTML èˆ‡æ­£æœ¬ä¸€è‡´ï¼‰
+- `question_index.json` 100 é¡Œ JSON è§£æžé€šéŽã€moduleId ç„¡é‡è¤‡ï¼Œåƒ… tags é™£åˆ—æœ‰å·®ç•°
+- `dashboard-data.js` 100 åˆ—å…¨æ•¸ JSON è§£æžé€šéŽã€æ¯åˆ— 7 å…ƒç´ ã€è¡Œæ•¸ 130 æœªè®Š
+- é—œéµæ–°å€¼å·²å‡ºç¾åœ¨ problems-viewï¼š180ï¼ˆå°Žç®¡å­”ï¼‰ï¼9,661ï¼ˆè®€æ³• Bï¼‰ï¼0.45f'cï¼Class Cï¼15,795ï¼0.0206ï¼
+  2100ï¼ˆä¸Šé™ï¼‰ï¼22.5ï¼201ï¼ˆè¶…é™å€æ®µï¼‰ï¼0.70f_{pu}ï¼å¾Œæ‹‰æ³•
+- èˆŠéŒ¯å€¼åƒ…æ®˜ç•™åœ¨**åˆ»æ„ä¿ç•™çš„å°ç…§æ®µ**ï¼ˆRC-2023-4 çš„ $f_{se}+4200$ å…©è™•ä¿‚å…©åˆ†æ”¯å°ç…§è¡¨ï¼›RC-2006-4 çš„ 0.4f'cï¼3âˆšf'c ä¿‚å‹˜èª¤å¼•è¿°ï¼‰
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. **`RC-2007-4` 用了同一組自創容許值** $0.4f'_c$ 與 $3\sqrt{f'_c}$（正本 §1 表格與 §4①、§5），
-   且據此求出的 $P_{\max}=25.3$ tf 是該題的**控制答案**——換成 Class U（$2.0\sqrt{f'_c}=37.4$）會直接改變答案。
-   全庫掃描確認只剩這一題有此問題，建議列為下一輪 XCHECK 的第一順位。
-2. RC-2023-4 主線由 18.5 改為 22.5 tf·m/m 屬**判斷性改動**（$A_s$ 未直接給數字），最需人工複核。
-3. 五題皆無向量圖解（`figs/`）。最值得補的三張：RC-2012-1 的「懸臂梁彎矩圖＋偏心方向＋底纖維應力沿梁長變化（含 201 cm 超限區段）」、
-   RC-2006-4 的「兩階段斷面切換與 $S_{c,top}/S_{c,bot}=4.36$ 的應力放大」、RC-2011-5 的「淨／變換／合成三斷面幾何對照」。
-4. 五題 `verificationStatus` 仍為 `unverified`，待使用者人工驗算後通知改 `verified` 並 ingest。
-5. 前幾則 log 列出的舊待辦（φ 舊式 RC-2004-2／RC-2015-3、problems-view 35 頁數學式壞掉）仍未處理。
+1. **`RC-2007-4` ç”¨äº†åŒä¸€çµ„è‡ªå‰µå®¹è¨±å€¼** $0.4f'_c$ èˆ‡ $3\sqrt{f'_c}$ï¼ˆæ­£æœ¬ Â§1 è¡¨æ ¼èˆ‡ Â§4â‘ ã€Â§5ï¼‰ï¼Œ
+   ä¸”æ“šæ­¤æ±‚å‡ºçš„ $P_{\max}=25.3$ tf æ˜¯è©²é¡Œçš„**æŽ§åˆ¶ç­”æ¡ˆ**â€”â€”æ›æˆ Class Uï¼ˆ$2.0\sqrt{f'_c}=37.4$ï¼‰æœƒç›´æŽ¥æ”¹è®Šç­”æ¡ˆã€‚
+   å…¨åº«æŽƒæç¢ºèªåªå‰©é€™ä¸€é¡Œæœ‰æ­¤å•é¡Œï¼Œå»ºè­°åˆ—ç‚ºä¸‹ä¸€è¼ª XCHECK çš„ç¬¬ä¸€é †ä½ã€‚
+2. RC-2023-4 ä¸»ç·šç”± 18.5 æ”¹ç‚º 22.5 tfÂ·m/m å±¬**åˆ¤æ–·æ€§æ”¹å‹•**ï¼ˆ$A_s$ æœªç›´æŽ¥çµ¦æ•¸å­—ï¼‰ï¼Œæœ€éœ€äººå·¥è¤‡æ ¸ã€‚
+3. äº”é¡Œçš†ç„¡å‘é‡åœ–è§£ï¼ˆ`figs/`ï¼‰ã€‚æœ€å€¼å¾—è£œçš„ä¸‰å¼µï¼šRC-2012-1 çš„ã€Œæ‡¸è‡‚æ¢å½ŽçŸ©åœ–ï¼‹åå¿ƒæ–¹å‘ï¼‹åº•çº–ç¶­æ‡‰åŠ›æ²¿æ¢é•·è®ŠåŒ–ï¼ˆå« 201 cm è¶…é™å€æ®µï¼‰ã€ã€
+   RC-2006-4 çš„ã€Œå…©éšŽæ®µæ–·é¢åˆ‡æ›èˆ‡ $S_{c,top}/S_{c,bot}=4.36$ çš„æ‡‰åŠ›æ”¾å¤§ã€ã€RC-2011-5 çš„ã€Œæ·¨ï¼è®Šæ›ï¼åˆæˆä¸‰æ–·é¢å¹¾ä½•å°ç…§ã€ã€‚
+4. äº”é¡Œ `verificationStatus` ä»ç‚º `unverified`ï¼Œå¾…ä½¿ç”¨è€…äººå·¥é©—ç®—å¾Œé€šçŸ¥æ”¹ `verified` ä¸¦ ingestã€‚
+5. å‰å¹¾å‰‡ log åˆ—å‡ºçš„èˆŠå¾…è¾¦ï¼ˆÏ† èˆŠå¼ RC-2004-2ï¼RC-2015-3ã€problems-view 35 é æ•¸å­¸å¼å£žæŽ‰ï¼‰ä»æœªè™•ç†ã€‚
 
 ---
 
-## 2026-08-22（第二輪）XCHECK：RC 耐震題五題複核與改正
+## 2026-08-22ï¼ˆç¬¬äºŒè¼ªï¼‰XCHECKï¼šRC è€éœ‡é¡Œäº”é¡Œè¤‡æ ¸èˆ‡æ”¹æ­£
 
-**範圍：** RC-2025-2、RC-2013-2、RC-2012-3、RC-2005-3、RC-2022-4（全為 RC-U3-3；副分類：2025-2→RC-U2-1、2013-2→RC-U1-2、2012-3→RC-U2-1、2005-3→RC-U1-1、2022-4→RC-U1-2）
-**方法：** 逐式獨立重算（Python，非重讀原文）＋以 `pdftotext -layout`／`pdftoppm` 取回 `raw/exams/` 原卷原文與附圖逐項判讀
-（2012 年附圖以 160 dpi 轉圖目視確認柱 60×60／12-#7／核心 48 cm、梁 50×60／頂 6-#8／底 4-#7）
-＋依使用者指示「**依最新規範計算**」，五題全部新增 §6 專節。
-**規範版本查證（網路）：** 土木 401-112 為 **2023 年 8 月**出版之現行版（後續僅 2024-06-24 勘誤表、2025-05-16 鋼筋焊接條文修訂，未出新版號）；
-「公路橋梁耐震評估與補強設計規範」109 年底定稿、**110-03-23** 交技(110)字第 1105003536 號頒布，**交通部迄今未再更新**。
+**ç¯„åœï¼š** RC-2025-2ã€RC-2013-2ã€RC-2012-3ã€RC-2005-3ã€RC-2022-4ï¼ˆå…¨ç‚º RC-U3-3ï¼›å‰¯åˆ†é¡žï¼š2025-2â†’RC-U2-1ã€2013-2â†’RC-U1-2ã€2012-3â†’RC-U2-1ã€2005-3â†’RC-U1-1ã€2022-4â†’RC-U1-2ï¼‰
+**æ–¹æ³•ï¼š** é€å¼ç¨ç«‹é‡ç®—ï¼ˆPythonï¼Œéžé‡è®€åŽŸæ–‡ï¼‰ï¼‹ä»¥ `pdftotext -layout`ï¼`pdftoppm` å–å›ž `raw/exams/` åŽŸå·åŽŸæ–‡èˆ‡é™„åœ–é€é …åˆ¤è®€
+ï¼ˆ2012 å¹´é™„åœ–ä»¥ 160 dpi è½‰åœ–ç›®è¦–ç¢ºèªæŸ± 60Ã—60ï¼12-#7ï¼æ ¸å¿ƒ 48 cmã€æ¢ 50Ã—60ï¼é ‚ 6-#8ï¼åº• 4-#7ï¼‰
+ï¼‹ä¾ä½¿ç”¨è€…æŒ‡ç¤ºã€Œ**ä¾æœ€æ–°è¦ç¯„è¨ˆç®—**ã€ï¼Œäº”é¡Œå…¨éƒ¨æ–°å¢ž Â§6 å°ˆç¯€ã€‚
+**è¦ç¯„ç‰ˆæœ¬æŸ¥è­‰ï¼ˆç¶²è·¯ï¼‰ï¼š** åœŸæœ¨ 401-112 ç‚º **2023 å¹´ 8 æœˆ**å‡ºç‰ˆä¹‹ç¾è¡Œç‰ˆï¼ˆå¾ŒçºŒåƒ… 2024-06-24 å‹˜èª¤è¡¨ã€2025-05-16 é‹¼ç­‹ç„ŠæŽ¥æ¢æ–‡ä¿®è¨‚ï¼Œæœªå‡ºæ–°ç‰ˆè™Ÿï¼‰ï¼›
+ã€Œå…¬è·¯æ©‹æ¢è€éœ‡è©•ä¼°èˆ‡è£œå¼·è¨­è¨ˆè¦ç¯„ã€109 å¹´åº•å®šç¨¿ã€**110-03-23** äº¤æŠ€(110)å­—ç¬¬ 1105003536 è™Ÿé ’å¸ƒï¼Œ**äº¤é€šéƒ¨è¿„ä»Šæœªå†æ›´æ–°**ã€‚
 
-### 總表
+### ç¸½è¡¨
 
-| 題號 | 判定 | 主線答案（改後） | 改前 |
+| é¡Œè™Ÿ | åˆ¤å®š | ä¸»ç·šç­”æ¡ˆï¼ˆæ”¹å¾Œï¼‰ | æ”¹å‰ |
 |---|:---:|---|---|
-| RC-2025-2 | 🔴 密箍區外設計錯 | 密箍區 4 腳 D13@15（152 cm）**不變**；**一般區改 2 腳 D13@20**；第一支箍筋 **≤5 cm** | 一般區 2 腳@30，第一支 7.5 cm |
-| RC-2013-2 | 🟠 密箍區外間距違規 | $s=12$ cm、5 腳 D13、$A_{sh}=6.35$ **不變**；**區外 15 cm**（非 19.3） | 區外「D13@15 或 **@19**」 |
-| RC-2012-3 | 🔴 柱設計剪力差 2 倍 | $V_u=$ **25.17 tf**（原 50.33）；$s=9$ cm **不變**；**新增區外 13 cm** | $V_u=50.33$ tf、$s_{shear}=17.2$ cm |
-| RC-2005-3 | 🔴 兩處疊加錯 | $T=1.25f_yA_s$、$V_{col}=M_{pr}/H$ ⇒ **$V_{jh}=131.5$ tf**（$\le\phi V_n=163.8$ ✓） | $V_{jh}=81.9$ tf |
-| RC-2022-4 | 🟡 算式全對 | $L_p=0.595$、$\mu_\phi=4.0$、$\mu_\theta=\mu=2.63$ **不變**；新增「需求讀法」留檔 | 同（$M=232.5$ 未用） |
+| RC-2025-2 | ðŸ”´ å¯†ç®å€å¤–è¨­è¨ˆéŒ¯ | å¯†ç®å€ 4 è…³ D13@15ï¼ˆ152 cmï¼‰**ä¸è®Š**ï¼›**ä¸€èˆ¬å€æ”¹ 2 è…³ D13@20**ï¼›ç¬¬ä¸€æ”¯ç®ç­‹ **â‰¤5 cm** | ä¸€èˆ¬å€ 2 è…³@30ï¼Œç¬¬ä¸€æ”¯ 7.5 cm |
+| RC-2013-2 | ðŸŸ  å¯†ç®å€å¤–é–“è·é•è¦ | $s=12$ cmã€5 è…³ D13ã€$A_{sh}=6.35$ **ä¸è®Š**ï¼›**å€å¤– 15 cm**ï¼ˆéž 19.3ï¼‰ | å€å¤–ã€ŒD13@15 æˆ– **@19**ã€ |
+| RC-2012-3 | ðŸ”´ æŸ±è¨­è¨ˆå‰ªåŠ›å·® 2 å€ | $V_u=$ **25.17 tf**ï¼ˆåŽŸ 50.33ï¼‰ï¼›$s=9$ cm **ä¸è®Š**ï¼›**æ–°å¢žå€å¤– 13 cm** | $V_u=50.33$ tfã€$s_{shear}=17.2$ cm |
+| RC-2005-3 | ðŸ”´ å…©è™•ç–ŠåŠ éŒ¯ | $T=1.25f_yA_s$ã€$V_{col}=M_{pr}/H$ â‡’ **$V_{jh}=131.5$ tf**ï¼ˆ$\le\phi V_n=163.8$ âœ“ï¼‰ | $V_{jh}=81.9$ tf |
+| RC-2022-4 | ðŸŸ¡ ç®—å¼å…¨å° | $L_p=0.595$ã€$\mu_\phi=4.0$ã€$\mu_\theta=\mu=2.63$ **ä¸è®Š**ï¼›æ–°å¢žã€Œéœ€æ±‚è®€æ³•ã€ç•™æª” | åŒï¼ˆ$M=232.5$ æœªç”¨ï¼‰ |
 
-### 一、RC-2012-3：柱地震設計剪力高估一倍（最嚴重的觀念錯）
+### ä¸€ã€RC-2012-3ï¼šæŸ±åœ°éœ‡è¨­è¨ˆå‰ªåŠ›é«˜ä¼°ä¸€å€ï¼ˆæœ€åš´é‡çš„è§€å¿µéŒ¯ï¼‰
 
-原文寫 $V_u = (M_{pr,top}+M_{pr,bot})/l_n = (75.5+75.5)/3.0 = 50.33$ tf，
-把**一根柱的上下兩端各給了一個完整的梁 $M_{pr}$**。少了關鍵一步：**接頭處梁傳來的彎矩由上下兩根柱依勁度分擔**。
+åŽŸæ–‡å¯« $V_u = (M_{pr,top}+M_{pr,bot})/l_n = (75.5+75.5)/3.0 = 50.33$ tfï¼Œ
+æŠŠ**ä¸€æ ¹æŸ±çš„ä¸Šä¸‹å…©ç«¯å„çµ¦äº†ä¸€å€‹å®Œæ•´çš„æ¢ $M_{pr}$**ã€‚å°‘äº†é—œéµä¸€æ­¥ï¼š**æŽ¥é ­è™•æ¢å‚³ä¾†çš„å½ŽçŸ©ç”±ä¸Šä¸‹å…©æ ¹æŸ±ä¾å‹åº¦åˆ†æ“”**ã€‚
 
-正確推導（單跨構架，每個外圍接頭只有一根梁）：
+æ­£ç¢ºæŽ¨å°Žï¼ˆå–®è·¨æ§‹æž¶ï¼Œæ¯å€‹å¤–åœæŽ¥é ­åªæœ‰ä¸€æ ¹æ¢ï¼‰ï¼š
 
-$$\Sigma M_{col} = \Sigma M_{pr,\text{beam}} = M_{pr}^- = 75.52\ \text{tf·m}
-\ \Rightarrow\ M_{col,\text{上}} = M_{col,\text{下}} = 37.76$$
+$$\Sigma M_{col} = \Sigma M_{pr,\text{beam}} = M_{pr}^- = 75.52\ \text{tfÂ·m}
+\ \Rightarrow\ M_{col,\text{ä¸Š}} = M_{col,\text{ä¸‹}} = 37.76$$
 $$V_u = \frac{37.76+37.76}{3.0} = \frac{\Sigma M_{pr,\text{beam}}}{l_n} = \boxed{25.17\ \text{tf}}$$
 
-**分子是「一個接頭」的梁 $M_{pr}$ 總和，不是上下兩個接頭相加。**
-最終 $s = 9$ cm 由圍束公式一控制，**不受影響**；但 $s_{shear}$ 由 17.2 改為 34.3 cm，
-且此觀念**直接影響 RC-2012-4 的接頭剪力檢核**（$V_{col}$ 是 $V_{jh}$ 的減項）。
+**åˆ†å­æ˜¯ã€Œä¸€å€‹æŽ¥é ­ã€çš„æ¢ $M_{pr}$ ç¸½å’Œï¼Œä¸æ˜¯ä¸Šä¸‹å…©å€‹æŽ¥é ­ç›¸åŠ ã€‚**
+æœ€çµ‚ $s = 9$ cm ç”±åœæŸå…¬å¼ä¸€æŽ§åˆ¶ï¼Œ**ä¸å—å½±éŸ¿**ï¼›ä½† $s_{shear}$ ç”± 17.2 æ”¹ç‚º 34.3 cmï¼Œ
+ä¸”æ­¤è§€å¿µ**ç›´æŽ¥å½±éŸ¿ RC-2012-4 çš„æŽ¥é ­å‰ªåŠ›æª¢æ ¸**ï¼ˆ$V_{col}$ æ˜¯ $V_{jh}$ çš„æ¸›é …ï¼‰ã€‚
 
-另補兩項：① **塑鉸區外間距** $\le \min(6d_b,\,15) = 13.3$ cm → 取 13 cm（原文完全未提）；
-② **$b_c$／$A_{ch}$ 定義敏感度留檔**：附圖標的 48 cm 是主筋心距，規範定義量至箍筋外緣為 52.76 cm，
-兩者 $A_{sh1}/s$ 差 74%（0.540 vs 0.310）⇒ 分別得 $s = 9$ cm（圍束控制）與 $s = 13$ cm（$6d_b$ 幾何控制）。
-**主線保留 48 cm**（附圖明標、且保守），另一讀法已於正本 §5④ 列表留檔。
+å¦è£œå…©é …ï¼šâ‘  **å¡‘é‰¸å€å¤–é–“è·** $\le \min(6d_b,\,15) = 13.3$ cm â†’ å– 13 cmï¼ˆåŽŸæ–‡å®Œå…¨æœªæï¼‰ï¼›
+â‘¡ **$b_c$ï¼$A_{ch}$ å®šç¾©æ•æ„Ÿåº¦ç•™æª”**ï¼šé™„åœ–æ¨™çš„ 48 cm æ˜¯ä¸»ç­‹å¿ƒè·ï¼Œè¦ç¯„å®šç¾©é‡è‡³ç®ç­‹å¤–ç·£ç‚º 52.76 cmï¼Œ
+å…©è€… $A_{sh1}/s$ å·® 74%ï¼ˆ0.540 vs 0.310ï¼‰â‡’ åˆ†åˆ¥å¾— $s = 9$ cmï¼ˆåœæŸæŽ§åˆ¶ï¼‰èˆ‡ $s = 13$ cmï¼ˆ$6d_b$ å¹¾ä½•æŽ§åˆ¶ï¼‰ã€‚
+**ä¸»ç·šä¿ç•™ 48 cm**ï¼ˆé™„åœ–æ˜Žæ¨™ã€ä¸”ä¿å®ˆï¼‰ï¼Œå¦ä¸€è®€æ³•å·²æ–¼æ­£æœ¬ Â§5â‘£ åˆ—è¡¨ç•™æª”ã€‚
 
-### 二、RC-2005-3：$V_{col}$ 公式差 2 倍 ＋ 未用 $1.25f_y$（兩錯疊加）
+### äºŒã€RC-2005-3ï¼š$V_{col}$ å…¬å¼å·® 2 å€ ï¼‹ æœªç”¨ $1.25f_y$ï¼ˆå…©éŒ¯ç–ŠåŠ ï¼‰
 
-**(1) $V_{col} = 2M_n/H$ 錯 → 應為 $M_n/H$。** 接頭處梁彎矩由上下柱各半分擔、柱反曲點在樓層中高：
-$V_{col} = \dfrac{M/2}{H/2} = \dfrac{M}{H}$。原文 §4③ 的說明文字本身就自相矛盾
-（先寫出 $(M_n/2)/(H/2)$，又斷言 $V_{col}\times(H/2) = M_n$）。
+**(1) $V_{col} = 2M_n/H$ éŒ¯ â†’ æ‡‰ç‚º $M_n/H$ã€‚** æŽ¥é ­è™•æ¢å½ŽçŸ©ç”±ä¸Šä¸‹æŸ±å„åŠåˆ†æ“”ã€æŸ±åæ›²é»žåœ¨æ¨“å±¤ä¸­é«˜ï¼š
+$V_{col} = \dfrac{M/2}{H/2} = \dfrac{M}{H}$ã€‚åŽŸæ–‡ Â§4â‘¢ çš„èªªæ˜Žæ–‡å­—æœ¬èº«å°±è‡ªç›¸çŸ›ç›¾
+ï¼ˆå…ˆå¯«å‡º $(M_n/2)/(H/2)$ï¼Œåˆæ–·è¨€ $V_{col}\times(H/2) = M_n$ï¼‰ã€‚
 
-**(2) 梁筋拉力應取 $1.25f_y$。** $V_{jh} = \gamma\sqrt{f'_c}A_j$ 這條檢核**只存在於耐震專章**，
-其配套規定 §18.8.2.1 明訂用 $1.25f_y$；用了耐震的**強度**公式就必須用耐震的**力**。
+**(2) æ¢ç­‹æ‹‰åŠ›æ‡‰å– $1.25f_y$ã€‚** $V_{jh} = \gamma\sqrt{f'_c}A_j$ é€™æ¢æª¢æ ¸**åªå­˜åœ¨æ–¼è€éœ‡å°ˆç« **ï¼Œ
+å…¶é…å¥—è¦å®š Â§18.8.2.1 æ˜Žè¨‚ç”¨ $1.25f_y$ï¼›ç”¨äº†è€éœ‡çš„**å¼·åº¦**å…¬å¼å°±å¿…é ˆç”¨è€éœ‡çš„**åŠ›**ã€‚
 
-$$T = 1.25(30.42)(4200) = 159{,}705\ \text{kgf},\quad a = 11.18,\quad M_{pr} = 102.86\ \text{tf·m}$$
+$$T = 1.25(30.42)(4200) = 159{,}705\ \text{kgf},\quad a = 11.18,\quad M_{pr} = 102.86\ \text{tfÂ·m}$$
 $$V_{col} = 10{,}286{,}000/365 = 28.18\ \text{tf},\quad
 V_{jh} = 159{,}705 - 28{,}181 = \boxed{131.5\ \text{tf}}$$
-$$\phi V_n = 0.85\times3.2\times\sqrt{280}\times3600 = 163.8\ \text{tf}\ \ge\ 131.5\ ✓\ (\text{利用率 } 80\%)$$
+$$\phi V_n = 0.85\times3.2\times\sqrt{280}\times3600 = 163.8\ \text{tf}\ \ge\ 131.5\ âœ“\ (\text{åˆ©ç”¨çŽ‡ } 80\%)$$
 
-三種算法對照（$1.25f_y$ 131.5／$f_y$ 104.8／舊版 81.9 tf）已列表留檔，**結論都是通過**，但餘裕差很多。
+ä¸‰ç¨®ç®—æ³•å°ç…§ï¼ˆ$1.25f_y$ 131.5ï¼$f_y$ 104.8ï¼èˆŠç‰ˆ 81.9 tfï¼‰å·²åˆ—è¡¨ç•™æª”ï¼Œ**çµè«–éƒ½æ˜¯é€šéŽ**ï¼Œä½†é¤˜è£•å·®å¾ˆå¤šã€‚
 
-**⚠ 依最新規範可能翻轉結論：** ACI 318-19 Table 18.8.4.3 新增「**柱未延伸至接頭上方**（屋頂層接頭）」一組較低的 $\gamma$
-（四面 1.5／三面或一雙對面 1.0／其他 **0.7** MPa ≈ kgf 制 4.7／3.2／**2.2**）。
-若本角柱接頭位於屋頂層：$\phi V_n = 0.85\times2.2\times16.733\times3600 = \mathbf{112.6}$ tf $< 131.5$ tf ⇒ **不通過（超出 17%）**。
-原卷未交代樓層，正本與摘要頁均已明列此假設。
-另修：$\gamma$ 中間檔土木 401 與 101 年考卷原文印的是 **3.9**（原文寫 4.0）；$b_j$ 改引規範原式 $\min(b+h,\,b+2x)\le b_{col}$。
+**âš  ä¾æœ€æ–°è¦ç¯„å¯èƒ½ç¿»è½‰çµè«–ï¼š** ACI 318-19 Table 18.8.4.3 æ–°å¢žã€Œ**æŸ±æœªå»¶ä¼¸è‡³æŽ¥é ­ä¸Šæ–¹**ï¼ˆå±‹é ‚å±¤æŽ¥é ­ï¼‰ã€ä¸€çµ„è¼ƒä½Žçš„ $\gamma$
+ï¼ˆå››é¢ 1.5ï¼ä¸‰é¢æˆ–ä¸€é›™å°é¢ 1.0ï¼å…¶ä»– **0.7** MPa â‰ˆ kgf åˆ¶ 4.7ï¼3.2ï¼**2.2**ï¼‰ã€‚
+è‹¥æœ¬è§’æŸ±æŽ¥é ­ä½æ–¼å±‹é ‚å±¤ï¼š$\phi V_n = 0.85\times2.2\times16.733\times3600 = \mathbf{112.6}$ tf $< 131.5$ tf â‡’ **ä¸é€šéŽï¼ˆè¶…å‡º 17%ï¼‰**ã€‚
+åŽŸå·æœªäº¤ä»£æ¨“å±¤ï¼Œæ­£æœ¬èˆ‡æ‘˜è¦é å‡å·²æ˜Žåˆ—æ­¤å‡è¨­ã€‚
+å¦ä¿®ï¼š$\gamma$ ä¸­é–“æª”åœŸæœ¨ 401 èˆ‡ 101 å¹´è€ƒå·åŽŸæ–‡å°çš„æ˜¯ **3.9**ï¼ˆåŽŸæ–‡å¯« 4.0ï¼‰ï¼›$b_j$ æ”¹å¼•è¦ç¯„åŽŸå¼ $\min(b+h,\,b+2x)\le b_{col}$ã€‚
 
-### 三、RC-2025-2：密箍區外用「重力剪力」設計（結論不安全）
+### ä¸‰ã€RC-2025-2ï¼šå¯†ç®å€å¤–ç”¨ã€Œé‡åŠ›å‰ªåŠ›ã€è¨­è¨ˆï¼ˆçµè«–ä¸å®‰å…¨ï¼‰
 
-原文寫「一般區 $V_u = 9$ tf（重力剪力），$\phi V_c = 27.3 > 9$，取 $s = 30$ cm」——**把重力剪力圖誤當成耐震設計剪力**。
-$V_e$ 是由兩端 $M_{pr}$ 產生、**沿全梁都存在**的剪力：
+åŽŸæ–‡å¯«ã€Œä¸€èˆ¬å€ $V_u = 9$ tfï¼ˆé‡åŠ›å‰ªåŠ›ï¼‰ï¼Œ$\phi V_c = 27.3 > 9$ï¼Œå– $s = 30$ cmã€â€”â€”**æŠŠé‡åŠ›å‰ªåŠ›åœ–èª¤ç•¶æˆè€éœ‡è¨­è¨ˆå‰ªåŠ›**ã€‚
+$V_e$ æ˜¯ç”±å…©ç«¯ $M_{pr}$ ç”¢ç”Ÿã€**æ²¿å…¨æ¢éƒ½å­˜åœ¨**çš„å‰ªåŠ›ï¼š
 
-$$V_e(x) = \max(46.43 - 2x,\ 28.43 + 2x)\ \text{tf}\quad(x\ \text{自左柱面，m})$$
+$$V_e(x) = \max(46.43 - 2x,\ 28.43 + 2x)\ \text{tf}\quad(x\ \text{è‡ªå·¦æŸ±é¢ï¼Œm})$$
 
-| 位置 | $V_e$ |
+| ä½ç½® | $V_e$ |
 |---|:---:|
-| 柱面 | 46.43 tf |
-| 密箍區外緣 $x = 1.52$ m | **43.39 tf** ← 一般區控制值 |
-| 跨中 $x = 4.5$ m | **37.43 tf** ← 包絡線最小值（**不是 9 tf**）|
+| æŸ±é¢ | 46.43 tf |
+| å¯†ç®å€å¤–ç·£ $x = 1.52$ m | **43.39 tf** â† ä¸€èˆ¬å€æŽ§åˆ¶å€¼ |
+| è·¨ä¸­ $x = 4.5$ m | **37.43 tf** â† åŒ…çµ¡ç·šæœ€å°å€¼ï¼ˆ**ä¸æ˜¯ 9 tf**ï¼‰|
 
-$\phi V_c = 0.75\times35.65 = 26.74$ tf **連跨中都不夠**。
-改正：一般區 $V_s \ge 43{,}394/0.75 - 35{,}652 = 22{,}207$ kgf ⇒ $s \le 21.5$ cm ⇒ 取
-**2 腳 D13 @20 cm**（$\phi(V_c+V_s) = 44.6 \ge 43.4$ ✓，且 $20 \le d/2 = 33.5$ ✓）。
+$\phi V_c = 0.75\times35.65 = 26.74$ tf **é€£è·¨ä¸­éƒ½ä¸å¤ **ã€‚
+æ”¹æ­£ï¼šä¸€èˆ¬å€ $V_s \ge 43{,}394/0.75 - 35{,}652 = 22{,}207$ kgf â‡’ $s \le 21.5$ cm â‡’ å–
+**2 è…³ D13 @20 cm**ï¼ˆ$\phi(V_c+V_s) = 44.6 \ge 43.4$ âœ“ï¼Œä¸” $20 \le d/2 = 33.5$ âœ“ï¼‰ã€‚
 
-另修三項：
-- **第一支箍筋距柱面 $\le$ 5 cm**（§18.6.4.4 對**梁**的明文；$s_o/2$ 是**柱** §18.7.5.3 的規定）——原文寫 7.5 cm。
-- **$A_{v,\min}$ 的 kgf/cm² 係數是 3.5 與 0.2**（原文用 SI 的 0.35／0.0625，低 10 倍／3.1 倍）：$0.0750$ cm²/cm。
-- $V_{s,\max} = 2.12\sqrt{f'_c}b_wd = 142.6$ tf（原文 143.2，SI 換算進位）；$\phi V_c$ 寫 27.3 應為 26.7。
+å¦ä¿®ä¸‰é …ï¼š
+- **ç¬¬ä¸€æ”¯ç®ç­‹è·æŸ±é¢ $\le$ 5 cm**ï¼ˆÂ§18.6.4.4 å°**æ¢**çš„æ˜Žæ–‡ï¼›$s_o/2$ æ˜¯**æŸ±** Â§18.7.5.3 çš„è¦å®šï¼‰â€”â€”åŽŸæ–‡å¯« 7.5 cmã€‚
+- **$A_{v,\min}$ çš„ kgf/cmÂ² ä¿‚æ•¸æ˜¯ 3.5 èˆ‡ 0.2**ï¼ˆåŽŸæ–‡ç”¨ SI çš„ 0.35ï¼0.0625ï¼Œä½Ž 10 å€ï¼3.1 å€ï¼‰ï¼š$0.0750$ cmÂ²/cmã€‚
+- $V_{s,\max} = 2.12\sqrt{f'_c}b_wd = 142.6$ tfï¼ˆåŽŸæ–‡ 143.2ï¼ŒSI æ›ç®—é€²ä½ï¼‰ï¼›$\phi V_c$ å¯« 27.3 æ‡‰ç‚º 26.7ã€‚
 
-密箍區主線（$M_{pr}^- = 188.1$／$M_{pr}^+ = 148.8$ tf·m、$V_e = 46.43$ tf、地震佔比 80.6% → $V_c = 0$、
-$2h = 152$ cm、$s_{req} = 15.4$ vs $s_o = 15$ → 15 cm、$\phi V_s = 47.7 \ge 46.4$）**逐項複算全部正確**。
-新增兩項可行性驗算：8-D32 單排所需寬度 58.84 $\le$ 60 ✓；4 腳箍筋之被支撐鋼筋間距 19.8 $<$ 35 cm ✓。
+å¯†ç®å€ä¸»ç·šï¼ˆ$M_{pr}^- = 188.1$ï¼$M_{pr}^+ = 148.8$ tfÂ·mã€$V_e = 46.43$ tfã€åœ°éœ‡ä½”æ¯” 80.6% â†’ $V_c = 0$ã€
+$2h = 152$ cmã€$s_{req} = 15.4$ vs $s_o = 15$ â†’ 15 cmã€$\phi V_s = 47.7 \ge 46.4$ï¼‰**é€é …è¤‡ç®—å…¨éƒ¨æ­£ç¢º**ã€‚
+æ–°å¢žå…©é …å¯è¡Œæ€§é©—ç®—ï¼š8-D32 å–®æŽ’æ‰€éœ€å¯¬åº¦ 58.84 $\le$ 60 âœ“ï¼›4 è…³ç®ç­‹ä¹‹è¢«æ”¯æ’é‹¼ç­‹é–“è· 19.8 $<$ 35 cm âœ“ã€‚
 
-### 四、RC-2013-2：密箍區「以外」的間距違規
+### å››ã€RC-2013-2ï¼šå¯†ç®å€ã€Œä»¥å¤–ã€çš„é–“è·é•è¦
 
-原文 §5③ 寫「$s_{outside} \le 6d_b = 19.3$ cm，D13@15 或 **D13@19** 即可」。
-ACI 318-19 §18.7.5.5／土木 401 明定 $l_o$ 以外 $s \le \min(6d_b,\ 150\ \text{mm}) = \mathbf{15}$ cm——**19 cm 違規**。
-「$6d_b$」從來不是單獨成立的上限。
+åŽŸæ–‡ Â§5â‘¢ å¯«ã€Œ$s_{outside} \le 6d_b = 19.3$ cmï¼ŒD13@15 æˆ– **D13@19** å³å¯ã€ã€‚
+ACI 318-19 Â§18.7.5.5ï¼åœŸæœ¨ 401 æ˜Žå®š $l_o$ ä»¥å¤– $s \le \min(6d_b,\ 150\ \text{mm}) = \mathbf{15}$ cmâ€”â€”**19 cm é•è¦**ã€‚
+ã€Œ$6d_b$ã€å¾žä¾†ä¸æ˜¯å–®ç¨æˆç«‹çš„ä¸Šé™ã€‚
 
-另修 $h_x$：$h_c = 42$ 是量到**箍筋外緣**，主筋心距應扣**兩個**箍筋直徑：
-$(42 - 2\times1.27 - 3.22)/4 = \mathbf{9.06}$ cm（原文 $(42-1.27-3.22)/4 = 9.38$）。
-兩種繫筋配置（全配／跳一根）之 $s_o$ 分別為 18.65／15.63，**都被 15 cm 上限截住，結論不變**。
+å¦ä¿® $h_x$ï¼š$h_c = 42$ æ˜¯é‡åˆ°**ç®ç­‹å¤–ç·£**ï¼Œä¸»ç­‹å¿ƒè·æ‡‰æ‰£**å…©å€‹**ç®ç­‹ç›´å¾‘ï¼š
+$(42 - 2\times1.27 - 3.22)/4 = \mathbf{9.06}$ cmï¼ˆåŽŸæ–‡ $(42-1.27-3.22)/4 = 9.38$ï¼‰ã€‚
+å…©ç¨®ç¹«ç­‹é…ç½®ï¼ˆå…¨é…ï¼è·³ä¸€æ ¹ï¼‰ä¹‹ $s_o$ åˆ†åˆ¥ç‚º 18.65ï¼15.63ï¼Œ**éƒ½è¢« 15 cm ä¸Šé™æˆªä½ï¼Œçµè«–ä¸è®Š**ã€‚
 
-主線（$h_c = 42$、$A_{ch} = 1764$、$A_{sh1}/s = 0.5257$ 控制、$s = \min(12.5,\,19.3,\,15) \to 12$ cm、
-需 4.97 腳 → 5 腳、外方箍＋3 繫筋、$A_{sh} = 6.35 \ge 6.31$ ✓）**全部複算相符**（餘裕僅 0.7%）。
-另補：$\rho_g = 5.21\%$（$1\%\sim6\%$ ✓）、繫筋 $135°/90°$ 逐層交錯、$l_o = \max(50,\ l_u/6)$、並重繪箍筋配置圖說。
+ä¸»ç·šï¼ˆ$h_c = 42$ã€$A_{ch} = 1764$ã€$A_{sh1}/s = 0.5257$ æŽ§åˆ¶ã€$s = \min(12.5,\,19.3,\,15) \to 12$ cmã€
+éœ€ 4.97 è…³ â†’ 5 è…³ã€å¤–æ–¹ç®ï¼‹3 ç¹«ç­‹ã€$A_{sh} = 6.35 \ge 6.31$ âœ“ï¼‰**å…¨éƒ¨è¤‡ç®—ç›¸ç¬¦**ï¼ˆé¤˜è£•åƒ… 0.7%ï¼‰ã€‚
+å¦è£œï¼š$\rho_g = 5.21\%$ï¼ˆ$1\%\sim6\%$ âœ“ï¼‰ã€ç¹«ç­‹ $135Â°/90Â°$ é€å±¤äº¤éŒ¯ã€$l_o = \max(50,\ l_u/6)$ã€ä¸¦é‡ç¹ªç®ç­‹é…ç½®åœ–èªªã€‚
 
-### 五、RC-2022-4：算式全對，補「需求 vs 容量」讀法留檔
+### äº”ã€RC-2022-4ï¼šç®—å¼å…¨å°ï¼Œè£œã€Œéœ€æ±‚ vs å®¹é‡ã€è®€æ³•ç•™æª”
 
-逐項複算相符：內插 $\phi_y = 0.005$／$M_y = 220$／$\phi_u = 0.020$／$M_u = 245$；
-$L_p = \max(0.5535,\ 0.5951) = 0.595$ m（**下限式控制**）；$\delta_y = 1.7067$ cm、$\theta_y = 0.005333$；
-$\delta_u = 1.1136(0.017067) + 0.015(0.595)(2.9025) = 4.4911$ cm；$\mu_\phi = 4.00$、$\mu_\theta = \mu = 2.632$。
+é€é …è¤‡ç®—ç›¸ç¬¦ï¼šå…§æ’ $\phi_y = 0.005$ï¼$M_y = 220$ï¼$\phi_u = 0.020$ï¼$M_u = 245$ï¼›
+$L_p = \max(0.5535,\ 0.5951) = 0.595$ mï¼ˆ**ä¸‹é™å¼æŽ§åˆ¶**ï¼‰ï¼›$\delta_y = 1.7067$ cmã€$\theta_y = 0.005333$ï¼›
+$\delta_u = 1.1136(0.017067) + 0.015(0.595)(2.9025) = 4.4911$ cmï¼›$\mu_\phi = 4.00$ã€$\mu_\theta = \mu = 2.632$ã€‚
 
-**新增留檔：** 題目給的 $M = 232.5$ tf·m **恰為內插後 $M_y = 220$ 與 $M_u = 245$ 的正中點**，卻全文未用。
+**æ–°å¢žç•™æª”ï¼š** é¡Œç›®çµ¦çš„ $M = 232.5$ tfÂ·m **æ°ç‚ºå…§æ’å¾Œ $M_y = 220$ èˆ‡ $M_u = 245$ çš„æ­£ä¸­é»ž**ï¼Œå»å…¨æ–‡æœªç”¨ã€‚
 
-| | 讀法 A（主線，照原卷公式下標 $u$） | 讀法 B（在 $M = 232.5$ 評估「需求」） |
+| | è®€æ³• Aï¼ˆä¸»ç·šï¼Œç…§åŽŸå·å…¬å¼ä¸‹æ¨™ $u$ï¼‰ | è®€æ³• Bï¼ˆåœ¨ $M = 232.5$ è©•ä¼°ã€Œéœ€æ±‚ã€ï¼‰ |
 |---|---|---|
 | $\phi$ | 0.020 | $\phi_d = 0.0125$ |
 | $\mu_\phi$ | **4.00** | **2.50** |
 | $\delta$ | 4.491 cm | 3.099 cm |
 | $\mu_\theta = \mu$ | **2.63** | **1.82** |
-| 語意 | 實為**韌性容量** | 才是**韌性需求** |
+| èªžæ„ | å¯¦ç‚º**éŸŒæ€§å®¹é‡** | æ‰æ˜¯**éŸŒæ€§éœ€æ±‚** |
 
-採 A 為主線（題幹明寫「根據規範**所列公式**……評估」，公式下標即 $u$）；$M = 232.5$ 用來確認已降伏（$>220$）且未達極限（$<245$）。
-考場建議兩者並寫，並可補「容量／需求 $= 2.63/1.82 = 1.44$，尚有 44% 韌性餘裕」。
+æŽ¡ A ç‚ºä¸»ç·šï¼ˆé¡Œå¹¹æ˜Žå¯«ã€Œæ ¹æ“šè¦ç¯„**æ‰€åˆ—å…¬å¼**â€¦â€¦è©•ä¼°ã€ï¼Œå…¬å¼ä¸‹æ¨™å³ $u$ï¼‰ï¼›$M = 232.5$ ç”¨ä¾†ç¢ºèªå·²é™ä¼ï¼ˆ$>220$ï¼‰ä¸”æœªé”æ¥µé™ï¼ˆ$<245$ï¼‰ã€‚
+è€ƒå ´å»ºè­°å…©è€…ä¸¦å¯«ï¼Œä¸¦å¯è£œã€Œå®¹é‡ï¼éœ€æ±‚ $= 2.63/1.82 = 1.44$ï¼Œå°šæœ‰ 44% éŸŒæ€§é¤˜è£•ã€ã€‚
 
-另修兩處：① 摘要頁誤寫「$d_b$ 用 mm、$f_y$ 用 MPa」——正確是 **$L$、$d_b$ 用 m、$f_y$ 用 kgf/cm²**
-（係數 0.0022／0.0044 已由 Priestley 原式的 0.022／0.044 除以 10.197 換算，代入時勿再換算）；
-② 補 $\mu \approx 1+(\mu_\phi-1)\lambda$ 的交叉驗算：$\lambda = 3\frac{L_p}{L}(1-0.5\frac{L_p}{L}) = 0.506$ →
-$1+3(0.506) = 2.518$，與**去掉 $M_u/M_y$ 硬化項**後的 $\delta_u/\delta_y$ 完全吻合。
+å¦ä¿®å…©è™•ï¼šâ‘  æ‘˜è¦é èª¤å¯«ã€Œ$d_b$ ç”¨ mmã€$f_y$ ç”¨ MPaã€â€”â€”æ­£ç¢ºæ˜¯ **$L$ã€$d_b$ ç”¨ mã€$f_y$ ç”¨ kgf/cmÂ²**
+ï¼ˆä¿‚æ•¸ 0.0022ï¼0.0044 å·²ç”± Priestley åŽŸå¼çš„ 0.022ï¼0.044 é™¤ä»¥ 10.197 æ›ç®—ï¼Œä»£å…¥æ™‚å‹¿å†æ›ç®—ï¼‰ï¼›
+â‘¡ è£œ $\mu \approx 1+(\mu_\phi-1)\lambda$ çš„äº¤å‰é©—ç®—ï¼š$\lambda = 3\frac{L_p}{L}(1-0.5\frac{L_p}{L}) = 0.506$ â†’
+$1+3(0.506) = 2.518$ï¼Œèˆ‡**åŽ»æŽ‰ $M_u/M_y$ ç¡¬åŒ–é …**å¾Œçš„ $\delta_u/\delta_y$ å®Œå…¨å»åˆã€‚
 
-### 六、依最新規範對照（五題都加了 §6 專節）
+### å…­ã€ä¾æœ€æ–°è¦ç¯„å°ç…§ï¼ˆäº”é¡Œéƒ½åŠ äº† Â§6 å°ˆç¯€ï¼‰
 
-| 題號 | 原卷指定 | 401-112／ACI 318-19 下的答案 | 條文變動 |
+| é¡Œè™Ÿ | åŽŸå·æŒ‡å®š | 401-112ï¼ACI 318-19 ä¸‹çš„ç­”æ¡ˆ | æ¢æ–‡è®Šå‹• |
 |---|---|---|---|
-| RC-2025-2 | **土木 401-112**（卷首明訂） | **相同**（原卷即現行規範） | 無落差；修的是原文引錯的條文 |
-| RC-2013-2 | 土木 401-100 | **相同**（$s=12$ cm、5 腳 D13） | $A_{sh}$ 加第三式（門檻 $0.3A_gf'_c = 210$ tf，未觸發）；$l_o$ 外間距 15 cm |
-| RC-2012-3 | 未指定（401-100 世代） | **相同**（$s=9$ cm） | 同上（門檻 302 tf，未觸發）；含軸壓 $V_c$ 由乘法改加法（取 $V_c=0$ 故用不到） |
-| RC-2005-3 | 未指定（401-86／318-99 世代） | 中間樓層 **相同**（通過）；**屋頂層則不通過** | Table 18.8.4.3 新增屋頂層接頭 $\gamma$（角柱 3.2 → **2.2**） |
-| RC-2022-4 | 公路橋梁耐震評估與補強設計規範（109/12） | **相同**（該規範即現行版，未更新） | 無 |
+| RC-2025-2 | **åœŸæœ¨ 401-112**ï¼ˆå·é¦–æ˜Žè¨‚ï¼‰ | **ç›¸åŒ**ï¼ˆåŽŸå·å³ç¾è¡Œè¦ç¯„ï¼‰ | ç„¡è½å·®ï¼›ä¿®çš„æ˜¯åŽŸæ–‡å¼•éŒ¯çš„æ¢æ–‡ |
+| RC-2013-2 | åœŸæœ¨ 401-100 | **ç›¸åŒ**ï¼ˆ$s=12$ cmã€5 è…³ D13ï¼‰ | $A_{sh}$ åŠ ç¬¬ä¸‰å¼ï¼ˆé–€æª» $0.3A_gf'_c = 210$ tfï¼Œæœªè§¸ç™¼ï¼‰ï¼›$l_o$ å¤–é–“è· 15 cm |
+| RC-2012-3 | æœªæŒ‡å®šï¼ˆ401-100 ä¸–ä»£ï¼‰ | **ç›¸åŒ**ï¼ˆ$s=9$ cmï¼‰ | åŒä¸Šï¼ˆé–€æª» 302 tfï¼Œæœªè§¸ç™¼ï¼‰ï¼›å«è»¸å£“ $V_c$ ç”±ä¹˜æ³•æ”¹åŠ æ³•ï¼ˆå– $V_c=0$ æ•…ç”¨ä¸åˆ°ï¼‰ |
+| RC-2005-3 | æœªæŒ‡å®šï¼ˆ401-86ï¼318-99 ä¸–ä»£ï¼‰ | ä¸­é–“æ¨“å±¤ **ç›¸åŒ**ï¼ˆé€šéŽï¼‰ï¼›**å±‹é ‚å±¤å‰‡ä¸é€šéŽ** | Table 18.8.4.3 æ–°å¢žå±‹é ‚å±¤æŽ¥é ­ $\gamma$ï¼ˆè§’æŸ± 3.2 â†’ **2.2**ï¼‰ |
+| RC-2022-4 | å…¬è·¯æ©‹æ¢è€éœ‡è©•ä¼°èˆ‡è£œå¼·è¨­è¨ˆè¦ç¯„ï¼ˆ109/12ï¼‰ | **ç›¸åŒ**ï¼ˆè©²è¦ç¯„å³ç¾è¡Œç‰ˆï¼Œæœªæ›´æ–°ï¼‰ | ç„¡ |
 
-### 七、施作內容（下游同步）
+### ä¸ƒã€æ–½ä½œå…§å®¹ï¼ˆä¸‹æ¸¸åŒæ­¥ï¼‰
 
-- `raw/solutions/{RC-2025-2,RC-2013-2,RC-2012-3,RC-2005-3,RC-2022-4}/*.md`：正本改寫
-  （§1 補原卷原文核對、勘誤框、§4 補／改步驟、§5 改寫爭議點、**新增 §6 依最新規範對照**）。
-- `wiki/problems/` 五頁摘要：標題／答案／核心考點／關鍵步驟／公式／陷阱／圖形欄／新增「依最新規範對照」段全部同步。
-- `raw/json/question_index.json`：五題 tags 全部重抓（2025-2 7→9、2013-2 8→9、2012-3 10→11、2005-3 9→11、2022-4 8→9）。
-  `verificationStatus` 全部維持 `unverified`。
-- `dashboard-data.js`、`knowledge_graph.html`：五題 tags 同步（100 列／每列 7 元素、行數 130 均已驗證）。
-- `wiki/index.md`、`wiki/by-year.md`：五題一行說明改為含改後答案。
-- `study/problems-view/` 五頁以 `scripts/gen_problems_view.py` **單題**重建（written=5，未動 `--all`）。
-- `study/study-RC-U3-3.html`：五題內嵌資料列的 description 與 tags 同步。
-- `wiki/code-ref/seismic-code.md`：**多處實質修正**——
-  ① 梁密箍區間距仍寫 ACI 318-11 的 $\min(d/4,8d_b,24d_{sw},300\text{mm})$，已改為 318-14 起的 $\min(d/4,6d_b,150\text{mm})$；
-  ② $A_{sh}$ 只列兩式，已補第三式 $0.2k_fk_nP_u/(f_{yt}A_{ch})$ 與 $k_f$、$k_n$ 定義及觸發條件；
-  ③ **完全沒有柱的間距規定**，已補 $l_o$ 內 $\min(b/4,6d_b,s_o)$、$l_o$ 外 $\min(6d_b,150\text{mm})$、$h_x\le350$mm、繫筋彎鉤交錯；
-  ④ 柱設計剪力補「由梁 $M_{pr}$ 經接頭反推」路徑並警示不可寫成 $2\Sigma M/l_u$；補柱 $V_c=0$ 條件；
-  ⑤ 接頭 $\gamma$ 表改為 318-19 六檔（含屋頂層），中間檔 4.0 → **3.9**；$b_j$ 公式改引規範原式；
-  ⑥ 新增「密箍區外仍受包絡線控制」與 $A_{v,\min}$ kgf 制係數兩節。
-- `wiki/traps/SEISMIC-BEAM-VE.md`：修正 **$V_c=0$ 條件不等號寫反**（原寫「$P_u/(A_gf'_c)\ge0.05$ 則 $V_c=0$」，
-  與同頁下方正確敘述自相矛盾）；密箍區間距改新制；新增「步驟四：密箍區外仍要設計」；陷阱表增列 4 列。
-- `wiki/traps/JOINT-SHEAR-EFFECTIVE-AREA.md`：$V_{col}$ 補完整推導並警示「$2\Sigma M/H$ 大一倍」；
-  $A_j$／$b_j$ 改引規範原式；$\gamma$ 表改為六檔（中間檔 4.0 → 3.9，新增屋頂層組）；陷阱表增列 3 列。
+- `raw/solutions/{RC-2025-2,RC-2013-2,RC-2012-3,RC-2005-3,RC-2022-4}/*.md`ï¼šæ­£æœ¬æ”¹å¯«
+  ï¼ˆÂ§1 è£œåŽŸå·åŽŸæ–‡æ ¸å°ã€å‹˜èª¤æ¡†ã€Â§4 è£œï¼æ”¹æ­¥é©Ÿã€Â§5 æ”¹å¯«çˆ­è­°é»žã€**æ–°å¢ž Â§6 ä¾æœ€æ–°è¦ç¯„å°ç…§**ï¼‰ã€‚
+- `wiki/problems/` äº”é æ‘˜è¦ï¼šæ¨™é¡Œï¼ç­”æ¡ˆï¼æ ¸å¿ƒè€ƒé»žï¼é—œéµæ­¥é©Ÿï¼å…¬å¼ï¼é™·é˜±ï¼åœ–å½¢æ¬„ï¼æ–°å¢žã€Œä¾æœ€æ–°è¦ç¯„å°ç…§ã€æ®µå…¨éƒ¨åŒæ­¥ã€‚
+- `raw/json/question_index.json`ï¼šäº”é¡Œ tags å…¨éƒ¨é‡æŠ“ï¼ˆ2025-2 7â†’9ã€2013-2 8â†’9ã€2012-3 10â†’11ã€2005-3 9â†’11ã€2022-4 8â†’9ï¼‰ã€‚
+  `verificationStatus` å…¨éƒ¨ç¶­æŒ `unverified`ã€‚
+- `dashboard-data.js`ã€`knowledge_graph.html`ï¼šäº”é¡Œ tags åŒæ­¥ï¼ˆ100 åˆ—ï¼æ¯åˆ— 7 å…ƒç´ ã€è¡Œæ•¸ 130 å‡å·²é©—è­‰ï¼‰ã€‚
+- `wiki/index.md`ã€`wiki/by-year.md`ï¼šäº”é¡Œä¸€è¡Œèªªæ˜Žæ”¹ç‚ºå«æ”¹å¾Œç­”æ¡ˆã€‚
+- `study/problems-view/` äº”é ä»¥ `scripts/gen_problems_view.py` **å–®é¡Œ**é‡å»ºï¼ˆwritten=5ï¼Œæœªå‹• `--all`ï¼‰ã€‚
+- `study/study-RC-U3-3.html`ï¼šäº”é¡Œå…§åµŒè³‡æ–™åˆ—çš„ description èˆ‡ tags åŒæ­¥ã€‚
+- `wiki/code-ref/seismic-code.md`ï¼š**å¤šè™•å¯¦è³ªä¿®æ­£**â€”â€”
+  â‘  æ¢å¯†ç®å€é–“è·ä»å¯« ACI 318-11 çš„ $\min(d/4,8d_b,24d_{sw},300\text{mm})$ï¼Œå·²æ”¹ç‚º 318-14 èµ·çš„ $\min(d/4,6d_b,150\text{mm})$ï¼›
+  â‘¡ $A_{sh}$ åªåˆ—å…©å¼ï¼Œå·²è£œç¬¬ä¸‰å¼ $0.2k_fk_nP_u/(f_{yt}A_{ch})$ èˆ‡ $k_f$ã€$k_n$ å®šç¾©åŠè§¸ç™¼æ¢ä»¶ï¼›
+  â‘¢ **å®Œå…¨æ²’æœ‰æŸ±çš„é–“è·è¦å®š**ï¼Œå·²è£œ $l_o$ å…§ $\min(b/4,6d_b,s_o)$ã€$l_o$ å¤– $\min(6d_b,150\text{mm})$ã€$h_x\le350$mmã€ç¹«ç­‹å½Žé‰¤äº¤éŒ¯ï¼›
+  â‘£ æŸ±è¨­è¨ˆå‰ªåŠ›è£œã€Œç”±æ¢ $M_{pr}$ ç¶“æŽ¥é ­åæŽ¨ã€è·¯å¾‘ä¸¦è­¦ç¤ºä¸å¯å¯«æˆ $2\Sigma M/l_u$ï¼›è£œæŸ± $V_c=0$ æ¢ä»¶ï¼›
+  â‘¤ æŽ¥é ­ $\gamma$ è¡¨æ”¹ç‚º 318-19 å…­æª”ï¼ˆå«å±‹é ‚å±¤ï¼‰ï¼Œä¸­é–“æª” 4.0 â†’ **3.9**ï¼›$b_j$ å…¬å¼æ”¹å¼•è¦ç¯„åŽŸå¼ï¼›
+  â‘¥ æ–°å¢žã€Œå¯†ç®å€å¤–ä»å—åŒ…çµ¡ç·šæŽ§åˆ¶ã€èˆ‡ $A_{v,\min}$ kgf åˆ¶ä¿‚æ•¸å…©ç¯€ã€‚
+- `wiki/traps/SEISMIC-BEAM-VE.md`ï¼šä¿®æ­£ **$V_c=0$ æ¢ä»¶ä¸ç­‰è™Ÿå¯«å**ï¼ˆåŽŸå¯«ã€Œ$P_u/(A_gf'_c)\ge0.05$ å‰‡ $V_c=0$ã€ï¼Œ
+  èˆ‡åŒé ä¸‹æ–¹æ­£ç¢ºæ•˜è¿°è‡ªç›¸çŸ›ç›¾ï¼‰ï¼›å¯†ç®å€é–“è·æ”¹æ–°åˆ¶ï¼›æ–°å¢žã€Œæ­¥é©Ÿå››ï¼šå¯†ç®å€å¤–ä»è¦è¨­è¨ˆã€ï¼›é™·é˜±è¡¨å¢žåˆ— 4 åˆ—ã€‚
+- `wiki/traps/JOINT-SHEAR-EFFECTIVE-AREA.md`ï¼š$V_{col}$ è£œå®Œæ•´æŽ¨å°Žä¸¦è­¦ç¤ºã€Œ$2\Sigma M/H$ å¤§ä¸€å€ã€ï¼›
+  $A_j$ï¼$b_j$ æ”¹å¼•è¦ç¯„åŽŸå¼ï¼›$\gamma$ è¡¨æ”¹ç‚ºå…­æª”ï¼ˆä¸­é–“æª” 4.0 â†’ 3.9ï¼Œæ–°å¢žå±‹é ‚å±¤çµ„ï¼‰ï¼›é™·é˜±è¡¨å¢žåˆ— 3 åˆ—ã€‚
 
-> 註：`wiki/traps/` 依 CLAUDE.md 規則 4 屬 compile 輸出。比照前兩次 XCHECK 的做法**手動同步**，
-> 以免下次 `compile-all` 之前 wiki 顯示與正本矛盾；來源（`raw/solutions/`）已先改，故不會被蓋回舊結論。
+> è¨»ï¼š`wiki/traps/` ä¾ CLAUDE.md è¦å‰‡ 4 å±¬ compile è¼¸å‡ºã€‚æ¯”ç…§å‰å…©æ¬¡ XCHECK çš„åšæ³•**æ‰‹å‹•åŒæ­¥**ï¼Œ
+> ä»¥å…ä¸‹æ¬¡ `compile-all` ä¹‹å‰ wiki é¡¯ç¤ºèˆ‡æ­£æœ¬çŸ›ç›¾ï¼›ä¾†æºï¼ˆ`raw/solutions/`ï¼‰å·²å…ˆæ”¹ï¼Œæ•…ä¸æœƒè¢«è“‹å›žèˆŠçµè«–ã€‚
 
-### 驗證
+### é©—è­‰
 
-- `gen_problems_view.py . <五題> --check` → **same=5**（管線冪等、HTML 與正本一致）
-- `question_index.json` 100 題解析通過、moduleId 無重複，僅 tags 陣列有差異
-- `dashboard-data.js` 100 列全數 JSON 解析通過、每列 7 元素、行數 130 未變
-- `knowledge_graph.html` 五個 `p(...)` 節點 tags 已同步
-- 關鍵新值已出現在 problems-view：43.4／20 cm／5 cm（第一支箍筋）／9.06／15 cm（區外）／25.17／13.3／131.5／112.6／0.0125／1.82／0.595
-- 舊錯值僅殘留在**刻意保留的勘誤／對照段**：RC-2012-3 的「50.33」兩處（勘誤說明）、
-  RC-2025-2 的「$8d_b$」一處（318-11 舊制對照）、RC-2005-3 的「$8d_b$」一處（$\ell_{dh}\ge8d_b$，正確條文）
-- 規範版本以網路查證（土木 401-112 現行、公路橋梁耐震評估規範 110-03-23 頒布迄今未更新）
+- `gen_problems_view.py . <äº”é¡Œ> --check` â†’ **same=5**ï¼ˆç®¡ç·šå†ªç­‰ã€HTML èˆ‡æ­£æœ¬ä¸€è‡´ï¼‰
+- `question_index.json` 100 é¡Œè§£æžé€šéŽã€moduleId ç„¡é‡è¤‡ï¼Œåƒ… tags é™£åˆ—æœ‰å·®ç•°
+- `dashboard-data.js` 100 åˆ—å…¨æ•¸ JSON è§£æžé€šéŽã€æ¯åˆ— 7 å…ƒç´ ã€è¡Œæ•¸ 130 æœªè®Š
+- `knowledge_graph.html` äº”å€‹ `p(...)` ç¯€é»ž tags å·²åŒæ­¥
+- é—œéµæ–°å€¼å·²å‡ºç¾åœ¨ problems-viewï¼š43.4ï¼20 cmï¼5 cmï¼ˆç¬¬ä¸€æ”¯ç®ç­‹ï¼‰ï¼9.06ï¼15 cmï¼ˆå€å¤–ï¼‰ï¼25.17ï¼13.3ï¼131.5ï¼112.6ï¼0.0125ï¼1.82ï¼0.595
+- èˆŠéŒ¯å€¼åƒ…æ®˜ç•™åœ¨**åˆ»æ„ä¿ç•™çš„å‹˜èª¤ï¼å°ç…§æ®µ**ï¼šRC-2012-3 çš„ã€Œ50.33ã€å…©è™•ï¼ˆå‹˜èª¤èªªæ˜Žï¼‰ã€
+  RC-2025-2 çš„ã€Œ$8d_b$ã€ä¸€è™•ï¼ˆ318-11 èˆŠåˆ¶å°ç…§ï¼‰ã€RC-2005-3 çš„ã€Œ$8d_b$ã€ä¸€è™•ï¼ˆ$\ell_{dh}\ge8d_b$ï¼Œæ­£ç¢ºæ¢æ–‡ï¼‰
+- è¦ç¯„ç‰ˆæœ¬ä»¥ç¶²è·¯æŸ¥è­‰ï¼ˆåœŸæœ¨ 401-112 ç¾è¡Œã€å…¬è·¯æ©‹æ¢è€éœ‡è©•ä¼°è¦ç¯„ 110-03-23 é ’å¸ƒè¿„ä»Šæœªæ›´æ–°ï¼‰
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. **`RC-2012-4`（梁柱外接頭剪力）必受本輪 RC-2012-3 更正影響**：$V_{col}$ 是 $V_{jh}$ 的減項，
-   若該題沿用舊的 $V_u = 50.33$ tf，$V_{jh}$ 會被低估。**列為下一輪第一順位**。
-2. 同理應複查 `RC-2003-3`、`RC-2018-2` 兩題接頭題是否也用了 $2\Sigma M/H$ 與 $\gamma = 4.0$。
-3. `RC-2007-4` 的自創容許值（$0.4f'_c$、$3\sqrt{f'_c}$）仍未處理（見 2026-08-22 第一輪 XCHECK 待辦 1）。
-4. RC-2023-4 主線由 18.5 改 22.5 tf·m/m 仍待人工複核（第一輪待辦 2）。
-5. 本輪五題與前輪五題 `verificationStatus` 均為 `unverified`，待人工驗算後通知改 `verified` 並 ingest。
-6. 五題皆無向量圖解（`figs/`）。最值得補的三張：RC-2025-2 的「$V_e$ 包絡線 vs 重力剪力圖」對照、
-   RC-2012-3／RC-2005-3 共用的「接頭彎矩分擔與 $V_{col}$ 推導」示意圖、RC-2013-2 的箍筋＋繫筋斷面配置圖。
-7. 前幾則 log 列出的舊待辦（φ 舊式 RC-2004-2／RC-2015-3、problems-view 35 頁數學式壞掉）仍未處理。
+1. **`RC-2012-4`ï¼ˆæ¢æŸ±å¤–æŽ¥é ­å‰ªåŠ›ï¼‰å¿…å—æœ¬è¼ª RC-2012-3 æ›´æ­£å½±éŸ¿**ï¼š$V_{col}$ æ˜¯ $V_{jh}$ çš„æ¸›é …ï¼Œ
+   è‹¥è©²é¡Œæ²¿ç”¨èˆŠçš„ $V_u = 50.33$ tfï¼Œ$V_{jh}$ æœƒè¢«ä½Žä¼°ã€‚**åˆ—ç‚ºä¸‹ä¸€è¼ªç¬¬ä¸€é †ä½**ã€‚
+2. åŒç†æ‡‰è¤‡æŸ¥ `RC-2003-3`ã€`RC-2018-2` å…©é¡ŒæŽ¥é ­é¡Œæ˜¯å¦ä¹Ÿç”¨äº† $2\Sigma M/H$ èˆ‡ $\gamma = 4.0$ã€‚
+3. `RC-2007-4` çš„è‡ªå‰µå®¹è¨±å€¼ï¼ˆ$0.4f'_c$ã€$3\sqrt{f'_c}$ï¼‰ä»æœªè™•ç†ï¼ˆè¦‹ 2026-08-22 ç¬¬ä¸€è¼ª XCHECK å¾…è¾¦ 1ï¼‰ã€‚
+4. RC-2023-4 ä¸»ç·šç”± 18.5 æ”¹ 22.5 tfÂ·m/m ä»å¾…äººå·¥è¤‡æ ¸ï¼ˆç¬¬ä¸€è¼ªå¾…è¾¦ 2ï¼‰ã€‚
+5. æœ¬è¼ªäº”é¡Œèˆ‡å‰è¼ªäº”é¡Œ `verificationStatus` å‡ç‚º `unverified`ï¼Œå¾…äººå·¥é©—ç®—å¾Œé€šçŸ¥æ”¹ `verified` ä¸¦ ingestã€‚
+6. äº”é¡Œçš†ç„¡å‘é‡åœ–è§£ï¼ˆ`figs/`ï¼‰ã€‚æœ€å€¼å¾—è£œçš„ä¸‰å¼µï¼šRC-2025-2 çš„ã€Œ$V_e$ åŒ…çµ¡ç·š vs é‡åŠ›å‰ªåŠ›åœ–ã€å°ç…§ã€
+   RC-2012-3ï¼RC-2005-3 å…±ç”¨çš„ã€ŒæŽ¥é ­å½ŽçŸ©åˆ†æ“”èˆ‡ $V_{col}$ æŽ¨å°Žã€ç¤ºæ„åœ–ã€RC-2013-2 çš„ç®ç­‹ï¼‹ç¹«ç­‹æ–·é¢é…ç½®åœ–ã€‚
+7. å‰å¹¾å‰‡ log åˆ—å‡ºçš„èˆŠå¾…è¾¦ï¼ˆÏ† èˆŠå¼ RC-2004-2ï¼RC-2015-3ã€problems-view 35 é æ•¸å­¸å¼å£žæŽ‰ï¼‰ä»æœªè™•ç†ã€‚
 
-> **2026-08-22 補記（第二輪 XCHECK 續）：** 另修 `wiki/code-ref/ACI-318.md` §18.6／§18.7／§18.8 三段——
-> 梁加密區間距同樣仍寫 ACI 318-11 的「$8d_b$／$24d_{sw}$／300 mm」（且 LaTeX 破損），已改為 $\min(d/4,6d_b,150\text{mm})$；
-> $A_{sh}$ 補第三式與 $k_f$／$k_n$；補 §18.7.5.1／18.7.5.3／18.7.5.2／18.7.5.5 柱間距全套與 $V_c=0$ 條件；
-> 柱設計剪力補「由梁 $M_{pr}$ 經接頭反推」並警示不可寫成 $2\Sigma M/l_u$；
-> 接頭段補 §18.8.2.1（$1.25f_y$、$\phi=0.85$）、§15.4.2.4（$A_j$、$b_j$）、Table 18.8.4.3 六檔 $\gamma$（中間檔 4.0→3.9、新增屋頂層組）、§18.8.5.1（$\ell_{dh}$）。
-> 至此「318-11 舊間距值」在全庫的三處（seismic-code.md、SEISMIC-BEAM-VE.md、ACI-318.md）已全部改正。
+> **2026-08-22 è£œè¨˜ï¼ˆç¬¬äºŒè¼ª XCHECK çºŒï¼‰ï¼š** å¦ä¿® `wiki/code-ref/ACI-318.md` Â§18.6ï¼Â§18.7ï¼Â§18.8 ä¸‰æ®µâ€”â€”
+> æ¢åŠ å¯†å€é–“è·åŒæ¨£ä»å¯« ACI 318-11 çš„ã€Œ$8d_b$ï¼$24d_{sw}$ï¼300 mmã€ï¼ˆä¸” LaTeX ç ´æï¼‰ï¼Œå·²æ”¹ç‚º $\min(d/4,6d_b,150\text{mm})$ï¼›
+> $A_{sh}$ è£œç¬¬ä¸‰å¼èˆ‡ $k_f$ï¼$k_n$ï¼›è£œ Â§18.7.5.1ï¼18.7.5.3ï¼18.7.5.2ï¼18.7.5.5 æŸ±é–“è·å…¨å¥—èˆ‡ $V_c=0$ æ¢ä»¶ï¼›
+> æŸ±è¨­è¨ˆå‰ªåŠ›è£œã€Œç”±æ¢ $M_{pr}$ ç¶“æŽ¥é ­åæŽ¨ã€ä¸¦è­¦ç¤ºä¸å¯å¯«æˆ $2\Sigma M/l_u$ï¼›
+> æŽ¥é ­æ®µè£œ Â§18.8.2.1ï¼ˆ$1.25f_y$ã€$\phi=0.85$ï¼‰ã€Â§15.4.2.4ï¼ˆ$A_j$ã€$b_j$ï¼‰ã€Table 18.8.4.3 å…­æª” $\gamma$ï¼ˆä¸­é–“æª” 4.0â†’3.9ã€æ–°å¢žå±‹é ‚å±¤çµ„ï¼‰ã€Â§18.8.5.1ï¼ˆ$\ell_{dh}$ï¼‰ã€‚
+> è‡³æ­¤ã€Œ318-11 èˆŠé–“è·å€¼ã€åœ¨å…¨åº«çš„ä¸‰è™•ï¼ˆseismic-code.mdã€SEISMIC-BEAM-VE.mdã€ACI-318.mdï¼‰å·²å…¨éƒ¨æ”¹æ­£ã€‚
 
 ---
 
-## 2026-08-31　struct-diagram 六題向量圖解 ＋ RC-2016-1／RC-2019-1 數值訂正
+## 2026-08-31ã€€struct-diagram å…­é¡Œå‘é‡åœ–è§£ ï¼‹ RC-2016-1ï¼RC-2019-1 æ•¸å€¼è¨‚æ­£
 
-### 產圖（每題 3 張，共 18 張；SVG＋2× PNG，腳本可重跑）
+### ç”¢åœ–ï¼ˆæ¯é¡Œ 3 å¼µï¼Œå…± 18 å¼µï¼›SVGï¼‹2Ã— PNGï¼Œè…³æœ¬å¯é‡è·‘ï¼‰
 
-| 題號 | 圖 1 | 圖 2 | 圖 3 |
+| é¡Œè™Ÿ | åœ– 1 | åœ– 2 | åœ– 3 |
 |---|---|---|---|
-| `RC-2023-2` | 斷面配筋與淨間距檢核 | 應變／應力三聯（a 對 h_f） | 4+4 vs 3+3+2（中性軸不變） |
-| `RC-2011-2` | 兩種尺寸讀法對照 | ε_t 規範帶狀圖（0.004 界限） | 彈性 NA vs Whitney 塑性 NA |
-| `RC-2007-1` | 有效翼板寬三條件 | 單排✗／兩排✓與實際 d | φM_n 對層間淨距的敏感度 |
-| `RC-2015-2` | φM_n 掃描與折點極大值 | c_u < d' 壓筋落拉力區 | 強度－韌性抵換曲線 |
-| `RC-2016-1` | 三組合彎矩圖（梁端翻號） | 四控制點彎矩比較 | 彎矩強度比 vs 面積比 |
-| `RC-2019-1` | 斷面／應變／應力三聯 | 過渡區 φ–ε_t 內插 | 二次方程雙根取捨 |
+| `RC-2023-2` | æ–·é¢é…ç­‹èˆ‡æ·¨é–“è·æª¢æ ¸ | æ‡‰è®Šï¼æ‡‰åŠ›ä¸‰è¯ï¼ˆa å° h_fï¼‰ | 4+4 vs 3+3+2ï¼ˆä¸­æ€§è»¸ä¸è®Šï¼‰ |
+| `RC-2011-2` | å…©ç¨®å°ºå¯¸è®€æ³•å°ç…§ | Îµ_t è¦ç¯„å¸¶ç‹€åœ–ï¼ˆ0.004 ç•Œé™ï¼‰ | å½ˆæ€§ NA vs Whitney å¡‘æ€§ NA |
+| `RC-2007-1` | æœ‰æ•ˆç¿¼æ¿å¯¬ä¸‰æ¢ä»¶ | å–®æŽ’âœ—ï¼å…©æŽ’âœ“èˆ‡å¯¦éš› d | Ï†M_n å°å±¤é–“æ·¨è·çš„æ•æ„Ÿåº¦ |
+| `RC-2015-2` | Ï†M_n æŽƒæèˆ‡æŠ˜é»žæ¥µå¤§å€¼ | c_u < d' å£“ç­‹è½æ‹‰åŠ›å€ | å¼·åº¦ï¼éŸŒæ€§æŠµæ›æ›²ç·š |
+| `RC-2016-1` | ä¸‰çµ„åˆå½ŽçŸ©åœ–ï¼ˆæ¢ç«¯ç¿»è™Ÿï¼‰ | å››æŽ§åˆ¶é»žå½ŽçŸ©æ¯”è¼ƒ | å½ŽçŸ©å¼·åº¦æ¯” vs é¢ç©æ¯” |
+| `RC-2019-1` | æ–·é¢ï¼æ‡‰è®Šï¼æ‡‰åŠ›ä¸‰è¯ | éŽæ¸¡å€ Ï†â€“Îµ_t å…§æ’ | äºŒæ¬¡æ–¹ç¨‹é›™æ ¹å–æ¨ |
 
-- 檔案：`raw/solutions/<題號>/figs/<題號>-fig-N-<語意>.svg`＋`.png`，
-  產圖腳本 `raw/solutions/<題號>/figs/gen_<題號>.py`（常數區只放 §1 給定值，
-  其餘一律現算，檔尾對 §4／§5 公佈值 `assert`；改輸入重跑，圖形跟著變）。
-- 驗證：`render.py` XML＋溢出檢查 18/18 通過；18 張 PNG 全數目視檢查
-  （中文字型、標註重疊、數值與解題檔逐位比對）。
-- 已插回六題正本的對應章節（不是堆在檔尾），並重建 `study/problems-view/` 六頁。
+- æª”æ¡ˆï¼š`raw/solutions/<é¡Œè™Ÿ>/figs/<é¡Œè™Ÿ>-fig-N-<èªžæ„>.svg`ï¼‹`.png`ï¼Œ
+  ç”¢åœ–è…³æœ¬ `raw/solutions/<é¡Œè™Ÿ>/figs/gen_<é¡Œè™Ÿ>.py`ï¼ˆå¸¸æ•¸å€åªæ”¾ Â§1 çµ¦å®šå€¼ï¼Œ
+  å…¶é¤˜ä¸€å¾‹ç¾ç®—ï¼Œæª”å°¾å° Â§4ï¼Â§5 å…¬ä½ˆå€¼ `assert`ï¼›æ”¹è¼¸å…¥é‡è·‘ï¼Œåœ–å½¢è·Ÿè‘—è®Šï¼‰ã€‚
+- é©—è­‰ï¼š`render.py` XMLï¼‹æº¢å‡ºæª¢æŸ¥ 18/18 é€šéŽï¼›18 å¼µ PNG å…¨æ•¸ç›®è¦–æª¢æŸ¥
+  ï¼ˆä¸­æ–‡å­—åž‹ã€æ¨™è¨»é‡ç–Šã€æ•¸å€¼èˆ‡è§£é¡Œæª”é€ä½æ¯”å°ï¼‰ã€‚
+- å·²æ’å›žå…­é¡Œæ­£æœ¬çš„å°æ‡‰ç« ç¯€ï¼ˆä¸æ˜¯å †åœ¨æª”å°¾ï¼‰ï¼Œä¸¦é‡å»º `study/problems-view/` å…­é ã€‚
 
-### 訂正一：`RC-2016-1` §4 Step 8「面積比 vs 彎矩強度比」方向講反（🔒 觀念錯誤）
+### è¨‚æ­£ä¸€ï¼š`RC-2016-1` Â§4 Step 8ã€Œé¢ç©æ¯” vs å½ŽçŸ©å¼·åº¦æ¯”ã€æ–¹å‘è¬›åï¼ˆðŸ”’ è§€å¿µéŒ¯èª¤ï¼‰
 
-原文寫「**面積比恆大於彎矩強度比**……用面積比判斷會**偏不保守**」，並引 $7.74/14.46 = 0.535$。
+åŽŸæ–‡å¯«ã€Œ**é¢ç©æ¯”æ†å¤§æ–¼å½ŽçŸ©å¼·åº¦æ¯”**â€¦â€¦ç”¨é¢ç©æ¯”åˆ¤æ–·æœƒ**åä¸ä¿å®ˆ**ã€ï¼Œä¸¦å¼• $7.74/14.46 = 0.535$ã€‚
 
-- $0.535$ 是拿**實配底筋 7.74** 除**需求頂筋 14.46** 混算出來的，既不是面積比也不是強度比。
-- 實配面積比 $= 7.74/15.48 = \mathbf{0.500}$；彎矩強度比 $= 19.85/38.42 = \mathbf{0.517}$。
-- 因 $M_n = A_sf_y(d-a/2)$，$A_s$ 小者力臂長（61.05 對 59.10 cm），故
+- $0.535$ æ˜¯æ‹¿**å¯¦é…åº•ç­‹ 7.74** é™¤**éœ€æ±‚é ‚ç­‹ 14.46** æ··ç®—å‡ºä¾†çš„ï¼Œæ—¢ä¸æ˜¯é¢ç©æ¯”ä¹Ÿä¸æ˜¯å¼·åº¦æ¯”ã€‚
+- å¯¦é…é¢ç©æ¯” $= 7.74/15.48 = \mathbf{0.500}$ï¼›å½ŽçŸ©å¼·åº¦æ¯” $= 19.85/38.42 = \mathbf{0.517}$ã€‚
+- å›  $M_n = A_sf_y(d-a/2)$ï¼Œ$A_s$ å°è€…åŠ›è‡‚é•·ï¼ˆ61.05 å° 59.10 cmï¼‰ï¼Œæ•…
   $\dfrac{M_{n,\text{bot}}}{M_{n,\text{top}}} \geq \dfrac{A_{s,\text{bot}}}{A_{s,\text{top}}}$
-  （只要 $A_{s,\text{bot}} \leq A_{s,\text{top}}$）——**面積比恆不大於強度比，是偏保守的快篩**，
-  用它判斷不會誤放行，方向與原文相反。
+  ï¼ˆåªè¦ $A_{s,\text{bot}} \leq A_{s,\text{top}}$ï¼‰â€”â€”**é¢ç©æ¯”æ†ä¸å¤§æ–¼å¼·åº¦æ¯”ï¼Œæ˜¯åä¿å®ˆçš„å¿«ç¯©**ï¼Œ
+  ç”¨å®ƒåˆ¤æ–·ä¸æœƒèª¤æ”¾è¡Œï¼Œæ–¹å‘èˆ‡åŽŸæ–‡ç›¸åã€‚
 
-### 訂正二：`RC-2016-1` 其餘數值
+### è¨‚æ­£äºŒï¼š`RC-2016-1` å…¶é¤˜æ•¸å€¼
 
-| 位置 | 原值 | 訂正 | 說明 |
+| ä½ç½® | åŽŸå€¼ | è¨‚æ­£ | èªªæ˜Ž |
 |---|---|---|---|
-| §4 Step 1 $\rho_b$ | 201.8／4200 → 0.04805 → 0.02849 | 202.3／4200 → 0.04817 → **0.02856** | $0.85\times0.85\times280 = 202.3$，非 201.8 |
-| §4 Step 1 舊制對照 | $0.75\rho_b = 0.02137$、$A_{s,\max} = 47.11$ | **0.02142**、**47.24** cm² | 隨 $\rho_b$ 連動（$\varepsilon_t = 0.003745$ 不變） |
-| §4 Step 8 $M_{n,\text{top}}$ | 3,841,000 kgf-cm＝38.41 | **3,842,000＝38.42** tf-m | |
-| §4 Step 8 $M_{n,\text{bot}}$ | 1,984,000 kgf-cm＝19.84 | **1,985,000＝19.85** tf-m | 比值 0.517 不變 |
+| Â§4 Step 1 $\rho_b$ | 201.8ï¼4200 â†’ 0.04805 â†’ 0.02849 | 202.3ï¼4200 â†’ 0.04817 â†’ **0.02856** | $0.85\times0.85\times280 = 202.3$ï¼Œéž 201.8 |
+| Â§4 Step 1 èˆŠåˆ¶å°ç…§ | $0.75\rho_b = 0.02137$ã€$A_{s,\max} = 47.11$ | **0.02142**ã€**47.24** cmÂ² | éš¨ $\rho_b$ é€£å‹•ï¼ˆ$\varepsilon_t = 0.003745$ ä¸è®Šï¼‰ |
+| Â§4 Step 8 $M_{n,\text{top}}$ | 3,841,000 kgf-cmï¼38.41 | **3,842,000ï¼38.42** tf-m | |
+| Â§4 Step 8 $M_{n,\text{bot}}$ | 1,984,000 kgf-cmï¼19.84 | **1,985,000ï¼19.85** tf-m | æ¯”å€¼ 0.517 ä¸è®Š |
 
-### 訂正三：`RC-2019-1` $A_{s,\min}$
+### è¨‚æ­£ä¸‰ï¼š`RC-2019-1` $A_{s,\min}$
 
-$\max(0.00276,\ 0.00333)\times 50\times 63 = 10.50$ cm²（原寫 10.49），§4.6 兩處。
+$\max(0.00276,\ 0.00333)\times 50\times 63 = 10.50$ cmÂ²ï¼ˆåŽŸå¯« 10.49ï¼‰ï¼ŒÂ§4.6 å…©è™•ã€‚
 
-### 下游同步
+### ä¸‹æ¸¸åŒæ­¥
 
-- `wiki/problems/RC-2016-1.md`：47.11→47.24、Step 7 與陷阱條的面積比敘述改寫。
-- `wiki/problems/RC-2019-1.md`：$A_{s,\min}$ 10.49→10.50；「用到的公式」的 $\phi$ 由**舊式**
-  $0.65+(\varepsilon_t-0.002)\times 0.25/0.003$ 改為本庫統一的**現行式**
-  $0.65+0.25(\varepsilon_t-\varepsilon_{ty})/(0.005-\varepsilon_{ty})$，$\varepsilon_{ty}=0.002059$；
-  題幹摘要的過渡區下界同步由 0.002 改為 $\varepsilon_{ty}$。
-- 六題 `wiki/problems/` 頁的「圖形」區塊新增向量圖解清單。
-- `study/problems-view/` 六頁以 `gen_problems_view.py` 重建（已含上述訂正）。
+- `wiki/problems/RC-2016-1.md`ï¼š47.11â†’47.24ã€Step 7 èˆ‡é™·é˜±æ¢çš„é¢ç©æ¯”æ•˜è¿°æ”¹å¯«ã€‚
+- `wiki/problems/RC-2019-1.md`ï¼š$A_{s,\min}$ 10.49â†’10.50ï¼›ã€Œç”¨åˆ°çš„å…¬å¼ã€çš„ $\phi$ ç”±**èˆŠå¼**
+  $0.65+(\varepsilon_t-0.002)\times 0.25/0.003$ æ”¹ç‚ºæœ¬åº«çµ±ä¸€çš„**ç¾è¡Œå¼**
+  $0.65+0.25(\varepsilon_t-\varepsilon_{ty})/(0.005-\varepsilon_{ty})$ï¼Œ$\varepsilon_{ty}=0.002059$ï¼›
+  é¡Œå¹¹æ‘˜è¦çš„éŽæ¸¡å€ä¸‹ç•ŒåŒæ­¥ç”± 0.002 æ”¹ç‚º $\varepsilon_{ty}$ã€‚
+- å…­é¡Œ `wiki/problems/` é çš„ã€Œåœ–å½¢ã€å€å¡Šæ–°å¢žå‘é‡åœ–è§£æ¸…å–®ã€‚
+- `study/problems-view/` å…­é ä»¥ `gen_problems_view.py` é‡å»ºï¼ˆå·²å«ä¸Šè¿°è¨‚æ­£ï¼‰ã€‚
 
-### 待辦（本次未做）
+### å¾…è¾¦ï¼ˆæœ¬æ¬¡æœªåšï¼‰
 
-1. `study/RC-U1-1_梁彎矩強度分析與設計_公式給背分界_記憶片.pdf` 與
-   `study/RC-U3-3_韌性要求與耐震設計_公式給背分界_記憶片.pdf` 內含舊值 `0.535`，
-   PDF 無法就地修改，**需以 formula-recall-deck 重新產生**。
-2. `wiki/queries/xcheck-RC-2026-07-26.md:118` 引用 `RC-2016-1.md:188` 的 `0.02137`、
-   `複核報告_RC梁題七題_2026-08-21.md:334` 引用 `10.49`：兩者皆為**有日期的當時快照**，
-   本次刻意不動，僅在此記錄其引用值已被上游訂正。
-3. `scripts/apply_figs.py` 的 `FIGS` 表未加入本次六題（本次採「插到對應章節正下方」的
-   逐節配置，與該腳本「圖 1 插 §2 前、其餘插 §5 前」的粗配置不同）。若日後要走該管線，
-   需先決定採哪一種配置。
+1. `study/RC-U1-1_æ¢å½ŽçŸ©å¼·åº¦åˆ†æžèˆ‡è¨­è¨ˆ_å…¬å¼çµ¦èƒŒåˆ†ç•Œ_è¨˜æ†¶ç‰‡.pdf` èˆ‡
+   `study/RC-U3-3_éŸŒæ€§è¦æ±‚èˆ‡è€éœ‡è¨­è¨ˆ_å…¬å¼çµ¦èƒŒåˆ†ç•Œ_è¨˜æ†¶ç‰‡.pdf` å…§å«èˆŠå€¼ `0.535`ï¼Œ
+   PDF ç„¡æ³•å°±åœ°ä¿®æ”¹ï¼Œ**éœ€ä»¥ formula-recall-deck é‡æ–°ç”¢ç”Ÿ**ã€‚
+2. `wiki/queries/xcheck-RC-2026-07-26.md:118` å¼•ç”¨ `RC-2016-1.md:188` çš„ `0.02137`ã€
+   `è¤‡æ ¸å ±å‘Š_RCæ¢é¡Œä¸ƒé¡Œ_2026-08-21.md:334` å¼•ç”¨ `10.49`ï¼šå…©è€…çš†ç‚º**æœ‰æ—¥æœŸçš„ç•¶æ™‚å¿«ç…§**ï¼Œ
+   æœ¬æ¬¡åˆ»æ„ä¸å‹•ï¼Œåƒ…åœ¨æ­¤è¨˜éŒ„å…¶å¼•ç”¨å€¼å·²è¢«ä¸Šæ¸¸è¨‚æ­£ã€‚
+3. `scripts/apply_figs.py` çš„ `FIGS` è¡¨æœªåŠ å…¥æœ¬æ¬¡å…­é¡Œï¼ˆæœ¬æ¬¡æŽ¡ã€Œæ’åˆ°å°æ‡‰ç« ç¯€æ­£ä¸‹æ–¹ã€çš„
+   é€ç¯€é…ç½®ï¼Œèˆ‡è©²è…³æœ¬ã€Œåœ– 1 æ’ Â§2 å‰ã€å…¶é¤˜æ’ Â§5 å‰ã€çš„ç²—é…ç½®ä¸åŒï¼‰ã€‚è‹¥æ—¥å¾Œè¦èµ°è©²ç®¡ç·šï¼Œ
+   éœ€å…ˆæ±ºå®šæŽ¡å“ªä¸€ç¨®é…ç½®ã€‚
 ---
 
-## 2026-08-31　struct-diagram 第二輪：預力混凝土五題向量圖解 ＋ 三處數值訂正
+## 2026-08-31ã€€struct-diagram ç¬¬äºŒè¼ªï¼šé åŠ›æ··å‡åœŸäº”é¡Œå‘é‡åœ–è§£ ï¼‹ ä¸‰è™•æ•¸å€¼è¨‚æ­£
 
-**指令：** `/struct-diagram RC-2011-5 & RC-2006-4 & RC-2004-5 & RC-2023-4 & RC-2012-1`
-（使用者選：全部修含下游／15 張全做）
+**æŒ‡ä»¤ï¼š** `/struct-diagram RC-2011-5 & RC-2006-4 & RC-2004-5 & RC-2023-4 & RC-2012-1`
+ï¼ˆä½¿ç”¨è€…é¸ï¼šå…¨éƒ¨ä¿®å«ä¸‹æ¸¸ï¼15 å¼µå…¨åšï¼‰
 
-### 產出（15 張，每題 3 張，SVG + 2× PNG，腳本可重跑）
+### ç”¢å‡ºï¼ˆ15 å¼µï¼Œæ¯é¡Œ 3 å¼µï¼ŒSVG + 2Ã— PNGï¼Œè…³æœ¬å¯é‡è·‘ï¼‰
 
-| 題號 | 圖 1 | 圖 2 | 圖 3 |
+| é¡Œè™Ÿ | åœ– 1 | åœ– 2 | åœ– 3 |
 |---|---|---|---|
-| RC-2011-5 | `fig-1-sections` 淨／變換／合成三斷面性質對照 | `fig-2-stress` 三階段應力疊加 | `fig-3-tendon` 腱應力 10,417→9,167→9,889 |
-| RC-2006-4 | `fig-1-composite` 裸梁 vs 組合轉換斷面（$\bar y=65.07$、$I_c=4{,}188{,}695$） | `fig-2-stress` 兩階段疊加＋「版 DL 誤放組合斷面」對照 | `fig-3-allow` 五條容許應力利用率與 Class C |
-| RC-2004-5 | `fig-1-mcr` 底纖維 $56.47\to0\to-37.42$ 兩段歷程 | `fig-2-section` 斷面／應變／應力塊 | `fig-3-strength` $M_{cr}$／$1.2M_{cr}$／$\phi M_n$／$M_n$ |
-| RC-2023-4 | `fig-1-branch` 兩個跨深比分支的 $f_{ps}$ 曲線與配套上限 | `fig-2-section` 20 cm 條帶（含 $A_{s,\min}$、$A_{ct}$） | `fig-3-mn` 18.5／22.5／23.6 tf·m/m |
-| RC-2012-1 | `fig-1-eccentricity` 懸臂彎矩方向決定偏心在上方 | `fig-2-stress` 固定端 vs 自由端 | `fig-3-overrun` $f_{bot}(\xi)$ 與 201 cm 超限段 |
+| RC-2011-5 | `fig-1-sections` æ·¨ï¼è®Šæ›ï¼åˆæˆä¸‰æ–·é¢æ€§è³ªå°ç…§ | `fig-2-stress` ä¸‰éšŽæ®µæ‡‰åŠ›ç–ŠåŠ  | `fig-3-tendon` è…±æ‡‰åŠ› 10,417â†’9,167â†’9,889 |
+| RC-2006-4 | `fig-1-composite` è£¸æ¢ vs çµ„åˆè½‰æ›æ–·é¢ï¼ˆ$\bar y=65.07$ã€$I_c=4{,}188{,}695$ï¼‰ | `fig-2-stress` å…©éšŽæ®µç–ŠåŠ ï¼‹ã€Œç‰ˆ DL èª¤æ”¾çµ„åˆæ–·é¢ã€å°ç…§ | `fig-3-allow` äº”æ¢å®¹è¨±æ‡‰åŠ›åˆ©ç”¨çŽ‡èˆ‡ Class C |
+| RC-2004-5 | `fig-1-mcr` åº•çº–ç¶­ $56.47\to0\to-37.42$ å…©æ®µæ­·ç¨‹ | `fig-2-section` æ–·é¢ï¼æ‡‰è®Šï¼æ‡‰åŠ›å¡Š | `fig-3-strength` $M_{cr}$ï¼$1.2M_{cr}$ï¼$\phi M_n$ï¼$M_n$ |
+| RC-2023-4 | `fig-1-branch` å…©å€‹è·¨æ·±æ¯”åˆ†æ”¯çš„ $f_{ps}$ æ›²ç·šèˆ‡é…å¥—ä¸Šé™ | `fig-2-section` 20 cm æ¢å¸¶ï¼ˆå« $A_{s,\min}$ã€$A_{ct}$ï¼‰ | `fig-3-mn` 18.5ï¼22.5ï¼23.6 tfÂ·m/m |
+| RC-2012-1 | `fig-1-eccentricity` æ‡¸è‡‚å½ŽçŸ©æ–¹å‘æ±ºå®šåå¿ƒåœ¨ä¸Šæ–¹ | `fig-2-stress` å›ºå®šç«¯ vs è‡ªç”±ç«¯ | `fig-3-overrun` $f_{bot}(\xi)$ èˆ‡ 201 cm è¶…é™æ®µ |
 
-檔案位置：`raw/solutions/<題號>/figs/`，產圖腳本同置於 `figs/gen_<題號>.py`。
-15 張全數通過 `render.py` 的 XML 合法性與溢出檢查（0 個需要修正），並逐張目視複核。
+æª”æ¡ˆä½ç½®ï¼š`raw/solutions/<é¡Œè™Ÿ>/figs/`ï¼Œç”¢åœ–è…³æœ¬åŒç½®æ–¼ `figs/gen_<é¡Œè™Ÿ>.py`ã€‚
+15 å¼µå…¨æ•¸é€šéŽ `render.py` çš„ XML åˆæ³•æ€§èˆ‡æº¢å‡ºæª¢æŸ¥ï¼ˆ0 å€‹éœ€è¦ä¿®æ­£ï¼‰ï¼Œä¸¦é€å¼µç›®è¦–è¤‡æ ¸ã€‚
 
-### 訂正一：`RC-2004-5` 有效預力連鎖
+### è¨‚æ­£ä¸€ï¼š`RC-2004-5` æœ‰æ•ˆé åŠ›é€£éŽ–
 
-$P_e = 6.16 \times 9{,}900 = \mathbf{60{,}984}$ kgf（原寫 61,024，乘法本身就錯）。連帶：
+$P_e = 6.16 \times 9{,}900 = \mathbf{60{,}984}$ kgfï¼ˆåŽŸå¯« 61,024ï¼Œä¹˜æ³•æœ¬èº«å°±éŒ¯ï¼‰ã€‚é€£å¸¶ï¼š
 
-| 位置 | 原值 | 訂正 | 說明 |
+| ä½ç½® | åŽŸå€¼ | è¨‚æ­£ | èªªæ˜Ž |
 |---|---|---|---|
-| §4② $f_{ce}$ | $16.95 + 39.55 = 56.50$ | $\mathbf{16.94 + 39.53 = 56.47}$ | 隨 $P_e$ 連動 |
-| §4② $f_r$ | $2\sqrt{350} = 37.4$ | $\mathbf{37.42}$ | 原式取 2 位有效數字，使 $M_{cr}$ 落在 50.69／50.70 邊界；改列 37.42 後 $M_{cr}=54{,}000\times93.89=5{,}070{,}060$，$\boxed{50.7}$ 與 $1.2M_{cr}=60.84$ 均維持原值 |
-| §4④ $\omega_p$ | 0.0867 | $\mathbf{0.0866}$ | $97{,}026/1{,}120{,}000 = 0.08663$ |
-| §5② $\beta_1=0.85$ 誤用之 $\phi M_n$ | 66.44（+0.2%） | $\mathbf{66.48}$（+0.3%） | $f_{ps}=15{,}795 \Rightarrow a=8.176$、$M_n=73.86$、$\phi M_n=66.476$ |
+| Â§4â‘¡ $f_{ce}$ | $16.95 + 39.55 = 56.50$ | $\mathbf{16.94 + 39.53 = 56.47}$ | éš¨ $P_e$ é€£å‹• |
+| Â§4â‘¡ $f_r$ | $2\sqrt{350} = 37.4$ | $\mathbf{37.42}$ | åŽŸå¼å– 2 ä½æœ‰æ•ˆæ•¸å­—ï¼Œä½¿ $M_{cr}$ è½åœ¨ 50.69ï¼50.70 é‚Šç•Œï¼›æ”¹åˆ— 37.42 å¾Œ $M_{cr}=54{,}000\times93.89=5{,}070{,}060$ï¼Œ$\boxed{50.7}$ èˆ‡ $1.2M_{cr}=60.84$ å‡ç¶­æŒåŽŸå€¼ |
+| Â§4â‘£ $\omega_p$ | 0.0867 | $\mathbf{0.0866}$ | $97{,}026/1{,}120{,}000 = 0.08663$ |
+| Â§5â‘¡ $\beta_1=0.85$ èª¤ç”¨ä¹‹ $\phi M_n$ | 66.44ï¼ˆ+0.2%ï¼‰ | $\mathbf{66.48}$ï¼ˆ+0.3%ï¼‰ | $f_{ps}=15{,}795 \Rightarrow a=8.176$ã€$M_n=73.86$ã€$\phi M_n=66.476$ |
 
-$M_{cr} = 50.7$、$\phi M_n = 66.3$ 兩個答案本身不變。
+$M_{cr} = 50.7$ã€$\phi M_n = 66.3$ å…©å€‹ç­”æ¡ˆæœ¬èº«ä¸è®Šã€‚
 
-### 訂正二：`RC-2006-4` Step 4 分母與 Step 3 不一致
+### è¨‚æ­£äºŒï¼š`RC-2006-4` Step 4 åˆ†æ¯èˆ‡ Step 3 ä¸ä¸€è‡´
 
-Step 3 已算出 $S_{c,top} = 280{,}622$、$S_{c,bot} = 64{,}369$，Step 4 卻代入
-280,552 與 64,372（來源不明的舊值）。已改為與 Step 3 一致；
-$+35.6$／$-155.4$ 兩個結果不變（$10^7/280{,}622 = 35.63$、$10^7/64{,}369 = 155.36$）。
+Step 3 å·²ç®—å‡º $S_{c,top} = 280{,}622$ã€$S_{c,bot} = 64{,}369$ï¼ŒStep 4 å»ä»£å…¥
+280,552 èˆ‡ 64,372ï¼ˆä¾†æºä¸æ˜Žçš„èˆŠå€¼ï¼‰ã€‚å·²æ”¹ç‚ºèˆ‡ Step 3 ä¸€è‡´ï¼›
+$+35.6$ï¼$-155.4$ å…©å€‹çµæžœä¸è®Šï¼ˆ$10^7/280{,}622 = 35.63$ã€$10^7/64{,}369 = 155.36$ï¼‰ã€‚
 
-### 訂正三：`RC-2012-1` Step 7 拉力合力
+### è¨‚æ­£ä¸‰ï¼š`RC-2012-1` Step 7 æ‹‰åŠ›åˆåŠ›
 
-$T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}275}$ kgf（原寫 5,276）。
-下一行的 $A_s = 5{,}275/2{,}100 = 2.51$ cm² 本來就用 5,275，屬同段內自相矛盾，非結果錯誤。
+$T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}275}$ kgfï¼ˆåŽŸå¯« 5,276ï¼‰ã€‚
+ä¸‹ä¸€è¡Œçš„ $A_s = 5{,}275/2{,}100 = 2.51$ cmÂ² æœ¬ä¾†å°±ç”¨ 5,275ï¼Œå±¬åŒæ®µå…§è‡ªç›¸çŸ›ç›¾ï¼ŒéžçµæžœéŒ¯èª¤ã€‚
 
-### 下游同步
+### ä¸‹æ¸¸åŒæ­¥
 
-- `wiki/problems/RC-2004-5.md`：$P_e$、$f_{ce}$、$f_r$、$M_{cr}$ 計算式、$\omega_p$ 同步訂正。
-- `wiki/problems/RC-2006-4.md`、`RC-2012-1.md`：檢查後確認原本即為正確值，未動。
-- 五題 `wiki/problems/` 頁的「圖形」區塊新增向量圖解清單。
-- `study/problems-view/` 五頁以 `gen_problems_view.py` 重建。
+- `wiki/problems/RC-2004-5.md`ï¼š$P_e$ã€$f_{ce}$ã€$f_r$ã€$M_{cr}$ è¨ˆç®—å¼ã€$\omega_p$ åŒæ­¥è¨‚æ­£ã€‚
+- `wiki/problems/RC-2006-4.md`ã€`RC-2012-1.md`ï¼šæª¢æŸ¥å¾Œç¢ºèªåŽŸæœ¬å³ç‚ºæ­£ç¢ºå€¼ï¼Œæœªå‹•ã€‚
+- äº”é¡Œ `wiki/problems/` é çš„ã€Œåœ–å½¢ã€å€å¡Šæ–°å¢žå‘é‡åœ–è§£æ¸…å–®ã€‚
+- `study/problems-view/` äº”é ä»¥ `gen_problems_view.py` é‡å»ºã€‚
 
-### 備註
+### å‚™è¨»
 
-- 五個 `.md` 均為 CRLF，插圖與訂正全程以位元組層級處理，換行未被轉換。
-- 本次未在使用者端執行 `py_compile`（上一輪產生的 `__pycache__` 無法以 `rm` 移除，
-  已於 8/31 移至 `_to_delete/pycache_20260831/`，待使用者自行刪除）。
+- äº”å€‹ `.md` å‡ç‚º CRLFï¼Œæ’åœ–èˆ‡è¨‚æ­£å…¨ç¨‹ä»¥ä½å…ƒçµ„å±¤ç´šè™•ç†ï¼Œæ›è¡Œæœªè¢«è½‰æ›ã€‚
+- æœ¬æ¬¡æœªåœ¨ä½¿ç”¨è€…ç«¯åŸ·è¡Œ `py_compile`ï¼ˆä¸Šä¸€è¼ªç”¢ç”Ÿçš„ `__pycache__` ç„¡æ³•ä»¥ `rm` ç§»é™¤ï¼Œ
+  å·²æ–¼ 8/31 ç§»è‡³ `_to_delete/pycache_20260831/`ï¼Œå¾…ä½¿ç”¨è€…è‡ªè¡Œåˆªé™¤ï¼‰ã€‚
 
 ## 2026-09-02
 
-### 完成事項
+### å®Œæˆäº‹é …
 
-- 新增 RC 梁題 5 題（RC-2009-3, RC-2014-3, RC-2017-2, RC-2020-2, RC-2023-3）的 struct-diagram 向量圖解。
-- 將圖片產生結果與註解，更新至對應的 .md 與 study/problems-view/ 的 .html 檔案中。
-- 更新 scripts/apply_figs.py 的圖解中繼資料與註解。
+- æ–°å¢ž RC æ¢é¡Œ 5 é¡Œï¼ˆRC-2009-3, RC-2014-3, RC-2017-2, RC-2020-2, RC-2023-3ï¼‰çš„ struct-diagram å‘é‡åœ–è§£ã€‚
+- å°‡åœ–ç‰‡ç”¢ç”Ÿçµæžœèˆ‡è¨»è§£ï¼Œæ›´æ–°è‡³å°æ‡‰çš„ .md èˆ‡ study/problems-view/ çš„ .html æª”æ¡ˆä¸­ã€‚
+- æ›´æ–° scripts/apply_figs.py çš„åœ–è§£ä¸­ç¹¼è³‡æ–™èˆ‡è¨»è§£ã€‚
 
 ## 2026-09-07
 
-### 完成事項
+### å®Œæˆäº‹é …
 
-- 新增耐震群 5 題（`RC-2025-2`、`RC-2013-2`、`RC-2012-3`、`RC-2005-3`、`RC-2022-4`）的
-  struct-diagram 向量圖解，共 **17 張**（SVG + 2× PNG）與 5 支可重跑的 `gen_*.py`。
-  `render.py` 溢出檢查全數 0 個需修正，17 張 PNG 逐張目視確認。
-- `scripts/apply_figs.py` 擴充：新增 `ANCHORS` 機制（圖塊插在指定原文行之後，
-  取代原本「圖 1 → §2 之前、其餘 → §5 之前」的粗略規則），並新增 `REPLACE` 掛勾（目前為空）。
-  五題的圖號一律**依 .md 內出現先後**重排，冪等重跑已測試。
-- `study/problems-view/` 五頁以 `gen_problems_view.py` 重建，`--check` 回報 same=5。
+- æ–°å¢žè€éœ‡ç¾¤ 5 é¡Œï¼ˆ`RC-2025-2`ã€`RC-2013-2`ã€`RC-2012-3`ã€`RC-2005-3`ã€`RC-2022-4`ï¼‰çš„
+  struct-diagram å‘é‡åœ–è§£ï¼Œå…± **17 å¼µ**ï¼ˆSVG + 2Ã— PNGï¼‰èˆ‡ 5 æ”¯å¯é‡è·‘çš„ `gen_*.py`ã€‚
+  `render.py` æº¢å‡ºæª¢æŸ¥å…¨æ•¸ 0 å€‹éœ€ä¿®æ­£ï¼Œ17 å¼µ PNG é€å¼µç›®è¦–ç¢ºèªã€‚
+- `scripts/apply_figs.py` æ“´å……ï¼šæ–°å¢ž `ANCHORS` æ©Ÿåˆ¶ï¼ˆåœ–å¡Šæ’åœ¨æŒ‡å®šåŽŸæ–‡è¡Œä¹‹å¾Œï¼Œ
+  å–ä»£åŽŸæœ¬ã€Œåœ– 1 â†’ Â§2 ä¹‹å‰ã€å…¶é¤˜ â†’ Â§5 ä¹‹å‰ã€çš„ç²—ç•¥è¦å‰‡ï¼‰ï¼Œä¸¦æ–°å¢ž `REPLACE` æŽ›å‹¾ï¼ˆç›®å‰ç‚ºç©ºï¼‰ã€‚
+  äº”é¡Œçš„åœ–è™Ÿä¸€å¾‹**ä¾ .md å…§å‡ºç¾å…ˆå¾Œ**é‡æŽ’ï¼Œå†ªç­‰é‡è·‘å·²æ¸¬è©¦ã€‚
+- `study/problems-view/` äº”é ä»¥ `gen_problems_view.py` é‡å»ºï¼Œ`--check` å›žå ± same=5ã€‚
 
-### 解題正本訂正（`raw/solutions/`，共 45 處）
+### è§£é¡Œæ­£æœ¬è¨‚æ­£ï¼ˆ`raw/solutions/`ï¼Œå…± 45 è™•ï¼‰
 
-| 題號 | 訂正 |
+| é¡Œè™Ÿ | è¨‚æ­£ |
 |---|---|
-| `RC-2025-2` | Step 6 的 $5.08\times2800\times67/15$ 誤寫 **63,701**（正解 **63,534**），連帶 $\phi V_s$ 由 47.8 改為 **47.7** tf，與「最終設計」表原本就寫的 47.7 一致；$M_{pr}^-$ 全檔統一為 **188.1**（原 §3.5／Step 2 寫 188.2、§Step 8／§6 寫 188.1），連帶 $336.9\to37.43\to46.43$；Step 5 分子 953,072 → **953,008**；§2 出題者意圖第 4 點原仍寫「第一支箍筋 $\le s_o/2$」，與同檔 §3 陷阱 6、§6 的勘誤矛盾，已改為梁的 **$\le 5$ cm** |
-| `RC-2013-2` | §5② 兩處「相鄰主筋間距 ≈ **9.4** cm」是 8/22 勘誤前的殘值，已改為 **9.06** cm；新增 **Step 5c：第一支箍筋位置**（柱為 $\le s_o/2 = 6$ cm，§18.7.5.3；與梁的 5 cm 不可互換），並在 Step 6 彙整表補列 |
-| `RC-2012-3` | §5① 不等號寫反：$\phi V_c = 23.7 \ \mathbf{\ge}\ V_u = 25.17$ 改為 **$<$**（下一句「箍筋僅需承擔 $(25.17-23.7)/0.75$」本身就預設 $<$）；§5④ 取法 B 的 $A_{sh1}/s$ 由 0.310 改為 **0.309**（精算 0.30947）；§3.5 與 §4 Step 3 把 48 cm 說成「箍筋中心線至中心線」，與 §3 陷阱 4／§5④ 矛盾，已改為「**主筋中心至主筋中心**」；§5 小節順序 ①④⑤②③ 重排為 ①②③④⑤ |
-| `RC-2005-3` | §3.5 Step 5 的 $b_j = \min(b_c,\ b_w+0.5h_c)$ 是坊間簡化式，與同檔 §4⑤ 自己的更正矛盾，已改用規範原式 $\min(b_w+h_c,\ b_w+2x) \le b_c$；$\phi V_n$ 尾數統一為 **163,851** kgf（§4⑥ 原 163,848、§3.5 原 163,800，且單位誤寫「163.8 t」）；§5② 的「$\times 3.193$ 由 MPa 換 kgf/cm²」推不出 5.3，已補正為「5.3 出自 psi 路徑（$20/3.771$），3.9／3.2／2.2 出自 SI 路徑（$\times3.193$），三套各自取整、不可互相反推」 |
-| `RC-2022-4` | $\delta_u$ 精確值 **0.044913 m（4.491 cm）**（彙整表原寫 4.493、§5 表寫 4.491，自相矛盾）；$\theta_y$ 由 0.005335 改為 **0.005333**；$\theta_u$ 改為 0.014035；$L_p$ 第一式改印 4 位（$0.2975$／$0.5535$）以免與下限式 0.5951 的比較看起來像進位問題；容量／需求比由 $2.63/1.82 = 1.44$ 改為 **$2.632/1.816 = 1.449$**。$\mu_\phi = 4.00$、$\mu_\theta = \mu = 2.63$ 三個結論不變 |
+| `RC-2025-2` | Step 6 çš„ $5.08\times2800\times67/15$ èª¤å¯« **63,701**ï¼ˆæ­£è§£ **63,534**ï¼‰ï¼Œé€£å¸¶ $\phi V_s$ ç”± 47.8 æ”¹ç‚º **47.7** tfï¼Œèˆ‡ã€Œæœ€çµ‚è¨­è¨ˆã€è¡¨åŽŸæœ¬å°±å¯«çš„ 47.7 ä¸€è‡´ï¼›$M_{pr}^-$ å…¨æª”çµ±ä¸€ç‚º **188.1**ï¼ˆåŽŸ Â§3.5ï¼Step 2 å¯« 188.2ã€Â§Step 8ï¼Â§6 å¯« 188.1ï¼‰ï¼Œé€£å¸¶ $336.9\to37.43\to46.43$ï¼›Step 5 åˆ†å­ 953,072 â†’ **953,008**ï¼›Â§2 å‡ºé¡Œè€…æ„åœ–ç¬¬ 4 é»žåŽŸä»å¯«ã€Œç¬¬ä¸€æ”¯ç®ç­‹ $\le s_o/2$ã€ï¼Œèˆ‡åŒæª” Â§3 é™·é˜± 6ã€Â§6 çš„å‹˜èª¤çŸ›ç›¾ï¼Œå·²æ”¹ç‚ºæ¢çš„ **$\le 5$ cm** |
+| `RC-2013-2` | Â§5â‘¡ å…©è™•ã€Œç›¸é„°ä¸»ç­‹é–“è· â‰ˆ **9.4** cmã€æ˜¯ 8/22 å‹˜èª¤å‰çš„æ®˜å€¼ï¼Œå·²æ”¹ç‚º **9.06** cmï¼›æ–°å¢ž **Step 5cï¼šç¬¬ä¸€æ”¯ç®ç­‹ä½ç½®**ï¼ˆæŸ±ç‚º $\le s_o/2 = 6$ cmï¼ŒÂ§18.7.5.3ï¼›èˆ‡æ¢çš„ 5 cm ä¸å¯äº’æ›ï¼‰ï¼Œä¸¦åœ¨ Step 6 å½™æ•´è¡¨è£œåˆ— |
+| `RC-2012-3` | Â§5â‘  ä¸ç­‰è™Ÿå¯«åï¼š$\phi V_c = 23.7 \ \mathbf{\ge}\ V_u = 25.17$ æ”¹ç‚º **$<$**ï¼ˆä¸‹ä¸€å¥ã€Œç®ç­‹åƒ…éœ€æ‰¿æ“” $(25.17-23.7)/0.75$ã€æœ¬èº«å°±é è¨­ $<$ï¼‰ï¼›Â§5â‘£ å–æ³• B çš„ $A_{sh1}/s$ ç”± 0.310 æ”¹ç‚º **0.309**ï¼ˆç²¾ç®— 0.30947ï¼‰ï¼›Â§3.5 èˆ‡ Â§4 Step 3 æŠŠ 48 cm èªªæˆã€Œç®ç­‹ä¸­å¿ƒç·šè‡³ä¸­å¿ƒç·šã€ï¼Œèˆ‡ Â§3 é™·é˜± 4ï¼Â§5â‘£ çŸ›ç›¾ï¼Œå·²æ”¹ç‚ºã€Œ**ä¸»ç­‹ä¸­å¿ƒè‡³ä¸»ç­‹ä¸­å¿ƒ**ã€ï¼›Â§5 å°ç¯€é †åº â‘ â‘£â‘¤â‘¡â‘¢ é‡æŽ’ç‚º â‘ â‘¡â‘¢â‘£â‘¤ |
+| `RC-2005-3` | Â§3.5 Step 5 çš„ $b_j = \min(b_c,\ b_w+0.5h_c)$ æ˜¯åŠé–“ç°¡åŒ–å¼ï¼Œèˆ‡åŒæª” Â§4â‘¤ è‡ªå·±çš„æ›´æ­£çŸ›ç›¾ï¼Œå·²æ”¹ç”¨è¦ç¯„åŽŸå¼ $\min(b_w+h_c,\ b_w+2x) \le b_c$ï¼›$\phi V_n$ å°¾æ•¸çµ±ä¸€ç‚º **163,851** kgfï¼ˆÂ§4â‘¥ åŽŸ 163,848ã€Â§3.5 åŽŸ 163,800ï¼Œä¸”å–®ä½èª¤å¯«ã€Œ163.8 tã€ï¼‰ï¼›Â§5â‘¡ çš„ã€Œ$\times 3.193$ ç”± MPa æ› kgf/cmÂ²ã€æŽ¨ä¸å‡º 5.3ï¼Œå·²è£œæ­£ç‚ºã€Œ5.3 å‡ºè‡ª psi è·¯å¾‘ï¼ˆ$20/3.771$ï¼‰ï¼Œ3.9ï¼3.2ï¼2.2 å‡ºè‡ª SI è·¯å¾‘ï¼ˆ$\times3.193$ï¼‰ï¼Œä¸‰å¥—å„è‡ªå–æ•´ã€ä¸å¯äº’ç›¸åæŽ¨ã€ |
+| `RC-2022-4` | $\delta_u$ ç²¾ç¢ºå€¼ **0.044913 mï¼ˆ4.491 cmï¼‰**ï¼ˆå½™æ•´è¡¨åŽŸå¯« 4.493ã€Â§5 è¡¨å¯« 4.491ï¼Œè‡ªç›¸çŸ›ç›¾ï¼‰ï¼›$\theta_y$ ç”± 0.005335 æ”¹ç‚º **0.005333**ï¼›$\theta_u$ æ”¹ç‚º 0.014035ï¼›$L_p$ ç¬¬ä¸€å¼æ”¹å° 4 ä½ï¼ˆ$0.2975$ï¼$0.5535$ï¼‰ä»¥å…èˆ‡ä¸‹é™å¼ 0.5951 çš„æ¯”è¼ƒçœ‹èµ·ä¾†åƒé€²ä½å•é¡Œï¼›å®¹é‡ï¼éœ€æ±‚æ¯”ç”± $2.63/1.82 = 1.44$ æ”¹ç‚º **$2.632/1.816 = 1.449$**ã€‚$\mu_\phi = 4.00$ã€$\mu_\theta = \mu = 2.63$ ä¸‰å€‹çµè«–ä¸è®Š |
 
-### 下游同步
+### ä¸‹æ¸¸åŒæ­¥
 
-- `study/lecture-RC-U3-3.html`（RC-U3-3 單元講義）**四段手算例都還在教勘誤前的錯值**，已全部同步：
-  - RC-2012-3：$V_u = (75.5+75.5)/3.0 = \mathbf{50.33}$ tf → 改為接頭彎矩由上下柱分擔的三步推導，**25.17 tf**；
-    §5.2 的通式 $V_u^{col} = (M_{pr,top}+M_{pr,bot})/l_n$ 分子容易被讀成「梁端 $M_{pr}$」（正是 50.33 的來源），
-    已改寫為柱端彎矩並加註「分母是一根柱的淨高、分子是一個接頭的梁彎矩總和」；
-    自我檢查③的剪應力由 15.5 改為 **7.77** kgf/cm²（$0.46\sqrt{f'_c}$）。
-  - RC-2005-3：$T = A_sf_y$ → **$1.25A_sf_y$**；$V_{col} = 2M_n/H = 45.9$ → **$M_{pr}/H = 28.18$** tf；
-    $V_{jh} = 81.9$（利用率 50%）→ **131.5 tf（80%）**；$b_j$ 改用規範原式；$\phi V_n$ 163,848 → 163,851；
-    §6.1 的 $V_{jh}/V_{col}$ 由 1.78 改為 **4.67** 倍，內接頭那句對比敘述一併重寫。
-  - RC-2025-2：188.2／46.44／61.92／15.4 全部同步，並改正「**第一支距柱面 $\le s/2 = 7.5$ cm**」
-    → 梁為 $\le 5$ cm（§18.6.4.4），$s_o/2$ 是柱的規定（§18.7.5.3）。
-  - RC-2022-4：位數同步（0.005333／0.044913／0.014035／0.2975）。
-  - §6.2 γ 表：T 形接頭 kgf 制 **4.0 → 3.9**、SI 制 **1.25 → 1.2**，並補上「三套數字各自取整、不可互相反推」的說明。
-  - 陷阱二原把 $\min(d/4,\,8d_b,\,24d_{b,tie},\,300\text{ mm})$ 引註為「ACI 318-19 §18.6.4.4」，
-    並把新舊制描述成兩個並存選項。已改為：舊制屬 **318-11 及更早**，**318-14 起**為 $\min(d/4,\,6d_b,\,150\text{ mm})$；
-    RC-2025-2 原卷明訂土木 401-112，沒有選擇空間。
-- `wiki/problems/RC-2005-3.md`：**上半段整段仍是 8/22 勘誤前的值**（標題、題幹摘要、核心考點、
-  解題關鍵步驟、用到的公式、涉及陷阱），而同頁「驗證狀態」卻已聲稱「$V_{col}$ 與 $T$ 均已更正」——
-  自相矛盾。已全段同步為 $1.25f_y$ 主線，γ 表 T 形由 4.0 改 3.9。
-- `wiki/problems/RC-2013-2.md`：核心考點與解題關鍵步驟各補一條「第一支箍筋位置（柱：$s/2 = 6$ cm）」。
-- `wiki/concepts/SPECIAL-MOMENT-FRAME-BEAM.md`：密箍區間距仍寫 $\min(d/4,\,8d_b,\,24d_{b,箍筋},\,300\text{ mm})$
-  且未標版本，已改為 $\min(d/4,\,6d_b,\,150\text{ mm})$ 並註明舊值屬 318-11 世代。
-  （`raw/json/concepts.json` 的 `key_formula` 未載間距條件，故上游無須改。）
-- `wiki/code-ref/seismic-code.md`、`wiki/traps/SEISMIC-BEAM-VE.md` 檢查後確認早在 2026-08-22 已正確，未動。
-- `wiki/problems/` 五頁的「圖形」區塊**未**新增向量圖解清單——全庫既有 11 個有向量圖的題目
-  （含 RC-2020-2）都沒有列，向量圖是透過 `study/problems-view/` 呈現，維持既有慣例。
+- `study/lecture-RC-U3-3.html`ï¼ˆRC-U3-3 å–®å…ƒè¬›ç¾©ï¼‰**å››æ®µæ‰‹ç®—ä¾‹éƒ½é‚„åœ¨æ•™å‹˜èª¤å‰çš„éŒ¯å€¼**ï¼Œå·²å…¨éƒ¨åŒæ­¥ï¼š
+  - RC-2012-3ï¼š$V_u = (75.5+75.5)/3.0 = \mathbf{50.33}$ tf â†’ æ”¹ç‚ºæŽ¥é ­å½ŽçŸ©ç”±ä¸Šä¸‹æŸ±åˆ†æ“”çš„ä¸‰æ­¥æŽ¨å°Žï¼Œ**25.17 tf**ï¼›
+    Â§5.2 çš„é€šå¼ $V_u^{col} = (M_{pr,top}+M_{pr,bot})/l_n$ åˆ†å­å®¹æ˜“è¢«è®€æˆã€Œæ¢ç«¯ $M_{pr}$ã€ï¼ˆæ­£æ˜¯ 50.33 çš„ä¾†æºï¼‰ï¼Œ
+    å·²æ”¹å¯«ç‚ºæŸ±ç«¯å½ŽçŸ©ä¸¦åŠ è¨»ã€Œåˆ†æ¯æ˜¯ä¸€æ ¹æŸ±çš„æ·¨é«˜ã€åˆ†å­æ˜¯ä¸€å€‹æŽ¥é ­çš„æ¢å½ŽçŸ©ç¸½å’Œã€ï¼›
+    è‡ªæˆ‘æª¢æŸ¥â‘¢çš„å‰ªæ‡‰åŠ›ç”± 15.5 æ”¹ç‚º **7.77** kgf/cmÂ²ï¼ˆ$0.46\sqrt{f'_c}$ï¼‰ã€‚
+  - RC-2005-3ï¼š$T = A_sf_y$ â†’ **$1.25A_sf_y$**ï¼›$V_{col} = 2M_n/H = 45.9$ â†’ **$M_{pr}/H = 28.18$** tfï¼›
+    $V_{jh} = 81.9$ï¼ˆåˆ©ç”¨çŽ‡ 50%ï¼‰â†’ **131.5 tfï¼ˆ80%ï¼‰**ï¼›$b_j$ æ”¹ç”¨è¦ç¯„åŽŸå¼ï¼›$\phi V_n$ 163,848 â†’ 163,851ï¼›
+    Â§6.1 çš„ $V_{jh}/V_{col}$ ç”± 1.78 æ”¹ç‚º **4.67** å€ï¼Œå…§æŽ¥é ­é‚£å¥å°æ¯”æ•˜è¿°ä¸€ä½µé‡å¯«ã€‚
+  - RC-2025-2ï¼š188.2ï¼46.44ï¼61.92ï¼15.4 å…¨éƒ¨åŒæ­¥ï¼Œä¸¦æ”¹æ­£ã€Œ**ç¬¬ä¸€æ”¯è·æŸ±é¢ $\le s/2 = 7.5$ cm**ã€
+    â†’ æ¢ç‚º $\le 5$ cmï¼ˆÂ§18.6.4.4ï¼‰ï¼Œ$s_o/2$ æ˜¯æŸ±çš„è¦å®šï¼ˆÂ§18.7.5.3ï¼‰ã€‚
+  - RC-2022-4ï¼šä½æ•¸åŒæ­¥ï¼ˆ0.005333ï¼0.044913ï¼0.014035ï¼0.2975ï¼‰ã€‚
+  - Â§6.2 Î³ è¡¨ï¼šT å½¢æŽ¥é ­ kgf åˆ¶ **4.0 â†’ 3.9**ã€SI åˆ¶ **1.25 â†’ 1.2**ï¼Œä¸¦è£œä¸Šã€Œä¸‰å¥—æ•¸å­—å„è‡ªå–æ•´ã€ä¸å¯äº’ç›¸åæŽ¨ã€çš„èªªæ˜Žã€‚
+  - é™·é˜±äºŒåŽŸæŠŠ $\min(d/4,\,8d_b,\,24d_{b,tie},\,300\text{ mm})$ å¼•è¨»ç‚ºã€ŒACI 318-19 Â§18.6.4.4ã€ï¼Œ
+    ä¸¦æŠŠæ–°èˆŠåˆ¶æè¿°æˆå…©å€‹ä¸¦å­˜é¸é …ã€‚å·²æ”¹ç‚ºï¼šèˆŠåˆ¶å±¬ **318-11 åŠæ›´æ—©**ï¼Œ**318-14 èµ·**ç‚º $\min(d/4,\,6d_b,\,150\text{ mm})$ï¼›
+    RC-2025-2 åŽŸå·æ˜Žè¨‚åœŸæœ¨ 401-112ï¼Œæ²’æœ‰é¸æ“‡ç©ºé–“ã€‚
+- `wiki/problems/RC-2005-3.md`ï¼š**ä¸ŠåŠæ®µæ•´æ®µä»æ˜¯ 8/22 å‹˜èª¤å‰çš„å€¼**ï¼ˆæ¨™é¡Œã€é¡Œå¹¹æ‘˜è¦ã€æ ¸å¿ƒè€ƒé»žã€
+  è§£é¡Œé—œéµæ­¥é©Ÿã€ç”¨åˆ°çš„å…¬å¼ã€æ¶‰åŠé™·é˜±ï¼‰ï¼Œè€ŒåŒé ã€Œé©—è­‰ç‹€æ…‹ã€å»å·²è²ç¨±ã€Œ$V_{col}$ èˆ‡ $T$ å‡å·²æ›´æ­£ã€â€”â€”
+  è‡ªç›¸çŸ›ç›¾ã€‚å·²å…¨æ®µåŒæ­¥ç‚º $1.25f_y$ ä¸»ç·šï¼ŒÎ³ è¡¨ T å½¢ç”± 4.0 æ”¹ 3.9ã€‚
+- `wiki/problems/RC-2013-2.md`ï¼šæ ¸å¿ƒè€ƒé»žèˆ‡è§£é¡Œé—œéµæ­¥é©Ÿå„è£œä¸€æ¢ã€Œç¬¬ä¸€æ”¯ç®ç­‹ä½ç½®ï¼ˆæŸ±ï¼š$s/2 = 6$ cmï¼‰ã€ã€‚
+- `wiki/concepts/SPECIAL-MOMENT-FRAME-BEAM.md`ï¼šå¯†ç®å€é–“è·ä»å¯« $\min(d/4,\,8d_b,\,24d_{b,ç®ç­‹},\,300\text{ mm})$
+  ä¸”æœªæ¨™ç‰ˆæœ¬ï¼Œå·²æ”¹ç‚º $\min(d/4,\,6d_b,\,150\text{ mm})$ ä¸¦è¨»æ˜ŽèˆŠå€¼å±¬ 318-11 ä¸–ä»£ã€‚
+  ï¼ˆ`raw/json/concepts.json` çš„ `key_formula` æœªè¼‰é–“è·æ¢ä»¶ï¼Œæ•…ä¸Šæ¸¸ç„¡é ˆæ”¹ã€‚ï¼‰
+- `wiki/code-ref/seismic-code.md`ã€`wiki/traps/SEISMIC-BEAM-VE.md` æª¢æŸ¥å¾Œç¢ºèªæ—©åœ¨ 2026-08-22 å·²æ­£ç¢ºï¼Œæœªå‹•ã€‚
+- `wiki/problems/` äº”é çš„ã€Œåœ–å½¢ã€å€å¡Š**æœª**æ–°å¢žå‘é‡åœ–è§£æ¸…å–®â€”â€”å…¨åº«æ—¢æœ‰ 11 å€‹æœ‰å‘é‡åœ–çš„é¡Œç›®
+  ï¼ˆå« RC-2020-2ï¼‰éƒ½æ²’æœ‰åˆ—ï¼Œå‘é‡åœ–æ˜¯é€éŽ `study/problems-view/` å‘ˆç¾ï¼Œç¶­æŒæ—¢æœ‰æ…£ä¾‹ã€‚
 
-### 未處理（需重新解題，不在本次同步範圍）
+### æœªè™•ç†ï¼ˆéœ€é‡æ–°è§£é¡Œï¼Œä¸åœ¨æœ¬æ¬¡åŒæ­¥ç¯„åœï¼‰
 
-- 🔴 **`RC-2012-4`**：$V_{jh} = T_1 - V_{col} = 159.7 - \mathbf{50.33} = 109.4$ tf 沿用 `RC-2012-3` 的舊 $V_{col}$。
-  改用正確的 **25.17 tf** 會得 $V_{jh} \approx 134.4$ tf，**該題答案與判定都會變**，屬解題範圍而非同步範圍。
-  影響檔案：`raw/solutions/RC-2012-4/RC-2012-4.md`、`wiki/problems/RC-2012-4.md`、
-  `study/problems-view/RC-2012-4.html`。與 2026-08-22 記錄的「列為下一輪第一順位」為同一件事，仍未消。
+- ðŸ”´ **`RC-2012-4`**ï¼š$V_{jh} = T_1 - V_{col} = 159.7 - \mathbf{50.33} = 109.4$ tf æ²¿ç”¨ `RC-2012-3` çš„èˆŠ $V_{col}$ã€‚
+  æ”¹ç”¨æ­£ç¢ºçš„ **25.17 tf** æœƒå¾— $V_{jh} \approx 134.4$ tfï¼Œ**è©²é¡Œç­”æ¡ˆèˆ‡åˆ¤å®šéƒ½æœƒè®Š**ï¼Œå±¬è§£é¡Œç¯„åœè€ŒéžåŒæ­¥ç¯„åœã€‚
+  å½±éŸ¿æª”æ¡ˆï¼š`raw/solutions/RC-2012-4/RC-2012-4.md`ã€`wiki/problems/RC-2012-4.md`ã€
+  `study/problems-view/RC-2012-4.html`ã€‚èˆ‡ 2026-08-22 è¨˜éŒ„çš„ã€Œåˆ—ç‚ºä¸‹ä¸€è¼ªç¬¬ä¸€é †ä½ã€ç‚ºåŒä¸€ä»¶äº‹ï¼Œä»æœªæ¶ˆã€‚
 
-### 追記：清除傳輸管道注入的 C2PA 內容憑證
+### è¿½è¨˜ï¼šæ¸…é™¤å‚³è¼¸ç®¡é“æ³¨å…¥çš„ C2PA å…§å®¹æ†‘è­‰
 
-圖檔從容器寫回本機時，傳輸管道在每個檔案裡加了 C2PA（Content Credentials）簽章：
+åœ–æª”å¾žå®¹å™¨å¯«å›žæœ¬æ©Ÿæ™‚ï¼Œå‚³è¼¸ç®¡é“åœ¨æ¯å€‹æª”æ¡ˆè£¡åŠ äº† C2PAï¼ˆContent Credentialsï¼‰ç°½ç« ï¼š
 
-- SVG：在 `<svg>` 上加 `xmlns:c2pa` 並插入 `<metadata><c2pa:manifest>…base64…</c2pa:manifest></metadata>`，
-  每檔多約 7.4 KB（例如 `RC-2005-3-fig-2-gamma.svg` 由 18,796 脹到 26,034 B）。
-- PNG：多一個 `caBX` 私有 chunk，每檔固定 5,758 B。
+- SVGï¼šåœ¨ `<svg>` ä¸ŠåŠ  `xmlns:c2pa` ä¸¦æ’å…¥ `<metadata><c2pa:manifest>â€¦base64â€¦</c2pa:manifest></metadata>`ï¼Œ
+  æ¯æª”å¤šç´„ 7.4 KBï¼ˆä¾‹å¦‚ `RC-2005-3-fig-2-gamma.svg` ç”± 18,796 è„¹åˆ° 26,034 Bï¼‰ã€‚
+- PNGï¼šå¤šä¸€å€‹ `caBX` ç§æœ‰ chunkï¼Œæ¯æª”å›ºå®š 5,758 Bã€‚
 
-既有 11 題（`RC-2020-2` 等）的向量圖都沒有這層簽章，且它會讓「磁碟上的圖 ≠ `gen_*.py` 的產物」，
-與 `CLAUDE-SPEC.md` §5.1「生成腳本必須可重跑」的可稽核性相違，故全部移除。
-移除後複驗：**17 張 SVG 與腳本重跑結果 md5 完全相同**；17 張 PNG 的 chunk 串仍為 IHDR…IEND 完整且可正常解碼。
+æ—¢æœ‰ 11 é¡Œï¼ˆ`RC-2020-2` ç­‰ï¼‰çš„å‘é‡åœ–éƒ½æ²’æœ‰é€™å±¤ç°½ç« ï¼Œä¸”å®ƒæœƒè®“ã€Œç£ç¢Ÿä¸Šçš„åœ– â‰  `gen_*.py` çš„ç”¢ç‰©ã€ï¼Œ
+èˆ‡ `CLAUDE-SPEC.md` Â§5.1ã€Œç”Ÿæˆè…³æœ¬å¿…é ˆå¯é‡è·‘ã€çš„å¯ç¨½æ ¸æ€§ç›¸é•ï¼Œæ•…å…¨éƒ¨ç§»é™¤ã€‚
+ç§»é™¤å¾Œè¤‡é©—ï¼š**17 å¼µ SVG èˆ‡è…³æœ¬é‡è·‘çµæžœ md5 å®Œå…¨ç›¸åŒ**ï¼›17 å¼µ PNG çš„ chunk ä¸²ä»ç‚º IHDRâ€¦IEND å®Œæ•´ä¸”å¯æ­£å¸¸è§£ç¢¼ã€‚
 
-### 備註
+### å‚™è¨»
 
-- 五個解題 `.md` 與 `wiki/` 下的 `.md` 均為 CRLF、`study/` 下的 `.html` 均為 LF，
-  全程以位元組層級判斷後原樣寫回，換行未被轉換（改後逐檔複數）。
-- 五題的 `verificationStatus` 仍為 `unverified`，本次只做算式自洽與下游一致性，**未做人工驗算**。
+- äº”å€‹è§£é¡Œ `.md` èˆ‡ `wiki/` ä¸‹çš„ `.md` å‡ç‚º CRLFã€`study/` ä¸‹çš„ `.html` å‡ç‚º LFï¼Œ
+  å…¨ç¨‹ä»¥ä½å…ƒçµ„å±¤ç´šåˆ¤æ–·å¾ŒåŽŸæ¨£å¯«å›žï¼Œæ›è¡Œæœªè¢«è½‰æ›ï¼ˆæ”¹å¾Œé€æª”è¤‡æ•¸ï¼‰ã€‚
+- äº”é¡Œçš„ `verificationStatus` ä»ç‚º `unverified`ï¼Œæœ¬æ¬¡åªåšç®—å¼è‡ªæ´½èˆ‡ä¸‹æ¸¸ä¸€è‡´æ€§ï¼Œ**æœªåšäººå·¥é©—ç®—**ã€‚
 
-## 2026-09-07（第二輪）：`RC-2012-4` 重解 —— 清掉 2026-08-22 留下的最後一筆待辦
+## 2026-09-07ï¼ˆç¬¬äºŒè¼ªï¼‰ï¼š`RC-2012-4` é‡è§£ â€”â€” æ¸…æŽ‰ 2026-08-22 ç•™ä¸‹çš„æœ€å¾Œä¸€ç­†å¾…è¾¦
 
-`RC-2012-3` 於 2026-08-22 把柱設計剪力由 $V_{col} = 50.33$ 更正為 **25.17 tf**（接頭梁彎矩由上下柱分擔），
-當時即記錄「這會直接影響 `RC-2012-4` 的接頭剪力檢核，列為下一輪第一順位」。本次處理完畢。
+`RC-2012-3` æ–¼ 2026-08-22 æŠŠæŸ±è¨­è¨ˆå‰ªåŠ›ç”± $V_{col} = 50.33$ æ›´æ­£ç‚º **25.17 tf**ï¼ˆæŽ¥é ­æ¢å½ŽçŸ©ç”±ä¸Šä¸‹æŸ±åˆ†æ“”ï¼‰ï¼Œ
+ç•¶æ™‚å³è¨˜éŒ„ã€Œé€™æœƒç›´æŽ¥å½±éŸ¿ `RC-2012-4` çš„æŽ¥é ­å‰ªåŠ›æª¢æ ¸ï¼Œåˆ—ç‚ºä¸‹ä¸€è¼ªç¬¬ä¸€é †ä½ã€ã€‚æœ¬æ¬¡è™•ç†å®Œç•¢ã€‚
 
-### 為什麼會錯
+### ç‚ºä»€éº¼æœƒéŒ¯
 
-`RC-2012-4` 的 $V_{jh} = T_1 - V_{col}$ 裡，$V_{col}$ 是**減項**。
-減項被高估一倍，$V_{jh}$ 就被低估——而且錯的方向是「**看起來更安全**」，最難察覺。
+`RC-2012-4` çš„ $V_{jh} = T_1 - V_{col}$ è£¡ï¼Œ$V_{col}$ æ˜¯**æ¸›é …**ã€‚
+æ¸›é …è¢«é«˜ä¼°ä¸€å€ï¼Œ$V_{jh}$ å°±è¢«ä½Žä¼°â€”â€”è€Œä¸”éŒ¯çš„æ–¹å‘æ˜¯ã€Œ**çœ‹èµ·ä¾†æ›´å®‰å…¨**ã€ï¼Œæœ€é›£å¯Ÿè¦ºã€‚
 
-### 主線數值變更
+### ä¸»ç·šæ•¸å€¼è®Šæ›´
 
-| 項目 | 舊版 | 重解後 | 依據 |
+| é …ç›® | èˆŠç‰ˆ | é‡è§£å¾Œ | ä¾æ“š |
 |---|:---:|:---:|---|
-| $T_1 = A_{s,top}f_{ps}$ | 159.7 tf | 159.7 tf（不變） | $30.42\times5250$，$f_{ps}=1.25f_y$（§18.8.2.1） |
-| $V_{col}$ | $2M_{pr}/l_n$ = 50.33 tf ✗ | $\Sigma M_{pr,\text{beam at joint}}/l_n = 75.52/3.0 = \mathbf{25.17}$ tf | RC-2012-3（已更正） |
-| $V_{jh}$ | 109.4 tf | $159{,}705-25{,}175 = 134{,}530$ kgf $= \mathbf{134.5}$ tf（**+23%**） | $V_{jh}=T_1-V_{col}$ |
-| $b_j$ | $\min(b_c,\ b_w+h_c) = 60$（坊間簡化式） | $\min(b_w+h_c,\ b_w+2x) \le b_c$；梁置中 $x=5$ ⇒ 60 cm | §15.4.2.4。梁比柱窄（50<60）正是兩式分家處，本題梁置中故 $b_w+2x \equiv b_c$，數值巧合相同 |
-| 強度 | 「$\phi V_n$」= 192.8 tf（**其實沒乘 $\phi$**） | $V_n = 192.8$ tf；$\phi V_n = 0.85V_n = \mathbf{163.85}$ tf | $\phi=0.85$ 接頭剪力專用（§21.2.1(e)），與 `RC-2005-3` 一致 |
-| 利用率 | 57%（餘裕 43%） | **82%（餘裕 18%）** | $134.5/163.85$ |
-| 判定 | ✅ 足夠 | ✅ **足夠（不變）** | 但餘裕從「很寬鬆」變成「還可以」 |
+| $T_1 = A_{s,top}f_{ps}$ | 159.7 tf | 159.7 tfï¼ˆä¸è®Šï¼‰ | $30.42\times5250$ï¼Œ$f_{ps}=1.25f_y$ï¼ˆÂ§18.8.2.1ï¼‰ |
+| $V_{col}$ | $2M_{pr}/l_n$ = 50.33 tf âœ— | $\Sigma M_{pr,\text{beam at joint}}/l_n = 75.52/3.0 = \mathbf{25.17}$ tf | RC-2012-3ï¼ˆå·²æ›´æ­£ï¼‰ |
+| $V_{jh}$ | 109.4 tf | $159{,}705-25{,}175 = 134{,}530$ kgf $= \mathbf{134.5}$ tfï¼ˆ**+23%**ï¼‰ | $V_{jh}=T_1-V_{col}$ |
+| $b_j$ | $\min(b_c,\ b_w+h_c) = 60$ï¼ˆåŠé–“ç°¡åŒ–å¼ï¼‰ | $\min(b_w+h_c,\ b_w+2x) \le b_c$ï¼›æ¢ç½®ä¸­ $x=5$ â‡’ 60 cm | Â§15.4.2.4ã€‚æ¢æ¯”æŸ±çª„ï¼ˆ50<60ï¼‰æ­£æ˜¯å…©å¼åˆ†å®¶è™•ï¼Œæœ¬é¡Œæ¢ç½®ä¸­æ•… $b_w+2x \equiv b_c$ï¼Œæ•¸å€¼å·§åˆç›¸åŒ |
+| å¼·åº¦ | ã€Œ$\phi V_n$ã€= 192.8 tfï¼ˆ**å…¶å¯¦æ²’ä¹˜ $\phi$**ï¼‰ | $V_n = 192.8$ tfï¼›$\phi V_n = 0.85V_n = \mathbf{163.85}$ tf | $\phi=0.85$ æŽ¥é ­å‰ªåŠ›å°ˆç”¨ï¼ˆÂ§21.2.1(e)ï¼‰ï¼Œèˆ‡ `RC-2005-3` ä¸€è‡´ |
+| åˆ©ç”¨çŽ‡ | 57%ï¼ˆé¤˜è£• 43%ï¼‰ | **82%ï¼ˆé¤˜è£• 18%ï¼‰** | $134.5/163.85$ |
+| åˆ¤å®š | âœ… è¶³å¤  | âœ… **è¶³å¤ ï¼ˆä¸è®Šï¼‰** | ä½†é¤˜è£•å¾žã€Œå¾ˆå¯¬é¬†ã€è®Šæˆã€Œé‚„å¯ä»¥ã€ |
 
-**結論沒有翻轉，但兩個新結果值得記住：**
-1. 忽略 $V_{col}$ 的保守下限 $V_{jh} \approx T_1 = 159.7$ tf，利用率已達 **97%**——
-   這個接頭其實相當吃緊，$V_{col}$ 這個減項幾乎就是通過與否的關鍵。
-2. 若為**屋頂層**角隅接頭，ACI 318-19 Table 18.8.4.3 之 $\gamma$ 降為 2.2 ⇒
-   $\phi V_n = 112.65$ tf $< 134.5$ tf **不通過（超出 19%）**。
-   原卷附圖是單跨多層構架的 **2F／3F 外圍剖面**（見 `RC-2012-2`），柱連續向上延伸，故主線取 $\gamma = 3.2$。
+**çµè«–æ²’æœ‰ç¿»è½‰ï¼Œä½†å…©å€‹æ–°çµæžœå€¼å¾—è¨˜ä½ï¼š**
+1. å¿½ç•¥ $V_{col}$ çš„ä¿å®ˆä¸‹é™ $V_{jh} \approx T_1 = 159.7$ tfï¼Œåˆ©ç”¨çŽ‡å·²é” **97%**â€”â€”
+   é€™å€‹æŽ¥é ­å…¶å¯¦ç›¸ç•¶åƒç·Šï¼Œ$V_{col}$ é€™å€‹æ¸›é …å¹¾ä¹Žå°±æ˜¯é€šéŽèˆ‡å¦çš„é—œéµã€‚
+2. è‹¥ç‚º**å±‹é ‚å±¤**è§’éš…æŽ¥é ­ï¼ŒACI 318-19 Table 18.8.4.3 ä¹‹ $\gamma$ é™ç‚º 2.2 â‡’
+   $\phi V_n = 112.65$ tf $< 134.5$ tf **ä¸é€šéŽï¼ˆè¶…å‡º 19%ï¼‰**ã€‚
+   åŽŸå·é™„åœ–æ˜¯å–®è·¨å¤šå±¤æ§‹æž¶çš„ **2Fï¼3F å¤–åœå‰–é¢**ï¼ˆè¦‹ `RC-2012-2`ï¼‰ï¼ŒæŸ±é€£çºŒå‘ä¸Šå»¶ä¼¸ï¼Œæ•…ä¸»ç·šå– $\gamma = 3.2$ã€‚
 
-### 驗算方式
+### é©—ç®—æ–¹å¼
 
-- 由 §1 給定值全程重算（`RC-2012-2` 的 $M_{pr}^- = 159{,}705 \times (54-13.421/2) = 7{,}552{,}400$ kgf·cm 複驗相符）。
-- **交叉驗算：** `RC-2005-3` 的角柱接頭同為 $\gamma=3.2$、$A_j=3{,}600$ cm²、$f'_c=280$，
-  $\phi V_n$ 亦為 163.85 tf ✓——兩題強度端必須一致，只有需求端不同（134.5 vs 131.5 tf）。
-- 另一搖擺方向（底筋受拉）$V_{jh} = 81.27-13.70 = 67.6$ tf，確認頂筋向控制。
+- ç”± Â§1 çµ¦å®šå€¼å…¨ç¨‹é‡ç®—ï¼ˆ`RC-2012-2` çš„ $M_{pr}^- = 159{,}705 \times (54-13.421/2) = 7{,}552{,}400$ kgfÂ·cm è¤‡é©—ç›¸ç¬¦ï¼‰ã€‚
+- **äº¤å‰é©—ç®—ï¼š** `RC-2005-3` çš„è§’æŸ±æŽ¥é ­åŒç‚º $\gamma=3.2$ã€$A_j=3{,}600$ cmÂ²ã€$f'_c=280$ï¼Œ
+  $\phi V_n$ äº¦ç‚º 163.85 tf âœ“â€”â€”å…©é¡Œå¼·åº¦ç«¯å¿…é ˆä¸€è‡´ï¼Œåªæœ‰éœ€æ±‚ç«¯ä¸åŒï¼ˆ134.5 vs 131.5 tfï¼‰ã€‚
+- å¦ä¸€æ–æ“ºæ–¹å‘ï¼ˆåº•ç­‹å—æ‹‰ï¼‰$V_{jh} = 81.27-13.70 = 67.6$ tfï¼Œç¢ºèªé ‚ç­‹å‘æŽ§åˆ¶ã€‚
 
-### 本次一併補上的內容（原頁缺漏）
+### æœ¬æ¬¡ä¸€ä½µè£œä¸Šçš„å…§å®¹ï¼ˆåŽŸé ç¼ºæ¼ï¼‰
 
-- **新增 §6「依最新規範對照」**——原頁沒有這一節（同批五題都有），屋頂層 $\gamma=2.2$ 的風險就落在這裡。
-- §5① 三種讀法對照表（主線／不乘 $\phi$／舊版），三者都通過但餘裕 18%／30%／43%。
-- §5② 改善方案表補上兩件事：正交向增設梁要升級 $\gamma$，該梁必須**寬 $\ge \frac34$ 柱寬且深 $\ge$ 最深梁的 $\frac34$**
-  才算數；以及「**加密接頭箍筋不能補強度不足**」（箍筋只提供圍束，不在 $\gamma\sqrt{f'_c}A_j$ 裡）——這是常見誤答。
-- §5④ 接頭橫向鋼筋合規性：§18.8.3.2 的減半條件是「四面有梁」，角隅接頭不適用，
-  題目給的 4-leg #4 @ 9 cm 正是柱塑鉸區配置 ⇒ 符合 §18.8.3.1 ✓。
-- §5⑤ 梁頂筋錨定：$\ell_{dh} = 4200\times2.54/(17.2\times16.733) = 37.1$ cm $\le$ 柱深扣保護層可用之 54 cm ✓（餘裕不大）。
+- **æ–°å¢ž Â§6ã€Œä¾æœ€æ–°è¦ç¯„å°ç…§ã€**â€”â€”åŽŸé æ²’æœ‰é€™ä¸€ç¯€ï¼ˆåŒæ‰¹äº”é¡Œéƒ½æœ‰ï¼‰ï¼Œå±‹é ‚å±¤ $\gamma=2.2$ çš„é¢¨éšªå°±è½åœ¨é€™è£¡ã€‚
+- Â§5â‘  ä¸‰ç¨®è®€æ³•å°ç…§è¡¨ï¼ˆä¸»ç·šï¼ä¸ä¹˜ $\phi$ï¼èˆŠç‰ˆï¼‰ï¼Œä¸‰è€…éƒ½é€šéŽä½†é¤˜è£• 18%ï¼30%ï¼43%ã€‚
+- Â§5â‘¡ æ”¹å–„æ–¹æ¡ˆè¡¨è£œä¸Šå…©ä»¶äº‹ï¼šæ­£äº¤å‘å¢žè¨­æ¢è¦å‡ç´š $\gamma$ï¼Œè©²æ¢å¿…é ˆ**å¯¬ $\ge \frac34$ æŸ±å¯¬ä¸”æ·± $\ge$ æœ€æ·±æ¢çš„ $\frac34$**
+  æ‰ç®—æ•¸ï¼›ä»¥åŠã€Œ**åŠ å¯†æŽ¥é ­ç®ç­‹ä¸èƒ½è£œå¼·åº¦ä¸è¶³**ã€ï¼ˆç®ç­‹åªæä¾›åœæŸï¼Œä¸åœ¨ $\gamma\sqrt{f'_c}A_j$ è£¡ï¼‰â€”â€”é€™æ˜¯å¸¸è¦‹èª¤ç­”ã€‚
+- Â§5â‘£ æŽ¥é ­æ©«å‘é‹¼ç­‹åˆè¦æ€§ï¼šÂ§18.8.3.2 çš„æ¸›åŠæ¢ä»¶æ˜¯ã€Œå››é¢æœ‰æ¢ã€ï¼Œè§’éš…æŽ¥é ­ä¸é©ç”¨ï¼Œ
+  é¡Œç›®çµ¦çš„ 4-leg #4 @ 9 cm æ­£æ˜¯æŸ±å¡‘é‰¸å€é…ç½® â‡’ ç¬¦åˆ Â§18.8.3.1 âœ“ã€‚
+- Â§5â‘¤ æ¢é ‚ç­‹éŒ¨å®šï¼š$\ell_{dh} = 4200\times2.54/(17.2\times16.733) = 37.1$ cm $\le$ æŸ±æ·±æ‰£ä¿è­·å±¤å¯ç”¨ä¹‹ 54 cm âœ“ï¼ˆé¤˜è£•ä¸å¤§ï¼‰ã€‚
 
-### 下游同步
+### ä¸‹æ¸¸åŒæ­¥
 
-- `wiki/problems/RC-2012-4.md`：標題、題幹摘要、核心考點、解題關鍵步驟、用到的公式、涉及陷阱全段重寫。
-- `study/problems-view/RC-2012-4.html`：以 `gen_problems_view.py` 重建（11,817 → 25,418 B）。
-- `raw/json/question_index.json`：`RC-2012-4` 標籤 `3.2係數` → `γ係數3.2`，並新增
-  `接頭彎矩分擔`、`Vcol反推`、`1.25fy`、`φ0.85接頭`、`屋頂層接頭折減`（git diff 僅 +7/−2 行，格式未被重排）。
-- `raw/solutions/RC-2012-3/RC-2012-3.md`：§4 Step 1 的前向註記由「務必改正」改為記錄已完成，
-  並重建其 problems-view。
-- `study/lecture-RC-U3-3.html`：
-  - 錯誤複習表第 19 列的 $b_j$ 仍寫坊間簡化式 `min(bc, bw+0.5hc)`，已改為規範原式 `min(bw+hc, bw+2x) ≤ bc`；
-  - 章首總表的接頭剪力通式原寫 $V_{jh}=T_{top}+T_{bot}-V_{col}$（外接頭沒有第二項，且第二項應為壓力 $C_{bot}$），
-    已改為分列內接頭 $T_{top}+C_{bot}-V_{col}$ 與外接頭 $T_{top}-V_{col}$，並標明 $\phi=0.85$。
+- `wiki/problems/RC-2012-4.md`ï¼šæ¨™é¡Œã€é¡Œå¹¹æ‘˜è¦ã€æ ¸å¿ƒè€ƒé»žã€è§£é¡Œé—œéµæ­¥é©Ÿã€ç”¨åˆ°çš„å…¬å¼ã€æ¶‰åŠé™·é˜±å…¨æ®µé‡å¯«ã€‚
+- `study/problems-view/RC-2012-4.html`ï¼šä»¥ `gen_problems_view.py` é‡å»ºï¼ˆ11,817 â†’ 25,418 Bï¼‰ã€‚
+- `raw/json/question_index.json`ï¼š`RC-2012-4` æ¨™ç±¤ `3.2ä¿‚æ•¸` â†’ `Î³ä¿‚æ•¸3.2`ï¼Œä¸¦æ–°å¢ž
+  `æŽ¥é ­å½ŽçŸ©åˆ†æ“”`ã€`VcolåæŽ¨`ã€`1.25fy`ã€`Ï†0.85æŽ¥é ­`ã€`å±‹é ‚å±¤æŽ¥é ­æŠ˜æ¸›`ï¼ˆgit diff åƒ… +7/âˆ’2 è¡Œï¼Œæ ¼å¼æœªè¢«é‡æŽ’ï¼‰ã€‚
+- `raw/solutions/RC-2012-3/RC-2012-3.md`ï¼šÂ§4 Step 1 çš„å‰å‘è¨»è¨˜ç”±ã€Œå‹™å¿…æ”¹æ­£ã€æ”¹ç‚ºè¨˜éŒ„å·²å®Œæˆï¼Œ
+  ä¸¦é‡å»ºå…¶ problems-viewã€‚
+- `study/lecture-RC-U3-3.html`ï¼š
+  - éŒ¯èª¤è¤‡ç¿’è¡¨ç¬¬ 19 åˆ—çš„ $b_j$ ä»å¯«åŠé–“ç°¡åŒ–å¼ `min(bc, bw+0.5hc)`ï¼Œå·²æ”¹ç‚ºè¦ç¯„åŽŸå¼ `min(bw+hc, bw+2x) â‰¤ bc`ï¼›
+  - ç« é¦–ç¸½è¡¨çš„æŽ¥é ­å‰ªåŠ›é€šå¼åŽŸå¯« $V_{jh}=T_{top}+T_{bot}-V_{col}$ï¼ˆå¤–æŽ¥é ­æ²’æœ‰ç¬¬äºŒé …ï¼Œä¸”ç¬¬äºŒé …æ‡‰ç‚ºå£“åŠ› $C_{bot}$ï¼‰ï¼Œ
+    å·²æ”¹ç‚ºåˆ†åˆ—å…§æŽ¥é ­ $T_{top}+C_{bot}-V_{col}$ èˆ‡å¤–æŽ¥é ­ $T_{top}-V_{col}$ï¼Œä¸¦æ¨™æ˜Ž $\phi=0.85$ã€‚
 
-### 備註
+### å‚™è¨»
 
-- `RC-2012-4` 的 `verificationStatus` 仍為 `unverified`：本次只做算式自洽、跨題交叉驗算與下游一致性，**未做人工驗算**。
-- 順手對齊：屋頂層 $\phi V_n = 0.85\times2.2\times\sqrt{280}\times3600$ 的全精度值是 **112,648** kgf，
-  `RC-2005-3` 原寫 112,646 kgf／112.6 tf、`RC-2012-4` 本次也先寫成 112,646，已兩題統一為 **112,648 kgf ＝ 112.65 tf**。
-- 2026-08-22 待辦清單至此清空；`RC-2007-4` 的自創容許值（$0.4f'_c$、$3\sqrt{f'_c}$）仍未處理，
-  屬 2026-08-22 第一輪 XCHECK 的待辦 1，與本次無關。
+- `RC-2012-4` çš„ `verificationStatus` ä»ç‚º `unverified`ï¼šæœ¬æ¬¡åªåšç®—å¼è‡ªæ´½ã€è·¨é¡Œäº¤å‰é©—ç®—èˆ‡ä¸‹æ¸¸ä¸€è‡´æ€§ï¼Œ**æœªåšäººå·¥é©—ç®—**ã€‚
+- é †æ‰‹å°é½Šï¼šå±‹é ‚å±¤ $\phi V_n = 0.85\times2.2\times\sqrt{280}\times3600$ çš„å…¨ç²¾åº¦å€¼æ˜¯ **112,648** kgfï¼Œ
+  `RC-2005-3` åŽŸå¯« 112,646 kgfï¼112.6 tfã€`RC-2012-4` æœ¬æ¬¡ä¹Ÿå…ˆå¯«æˆ 112,646ï¼Œå·²å…©é¡Œçµ±ä¸€ç‚º **112,648 kgf ï¼ 112.65 tf**ã€‚
+- 2026-08-22 å¾…è¾¦æ¸…å–®è‡³æ­¤æ¸…ç©ºï¼›`RC-2007-4` çš„è‡ªå‰µå®¹è¨±å€¼ï¼ˆ$0.4f'_c$ã€$3\sqrt{f'_c}$ï¼‰ä»æœªè™•ç†ï¼Œ
+  å±¬ 2026-08-22 ç¬¬ä¸€è¼ª XCHECK çš„å¾…è¾¦ 1ï¼Œèˆ‡æœ¬æ¬¡ç„¡é—œã€‚
 
 ## 2026-09-07
 
-- **[FIX]** 修正 RC-2012-4 解答：接頭剪力檢核，柱剪力 V_col 採用已分擔過的值（M_pr/l_n），並補計 phi=0.85；更新相關數字與利用率。
-- **[FIX]** 補充 RC-2013-2 解答：第一支箍筋位置，明確區分柱用 s/2、梁用 5 cm。
-- **[UPDATE]** 執行腳本與更新：更新圖檔 (apply_figs.py) 與五題相關圖檔，並重新編譯更新相關 study 與 wiki 頁面。
+- **[FIX]** ä¿®æ­£ RC-2012-4 è§£ç­”ï¼šæŽ¥é ­å‰ªåŠ›æª¢æ ¸ï¼ŒæŸ±å‰ªåŠ› V_col æŽ¡ç”¨å·²åˆ†æ“”éŽçš„å€¼ï¼ˆM_pr/l_nï¼‰ï¼Œä¸¦è£œè¨ˆ phi=0.85ï¼›æ›´æ–°ç›¸é—œæ•¸å­—èˆ‡åˆ©ç”¨çŽ‡ã€‚
+- **[FIX]** è£œå…… RC-2013-2 è§£ç­”ï¼šç¬¬ä¸€æ”¯ç®ç­‹ä½ç½®ï¼Œæ˜Žç¢ºå€åˆ†æŸ±ç”¨ s/2ã€æ¢ç”¨ 5 cmã€‚
+- **[UPDATE]** åŸ·è¡Œè…³æœ¬èˆ‡æ›´æ–°ï¼šæ›´æ–°åœ–æª” (apply_figs.py) èˆ‡äº”é¡Œç›¸é—œåœ–æª”ï¼Œä¸¦é‡æ–°ç·¨è­¯æ›´æ–°ç›¸é—œ study èˆ‡ wiki é é¢ã€‚
+
+## 2026-09-27
+
+- **[ADD]** æ–¼ `study/` å…§æ–°å¢ž RC-U4-1 ç›¸é—œä¹‹å››å€‹å­ä¸»é¡Œç›®éŒ„ï¼š
+  - `RC-U4-1 ä¸‰é …æ‡‰åŠ›çš„åŠ æ¸›`
+  - `RC-U4-1 å…­éšŽæ®µå››æŽ§åˆ¶é»ž`
+  - `RC-U4-1 å¾žæª¢æ ¸åˆ°è¨­è¨ˆ`
+  - `RC-U4-1 æ–·é¢èˆ‡æ–½å·¥æ™‚åº`
+  åŒ…å«ç¹ªåœ–è…³æœ¬ (`gen_figs.py` ç­‰) åŠç”¢å‡ºä¹‹ SVG/PNG åœ–ç‰‡ã€ç°¡å ±æª”èˆ‡ PDF æª”æ¡ˆã€‚
+
