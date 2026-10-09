@@ -1668,3 +1668,26 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
   - `RC-U4-1 æ–·é¢èˆ‡æ–½å·¥æ™‚åº`
   åŒ…å«ç¹ªåœ–è…³æœ¬ (`gen_figs.py` ç­‰) åŠç”¢å‡ºä¹‹ SVG/PNG åœ–ç‰‡ã€ç°¡å ±æª”èˆ‡ PDF æª”æ¡ˆã€‚
 
+## 2026-10-01：`RC-2008-2` 斷面讀錯改正（做解題影片時對照原卷發現）
+
+- **[FIX]** 原卷圖二為 X 向 h = 8+20+20+8 = 56 cm、Y 向 b = 20+20 = 40 cm，配筋右排（壓力側）4 根、中排 2 根、左排 2 根；舊版誤讀為 56×56、3-2-3。
+  全題重算：Cc 456,960、Cs1 79,143、Cs2 22,840 kgf → **Pn = 558.9 tf、Mn = 56.04 tf·m**（舊 722 / 68.2）；
+  平衡點 Pb 308.6、Mb 69.37；φMn 峰值 51.07（εt = 0.005）；P0 824.7；純彎 29.26。
+- **[UPDATE]** `raw/solutions/RC-2008-2/RC-2008-2.md`（§1–§5）、`figs/gen_RC-2008-2.py`＋三張圖重出、`RC-2008-2-pm-viz.html`、
+  `study/problems-view/RC-2008-2.html`（單題重建）、`wiki/problems/RC-2008-2.md`、`study/lecture-RC-U1-2.html` 範例 A、
+  標籤「方形柱」→「矩形柱」（question_index.json、dashboard-data.js、study-RC-U1-2.html、PM-INTERACTION-DIAGRAM、RC-2002-2）、`scripts/apply_figs.py` 圖說。
+
+## 2026-10-09 subject-frequency-map v1.1：重跑 RC 全科出題頻率熱圖 `study/frequency-RC.html`
+
+- **[ADD]** `scripts/build_frequency.py`（v1.1，取自 subject-frequency-map skill 附錄，未修改）——之後一律在根目錄跑 `python scripts/build_frequency.py`。
+- **[UPDATE]** `study/frequency-RC.html` 以 v1.1 重產（52,586 字元）：新增前／後半期比較與升溫／冷凍標記、後半期排名、可點熱圖（題目頁／影片）、每年合計、可排序排名表。
+- 對帳通過：24 考年（2002–2025）／100 題／14 個子項（13 個出現過）；前半 2002–2013、後半 2014–2025。
+
+### 觀察（全部抄自 build_frequency.py 主控台摘要）
+
+- 單元權重：U1 33（33.0%）、U2 14（14.0%）、U3 29（29.0%）、U4 24（24.0%）。
+- 全期前五：U1-1 19、U3-3 16、U4-1 13、U1-2 12、U3-2 7，合計 67 題。
+- 後半期前五：U1-1 14、U3-3 5、U1-2 5、U4-1 4、U2-1 4。
+- 升溫：U1-1 5→14、U4-2 1→4；新出現：U4-4 0→1。退燒：U3-3 11→5、U4-1 9→4、U3-1 5→1。
+- 冷凍：U2-3（最後 2003）。0 題：U1-4。工具型（副>主）：U2-1（主 7／副 9）。
+- 教材齊全：U1-1、U1-2、U2-1、U3-3、U4-1。影片：題目 11 支、單元 0 支；problems-view 100 題；已驗證 7 題。

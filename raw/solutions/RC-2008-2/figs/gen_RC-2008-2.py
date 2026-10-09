@@ -1,7 +1,7 @@
 #!/usr/bin/env python3
 # -*- coding: utf-8 -*-
 """
-RC-2008-2 方形柱・「拉力側應變 = 0」 — 解題圖解產生腳本
+RC-2008-2 矩形柱（b = 40、h = 56）・「拉力側應變 = 0」 — 解題圖解產生腳本
 
 三條鐵則：
   1. 常數區只放 RC-2008-2.md §1 給定的原始資料；c、a、各排應變與內力、P_n、M_n、
@@ -20,10 +20,10 @@ TAG = "RC-2008-2"
 # ══════════════════════════════════════════════════════════
 # §1 原始給定
 # ══════════════════════════════════════════════════════════
-B = H = 56.0
+B, H = 40.0, 56.0                 # b 垂直彎曲方向（原卷圖二上下 20+20）、h 沿 X 軸（8+20+20+8）
 FC, FY, ES = 350.0, 4200.0, 2.04e6
 A_BAR = 5.07                       # #8
-ROWS = ((8.0, 3), (28.0, 2), (48.0, 3))   # (距壓力面, 根數)
+ROWS = ((8.0, 4), (28.0, 2), (48.0, 2))   # (距壓力面, 根數)：原卷圖二右排 4、中排 2、左排 2
 EPS_CU = 0.003
 
 EPSY = FY / ES
@@ -97,12 +97,13 @@ def _sec(cv):
     for d, n in ROWS:
         y = H - d
         for i in range(n):
-            cv.dot((B * (i + 1) / (n + 1), y), 6.0,
+            x = 6.0 + (B - 12.0) * i / (n - 1) if n > 1 else B / 2
+            cv.dot((x, y), 6.0,
                    fill=C["member"], stroke="#FFFFFF", w=1.7)
 
 
 def fig1_section():
-    W, HH = 700, 560
+    W, HH = 760, 560
     L, Rm, T, Bm = 96, 282, 88, 92
     sx = min((W - L - Rm) / B, (HH - T - Bm) / H)
     cv = Canvas(W, HH, sx=sx, ox=L, oy=Bm, bg="#FFFFFF")
@@ -120,7 +121,7 @@ def fig1_section():
     x = W - Rm + 12
     y = 118
     for col, expr, desc in [
-        (C["member"], f"8-#8 分三排（3-2-3）", f"A_{{st}} = {AST:.2f} cm^{{2}}"),
+        (C["member"], f"8-#8 分三排（4-2-2）", f"A_{{st}} = {AST:.2f} cm^{{2}}"),
         (C["compr"], f"β_1 = {BETA1:.2f}", f"f'_c = {FC:.0f} 大於 280"),
         (C["tension"], f"ε_t = 0 → c = d = {D:.0f} cm", "中性軸被條件鎖死"),
         (C["compr"], f"a = β_1 c = {THIS['a']:.1f} cm", "壓力區深度"),
@@ -136,7 +137,7 @@ def fig1_section():
     cv.text_px(x, y + 52, f"鎖在 {D:.0f} cm，不需解方程。", 12.2, C["muted"], "start")
     cv.text_px(x, y + 74, "整個斷面全部受壓。", 12.2, C["muted"], "start")
 
-    cv.text_px(W / 2, 34, "圖 1　方形柱斷面與三排鋼筋", 17, C["text"], weight="700")
+    cv.text_px(W / 2, 34, "圖 1　矩形柱斷面與三排鋼筋（b = 40、h = 56）", 17, C["text"], weight="700")
     cv.text_px(W / 2, 58, "壓力面在上；三排各距壓力面 8 / 28 / 48 cm",
                12.8, C["muted"])
     return cv.svg()
@@ -165,7 +166,7 @@ def fig2_strain():
     c1.text_px(c1.X(B) - 6, c1.Y(H - s["c"]) + 14, f"c = {s['c']:.0f}", 12,
                C["tension"], "end", weight="700")
 
-    c2 = frame("應變分佈", ox=PW / 2 + 20)
+    c2 = frame("應變分佈", ox=PW / 2 - 10)
     e_scale = PX(86.0) / EPS_CU
     c2.line((0, 0), (0, H), C["muted"], 1.6)
     c2.polygon([(0, H), (EPS_CU * e_scale, H), (0, H - s["c"])],
@@ -320,16 +321,16 @@ def main():
         ("ε_1",       b1["eps"],      0.002500, 1e-6),
         ("ε_2",       b2["eps"],      0.001250, 1e-6),
         ("f_s2",      b2["fs"],       2550.0,   1.0),
-        ("C_c",       t["Cc"],        639744,   5),
-        ("C_s1",      b1["F"],        59357,    5),
+        ("C_c",       t["Cc"],        456960,   5),
+        ("C_s1",      b1["F"],        79143,    5),
         ("C_s2",      b2["F"],        22840,    5),
-        ("P_n tf",    t["Pn"] * TF,   721.94,   0.05),
-        ("M_n tfm",   t["Mn"] * TFM,  68.17,    0.02),
+        ("P_n tf",    t["Pn"] * TF,   558.94,   0.05),
+        ("M_n tfm",   t["Mn"] * TFM,  56.04,    0.02),
         ("c_b",       CB,             28.465,   0.01),
-        ("P_b tf",    BAL["Pn"] * TF, 375.87,   0.05),
-        ("M_b tfm",   BAL["Mn"] * TFM, 87.68,   0.02),
+        ("P_b tf",    BAL["Pn"] * TF, 308.56,   0.05),
+        ("M_b tfm",   BAL["Mn"] * TFM, 69.37,   0.02),
         ("c(ε_t=.005)", C_TC,         18.0,     0.01),
-        ("φM_n 峰 tfm", PHIM_PEAK["phi"] * PHIM_PEAK["Mn"] * TFM, 64.90, 0.05),
+        ("φM_n 峰 tfm", PHIM_PEAK["phi"] * PHIM_PEAK["Mn"] * TFM, 51.07, 0.05),
     ]
     print("── 與 RC-2008-2.md §4 對帳 ──")
     for name, got, want, tol in checks:

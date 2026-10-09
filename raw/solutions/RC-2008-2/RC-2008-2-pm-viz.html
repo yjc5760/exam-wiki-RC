@@ -2,7 +2,7 @@
 <html lang="zh-TW">
 <head>
 <meta charset="UTF-8">
-<title>RC-2008-2 方形柱 56×56cm，8-#8</title>
+<title>RC-2008-2 矩形柱 b=40、h=56cm，8-#8</title>
 <style>
 body{font-family:sans-serif;background:#1a1a2e;color:#e0e0e0;margin:0;padding:10px}
 h3{text-align:center;color:#a8d8ea;font-size:14px;margin:4px 0}
@@ -16,8 +16,8 @@ canvas{display:block;margin:0 auto;background:#16213e;border:1px solid #333;bord
 </style>
 </head>
 <body>
-<h3>RC-2008-2 方形柱 56×56cm，8-#8</h3>
-<div class="sub">8-#8 三排(3+2+3)，h=56cm</div>
+<h3>RC-2008-2 矩形柱 b=40、h=56cm，8-#8</h3>
+<div class="sub">8-#8 三排(4+2+2)，b=40、h=56cm</div>
 <canvas id="cv" width="580" height="420"></canvas>
 <div class="leg">
   <div class="li"><div class="dot" style="background:#4fc3f7"></div>φPn-φMn（設計強度）</div>
@@ -26,7 +26,7 @@ canvas{display:block;margin:0 auto;background:#16213e;border:1px solid #333;bord
 </div>
 <div id="tip"></div>
 <script>
-const P = {"b": 56, "h": 56, "fc": 350, "fy": 4200, "rows": [[8, 15.21], [28, 10.14], [48, 15.21]]};
+const P = {"b": 40, "h": 56, "fc": 350, "fy": 4200, "rows": [[8, 20.28], [28, 10.14], [48, 10.14]]};
 
 function beta1(fc){return fc<=280?0.85:Math.max(0.65,0.85-0.05*(fc-280)/70)}
 

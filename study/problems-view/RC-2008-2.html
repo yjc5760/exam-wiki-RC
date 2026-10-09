@@ -35,10 +35,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>主分類：</strong> <code>RC-U1-2</code> RC 柱強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> USD強度設計法<br />
-<strong>標籤：</strong> <code>方形柱</code> <code>P-M互制</code> <code>拉力鋼筋應變為零</code> <code>應變相容</code> <code>中排鋼筋在壓力區</code> <code>三排配筋</code> <code>壓力控制</code> <code>偏心受壓</code></p>
+<strong>標籤：</strong> <code>矩形柱</code> <code>P-M互制</code> <code>拉力鋼筋應變為零</code> <code>應變相容</code> <code>中排鋼筋在壓力區</code> <code>三排配筋</code> <code>壓力控制</code> <code>偏心受壓</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>有一短柱，已知條件如下，壓力作用於 X 軸上之 A 點，<strong>右側為壓力側</strong>。若此柱斷面達到其軸力計算強度 $P_n$ 時，<strong>拉力側鋼筋之應變剛好等於零</strong>，求此時柱斷面所承受的彎矩 $M_n$。</p>
+<p>有一短柱，斷面如圖二所示，壓力作用於 X 軸上之 A 點，<strong>右側為壓力側</strong>。若此柱斷面達到其軸力計算強度 $P_n$ 時，<strong>拉力側鋼筋之應變剛好等於零</strong>，求此時柱斷面所承受的彎矩 $M_n$。</p>
 <p><strong>已知條件：</strong></p>
 <table>
 <thead>
@@ -50,11 +50,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <tbody>
 <tr>
 <td>斷面</td>
-<td>$56 \times 56 \text{ cm}$（方形）</td>
+<td>沿 X 軸（彎曲方向）$h = 8+20+20+8 = 56$ cm；垂直 X 軸 $b = 20+20 = 40$ cm</td>
 </tr>
 <tr>
 <td>鋼筋</td>
-<td>8-#8，$A_b = 5.07 \text{ cm}^2/\text{根}$</td>
+<td>8-#8，$A_b = 5.07 \text{ cm}^2/\text{根}$：右排（壓力側）4 根、中排 2 根、左排（拉力側）2 根</td>
 </tr>
 <tr>
 <td>$f'_c$</td>
@@ -71,19 +71,24 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>題目附圖：</strong></p>
-<p><img alt="RC-2008-2 方形柱斷面 56×56cm，8-#8 鋼筋配置：X 軸右側為壓力側，A 點在 X 軸上，三排鋼筋各距壓力面 8cm、28cm、48cm，壓力排 3 根、中排 2 根、拉力排 3 根" src="../../raw/solutions/RC-2008-2/RC-2008-2-fig-1.png" /></p>
-<p><em>圖說：方形柱斷面 $56 \times 56 \text{ cm}$。保護層 8 cm，鋼筋列間距 20 cm，8-#8 鋼筋共三排：壓力排（距壓力面 $d_1=8$ cm）3 根、中排（$d_2=28$ cm）2 根、拉力排（$d_3=48$ cm）3 根，合計 8 根。$f'_c=350 \text{ kgf/cm}^2$，$f_y=4200 \text{ kgf/cm}^2$。</em></p>
+<p><img alt="RC-2008-2 原卷圖二：柱斷面 X 向 56 cm（8+20+20+8）、Y 向 40 cm（20+20），8-#8 分三排，右排（壓力側）4 根、中排 2 根、左排 2 根，A 點在 X 軸上形心右側" src="../../raw/solutions/RC-2008-2/RC-2008-2-fig-1.png" /></p>
+<p><em>圖說：原卷圖二。X 向尺寸 $8+20+20+8 = 56$ cm（8 cm 為斷面邊緣至鋼筋中心），Y 向尺寸 $20+20 = 40$ cm（上下邊緣至 X 軸）。三排鋼筋距壓力面（右緣）$d_1=8$、$d_2=28$、$d_3=48$ cm，根數依序為 4、2、2，合計 8 根。$f'_c=350 \text{ kgf/cm}^2$，$f_y=4200 \text{ kgf/cm}^2$。</em></p>
+<blockquote>
+<p>⚠ <strong>2026-10-01 改正：</strong> 舊版把斷面誤讀為 $56 \times 56$ 方形、配筋 3-2-3，得 $P_n = 722$ tf、$M_n = 68.2$ tf·m。<br />
+對照原卷圖二：Y 向只有 $20+20 = 40$ cm，右排畫了 4 根、左排 2 根。本版全部依原卷重算。</p>
+</blockquote>
 <hr />
-<p><img alt="RC-2008-2 方形柱斷面 56×56 cm，8-#8 分三排在距壓力面 8/28/48 cm，分別為 3、2、3 根" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-1-section.svg" /></p>
-<p><em>圖 1　方形柱斷面與三排鋼筋。最下排（$d = 48$ cm）就是題目設定應變為零的那一排——這個條件直接把中性軸鎖死，本題根本沒有「解方程求 $c$」這一步。</em></p>
+<p><img alt="RC-2008-2 矩形柱斷面 b = 40、h = 56 cm，8-#8 分三排在距壓力面 8/28/48 cm，分別為 4、2、2 根" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-1-section.svg" /></p>
+<p><em>圖 1　矩形柱斷面與三排鋼筋（壓力面轉到上方繪製）。最下排（$d = 48$ cm）就是題目設定應變為零的那一排——這個條件直接把中性軸鎖死，本題根本沒有「解方程求 $c$」這一步。</em></p>
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 在 P-M 互制圖上，<strong>拉力側應變 = 0</strong> 是一個特殊的「邊界狀態」——整個斷面全部受壓（含拉力側鋼筋剛好為零應變），但仍屬壓力控制區域。</p>
+<p><strong>核心觀念：</strong> 在 P-M 互制圖上，<strong>拉力側應變 = 0</strong> 是一個特殊的「邊界狀態」——拉力側鋼筋剛好由受壓轉為受拉，仍屬壓力控制區域。</p>
 <p><strong>出題者測驗能力：</strong></p>
 <ol>
 <li>能否由「拉力側應變 = 0」的條件，直接推導出中性軸深度 $c = d_3$（不需解方程式）</li>
 <li>能否對三排鋼筋分別進行應變相容計算，並判斷各排是否降伏</li>
 <li>能否正確處理「位於壓力區內的鋼筋需扣除 $0.85f'_c$」（避免重複計算混凝土面積）</li>
 <li>能否對各力取矩求彎矩（而非僅算 $P_n$）</li>
+<li>能否正確讀圖：彎曲方向尺寸 $h=56$、受壓寬度 $b=40$，三排根數 4-2-2 不對稱</li>
 </ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -95,7 +100,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>計算各力（$C_c$，各排 $C_{si}$ 或 $T$），注意壓力區鋼筋扣除混凝土</li>
 <li>對截面形心取矩，求 $M_n$</li>
 </ol>
-<p><strong>四大陷阱：</strong></p>
+<p><strong>陷阱：</strong></p>
 <table>
 <thead>
 <tr>
@@ -104,6 +109,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </thead>
 <tbody>
+<tr>
+<td>⚠ 讀圖</td>
+<td>受壓寬度是 $b = 40$（Y 向 20+20），不是 56；右排 4 根、左排 2 根，不是對稱配筋</td>
+</tr>
 <tr>
 <td>⚠ $\beta_1$ 折減</td>
 <td>$f'_c = 350 > 280$，$\beta_1 = 0.85 - 0.05 \times(350-280)/70 = 0.80$（非 0.85）</td>
@@ -150,19 +159,29 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 </thead>
 <tbody>
 <tr>
-<td>$h = b$</td>
+<td>$h$</td>
 <td>56 cm</td>
-<td>斷面邊長（方形，$8+20+20+8$）</td>
+<td>彎曲方向（X 向）斷面深度，$8+20+20+8$</td>
+</tr>
+<tr>
+<td>$b$</td>
+<td>40 cm</td>
+<td>垂直彎曲方向（Y 向）寬度，$20+20$</td>
 </tr>
 <tr>
 <td>cover</td>
 <td>8 cm</td>
-<td>保護層（至鋼筋中心）</td>
+<td>X 向邊緣至鋼筋中心</td>
 </tr>
 <tr>
 <td>鋼筋排距</td>
 <td>20 cm</td>
 <td>各排鋼筋間距</td>
+</tr>
+<tr>
+<td>根數</td>
+<td>4 / 2 / 2</td>
+<td>壓力排 / 中排 / 拉力排</td>
 </tr>
 <tr>
 <td>$A_b$</td>
@@ -275,17 +294,17 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 <tbody>
 <tr>
 <td>$C_c$</td>
-<td>$0.85 \times 350 \times 38.4 \times 56 = 639{,}744$ kgf</td>
+<td>$0.85 \times 350 \times 38.4 \times 40 = 456{,}960$ kgf</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$A_{s1}$</td>
-<td>$3 \times 5.07 = 15.21$ cm² （壓力排，$d_1=8 < a=38.4$）</td>
+<td>$4 \times 5.07 = 20.28$ cm² （壓力排，$d_1=8 < a=38.4$）</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
 <td>$C_{s1}$</td>
-<td>$(4200-297.5) \times 15.21 = 59{,}357$ kgf</td>
+<td>$(4200-297.5) \times 20.28 = 79{,}143$ kgf</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -305,7 +324,7 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 </tr>
 <tr>
 <td>$P_n$</td>
-<td>$639{,}744 + 59{,}357 + 22{,}840 = 721{,}941$ kgf = <strong>722 tf</strong></td>
+<td>$456{,}960 + 79{,}143 + 22{,}840 = 558{,}943$ kgf = <strong>558.9 tf</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -342,7 +361,7 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 </tr>
 <tr>
 <td>$M_n$</td>
-<td>$639{,}744 \times 8.8 + 59{,}357 \times 20 = 6{,}816{,}887$ kgf·cm = <strong>68.2 tf·m</strong></td>
+<td>$456{,}960 \times 8.8 + 79{,}143 \times 20 = 5{,}604{,}108$ kgf·cm = <strong>56.04 tf·m</strong></td>
 <td style="text-align: center;"></td>
 </tr>
 </tbody>
@@ -359,7 +378,7 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 <tbody>
 <tr>
 <td>拉力側應變=0 意義</td>
-<td>整個斷面全部受壓，中性軸恰位於最遠鋼筋處；這是壓力控制與「全壓」的邊界</td>
+<td>中性軸恰位於最外層拉力鋼筋處；這是該排鋼筋由受壓轉為受拉的邊界，屬壓力控制</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -377,18 +396,24 @@ $$C_{si} = (f_{si} - 0.85f'_c) \cdot A_{si} \quad (d_i < \boxed{a}, \text{ 壓�
 <td>$f_s = E_s \varepsilon_s$（線彈性），不能直接用 $f_y$</td>
 <td style="text-align: center;"></td>
 </tr>
+<tr>
+<td>讀斷面圖</td>
+<td>$b$ 取垂直彎曲軸方向的寬度（應力塊寬），$h$ 取彎曲方向深度；兩向尺寸不同時不可混用</td>
+<td style="text-align: center;"></td>
+</tr>
 </tbody>
 </table>
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1：鋼筋幾何與中性軸深度</h3>
+<p>斷面尺寸：彎曲方向 $h = 56$ cm，應力塊寬 $b = 40$ cm。</p>
 <p>鋼筋排位置（從壓力面量起）：<br />
 $$d_1 = 8 \text{ cm},\quad d_2 = 28 \text{ cm},\quad d_3 = 48 \text{ cm}$$</p>
 <p>各排根數：</p>
 <ul>
-<li>壓力排（$d_1 = 8$）：3 根，$A_{s1} = 3 \times 5.07 = 15.21 \text{ cm}^2$</li>
+<li>壓力排（$d_1 = 8$）：4 根，$A_{s1} = 4 \times 5.07 = 20.28 \text{ cm}^2$</li>
 <li>中排（$d_2 = 28$）：2 根，$A_{s2} = 2 \times 5.07 = 10.14 \text{ cm}^2$</li>
-<li>拉力排（$d_3 = 48$）：3 根，$A_{s3} = 3 \times 5.07 = 15.21 \text{ cm}^2$</li>
+<li>拉力排（$d_3 = 48$）：2 根，$A_{s3} = 2 \times 5.07 = 10.14 \text{ cm}^2$</li>
 </ul>
 <p>由題目條件「拉力側鋼筋應變 $= 0$」：</p>
 <p>$$\varepsilon_3 = \varepsilon_{cu} \cdot \frac{c - d_3}{c} = 0 \quad \Rightarrow \quad c = d_3 = \boxed{48 \text{ cm}}$$</p>
@@ -409,17 +434,17 @@ $$\varepsilon_2 = 0.003 \times \frac{48 - 28}{48} = 0.003 \times \frac{20}{48} =
 $$\varepsilon_3 = 0 \quad \Rightarrow \quad f_{s3} = 0$$</p>
 <h3>Step 4：各力計算</h3>
 <p><strong>混凝土壓力：</strong><br />
-$$C_c = 0.85 f'_c \cdot a \cdot b = 0.85 \times 350 \times 38.4 \times 56 = \boxed{639{,}744 \text{ kgf}}$$</p>
+$$C_c = 0.85 f'_c \cdot a \cdot b = 0.85 \times 350 \times 38.4 \times 40 = \boxed{456{,}960 \text{ kgf}}$$</p>
 <p><strong>壓力排鋼筋淨力</strong>（$d_1 = 8 < a = 38.4$，在壓力區內，扣除混凝土）：<br />
-$$C_{s1} = (f_{s1} - 0.85 f'_c) \times A_{s1} = (4200 - 297.5) \times 15.21 = 3902.5 \times 15.21 = \boxed{59{,}357 \text{ kgf}}$$</p>
+$$C_{s1} = (f_{s1} - 0.85 f'_c) \times A_{s1} = (4200 - 297.5) \times 20.28 = 3902.5 \times 20.28 = \boxed{79{,}143 \text{ kgf}}$$</p>
 <p><strong>中排鋼筋淨力</strong>（$d_2 = 28 < a = 38.4$，在壓力區內，扣除混凝土）：<br />
 $$C_{s2} = (f_{s2} - 0.85 f'_c) \times A_{s2} = (2550 - 297.5) \times 10.14 = 2252.5 \times 10.14 = \boxed{22{,}840 \text{ kgf}}$$</p>
-<p><strong>拉力排鋼筋力</strong>（$d_3 = 48 > a = 38.4$，在拉力區，不扣混凝土）：<br />
-$$T_3 = f_{s3} \times A_{s3} = 0 \times 15.21 = 0$$</p>
+<p><strong>拉力排鋼筋力</strong>（$d_3 = 48 > a = 38.4$，在應力塊外，不扣混凝土）：<br />
+$$T_3 = f_{s3} \times A_{s3} = 0 \times 10.14 = 0$$</p>
 <p><strong>標稱軸力強度：</strong><br />
-$$P_n = C_c + C_{s1} + C_{s2} - T_3 = 639{,}744 + 59{,}357 + 22{,}840 - 0 = \boxed{721{,}941 \text{ kgf} \approx 722 \text{ tf}}$$</p>
+$$P_n = C_c + C_{s1} + C_{s2} - T_3 = 456{,}960 + 79{,}143 + 22{,}840 - 0 = \boxed{558{,}943 \text{ kgf} \approx 558.9 \text{ tf}}$$</p>
 <h3>Step 5：對截面形心取矩求 $M_n$</h3>
-<p>截面形心位置：距壓力面 $h/2 = 56/2 = 28$ cm</p>
+<p>截面形心位置：距壓力面 $h/2 = 56/2 = 28$ cm（即圖中 Y 軸位置）</p>
 <p>各力臂（從壓力面量，形心在 28 cm）：</p>
 <table>
 <thead>
@@ -432,16 +457,16 @@ $$P_n = C_c + C_{s1} + C_{s2} - T_3 = 639{,}744 + 59{,}357 + 22{,}840 - 0 = \box
 </thead>
 <tbody>
 <tr>
-<td>$C_c = 639{,}744$ kgf</td>
+<td>$C_c = 456{,}960$ kgf</td>
 <td>$a/2 = 19.2$ cm</td>
 <td>$28 - 19.2 = 8.8$ cm</td>
-<td>$+5{,}629{,}747$</td>
+<td>$+4{,}021{,}248$</td>
 </tr>
 <tr>
-<td>$C_{s1} = 59{,}357$ kgf</td>
+<td>$C_{s1} = 79{,}143$ kgf</td>
 <td>$d_1 = 8$ cm</td>
 <td>$28 - 8 = 20$ cm</td>
-<td>$+1{,}187{,}140$</td>
+<td>$+1{,}582{,}860$</td>
 </tr>
 <tr>
 <td>$C_{s2} = 22{,}840$ kgf</td>
@@ -457,31 +482,75 @@ $$P_n = C_c + C_{s1} + C_{s2} - T_3 = 639{,}744 + 59{,}357 + 22{,}840 - 0 = \box
 </tr>
 </tbody>
 </table>
-<p>$$M_n = 5{,}629{,}747 + 1{,}187{,}140 + 0 + 0 = 6{,}816{,}887 \text{ kgf·cm}$$</p>
-<p>$$\boxed{M_n \approx 6{,}817{,}000 \text{ kgf·cm} = 68.2 \text{ tf·m}}$$</p>
+<p>$$M_n = 4{,}021{,}248 + 1{,}582{,}860 + 0 + 0 = 5{,}604{,}108 \text{ kgf·cm}$$</p>
+<p>$$\boxed{M_n \approx 5{,}604{,}000 \text{ kgf·cm} = 56.04 \text{ tf·m}}$$</p>
+<p>（偏心距 $e = M_n/P_n = 5{,}604{,}108 / 558{,}943 = 10.03$ cm，即 A 點在形心右側約 10 cm。）</p>
 <hr />
 <p><img alt="RC-2008-2 拉力側應變為零時的斷面、應變分佈與合力三聯圖，c=48 cm、a=38.4 cm，上兩排在應力塊內要扣占位、最下排在塊外不扣" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-2-strain.svg" /></p>
 <p><em>圖 2　$\varepsilon_t = 0$ 的斷面／應變／合力。三排的處理各不相同：上排降伏且在應力塊內要扣占位、中排未降伏但仍在塊內也要扣、最下排在塊外且應力為零——把三排一律同樣處理是本題最常見的錯。</em></p>
 <p><img alt="RC-2008-2 的 P-M 交互曲線，標出純軸壓、本題點、平衡點、純彎矩四個關鍵點，以及設計曲線的彎矩峰值在 εt=0.005" src="../../raw/solutions/RC-2008-2/figs/RC-2008-2-fig-3-pm.svg" /></p>
-<p><em>圖 3　本題點在 P-M 圖上的位置。本題點遠在平衡點之上屬壓力控制區；圖上同時標出</em><em>標稱</em><em> $M_n$ 峰值（平衡點 87.68）與</em><em>設計</em><em> $\varphi M_n$ 峰值（$\varepsilon_t = 0.005$ 處 64.90），可攔下把「$\varphi \times$ 標稱峰值」當成最大設計彎矩的錯誤（那只有 56.99）。</em></p>
+<p><em>圖 3　本題點在 P-M 圖上的位置。本題點遠在平衡點之上屬壓力控制區；圖上同時標出</em><em>標稱</em><em> $M_n$ 峰值（平衡點 69.37）與</em><em>設計</em><em> $\varphi M_n$ 峰值（$\varepsilon_t = 0.005$ 處 51.07），可攔下把「$\varphi \times$ 標稱峰值」當成最大設計彎矩的錯誤（那只有 45.09）。</em></p>
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
+<h3>讀圖：b = 40、配筋 4-2-2（2026-10-01 改正）</h3>
+<p>原卷圖二的尺寸標註，X 向是 $8+20+20+8 = 56$ cm，Y 向是 $20+20 = 40$ cm（上下邊緣量到 X 軸）；<br />
+鋼筋右排（壓力側）畫了 4 根、中排上下各 1 根、左排上下角隅各 1 根，合計 8 根。<br />
+舊版把斷面當成 $56 \times 56$、3-2-3 對稱配筋，得 $P_n = 722$ tf、$M_n = 68.2$ tf·m，<br />
+$C_c$ 高估 40%（寬度 56 vs 40），$P_n$ 高 29%、$M_n$ 高 22%。</p>
 <h3>此點在 P-M 互制圖上的位置</h3>
 <p>「拉力側應變 = 0」是 P-M 互制圖中一個特殊點：</p>
 <ul>
-<li><strong>純軸壓點</strong> $P_0$：$e = 0$，無彎矩，所有鋼筋受壓</li>
-<li><strong>本題點</strong>：$P_n = 722$ tf，$M_n = 68.2$ tf·m，拉力排剛好為零（整斷面全部受壓）</li>
+<li><strong>純軸壓點</strong> $P_0 = 0.85f'_c(A_g - A_{st}) + f_yA_{st} = 824.7$ tf：$e = 0$，無彎矩</li>
+<li><strong>本題點</strong>：$P_n = 558.9$ tf，$M_n = 56.04$ tf·m，拉力排剛好為零應變</li>
 <li><strong>平衡點</strong> $P_b$：拉力筋剛好降伏（$\varepsilon_t = \varepsilon_y$），<strong>標稱</strong>彎矩 $M_n$ 的極大值</li>
-<li><strong>純彎點</strong>：$P = 0$</li>
+<li><strong>純彎點</strong>：$P = 0$，$M_n = 29.26$ tf·m（$c = 8.37$ cm）</li>
 </ul>
-<p>本題點在平衡點<strong>以上</strong>（壓力控制區），是壓力控制與「全斷面受壓」的分界點。</p>
+<p>本題點在平衡點<strong>以上</strong>（壓力控制區）。若問設計強度：$\varepsilon_t = 0 < \varepsilon_y$，$\varphi = 0.65$，<br />
+$\varphi P_n = 363.3$ tf、$\varphi M_n = 36.43$ tf·m（本題問標稱值，不需乘 $\varphi$）。</p>
 <h3>爭議：中排鋼筋的 0.85f'c 扣除</h3>
 <p>當鋼筋位置恰好在 Whitney 塊邊緣時（$d_i$ 非常接近 $a$），扣除 $0.85f'_c$ 的效果不大，但仍應扣。本題 $d_2 = 28 < a = 38.4$，確實在壓力區內，需扣除 $0.85f'_c = 297.5$ kgf/cm²。</p>
+<h3>常見錯誤的數值後果</h3>
+<table>
+<thead>
+<tr>
+<th>錯誤</th>
+<th style="text-align: right;">$P_n$ (tf)</th>
+<th style="text-align: right;">$M_n$ (tf·m)</th>
+<th>說明</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>正解</td>
+<td style="text-align: right;">558.9</td>
+<td style="text-align: right;">56.04</td>
+<td></td>
+</tr>
+<tr>
+<td>$\beta_1$ 誤用 0.85（$a = 40.8$）</td>
+<td style="text-align: right;">587.5</td>
+<td style="text-align: right;">52.73</td>
+<td>$M_n$ 偏低 5.9%</td>
+</tr>
+<tr>
+<td>壓力區鋼筋不扣 $0.85f'_c$</td>
+<td style="text-align: right;">568.0</td>
+<td style="text-align: right;">57.25</td>
+<td>混凝土重複計算</td>
+</tr>
+<tr>
+<td>中排當成降伏（$f_{s2} = 4200$）</td>
+<td style="text-align: right;">575.7</td>
+<td style="text-align: right;">56.04</td>
+<td>中排力臂為 0，$M_n$ 看不出錯</td>
+</tr>
+</tbody>
+</table>
 <h3>進階：若改為「拉力排剛好降伏」（平衡點）</h3>
 <p>若題目改成「拉力排應變 $= \varepsilon_y$」，則：<br />
-$$c_b = \frac{\varepsilon_{cu}}{\varepsilon_{cu} + \varepsilon_y} \times d_3 = \frac{0.003}{0.003 + 0.00206} \times 48 = 28.46 \text{ cm}$$</p>
-<p>此時 $a_b = 0.80 \times 28.46 = 22.77$ cm，$P_b = 375.9$ tf、$M_b = 87.68$ tf·m，確實 $M_b > M_n$（87.68 &gt; 68.17）。</p>
+$$c_b = \frac{\varepsilon_{cu}}{\varepsilon_{cu} + \varepsilon_y} \times d_3 = \frac{0.003}{0.003 + 0.00206} \times 48 = 28.47 \text{ cm}$$</p>
+<p>此時 $a_b = 0.80 \times 28.47 = 22.77$ cm（中排 $d_2 = 28 > a_b$，不扣占位），$P_b = 308.6$ tf、$M_b = 69.37$ tf·m，確實 $M_b > M_n$（69.37 &gt; 56.04）。</p>
 <h3>進階：「彎矩最大」只對標稱值成立</h3>
-<p>上一段的 $M_b = 87.68$ tf·m 是<strong>標稱</strong> $M_n$ 的極大值。若問的是<strong>極限（設計）彎矩</strong> $\varphi M_n$，<br />
+<p>上一段的 $M_b = 69.37$ tf·m 是<strong>標稱</strong> $M_n$ 的極大值。若問的是<strong>極限（設計）彎矩</strong> $\varphi M_n$，<br />
 峰值不在平衡點，而在拉力控制界限 $\varepsilon_t = 0.005$（本斷面 $c = 18.00$ cm）：</p>
 <table>
 <thead>
@@ -500,22 +569,23 @@ $$c_b = \frac{\varepsilon_{cu}}{\varepsilon_{cu} + \varepsilon_y} \times d_3 = \
 <td style="text-align: right;">28.47</td>
 <td style="text-align: right;">0.00206</td>
 <td style="text-align: right;">0.650</td>
-<td style="text-align: right;"><strong>87.68</strong></td>
-<td style="text-align: right;">57.0</td>
+<td style="text-align: right;"><strong>69.37</strong></td>
+<td style="text-align: right;">45.09</td>
 </tr>
 <tr>
 <td>拉力控制界限</td>
 <td style="text-align: right;">18.00</td>
 <td style="text-align: right;">0.00500</td>
 <td style="text-align: right;">0.900</td>
-<td style="text-align: right;">72.11</td>
-<td style="text-align: right;"><strong>64.90</strong></td>
+<td style="text-align: right;">56.74</td>
+<td style="text-align: right;"><strong>51.07</strong></td>
 </tr>
 </tbody>
 </table>
-<p>$\max(\varphi M_n) = 64.90 \neq \varphi\cdot\max(M_n) = 57.0$。本題問的是標稱 $M_n$，不受影響；<br />
-但同一斷面若被問「最大極限彎矩載重」，答案就是 64.90 tf·m。完整推導見 RC-2015-1。</p>
-<p><em>圖解補繪：2026-08-21（向量圖 3 張，腳本 <code>figs/gen_RC-2008-2.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em></p></main>
+<p>$\max(\varphi M_n) = 51.07 \neq \varphi\cdot\max(M_n) = 45.09$。本題問的是標稱 $M_n$，不受影響；<br />
+但同一斷面若被問「最大極限彎矩載重」，答案就是 51.07 tf·m。完整推導見 RC-2015-1。</p>
+<p><em>圖解補繪：2026-08-21（向量圖 3 張，腳本 <code>figs/gen_RC-2008-2.py</code>，可重跑；腳本檔尾對 §4 公佈值做 assert）</em><br />
+<em>斷面改正：2026-10-01（依原卷圖二改為 b = 40、h = 56、配筋 4-2-2，全題重算，三張圖重出）</em></p></main>
 <footer>來源：raw/solutions/RC-2008-2/RC-2008-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
 /* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
