@@ -105,51 +105,96 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 </p>
 
 <div class="fig">
-<svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="20" x2="450" y2="330" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-
-  <text x="220" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#c62828">脆性先到：層崩塌機構</text>
-  <text x="220" y="46" font-size="12.5" text-anchor="middle" fill="#607d8b">柱端先出鉸（或柱剪力先破壞）</text>
-  <line x1="45" y1="272" x2="400" y2="272" stroke="#546e7a" stroke-width="2.4"/>
-  <g stroke="#455a64" stroke-width="2.2" fill="none">
-    <line x1="75" y1="272" x2="75" y2="92"/><line x1="222" y1="272" x2="222" y2="92"/><line x1="370" y1="272" x2="370" y2="92"/>
-    <line x1="75" y1="212" x2="370" y2="212"/><line x1="75" y1="152" x2="370" y2="152"/><line x1="75" y1="92" x2="370" y2="92"/>
-  </g>
-  <g fill="#c62828">
-    <circle cx="75" cy="272" r="6"/><circle cx="222" cy="272" r="6"/><circle cx="370" cy="272" r="6"/>
-    <circle cx="75" cy="212" r="6"/><circle cx="222" cy="212" r="6"/><circle cx="370" cy="212" r="6"/>
-  </g>
-  <line x1="80" y1="82" x2="150" y2="82" stroke="#c62828" stroke-width="2.4" marker-end="url(#h1)"/>
-  <defs><marker id="h1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
-  <marker id="h2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#2e7d32"/></marker></defs>
-  <text x="220" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">變形全部集中在這一層</text>
-  <text x="220" y="300" font-size="13" text-anchor="middle" fill="#455a64">只有 6 個塑鉸就成為機構 → 立即崩塌</text>
-  <text x="220" y="322" font-size="13" text-anchor="middle" fill="#c62828" font-weight="700">耗能少、無預警、整棟倒</text>
-
-  <text x="675" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#2e7d32">延性先到：梁式機構</text>
-  <text x="675" y="46" font-size="12.5" text-anchor="middle" fill="#607d8b">梁端先出鉸，柱保持彈性（柱底除外）</text>
-  <line x1="500" y1="272" x2="855" y2="272" stroke="#546e7a" stroke-width="2.4"/>
-  <g stroke="#455a64" stroke-width="2.2" fill="none">
-    <line x1="530" y1="272" x2="530" y2="92"/><line x1="677" y1="272" x2="677" y2="92"/><line x1="825" y1="272" x2="825" y2="92"/>
-    <line x1="530" y1="212" x2="825" y2="212"/><line x1="530" y1="152" x2="825" y2="152"/><line x1="530" y1="92" x2="825" y2="92"/>
-  </g>
-  <g fill="#2e7d32">
-    <circle cx="548" cy="212" r="5.5"/><circle cx="659" cy="212" r="5.5"/><circle cx="695" cy="212" r="5.5"/><circle cx="807" cy="212" r="5.5"/>
-    <circle cx="548" cy="152" r="5.5"/><circle cx="659" cy="152" r="5.5"/><circle cx="695" cy="152" r="5.5"/><circle cx="807" cy="152" r="5.5"/>
-    <circle cx="548" cy="92" r="5.5"/><circle cx="659" cy="92" r="5.5"/><circle cx="695" cy="92" r="5.5"/><circle cx="807" cy="92" r="5.5"/>
-    <circle cx="530" cy="272" r="6"/><circle cx="677" cy="272" r="6"/><circle cx="825" cy="272" r="6"/>
-  </g>
-  <line x1="535" y1="82" x2="605" y2="82" stroke="#2e7d32" stroke-width="2.4" marker-end="url(#h2)"/>
-  <text x="675" y="248" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">變形分散到每一層</text>
-  <text x="675" y="300" font-size="13" text-anchor="middle" fill="#455a64">需要 15 個塑鉸才成為機構 → 有大量餘裕</text>
-  <text x="675" y="322" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">耗能多、變形可見、不易倒</text>
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g02e7d32" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="g0c62828" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker></defs>
+<line x1="450.0" y1="18.0" x2="450.0" y2="385.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="185.0" y="26.0" font-size="15" text-anchor="middle" fill="#c62828" font-weight="700">脆性先到：層崩塌機構</text>
+<text x="185.0" y="46.0" font-size="12.5" text-anchor="middle" fill="#607d8b">柱端先出鉸（或柱剪力先破壞）</text>
+<line x1="5.0" y1="318.0" x2="365.0" y2="318.0" stroke="#546e7a" stroke-width="2.4"/>
+<line x1="15.0" y1="318.0" x2="6.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="52.0" y1="318.0" x2="43.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="89.0" y1="318.0" x2="80.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="126.0" y1="318.0" x2="117.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="163.0" y1="318.0" x2="154.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="200.0" y1="318.0" x2="191.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="237.0" y1="318.0" x2="228.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="274.0" y1="318.0" x2="265.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="311.0" y1="318.0" x2="302.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="45.0" y1="318.0" x2="45.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="185.0" y1="318.0" x2="185.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="325.0" y1="318.0" x2="325.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="45.0" y1="248.0" x2="325.0" y2="248.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="45.0" y1="178.0" x2="325.0" y2="178.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="45.0" y1="108.0" x2="325.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<polyline points="45.0,318.0 75.0,248.0 75.0,178.0 75.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="185.0,318.0 215.0,248.0 215.0,178.0 215.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="325.0,318.0 355.0,248.0 355.0,178.0 355.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<line x1="75.0" y1="248.0" x2="355.0" y2="248.0" stroke="#455a64" stroke-width="2.4"/>
+<line x1="75.0" y1="178.0" x2="355.0" y2="178.0" stroke="#455a64" stroke-width="2.4"/>
+<line x1="75.0" y1="108.0" x2="355.0" y2="108.0" stroke="#455a64" stroke-width="2.4"/>
+<circle cx="48.9" cy="309.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="71.1" cy="257.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="188.9" cy="309.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="211.1" cy="257.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="328.9" cy="309.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="351.1" cy="257.0" r="5.5" fill="#fff" stroke="#c62828" stroke-width="2.6"/>
+<line x1="39.0" y1="86.0" x2="115.0" y2="86.0" stroke="#c62828" stroke-width="2.6" marker-end="url(#g0c62828)"/>
+<text x="121.0" y="90.0" font-size="11.5" text-anchor="start" fill="#c62828">地震側力</text>
+<line x1="375.0" y1="248.0" x2="375.0" y2="318.0" stroke="#c62828" stroke-width="1.2" stroke-dasharray="3 3"/>
+<text x="381.0" y="281.0" font-size="11" text-anchor="start" fill="#c62828" font-weight="700">整棟的側位移</text>
+<text x="381.0" y="296.0" font-size="11" text-anchor="start" fill="#c62828" font-weight="700">全擠在一樓</text>
+<text x="185.0" y="348.0" font-size="12.5" text-anchor="middle" fill="#455a64">柱上下端各 1 鉸 × 3 柱 = <tspan font-weight="700">6 個塑鉸</tspan> 即成機構</text>
+<text x="185.0" y="370.0" font-size="13" text-anchor="middle" fill="#c62828" font-weight="700">耗能少、無預警、整棟倒</text>
+<text x="660.0" y="26.0" font-size="15" text-anchor="middle" fill="#2e7d32" font-weight="700">延性先到：梁式機構</text>
+<text x="660.0" y="46.0" font-size="12.5" text-anchor="middle" fill="#607d8b">梁端先出鉸，柱保持彈性（柱底除外）</text>
+<line x1="480.0" y1="318.0" x2="840.0" y2="318.0" stroke="#546e7a" stroke-width="2.4"/>
+<line x1="490.0" y1="318.0" x2="481.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="527.0" y1="318.0" x2="518.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="564.0" y1="318.0" x2="555.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="601.0" y1="318.0" x2="592.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="638.0" y1="318.0" x2="629.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="675.0" y1="318.0" x2="666.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="712.0" y1="318.0" x2="703.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="749.0" y1="318.0" x2="740.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="786.0" y1="318.0" x2="777.0" y2="328.0" stroke="#90a4ae" stroke-width="1.4"/>
+<line x1="520.0" y1="318.0" x2="520.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="660.0" y1="318.0" x2="660.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="800.0" y1="318.0" x2="800.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="520.0" y1="248.0" x2="800.0" y2="248.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="520.0" y1="178.0" x2="800.0" y2="178.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<line x1="520.0" y1="108.0" x2="800.0" y2="108.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<polyline points="520.0,318.0 532.0,248.0 544.0,178.0 556.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="660.0,318.0 672.0,248.0 684.0,178.0 696.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<polyline points="800.0,318.0 812.0,248.0 824.0,178.0 836.0,108.0" fill="none" stroke="#455a64" stroke-width="2.4" stroke-linejoin="round"/>
+<line x1="532.0" y1="248.0" x2="812.0" y2="248.0" stroke="#455a64" stroke-width="2.4"/>
+<line x1="544.0" y1="178.0" x2="824.0" y2="178.0" stroke="#455a64" stroke-width="2.4"/>
+<line x1="556.0" y1="108.0" x2="836.0" y2="108.0" stroke="#455a64" stroke-width="2.4"/>
+<circle cx="547.0" cy="248.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="657.0" cy="248.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="687.0" cy="248.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="797.0" cy="248.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="559.0" cy="178.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="669.0" cy="178.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="699.0" cy="178.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="809.0" cy="178.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="571.0" cy="108.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="681.0" cy="108.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="711.0" cy="108.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="821.0" cy="108.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="521.5" cy="309.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="661.5" cy="309.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="801.5" cy="309.0" r="5.5" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<line x1="514.0" y1="86.0" x2="590.0" y2="86.0" stroke="#2e7d32" stroke-width="2.6" marker-end="url(#g02e7d32)"/>
+<text x="596.0" y="90.0" font-size="11.5" text-anchor="start" fill="#2e7d32">地震側力</text>
+<text x="660.0" y="348.0" font-size="12.5" text-anchor="middle" fill="#455a64">梁端 12 鉸 + 柱底 3 鉸 = <tspan font-weight="700">15 個塑鉸</tspan> 才成機構</text>
+<text x="660.0" y="370.0" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">耗能多、變形分散到每一層、不易倒</text>
+<circle cx="400.0" cy="88.0" r="5" fill="#fff" stroke="#455a64" stroke-width="2.6"/>
+<text x="410.0" y="92.0" font-size="11" text-anchor="start" fill="#607d8b">塑鉸</text>
+<line x1="380.0" y1="106.0" x2="404.0" y2="106.0" stroke="#cfd8dc" stroke-width="1.6" stroke-dasharray="4 4"/>
+<text x="410.0" y="110.0" font-size="11" text-anchor="start" fill="#607d8b">原位置</text>
 </svg>
 <div class="cap">
-兩張圖是同一棟建築的兩種命運，差別只在「哪裡先出鉸」。
-右圖需要的塑鉸數是左圖的 2.5 倍 —— 這就是「強柱弱梁」值得用 6/5 去買的東西（§5）。
-注意右圖<b>柱底仍然出鉸</b>：強柱弱梁救不了柱底，所以柱底一定要有密箍（§4）。
+兩張圖是同一棟建築的兩種命運，差別只在「哪裡先出鉸」（變形已放大示意）。左圖側位移全集中在一樓，6 個鉸就成機構；右圖每層都分擔變形，要 15 個鉸 —— 這就是「強柱弱梁」值得用 6/5 去買的東西（§5）。注意右圖<b>柱底仍然出鉸</b>：強柱弱梁救不了柱底，所以柱底一定要有密箍（§4）。
 </div>
 </div>
 
@@ -194,27 +239,41 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <h3>1.1 為什麼剪力設計不能用 φM<sub>n</sub></h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 270" xmlns="http://www.w3.org/2000/svg">
-  <line x1="228" y1="45" x2="228" y2="222" stroke="#90a4ae" stroke-width="1.4"/>
-  <rect x="228" y="58" width="360" height="36" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
-  <text x="220" y="82" font-size="12.5" text-anchor="end" fill="#0d47a1" font-weight="700">設計時承諾的 φMn</text>
-  <text x="600" y="82" font-size="12.5" fill="#1565c0" font-weight="700">0.90 Mn</text>
-  <rect x="228" y="110" width="400" height="36" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
-  <text x="220" y="134" font-size="12.5" text-anchor="end" fill="#37474f" font-weight="700">標稱彎矩強度 Mn</text>
-  <text x="640" y="134" font-size="12.5" fill="#455a64" font-weight="700">1.00 Mn</text>
-  <rect x="228" y="162" width="500" height="36" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
-  <text x="220" y="186" font-size="12.5" text-anchor="end" fill="#b71c1c" font-weight="700">地震時真的可能發揮的 Mpr</text>
-  <text x="740" y="186" font-size="12.5" fill="#c62828" font-weight="700">1.25 Mn</text>
-  <line x1="592" y1="76" x2="724" y2="76" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="5 4"/>
-  <line x1="728" y1="58" x2="728" y2="200" stroke="#ef6c00" stroke-width="1.4" stroke-dasharray="5 4"/>
-  <line x1="588" y1="58" x2="588" y2="200" stroke="#1565c0" stroke-width="1.2" stroke-dasharray="4 4"/>
-  <text x="660" y="232" font-size="13" text-anchor="middle" fill="#ef6c00" font-weight="700">差 1.25 / 0.90 = 1.39 倍</text>
-  <text x="660" y="252" font-size="12" text-anchor="middle" fill="#607d8b">用 φMn 反推剪力會低估 39%</text>
-  <text x="30" y="36" font-size="12.5" fill="#455a64">同一根梁的三個「彎矩強度」，差別在你想用它做什麼：</text>
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g1ef6c00" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#ef6c00"/></marker></defs>
+<text x="40.0" y="34.0" font-size="13" text-anchor="start" fill="#455a64">RC-2025-2 柱面負彎矩斷面（頂筋 8-D32，b = 60、d = 67 cm）的三個「彎矩強度」：</text>
+<text x="238.0" y="88.0" font-size="13" text-anchor="end" fill="#1565c0" font-weight="700">設計時承諾的 φM<tspan baseline-shift="sub" font-size="9">n</tspan></text>
+<rect x="250.0" y="62.0" width="318.0" height="38.0" rx="0" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
+<text x="578.0" y="80.0" font-size="13.5" text-anchor="start" fill="#1565c0" font-weight="700">141.4 tf·m</text>
+<text x="578.0" y="96.0" font-size="11" text-anchor="start" fill="#607d8b">φ = 0.90（ε<tspan baseline-shift="sub" font-size="9">t</tspan> = 0.0059 ≥ 0.005）、f<tspan baseline-shift="sub" font-size="9">y</tspan></text>
+<text x="238.0" y="148.0" font-size="13" text-anchor="end" fill="#455a64" font-weight="700">標稱彎矩強度 M<tspan baseline-shift="sub" font-size="9">n</tspan></text>
+<rect x="250.0" y="122.0" width="353.4" height="38.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<text x="613.4" y="140.0" font-size="13.5" text-anchor="start" fill="#455a64" font-weight="700">157.1 tf·m</text>
+<text x="613.4" y="156.0" font-size="11" text-anchor="start" fill="#607d8b">φ = 1.0、f<tspan baseline-shift="sub" font-size="9">y</tspan>，a = 19.15 cm</text>
+<text x="238.0" y="208.0" font-size="13" text-anchor="end" fill="#c62828" font-weight="700">地震時可能發揮的 M<tspan baseline-shift="sub" font-size="9">pr</tspan></text>
+<rect x="250.0" y="182.0" width="423.3" height="38.0" rx="0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
+<text x="683.3" y="200.0" font-size="13.5" text-anchor="start" fill="#c62828" font-weight="700">188.1 tf·m</text>
+<text x="683.3" y="216.0" font-size="11" text-anchor="start" fill="#607d8b">φ = 1.0、1.25f<tspan baseline-shift="sub" font-size="9">y</tspan>，a = 23.94 cm</text>
+<line x1="250.0" y1="50.0" x2="250.0" y2="232.0" stroke="#607d8b" stroke-width="1.4"/>
+<line x1="250.0" y1="232.0" x2="250.0" y2="238.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="250.0" y="252.0" font-size="10.5" text-anchor="middle" fill="#607d8b">0</text>
+<line x1="362.5" y1="232.0" x2="362.5" y2="238.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="362.5" y="252.0" font-size="10.5" text-anchor="middle" fill="#607d8b">50</text>
+<line x1="475.0" y1="232.0" x2="475.0" y2="238.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="475.0" y="252.0" font-size="10.5" text-anchor="middle" fill="#607d8b">100</text>
+<line x1="587.5" y1="232.0" x2="587.5" y2="238.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="587.5" y="252.0" font-size="10.5" text-anchor="middle" fill="#607d8b">150</text>
+<line x1="700.0" y1="232.0" x2="700.0" y2="238.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="700.0" y="252.0" font-size="10.5" text-anchor="middle" fill="#607d8b">200</text>
+<text x="718.0" y="252.0" font-size="10.5" text-anchor="start" fill="#607d8b">tf·m</text>
+<line x1="568.0" y1="100.0" x2="568.0" y2="270.0" stroke="#1565c0" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="673.3" y1="220.0" x2="673.3" y2="270.0" stroke="#c62828" stroke-width="1.2" stroke-dasharray="4 3"/>
+<line x1="570.0" y1="268.0" x2="671.3" y2="268.0" stroke="#ef6c00" stroke-width="2" marker-end="url(#g1ef6c00)" marker-start="url(#g1ef6c00)"/>
+<text x="620.7" y="290.0" font-size="13.5" text-anchor="middle" fill="#ef6c00" font-weight="700">M<tspan baseline-shift="sub" font-size="9">pr</tspan> / φM<tspan baseline-shift="sub" font-size="9">n</tspan> = 1.33</text>
+<text x="620.7" y="308.0" font-size="11.5" text-anchor="middle" fill="#607d8b">M<tspan baseline-shift="sub" font-size="9">pr</tspan> / M<tspan baseline-shift="sub" font-size="9">n</tspan> = 1.20（不是 1.25）</text>
 </svg>
 <div class="cap">
-\(\phi M_n\) 是「我保證至少有這麼強」（下限）；\(M_{pr}\) 是「它最多可能有這麼強」（上限）。
-剪力設計要問的是「塑鉸能把多大的力送進來」—— 那是<b>上限</b>問題，所以必須用 \(M_{pr}\)，而且不能再折減。
+\(\phi M_n\) 是「我保證至少有這麼強」（下限）；\(M_{pr}\) 是「它最多可能有這麼強」（上限）。剪力設計要問的是「塑鉸能把多大的力送進來」—— 那是<b>上限</b>問題，所以必須用 \(M_{pr}\)，而且不能再折減。本例若拿 \(\phi M_n=141.4\) 去推剪力，地震項只有真實值的 75%。另注意 \(M_{pr}/M_n=1.20\) 而非 1.25：鋼筋力放大 1.25 倍時壓力區深度 \(a\) 也跟著變大（19.2 → 23.9 cm），力臂變短。
 </div>
 </div>
 
@@ -226,7 +285,7 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 <tr><td>\(f_y \to 1.25 f_y\)</td><td>延性側<b>往上</b>估</td><td>① 鋼筋實際降伏強度統計上超過標稱值（SD420 實測常在 1.1~1.15 倍）；② 塑鉸大轉角下進入<b>應變硬化</b>，應力繼續爬升。1.25 是兩者合起來的工程近似</td><td>§18.6.5.1</td></tr>
 <tr><td>\(M_{pr}\) 取 \(\phi = 1.0\)</td><td>不折減</td><td>\(\phi<1\) 的用途是「保證下限」；\(M_{pr}\) 要的是<b>上限估計</b>，折減會讓答案往錯的方向跑。這是很多人算 \(M_{pr}\) 時仍乘 0.9 的根源</td><td>§18.6.5.1</td></tr>
 <tr><td>\(V_c = 0\)</td><td>脆性側<b>往下</b>估</td><td>塑鉸區反覆正負彎矩 → 裂縫<b>貫穿全深度</b> → 骨材互鎖（aggregate interlock）失效、壓力區混凝土剝落 → 混凝土的剪力貢獻不可靠</td><td>§18.6.5.2</td></tr>
-<tr><td>\(\sum M_{nc} \geq \frac{6}{5}\sum M_{nb}\)</td><td>柱側<b>往上</b>要求</td><td>讓梁比柱先到達強度。6/5 = 1.2 只是<b>降低機率</b>而非絕對保證（見 §5.2）</td><td>§18.7.3.1</td></tr>
+<tr><td>\(\sum M_{nc} \geq \frac{6}{5}\sum M_{nb}\)</td><td>柱側<b>往上</b>要求</td><td>讓梁比柱先到達強度。6/5 = 1.2 只是<b>降低機率</b>而非絕對保證（見 §5.1）</td><td>§18.7.3.1</td></tr>
 <tr><td>\(A_{sh}\) 兩式<b>取大</b></td><td>圍束<b>往上</b></td><td>一式管「保護層剝落後核心強度不能掉」，一式管「最低延性底線」，適用區間不同（§4.1）</td><td>§18.7.5.4</td></tr>
 <tr><td>接頭 \(\phi = 0.85\)、剪力牆 \(\phi = 0.6\)</td><td>脆性側<b>往下</b></td><td>接頭與牆的剪力破壞是脆性、離散度大、且無替代傳力路徑 → 折減比一般剪力（0.75）更嚴</td><td>§18.8.4、牆設計規範</td></tr>
 </tbody>
@@ -259,53 +318,75 @@ footer{text-align:center;color:var(--mut);font-size:.83em;padding:26px;border-to
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="20" x2="450" y2="320" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-  <text x="225" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#0d47a1">斷面層次：雙線性 M-φ</text>
-
-  <line x1="90" y1="272" x2="410" y2="272" stroke="#455a64" stroke-width="1.8"/>
-  <line x1="90" y1="272" x2="90" y2="60" stroke="#455a64" stroke-width="1.8"/>
-  <text x="404" y="292" font-size="11.5" text-anchor="end" fill="#607d8b">曲率 φ</text>
-  <text x="84" y="56" font-size="11.5" text-anchor="end" fill="#607d8b">M</text>
-  <polyline points="90,272 168,178 370,140" fill="none" stroke="#1565c0" stroke-width="3"/>
-  <circle cx="168" cy="178" r="5.5" fill="#1565c0"/>
-  <circle cx="370" cy="140" r="5.5" fill="#c62828"/>
-  <line x1="168" y1="178" x2="168" y2="272" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
-  <line x1="370" y1="140" x2="370" y2="272" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
-  <line x1="90" y1="178" x2="168" y2="178" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
-  <line x1="90" y1="140" x2="370" y2="140" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="4 4"/>
-  <text x="168" y="290" font-size="11.5" text-anchor="middle" fill="#1565c0" font-weight="700">φy</text>
-  <text x="370" y="290" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">φu</text>
-  <text x="84" y="182" font-size="11.5" text-anchor="end" fill="#1565c0">My</text>
-  <text x="84" y="144" font-size="11.5" text-anchor="end" fill="#c62828">Mu</text>
-  <text x="180" y="166" font-size="11.5" fill="#607d8b">降伏後幾乎水平：強度不增，變形大增</text>
-  <text x="225" y="316" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">μφ = φu / φy（RC-2022-4：4.0）</text>
-
-  <text x="675" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#0d47a1">構件層次：塑鉸只有 Lp 那麼長</text>
-  <line x1="560" y1="278" x2="700" y2="278" stroke="#546e7a" stroke-width="2.6"/>
-  <g stroke="#78909c" stroke-width="1.4">
-    <line x1="568" y1="278" x2="560" y2="290"/><line x1="588" y1="278" x2="580" y2="290"/>
-    <line x1="608" y1="278" x2="600" y2="290"/><line x1="628" y1="278" x2="620" y2="290"/>
-    <line x1="648" y1="278" x2="640" y2="290"/><line x1="668" y1="278" x2="660" y2="290"/>
-    <line x1="688" y1="278" x2="680" y2="290"/>
-  </g>
-  <rect x="605" y="228" width="42" height="50" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1.8"/>
-  <rect x="605" y="70" width="42" height="158" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
-  <text x="672" y="258" font-size="12" fill="#e65100" font-weight="700">Lp 塑鉸長度</text>
-  <path d="M626,278 Q634,180 700,72" fill="none" stroke="#c62828" stroke-width="2.4" stroke-dasharray="7 4"/>
-  <line x1="626" y1="62" x2="700" y2="62" stroke="#c62828" stroke-width="1.6" marker-end="url(#a3)"/>
-  <defs><marker id="a3" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker></defs>
-  <text x="712" y="66" font-size="12" fill="#c62828" font-weight="700">δu</text>
-  <line x1="530" y1="70" x2="530" y2="278" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="524" y="178" font-size="12" text-anchor="end" fill="#607d8b">L = 反曲點至柱底</text>
-  <text x="675" y="312" font-size="12.5" text-anchor="middle" fill="#0d47a1" font-weight="700">θp = (φu − φy)·Lp，δu 由 θp 乘力臂而來</text>
-  <text x="675" y="332" font-size="12" text-anchor="middle" fill="#607d8b">μθ = μ（RC-2022-4：2.63，遠小於 μφ = 4.0）</text>
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g21565c0" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="g2455a64" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker><marker id="g2607d8b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#607d8b"/></marker><marker id="g2c62828" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker></defs>
+<line x1="392.0" y1="20.0" x2="392.0" y2="400.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="205.0" y="28.0" font-size="14" text-anchor="middle" fill="#1565c0" font-weight="700">斷面層次：雙線性 M-φ（RC-2022-4 內插後）</text>
+<line x1="70.0" y1="330.0" x2="388.0" y2="330.0" stroke="#455a64" stroke-width="1.8" marker-end="url(#g2455a64)"/>
+<line x1="70.0" y1="330.0" x2="70.0" y2="73.5" stroke="#455a64" stroke-width="1.8" marker-end="url(#g2455a64)"/>
+<text x="386.0" y="322.0" font-size="11.5" text-anchor="end" fill="#607d8b">φ (1/m)</text>
+<text x="62.0" y="77.5" font-size="11.5" text-anchor="end" fill="#607d8b">M (tf·m)</text>
+<line x1="140.0" y1="330.0" x2="140.0" y2="335.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="140.0" y="348.0" font-size="10" text-anchor="middle" fill="#607d8b">0.005</text>
+<line x1="210.0" y1="330.0" x2="210.0" y2="335.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="210.0" y="348.0" font-size="10" text-anchor="middle" fill="#607d8b">0.010</text>
+<line x1="280.0" y1="330.0" x2="280.0" y2="335.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="280.0" y="348.0" font-size="10" text-anchor="middle" fill="#607d8b">0.015</text>
+<line x1="350.0" y1="330.0" x2="350.0" y2="335.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="350.0" y="348.0" font-size="10" text-anchor="middle" fill="#607d8b">0.020</text>
+<line x1="65.0" y1="235.0" x2="70.0" y2="235.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="62.0" y="239.0" font-size="10" text-anchor="end" fill="#607d8b">100</text>
+<line x1="65.0" y1="140.0" x2="70.0" y2="140.0" stroke="#607d8b" stroke-width="1.2"/>
+<text x="62.0" y="144.0" font-size="10" text-anchor="end" fill="#607d8b">200</text>
+<line x1="70.0" y1="121.0" x2="140.0" y2="121.0" stroke="#1565c0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="70.0" y1="97.2" x2="350.0" y2="97.2" stroke="#c62828" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="140.0" y1="121.0" x2="140.0" y2="330.0" stroke="#1565c0" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="350.0" y1="97.2" x2="350.0" y2="330.0" stroke="#c62828" stroke-width="1" stroke-dasharray="4 3"/>
+<polyline points="70.0,330.0 140.0,121.0 350.0,97.2" fill="none" stroke="#1565c0" stroke-width="3" stroke-linejoin="round"/>
+<circle cx="140.0" cy="121.0" r="5" fill="#1565c0" stroke="none" stroke-width="1"/>
+<circle cx="350.0" cy="97.2" r="5" fill="#c62828" stroke="none" stroke-width="1"/>
+<text x="148.0" y="139.0" font-size="11" text-anchor="start" fill="#1565c0" font-weight="700">(φy, My) = (0.005, 220)</text>
+<text x="352.0" y="85.2" font-size="11" text-anchor="end" fill="#c62828" font-weight="700">(φu, Mu) = (0.02, 245)</text>
+<text x="255.0" y="191.0" font-size="11" text-anchor="middle" fill="#607d8b">降伏後強度只增 11%，曲率卻增 4 倍</text>
+<line x1="70.0" y1="366.0" x2="140.0" y2="366.0" stroke="#1565c0" stroke-width="1.6" marker-end="url(#g21565c0)" marker-start="url(#g21565c0)"/>
+<line x1="70.0" y1="380.0" x2="350.0" y2="380.0" stroke="#c62828" stroke-width="1.6" marker-end="url(#g2c62828)" marker-start="url(#g2c62828)"/>
+<text x="364.0" y="384.0" font-size="12.5" text-anchor="start" fill="#1565c0" font-weight="700">μφ = φu/φy = 4.0</text>
+<text x="650.0" y="28.0" font-size="14" text-anchor="middle" fill="#1565c0" font-weight="700">構件層次：塑性曲率只在 Lp 內（L = 3.2 m 依比例）</text>
+<rect x="520.0" y="118.0" width="34.0" height="234.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.6"/>
+<rect x="520.0" y="308.5" width="34.0" height="43.5" rx="0" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="480.0" y1="352.0" x2="594.0" y2="352.0" stroke="#546e7a" stroke-width="2.4"/>
+<line x1="486.0" y1="352.0" x2="478.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<line x1="506.0" y1="352.0" x2="498.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<line x1="526.0" y1="352.0" x2="518.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<line x1="546.0" y1="352.0" x2="538.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<line x1="566.0" y1="352.0" x2="558.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<line x1="586.0" y1="352.0" x2="578.0" y2="361.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="537.0" y="110.0" font-size="11" text-anchor="middle" fill="#607d8b">反曲點</text>
+<line x1="498.0" y1="118.0" x2="498.0" y2="352.0" stroke="#607d8b" stroke-width="1.2" marker-end="url(#g2607d8b)" marker-start="url(#g2607d8b)"/>
+<text x="492.0" y="235.0" font-size="11.5" text-anchor="end" fill="#607d8b">L = 3.2 m</text>
+<text x="492.0" y="251.0" font-size="10.5" text-anchor="end" fill="#607d8b">(= lu/2)</text>
+<text x="492.0" y="334.2" font-size="11.5" text-anchor="end" fill="#ef6c00" font-weight="700">Lp = 0.595 m</text>
+<line x1="498.0" y1="308.5" x2="516.0" y2="308.5" stroke="#ef6c00" stroke-width="1" stroke-dasharray="3 2"/>
+<polyline points="537.0,352.0 537.0,346.1 537.1,340.3 537.2,334.4 537.3,328.6 537.5,322.8 537.8,316.9 538.0,311.1 538.3,305.2 538.7,299.4 539.0,293.5 539.4,287.6 539.9,281.8 540.3,275.9 540.8,270.1 541.3,264.2 541.9,258.4 542.5,252.6 543.1,246.7 543.7,240.8 544.4,235.0 545.0,229.1 545.7,223.3 546.4,217.4 547.2,211.6 547.9,205.8 548.7,199.9 549.5,194.0 550.3,188.2 551.1,182.3 551.9,176.5 552.7,170.7 553.6,164.8 554.4,158.9 555.3,153.1 556.2,147.2 557.0,141.4 557.9,135.6 558.8,129.7 559.7,123.8 560.6,118.0" fill="none" stroke="#1565c0" stroke-width="2" stroke-linejoin="round" stroke-dasharray="5 4"/>
+<polyline points="537.0,352.0 537.0,346.1 537.1,340.3 537.2,334.4 537.7,328.6 538.9,322.8 540.1,316.9 541.4,311.1 542.7,305.2 544.0,299.4 545.4,293.5 546.9,287.6 548.4,281.8 549.9,275.9 551.4,270.1 553.0,264.2 554.6,258.4 556.2,252.6 557.9,246.7 559.5,240.8 561.2,235.0 563.0,229.1 564.7,223.3 566.5,217.4 568.3,211.6 570.1,205.8 572.0,199.9 573.8,194.0 575.7,188.2 577.6,182.3 579.5,176.5 581.4,170.7 583.3,164.8 585.3,158.9 587.2,153.1 589.2,147.2 591.1,141.4 593.1,135.6 595.1,129.7 597.0,123.8 599.0,118.0" fill="none" stroke="#c62828" stroke-width="2.6" stroke-linejoin="round"/>
+<line x1="537.0" y1="96.0" x2="560.6" y2="96.0" stroke="#1565c0" stroke-width="1.6" marker-end="url(#g21565c0)"/>
+<line x1="537.0" y1="78.0" x2="599.0" y2="78.0" stroke="#c62828" stroke-width="1.8" marker-end="url(#g2c62828)"/>
+<text x="566.6" y="100.0" font-size="11" text-anchor="start" fill="#1565c0" font-weight="700">δy = 1.71 cm</text>
+<text x="605.0" y="82.0" font-size="11" text-anchor="start" fill="#c62828" font-weight="700">δu = 4.49 cm</text>
+<text x="740.0" y="126.0" font-size="11.5" text-anchor="middle" fill="#455a64" font-weight="700">極限狀態的曲率分佈</text>
+<line x1="680.0" y1="138.0" x2="680.0" y2="352.0" stroke="#455a64" stroke-width="1.4"/>
+<line x1="680.0" y1="352.0" x2="796.8" y2="352.0" stroke="#455a64" stroke-width="1.4"/>
+<polygon points="680.0,138.0 707.0,352.0 680.0,352.0" fill="#bbdefb" fill-opacity="0.8" stroke="#1565c0" stroke-width="1.6" stroke-linejoin="round"/>
+<rect x="707.0" y="308.5" width="69.8" height="43.5" rx="0" fill="#ffe0b2" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="697.5" y="282.0" font-size="11" text-anchor="middle" fill="#1565c0" font-weight="700">彈性</text>
+<text x="741.9" y="300.5" font-size="11" text-anchor="middle" fill="#ef6c00" font-weight="700">塑性 φu − φy</text>
+<text x="707.0" y="368.0" font-size="10.5" text-anchor="middle" fill="#1565c0">≈φy</text>
+<text x="776.8" y="368.0" font-size="10.5" text-anchor="middle" fill="#c62828">φu</text>
+<text x="670.0" y="388.0" font-size="11.5" text-anchor="start" fill="#ef6c00" font-weight="700">θp = (φu−φy)·Lp = 0.00893 rad</text>
+<text x="670.0" y="406.0" font-size="12" text-anchor="start" fill="#1565c0" font-weight="700">μ = δu/δy = 2.63  ≪  μφ = 4.0</text>
 </svg>
 <div class="cap">
-左圖的 \(\mu_\phi = 4.0\) 是<b>斷面</b>能提供的曲率放大倍數；
-右圖說明為什麼傳到頂點只剩 \(\mu = 2.63\) ——
-因為塑性曲率只發生在 \(L_p\) 這一小段（本例 0.595 m ÷ 3.2 m ≈ 19% 的柱長），其餘部分仍是彈性的。
+左圖依 RC-2022-4 內插值按比例繪出：\(\mu_\phi=4.0\) 是<b>斷面</b>能提供的曲率放大倍數。右圖把同一根柱的曲率分佈也按比例畫出：橘色塑性區只占柱長 0.595/3.2 ≈ 19%，其餘部分仍是彈性的，所以頂點位移只放大 \(\mu=2.63\) 倍（撓度已放大示意，但 \(\delta_u/\delta_y\) 比例正確）。
 </div>
 </div>
 
@@ -386,51 +467,63 @@ $$\mu_\phi = \frac{0.020}{0.005} = \mathbf{4.00},\qquad
 <h3>3.1 自由體圖決定一切</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="b1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#546e7a"/></marker>
-  <marker id="b2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker></defs>
-
-  <text x="450" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">梁自由體：地震向右，兩端塑鉸同時發展</text>
-
-  <g stroke="#546e7a" stroke-width="1.5" marker-end="url(#b1)">
-    <line x1="160" y1="52" x2="160" y2="82"/><line x1="230" y1="52" x2="230" y2="82"/>
-    <line x1="300" y1="52" x2="300" y2="82"/><line x1="370" y1="52" x2="370" y2="82"/>
-    <line x1="440" y1="52" x2="440" y2="82"/><line x1="510" y1="52" x2="510" y2="82"/>
-    <line x1="580" y1="52" x2="580" y2="82"/><line x1="650" y1="52" x2="650" y2="82"/>
-    <line x1="720" y1="52" x2="720" y2="82"/>
-  </g>
-  <text x="770" y="70" font-size="12.5" fill="#455a64" font-weight="700">wu（重力）</text>
-
-  <rect x="140" y="88" width="600" height="34" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
-  <rect x="108" y="70" width="32" height="90" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.6"/>
-  <rect x="740" y="70" width="32" height="90" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.6"/>
-  <text x="124" y="176" font-size="11.5" text-anchor="middle" fill="#607d8b">柱</text>
-  <text x="756" y="176" font-size="11.5" text-anchor="middle" fill="#607d8b">柱</text>
-
-  <circle cx="152" cy="105" r="7" fill="#2e7d32"/>
-  <circle cx="728" cy="105" r="7" fill="#2e7d32"/>
-  <path d="M150,140 A26,26 0 1,0 176,140" fill="none" stroke="#c62828" stroke-width="2.2" marker-end="url(#b2)"/>
-  <path d="M704,140 A26,26 0 1,1 730,140" fill="none" stroke="#c62828" stroke-width="2.2" marker-end="url(#b2)"/>
-  <text x="176" y="186" font-size="12.5" fill="#c62828" font-weight="700">Mpr⁻（頂筋受拉）</text>
-  <text x="700" y="186" font-size="12.5" text-anchor="end" fill="#c62828" font-weight="700">Mpr⁺（底筋受拉）</text>
-
-  <line x1="140" y1="215" x2="740" y2="215" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="130" y="219" font-size="11.5" text-anchor="end" fill="#607d8b">ln</text>
-  <line x1="140" y1="208" x2="140" y2="222" stroke="#90a4ae" stroke-width="1.2"/>
-  <line x1="740" y1="208" x2="740" y2="222" stroke="#90a4ae" stroke-width="1.2"/>
-
-  <text x="450" y="248" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">剪力圖（RC-2025-2 實際數值，單位 tf）</text>
-  <line x1="140" y1="300" x2="740" y2="300" stroke="#455a64" stroke-width="1.5"/>
-  <path d="M140,264 L740,292 L740,300 L140,300 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
-  <text x="132" y="262" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">46.43</text>
-  <text x="750" y="292" font-size="12" fill="#1565c0" font-weight="700">28.43</text>
-  <text x="440" y="322" font-size="12" text-anchor="middle" fill="#607d8b">地震項 37.43（全跨定值）＋ 重力項 ±9.00（線性）</text>
+<svg viewBox="0 0 900 640" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g31565c0" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="g3455a64" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#455a64"/></marker><marker id="g3607d8b" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#607d8b"/></marker><marker id="g3c62828" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker></defs>
+<text x="450.0" y="26.0" font-size="14.5" text-anchor="middle" fill="#1565c0" font-weight="700">梁自由體：側移向左（←），兩端塑鉸同時發展</text>
+<line x1="520.0" y1="46.0" x2="400.0" y2="46.0" stroke="#c62828" stroke-width="2.8" marker-end="url(#g3c62828)"/>
+<text x="530.0" y="51.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">地震側移</text>
+<rect x="120.0" y="86.0" width="40.0" height="108.0" rx="0" fill="#cfd8dc" stroke="#455a64" stroke-width="1.8"/>
+<rect x="740.0" y="86.0" width="40.0" height="108.0" rx="0" fill="#cfd8dc" stroke="#455a64" stroke-width="1.8"/>
+<rect x="160.0" y="120.0" width="580.0" height="40.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<line x1="175.0" y1="86.0" x2="175.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="230.0" y1="86.0" x2="230.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="285.0" y1="86.0" x2="285.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="340.0" y1="86.0" x2="340.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="395.0" y1="86.0" x2="395.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="450.0" y1="86.0" x2="450.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="505.0" y1="86.0" x2="505.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="560.0" y1="86.0" x2="560.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="615.0" y1="86.0" x2="615.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="670.0" y1="86.0" x2="670.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="725.0" y1="86.0" x2="725.0" y2="117.0" stroke="#455a64" stroke-width="1.6" marker-end="url(#g3455a64)"/>
+<line x1="175.0" y1="86.0" x2="725.0" y2="86.0" stroke="#455a64" stroke-width="1.4"/>
+<text x="725.0" y="78.0" font-size="12" text-anchor="end" fill="#455a64" font-weight="700">wu = 2 tf/m</text>
+<circle cx="174.0" cy="140.0" r="6" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<circle cx="726.0" cy="140.0" r="6" fill="#fff" stroke="#2e7d32" stroke-width="2.6"/>
+<path d="M173.6,171.9 A34,34 0 0 0 173.6,108.1" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#g3c62828)"/>
+<path d="M726.4,108.1 A34,34 0 0 0 726.4,171.9" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#g3c62828)"/>
+<line x1="164.0" y1="125.0" x2="230.0" y2="125.0" stroke="#c62828" stroke-width="3"/>
+<line x1="670.0" y1="155.0" x2="736.0" y2="155.0" stroke="#c62828" stroke-width="3"/>
+<text x="206.0" y="216.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">Mpr⁻ = 188.1 tf·m（頂筋受拉，逆時針）</text>
+<text x="694.0" y="216.0" font-size="12" text-anchor="end" fill="#c62828" font-weight="700">Mpr⁺ = 148.8 tf·m（底筋受拉，逆時針）</text>
+<line x1="166.0" y1="206.0" x2="166.0" y2="162.0" stroke="#1565c0" stroke-width="2.6" marker-end="url(#g31565c0)"/>
+<text x="114.0" y="224.0" font-size="12" text-anchor="start" fill="#1565c0" font-weight="700">46.43 tf ↑</text>
+<line x1="734.0" y1="162.0" x2="734.0" y2="206.0" stroke="#1565c0" stroke-width="2.6" marker-end="url(#g31565c0)"/>
+<text x="786.0" y="224.0" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">28.43 tf ↓</text>
+<line x1="160.0" y1="238.0" x2="740.0" y2="238.0" stroke="#607d8b" stroke-width="1.2" marker-end="url(#g3607d8b)" marker-start="url(#g3607d8b)"/>
+<text x="450.0" y="232.0" font-size="11.5" text-anchor="middle" fill="#607d8b">ln = 9 m（柱面到柱面）</text>
+<text x="450.0" y="274.0" font-size="13" text-anchor="middle" fill="#1565c0" font-weight="700">剪力圖 V(x)（單位 tf，依比例）</text>
+<line x1="160.0" y1="362.0" x2="740.0" y2="362.0" stroke="#455a64" stroke-width="1.4"/>
+<polygon points="160.0,362.0 160.0,304.0 740.0,326.5 740.0,362.0" fill="#bbdefb" fill-opacity="0.7" stroke="#1565c0" stroke-width="2" stroke-linejoin="round"/>
+<line x1="160.0" y1="315.2" x2="740.0" y2="315.2" stroke="#ef6c00" stroke-width="1.6" stroke-dasharray="6 4"/>
+<text x="154.0" y="308.0" font-size="13" text-anchor="end" fill="#1565c0" font-weight="700">46.43</text>
+<text x="746.0" y="330.5" font-size="13" text-anchor="start" fill="#1565c0" font-weight="700">28.43</text>
+<text x="450.0" y="335.2" font-size="11.5" text-anchor="middle" fill="#ef6c00" font-weight="700">地震項 (Mpr⁻+Mpr⁺)/ln = 37.43（全跨定值）</text>
+<text x="450.0" y="380.0" font-size="11.5" text-anchor="middle" fill="#607d8b">重力項 ±wu·ln/2 = ±9.00（線性）→ 左端兩項同號 = 控制端</text>
+<text x="450.0" y="412.0" font-size="13" text-anchor="middle" fill="#1565c0" font-weight="700">彎矩圖 M(x)（tf·m，畫在受拉側；依比例）</text>
+<line x1="160.0" y1="510.0" x2="740.0" y2="510.0" stroke="#455a64" stroke-width="1.4"/>
+<polygon points="160.0,510.0 160.0,438.5 169.7,441.1 179.3,443.8 189.0,446.4 198.7,449.0 208.3,451.5 218.0,454.1 227.7,456.6 237.3,459.1 247.0,461.6 256.7,464.1 266.3,466.6 276.0,469.0 285.7,471.5 295.3,473.9 305.0,476.3 314.7,478.7 324.3,481.0 334.0,483.4 343.7,485.7 353.3,488.0 363.0,490.3 372.7,492.6 382.3,494.9 392.0,497.1 401.7,499.3 411.3,501.5 421.0,503.7 430.7,505.9 440.3,508.1 450.0,510.2 459.7,512.3 469.3,514.4 479.0,516.5 488.7,518.6 498.3,520.7 508.0,522.7 517.7,524.7 527.3,526.7 537.0,528.7 546.7,530.7 556.3,532.7 566.0,534.6 575.7,536.5 585.3,538.4 595.0,540.3 604.7,542.2 614.3,544.0 624.0,545.9 633.7,547.7 643.3,549.5 653.0,551.3 662.7,553.0 672.3,554.8 682.0,556.5 691.7,558.2 701.3,559.9 711.0,561.6 720.7,563.3 730.3,564.9 740.0,566.5 740.0,510.0" fill="#e1bee7" fill-opacity="0.6" stroke="#6a1b9a" stroke-width="2.2" stroke-linejoin="round"/>
+<line x1="160.0" y1="438.5" x2="740.0" y2="566.5" stroke="#ef6c00" stroke-width="1.6" stroke-dasharray="6 4"/>
+<circle cx="449.0" cy="510.0" r="3.5" fill="#6a1b9a" stroke="none" stroke-width="1"/>
+<text x="455.0" y="502.0" font-size="11" text-anchor="start" fill="#6a1b9a">M = 0 @ x = 4.48 m</text>
+<text x="154.0" y="442.5" font-size="12.5" text-anchor="end" fill="#6a1b9a" font-weight="700">−188.1</text>
+<text x="746.0" y="570.5" font-size="12.5" text-anchor="start" fill="#6a1b9a" font-weight="700">+148.8</text>
+<text x="200.0" y="444.5" font-size="11" text-anchor="start" fill="#607d8b">頂受拉</text>
+<text x="700.0" y="564.5" font-size="11" text-anchor="end" fill="#607d8b">底受拉</text>
+<text x="450.0" y="624.0" font-size="11.5" text-anchor="middle" fill="#607d8b">橘虛線 = 只有地震項（直線 → 斜率定值）；紫色 = 加上重力（拋物線 → 斜率線性變化）</text>
 </svg>
 <div class="cap">
-地震項 \(\left(M_{pr}^-+M_{pr}^+\right)/l_n\) 在全跨是<b>定值</b>（兩端彎矩方向相反的必然結果）；
-重力項 \(\pm w_u l_n/2\) 是線性的。兩者<b>同號的那一端</b>就是控制端 —— 這就是公式裡 \(\pm\) 的意思。
+側移向左時，兩端塑鉸彎矩作用在梁上<b>同為逆時針</b>：左端頂筋受拉（\(M_{pr}^-\)）、右端底筋受拉（\(M_{pr}^+\)）。地震項 \(\left(M_{pr}^-+M_{pr}^+\right)/l_n\) 是彎矩圖橘色直線的斜率 → 全跨定值；重力項 \(\pm w_u l_n/2\) 是拋物線的斜率 → 線性。兩者<b>同號的那一端</b>（本圖為左端，46.43 tf）就是控制端（這就是公式裡 \(\pm\) 的意思）；側移反向時右端改為頂筋受拉，控制端也跟著換邊，數值相同。
 </div>
 </div>
 
@@ -554,49 +647,111 @@ $$0.3\left(\frac{A_g}{A_{ch}}-1\right) = 0.09 \;\Longrightarrow\; \frac{A_g}{A_{
 <h3>4.2 為什麼繫筋（crossties）不能省</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 350" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="20" x2="450" y2="330" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-
-  <text x="215" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#c62828">只有外箍：圍束無效區大</text>
-  <rect x="125" y="52" width="180" height="180" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.4"/>
-  <rect x="139" y="66" width="152" height="152" fill="none" stroke="#c62828" stroke-width="2.6"/>
-  <g fill="#37474f">
-    <circle cx="149" cy="76" r="6"/><circle cx="185" cy="76" r="6"/><circle cx="215" cy="76" r="6"/><circle cx="245" cy="76" r="6"/><circle cx="281" cy="76" r="6"/>
-    <circle cx="149" cy="208" r="6"/><circle cx="185" cy="208" r="6"/><circle cx="215" cy="208" r="6"/><circle cx="245" cy="208" r="6"/><circle cx="281" cy="208" r="6"/>
-    <circle cx="149" cy="112" r="6"/><circle cx="149" cy="142" r="6"/><circle cx="149" cy="172" r="6"/>
-    <circle cx="281" cy="112" r="6"/><circle cx="281" cy="142" r="6"/><circle cx="281" cy="172" r="6"/>
-  </g>
-  <path d="M149,76 Q215,132 281,76" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
-  <path d="M149,208 Q215,152 281,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
-  <path d="M149,76 Q205,142 149,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
-  <path d="M281,76 Q225,142 281,208" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6" stroke-dasharray="5 4"/>
-  <text x="215" y="256" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">紅色＝箍筋外拱、圍束失效區</text>
-  <text x="215" y="276" font-size="12" text-anchor="middle" fill="#455a64">箍筋只在四個角落被撐住</text>
-  <text x="215" y="298" font-size="12" text-anchor="middle" fill="#455a64">中間主筋無側向支撐 → 易挫屈</text>
-  <text x="215" y="322" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Ash 只有 2 腳，通常不足</text>
-
-  <text x="675" y="26" font-size="14.5" font-weight="700" text-anchor="middle" fill="#2e7d32">加 3 道繫筋：圍束幾乎滿佈</text>
-  <rect x="585" y="52" width="180" height="180" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.4"/>
-  <rect x="599" y="66" width="152" height="152" fill="none" stroke="#2e7d32" stroke-width="2.6"/>
-  <g stroke="#2e7d32" stroke-width="2.2">
-    <line x1="645" y1="66" x2="645" y2="218"/><line x1="675" y1="66" x2="675" y2="218"/><line x1="705" y1="66" x2="705" y2="218"/>
-    <line x1="599" y1="112" x2="751" y2="112"/><line x1="599" y1="142" x2="751" y2="142"/><line x1="599" y1="172" x2="751" y2="172"/>
-  </g>
-  <g fill="#37474f">
-    <circle cx="609" cy="76" r="6"/><circle cx="645" cy="76" r="6"/><circle cx="675" cy="76" r="6"/><circle cx="705" cy="76" r="6"/><circle cx="741" cy="76" r="6"/>
-    <circle cx="609" cy="208" r="6"/><circle cx="645" cy="208" r="6"/><circle cx="675" cy="208" r="6"/><circle cx="705" cy="208" r="6"/><circle cx="741" cy="208" r="6"/>
-    <circle cx="609" cy="112" r="6"/><circle cx="609" cy="142" r="6"/><circle cx="609" cy="172" r="6"/>
-    <circle cx="741" cy="112" r="6"/><circle cx="741" cy="142" r="6"/><circle cx="741" cy="172" r="6"/>
-  </g>
-  <text x="675" y="256" font-size="12" text-anchor="middle" fill="#2e7d32" font-weight="700">每根主筋都被箍筋或繫筋直接支撐</text>
-  <text x="675" y="276" font-size="12" text-anchor="middle" fill="#455a64">拱的跨距變短 → 失效區大幅縮小</text>
-  <text x="675" y="298" font-size="12" text-anchor="middle" fill="#455a64">hx 變小 → so 變大（間距限制放寬）</text>
-  <text x="675" y="322" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">Ash 有 5 腳（RC-2013-2）</text>
+<svg viewBox="0 0 900 420" xmlns="http://www.w3.org/2000/svg">
+<defs></defs>
+<line x1="450.0" y1="18.0" x2="450.0" y2="400.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="225.0" y="28.0" font-size="14.5" text-anchor="middle" fill="#c62828" font-weight="700">只有外箍：只有 4 根角筋被撐住</text>
+<rect x="95.0" y="52.0" width="260.0" height="260.0" rx="0" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.6"/>
+<path d="M130.8,87.8 Q225.0,182.0 319.2,87.8 Z" fill="#ffcdd2" fill-opacity="0.75" stroke="#c62828" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M130.8,276.2 Q225.0,182.0 319.2,276.2 Z" fill="#ffcdd2" fill-opacity="0.75" stroke="#c62828" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M130.8,87.8 Q225.0,182.0 130.8,276.2 Z" fill="#ffcdd2" fill-opacity="0.75" stroke="#c62828" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M319.2,87.8 Q225.0,182.0 319.2,276.2 Z" fill="#ffcdd2" fill-opacity="0.75" stroke="#c62828" stroke-width="1.4" stroke-dasharray="4 3"/>
+<rect x="119.1" y="76.1" width="211.8" height="211.8" rx="6" fill="none" stroke="#c62828" stroke-width="3.2"/>
+<line x1="123.1" y1="78.1" x2="139.1" y2="94.1" stroke="#c62828" stroke-width="2.6"/>
+<line x1="121.1" y1="80.1" x2="137.1" y2="96.1" stroke="#c62828" stroke-width="2.6"/>
+<circle cx="130.8" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="130.8" cy="134.9" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="130.8" cy="182.0" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="130.8" cy="229.1" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="130.8" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="177.9" cy="87.8" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="177.9" cy="276.2" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="225.0" cy="87.8" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="225.0" cy="276.2" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="272.1" cy="87.8" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="272.1" cy="276.2" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="319.2" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="319.2" cy="134.9" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="319.2" cy="182.0" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="319.2" cy="229.1" r="8.372000000000002" fill="#fff" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="319.2" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<line x1="81.0" y1="158.4" x2="369.0" y2="158.4" stroke="#ef6c00" stroke-width="1.4" stroke-dasharray="7 3"/>
+<text x="77.0" y="162.4" font-size="12" text-anchor="end" fill="#ef6c00" font-weight="700">a</text>
+<text x="373.0" y="162.4" font-size="12" text-anchor="start" fill="#ef6c00" font-weight="700">a</text>
+<circle cx="119.1" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<circle cx="330.9" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<text x="675.0" y="28.0" font-size="14.5" text-anchor="middle" fill="#2e7d32" font-weight="700">外箍 + 每向 3 道繫筋：每根主筋都被撐住</text>
+<rect x="545.0" y="52.0" width="260.0" height="260.0" rx="0" fill="#f5f7f8" stroke="#90a4ae" stroke-width="1.6"/>
+<path d="M580.8,87.8 Q604.3,111.3 627.9,87.8 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M627.9,87.8 Q651.4,111.3 675.0,87.8 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M675.0,87.8 Q698.6,111.3 722.1,87.8 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M722.1,87.8 Q745.7,111.3 769.2,87.8 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M580.8,276.2 Q604.3,252.7 627.9,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M627.9,276.2 Q651.4,252.7 675.0,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M675.0,276.2 Q698.6,252.7 722.1,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M722.1,276.2 Q745.7,252.7 769.2,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M580.8,87.8 Q604.3,111.3 580.8,134.9 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M580.8,134.9 Q604.3,158.4 580.8,182.0 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M580.8,182.0 Q604.3,205.6 580.8,229.1 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M580.8,229.1 Q604.3,252.7 580.8,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M769.2,87.8 Q745.7,111.3 769.2,134.9 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M769.2,134.9 Q745.7,158.4 769.2,182.0 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M769.2,182.0 Q745.7,205.6 769.2,229.1 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<path d="M769.2,229.1 Q745.7,252.7 769.2,276.2 Z" fill="#c8e6c9" fill-opacity="0.75" stroke="#2e7d32" stroke-width="1.4" stroke-dasharray="4 3"/>
+<rect x="569.1" y="76.1" width="211.8" height="211.8" rx="6" fill="none" stroke="#2e7d32" stroke-width="3.2"/>
+<line x1="573.1" y1="78.1" x2="589.1" y2="94.1" stroke="#2e7d32" stroke-width="2.6"/>
+<line x1="571.1" y1="80.1" x2="587.1" y2="96.1" stroke="#2e7d32" stroke-width="2.6"/>
+<line x1="627.9" y1="76.1" x2="627.9" y2="287.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="627.9" y1="76.1" x2="639.9" y2="88.1" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="627.9" y1="287.9" x2="641.9" y2="287.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="134.9" x2="780.9" y2="134.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="134.9" x2="569.1" y2="148.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="780.9" y1="134.9" x2="768.9" y2="122.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="675.0" y1="76.1" x2="675.0" y2="287.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="675.0" y1="76.1" x2="689.0" y2="76.1" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="675.0" y1="287.9" x2="687.0" y2="275.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="182.0" x2="780.9" y2="182.0" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="182.0" x2="581.1" y2="170.0" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="780.9" y1="182.0" x2="780.9" y2="196.0" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="722.1" y1="76.1" x2="722.1" y2="287.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="722.1" y1="76.1" x2="734.1" y2="88.1" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="722.1" y1="287.9" x2="736.1" y2="287.9" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="229.1" x2="780.9" y2="229.1" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="569.1" y1="229.1" x2="569.1" y2="243.1" stroke="#2e7d32" stroke-width="2.4"/>
+<line x1="780.9" y1="229.1" x2="768.9" y2="217.1" stroke="#2e7d32" stroke-width="2.4"/>
+<circle cx="580.8" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="580.8" cy="134.9" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="580.8" cy="182.0" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="580.8" cy="229.1" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="580.8" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="627.9" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="627.9" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="675.0" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="675.0" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="722.1" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="722.1" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="769.2" cy="87.8" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="769.2" cy="134.9" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="769.2" cy="182.0" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="769.2" cy="229.1" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<circle cx="769.2" cy="276.2" r="8.372000000000002" fill="#37474f" stroke="#37474f" stroke-width="2.2"/>
+<line x1="531.0" y1="158.4" x2="819.0" y2="158.4" stroke="#ef6c00" stroke-width="1.4" stroke-dasharray="7 3"/>
+<text x="527.0" y="162.4" font-size="12" text-anchor="end" fill="#ef6c00" font-weight="700">a</text>
+<text x="823.0" y="162.4" font-size="12" text-anchor="start" fill="#ef6c00" font-weight="700">a</text>
+<circle cx="569.1" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<circle cx="780.9" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<circle cx="627.9" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<circle cx="675.0" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<circle cx="722.1" cy="158.4" r="4.2" fill="#ef6c00" stroke="none" stroke-width="1"/>
+<text x="225.0" y="338.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">拱跨 = 角筋間距 ≈ 36.2 cm → 拱高 ≈ 跨距/4</text>
+<text x="225.0" y="358.0" font-size="11.5" text-anchor="middle" fill="#455a64">白色主筋無側向支撐 → 易挫屈；且違反構造規定</text>
+<text x="225.0" y="378.0" font-size="12" text-anchor="middle" fill="#455a64">切面 a–a 只穿過 <tspan font-weight="700" fill="#ef6c00">2 腳</tspan></text>
+<text x="675.0" y="338.0" font-size="12" text-anchor="middle" fill="#2e7d32" font-weight="700">拱跨 = 相鄰主筋間距 ≈ 9.1 cm → 失效區大幅縮小</text>
+<text x="675.0" y="358.0" font-size="11.5" text-anchor="middle" fill="#455a64">hx 變小 → so 放寬；繫筋兩端 135°／90° 鉤交替</text>
+<text x="675.0" y="378.0" font-size="12" text-anchor="middle" fill="#455a64">切面 a–a 穿過 <tspan font-weight="700" fill="#ef6c00">2 + 3 = 5 腳</tspan>（RC-2013-2）</text>
 </svg>
 <div class="cap">
-繫筋做兩件事：<b>①增加 \(A_{sh}\) 的腳數</b>（直接提供圍束力）、
-<b>②縮短箍筋外拱的跨距</b>（讓圍束真正到得了核心中央），並同時<b>把 \(h_x\) 變小</b>，
-使 \(s_o = 10 + (35-h_x)/3\) 放寬。三件事是同一個動作的三個好處。
+50×50 cm、16-D32、保護層 4 cm 依比例繪製；淡色區＝外拱以外、圍束到不了的混凝土（拱高取跨距 1/4 示意）。繫筋一個動作帶來三個好處：①增加 \(A_{sh}\) 的腳數（切面 a–a 從 2 腳變 5 腳）、②縮短外拱跨距（讓圍束真正到得了核心中央）、③把 \(h_x\) 變小，使 \(s_o = 10 + (35-h_x)/3\) 放寬。
 </div>
 </div>
 
@@ -664,43 +819,41 @@ RC-2012-3 用 \(b_c = 60-2\times6 = 48\)（保護層 6 cm 量到<b>主筋心</b>
 <h3>5.1 節點平衡：為什麼是「和」而不是單一構件</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 320" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="c1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
-  <marker id="c2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#1565c0"/></marker></defs>
-
-  <rect x="390" y="120" width="120" height="80" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.2"/>
-  <text x="450" y="166" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">接頭</text>
-  <rect x="400" y="30" width="100" height="90" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="400" y="200" width="100" height="90" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="180" y="136" width="210" height="48" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="510" y="136" width="210" height="48" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <text x="285" y="206" font-size="12" text-anchor="middle" fill="#607d8b">左梁</text>
-  <text x="615" y="206" font-size="12" text-anchor="middle" fill="#607d8b">右梁</text>
-  <text x="450" y="22" font-size="12" text-anchor="middle" fill="#607d8b">上柱</text>
-  <text x="450" y="306" font-size="12" text-anchor="middle" fill="#607d8b">下柱</text>
-
-  <path d="M380,60 A24,24 0 1,1 380,108" fill="none" stroke="#1565c0" stroke-width="2.4" marker-end="url(#c2)"/>
-  <text x="350" y="88" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Mnc,上</text>
-  <path d="M380,212 A24,24 0 1,1 380,260" fill="none" stroke="#1565c0" stroke-width="2.4" marker-end="url(#c2)"/>
-  <text x="350" y="242" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Mnc,下</text>
-  <path d="M262,204 A24,24 0 1,0 310,204" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#c1)"/>
-  <text x="285" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Mnb,左</text>
-  <path d="M592,204 A24,24 0 1,0 640,204" fill="none" stroke="#c62828" stroke-width="2.4" marker-end="url(#c1)"/>
-  <text x="615" y="248" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">Mnb,右</text>
-
-  <text x="450" y="280" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">Mnc,上 + Mnc,下  ≥  (6/5) × (Mnb,左 + Mnb,右)</text>
-  <text x="760" y="120" font-size="12" fill="#455a64">柱側：藍</text>
-  <text x="760" y="142" font-size="12" fill="#455a64">梁側：紅</text>
-  <text x="760" y="168" font-size="11.5" fill="#607d8b">梁的 Mnb 取</text>
-  <text x="760" y="186" font-size="11.5" fill="#607d8b">該地震方向下</text>
-  <text x="760" y="204" font-size="11.5" fill="#607d8b">實際受拉側配筋</text>
+<svg viewBox="0 0 900 440" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g51565c0" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="g5c62828" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker></defs>
+<text x="450.0" y="26.0" font-size="14" text-anchor="middle" fill="#1565c0" font-weight="700">節點自由體：側移向右（→）時，各構件作用在接頭上的彎矩</text>
+<line x1="680.0" y1="62.0" x2="790.0" y2="62.0" stroke="#c62828" stroke-width="2.6" marker-end="url(#g5c62828)"/>
+<text x="735.0" y="52.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">地震側移</text>
+<rect x="400.0" y="50.0" width="100.0" height="120.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<rect x="400.0" y="270.0" width="100.0" height="120.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<rect x="140.0" y="180.0" width="250.0" height="70.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<rect x="510.0" y="180.0" width="250.0" height="70.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.8"/>
+<rect x="390.0" y="170.0" width="120.0" height="100.0" rx="0" fill="#e3f2fd" stroke="#1565c0" stroke-width="2"/>
+<text x="450.0" y="225.0" font-size="13" text-anchor="middle" fill="#0d47a1" font-weight="700">接頭</text>
+<text x="450.0" y="44.0" font-size="11.5" text-anchor="middle" fill="#607d8b">上柱</text>
+<text x="450.0" y="408.0" font-size="11.5" text-anchor="middle" fill="#607d8b">下柱</text>
+<text x="150.0" y="172.0" font-size="11.5" text-anchor="start" fill="#607d8b">左梁</text>
+<text x="750.0" y="172.0" font-size="11.5" text-anchor="end" fill="#607d8b">右梁</text>
+<line x1="150.0" y1="185.0" x2="388.0" y2="185.0" stroke="#c62828" stroke-width="3"/>
+<line x1="512.0" y1="245.0" x2="750.0" y2="245.0" stroke="#c62828" stroke-width="3"/>
+<text x="260.0" y="262.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">頂筋受拉 → Mnb⁻</text>
+<text x="635.0" y="174.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">底筋受拉 → Mnb⁺</text>
+<path d="M371.7,181.8 A30,30 0 0 0 371.7,238.2" fill="none" stroke="#c62828" stroke-width="2.6" marker-end="url(#g5c62828)"/>
+<path d="M528.3,238.2 A30,30 0 0 0 528.3,181.8" fill="none" stroke="#c62828" stroke-width="2.6" marker-end="url(#g5c62828)"/>
+<text x="344.0" y="214.0" font-size="12.5" text-anchor="end" fill="#c62828" font-weight="700">Mnb,左</text>
+<text x="556.0" y="214.0" font-size="12.5" text-anchor="start" fill="#c62828" font-weight="700">Mnb,右</text>
+<path d="M421.8,151.7 A30,30 0 0 1 478.2,151.7" fill="none" stroke="#1565c0" stroke-width="2.6" marker-end="url(#g51565c0)"/>
+<path d="M478.2,288.3 A30,30 0 0 1 421.8,288.3" fill="none" stroke="#1565c0" stroke-width="2.6" marker-end="url(#g51565c0)"/>
+<text x="498.0" y="142.0" font-size="12.5" text-anchor="start" fill="#1565c0" font-weight="700">Mnc,上</text>
+<text x="498.0" y="310.0" font-size="12.5" text-anchor="start" fill="#1565c0" font-weight="700">Mnc,下</text>
+<text x="690.0" y="300.0" font-size="11.5" text-anchor="start" fill="#c62828">紅：梁給接頭的彎矩（同為逆時針）</text>
+<text x="690.0" y="320.0" font-size="11.5" text-anchor="start" fill="#1565c0">藍：柱給接頭的彎矩（同為順時針）</text>
+<text x="690.0" y="340.0" font-size="11.5" text-anchor="start" fill="#607d8b">兩組必須互相平衡</text>
+<rect x="150.0" y="392.0" width="600.0" height="36.0" rx="8" fill="#fff" stroke="#1565c0" stroke-width="1.6"/>
+<text x="450.0" y="416.0" font-size="14.5" text-anchor="middle" fill="#0d47a1" font-weight="700">Mnc,上 + Mnc,下  ≥  (6/5) × (Mnb,左 + Mnb,右)</text>
 </svg>
 <div class="cap">
-節點是一個自由體：進來的彎矩必須平衡。所以問題不是「這根柱比這根梁強嗎」，
-而是「<b>柱能提供的總容量</b>是否超過<b>梁能送進來的總需求</b>」。
-地震方向反轉時，左右梁的受拉側互換 → \(\sum M_{nb}\) 要<b>兩個方向各算一次</b>取大。
+節點是一個自由體：兩根梁送進來的彎矩（同向）必須由上下兩根柱（反向）承接。所以問題不是「這根柱比這根梁強嗎」，而是「<b>柱能提供的總容量</b>是否超過<b>梁能送進來的總需求</b>」。注意同一個節點左梁是頂筋受拉、右梁是底筋受拉；地震方向反轉時兩者互換 → \(\sum M_{nb}\) 要<b>兩個方向各算一次</b>取大。
 </div>
 </div>
 
@@ -799,42 +952,44 @@ $$N_u = 50\ \text{tf} < 50.4\ \text{tf} \;\Rightarrow\; V_c = 0\ \text{（只差
 <h3>6.1 力平衡：V<sub>jh</sub> 從哪裡來</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="d1" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#c62828"/></marker>
-  <marker id="d2" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#1565c0"/></marker></defs>
-
-  <text x="450" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">接頭自由體：切開接頭上半部，水平力必須平衡</text>
-
-  <rect x="360" y="110" width="150" height="110" fill="#e3f2fd" stroke="#1565c0" stroke-width="2.2"/>
-  <rect x="372" y="46" width="126" height="64" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="372" y="220" width="126" height="64" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="180" y="126" width="180" height="78" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <rect x="510" y="126" width="180" height="78" fill="#eceff1" stroke="#546e7a" stroke-width="2"/>
-  <line x1="360" y1="165" x2="510" y2="165" stroke="#ef6c00" stroke-width="2" stroke-dasharray="7 5"/>
-  <text x="530" y="160" font-size="11.5" fill="#ef6c00">切面</text>
-
-  <line x1="300" y1="138" x2="200" y2="138" stroke="#c62828" stroke-width="2.6" marker-end="url(#d1)"/>
-  <text x="196" y="126" font-size="12.5" text-anchor="end" fill="#c62828" font-weight="700">T_top</text>
-  <text x="270" y="126" font-size="11" text-anchor="middle" fill="#607d8b">梁頂筋受拉</text>
-  <line x1="570" y1="192" x2="670" y2="192" stroke="#c62828" stroke-width="2.6" marker-end="url(#d1)"/>
-  <text x="676" y="196" font-size="12.5" fill="#c62828" font-weight="700">C_bot = T_bot</text>
-  <text x="600" y="216" font-size="11" text-anchor="middle" fill="#607d8b">梁底混凝土受壓</text>
-
-  <line x1="435" y1="60" x2="330" y2="60" stroke="#1565c0" stroke-width="2.6" marker-end="url(#d2)"/>
-  <text x="326" y="64" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">Vcol</text>
-
-  <line x1="380" y1="165" x2="490" y2="165" stroke="#2e7d32" stroke-width="3.4" marker-end="url(#d1)"/>
-  <text x="435" y="188" font-size="12.5" text-anchor="middle" fill="#2e7d32" font-weight="700">Vjh</text>
-
-  <text x="450" y="304" font-size="13.5" text-anchor="middle" fill="#0d47a1" font-weight="700">Vjh = T_top + T_bot − Vcol</text>
-  <text x="450" y="324" font-size="12" text-anchor="middle" fill="#607d8b">外接頭／角接頭：只有一側有梁 → Vjh = T_top − Vcol</text>
+<svg viewBox="0 0 900 470" xmlns="http://www.w3.org/2000/svg">
+<defs><marker id="g61565c0" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#1565c0"/></marker><marker id="g62e7d32" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#2e7d32"/></marker><marker id="g690caf9" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#90caf9"/></marker><marker id="g6c62828" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#c62828"/></marker><marker id="g6ef9a9a" markerWidth="10" markerHeight="10" refX="8" refY="5" orient="auto" markerUnits="userSpaceOnUse"><path d="M0,0 L10,5 L0,10 z" fill="#ef9a9a"/></marker></defs>
+<text x="450.0" y="26.0" font-size="14" text-anchor="middle" fill="#1565c0" font-weight="700">內接頭自由體：側移向右（→），沿接頭中高切開，取上半部</text>
+<line x1="700.0" y1="58.0" x2="800.0" y2="58.0" stroke="#c62828" stroke-width="2.6" marker-end="url(#g6c62828)"/>
+<text x="750.0" y="48.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">地震側移</text>
+<rect x="395.0" y="50.0" width="110.0" height="100.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.6"/>
+<rect x="395.0" y="300.0" width="110.0" height="90.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.6"/>
+<rect x="120.0" y="160.0" width="260.0" height="130.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.6"/>
+<rect x="520.0" y="160.0" width="260.0" height="130.0" rx="0" fill="#eceff1" stroke="#455a64" stroke-width="1.6"/>
+<rect x="380.0" y="150.0" width="140.0" height="150.0" rx="0" fill="#f5f7f8" stroke="#1565c0" stroke-width="2"/>
+<rect x="380.0" y="150.0" width="140.0" height="75.0" rx="0" fill="#e3f2fd" fill-opacity="0.9" stroke="#1565c0" stroke-width="0"/>
+<line x1="350.0" y1="225.0" x2="550.0" y2="225.0" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="7 4"/>
+<text x="554.0" y="229.0" font-size="11.5" text-anchor="start" fill="#ef6c00" font-weight="700">切面</text>
+<line x1="130.0" y1="172.0" x2="508.0" y2="172.0" stroke="#37474f" stroke-width="2"/>
+<line x1="392.0" y1="278.0" x2="770.0" y2="278.0" stroke="#37474f" stroke-width="2"/>
+<line x1="392.0" y1="172.0" x2="770.0" y2="172.0" stroke="#37474f" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="130.0" y1="278.0" x2="508.0" y2="278.0" stroke="#37474f" stroke-width="1.2" stroke-dasharray="3 3"/>
+<line x1="378.0" y1="172.0" x2="270.0" y2="172.0" stroke="#c62828" stroke-width="3" marker-end="url(#g6c62828)"/>
+<text x="372.0" y="148.0" font-size="12" text-anchor="end" fill="#c62828" font-weight="700">T_top = 1.25fy·As,左頂</text>
+<text x="372.0" y="200.0" font-size="11" text-anchor="end" fill="#607d8b">左梁頂筋把接頭往左拉</text>
+<line x1="630.0" y1="180.0" x2="522.0" y2="180.0" stroke="#c62828" stroke-width="3" marker-end="url(#g6c62828)"/>
+<text x="528.0" y="148.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">C_bot：右梁頂部壓力</text>
+<text x="528.0" y="200.0" font-size="11" text-anchor="start" fill="#607d8b">＝右梁底筋拉力 1.25fy·As,右底</text>
+<line x1="400.0" y1="80.0" x2="500.0" y2="80.0" stroke="#1565c0" stroke-width="3" marker-end="url(#g61565c0)"/>
+<text x="508.0" y="85.0" font-size="12" text-anchor="start" fill="#1565c0" font-weight="700">Vcol（上柱剪力，反向）</text>
+<line x1="392.0" y1="215.0" x2="508.0" y2="215.0" stroke="#2e7d32" stroke-width="3.4" marker-end="url(#g62e7d32)"/>
+<text x="450.0" y="207.0" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">Vjh</text>
+<line x1="270.0" y1="278.0" x2="378.0" y2="278.0" stroke="#ef9a9a" stroke-width="2.4" marker-end="url(#g6ef9a9a)"/>
+<text x="372.0" y="310.0" font-size="11" text-anchor="end" fill="#c48b8b">左梁底部壓力（作用於下半部）</text>
+<line x1="522.0" y1="278.0" x2="630.0" y2="278.0" stroke="#ef9a9a" stroke-width="2.4" marker-end="url(#g6ef9a9a)"/>
+<text x="528.0" y="310.0" font-size="11" text-anchor="start" fill="#c48b8b">右梁底筋拉力（作用於下半部）</text>
+<line x1="500.0" y1="360.0" x2="400.0" y2="360.0" stroke="#90caf9" stroke-width="2.4" marker-end="url(#g690caf9)"/>
+<rect x="160.0" y="400.0" width="580.0" height="58.0" rx="8" fill="#fff" stroke="#1565c0" stroke-width="1.6"/>
+<text x="450.0" y="424.0" font-size="14.5" text-anchor="middle" fill="#0d47a1" font-weight="700">上半部 ΣFx = 0：Vjh = T_top + C_bot − Vcol</text>
+<text x="450.0" y="446.0" font-size="12" text-anchor="middle" fill="#607d8b">外接頭／角接頭只有一側有梁 → Vjh = T_top − Vcol</text>
 </svg>
 <div class="cap">
-關鍵在於 \(T_{top}\) 與 \(C_{bot}\) <b>方向相同</b>（一個往左拉、一個往右推，對切面而言是同向的水平推力），
-所以它們相<b>加</b>；柱剪力方向相反，所以相<b>減</b>。
-搞錯這個符號會讓答案差兩倍以上 —— 而且是最常見的錯誤。
+切面以上：左梁頂筋拉力 \(T_{top}\) 把接頭往左拉，右梁頂部壓力 \(C_{bot}\)（大小等於右梁<b>底筋</b>拉力，故以 bot 標記）把接頭往左推 —— <b>兩者同向，所以相加</b>；上柱剪力 \(V_{col}\) 方向相反，所以相減。搞錯這個符號會讓答案差兩倍以上 —— 而且是最常見的錯誤。
 </div>
 </div>
 
@@ -1055,7 +1210,7 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 
 <polygon points="280,110 450,78 620,110 450,142" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
 <text x="450" y="114" font-size="11.5" text-anchor="middle" fill="#e65100" font-weight="700">問的是韌性量化嗎（μφ／μθ／μ）？</text>
-<text x="644" y="102" font-size="11.5" fill="#546e7a">是</text>
+<text x="626" y="104" font-size="11.5" fill="#546e7a">是</text>
 <text x="460" y="164" font-size="11.5" fill="#546e7a">否</text>
 
 <rect x="640" y="128" width="250" height="68" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
@@ -1065,22 +1220,22 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 
 <polygon points="280,207 450,175 620,207 450,239" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
 <text x="450" y="211" font-size="11.5" text-anchor="middle" fill="#e65100" font-weight="700">主體是梁柱接頭嗎？</text>
-<text x="644" y="199" font-size="11.5" fill="#546e7a">是</text>
+<text x="626" y="201" font-size="11.5" fill="#546e7a">是</text>
 <text x="460" y="261" font-size="11.5" fill="#546e7a">否</text>
 
 <rect x="640" y="244" width="250" height="76" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
-<text x="765" y="265" font-size="10.5" text-anchor="middle" fill="#1b5e20" font-weight="700">Vjh = T_top + T_bot − Vcol</text>
-<text x="765" y="283" font-size="10" text-anchor="middle" fill="#33691e">外／角接頭：只有 T_top</text>
+<text x="765" y="265" font-size="10.5" text-anchor="middle" fill="#1b5e20" font-weight="700">Vjh = T_top + C_bot − Vcol</text>
+<text x="765" y="283" font-size="10" text-anchor="middle" fill="#33691e">C_bot ＝ 另側梁底筋拉力；外／角接頭只有 T_top</text>
 <text x="765" y="301" font-size="10" text-anchor="middle" fill="#33691e">T = 1.25fy·As（或依題目用 fy）</text>
 
 <rect x="640" y="332" width="250" height="58" rx="7" fill="#e8f5e9" stroke="#2e7d32" stroke-width="1.6"/>
-<text x="765" y="354" font-size="10.5" text-anchor="middle" fill="#1b5e20">bj = min(bc, bw + 0.5hc)</text>
+<text x="765" y="354" font-size="10.5" text-anchor="middle" fill="#1b5e20">bj = min(bw + hc, bw + 2x) ≤ bc</text>
 <text x="765" y="374" font-size="10.5" text-anchor="middle" fill="#1b5e20">Aj = bj × hc</text>
 
 <rect x="640" y="402" width="250" height="92" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.6"/>
-<text x="765" y="423" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">γ = 5.3 / 4.0 / 3.2（kgf/cm²）</text>
+<text x="765" y="423" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">γ = 5.3 / 3.9 / 3.2（kgf/cm²）</text>
 <text x="765" y="441" font-size="10" text-anchor="middle" fill="#4a148c">依有梁圍束面數：四／三／其他</text>
-<text x="765" y="459" font-size="10" text-anchor="middle" fill="#4a148c">MPa 制為 1.7 / 1.25 / 1.0</text>
+<text x="765" y="459" font-size="10" text-anchor="middle" fill="#4a148c">MPa 制為 1.7 / 1.2 / 1.0</text>
 <text x="765" y="479" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">檢核 φγ√f'c·Aj ≥ Vjh（φ=0.85）</text>
 
 <polygon points="260,302 450,270 640,302 450,334" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
@@ -1107,12 +1262,12 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 <text x="460" y="484" font-size="10.5" text-anchor="middle" fill="#0d47a1">不用彈性分析的柱剪力</text>
 
 <polygon points="25,546 160,516 295,546 160,576" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
-<text x="160" y="550" font-size="11" text-anchor="middle" fill="#e65100" font-weight="700">Vc 可以計入嗎？</text>
-<text x="100" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">不可</text>
-<text x="222" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">可</text>
+<text x="160" y="543" font-size="10.5" text-anchor="middle" fill="#e65100" font-weight="700">地震剪力 ≥ ½Ve ？</text><text x="160" y="559" font-size="9.5" text-anchor="middle" fill="#e65100">（且 Nu &lt; Agf'c/20，梁幾乎必成立）</text>
+<text x="100" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">是</text>
+<text x="222" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">否</text>
 
 <polygon points="325,546 460,516 595,546 460,576" fill="#fff3e0" stroke="#ef6c00" stroke-width="1.7"/>
-<text x="460" y="550" font-size="11" text-anchor="middle" fill="#e65100" font-weight="700">Nu &lt; Ag f'c /20 ？</text>
+<text x="460" y="543" font-size="10.5" text-anchor="middle" fill="#e65100" font-weight="700">Nu &lt; Ag f'c /20 ？</text><text x="460" y="559" font-size="9.5" text-anchor="middle" fill="#e65100">（且地震剪力 ≥ ½，柱幾乎必成立）</text>
 <text x="400" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">是</text>
 <text x="522" y="584" font-size="10.5" text-anchor="middle" fill="#546e7a">否</text>
 
@@ -1136,7 +1291,7 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 <text x="160" y="703" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">梁密箍區間距取最小</text>
 <text x="160" y="721" font-size="10" text-anchor="middle" fill="#4a148c">強度需求、d/4、6db（或 8db）</text>
 <text x="160" y="739" font-size="10" text-anchor="middle" fill="#4a148c">150mm（或 24db,tie 與 300mm）</text>
-<text x="160" y="759" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">密箍區長 = 2h；第一支 ≤ s/2</text>
+<text x="160" y="759" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">密箍區長 = 2h；第一支距柱面 ≤ 5 cm</text>
 
 <rect x="320" y="682" width="280" height="94" rx="7" fill="#f3e5f5" stroke="#6a1b9a" stroke-width="1.7"/>
 <text x="460" y="703" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">柱圍束：Ash 兩式取大</text>
@@ -1145,8 +1300,7 @@ RC-2019-3 的重點正是「最終設計比較」—— <b>兩個需求都算，
 <text x="460" y="759" font-size="10.5" text-anchor="middle" fill="#4a148c" font-weight="700">lo = max(h, ln/6, 45cm)</text>
 </svg>
 <div class="cap">
-五個判斷菱形。注意<b>梁與柱的 \(V_c=0\) 條件不同</b>：梁看「地震剪力是否超過一半」（幾乎總是成立），
-柱看「軸壓是否足夠小」（常常是臨界，必須把 \(A_g f'_c/20\) 算出來）。
+五個判斷菱形。\(V_c=0\) 的兩個條件（地震剪力 ≥ 最大剪力的一半，<b>且</b> \(N_u &lt; A_g f'_c/20\)）對梁與柱<b>完全相同</b>，差別只在哪一個是臨界：梁幾乎沒有軸力，所以看剪力比；柱的設計剪力本來就幾乎全由梁的 \(M_{pr}\) 而來，所以看軸壓（常常是臨界，必須把 \(A_g f'_c/20\) 算出來）。
 </div>
 </div>
 </section>

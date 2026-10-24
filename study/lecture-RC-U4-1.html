@@ -41,7 +41,7 @@ border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
 .comp{background:var(--comp2);border:1px solid #ef9a9a;border-left:5px solid var(--comp);
 border-radius:0 10px 10px 0;padding:13px 17px;margin:16px 0}
 .fig{background:#fff;border:1px solid var(--bd);border-radius:11px;padding:16px 14px 10px;margin:20px 0;overflow-x:auto}
-.fig svg{display:block;margin:0 auto;max-width:100%;height:auto}
+.fig>svg{display:block;margin:0 auto;max-width:100%;height:auto}
 .fig .cap{font-size:.85em;color:var(--mut);text-align:center;margin-top:10px;line-height:1.6}
 table{width:100%;border-collapse:collapse;margin:16px 0;font-size:.9em;background:#fff}
 th,td{border:1px solid var(--bd);padding:8px 10px;text-align:left;vertical-align:top}
@@ -106,40 +106,57 @@ RC-U4-1 這 21 題考題，全部是這一句話的展開。
 </p>
 
 <div class="fig">
-<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="30" x2="450" y2="310" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-
-  <text x="225" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">傳遞階段：預力大、載重小</text>
-  <text x="225" y="47" font-size="12.5" text-anchor="middle" fill="#607d8b">P = Pi（未損失）　M = 僅自重 Md</text>
-  <rect x="100" y="70" width="55" height="170" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
-  <circle cx="127" cy="212" r="5" fill="#37474f"/>
-  <text x="127" y="262" font-size="12" text-anchor="middle" fill="#455a64">鋼腱在下</text>
-  <line x1="175" y1="60" x2="175" y2="250" stroke="#90a4ae" stroke-width="1.4"/>
-  <path d="M175,70 L150,70 L175,107 Z" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
-  <path d="M175,107 L265,240 L175,240 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
-  <line x1="150" y1="70" x2="265" y2="240" stroke="#c62828" stroke-width="2"/>
-  <text x="120" y="66" font-size="12.5" fill="#2e7d32" font-weight="700">拉</text>
-  <text x="278" y="238" font-size="12.5" fill="#c62828" font-weight="700">大壓</text>
-  <text x="225" y="292" font-size="13.5" text-anchor="middle" fill="#2e7d32" font-weight="700">危險：頂纖維拉應力</text>
-  <text x="225" y="312" font-size="12" text-anchor="middle" fill="#607d8b">容許值用 f'ci（混凝土還嫩，限值小）</text>
-
-  <text x="675" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">使用階段：預力小、載重大</text>
-  <text x="675" y="47" font-size="12.5" text-anchor="middle" fill="#607d8b">P = Pe（已損失）　M = Md + Ml</text>
-  <rect x="550" y="70" width="55" height="170" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
-  <circle cx="577" cy="212" r="5" fill="#37474f"/>
-  <text x="577" y="262" font-size="12" text-anchor="middle" fill="#455a64">鋼腱在下</text>
-  <line x1="625" y1="60" x2="625" y2="250" stroke="#90a4ae" stroke-width="1.4"/>
-  <path d="M625,70 L720,70 L625,199 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
-  <path d="M625,199 L595,240 L625,240 Z" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
-  <line x1="720" y1="70" x2="595" y2="240" stroke="#c62828" stroke-width="2"/>
-  <text x="733" y="66" font-size="12.5" fill="#c62828" font-weight="700">大壓</text>
-  <text x="565" y="255" font-size="12.5" fill="#2e7d32" font-weight="700">拉</text>
-  <text x="675" y="292" font-size="13.5" text-anchor="middle" fill="#2e7d32" font-weight="700">危險：底纖維拉應力</text>
-  <text x="675" y="312" font-size="12" text-anchor="middle" fill="#607d8b">容許值用 f'c（強度已足，但載重也最大）</text>
+<svg viewBox="0 0 900 352" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2014-4 傳遞與使用階段應力分布對照">
+<defs><marker id="a0" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#ef6c00"/></marker></defs>
+<line x1="450.0" y1="30.0" x2="450.0" y2="345.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="225.0" y="24.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">傳遞階段：預力大、載重小</text>
+<text x="225.0" y="44.0" font-size="12.5" text-anchor="middle" fill="#607d8b">Pi = 70 tf（未損失）　M = 僅自重 Md = 4.75 tf·m</text>
+<polygon points="40.0,74.0 96.0,74.0 96.0,92.0 74.0,92.0 74.0,236.0 96.0,236.0 96.0,254.0 40.0,254.0 40.0,236.0 62.0,236.0 62.0,92.0 40.0,92.0" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+<line x1="34.0" y1="164.0" x2="440.0" y2="164.0" stroke="#b0bec5" stroke-width="1" stroke-dasharray="5 4"/>
+<circle cx="68.0" cy="223.4" r="5" fill="#263238" stroke="none" stroke-width="1.4"/>
+<line x1="106.0" y1="164.0" x2="106.0" y2="223.4" stroke="#ef6c00" stroke-width="1.2"/>
+<text x="110.0" y="197.7" font-size="11" text-anchor="start" fill="#ef6c00">e=19.8</text>
+<text x="36.0" y="160.0" font-size="10.5" text-anchor="end" fill="#607d8b">形心</text>
+<line x1="373.0" y1="68.0" x2="373.0" y2="260.0" stroke="#c62828" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="373.0" y="274.0" font-size="10.5" text-anchor="middle" fill="#c62828">容許壓 180</text>
+<line x1="159.8" y1="68.0" x2="159.8" y2="260.0" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="156.8" y="274.0" font-size="10.5" text-anchor="end" fill="#2e7d32">容許拉 -13.9</text>
+<polygon points="175.0,74.0 180.9,74.0 309.1,254.0 175.0,254.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="175.0" y1="66.0" x2="175.0" y2="262.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="186.9" y="68.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">+5.38</text>
+<text x="315.1" y="250.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">+121.90</text>
+<line x1="245.0" y1="108.0" x2="187.0" y2="80.0" stroke="#ef6c00" stroke-width="1.4" marker-end="url(#a0)"/>
+<text x="249.0" y="114.0" font-size="11.5" text-anchor="start" fill="#ef6c00" font-weight="700">頂緣只剩 +5.4，e 再加大就翻成拉</text>
+<text x="225.0" y="318.0" font-size="13.5" text-anchor="middle" fill="#2e7d32" font-weight="700">危險在頂纖維：偏心把它往拉的方向推</text>
+<text x="225.0" y="338.0" font-size="12" text-anchor="middle" fill="#607d8b">容許值用 f'ci = 300（混凝土還嫩，限值小）</text>
+<text x="675.0" y="24.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">使用階段：預力小、載重大</text>
+<text x="675.0" y="44.0" font-size="12.5" text-anchor="middle" fill="#607d8b">Pe = 60 tf（已損失）　M = Md + Ml = 24.55 tf·m</text>
+<polygon points="490.0,74.0 546.0,74.0 546.0,92.0 524.0,92.0 524.0,236.0 546.0,236.0 546.0,254.0 490.0,254.0 490.0,236.0 512.0,236.0 512.0,92.0 490.0,92.0" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
+<line x1="484.0" y1="164.0" x2="890.0" y2="164.0" stroke="#b0bec5" stroke-width="1" stroke-dasharray="5 4"/>
+<circle cx="518.0" cy="223.4" r="5" fill="#263238" stroke="none" stroke-width="1.4"/>
+<line x1="556.0" y1="164.0" x2="556.0" y2="223.4" stroke="#ef6c00" stroke-width="1.2"/>
+<text x="560.0" y="197.7" font-size="11" text-anchor="start" fill="#ef6c00">e=19.8</text>
+<text x="486.0" y="160.0" font-size="10.5" text-anchor="end" fill="#607d8b">形心</text>
+<line x1="832.9" y1="68.0" x2="832.9" y2="260.0" stroke="#c62828" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="832.9" y="274.0" font-size="10.5" text-anchor="middle" fill="#c62828">容許壓 189</text>
+<line x1="588.9" y1="68.0" x2="588.9" y2="260.0" stroke="#2e7d32" stroke-width="1.2" stroke-dasharray="4 3"/>
+<text x="585.9" y="274.0" font-size="10.5" text-anchor="end" fill="#2e7d32">容許拉 -32.8</text>
+<line x1="602.5" y1="114.0" x2="602.5" y2="260.0" stroke="#8d6e63" stroke-width="1.1" stroke-dasharray="2 3"/>
+<text x="604.5" y="290.0" font-size="10.5" text-anchor="start" fill="#8d6e63">1.0√f'c = −20.5（該題解析採用）</text>
+<polygon points="625.0,74.0 774.2,74.0 625.0,224.6" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<polygon points="625.0,224.6 595.8,254.0 625.0,254.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<line x1="625.0" y1="66.0" x2="625.0" y2="262.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="780.2" y="68.0" font-size="12" text-anchor="start" fill="#c62828" font-weight="700">+135.61</text>
+<text x="589.8" y="250.0" font-size="12" text-anchor="end" fill="#2e7d32" font-weight="700">-26.51</text>
+<line x1="689.0" y1="220.0" x2="617.0" y2="246.0" stroke="#ef6c00" stroke-width="1.4" marker-end="url(#a0)"/>
+<text x="693.0" y="224.0" font-size="11.5" text-anchor="start" fill="#ef6c00" font-weight="700">底緣已受拉（未超 32.8，但超過 20.5）</text>
+<text x="675.0" y="318.0" font-size="13.5" text-anchor="middle" fill="#2e7d32" font-weight="700">危險在底纖維：活載重把它拉過零點</text>
+<text x="675.0" y="338.0" font-size="12" text-anchor="middle" fill="#607d8b">容許值用 f'c = 420（強度已足，但載重也最大）</text>
 </svg>
 <div class="cap">
-兩個階段的應力圖幾乎是彼此的鏡像。左邊怕頂、右邊怕底 —— 這對「對角危險」逼出四個控制條件，
-也解釋了為什麼偏心距 e 會同時有上限與下限（e 太大則傳遞階段頂纖維裂，e 太小則使用階段底纖維裂）。
+RC-2014-4 的實際應力，兩邊用<b>同一水平比例</b>（虛線＝容許值）。左邊頂緣只剩 +5.38，
+右邊底緣已翻成 −26.51 —— 危險纖維剛好在對角線兩端。這對「對角危險」逼出四個控制條件，
+也解釋了偏心距 e 為什麼同時有上限與下限（e 太大傳遞階段頂緣裂，e 太小使用階段底緣裂，見 §6.2 圖）。
 </div>
 </div>
 
@@ -199,54 +216,70 @@ f_{\text{底}} = \frac{P}{A} + \frac{P\,e}{S_b} - \frac{M}{S_b}$$
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-  <!-- panel 1 -->
-  <text x="112" y="24" font-size="13.5" font-weight="700" text-anchor="middle" fill="#0d47a1">① 軸壓 P/A</text>
-  <rect x="18" y="58" width="38" height="150" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="75" y1="50" x2="75" y2="218" stroke="#90a4ae" stroke-width="1.3"/>
-  <rect x="75" y="58" width="45" height="150" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
-  <text x="112" y="238" font-size="12" text-anchor="middle" fill="#607d8b">全斷面均勻受壓</text>
-  <text x="112" y="256" font-size="12" text-anchor="middle" fill="#607d8b">上下一樣大</text>
-  <text x="203" y="140" font-size="22" text-anchor="middle" fill="#455a64">+</text>
-
-  <!-- panel 2 -->
-  <text x="337" y="24" font-size="13.5" font-weight="700" text-anchor="middle" fill="#0d47a1">② 偏心 P·e/S</text>
-  <rect x="243" y="58" width="38" height="150" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
-  <circle cx="262" cy="188" r="4" fill="#37474f"/>
-  <line x1="300" y1="50" x2="300" y2="218" stroke="#90a4ae" stroke-width="1.3"/>
-  <path d="M300,58 L250,58 L300,133 Z" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
-  <path d="M300,133 L350,208 L300,208 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.5"/>
-  <text x="238" y="54" font-size="11.5" fill="#2e7d32" font-weight="700">拉</text>
-  <text x="356" y="206" font-size="11.5" fill="#c62828" font-weight="700">壓</text>
-  <text x="337" y="238" font-size="12" text-anchor="middle" fill="#607d8b">鋼腱在下→頂拉底壓</text>
-  <text x="337" y="256" font-size="12" text-anchor="middle" fill="#607d8b">形心處為零</text>
-  <text x="428" y="140" font-size="22" text-anchor="middle" fill="#455a64">+</text>
-
-  <!-- panel 3 -->
-  <text x="562" y="24" font-size="13.5" font-weight="700" text-anchor="middle" fill="#0d47a1">③ 外力 M/S</text>
-  <rect x="468" y="58" width="38" height="150" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="525" y1="50" x2="525" y2="218" stroke="#90a4ae" stroke-width="1.3"/>
-  <path d="M525,58 L585,58 L525,133 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.5"/>
-  <path d="M525,133 L465,208 L525,208 Z" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.5"/>
-  <text x="596" y="54" font-size="11.5" fill="#c62828" font-weight="700">壓</text>
-  <text x="452" y="222" font-size="11.5" fill="#2e7d32" font-weight="700">拉</text>
-  <text x="562" y="238" font-size="12" text-anchor="middle" fill="#607d8b">正彎矩→頂壓底拉</text>
-  <text x="562" y="256" font-size="12" text-anchor="middle" fill="#607d8b">與②方向完全相反</text>
-  <text x="653" y="140" font-size="22" text-anchor="middle" fill="#455a64">=</text>
-
-  <!-- panel 4 -->
-  <text x="787" y="24" font-size="13.5" font-weight="700" text-anchor="middle" fill="#0d47a1">④ 合成 f</text>
-  <rect x="693" y="58" width="38" height="150" fill="#eceff1" stroke="#546e7a" stroke-width="1.5"/>
-  <line x1="750" y1="50" x2="750" y2="218" stroke="#90a4ae" stroke-width="1.3"/>
-  <path d="M750,58 L805,58 L785,208 L750,208 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
-  <text x="816" y="54" font-size="11.5" fill="#c62828" font-weight="700">壓</text>
-  <text x="797" y="224" font-size="11.5" fill="#c62828" font-weight="700">壓</text>
-  <text x="787" y="238" font-size="12" text-anchor="middle" fill="#2e7d32" font-weight="700">全斷面受壓＝設計成功</text>
-  <text x="787" y="256" font-size="12" text-anchor="middle" fill="#607d8b">哪一端先變負就是控制點</text>
+<svg viewBox="0 0 900 466" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2014-4 三項應力疊加，傳遞與使用兩階段">
+<text x="215.0" y="24.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">① 軸壓 P/A</text>
+<text x="215.0" y="42.0" font-size="11.5" text-anchor="middle" fill="#607d8b">全斷面同號</text>
+<text x="405.0" y="24.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">② 偏心 P·e/S</text>
+<text x="405.0" y="42.0" font-size="11.5" text-anchor="middle" fill="#607d8b">頂拉、底壓</text>
+<text x="595.0" y="24.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">③ 外力 M/S</text>
+<text x="595.0" y="42.0" font-size="11.5" text-anchor="middle" fill="#607d8b">頂壓、底拉</text>
+<text x="785.0" y="24.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">④ 合成 f</text>
+<text x="785.0" y="42.0" font-size="11.5" text-anchor="middle" fill="#607d8b">代數相加</text>
+<text x="310.0" y="150.0" font-size="22" text-anchor="middle" fill="#455a64">+</text>
+<text x="310.0" y="350.0" font-size="22" text-anchor="middle" fill="#455a64">+</text>
+<text x="500.0" y="150.0" font-size="22" text-anchor="middle" fill="#455a64">+</text>
+<text x="500.0" y="350.0" font-size="22" text-anchor="middle" fill="#455a64">+</text>
+<text x="690.0" y="150.0" font-size="22" text-anchor="middle" fill="#455a64">=</text>
+<text x="690.0" y="350.0" font-size="22" text-anchor="middle" fill="#455a64">=</text>
+<text x="14.0" y="126.0" font-size="13.5" text-anchor="start" fill="#263238" font-weight="700">傳遞階段</text>
+<text x="14.0" y="146.0" font-size="12" text-anchor="start" fill="#607d8b">Pi = 70 tf</text>
+<text x="14.0" y="164.0" font-size="12" text-anchor="start" fill="#607d8b">M = Md</text>
+<polygon points="215.0,70.0 246.8,70.0 246.8,210.0 215.0,210.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="215.0" y1="62.0" x2="215.0" y2="218.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="246.8" y="58.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+63.6</text>
+<text x="246.8" y="232.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+63.6</text>
+<polygon points="405.0,70.0 360.7,70.0 405.0,140.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<polygon points="405.0,140.0 449.3,210.0 405.0,210.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="405.0" y1="62.0" x2="405.0" y2="218.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="360.7" y="58.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">-88.7</text>
+<text x="449.3" y="232.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+88.7</text>
+<polygon points="595.0,70.0 610.2,70.0 595.0,140.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<polygon points="595.0,140.0 579.8,210.0 595.0,210.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<line x1="595.0" y1="62.0" x2="595.0" y2="218.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="610.2" y="58.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+30.4</text>
+<text x="579.8" y="232.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">-30.4</text>
+<polygon points="785.0,70.0 787.7,70.0 846.0,210.0 785.0,210.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="785.0" y1="62.0" x2="785.0" y2="218.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="787.7" y="58.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+5.4</text>
+<text x="846.0" y="232.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+121.9</text>
+<text x="14.0" y="326.0" font-size="13.5" text-anchor="start" fill="#263238" font-weight="700">使用階段</text>
+<text x="14.0" y="346.0" font-size="12" text-anchor="start" fill="#607d8b">Pe = 60 tf</text>
+<text x="14.0" y="364.0" font-size="12" text-anchor="start" fill="#607d8b">M = Md + Ml</text>
+<polygon points="215.0,270.0 242.3,270.0 242.3,410.0 215.0,410.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="215.0" y1="262.0" x2="215.0" y2="418.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="242.3" y="258.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+54.5</text>
+<text x="242.3" y="432.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+54.5</text>
+<polygon points="405.0,270.0 367.0,270.0 405.0,340.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<polygon points="405.0,340.0 443.0,410.0 405.0,410.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<line x1="405.0" y1="262.0" x2="405.0" y2="418.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="367.0" y="258.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">-76.0</text>
+<text x="443.0" y="432.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+76.0</text>
+<polygon points="595.0,270.0 673.5,270.0 595.0,340.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<polygon points="595.0,340.0 516.5,410.0 595.0,410.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<line x1="595.0" y1="262.0" x2="595.0" y2="418.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="673.5" y="258.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+157.1</text>
+<text x="516.5" y="432.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">-157.1</text>
+<polygon points="785.0,270.0 852.8,270.0 785.0,387.1" fill="#ffcdd2" stroke="#c62828" stroke-width="1.6"/>
+<polygon points="785.0,387.1 771.7,410.0 785.0,410.0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.6"/>
+<line x1="785.0" y1="262.0" x2="785.0" y2="418.0" stroke="#90a4ae" stroke-width="1.3"/>
+<text x="852.8" y="258.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">+135.6</text>
+<text x="771.7" y="432.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">-26.5</text>
+<text x="667.0" y="262.0" font-size="1" text-anchor="start" fill="#263238"></text>
+<text x="450.0" y="456.0" font-size="12" text-anchor="middle" fill="#607d8b">單位 kgf/cm²，壓為正；八格共用同一水平比例，長度可直接比較</text>
 </svg>
 <div class="cap">
-預力設計的目標就是讓第 ④ 格「兩端都留在紅色（壓）」。
-②和③方向相反，這是預力有效的全部原因；②太小則底端翻綠（使用階段開裂），②太大則頂端翻綠（傳遞階段開裂）。
+同一根梁（RC-2014-4）兩個階段的三項應力，八格<b>同一比例</b>。②與③方向相反，這是預力有效的全部原因；
+從上排到下排，①②因預力損失縮小約 14%，③卻因活載重放大 5.2 倍 —— 所以傳遞階段兩端都壓，使用階段底端翻綠（拉）。
 </div>
 </div>
 
@@ -301,35 +334,51 @@ $$C \cdot (\text{力臂}) = M \quad\Rightarrow\quad \text{C 線相對 c.g.s. 上
 $$f = \frac{P}{A} \pm \frac{P\,e'}{S}, \qquad e' = e - \frac{M}{P}$$
 
 <div class="fig">
-<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-  <defs><marker id="ar" markerWidth="9" markerHeight="9" refX="5" refY="4.5" orient="auto">
-    <path d="M0,0 L9,4.5 L0,9 z" fill="#ef6c00"/></marker></defs>
-  <rect x="60" y="50" width="780" height="150" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
-  <line x1="60" y1="110" x2="840" y2="110" stroke="#90a4ae" stroke-width="1.4" stroke-dasharray="7 5"/>
-  <text x="850" y="114" font-size="12" fill="#607d8b">形心</text>
-  <path d="M60,110 Q450,265 840,110" fill="none" stroke="#37474f" stroke-width="2.4"/>
-  <text x="285" y="218" font-size="12.5" text-anchor="middle" fill="#37474f" font-weight="700">c.g.s. 鋼腱線（拋物線腱）</text>
-  <path d="M60,110 Q450,215 840,110" fill="none" stroke="#1565c0" stroke-width="2.4" stroke-dasharray="9 4"/>
-  <text x="250" y="160" font-size="12.5" text-anchor="middle" fill="#1565c0" font-weight="700">C 線（傳遞階段，M 小）</text>
-  <path d="M60,110 Q450,50 840,110" fill="none" stroke="#c62828" stroke-width="2.4"/>
-  <text x="270" y="76" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">C 線（使用階段，M 大）</text>
-  <line x1="620" y1="173" x2="620" y2="90" stroke="#ef6c00" stroke-width="1.8" marker-end="url(#ar)"/>
-  <text x="634" y="128" font-size="12.5" fill="#ef6c00" font-weight="700">上移量 = M / P</text>
-  <text x="70" y="252" font-size="12.5" fill="#455a64">載重越大 → C 線越往上跑 → 底纖維壓應力越少 → 越接近開裂</text>
-  <text x="70" y="276" font-size="12.5" fill="#455a64">C 線跑出斷面核心（kern）之外，該端纖維就出現拉應力</text>
+<svg viewBox="0 0 900 326" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2014-4 壓力線沿跨度位置與核心帶">
+<defs><marker id="a2" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#ef6c00"/></marker><marker id="a2b" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#1565c0"/></marker></defs>
+<rect x="90.0" y="70.0" width="720.0" height="210.0" rx="0" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
+<rect x="90.0" y="125.3" width="720.0" height="99.5" rx="0" fill="#e3f2fd" stroke="none" stroke-width="0" fill-opacity="0.9"/>
+<line x1="90.0" y1="125.3" x2="810.0" y2="125.3" stroke="#64b5f6" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="90.0" y1="224.7" x2="810.0" y2="224.7" stroke="#64b5f6" stroke-width="1" stroke-dasharray="3 3"/>
+<line x1="90.0" y1="175.0" x2="810.0" y2="175.0" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="7 5"/>
+<text x="816.0" y="179.0" font-size="11.5" text-anchor="start" fill="#607d8b">形心</text>
+<text x="816.0" y="129.3" font-size="11" text-anchor="start" fill="#1e88e5">上核心點</text>
+<text x="816.0" y="143.3" font-size="10.5" text-anchor="start" fill="#1e88e5">kt = r²/yb</text>
+<text x="816.0" y="228.7" font-size="11" text-anchor="start" fill="#1e88e5">下核心點</text>
+<text x="816.0" y="242.7" font-size="10.5" text-anchor="start" fill="#1e88e5">kb = r²/yt</text>
+<polygon points="90.0,280.0 81.0,295.0 99.0,295.0" fill="#546e7a" stroke="#546e7a" stroke-width="1"/>
+<polygon points="810.0,280.0 801.0,295.0 819.0,295.0" fill="#546e7a" stroke="#546e7a" stroke-width="1"/>
+<line x1="90.0" y1="244.3" x2="810.0" y2="244.3" stroke="#263238" stroke-width="2.6"/>
+<text x="100.0" y="262.3" font-size="12" text-anchor="start" fill="#263238" font-weight="700">c.g.s. 鋼腱（直線腱，全長 e = 19.8 cm）</text>
+<polyline points="90.0,244.3 96.0,243.5 102.0,242.7 108.0,242.0 114.0,241.2 120.0,240.5 126.0,239.8 132.0,239.1 138.0,238.4 144.0,237.7 150.0,237.0 156.0,236.4 162.0,235.7 168.0,235.1 174.0,234.5 180.0,233.9 186.0,233.3 192.0,232.7 198.0,232.2 204.0,231.6 210.0,231.1 216.0,230.6 222.0,230.1 228.0,229.6 234.0,229.1 240.0,228.6 246.0,228.2 252.0,227.7 258.0,227.3 264.0,226.9 270.0,226.5 276.0,226.1 282.0,225.7 288.0,225.4 294.0,225.0 300.0,224.7 306.0,224.3 312.0,224.0 318.0,223.7 324.0,223.5 330.0,223.2 336.0,222.9 342.0,222.7 348.0,222.4 354.0,222.2 360.0,222.0 366.0,221.8 372.0,221.7 378.0,221.5 384.0,221.3 390.0,221.2 396.0,221.1 402.0,221.0 408.0,220.9 414.0,220.8 420.0,220.7 426.0,220.6 432.0,220.6 438.0,220.6 444.0,220.5 450.0,220.5 456.0,220.5 462.0,220.6 468.0,220.6 474.0,220.6 480.0,220.7 486.0,220.8 492.0,220.9 498.0,221.0 504.0,221.1 510.0,221.2 516.0,221.3 522.0,221.5 528.0,221.7 534.0,221.8 540.0,222.0 546.0,222.2 552.0,222.4 558.0,222.7 564.0,222.9 570.0,223.2 576.0,223.5 582.0,223.7 588.0,224.0 594.0,224.3 600.0,224.7 606.0,225.0 612.0,225.4 618.0,225.7 624.0,226.1 630.0,226.5 636.0,226.9 642.0,227.3 648.0,227.7 654.0,228.2 660.0,228.6 666.0,229.1 672.0,229.6 678.0,230.1 684.0,230.6 690.0,231.1 696.0,231.6 702.0,232.2 708.0,232.7 714.0,233.3 720.0,233.9 726.0,234.5 732.0,235.1 738.0,235.7 744.0,236.4 750.0,237.0 756.0,237.7 762.0,238.4 768.0,239.1 774.0,239.8 780.0,240.5 786.0,241.2 792.0,242.0 798.0,242.7 804.0,243.5 810.0,244.3" fill="none" stroke="#1565c0" stroke-width="2.4" stroke-dasharray="9 4"/>
+<polyline points="90.0,244.3 96.0,239.6 102.0,234.9 108.0,230.3 114.0,225.8 120.0,221.4 126.0,217.1 132.0,212.8 138.0,208.7 144.0,204.6 150.0,200.5 156.0,196.6 162.0,192.7 168.0,189.0 174.0,185.3 180.0,181.6 186.0,178.1 192.0,174.6 198.0,171.3 204.0,168.0 210.0,164.7 216.0,161.6 222.0,158.5 228.0,155.5 234.0,152.6 240.0,149.8 246.0,147.1 252.0,144.4 258.0,141.8 264.0,139.3 270.0,136.9 276.0,134.5 282.0,132.3 288.0,130.1 294.0,128.0 300.0,125.9 306.0,124.0 312.0,122.1 318.0,120.3 324.0,118.6 330.0,117.0 336.0,115.4 342.0,114.0 348.0,112.6 354.0,111.3 360.0,110.0 366.0,108.9 372.0,107.8 378.0,106.8 384.0,105.9 390.0,105.1 396.0,104.3 402.0,103.6 408.0,103.0 414.0,102.5 420.0,102.1 426.0,101.7 432.0,101.4 438.0,101.2 444.0,101.1 450.0,101.1 456.0,101.1 462.0,101.2 468.0,101.4 474.0,101.7 480.0,102.1 486.0,102.5 492.0,103.0 498.0,103.6 504.0,104.3 510.0,105.1 516.0,105.9 522.0,106.8 528.0,107.8 534.0,108.9 540.0,110.0 546.0,111.3 552.0,112.6 558.0,114.0 564.0,115.4 570.0,117.0 576.0,118.6 582.0,120.3 588.0,122.1 594.0,124.0 600.0,125.9 606.0,128.0 612.0,130.1 618.0,132.3 624.0,134.5 630.0,136.9 636.0,139.3 642.0,141.8 648.0,144.4 654.0,147.1 660.0,149.8 666.0,152.6 672.0,155.5 678.0,158.5 684.0,161.6 690.0,164.7 696.0,168.0 702.0,171.3 708.0,174.6 714.0,178.1 720.0,181.6 726.0,185.3 732.0,189.0 738.0,192.7 744.0,196.6 750.0,200.5 756.0,204.6 762.0,208.7 768.0,212.8 774.0,217.1 780.0,221.4 786.0,225.8 792.0,230.3 798.0,234.9 804.0,239.6 810.0,244.3" fill="none" stroke="#c62828" stroke-width="2.6"/>
+<text x="240.0" y="220.6" font-size="12" text-anchor="middle" fill="#1565c0" font-weight="700">C 線・傳遞（Md/Pi）</text>
+<text x="219.0" y="152.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">C 線・使用（MT/Pe）</text>
+<line x1="476.0" y1="244.3" x2="476.0" y2="104.1" stroke="#ef6c00" stroke-width="1.8" marker-end="url(#a2)"/>
+<text x="482.0" y="172.7" font-size="12" text-anchor="start" fill="#ef6c00" font-weight="700">MT/Pe = 40.9 cm</text>
+<text x="482.0" y="188.7" font-size="11.5" text-anchor="start" fill="#ef6c00">→ C 在形心上 21.1 cm &gt; kt</text>
+<line x1="428.0" y1="244.3" x2="428.0" y2="222.5" stroke="#1565c0" stroke-width="1.6" marker-end="url(#a2b)"/>
+<text x="800.0" y="260.3" font-size="11.5" text-anchor="end" fill="#1565c0" font-weight="700">傳遞：上移 Md/Pi = 6.8 cm，C 在形心下 13.0 cm</text>
+<text x="800.0" y="274.3" font-size="11" text-anchor="end" fill="#1565c0">&lt; kb = 14.2 → 仍在核心帶內，頂緣 +5.4（受壓）</text>
+<rect x="302.1" y="282.0" width="295.8" height="7.0" rx="0" fill="#c8e6c9" stroke="#2e7d32" stroke-width="1.2"/>
+<text x="450.0" y="306.0" font-size="11.5" text-anchor="middle" fill="#2e7d32" font-weight="700">使用階段底緣受拉區 x = 3.53 ～ 8.47 m（C 線越過上核心點之處；該點彎矩恰為 Mdec = Pe(e + kt) = 20.4 tf·m）</text>
+<text x="90.0" y="22.0" font-size="12" text-anchor="start" fill="#607d8b">RC-2014-4：L = 12 m、h = 60 cm、r² = 426.4 cm²；淺藍帶＝核心 ±14.2 cm；垂直比例放大 5.8 倍</text>
+<text x="90.0" y="42.0" font-size="12.5" text-anchor="start" fill="#263238" font-weight="700">C 線上移量 = M/P：同一條鋼腱，兩個階段的壓力合力走在不同高度</text>
 </svg>
 <div class="cap">
-同一根梁的兩個階段，畫在一張圖上就是「同一條線的兩個位置」。
-四個控制條件＝要求 C 線在兩個階段都不要跑得太上或太下。
+RC-2014-4 直線腱的壓力線，依 \(M(x)/P\) 逐點計算。傳遞階段 C 線只上移 6.8 cm，仍落在核心帶內（全斷面受壓）；
+使用階段跨中上移 40.9 cm，越過上核心點 → 底緣受拉。C 線剛好碰到上核心點的那個彎矩，就是 §7.1 的去壓彎矩 \(M_{dec}\)。
 </div>
 </div>
 
 <div class="why">
 <b>核心距（kern）的物理意義就在這裡</b><br>
-若壓力合力恰好落在 \(e' = S_t/A = r^2/y_t\)，底纖維應力剛好為零（再往上就出現拉力）。
-這個距離就是核心距 \(k_b\)。所以「核心距」不是一個要背的定義，
-它是「<b>C 線可以走到多遠而全斷面仍同號</b>」的邊界。<br>
-矩形斷面 \(k = \dfrac{I/(h/2)}{bh} = \dfrac{h}{6}\) —— 這就是課本上「中三分點法則」的來源。
+C 線上移到形心<b>上方</b> \(k_t = S_b/A = r^2/y_b\) 處時，\(f_{底} = P/A - P\,k_t/S_b = 0\)，底纖維應力剛好為零（再往上就出現拉力）；
+同理，C 線下移到形心下方 \(k_b = S_t/A = r^2/y_t\) 處時頂纖維歸零。
+\(k_t\)、\(k_b\) 就是上、下核心距 —— 注意<b>管底纖維的是上核心點</b>，分子是 \(S_b\)（對側纖維），最容易寫反。
+所以「核心距」不是一個要背的定義，它是「<b>C 線可以走到多遠而全斷面仍同號</b>」的邊界。<br>
+矩形斷面 \(k_t = k_b = \dfrac{I/(h/2)}{bh} = \dfrac{h}{6}\) —— 這就是課本上「中三分點法則」的來源。
+RC-2014-4 實算 \(k = 426.4/30 = 14.2\) cm，上圖淺藍帶即此範圍。
 考點見 <a class="qlink" href="problems-view/RC-2015-4.html">RC-2015-4</a>、<a class="qlink" href="problems-view/RC-2025-4.html">RC-2025-4</a>。
 </div>
 
@@ -384,6 +433,15 @@ $$f = \frac{P}{A} \pm \frac{P\,e'}{S}, \qquad e' = e - \frac{M}{P}$$
 </tbody>
 </table>
 
+<div class="trap">
+<b>版本注意：使用階段容許拉應力在現行規範已改為分級</b><br>
+上表 \(1.6\sqrt{f'_c}\)（\(0.5\sqrt{f'_c}\) MPa）是舊規範值，歷屆題多以此命題。
+土木 401-112／ACI 318-19 §24.5.2.1 改為依拉應力 \(f_t\) 分級：
+<b>Class U</b> \(f_t \le 2.0\sqrt{f'_c}\)（＝\(f_r\)，未開裂，可用全斷面彈性分析）、
+<b>Class T</b> \(2.0\sqrt{f'_c} < f_t \le 3.2\sqrt{f'_c}\)（過渡）、超過為 <b>Class C</b>（視為開裂，撓度須用 \(I_{cr}\)、要做裂縫控制）。
+題目若未指定版本，寫出你採用的版本；兩者並陳最穩。出自 <a class="qlink" href="problems-view/RC-2006-4.html">RC-2006-4</a>、<a class="qlink" href="problems-view/RC-2011-5.html">RC-2011-5</a> 的規範對照。
+</div>
+
 <div class="why">
 <b>單位制換算：三個係數都乘 3.19</b><br>
 凡是 \(k\sqrt{f'_c}\) 型的限值，換單位時<b>係數會變</b>（因為根號裡也要換）。推導：
@@ -420,7 +478,7 @@ $$M_T = \frac{(0.264+1.1)\times144}{8} = 24.552\ \text{tf·m} = 2{,}455{,}200\ \
 <thead><tr><th>項</th><th>傳遞階段（\(P_i=70\) tf）</th><th>使用階段（\(P_e=60\) tf）</th></tr></thead>
 <tbody>
 <tr><td>① \(P/A\)</td><td>70000/1100 = 63.64</td><td>60000/1100 = 54.55</td></tr>
-<tr><td>② \(P e/S\)</td><td>70000×19.8/15633 = 88.66</td><td>60000×19.8/15633 = 76.00</td></tr>
+<tr><td>② \(P e/S\)</td><td>70000×19.8/15633 = 88.66</td><td>60000×19.8/15633 = 75.99</td></tr>
 <tr><td>③ \(M/S\)</td><td>475200/15633 = 30.40</td><td>2455200/15633 = 157.05</td></tr>
 </tbody>
 </table>
@@ -429,22 +487,23 @@ $$M_T = \frac{(0.264+1.1)\times144}{8} = 24.552\ \text{tf·m} = 2{,}455{,}200\ \
 
 $$f_{\text{頂},1} = 63.64 - 88.66 + 30.40 = +5.38 \quad
 f_{\text{底},1} = 63.64 + 88.66 - 30.40 = +121.90$$
-$$f_{\text{頂},2} = 54.55 - 76.00 + 157.05 = +135.60 \quad
-f_{\text{底},2} = 54.55 + 76.00 - 157.05 = \mathbf{-26.50}\ (\text{拉})$$
+$$f_{\text{頂},2} = 54.55 - 75.99 + 157.05 = +135.61 \quad
+f_{\text{底},2} = 54.55 + 75.99 - 157.05 = \mathbf{-26.51}\ (\text{拉})$$
+（解析檔寫 76.00／−26.50，是 \(S\) 取整的捨入差，不影響判定。）
 
 <h4>步驟 4：讀出物理意義（比檢核更重要）</h4>
 <ul>
 <li>傳遞階段頂纖維只有 <b>+5.38</b>，幾乎歸零 → 偏心率 \(e/c = 19.8/30 = 0.66\)，是「壓到極限的大偏心設計」。
 再大一點頂纖維就會翻成拉力。</li>
-<li>底纖維從 +121.90 翻到 −26.50，<b>反差 148.4 kgf/cm²</b>，其中 126.65 來自活載重、21.75 來自預力損失。
-→ 想救底纖維，加預力（21.75 的來源）效果遠不如減小 \(M_l/S\)（126.65 的來源）。</li>
+<li>底纖維從 +121.90 翻到 −26.51，<b>反差 148.4 kgf/cm²</b>，其中 126.65 來自活載重、21.76 來自預力損失。
+→ 想救底纖維，加預力（21.76 的來源）效果遠不如減小 \(M_l/S\)（126.65 的來源）。</li>
 </ul>
 
 <h4>步驟 5：容許值檢核（注意單位制）</h4>
-傳遞階段壓 \(0.60\times300 = 180 > 121.90\) ✓；使用階段壓 \(0.45\times420 = 189 > 135.60\) ✓。<br>
-底纖維拉 26.50 kgf/cm²：採 kgf/cm² 制 \(1.6\sqrt{420} = 32.8\) 為<b>臨界通過（81%）</b>；
+傳遞階段壓 \(0.60\times300 = 180 > 121.90\) ✓；使用階段壓 \(0.45\times420 = 189 > 135.61\) ✓。<br>
+底纖維拉 26.51 kgf/cm²：採 kgf/cm² 制 \(1.6\sqrt{420} = 32.8\) 為<b>臨界通過（81%）</b>；
 知識庫該題解析採 \(1.0\sqrt{f'_c} = 20.49\) 判定<b>超限</b>。
-<b>兩者差別純粹在容許值係數的選取</b> —— 應力值 −26.50 本身是確定的。
+<b>兩者差別純粹在容許值係數的選取</b> —— 應力值 −26.51 本身是確定的（換成偏心距語言見 §6.2 圖）。
 考場上若題目未給容許值，<b>寫出你採用的規範版本與單位制</b>，判定就站得住腳。
 </div>
 
@@ -471,43 +530,60 @@ f_{\text{底},2} = 54.55 + 76.00 - 157.05 = \mathbf{-26.50}\ (\text{拉})$$
 <h3>4.1 三個斷面對應三個施工時刻</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 300" xmlns="http://www.w3.org/2000/svg">
-  <!-- p1 -->
-  <text x="150" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">① 淨斷面 (net)</text>
-  <text x="150" y="44" font-size="12" text-anchor="middle" fill="#607d8b">後拉法：灌漿前，導管是空洞</text>
-  <rect x="110" y="60" width="80" height="145" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
-  <circle cx="136" cy="180" r="8" fill="#fff" stroke="#c62828" stroke-width="1.6"/>
-  <circle cx="164" cy="180" r="8" fill="#fff" stroke="#c62828" stroke-width="1.6"/>
-  <text x="150" y="228" font-size="11.5" text-anchor="middle" fill="#c62828">扣除導管孔面積</text>
-  <text x="150" y="252" font-size="12" text-anchor="middle" fill="#455a64">承受：Pi ＋ 梁自重 MG</text>
-  <text x="150" y="272" font-size="11.5" text-anchor="middle" fill="#607d8b">RC-2011-5：A=2500, e=25</text>
-  <text x="228" y="140" font-size="20" text-anchor="middle" fill="#455a64">→</text>
-
-  <!-- p2 -->
-  <text x="450" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">② 變換斷面 (transformed)</text>
-  <text x="450" y="44" font-size="12" text-anchor="middle" fill="#607d8b">灌漿後：鋼腱與混凝土共同作用</text>
-  <rect x="410" y="60" width="80" height="145" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
-  <circle cx="436" cy="180" r="8" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
-  <circle cx="464" cy="180" r="8" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
-  <text x="450" y="228" font-size="11.5" text-anchor="middle" fill="#1565c0">孔洞填實，鋼腱以 n 倍換算計入</text>
-  <text x="450" y="252" font-size="12" text-anchor="middle" fill="#455a64">承受：Pe ＋ MG ＋ 版重 MS</text>
-  <text x="450" y="272" font-size="11.5" text-anchor="middle" fill="#607d8b">RC-2011-5：A=2800, e=24</text>
-  <text x="528" y="140" font-size="20" text-anchor="middle" fill="#455a64">→</text>
-
-  <!-- p3 -->
-  <text x="750" y="24" font-size="14" font-weight="700" text-anchor="middle" fill="#0d47a1">③ 合成斷面 (composite)</text>
-  <text x="750" y="44" font-size="12" text-anchor="middle" fill="#607d8b">現場版硬化後：梁＋版一起作用</text>
-  <rect x="672" y="60" width="156" height="26" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.8"/>
-  <rect x="710" y="86" width="80" height="119" fill="#eceff1" stroke="#546e7a" stroke-width="1.8"/>
-  <circle cx="736" cy="180" r="8" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
-  <circle cx="764" cy="180" r="8" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
-  <text x="750" y="228" font-size="11.5" text-anchor="middle" fill="#2e7d32">形心大幅上移，Sb 力臂變長</text>
-  <text x="750" y="252" font-size="12" text-anchor="middle" fill="#455a64">承受：活載重 ML（只有 ML！）</text>
-  <text x="750" y="272" font-size="11.5" text-anchor="middle" fill="#607d8b">RC-2011-5：A=3900, e=39</text>
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2011-5 淨、變換、合成三斷面形心與偏心距">
+<defs><marker id="a4" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#455a64"/></marker></defs>
+<text x="150.0" y="22.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">① 淨斷面 (net)</text>
+<text x="150.0" y="40.0" font-size="12" text-anchor="middle" fill="#607d8b">後拉法張拉瞬間：導管是空洞</text>
+<rect x="110.0" y="87.7" width="80.0" height="182.3" rx="0" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="92.0" y1="177.7" x2="208.0" y2="177.7" stroke="#1565c0" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="88.0" y="181.7" font-size="11" text-anchor="end" fill="#1565c0">形心 yb=46.2</text>
+<circle cx="137.0" cy="227.7" r="7" fill="#fff" stroke="#c62828" stroke-width="1.6"/>
+<circle cx="163.0" cy="227.7" r="7" fill="#fff" stroke="#c62828" stroke-width="1.6"/>
+<line x1="202.0" y1="177.7" x2="202.0" y2="227.7" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="197.0" y1="177.7" x2="207.0" y2="177.7" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="197.0" y1="227.7" x2="207.0" y2="227.7" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="210.0" y="207.7" font-size="12.5" text-anchor="start" fill="#ef6c00" font-weight="700">ep = 25</text>
+<text x="150.0" y="296.0" font-size="12.5" text-anchor="middle" fill="#263238" font-weight="700">承受：Fi ＋ 梁自重 MG</text>
+<text x="150.0" y="316.0" font-size="11.5" text-anchor="middle" fill="#607d8b">A = 2500、Zt = 40k、Zb = 39k cm³</text>
+<text x="450.0" y="22.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">② 變換斷面 (transformed)</text>
+<text x="450.0" y="40.0" font-size="12" text-anchor="middle" fill="#607d8b">灌漿後：鋼腱以 n 倍計入</text>
+<rect x="410.0" y="88.9" width="80.0" height="181.1" rx="0" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="392.0" y1="181.6" x2="508.0" y2="181.6" stroke="#1565c0" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="388.0" y="185.6" font-size="11" text-anchor="end" fill="#1565c0">形心 yb=44.2</text>
+<circle cx="437.0" cy="229.6" r="7" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+<circle cx="463.0" cy="229.6" r="7" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+<line x1="502.0" y1="181.6" x2="502.0" y2="229.6" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="497.0" y1="181.6" x2="507.0" y2="181.6" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="497.0" y1="229.6" x2="507.0" y2="229.6" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="510.0" y="210.6" font-size="12.5" text-anchor="start" fill="#ef6c00" font-weight="700">ep = 24</text>
+<text x="450.0" y="296.0" font-size="12.5" text-anchor="middle" fill="#263238" font-weight="700">承受：F0 ＋ MG ＋ 版重 MS</text>
+<text x="450.0" y="316.0" font-size="11.5" text-anchor="middle" fill="#607d8b">A = 2800、Zt = 41k、Zb = 43k cm³</text>
+<text x="750.0" y="22.0" font-size="14" text-anchor="middle" fill="#0d47a1" font-weight="700">③ 合成斷面 (composite)</text>
+<text x="750.0" y="40.0" font-size="12" text-anchor="middle" fill="#607d8b">現場版硬化後：梁＋版共同作用</text>
+<rect x="668.0" y="58.9" width="164.0" height="30.0" rx="0" fill="#cfd8dc" stroke="#546e7a" stroke-width="1.6"/>
+<text x="836.0" y="78.9" font-size="11" text-anchor="start" fill="#607d8b">現場版</text>
+<rect x="710.0" y="88.9" width="80.0" height="181.1" rx="0" fill="#eceff1" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="692.0" y1="153.8" x2="808.0" y2="153.8" stroke="#1565c0" stroke-width="1.4" stroke-dasharray="6 4"/>
+<text x="688.0" y="157.8" font-size="11" text-anchor="end" fill="#1565c0">形心 yb=58.1</text>
+<line x1="710.0" y1="181.6" x2="790.0" y2="181.6" stroke="#90a4ae" stroke-width="1" stroke-dasharray="2 3"/>
+<text x="688.0" y="195.6" font-size="10.5" text-anchor="end" fill="#607d8b">（②形心 44.2）</text>
+<line x1="724.0" y1="181.6" x2="724.0" y2="156.8" stroke="#ef6c00" stroke-width="1.4" marker-end="url(#a4)"/>
+<text x="728.0" y="172.7" font-size="11" text-anchor="start" fill="#ef6c00" font-weight="700">+13.9</text>
+<circle cx="737.0" cy="231.8" r="7" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+<circle cx="763.0" cy="231.8" r="7" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+<line x1="802.0" y1="153.8" x2="802.0" y2="231.8" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="797.0" y1="153.8" x2="807.0" y2="153.8" stroke="#ef6c00" stroke-width="1.6"/>
+<line x1="797.0" y1="231.8" x2="807.0" y2="231.8" stroke="#ef6c00" stroke-width="1.6"/>
+<text x="810.0" y="197.8" font-size="12.5" text-anchor="start" fill="#ef6c00" font-weight="700">ep = 39</text>
+<text x="750.0" y="296.0" font-size="12.5" text-anchor="middle" fill="#263238" font-weight="700">承受：活載重 ML（只有 ML！）</text>
+<text x="750.0" y="316.0" font-size="11.5" text-anchor="middle" fill="#607d8b">A = 3900、Zt = 137k、Zb = 74k cm³</text>
+<text x="300.0" y="170.0" font-size="22" text-anchor="middle" fill="#455a64">→</text>
+<text x="600.0" y="170.0" font-size="22" text-anchor="middle" fill="#455a64">→</text>
 </svg>
 <div class="cap">
-關鍵是最下面那一行：每個載重<b>只能作用在它施加當時已經存在的斷面上</b>。
-版重 MS 在版還是濕的時候就壓上來了 → 它作用在②，不是③。這一條錯了，整題全錯。
+依 RC-2011-5 題給的 \(I\)、\(Z_t\)、\(Z_b\) 反算 \(y_b = I/Z_b\)，形心高度與 \(e_p\) 按同一垂直比例繪製（斷面外形為示意）。
+加版後形心上移 13.9 cm，\(e_p\) 才會從 24 跳到 39。每個載重只能作用在它施加當時已經存在的斷面上：
+版重 \(M_S\) 在版還是濕的時候就壓上來了 → 它作用在②，不是③。這一條錯了，整題全錯。
 </div>
 </div>
 
@@ -549,7 +625,10 @@ $$\Delta\sigma_c = -\frac{(M_G{+}M_S)e_{p2}}{I_2} - \frac{M_L e_{p3}}{I_3}
 $$f_s = \frac{220000}{24} + 6\times120.33 = 9167 + 722 = 9{,}889\ \text{kgf/cm}^2$$
 
 <b>自我檢查：</b>腱應力<b>一定比 \(F_0/A_{sp}\) 大</b>（載重把梁壓彎 → 腱被拉長）。
-若你算出比 9167 還小，符號一定反了。修正量約 8%，量級也合理（若算出 50% 就是 \(n\) 或單位錯）。
+若你算出比 9167 還小，符號一定反了。修正量約 8%，量級也合理（若算出 50% 就是 \(n\) 或單位錯）。<br>
+<b>起算點的歧義：</b>上式把 \(M_G\) 也算進腱應力增量，與混凝土應力的算法一致（知識庫主線答案 9,889）。
+嚴格說 \(M_G\) 在張拉當下已作用、當時導管尚未灌漿，若只計灌漿後的 \(M_S + M_L\)，得 9,661 kgf/cm²（差 2.3%）。
+作答時寫出你的假設即可。
 </div>
 
 <div class="trap">
@@ -614,7 +693,7 @@ $$S_{comp,top} = \frac{4{,}188{,}623}{14.93} = 280{,}552,\qquad S_{comp,bot} = \
 $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4 = \mathbf{-106.3}\ (\text{拉})$$
 
 <b>自我檢查（三個都要做）：</b><br>
-① \(\bar y = 65.07\) 必須落在梁頂（80）與版形心（87.5）之間偏梁側 → 合理 ✓<br>
+① \(\bar y = 65.07\) 必須落在梁形心（40）與版形心（87.5）之間，且因版的換算面積 2683 略大於梁 2400 而略偏版側（中點 63.75）→ 合理 ✓<br>
 ② \(S_{comp,top}/S_{comp,bot} = 4.36 \gg 1\) → 組合斷面形心嚴重偏上，符合預期 ✓<br>
 ③ Stage 1 頂纖維出現 \(-76.56\) 的<b>純預力拉應力</b>，但被自重＋版重的 \(+202.50\) 蓋過去 →
 <b>這正是「預力梁一定要在有自重的狀態下放張」的原因</b>；若梁在無自重狀態（例如吊裝支撐點不同）驗算，頂纖維就會裂。
@@ -646,41 +725,61 @@ $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4
 <h3>6.1 方向：跟著彎矩圖走</h3>
 
 <div class="fig">
-<svg viewBox="0 0 900 340" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="20" x2="450" y2="320" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-
-  <!-- 簡支 -->
-  <text x="225" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">簡支梁：底部受拉</text>
-  <rect x="45" y="50" width="360" height="66" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
-  <line x1="45" y1="83" x2="405" y2="83" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="6 4"/>
-  <path d="M45,83 Q225,124 405,83" fill="none" stroke="#c62828" stroke-width="2.6"/>
-  <text x="225" y="140" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">c.g.s. 在形心下方</text>
-  <path d="M45,116 L36,132 L54,132 Z" fill="#546e7a"/>
-  <circle cx="405" cy="124" r="7" fill="none" stroke="#546e7a" stroke-width="1.6"/>
-  <line x1="45" y1="180" x2="405" y2="180" stroke="#455a64" stroke-width="1.4"/>
-  <path d="M45,180 Q225,254 405,180 Z" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
-  <text x="225" y="228" font-size="12.5" text-anchor="middle" fill="#0d47a1" font-weight="700">正彎矩（sagging）</text>
-  <text x="225" y="278" font-size="13" text-anchor="middle" fill="#455a64">最大彎矩在跨中 → 偏心也在跨中最大</text>
-  <text x="225" y="300" font-size="13" text-anchor="middle" fill="#455a64">支承處 M = 0 → 偏心應趨近 0</text>
-  <text x="225" y="322" font-size="12" text-anchor="middle" fill="#ef6c00">端部若仍有大偏心 → 傳遞階段頂纖維開裂</text>
-
-  <!-- 懸臂 -->
-  <text x="675" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">懸臂梁：頂部受拉</text>
-  <rect x="495" y="50" width="360" height="66" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
-  <rect x="485" y="42" width="10" height="82" fill="#78909c"/>
-  <line x1="495" y1="83" x2="855" y2="83" stroke="#90a4ae" stroke-width="1.3" stroke-dasharray="6 4"/>
-  <path d="M495,58 Q675,66 855,83" fill="none" stroke="#c62828" stroke-width="2.6"/>
-  <text x="675" y="140" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">c.g.s. 在形心上方</text>
-  <line x1="495" y1="254" x2="855" y2="254" stroke="#455a64" stroke-width="1.4"/>
-  <path d="M495,180 Q675,238 855,254 L495,254 Z" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
-  <text x="700" y="214" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">負彎矩（hogging）</text>
-  <text x="675" y="278" font-size="13" text-anchor="middle" fill="#455a64">最大彎矩在固定端 → 偏心在固定端最大</text>
-  <text x="675" y="300" font-size="13" text-anchor="middle" fill="#455a64">自由端 M = 0</text>
-  <text x="675" y="322" font-size="12" text-anchor="middle" fill="#ef6c00">若全長固定偏心 → 自由端才是控制斷面</text>
+<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="簡支梁與懸臂梁的偏心方向與彎矩圖">
+<defs><marker id="a6" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#546e7a"/></marker></defs>
+<line x1="450.0" y1="20.0" x2="450.0" y2="345.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="225.0" y="22.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">簡支梁（均布載重）：底部受拉</text>
+<line x1="55.0" y1="32.0" x2="55.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="97.5" y1="32.0" x2="97.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="140.0" y1="32.0" x2="140.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="182.5" y1="32.0" x2="182.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="225.0" y1="32.0" x2="225.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="267.5" y1="32.0" x2="267.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="310.0" y1="32.0" x2="310.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="352.5" y1="32.0" x2="352.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="395.0" y1="32.0" x2="395.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="45.0" y1="32.0" x2="405.0" y2="32.0" stroke="#546e7a" stroke-width="1.2"/>
+<rect x="45.0" y="52.0" width="360.0" height="66.0" rx="0" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="45.0" y1="85.0" x2="405.0" y2="85.0" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="6 4"/>
+<polyline points="45.0,85.0 51.0,86.6 57.0,88.1 63.0,89.6 69.0,91.0 75.0,92.3 81.0,93.6 87.0,94.9 93.0,96.1 99.0,97.2 105.0,98.3 111.0,99.4 117.0,100.4 123.0,101.3 129.0,102.2 135.0,103.0 141.0,103.8 147.0,104.5 153.0,105.2 159.0,105.8 165.0,106.3 171.0,106.8 177.0,107.3 183.0,107.7 189.0,108.0 195.0,108.3 201.0,108.6 207.0,108.8 213.0,108.9 219.0,109.0 225.0,109.0 231.0,109.0 237.0,108.9 243.0,108.8 249.0,108.6 255.0,108.3 261.0,108.0 267.0,107.7 273.0,107.3 279.0,106.8 285.0,106.3 291.0,105.8 297.0,105.2 303.0,104.5 309.0,103.8 315.0,103.0 321.0,102.2 327.0,101.3 333.0,100.4 339.0,99.4 345.0,98.3 351.0,97.2 357.0,96.1 363.0,94.9 369.0,93.6 375.0,92.3 381.0,91.0 387.0,89.6 393.0,88.1 399.0,86.6 405.0,85.0" fill="none" stroke="#c62828" stroke-width="2.6"/>
+<text x="225.0" y="136.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">c.g.s.：e(x) ∝ x(L−x)，跨中最大、支承處為 0</text>
+<polygon points="45.0,118.0 36.0,132.0 54.0,132.0" fill="#546e7a" stroke="#546e7a" stroke-width="1"/>
+<circle cx="405.0" cy="125.0" r="7" fill="none" stroke="#546e7a" stroke-width="1.6"/>
+<polygon points="45.0,168.0 51.0,172.2 57.0,176.2 63.0,180.2 69.0,183.9 75.0,187.6 81.0,191.0 87.0,194.4 93.0,197.6 99.0,200.6 105.0,203.6 111.0,206.3 117.0,209.0 123.0,211.4 129.0,213.8 135.0,216.0 141.0,218.1 147.0,220.0 153.0,221.8 159.0,223.4 165.0,224.9 171.0,226.2 177.0,227.4 183.0,228.5 189.0,229.4 195.0,230.2 201.0,230.9 207.0,231.4 213.0,231.7 219.0,231.9 225.0,232.0 231.0,231.9 237.0,231.7 243.0,231.4 249.0,230.9 255.0,230.2 261.0,229.4 267.0,228.5 273.0,227.4 279.0,226.2 285.0,224.9 291.0,223.4 297.0,221.8 303.0,220.0 309.0,218.1 315.0,216.0 321.0,213.8 327.0,211.4 333.0,209.0 339.0,206.3 345.0,203.6 351.0,200.6 357.0,197.6 363.0,194.4 369.0,191.0 375.0,187.6 381.0,183.9 387.0,180.2 393.0,176.2 399.0,172.2 405.0,168.0" fill="#bbdefb" stroke="#1565c0" stroke-width="1.8"/>
+<line x1="45.0" y1="168.0" x2="405.0" y2="168.0" stroke="#455a64" stroke-width="1.4"/>
+<text x="225.0" y="210.0" font-size="12.5" text-anchor="middle" fill="#0d47a1" font-weight="700">M(x) = w x(L−x)/2（畫在受拉側）</text>
+<text x="225.0" y="270.0" font-size="13" text-anchor="middle" fill="#455a64">同一條拋物線：鋼腱形狀＝彎矩圖形狀</text>
+<text x="225.0" y="292.0" font-size="13" text-anchor="middle" fill="#455a64">支承處 M = 0 → 偏心也應為 0</text>
+<text x="225.0" y="316.0" font-size="12" text-anchor="middle" fill="#ef6c00">端部若仍有大偏心 → 傳遞階段頂纖維開裂</text>
+<text x="675.0" y="22.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">懸臂梁（均布載重）：頂部受拉</text>
+<line x1="505.0" y1="32.0" x2="505.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="547.5" y1="32.0" x2="547.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="590.0" y1="32.0" x2="590.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="632.5" y1="32.0" x2="632.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="675.0" y1="32.0" x2="675.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="717.5" y1="32.0" x2="717.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="760.0" y1="32.0" x2="760.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="802.5" y1="32.0" x2="802.5" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="845.0" y1="32.0" x2="845.0" y2="48.0" stroke="#546e7a" stroke-width="1.2" marker-end="url(#a6)"/>
+<line x1="495.0" y1="32.0" x2="855.0" y2="32.0" stroke="#546e7a" stroke-width="1.2"/>
+<rect x="495.0" y="52.0" width="360.0" height="66.0" rx="0" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
+<rect x="483.0" y="40.0" width="12.0" height="90.0" rx="0" fill="#78909c" stroke="#546e7a" stroke-width="1"/>
+<line x1="495.0" y1="85.0" x2="855.0" y2="85.0" stroke="#90a4ae" stroke-width="1.2" stroke-dasharray="6 4"/>
+<polyline points="495.0,61.0 501.0,61.8 507.0,62.6 513.0,63.3 519.0,64.1 525.0,64.8 531.0,65.6 537.0,66.3 543.0,67.0 549.0,67.7 555.0,68.3 561.0,69.0 567.0,69.6 573.0,70.3 579.0,70.9 585.0,71.5 591.0,72.1 597.0,72.7 603.0,73.2 609.0,73.8 615.0,74.3 621.0,74.9 627.0,75.4 633.0,75.9 639.0,76.4 645.0,76.8 651.0,77.3 657.0,77.7 663.0,78.2 669.0,78.6 675.0,79.0 681.0,79.4 687.0,79.8 693.0,80.1 699.0,80.5 705.0,80.8 711.0,81.2 717.0,81.5 723.0,81.8 729.0,82.1 735.0,82.3 741.0,82.6 747.0,82.8 753.0,83.1 759.0,83.3 765.0,83.5 771.0,83.7 777.0,83.9 783.0,84.0 789.0,84.2 795.0,84.3 801.0,84.5 807.0,84.6 813.0,84.7 819.0,84.8 825.0,84.8 831.0,84.9 837.0,84.9 843.0,85.0 849.0,85.0 855.0,85.0" fill="none" stroke="#c62828" stroke-width="2.6"/>
+<line x1="495.0" y1="61.0" x2="855.0" y2="61.0" stroke="#6a1b9a" stroke-width="1.6" stroke-dasharray="6 3"/>
+<text x="850.0" y="75.0" font-size="11" text-anchor="end" fill="#6a1b9a" font-weight="700">全長固定偏心（RC-2012-1）</text>
+<text x="675.0" y="136.0" font-size="12" text-anchor="middle" fill="#c62828" font-weight="700">c.g.s.：e(x) ∝ (L−x)²，固定端最大、自由端為 0</text>
+<polygon points="495.0,168.0 501.0,170.1 507.0,172.2 513.0,174.2 519.0,176.2 525.0,178.2 531.0,180.2 537.0,182.1 543.0,183.9 549.0,185.8 555.0,187.6 561.0,189.3 567.0,191.0 573.0,192.7 579.0,194.4 585.0,196.0 591.0,197.6 597.0,199.1 603.0,200.6 609.0,202.1 615.0,203.6 621.0,205.0 627.0,206.3 633.0,207.7 639.0,209.0 645.0,210.2 651.0,211.4 657.0,212.6 663.0,213.8 669.0,214.9 675.0,216.0 681.0,217.0 687.0,218.1 693.0,219.0 699.0,220.0 705.0,220.9 711.0,221.8 717.0,222.6 723.0,223.4 729.0,224.2 735.0,224.9 741.0,225.6 747.0,226.2 753.0,226.9 759.0,227.4 765.0,228.0 771.0,228.5 777.0,229.0 783.0,229.4 789.0,229.8 795.0,230.2 801.0,230.6 807.0,230.9 813.0,231.1 819.0,231.4 825.0,231.6 831.0,231.7 837.0,231.8 843.0,231.9 849.0,232.0 855.0,232.0 855.0,232.0 495.0,232.0" fill="#ffcdd2" stroke="#c62828" stroke-width="1.8"/>
+<line x1="495.0" y1="232.0" x2="855.0" y2="232.0" stroke="#455a64" stroke-width="1.4"/>
+<text x="700.0" y="190.0" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">M(x) = −w(L−x)²/2（畫在受拉側）</text>
+<text x="860.0" y="250.0" font-size="11" text-anchor="end" fill="#607d8b">自由端 M=0、斜率也為 0</text>
+<text x="675.0" y="270.0" font-size="13" text-anchor="middle" fill="#455a64">最大彎矩在固定端 → 偏心在固定端最大</text>
+<text x="675.0" y="292.0" font-size="13" text-anchor="middle" fill="#455a64">若全長固定偏心（紫虛線）：自由端沒有 M 抵銷</text>
+<text x="675.0" y="316.0" font-size="12" text-anchor="middle" fill="#ef6c00">→ 自由端底緣拉應力最大，才是控制斷面</text>
 </svg>
 <div class="cap">
-兩側的圖是彼此上下翻轉的。把彎矩圖畫出來、看哪一側受拉，鋼腱就放那一側 —— 這是唯一需要記住的規則。
-右側那行橘字是 RC-2012-1 的整題關鍵。
+兩側都畫均布載重，曲線用正確函數：簡支 \(M\propto x(L-x)\)、懸臂 \(M\propto (L-x)^2\)（自由端斜率為 0）。
+把彎矩圖畫在受拉側，鋼腱就放那一側 —— 這是唯一需要記住的規則。紫虛線是 RC-2012-1 的全長固定偏心，整題關鍵在自由端。
 </div>
 </div>
 
@@ -695,7 +794,7 @@ $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4
 
 <h3>6.2 範圍：四控制條件如何夾出 e 的上下限</h3>
 
-<p>把四個容許應力當<b>等式</b>，各解一次，就得到四個關於 \(e\) 的不等式。它們的物理分工非常整齊：</p>
+<p>把四個容許應力當<b>等式</b>，各解一次，就得到四個關於 \(e\) 的不等式。它們的物理分工非常整齊（RC-2014-4 實算見下圖）：</p>
 
 <table>
 <thead><tr><th>條件</th><th>階段</th><th>纖維</th><th>限制 \(e\) 的哪一邊</th><th>物理</th></tr></thead>
@@ -706,6 +805,63 @@ $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4
 <tr><td>\(\sigma_{t,s} \leq 0.45f'_{c}\)</td><td>使用</td><td>頂</td><td>下限（多半不控制）</td><td>e 太小 → 頂纖維壓應力過大</td></tr>
 </tbody>
 </table>
+
+<div class="fig">
+<svg viewBox="0 0 900 366" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2014-4 四控制條件夾出偏心距區間">
+<text x="218.0" y="74.0" font-size="12.5" text-anchor="end" fill="#263238" font-weight="700">傳遞・頂緣（拉）</text>
+<rect x="230.0" y="62.0" width="421.7" height="16.0" rx="3" fill="#2e7d32" stroke="#2e7d32" stroke-width="1" fill-opacity="0.28"/>
+<line x1="651.7" y1="58.0" x2="651.7" y2="82.0" stroke="#2e7d32" stroke-width="2.6"/>
+<text x="657.7" y="74.0" font-size="12" text-anchor="start" fill="#2e7d32" font-weight="700">e ≤ 24.10</text>
+<text x="218.0" y="108.0" font-size="12.5" text-anchor="end" fill="#607d8b">傳遞・底緣（壓）</text>
+<rect x="230.0" y="96.0" width="573.6" height="16.0" rx="3" fill="#90a4ae" stroke="#90a4ae" stroke-width="1" fill-opacity="0.18"/>
+<line x1="803.6" y1="92.0" x2="803.6" y2="116.0" stroke="#90a4ae" stroke-width="2.6"/>
+<text x="809.6" y="108.0" font-size="12" text-anchor="start" fill="#90a4ae" font-weight="700">e ≤ 32.78</text>
+<text x="218.0" y="142.0" font-size="12.5" text-anchor="end" fill="#263238" font-weight="700">使用・底緣（拉 1.6√f'c）</text>
+<rect x="547.9" y="130.0" width="312.1" height="16.0" rx="3" fill="#c62828" stroke="#c62828" stroke-width="1" fill-opacity="0.28"/>
+<line x1="547.9" y1="126.0" x2="547.9" y2="150.0" stroke="#c62828" stroke-width="2.6"/>
+<text x="541.9" y="142.0" font-size="12" text-anchor="end" fill="#c62828" font-weight="700">e ≥ 18.16</text>
+<text x="218.0" y="176.0" font-size="12.5" text-anchor="end" fill="#607d8b">使用・頂緣（壓）</text>
+<rect x="333.0" y="164.0" width="527.0" height="16.0" rx="3" fill="#90a4ae" stroke="#90a4ae" stroke-width="1" fill-opacity="0.18"/>
+<line x1="333.0" y1="160.0" x2="333.0" y2="184.0" stroke="#90a4ae" stroke-width="2.6"/>
+<text x="327.0" y="176.0" font-size="12" text-anchor="end" fill="#90a4ae" font-weight="700">e ≥ 5.89</text>
+<text x="218.0" y="210.0" font-size="12.5" text-anchor="end" fill="#263238" font-weight="700">使用・底緣（拉 1.0√f'c）</text>
+<rect x="603.9" y="198.0" width="256.1" height="16.0" rx="3" fill="#8d6e63" stroke="#8d6e63" stroke-width="1" stroke-dasharray="5 3" fill-opacity="0.28"/>
+<line x1="603.9" y1="194.0" x2="603.9" y2="218.0" stroke="#8d6e63" stroke-width="2.6"/>
+<text x="597.9" y="210.0" font-size="12" text-anchor="end" fill="#8d6e63" font-weight="700">e ≥ 21.37</text>
+<text x="218.0" y="254.0" font-size="12.5" text-anchor="end" fill="#1565c0" font-weight="700">可行區間（1.6√f'c）</text>
+<rect x="547.9" y="242.0" width="103.8" height="16.0" rx="3" fill="#bbdefb" stroke="#1565c0" stroke-width="1.6"/>
+<text x="659.7" y="254.0" font-size="12" text-anchor="start" fill="#1565c0" font-weight="700">18.16 ≤ e ≤ 24.10 → 19.8 ✓</text>
+<text x="218.0" y="286.0" font-size="12.5" text-anchor="end" fill="#8d6e63" font-weight="700">可行區間（1.0√f'c）</text>
+<rect x="603.9" y="274.0" width="47.8" height="16.0" rx="3" fill="#efebe9" stroke="#8d6e63" stroke-width="1.4" stroke-dasharray="5 3"/>
+<text x="659.7" y="286.0" font-size="12" text-anchor="start" fill="#8d6e63" font-weight="700">21.37 ≤ e ≤ 24.10 → 19.8 ✗</text>
+<line x1="230.0" y1="320.0" x2="860.0" y2="320.0" stroke="#455a64" stroke-width="1.6"/>
+<line x1="230.0" y1="320.0" x2="230.0" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="230.0" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">0</text>
+<line x1="317.5" y1="320.0" x2="317.5" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="317.5" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">5</text>
+<line x1="405.0" y1="320.0" x2="405.0" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="405.0" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">10</text>
+<line x1="492.5" y1="320.0" x2="492.5" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="492.5" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">15</text>
+<line x1="580.0" y1="320.0" x2="580.0" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="580.0" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">20</text>
+<line x1="667.5" y1="320.0" x2="667.5" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="667.5" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">25</text>
+<line x1="755.0" y1="320.0" x2="755.0" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="755.0" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">30</text>
+<line x1="842.5" y1="320.0" x2="842.5" y2="326.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="842.5" y="340.0" font-size="11.5" text-anchor="middle" fill="#455a64">35</text>
+<text x="860.0" y="356.0" font-size="12" text-anchor="end" fill="#455a64">偏心距 e（cm，形心下方）</text>
+<line x1="576.5" y1="44.0" x2="576.5" y2="320.0" stroke="#ef6c00" stroke-width="1.8" stroke-dasharray="6 4"/>
+<text x="576.5" y="38.0" font-size="12.5" text-anchor="middle" fill="#ef6c00" font-weight="700">題給 e = 19.8</text>
+<text x="14.0" y="22.0" font-size="13" text-anchor="start" fill="#0d47a1" font-weight="700">RC-2014-4 跨中：Pi = 70、Pe = 60 tf 固定，把四個容許值當等式各解一次</text>
+</svg>
+<div class="cap">
+把 RC-2014-4 的四個容許值各當等式解一次。實線框為控制條件（傳遞頂緣給上限、使用底緣給下限），灰框不控制。
+同一個 e = 19.8：容許拉應力取 \(1.6\sqrt{f'_c}\) 時落在區間內，取 \(1.0\sqrt{f'_c}\) 時下限升到 21.37 而出界 ——
+§3.3 兩種判定的差別，在這張圖上就是下限那條線的位置。
+</div>
+</div>
 
 <div class="why">
 <b>記法：「上限管傳遞、下限管使用」</b><br>
@@ -734,44 +890,68 @@ $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 900 380" xmlns="http://www.w3.org/2000/svg">
-  <line x1="120" y1="320" x2="860" y2="320" stroke="#455a64" stroke-width="1.8"/>
-  <line x1="120" y1="320" x2="120" y2="45" stroke="#455a64" stroke-width="1.8"/>
-  <text x="860" y="345" font-size="12.5" text-anchor="end" fill="#455a64">曲率 φ（變形）</text>
-  <text x="112" y="40" font-size="12.5" text-anchor="end" fill="#455a64">彎矩 M</text>
-
-  <line x1="120" y1="248" x2="860" y2="248" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="5 4"/>
-  <line x1="120" y1="196" x2="860" y2="196" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="5 4"/>
-  <line x1="120" y1="96" x2="860" y2="96" stroke="#90a4ae" stroke-width="1.1" stroke-dasharray="5 4"/>
-  <line x1="120" y1="136" x2="860" y2="136" stroke="#ef6c00" stroke-width="1.1" stroke-dasharray="3 3"/>
-
-  <text x="114" y="252" font-size="12" text-anchor="end" fill="#1565c0" font-weight="700">M_dec</text>
-  <text x="114" y="200" font-size="12" text-anchor="end" fill="#c62828" font-weight="700">M_cr</text>
-  <text x="114" y="100" font-size="12" text-anchor="end" fill="#2e7d32" font-weight="700">M_n</text>
-  <text x="114" y="140" font-size="11.5" text-anchor="end" fill="#ef6c00">1.2 M_cr</text>
-
-  <polyline points="120,320 250,248 340,196" fill="none" stroke="#1565c0" stroke-width="3"/>
-  <polyline points="340,196 470,150 620,112 740,96" fill="none" stroke="#c62828" stroke-width="3"/>
-  <polyline points="740,96 830,90" fill="none" stroke="#2e7d32" stroke-width="3"/>
-
-  <circle cx="250" cy="248" r="5.5" fill="#1565c0"/>
-  <circle cx="340" cy="196" r="5.5" fill="#c62828"/>
-  <circle cx="740" cy="96" r="5.5" fill="#2e7d32"/>
-
-  <text x="262" y="286" font-size="12.5" fill="#1565c0" font-weight="700">①去壓</text>
-  <text x="262" y="304" font-size="11.5" fill="#607d8b">底纖維應力 = 0</text>
-  <text x="352" y="176" font-size="12.5" fill="#c62828" font-weight="700">②開裂（勁度掉一階）</text>
-  <text x="352" y="158" font-size="11.5" fill="#607d8b">底纖維 = −fr</text>
-  <text x="700" y="72" font-size="12.5" fill="#2e7d32" font-weight="700">③極限（鋼腱進入應變硬化）</text>
-
-  <text x="150" y="300" font-size="11.5" fill="#607d8b">全斷面受壓</text>
-  <text x="150" y="316" font-size="11.5" fill="#607d8b">用 Ig，彈性</text>
-  <text x="500" y="240" font-size="12" fill="#455a64">開裂後斜率變小（Icr）：這一段是撓度計算的戰場（RC-U3-1）</text>
-  <text x="500" y="262" font-size="12" fill="#455a64">預力梁設計目標：使用載重永遠停在①與②之間</text>
+<svg viewBox="0 0 900 400" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="RC-2004-5 彎矩-曲率曲線三門檻">
+<defs><marker id="a7" markerWidth="9" markerHeight="9" refX="7" refY="4.5" orient="auto"><path d="M0,0 L9,4.5 L0,9 z" fill="#455a64"/></marker></defs>
+<line x1="150.0" y1="350.0" x2="515.0" y2="350.0" stroke="#455a64" stroke-width="1.8"/>
+<line x1="535.0" y1="350.0" x2="868.0" y2="350.0" stroke="#455a64" stroke-width="1.8" marker-end="url(#a7)"/>
+<line x1="511.0" y1="357.0" x2="519.0" y2="343.0" stroke="#455a64" stroke-width="1.6"/>
+<line x1="531.0" y1="357.0" x2="539.0" y2="343.0" stroke="#455a64" stroke-width="1.6"/>
+<line x1="150.0" y1="350.0" x2="150.0" y2="30.0" stroke="#455a64" stroke-width="1.8" marker-end="url(#a7)"/>
+<text x="868.0" y="386.0" font-size="12.5" text-anchor="end" fill="#455a64">曲率 φ（1/cm）</text>
+<text x="144.0" y="26.0" font-size="12.5" text-anchor="end" fill="#455a64">彎矩 M（tf·m）</text>
+<line x1="210.0" y1="350.0" x2="210.0" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="210.0" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">−2</text>
+<line x1="270.0" y1="350.0" x2="270.0" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="270.0" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">0</text>
+<line x1="330.0" y1="350.0" x2="330.0" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="330.0" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">2</text>
+<line x1="390.0" y1="350.0" x2="390.0" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="390.0" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">4</text>
+<line x1="450.0" y1="350.0" x2="450.0" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="450.0" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">6</text>
+<text x="300.0" y="386.0" font-size="11" text-anchor="middle" fill="#607d8b">×10⁻⁶（未開裂段，實比例）</text>
+<line x1="634.4" y1="350.0" x2="634.4" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="634.4" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">1×10⁻⁴</text>
+<line x1="736.9" y1="350.0" x2="736.9" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="736.9" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">2×10⁻⁴</text>
+<line x1="839.5" y1="350.0" x2="839.5" y2="356.0" stroke="#455a64" stroke-width="1.2"/>
+<text x="839.5" y="370.0" font-size="11" text-anchor="middle" fill="#455a64">3×10⁻⁴</text>
+<line x1="270.0" y1="350.0" x2="270.0" y2="40.0" stroke="#b0bec5" stroke-width="1" stroke-dasharray="3 3"/>
+<text x="274.0" y="50.0" font-size="11" text-anchor="start" fill="#607d8b">φ = 0</text>
+<line x1="150.0" y1="70.1" x2="860.0" y2="70.1" stroke="#2e7d32" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.85"/>
+<text x="144.0" y="74.1" font-size="11.5" text-anchor="end" fill="#2e7d32" font-weight="700">Mn = 73.7</text>
+<line x1="150.0" y1="98.1" x2="860.0" y2="98.1" stroke="#2e7d32" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.85"/>
+<text x="144.0" y="102.1" font-size="11.5" text-anchor="end" fill="#2e7d32" font-weight="700">φMn = 66.3</text>
+<line x1="150.0" y1="118.8" x2="860.0" y2="118.8" stroke="#ef6c00" stroke-width="1.1" stroke-dasharray="3 3" opacity="0.85"/>
+<text x="144.0" y="122.8" font-size="11.5" text-anchor="end" fill="#ef6c00" font-weight="700">1.2Mcr = 60.8</text>
+<line x1="150.0" y1="157.4" x2="860.0" y2="157.4" stroke="#c62828" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.85"/>
+<text x="144.0" y="161.4" font-size="11.5" text-anchor="end" fill="#c62828" font-weight="700">Mcr = 50.7</text>
+<line x1="150.0" y1="234.1" x2="860.0" y2="234.1" stroke="#1565c0" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.85"/>
+<text x="144.0" y="238.1" font-size="11.5" text-anchor="end" fill="#1565c0" font-weight="700">Mdec = 30.5</text>
+<line x1="150.0" y1="268.9" x2="860.0" y2="268.9" stroke="#607d8b" stroke-width="1.1" stroke-dasharray="5 4" opacity="0.85"/>
+<text x="144.0" y="272.9" font-size="11.5" text-anchor="end" fill="#607d8b" font-weight="700">Pe·e = 21.3</text>
+<line x1="176.1" y1="350.0" x2="399.1" y2="157.4" stroke="#1565c0" stroke-width="3"/>
+<polyline points="399.1,157.4 404.6,154.5 410.0,151.8 415.4,149.1 420.9,146.5 426.3,143.9 431.7,141.3 437.2,138.9 442.6,136.4 448.0,134.1 453.5,131.7 458.9,129.5 464.3,127.3 469.8,125.1 475.2,123.0 480.6,120.9 486.1,118.9 491.5,117.0 496.9,115.1 502.4,113.2 507.8,111.4 513.2,109.6 518.7,107.9 524.1,106.2 529.5,104.6 535.0,103.0 540.4,101.5 545.8,100.0 551.2,98.5 556.7,97.1 562.1,95.8 567.5,94.5 573.0,93.2 578.4,92.0 583.8,90.8 589.3,89.6 594.7,88.5 600.1,87.4 605.6,86.4 611.0,85.4 616.4,84.5 621.9,83.5 627.3,82.7 632.7,81.8 638.2,81.0 643.6,80.2 649.0,79.5 654.5,78.8 659.9,78.1 665.3,77.5 670.8,76.9 676.2,76.3 681.6,75.8 687.1,75.2 692.5,74.8 697.9,74.3 703.4,73.9 708.8,73.5 714.2,73.1 719.7,72.8 725.1,72.4 730.5,72.1 736.0,71.9 741.4,71.6 746.8,71.4 752.3,71.2 757.7,71.0 763.1,70.8 768.6,70.7 774.0,70.6 779.4,70.4 784.9,70.4 790.3,70.3 795.7,70.2 801.2,70.2 806.6,70.1 812.0,70.1 817.5,70.1 822.9,70.1 828.3,70.1 833.8,70.1" fill="none" stroke="#c62828" stroke-width="3"/>
+<line x1="833.8" y1="70.1" x2="833.8" y2="350.0" stroke="#2e7d32" stroke-width="1" stroke-dasharray="2 3"/>
+<text x="833.8" y="342.0" font-size="11" text-anchor="end" fill="#2e7d32">φu = 0.003/c = 0.003/10.19</text>
+<circle cx="176.1" cy="350.0" r="5.5" fill="#1565c0" stroke="none" stroke-width="1.4"/>
+<circle cx="270.0" cy="268.9" r="5.5" fill="#607d8b" stroke="none" stroke-width="1.4"/>
+<circle cx="310.2" cy="234.1" r="5.5" fill="#1565c0" stroke="none" stroke-width="1.4"/>
+<circle cx="399.1" cy="157.4" r="5.5" fill="#c62828" stroke="none" stroke-width="1.4"/>
+<circle cx="833.8" cy="70.1" r="5.5" fill="#2e7d32" stroke="none" stroke-width="1.4"/>
+<text x="200.1" y="342.0" font-size="11" text-anchor="start" fill="#1565c0">M = 0：預力造成反拱（負曲率）</text>
+<text x="280.0" y="284.9" font-size="11" text-anchor="start" fill="#607d8b">M = Pe·e：全斷面均勻受壓、曲率歸零</text>
+<text x="322.2" y="250.1" font-size="12" text-anchor="start" fill="#1565c0" font-weight="700">① 去壓：底緣應力 = 0</text>
+<text x="389.1" y="147.4" font-size="12" text-anchor="end" fill="#c62828" font-weight="700">② 開裂：底緣 = −fr</text>
+<text x="827.8" y="60.1" font-size="12" text-anchor="end" fill="#2e7d32" font-weight="700">③ 極限：混凝土壓碎 εcu = 0.003</text>
+<text x="560.0" y="148.8" font-size="12" text-anchor="start" fill="#ef6c00" font-weight="700">φMn / 1.2Mcr = 1.09 → 餘裕僅 9%</text>
+<text x="560.0" y="166.8" font-size="11" text-anchor="start" fill="#607d8b">開裂後曲線形狀為示意；所有水平線與端點皆為實算</text>
+<text x="300.0" y="22.0" font-size="13" text-anchor="start" fill="#0d47a1" font-weight="700">RC-2004-5（40×90 矩形先拉梁）：Mdec、Mcr、Mn 依實算值定位</text>
 </svg>
 <div class="cap">
-三個門檻＝三種分析語言。①②用<b>彈性疊加</b>（WSD，斷面全有效）；③用<b>Whitney 應力塊</b>（USD，混凝土壓碎、腱應變硬化）。
-中間那條橘色虛線 1.2Mcr 是規範要求 φMn 必須超過的線，理由見下方。
+RC-2004-5 實算：\(M_{dec}=30.5\)、\(M_{cr}=50.7\)、\(1.2M_{cr}=60.8\)、\(\phi M_n=66.3\)、\(M_n=73.7\) tf·m。
+未開裂段曲率依 \(\phi=(M-P_e e)/E_cI\) 實比例繪製：M = 0 時是<b>負曲率（反拱）</b>，曲率歸零發生在 \(M=P_e e\) 而不是 \(M_{dec}\)。
+①②用彈性疊加（WSD，斷面全有效）；③用 Whitney 應力塊（USD）。曲率軸在開裂後截斷壓縮，極限曲率約為開裂曲率的 68 倍。
 </div>
 </div>
 
@@ -782,7 +962,7 @@ $$f_{top} = 125.94 + 35.6 = +161.6\ (\text{壓}), \qquad f_{bot} = 49.06 - 155.4
 $$\frac{P_e}{A} + \frac{P_e e}{S_b} = \frac{M_{dec}}{S_b}
 \;\Longrightarrow\; M_{dec} = P_e\left(\frac{S_b}{A} + e\right) = P_e\left(\frac{r^2}{y_b} + e\right)$$
 
-<p>括號裡就是「核心距 + 偏心」——<b>去壓彎矩 = 預力 × (C 線可移動的總距離)</b>，與 §2 的 C 線圖完全對上。</p>
+<p>括號裡就是「上核心距 \(k_t\) + 偏心」——<b>去壓彎矩 = 預力 × (C 線從鋼腱位置走到上核心點的距離)</b>，與 §2 的 C 線圖完全對上。RC-2014-4：\(60\times(19.8+14.2) = 20.4\) tf·m，正是 §2 圖中底緣受拉區邊界的彎矩。</p>
 
 <h3>7.2 ②開裂彎矩：再多一個 f<sub>r</sub></h3>
 
@@ -820,7 +1000,7 @@ $$f_r = 2.0\sqrt{350} = 37.42 \;\Rightarrow\; M_{cr} = 54000\times(56.47+37.42) 
 <b>這條 20% 餘裕的邏輯與 §3 的容許拉應力 \(1.6\sqrt{f'_c} = 0.8 f_r\) 完全一樣</b> ——
 凡是脆性、離散度大的機制，規範一律留 20% 上下的餘裕。記住這條邏輯，
 本科所有「為什麼是這個係數」的題目都能答出方向。<br>
-驗算 RC-2004-5：\(1.2\times50.7 = 60.8 \leq \phi M_n = 66.3\) ✓
+驗算 RC-2004-5：\(1.2\times50.7 = 60.8 \leq \phi M_n = 66.3\) ✓ —— 但餘裕只有 9%（上圖橘線與綠線的間距），預力高、腱量少的斷面最容易卡在這一關。
 </div>
 </section>
 
@@ -833,43 +1013,51 @@ $$f_r = 2.0\sqrt{350} = 37.42 \;\Rightarrow\; M_{cr} = 54000\times(56.47+37.42) 
 </div>
 
 <div class="fig">
-<svg viewBox="0 0 900 330" xmlns="http://www.w3.org/2000/svg">
-  <line x1="450" y1="20" x2="450" y2="312" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
-
-  <text x="225" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">有黏結腱（bonded）</text>
-  <rect x="45" y="52" width="360" height="60" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
-  <line x1="45" y1="96" x2="405" y2="96" stroke="#c62828" stroke-width="2.6"/>
-  <g stroke="#37474f" stroke-width="1.4">
-    <line x1="75" y1="88" x2="75" y2="104"/><line x1="115" y1="88" x2="115" y2="104"/>
-    <line x1="155" y1="88" x2="155" y2="104"/><line x1="195" y1="88" x2="195" y2="104"/>
-    <line x1="235" y1="88" x2="235" y2="104"/><line x1="275" y1="88" x2="275" y2="104"/>
-    <line x1="315" y1="88" x2="315" y2="104"/><line x1="355" y1="88" x2="355" y2="104"/>
-  </g>
-  <text x="225" y="132" font-size="12" text-anchor="middle" fill="#455a64">每一點都被握裹住，不能滑動</text>
-  <path d="M45,200 Q225,152 405,200" fill="none" stroke="#c62828" stroke-width="2.6"/>
-  <line x1="45" y1="200" x2="405" y2="200" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="225" y="146" font-size="11" text-anchor="middle" fill="#607d8b"> </text>
-  <text x="225" y="224" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">腱應變分布：跟著彎矩，跨中最大</text>
-  <text x="225" y="256" font-size="13" text-anchor="middle" fill="#455a64">跨中腱應變＝該斷面的混凝土應變</text>
-  <text x="225" y="278" font-size="13" text-anchor="middle" fill="#455a64">→ 可用應變相容求 fps（或 ACI 近似式）</text>
-  <text x="225" y="304" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">fps 高，常可達 0.9~0.95 fpu</text>
-
-  <text x="675" y="26" font-size="15" font-weight="700" text-anchor="middle" fill="#0d47a1">無握裹腱（unbonded）</text>
-  <rect x="495" y="52" width="360" height="60" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
-  <line x1="495" y1="96" x2="855" y2="96" stroke="#c62828" stroke-width="2.6"/>
-  <line x1="495" y1="90" x2="855" y2="90" stroke="#90a4ae" stroke-width="1" stroke-dasharray="4 3"/>
-  <line x1="495" y1="102" x2="855" y2="102" stroke="#90a4ae" stroke-width="1" stroke-dasharray="4 3"/>
-  <text x="675" y="132" font-size="12" text-anchor="middle" fill="#455a64">套管內自由滑動（僅兩端錨定）</text>
-  <line x1="495" y1="176" x2="855" y2="176" fill="none" stroke="#c62828" stroke-width="2.6"/>
-  <line x1="495" y1="200" x2="855" y2="200" stroke="#90a4ae" stroke-width="1.2"/>
-  <text x="675" y="224" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">腱應變分布：全長幾乎均勻（被平均）</text>
-  <text x="675" y="256" font-size="13" text-anchor="middle" fill="#455a64">應變 = 全長伸長量 ÷ 腱長</text>
-  <text x="675" y="278" font-size="13" text-anchor="middle" fill="#455a64">→ 不能用應變相容，只能用經驗公式</text>
-  <text x="675" y="304" font-size="13" text-anchor="middle" fill="#ef6c00" font-weight="700">fps 低，僅 fse 加上有限增量</text>
+<svg viewBox="0 0 900 334" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="有黏結與無握裹鋼腱應變增量分布對照">
+<line x1="450.0" y1="20.0" x2="450.0" y2="330.0" stroke="#cfd8dc" stroke-width="2" stroke-dasharray="6 5"/>
+<text x="225.0" y="24.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">有黏結腱（bonded）</text>
+<rect x="45.0" y="46.0" width="360.0" height="56.0" rx="0" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="45.0" y1="88.0" x2="405.0" y2="88.0" stroke="#c62828" stroke-width="2.6"/>
+<line x1="75.0" y1="81.0" x2="75.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="118.0" y1="81.0" x2="118.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="161.0" y1="81.0" x2="161.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="204.0" y1="81.0" x2="204.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="247.0" y1="81.0" x2="247.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="290.0" y1="81.0" x2="290.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="333.0" y1="81.0" x2="333.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<line x1="376.0" y1="81.0" x2="376.0" y2="95.0" stroke="#263238" stroke-width="1.4"/>
+<text x="225.0" y="122.0" font-size="12" text-anchor="middle" fill="#455a64">每一點都被握裹住，不能滑動</text>
+<line x1="45.0" y1="230.0" x2="405.0" y2="230.0" stroke="#90a4ae" stroke-width="1.2"/>
+<text x="41.0" y="156.0" font-size="11.5" text-anchor="end" fill="#607d8b">Δε</text>
+<polygon points="45.0,230.0 51.0,224.9 57.0,219.9 63.0,215.2 69.0,210.6 75.0,206.2 81.0,201.9 87.0,197.8 93.0,193.9 99.0,190.2 105.0,186.7 111.0,183.3 117.0,180.1 123.0,177.0 129.0,174.2 135.0,171.5 141.0,169.0 147.0,166.6 153.0,164.5 159.0,162.5 165.0,160.7 171.0,159.0 177.0,157.5 183.0,156.2 189.0,155.1 195.0,154.2 201.0,153.4 207.0,152.8 213.0,152.3 219.0,152.1 225.0,152.0 231.0,152.1 237.0,152.3 243.0,152.8 249.0,153.4 255.0,154.2 261.0,155.1 267.0,156.2 273.0,157.5 279.0,159.0 285.0,160.7 291.0,162.5 297.0,164.5 303.0,166.6 309.0,169.0 315.0,171.5 321.0,174.2 327.0,177.0 333.0,180.1 339.0,183.3 345.0,186.7 351.0,190.2 357.0,193.9 363.0,197.8 369.0,201.9 375.0,206.2 381.0,210.6 387.0,215.2 393.0,219.9 399.0,224.9 405.0,230.0 405.0,230.0" fill="#ffcdd2" stroke="#c62828" stroke-width="2.4" fill-opacity="0.7"/>
+<text x="225.0" y="144.0" font-size="11.5" text-anchor="middle" fill="#c62828" font-weight="700">峰值 Δεmax（跨中）</text>
+<text x="225.0" y="252.0" font-size="12.5" text-anchor="middle" fill="#c62828" font-weight="700">腱應變增量跟著彎矩：Δε(x) ∝ M(x)</text>
+<text x="225.0" y="276.0" font-size="12.5" text-anchor="middle" fill="#455a64">跨中腱應變＝該斷面混凝土應變</text>
+<text x="225.0" y="298.0" font-size="12.5" text-anchor="middle" fill="#455a64">→ 可用應變相容求 fps（或 ACI 近似式）</text>
+<text x="225.0" y="322.0" font-size="13" text-anchor="middle" fill="#2e7d32" font-weight="700">fps 高，常可達 0.9～0.95 fpu</text>
+<text x="675.0" y="24.0" font-size="15" text-anchor="middle" fill="#0d47a1" font-weight="700">無握裹腱（unbonded）</text>
+<rect x="495.0" y="46.0" width="360.0" height="56.0" rx="0" fill="#f5f7f8" stroke="#546e7a" stroke-width="1.6"/>
+<line x1="495.0" y1="88.0" x2="855.0" y2="88.0" stroke="#c62828" stroke-width="2.6"/>
+<line x1="495.0" y1="82.0" x2="855.0" y2="82.0" stroke="#90a4ae" stroke-width="1" stroke-dasharray="4 3"/>
+<line x1="495.0" y1="94.0" x2="855.0" y2="94.0" stroke="#90a4ae" stroke-width="1" stroke-dasharray="4 3"/>
+<rect x="489.0" y="78.0" width="6.0" height="20.0" rx="0" fill="#78909c" stroke="#546e7a" stroke-width="1"/>
+<rect x="855.0" y="78.0" width="6.0" height="20.0" rx="0" fill="#78909c" stroke="#546e7a" stroke-width="1"/>
+<text x="675.0" y="122.0" font-size="12" text-anchor="middle" fill="#455a64">套管內自由滑動（僅兩端錨定）</text>
+<line x1="495.0" y1="230.0" x2="855.0" y2="230.0" stroke="#90a4ae" stroke-width="1.2"/>
+<text x="491.0" y="156.0" font-size="11.5" text-anchor="end" fill="#607d8b">Δε</text>
+<polyline points="495.0,230.0 501.0,224.9 507.0,219.9 513.0,215.2 519.0,210.6 525.0,206.2 531.0,201.9 537.0,197.8 543.0,193.9 549.0,190.2 555.0,186.7 561.0,183.3 567.0,180.1 573.0,177.0 579.0,174.2 585.0,171.5 591.0,169.0 597.0,166.6 603.0,164.5 609.0,162.5 615.0,160.7 621.0,159.0 627.0,157.5 633.0,156.2 639.0,155.1 645.0,154.2 651.0,153.4 657.0,152.8 663.0,152.3 669.0,152.1 675.0,152.0 681.0,152.1 687.0,152.3 693.0,152.8 699.0,153.4 705.0,154.2 711.0,155.1 717.0,156.2 723.0,157.5 729.0,159.0 735.0,160.7 741.0,162.5 747.0,164.5 753.0,166.6 759.0,169.0 765.0,171.5 771.0,174.2 777.0,177.0 783.0,180.1 789.0,183.3 795.0,186.7 801.0,190.2 807.0,193.9 813.0,197.8 819.0,201.9 825.0,206.2 831.0,210.6 837.0,215.2 843.0,219.9 849.0,224.9 855.0,230.0" fill="none" stroke="#c62828" stroke-width="1.4" stroke-dasharray="5 4"/>
+<polygon points="495.0,230.0 495.0,178.0 855.0,178.0 855.0,230.0" fill="#fff3e0" stroke="#ef6c00" stroke-width="2.4"/>
+<text x="851.0" y="148.0" font-size="11" text-anchor="end" fill="#c62828">虛線＝同撓度的有黏結分布</text>
+<text x="675.0" y="198.0" font-size="12" text-anchor="middle" fill="#ef6c00" font-weight="700">平均值 = 2/3 Δεmax</text>
+<text x="675.0" y="252.0" font-size="12.5" text-anchor="middle" fill="#ef6c00" font-weight="700">兩者面積相同（＝腱的總伸長量相同）</text>
+<text x="675.0" y="276.0" font-size="12.5" text-anchor="middle" fill="#455a64">應變 = 全長伸長量 ÷ 腱長，被攤平</text>
+<text x="675.0" y="298.0" font-size="12.5" text-anchor="middle" fill="#455a64">→ 不能用斷面應變相容，只能用經驗式</text>
+<text x="675.0" y="322.0" font-size="13" text-anchor="middle" fill="#ef6c00" font-weight="700">fps 低，僅 fse 加上有限增量</text>
 </svg>
 <div class="cap">
-左圖腱應變是「跟著彎矩的曲線」，右圖被壓成「一條水平線」。
-同樣的跨中撓度，右邊的最大應變被全長攤平 —— 這一個幾何差異就決定了兩套公式。
+右圖虛線是同一撓度下有黏結腱的應變分布，實線框是無握裹腱：兩者<b>面積相同</b>（總伸長量相同），
+但無握裹腱的應變被攤平成平均值，彈性階段只有峰值的 2/3；到極限時有黏結腱應變集中在塑性鉸，差距更大。
+這一個幾何差異就決定了兩套 \(f_{ps}\) 公式。
 </div>
 </div>
 
@@ -1200,7 +1388,7 @@ RC-2004-5 實算：\(\omega_p = 0.0867 \ll 0.36\times0.80 = 0.288\)，延性非�
 簡支梁兩者相差 M/P；連續梁還要再加次彎矩造成的偏移。（§2.1）</p></details>
 
 <details><summary>5. 核心距 h/6 是怎麼來的？</summary>
-<p>k = St/A。矩形斷面 St = bh²/6、A = bh，相除得 h/6。
+<p>上核心距 kt = Sb/A、下核心距 kb = St/A（分子是<b>對側</b>纖維的 S）。矩形斷面 S = bh²/6、A = bh，相除得 h/6。
 物理意義是「壓力合力可以偏離形心多遠，而全斷面仍然同號」——
 超出核心，另一側纖維就出現拉應力。（§2.1）</p></details>
 
@@ -1354,8 +1542,8 @@ Sb 遠小於 St（可差 4 倍以上）→ 同一個活載重彎矩在底纖維�
 <div class="box">
 <b>鏈 5：C 線統一了一切（§2、§7.1）</b><br>
 壓力合力 C = P（不隨載重變）→ 改變的只有位置，上移量 = M/P →
-上移超過核心距 kb = r²/yb 時底纖維出現拉力 → 該臨界彎矩即<b>去壓彎矩</b>
-Mdec = Pe(r²/yb + e) → 再多一個 fr·Sb 就<b>開裂</b> → Mcr = Mdec + fr·Sb。
+上移超過上核心距 kt = r²/yb 時底纖維出現拉力 → 該臨界彎矩即<b>去壓彎矩</b>
+Mdec = Pe(kt + e) = Pe(r²/yb + e) → 再多一個 fr·Sb 就<b>開裂</b> → Mcr = Mdec + fr·Sb。
 </div>
 
 <div class="box">

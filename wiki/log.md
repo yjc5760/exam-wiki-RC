@@ -1703,3 +1703,21 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
   - 包含黑板截圖素材（`img/`）與講解影片（`video/`，解題過程影片略過不納入版控）。
 - **[FIX]** 統一檔名規範：將 `RC-U1-1_RC 梁彎矩強度分析與設計.html` 更名為 `RC-U1-1_RC梁彎矩強度分析與設計.html`（去除中間空格以與其他單元命名一致）。
 
+## 2026-10-24 觀念講義向量圖解全面改版與繪圖腳本建置
+
+- **[FEAT]** 講義向量圖解由公式精準計算座標重繪（U1-1、U1-2、U2-1、U3-3、U4-1）：
+  - `study/lecture-RC-U1-1.html` & `.pdf`：梁彎矩強度分析與設計（應力塊、應變幾何、平衡鋼筋比等向量圖改版）。
+  - `study/lecture-RC-U1-2.html` & `.pdf`：柱強度分析與設計（P-M 互制曲線、Whitney 應力塊與變形幾何改版）。
+  - `study/lecture-RC-U2-1.html` & `.pdf`：剪力強度分析與設計（剪力破壞角、剪力筋分擔比、間距上限等向量圖改版）。
+  - `study/lecture-RC-U3-3.html`：耐震設計與韌性要求（塑鉸區圍束箍筋、耐震剪力要求等向量圖改版）。
+  - `study/lecture-RC-U4-1.html` & `.pdf`：預力梁斷面應力分析（兩階段四控制點、應力合成圖解改版）。
+- **[ADD]** 新增 4 支圖形自動生成與替換腳本（`scripts/`）：
+  - `scripts/gen_lecture_RC-U1-2_figs.py`
+  - `scripts/gen_lecture_RC-U2-1_figs.py`
+  - `scripts/gen_lecture_RC-U3-3_figs.py`
+  - `scripts/gen_lecture_RC-U4-1_figs.py`
+- **[NOTE]** 踩坑／下一步提醒：
+  - 各單元圖解幾何改由題目與規範數值精確推導計算，避免手繪比例偏差。
+  - 後續若講義內容或規範數據有微調，可直接重跑對應的 `scripts/gen_lecture_RC-*.py` 進行更新。
+
+
