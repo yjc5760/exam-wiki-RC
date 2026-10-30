@@ -82,17 +82,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 
 <h3 id="b1">出題概況</h3>
 <div class="kpis">
-<div class="kpi"><div class="n">12</div><div class="l">主考點題數（另有 8 題副考點）</div></div>
-<div class="kpi"><div class="n">12.0%</div><div class="l">佔全科比例（12／100）</div></div>
+<div class="kpi"><div class="n">11</div><div class="l">主考點題數（另有 7 題副考點）</div></div>
+<div class="kpi"><div class="n">11.0%</div><div class="l">佔全科比例（11／100）</div></div>
 <div class="kpi"><div class="n">#4</div><div class="l">全科出題排名（U4-1 13 題居前、U3-2 7 題居次）</div></div>
 <div class="kpi"><div class="n">2/6</div><div class="l">近 6 考年出題年數（2020–2025 共 2 題）</div></div>
 </div>
 <div class="charts">
-<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 12 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
-<div class="chartbox"><h4>題型比例（主考點 12 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>年度分布（依題型堆疊，主考點 11 題）</h4><canvas id="cvBar" width="520" height="260"></canvas></div>
+<div class="chartbox"><h4>題型比例（主考點 11 題）</h4><canvas id="cvPie" width="520" height="260"></canvas></div>
 </div>
 <div class="note">
-📌 <b>三個要記住的數字</b>：① 全科第 4 大單元，但主考點只佔 12%，不到 U1-1（19%）的三分之二；② <b>副考點 8 題，是主考點的三分之二</b>——柱的知識有很大一部分是在耐震（U3-3）、細長柱（U1-3）題裡被順帶考走，只看主考點會低估這個單元的實際份量；③ 24 個考年中 11 年出現，空窗年段為 <b>2006–2007、2012–2014、2022–2023</b>；近 6 考年只有 2021、2024 兩年共 2 題，是明顯的降溫段，但 2012–2014 也曾連空三年後於 2015 回歸，<b>空窗不代表退場</b>。
+📌 <b>三個要記住的數字</b>：① 全科第 4 大單元，但主考點只佔 11%，不到 U1-1（19%）的三分之二；② <b>副考點 7 題，約為主考點的三分之二</b>——柱的知識有很大一部分是在耐震（U3-3）、細長柱（U1-3）題裡被順帶考走，只看主考點會低估這個單元的實際份量；③ 24 個考年中 10 年出現，空窗年段為 <b>2003–2004、2006–2007、2012–2014、2022–2023</b>；近 6 考年只有 2021、2024 兩年共 2 題，是明顯的降溫段，但 2012–2014 也曾連空三年後於 2015 回歸，<b>空窗不代表退場</b>。
 </div>
 
 <h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
@@ -102,14 +102,14 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <div class="cat" style="border-left-color:var(--t)" onclick="filterQ('S')"><h3>🛡️ 軸壓強度與圍束／補強（3 題）</h3><p>螺旋筋圍束 f′<sub>cc</sub>、ρ<sub>s,min</sub>、加大柱組合斷面、新舊混凝土介面</p></div>
 <div class="cat" style="border-left-color:var(--x)" onclick="filterQ('C')"><h3>🌀 柱曲率韌性（3 題）</h3><p>μ<sub>φ</sub>＝φ<sub>u</sub>/φ<sub>y</sub>、γ 換算服務載重、彈性中性軸、塑鉸長度</p></div>
 <div class="cat" style="border-left-color:var(--g)" onclick="filterQ('L')"><h3>📏 細長柱彎矩放大（3 題）</h3><p>細長比檢核、C<sub>m</sub> 係數、臨界載重 P<sub>c</sub>、δ<sub>ns</sub> 放大</p></div>
-<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('J')"><h3>🏚️ 耐震柱與梁柱接頭（4 題）</h3><p>A<sub>sh</sub> 圍束箍筋、密箍區、接頭水平剪力 V<sub>jh</sub>、A<sub>j</sub> 有效面積</p></div>
+<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('J')"><h3>🏚️ 耐震柱圍束箍筋（2 題）</h3><p>A<sub>sh</sub> 圍束箍筋、密箍區、繫筋配置</p></div>
 </div>
 <div class="note">
-分群依<b>解題套路</b>而非標籤字面，每題只歸一群。後兩群（細長柱、耐震柱與接頭）<b>幾乎全由副考點組成</b>——主考點在 U1-3、U3-3、U2-1，但解題時必須先站在柱斷面的強度分析上，所以列在這裡。
+分群依<b>解題套路</b>而非標籤字面，每題只歸一群。後兩群（細長柱、耐震柱圍束）<b>全由副考點組成</b>——主考點在 U1-3、U3-3、U2-1，但解題時必須先站在柱斷面的強度分析上，所以列在這裡。
 </div>
 
-<h3 id="b3">考點漂移：前 6 題（2002–2011）vs. 後 6 題（2011–2024）</h3>
-<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把 12 題主考點依題號排序後對切，前後各 6 題（2011 年兩題分屬前後段）。題數偏少，以下結論僅供排練題順序參考。</p>
+<h3 id="b3">考點漂移：前 5 題（2002–2011）vs. 後 6 題（2011–2024）</h3>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">把 11 題主考點依題號排序後對切，前 5 題、後 6 題（2011 年兩題分屬前後段）。題數偏少，以下結論僅供排練題順序參考。</p>
 <table>
 <thead><tr><th>題型</th><th class="num">2002–2011</th><th class="num">2011–2024</th><th class="num">變化</th><th>解讀</th></tr></thead>
 <tbody>
@@ -117,8 +117,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <tr><td><span class="bar" style="width:12px;background:var(--k)"></span> 特徵點與互制圖建構</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2011-1（說明求算步驟，本單元唯一的概念題）與 2015-1（調軸力至平衡點求最大彎矩）各一次，<b>最後一次是 2015-1，已空窗 10 年</b></td></tr>
 <tr><td><span class="bar" style="width:12px;background:var(--t)"></span> 軸壓強度與圍束／補強</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2010-1（圓形螺旋柱 f′<sub>cc</sub>）、2017-1（加大柱雙折線應力應變）各一次，兩題型互不重複；<b>最後 2017 年，空窗 8 年</b></td></tr>
 <tr><td><span class="bar" style="width:12px;background:var(--x)"></span> 柱曲率韌性</td><td class="num">1</td><td class="num">1</td><td class="num flat">— 持平</td><td>2005-1、2011-3 各一次，<b>主考點最後一次是 2011-3，空窗 14 年</b>；2022-4 從 U3-3 那邊以概念題形式回鍋（曲率／轉角／位移韌性換算）</td></tr>
-<tr><td><span class="bar" style="width:12px;background:var(--g)"></span> 細長柱彎矩放大</td><td class="num">1</td><td class="num">0</td><td class="num down">▼ −1</td><td>2004-4 之後本單元主考點<b>再無細長柱</b>；2006-2、2016-3 的 primaryTopicId 都改成 U1-3，細長柱在這裡只剩副考點身分</td></tr>
-<tr><td><span class="bar" style="width:12px;background:var(--warn)"></span> 耐震柱與梁柱接頭</td><td class="num">0</td><td class="num">0</td><td class="num flat">全為副考點</td><td>2004-3、2012-4、2013-2、2018-2 各一次，主考點都掛在 U3-3；<b>最後 2018-2，空窗 7 年</b></td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--g)"></span> 細長柱彎矩放大</td><td class="num">0</td><td class="num">0</td><td class="num flat">全為副考點</td><td>2004-4、2006-2、2016-3 的 primaryTopicId 都是 U1-3（2004-4 於 2026-10-31 由 U1-2 改正），細長柱在本單元只有副考點身分</td></tr>
+<tr><td><span class="bar" style="width:12px;background:var(--warn)"></span> 耐震柱圍束箍筋</td><td class="num">0</td><td class="num">0</td><td class="num flat">全為副考點</td><td>2004-3、2013-2 各一次，主考點都掛在 U3-3；<b>最後 2013-2，空窗 12 年</b>（接頭剪力題 2012-4、2018-2 不用柱強度分析，已不列為本單元副考點）</td></tr>
 </tbody>
 </table>
 <div class="note">
@@ -131,7 +131,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <table>
 <thead><tr><th>期間</th><th class="num">USD</th><th class="num">概念題</th><th>觀察</th></tr></thead>
 <tbody>
-<tr><td>2002–2011（6 題）</td><td class="num">5</td><td class="num">1</td><td>唯一一題概念題是 2011-1（說明 P-M 互制圖求算步驟）</td></tr>
+<tr><td>2002–2011（5 題）</td><td class="num">4</td><td class="num">1</td><td>唯一一題概念題是 2011-1（說明 P-M 互制圖求算步驟）</td></tr>
 <tr><td>2011–2024（6 題）</td><td class="num">6</td><td class="num">0</td><td>後段全為計算題，概念說明題已 14 年未在本單元出現</td></tr>
 <tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025（2 題）</b></td><td class="num"><b>2</b></td><td class="num">0</td><td>僅 2021-2、2024-3 兩題，<b>且都是互制圖單點求解</b></td></tr>
 </tbody>
@@ -144,17 +144,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 哪些公式考卷會印給你、哪些必須自己背，見 <a href="formula-given-RC-U1-2.html">給／背分界</a>。
 </div>
 
-<h3 id="b5">考題清單（主 12 ＋ 副 8 ＝ 20 題，點題號開啟解析）</h3>
+<h3 id="b5">考題清單（主 11 ＋ 副 7 ＝ 18 題，點題號開啟解析）</h3>
 <div class="filters">
-<button class="fbtn on" onclick="filterQ('ALL',this)">全部（20）</button>
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（18）</button>
 <button class="fbtn" onclick="filterQ('P',this)">互制圖單點求解（5）</button>
 <button class="fbtn" onclick="filterQ('B',this)">特徵點與建構（2）</button>
 <button class="fbtn" onclick="filterQ('S',this)">軸壓與圍束（3）</button>
 <button class="fbtn" onclick="filterQ('C',this)">柱曲率韌性（3）</button>
 <button class="fbtn" onclick="filterQ('L',this)">細長柱放大（3）</button>
-<button class="fbtn" onclick="filterQ('J',this)">耐震柱與接頭（4）</button>
-<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（12）</button>
-<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（8）</button>
+<button class="fbtn" onclick="filterQ('J',this)">耐震柱圍束（2）</button>
+<button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（11）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（7）</button>
 </div>
 <div id="qlist"></div>
 <div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U1-2 的知識）。圖示：📄 有解析／📊 有互動圖／✅ 已人工驗證。</div>
@@ -169,7 +169,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <tr class="risk-md"><td><b>中高</b></td><td>平衡點 P<sub>b</sub> 與最大彎矩 M<sub>n,max</sub></td><td class="num">3</td><td>2017-1</td><td class="num">8 年</td><td>互制圖的必考特徵點（2011-1 說明、2015-1 計算、2017-1 後半），卻已 8 年未見；屬於「條件明確、一定算得出來」的穩定得分題</td></tr>
 <tr class="risk-md"><td><b>中高</b></td><td>柱曲率延展比 μ<sub>φ</sub>（γ 換算服務載重求彈性中性軸）</td><td class="num">3</td><td>2011-3 主／2022-4 副</td><td class="num">14 年</td><td><b>主考點空窗最久的高分題型</b>；2022-4 已從 U3-3 以概念題回鍋，且 U1-1 的 2023-1 同期考了梁的 μ<sub>φ</sub>——兩邊共用同一套算法，可能是柱版計算題復出的前兆</td></tr>
 <tr class="risk-lo"><td><b>中</b></td><td>螺旋柱圍束 f′<sub>cc</sub>／ρ<sub>s,min</sub> 與加大柱組合斷面</td><td class="num">3</td><td>2017-1、2017-2</td><td class="num">8 年</td><td>兩題型各只出現過一次，但都是 25–40 分大題；且與 U3-3 的耐震圍束 A<sub>sh</sub> 共用「橫向鋼筋提供側壓」的觀念，一次準備可涵蓋兩處</td></tr>
-<tr class="risk-lo"><td><b>低</b></td><td>細長柱 δ<sub>ns</sub> 彎矩放大（C<sub>m</sub>、P<sub>c</sub>）</td><td class="num">3</td><td>2016-3（副考點）</td><td class="num">9 年</td><td>命題已移交 RC-U1-3，2004-4 之後在本單元只以副考點身分出現；時間有限時應併入 U1-3 一起準備，不必在這裡重複投資</td></tr>
+<tr class="risk-lo"><td><b>低</b></td><td>細長柱 δ<sub>ns</sub> 彎矩放大（C<sub>m</sub>、P<sub>c</sub>）</td><td class="num">3</td><td>2016-3（副考點）</td><td class="num">9 年</td><td>三題（2004-4、2006-2、2016-3）主分類都是 RC-U1-3，在本單元只以副考點身分出現；時間有限時應併入 U1-3 一起準備，不必在這裡重複投資</td></tr>
 </tbody>
 </table>
 <div class="note">
@@ -185,7 +185,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 
 <script>
 const CATC={P:'#1565c0',B:'#2e7d32',S:'#f57c00',C:'#8e24aa',L:'#546e7a',J:'#c62828'};
-const CATN={P:'互制圖單點求解',B:'特徵點與建構',S:'軸壓與圍束',C:'柱曲率韌性',L:'細長柱放大',J:'耐震柱與接頭'};
+const CATN={P:'互制圖單點求解',B:'特徵點與建構',S:'軸壓與圍束',C:'柱曲率韌性',L:'細長柱放大',J:'耐震柱圍束'};
 const MC={'USD':'#1565c0','WSD':'#f57c00','概念題':'#546e7a'};
 // [題號, 分群, 摘要, 標籤, 有viz, 設計法, 主(1)/副(0), 副考點的所屬單元]
 const Q=[
@@ -202,13 +202,11 @@ const Q=[
 ["RC-2005-1","C","Pn=90 t 下的 Mn 與柱曲率延展比 μφ（壓力筋未降伏）",["矩形柱","曲率延展比","彎矩曲率","三排配筋"],1,"USD",1,""],
 ["RC-2011-3","C","Pu=0.9Pb 求 φMn，再以 γ=1.3 換算服務載重求 μφ",["矩形柱","過渡區φ值","柱曲率延展比","彈性中性軸"],1,"USD",1,""],
 ["RC-2022-4","C","曲率／轉角／位移三種韌性的換算與塑鉸長度 Lp",["曲率韌性","轉角韌性","位移韌性","塑鉸長度Lp"],0,"概念題",0,"U3-3 韌性要求與耐震設計"],
-["RC-2004-4","L","1.4D+1.7L 雙軸彎矩＋無側移細長比檢核與 δns 放大",["雙軸彎矩","細長柱","δns放大係數","M1M2比值"],1,"USD",1,""],
+["RC-2004-4","L","1.4D+1.7L 雙軸彎矩＋無側移細長比檢核與 δns 放大",["雙軸彎矩","細長柱","δns放大係數","M1M2比值"],1,"USD",0,"U1-3 細長柱"],
 ["RC-2006-2","L","無側移柱 Cm、臨界挫屈載重 Pc 與 δns 彎矩放大",["無側移柱","彎矩放大法","Cm係數","臨界挫屈載重Pc"],0,"USD",0,"U1-3 細長柱"],
 ["RC-2016-3","L","無側移構架雙曲度細長柱，由 Cm 與 Pc 求 δns",["細長柱","放大彎矩法","Cm係數","雙曲度"],0,"USD",0,"U1-3 細長柱"],
 ["RC-2004-3","J","特殊矩形框架柱密箍區 Ash 圍束箍筋與繫筋配置",["耐震柱","Ash公式","圍束箍筋","密箍區間距"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
-["RC-2012-4","J","角隅邊柱梁柱外接頭水平剪力 Vjh 與 Aj 檢核",["梁柱外接頭","Vjh","Aj接頭有效面積","強柱弱梁"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
-["RC-2013-2","J","16-D32 特殊矩形柱密箍區 Ash 與繫筋配置",["特殊矩形柱","耐震圍束箍筋","Ash公式","crossties繫筋"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
-["RC-2018-2","J","角柱接頭剪力強度檢核（γ 係數與 Whitney 應力塊）",["角柱接頭","接頭剪力","γ係數","剪力強度檢核"],0,"USD",0,"U3-3 韌性要求與耐震設計"]
+["RC-2013-2","J","16-D32 特殊矩形柱密箍區 Ash 與繫筋配置",["特殊矩形柱","耐震圍束箍筋","Ash公式","crossties繫筋"],0,"USD",0,"U3-3 韌性要求與耐震設計"]
 ];
 function renderQ(cat){
   const box=document.getElementById('qlist');box.innerHTML='';
@@ -234,7 +232,7 @@ function filterQ(cat,btn){renderQ(cat);
   if(!btn)document.getElementById('b5').scrollIntoView({behavior:'smooth'});
 }
 renderQ('ALL');
-// ---- charts: 主考點 12 題 ----
+// ---- charts: 主考點 11 題 ----
 const KEYS=Object.keys(CATC);
 const PQ=Q.filter(q=>q[6]===1);
 const byYear={};PQ.forEach(q=>{const y=q[0].split('-')[1];

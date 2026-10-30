@@ -82,7 +82,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 
 <h3 id="b1">出題概況</h3>
 <div class="kpis">
-<div class="kpi"><div class="n">19</div><div class="l">主考點題數（另有 3 題副考點）</div></div>
+<div class="kpi"><div class="n">19</div><div class="l">主考點題數（另有 4 題副考點）</div></div>
 <div class="kpi"><div class="n">19.0%</div><div class="l">佔全科比例（19／100）</div></div>
 <div class="kpi"><div class="n">#1</div><div class="l">全科出題排名（U3-3 16 題居次）</div></div>
 <div class="kpi"><div class="n">5/6</div><div class="l">近 6 考年出題年數（2020–2025 共 8 題）</div></div>
@@ -97,7 +97,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 
 <h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
 <div class="cats">
-<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('R')"><h3>🟦 單筋矩形梁（6 題）</h3><p>Whitney 應力塊、反求 A<sub>s</sub>、過渡區 φ、結構分析後再設計</p></div>
+<div class="cat" style="border-left-color:var(--c)" onclick="filterQ('R')"><h3>🟦 單筋矩形梁（7 題）</h3><p>Whitney 應力塊、反求 A<sub>s</sub>、過渡區 φ、結構分析後再設計</p></div>
 <div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('D')"><h3>🟥 雙筋梁（6 題）</h3><p>先假設壓力筋降伏再驗證、f′<sub>s</sub> 迭代、雙排配筋有效深度</p></div>
 <div class="cat" style="border-left-color:var(--k)" onclick="filterQ('T')"><h3>🟩 T 形梁（5 題）</h3><p>有效翼板寬三條件取小、中性軸在翼板／腹板判斷、負彎矩</p></div>
 <div class="cat" style="border-left-color:var(--t)" onclick="filterQ('L')"><h3>🟧 鋼筋量限制與材料決策（3 題）</h3><p>A<sub>s,max</sub>／A<sub>s,min</sub>／A<sub>sb</sub>、0.75ρ<sub>b</sub>、高強度鋼筋、材料組合比較</p></div>
@@ -142,16 +142,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 哪些公式考卷會印給你、哪些必須自己背，見 <a href="formula-given-RC-U1-1.html">給／背分界</a>。
 </div>
 
-<h3 id="b5">考題清單（主 19 ＋ 副 3 ＝ 22 題，點題號開啟解析）</h3>
+<h3 id="b5">考題清單（主 19 ＋ 副 4 ＝ 23 題，點題號開啟解析）</h3>
 <div class="filters">
-<button class="fbtn on" onclick="filterQ('ALL',this)">全部（22）</button>
-<button class="fbtn" onclick="filterQ('R',this)">單筋矩形梁（6）</button>
+<button class="fbtn on" onclick="filterQ('ALL',this)">全部（23）</button>
+<button class="fbtn" onclick="filterQ('R',this)">單筋矩形梁（7）</button>
 <button class="fbtn" onclick="filterQ('D',this)">雙筋梁（6）</button>
 <button class="fbtn" onclick="filterQ('T',this)">T 形梁（5）</button>
 <button class="fbtn" onclick="filterQ('L',this)">鋼筋量限制（3）</button>
 <button class="fbtn" onclick="filterQ('M',this)">彎矩–曲率韌性（2）</button>
 <button class="fbtn" onclick="filterQ('PRI',this)">僅主考點（19）</button>
-<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（3）</button>
+<button class="fbtn" onclick="filterQ('SEC',this)">僅副考點（4）</button>
 </div>
 <div id="qlist"></div>
 <div class="note">虛線灰底＝副考點（主考點在別的子項，但解題會用到 U1-1 的知識）。圖示：📄 有解析／📊 有互動圖／✅ 已人工驗證。</div>
@@ -191,6 +191,7 @@ const Q=[
 ["RC-2019-1","R","φ 落在過渡區，須與 As 聯立化為二次方程求解",["過渡區φ值","二次方程求As","應變相容"],0,"USD",1,""],
 ["RC-2005-3","R","角柱接頭剪力檢核，須先由梁筋拉力回推接頭水平力",["梁柱接頭","Vjh","γ係數3.2","Whitney應力塊"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
 ["RC-2012-2","R","耐震梁端可能彎矩強度 Mpr（1.25fy）與地震彎矩",["Mpr","1.25fy","強柱弱梁","梁端強度"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
+["RC-2018-2","R","角柱接頭剪力檢核：由梁筋拉力與 Whitney 應力塊求 Mn 再推 Vj",["角柱接頭","接頭剪力","Whitney應力塊","γ係數"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
 ["RC-2002-4","D","高強度混凝土雙筋梁 Mn，β₁ 遞減且壓力筋恰好降伏",["雙筋梁","β₁=0.80","壓力筋降伏邊界","Whitney應力塊"],0,"USD",1,""],
 ["RC-2015-2","D","同一斷面求最大設計彎矩與最大韌性容量的抵換關係",["雙筋梁","εt=0.004限制","φu/φy","轉換斷面法"],0,"USD",1,""],
 ["RC-2022-1","D","雙層拉力筋＋壓力筋未降伏，求 φMn（fy=5600）",["雙筋梁","壓力筋未降伏","雙層拉力筋","有效深度"],0,"USD",1,""],

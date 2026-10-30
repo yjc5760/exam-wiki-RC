@@ -33,7 +33,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <header><h1>RC-2003-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2003-3</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
-<strong>副分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
+<strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> USD<br />
 <strong>標籤：</strong> <code>梁柱接頭</code> <code>內部接頭</code> <code>水平剪力Vjh</code> <code>有效接頭寬度bj</code> <code>接頭剪力強度</code> <code>γ係數</code> <code>T_top+T_bot-Vcol</code> <code>中間層內跨</code></p>
 <hr />
@@ -92,26 +92,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>求：</strong>
-1. 接頭在X-向之水平作用剪力 $V_{jh}$
-2. 接頭在X-向之有效寬度 $b_j$
-3. 驗核接頭剪力強度是否充足</p>
+<p><strong>求：</strong></p>
+<ol>
+<li>接頭在X-向之水平作用剪力 $V_{jh}$</li>
+<li>接頭在X-向之有效寬度 $b_j$</li>
+<li>驗核接頭剪力強度是否充足</li>
+</ol>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 梁柱接頭水平剪力 $V_{jh}$ 來自梁端拉壓力的衝突——頂筋拉力加底筋拉力減去柱剪力，形成穿越接頭的剪力流。接頭剪力強度由混凝土提供，與接頭有效面積（$b_j \times h_c$）和 $\gamma$ 係數有關。</p>
-<p><strong>出題者測驗：</strong>
-1. 正確計算 $V_{jh} = T_{top} + T_{bot} - V_{col}$（力的平衡）
-2. 正確判斷 $b_j$（不得超過柱寬）
-3. 內部接頭 $\gamma$ 係數的選用</p>
+<p><strong>出題者測驗：</strong></p>
+<ol>
+<li>正確計算 $V_{jh} = T_{top} + T_{bot} - V_{col}$（力的平衡）</li>
+<li>正確判斷 $b_j$（不得超過柱寬）</li>
+<li>內部接頭 $\gamma$ 係數的選用</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>計算步驟：</strong>
-1. 計算梁頂筋拉力 $T_{top}$（對應 $M^-<em bot="bot">x$）
-2. 計算梁底筋拉力 $T</em>$（對應 $M^+<em col="col">x$）
-3. 計算柱剪力 $V</em> \approx (M^-<em jh="jh">x + M^+_x)/h$
-4. $V</em>$
-5. 計算有效接頭寬度 $b_j$
-6. $\phi V_n = \phi \gamma \sqrt{f'} = T_{top} + T_{bot} - V_{col<em jh="jh">c}\, b_j h_c$ → 與 $V</em>$ 比較</p>
+<p><strong>計算步驟：</strong></p>
+<ol>
+<li>計算梁頂筋拉力 $T_{top}$（對應 $M^-_x$）</li>
+<li>計算梁底筋拉力 $T_{bot}$（對應 $M^+_x$）</li>
+<li>計算柱剪力 $V_{col} \approx (M^-_x + M^+_x)/h$</li>
+<li>$V_{jh} = T_{top} + T_{bot} - V_{col}$</li>
+<li>計算有效接頭寬度 $b_j$</li>
+<li>$\phi V_n = \phi \gamma \sqrt{f'_c}\, b_j h_c$ → 與 $V_{jh}$ 比較</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -154,10 +160,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$\text{Step 1: } T_{top} = A_{s,top}\cdot f_y$$</p>
 <p>$$\text{Step 2: } T_{bot} = A_{s,bot}\cdot f_y$$</p>
-<p>$$\text{Step 3: } V_{col} = \frac{M^-<em story="story">x + M^+_x}{h</em>$$}</p>
+<p>$$\text{Step 3: } V_{col} = \frac{M^-_x + M^+_x}{h_{story}}$$</p>
 <p>$$\text{Step 4: } V_{jh} = \boxed{T_{top}} + \boxed{T_{bot}} - \boxed{V_{col}}$$</p>
-<p>$$\text{Step 5: } b_j = \min!\left(b_{col,Y},\ b_{beam,X} + h_{col,X}\right)$$</p>
-<p>$$\text{Step 6: } \phi V_n = \phi\cdot\gamma\cdot\sqrt{f'<em col_X="col,X">c}\cdot\boxed{b_j}\cdot h</em>$$</p>
+<p>$$\text{Step 5: } b_j = \min\!\left(b_{col,Y},\ b_{beam,X} + h_{col,X}\right)$$</p>
+<p>$$\text{Step 6: } \phi V_n = \phi\cdot\gamma\cdot\sqrt{f'_c}\cdot\boxed{b_j}\cdot h_{col,X}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -312,13 +318,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>底層鋼筋（$M^+_x$ 邊，底筋受拉）：</strong></p>
 <p>$$T_{bot} = A_{s,bot}\cdot f_y = (2\times2.87)\times4{,}200 = 5.74\times4{,}200 = \boxed{24{,}108\ \text{kgf} = 24.11\ \text{tf}}$$</p>
 <blockquote>
-<p><strong>驗核一致性：</strong>
-$T_{top}\cdot jd \approx M^-<em bot="bot">x$：$48.22\ \text{tf}\times0.498\ \text{m} = 24.0\ \text{tf·m}$ ✓<br />
-$T</em>$ ✓}\cdot jd \approx M^+_x$：$24.11\ \text{tf}\times0.498\ \text{m} = 12.0\ \text{tf·m</p>
+<p><strong>驗核一致性：</strong><br />
+$T_{top}\cdot jd \approx M^-_x$：$48.22\ \text{tf}\times0.498\ \text{m} = 24.0\ \text{tf·m}$ ✓<br />
+$T_{bot}\cdot jd \approx M^+_x$：$24.11\ \text{tf}\times0.498\ \text{m} = 12.0\ \text{tf·m}$ ✓</p>
 </blockquote>
 <h3>Step 2　柱剪力估算</h3>
 <p>柱承受上下梁的合力矩，以樓層高度換算為剪力：</p>
-<p>$$V_{col} \approx \frac{M^-<em story="story">x + M^+_x}{h</em>$$}} = \frac{(24+12)\ \text{tf·m}}{3.5\ \text{m}} = \frac{36}{3.5} = \boxed{10.3\ \text{tf}</p>
+<p>$$V_{col} \approx \frac{M^-_x + M^+_x}{h_{story}} = \frac{(24+12)\ \text{tf·m}}{3.5\ \text{m}} = \frac{36}{3.5} = \boxed{10.3\ \text{tf}}$$</p>
 <h3>Step 3　水平接頭剪力 $V_{jh}$</h3>
 <p>由接頭自由體圖（水平方向力平衡）：</p>
 <p>$$V_{jh} = T_{top} + T_{bot} - V_{col}$$</p>
@@ -329,9 +335,9 @@ $T</em>$ ✓}\cdot jd \approx M^+_x$：$24.11\ \text{tf}\times0.498\ \text{m} = 
 <h3>Step 4　有效接頭寬度 $b_j$</h3>
 <p>X向梁寬 $b_{beam,X} = 24$ cm；柱X向深度 $h_{col,X} = 50$ cm；柱Y向寬度 $b_{col,Y} = 40$ cm。</p>
 <p>依規範：</p>
-<p>$$b_j = \min!\left(b_{col,Y},\ b_{beam,X} + h_{col,X}\right) = \min(40,\ 24+50) = \min(40,\ 74) = \boxed{40\ \text{cm}}$$</p>
+<p>$$b_j = \min\!\left(b_{col,Y},\ b_{beam,X} + h_{col,X}\right) = \min(40,\ 24+50) = \min(40,\ 74) = \boxed{40\ \text{cm}}$$</p>
 <blockquote>
-<p>以兩側延伸驗核：每側延伸 $x = \min!\left(\frac{b_{col,Y}-b_{beam,X}}{2},\ \frac{h_{col,X}}{4}\right) = \min!\left(\frac{16}{2},\ \frac{50}{4}\right) = \min(8,\ 12.5) = 8$ cm<br />
+<p>以兩側延伸驗核：每側延伸 $x = \min\!\left(\frac{b_{col,Y}-b_{beam,X}}{2},\ \frac{h_{col,X}}{4}\right) = \min\!\left(\frac{16}{2},\ \frac{50}{4}\right) = \min(8,\ 12.5) = 8$ cm<br />
 $b_j = 24 + 2\times8 = 40$ cm ✓</p>
 </blockquote>
 <h3>Step 5　有效接頭面積</h3>
@@ -341,7 +347,7 @@ $b_j = 24 + 2\times8 = 40$ cm ✓</p>
 <p>$$\phi V_n = \phi\cdot\gamma\cdot\sqrt{f'_c}\cdot A_j = 0.85\times5.3\times\sqrt{280}\times2{,}000$$</p>
 <p>$$= 0.85\times5.3\times16.73\times2{,}000 = 0.85\times177{,}338 = \boxed{150{,}737\ \text{kgf} = 150.7\ \text{tf}}$$</p>
 <p><strong>驗核：</strong></p>
-<p>$$\phi V_n = 150.7\ \text{tf} &gt; V_{jh} = 62.0\ \text{tf} \quad \checkmark\ \text{接頭剪力強度充足}$$</p>
+<p>$$\phi V_n = 150.7\ \text{tf} > V_{jh} = 62.0\ \text{tf} \quad \checkmark\ \text{接頭剪力強度充足}$$</p>
 <p>安全餘裕：$\phi V_n / V_{jh} = 150.7/62.0 = 2.43$（充裕）</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
@@ -379,13 +385,15 @@ $b_j = 24 + 2\times8 = 40$ cm ✓</p>
 </table>
 <p>本題為「中間層內跨（四面均有梁連入）」→ 取 $\gamma = 5.3$ ✓</p>
 <p><strong>2. 安全餘裕大（2.43倍）的意義</strong></p>
-<p>此接頭安全餘裕高，主要因為：
-- 梁斷面相對柱斷面小（X梁僅24cm寬）
-- Y向梁（40cm）提供側面圍束，使 $\gamma$ 取最大值
-- 接頭面積足夠大（2,000 cm²）</p>
+<p>此接頭安全餘裕高，主要因為：</p>
+<ul>
+<li>梁斷面相對柱斷面小（X梁僅24cm寬）</li>
+<li>Y向梁（40cm）提供側面圍束，使 $\gamma$ 取最大值</li>
+<li>接頭面積足夠大（2,000 cm²）</li>
+</ul>
 <p>在實際工程中，若欲減小柱斷面，應重新驗核接頭剪力強度。</p>
 <p><strong>3. 梁頂筋貫穿接頭的直徑限制</strong></p>
-<p>依規範，頂層#6鋼筋（$d_b = 1.91$ cm）貫穿接頭，需驗核接頭深度與 $d_b$ 之比：
+<p>依規範，頂層#6鋼筋（$d_b = 1.91$ cm）貫穿接頭，需驗核接頭深度與 $d_b$ 之比：<br />
 $$h_{col,X} / d_b = 50 / 1.91 = 26.2 \ge 20 \quad \checkmark$$</p>
 <p>梁筋可以連續貫穿接頭，不需彎鉤錨定。</p></main>
 <footer>來源：raw/solutions/RC-2003-3/RC-2003-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）

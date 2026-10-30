@@ -33,7 +33,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <header><h1>RC-2009-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2009-1</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
-<strong>副分類：</strong> 無<br />
+<strong>副分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
 <strong>設計法：</strong> 概念題（USD 耐震設計）<br />
 <strong>標籤：</strong> <code>耐震柱</code> <code>橫向鋼筋</code> <code>密箍區lo</code> <code>圍束箍筋</code> <code>Ash公式</code> <code>Vc=0條件</code> <code>特殊矩形框架柱</code> <code>剪力設計</code> <code>Mpr</code> <code>Nu小於0.05Agfc</code></p>
 <hr />
@@ -45,20 +45,24 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 特殊矩形框架柱（SMRF）橫向鋼筋同時承擔三個任務：
-1. <strong>圍束（Confinement）</strong>：提升核心混凝土延性
-2. <strong>剪力抵抗（Shear）</strong>：在塑性鉸區抵抗地震剪力
-3. <strong>縱筋防挫屈（Buckling prevention）</strong>：防止縱向鋼筋在反覆載重下挫屈</p>
-<p><strong>出題重點：</strong> 當 $N_u &lt; 0.05A_gf'_c$ 時，混凝土剪力貢獻 $V_c = 0$，<strong>所有剪力由橫向鋼筋承擔</strong>，此時剪力設計更嚴格。</p>
+<p><strong>核心觀念：</strong> 特殊矩形框架柱（SMRF）橫向鋼筋同時承擔三個任務：</p>
+<ol>
+<li><strong>圍束（Confinement）</strong>：提升核心混凝土延性</li>
+<li><strong>剪力抵抗（Shear）</strong>：在塑性鉸區抵抗地震剪力</li>
+<li><strong>縱筋防挫屈（Buckling prevention）</strong>：防止縱向鋼筋在反覆載重下挫屈</li>
+</ol>
+<p><strong>出題重點：</strong> 當 $N_u < 0.05A_gf'_c$ 時，混凝土剪力貢獻 $V_c = 0$，<strong>所有剪力由橫向鋼筋承擔</strong>，此時剪力設計更嚴格。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong>
-1. 說明耐震柱橫向鋼筋的三大目的
-2. 定義密箍區（$l_o$）位置與長度
-3. 說明密箍區間距 $s_o$ 規定
-4. 推導圍束箍筋面積 $A_{sh}$ 兩公式
-5. 說明柱剪力設計（$V_e$）及 $N_u &lt; 0.05A_gf'_c$ 時 $V_c = 0$ 的影響
-6. 說明非密箍區的橫向鋼筋要求</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>說明耐震柱橫向鋼筋的三大目的</li>
+<li>定義密箍區（$l_o$）位置與長度</li>
+<li>說明密箍區間距 $s_o$ 規定</li>
+<li>推導圍束箍筋面積 $A_{sh}$ 兩公式</li>
+<li>說明柱剪力設計（$V_e$）及 $N_u < 0.05A_gf'_c$ 時 $V_c = 0$ 的影響</li>
+<li>說明非密箍區的橫向鋼筋要求</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -70,7 +74,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </thead>
 <tbody>
 <tr>
-<td>❶ $N_u &lt; 0.05A_gf'_c$ → $V_c = 0$</td>
+<td>❶ $N_u < 0.05A_gf'_c$ → $V_c = 0$</td>
 <td>軸力小時混凝土無剪力貢獻，箍筋須全額承擔</td>
 <td>$V_s = V_e$（無 $V_c$ 分攤）</td>
 </tr>
@@ -94,13 +98,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
-<p>完整說明耐震柱橫向鋼筋的配置規定，並特別指出 $N_u &lt; 0.05A_gf'_c$ 的影響。</p>
+<p>完整說明耐震柱橫向鋼筋的配置規定，並特別指出 $N_u < 0.05A_gf'_c$ 的影響。</p>
 <h3>關鍵公式（依設計順序）</h3>
-<p>$$l_o \ge \max!\left(\frac{h_n}{6},\ h_{\max},\ 45\text{ cm}\right)$$</p>
-<p>$$s_o \le \min!\left(\frac{b_{\min}}{4},\ 6d_b,\ 15\text{ cm}\right)$$</p>
-<p>$$A_{sh} \ge \max!\left(0.09\,s\,h_c\,\frac{f'<em yh="yh">c}{f</em>-1\right)!\frac{f'}},\quad 0.3\,s\,h_c!\left(\frac{A_g}{A_{ch}<em yh="yh">c}{f</em>\right)$$}</p>
+<p>$$l_o \ge \max\!\left(\frac{h_n}{6},\ h_{\max},\ 45\text{ cm}\right)$$</p>
+<p>$$s_o \le \min\!\left(\frac{b_{\min}}{4},\ 6d_b,\ 15\text{ cm}\right)$$</p>
+<p>$$A_{sh} \ge \max\!\left(0.09\,s\,h_c\,\frac{f'_c}{f_{yh}},\quad 0.3\,s\,h_c\!\left(\frac{A_g}{A_{ch}}-1\right)\!\frac{f'_c}{f_{yh}}\right)$$</p>
 <p>$$V_e = \frac{M_{pr,1}+M_{pr,2}}{h_n}\ (\text{加計重力剪力})$$</p>
-<p>$$\text{若 }N_u &lt; 0.05A_gf'<em yh="yh">c:\quad V_c = 0,\quad V_s = \frac{V_e}{\phi} = \frac{A_v f</em>$$} d}{s</p>
+<p>$$\text{若 }N_u < 0.05A_gf'_c:\quad V_c = 0,\quad V_s = \frac{V_e}{\phi} = \frac{A_v f_{yh} d}{s}$$</p>
 <h3>L1：規範直接規定（不需推導）</h3>
 <table>
 <thead>
@@ -123,7 +127,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>兩公式取大</td>
 </tr>
 <tr>
-<td>$N_u &lt; 0.05A_gf'_c$ 時 $V_c$</td>
+<td>$N_u < 0.05A_gf'_c$ 時 $V_c$</td>
 <td>必須取 0</td>
 </tr>
 </tbody>
@@ -190,7 +194,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h3>二、密箍區（$l_o$）的設置</h3>
 <p>特殊矩形框架柱在<strong>柱端</strong>必須設置密箍區，以容納塑性鉸形成。</p>
-<p>$$\boxed{l_o \ge \max!\left(\frac{h_n}{6},\quad h_{\max,\text{dim}},\quad 45\text{ cm}\right)}$$</p>
+<p>$$\boxed{l_o \ge \max\!\left(\frac{h_n}{6},\quad h_{\max,\text{dim}},\quad 45\text{ cm}\right)}$$</p>
 <ul>
 <li>$h_n$ = 柱淨高</li>
 <li>$h_{\max,\text{dim}}$ = 柱斷面最大邊長</li>
@@ -213,7 +217,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </code></pre>
 <hr />
 <h3>三、密箍區橫向鋼筋間距（$s_o$）</h3>
-<p>$$\boxed{s_o \le \min!\left(\frac{b_{\min}}{4},\quad 6d_b,\quad 15\text{ cm}\right)}$$</p>
+<p>$$\boxed{s_o \le \min\!\left(\frac{b_{\min}}{4},\quad 6d_b,\quad 15\text{ cm}\right)}$$</p>
 <ul>
 <li>$b_{\min}$ = 柱斷面最小邊長</li>
 <li>$d_b$ = 縱向鋼筋直徑</li>
@@ -222,25 +226,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h3>四、密箍區圍束箍筋面積（$A_{sh}$）</h3>
 <p>在密箍區內，每個方向均需滿足：</p>
-<p>$$\boxed{A_{sh} \ge \max!\left(\underbrace{0.09\,s\,h_c\,\frac{f'<em yh="yh">c}{f</em>}}<em ch="ch">{\text{公式①}},\quad \underbrace{0.3\,s\,h_c!\left(\frac{A_g}{A</em>-1\right)!\frac{f'}<em yh="yh">c}{f</em>$$}}}_{\text{公式②}}\right)</p>
+<p>$$\boxed{A_{sh} \ge \max\!\left(\underbrace{0.09\,s\,h_c\,\frac{f'_c}{f_{yh}}}_{\text{公式①}},\quad \underbrace{0.3\,s\,h_c\!\left(\frac{A_g}{A_{ch}}-1\right)\!\frac{f'_c}{f_{yh}}}_{\text{公式②}}\right)}$$</p>
 <ul>
 <li>$s$ = 箍筋間距</li>
-<li>$h_c$ = 箍筋中心至中心之核心尺寸（被圍束方向）</li>
+<li>$h_c$ = 被圍束方向的核心尺寸，量到箍筋<strong>外緣</strong>（現行規範寫作 $b_c$）</li>
 <li>$A_g$ = 全斷面積</li>
-<li>$A_{ch}$ = 核心面積（箍筋外緣至外緣）</li>
+<li>$A_{ch}$ = 核心面積（同樣量到箍筋外緣，故方形柱 $A_{ch} = h_c^2$）</li>
+</ul>
+<blockquote>
+<p><strong>量法一致性（2026-08-21 統一）：</strong> 本庫 $h_c$ 與 $A_{ch}$ 一律量到箍筋<strong>外緣</strong>。<br />
+舊版 ACI 318-99 的 $h_c$ 是箍筋<strong>中心至中心</strong>（比外緣值小一個 $d_{tie}$），而 $A_{ch}$ 仍量到外緣——<br />
+那套定義下 $A_{ch} \ne h_c^2$，且算出的間距上限會放寬約 3%。兩套不可混用，詳見 [[RC-2004-3]] §4①。</p>
+</blockquote>
+<ul>
 <li>$f_{yh}$ = 箍筋降伏強度</li>
 </ul>
 <p><strong>公式①（0.09）</strong> 來自圍束強度需補充因蓋層剝落造成的強度損失。<br />
 <strong>公式②（0.3）</strong> 直接確保 $P_u$ （圍束後） $\ge P_y$ （蓋層破壞前），取<strong>兩式較大值</strong>。</p>
 <hr />
-<h3>五、柱剪力設計及 $N_u &lt; 0.05A_gf'_c$ 的影響</h3>
+<h3>五、柱剪力設計及 $N_u < 0.05A_gf'_c$ 的影響</h3>
 <p><strong>設計剪力 $V_e$（考量強柱弱梁的實際剪力）：</strong></p>
 <p>$$V_e = \frac{M_{pr,\text{top}} + M_{pr,\text{bot}}}{h_n} + V_{\text{gravity}}$$</p>
 <ul>
 <li>$M_{pr}$ = 可能彎矩強度（以 $1.25f_y$ 計算，考量應變硬化）</li>
 <li>此 $V_e$ 為最大可能剪力（不折減，考慮超強）</li>
 </ul>
-<p><strong>$N_u &lt; 0.05A_gf'_c$ 時：</strong></p>
+<p><strong>$N_u < 0.05A_gf'_c$ 時：</strong></p>
 <blockquote>
 <p><strong>規範規定：</strong> 當設計軸壓力小於 $0.05A_gf'_c$ 時，<strong>混凝土剪力貢獻 $V_c = 0$</strong>，剪力全由橫向鋼筋承擔。</p>
 </blockquote>
@@ -265,17 +276,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 為何 $0.05A_gf'_c$ 是分界點？</strong></p>
-<p>ACI 318 以此值作為「顯著軸壓」的最低門檻。低於此值：
-- 柱可能在地震下承受淨拉力（雙軸地震時）
-- 混凝土開裂廣泛，骨料咬合喪失
-- $V_c$ 的前提（軸壓克制對角拉力）不成立</p>
+<p>ACI 318 以此值作為「顯著軸壓」的最低門檻。低於此值：</p>
+<ul>
+<li>柱可能在地震下承受淨拉力（雙軸地震時）</li>
+<li>混凝土開裂廣泛，骨料咬合喪失</li>
+<li>$V_c$ 的前提（軸壓克制對角拉力）不成立</li>
+</ul>
 <p>因此規範保守地取 $V_c = 0$，確保箍筋能完全承擔剪力。</p>
 <p><strong>② 密箍區範圍延伸規定（柱上方）</strong></p>
 <p>若上方連接梁不能充分限制柱端旋轉（即梁剛度不足），$l_o$ 需從柱端延伸至梁端的塑性鉸外。</p>
 <p><strong>③ 考場繪圖建議</strong></p>
-<p>25 分題強調「必要時請繪圖」，建議繪：
-- 柱立面圖（標示密箍區 $l_o$、非密箍區、箍筋間距 $s_o$）
-- 柱斷面圖（標示箍筋 + 繫筋配置方式、$h_c$ 量法）</p></main>
+<p>25 分題強調「必要時請繪圖」，建議繪：</p>
+<ul>
+<li>柱立面圖（標示密箍區 $l_o$、非密箍區、箍筋間距 $s_o$）</li>
+<li>柱斷面圖（標示箍筋 + 繫筋配置方式、$h_c$ 量法）</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2009-1/RC-2009-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

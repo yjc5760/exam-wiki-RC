@@ -33,38 +33,46 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>RC-2018-3 題目解析</h1><div class="navbtns"></div></header>
 <main><h1>考題編號：RC-2018-3</h1>
-<p><strong>主分類：</strong> <code>RC-U3</code> 梁工作性要求（含撓度、裂縫）<br />
-<strong>副分類：</strong> <code>RC-U3-1</code> 梁工作性要求（含撓度、裂縫）<br />
+<p><strong>主分類：</strong> <code>RC-U3-1</code> 梁工作性要求（含撓度、裂縫）<br />
+<strong>副分類：</strong> 無<br />
 <strong>設計法：</strong> USD 強度設計法<br />
 <strong>標籤：</strong> <code>T形梁</code> <code>負彎矩</code> <code>裂縫控制</code> <code>主筋分布寬度</code> <code>側面縱向表層鋼筋</code> <code>拉力翼板</code> <code>間距限制</code> <code>skin reinforcement</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
-<p>有一承受<strong>負彎矩 120 tf-m</strong> 之鋼筋混凝土 T 型梁斷面，其：<br />
-- 梁腹寬 $b_w = 40$ cm<br />
-- 梁深 $h = 120$ cm<br />
-- 有效深度 $d = 113$ cm<br />
-- 翼緣厚（板厚）$h_f = 15$ cm<br />
-- 梁跨度 $l_n = 12$ m<br />
-- 梁與鄰梁中心距 3 m（故相鄰梁中距 = 300 cm）</p>
+<p>有一承受<strong>負彎矩 120 tf-m</strong> 之鋼筋混凝土 T 型梁斷面，其：</p>
+<ul>
+<li>梁腹寬 $b_w = 40$ cm</li>
+<li>梁深 $h = 120$ cm</li>
+<li>有效深度 $d = 113$ cm</li>
+<li>翼緣厚（板厚）$h_f = 15$ cm</li>
+<li>梁跨度 $l_n = 12$ m</li>
+<li>梁與鄰梁中心距 3 m（故相鄰梁中距 = 300 cm）</li>
+</ul>
 <p>此 T 型梁將採 <strong>12-D25 主筋</strong>與 <strong>D13 肋筋</strong>，鋼筋淨保護層均為 4 cm。</p>
-<p><strong>試依規範對裂紋控制之規定：</strong><br />
-1. 計算主筋分布之<strong>寬度</strong>與<strong>間距</strong><br />
-2. 計算側面縱向表層鋼筋（Skin Reinforcement）之<strong>配置範圍</strong>與<strong>間距</strong></p>
+<p><strong>試依規範對裂紋控制之規定：</strong></p>
+<ol>
+<li>計算主筋分布之<strong>寬度</strong>與<strong>間距</strong></li>
+<li>計算側面縱向表層鋼筋（Skin Reinforcement）之<strong>配置範圍</strong>與<strong>間距</strong></li>
+</ol>
 <p>（25 分）</p>
 <p><em>注意：本題為純文字描述幾何條件，無獨立附圖。</em></p>
-<p><strong>全局材料條件：</strong><br />
-- $f'_c = 280$ kgf/cm²<br />
-- D25：$d_b = 2.54$ cm，$A_b = 5.07$ cm²<br />
-- D13（箍筋）：$d_b = 1.27$ cm<br />
-- D25 以上：$f_y = 4200$ kgf/cm²<br />
-- 依據：內政部《混凝土結構設計規範》（土木 401-100，對應 ACI 318-08）</p>
+<p><strong>全局材料條件：</strong></p>
+<ul>
+<li>$f'_c = 280$ kgf/cm²</li>
+<li>D25：$d_b = 2.54$ cm，$A_b = 5.07$ cm²</li>
+<li>D13（箍筋）：$d_b = 1.27$ cm</li>
+<li>D25 以上：$f_y = 4200$ kgf/cm²</li>
+<li>依據：內政部《混凝土結構設計規範》（土木 401-100，對應 ACI 318-08）</li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <h3>核心觀念</h3>
-<p>本題考察<strong>負彎矩 T 型梁</strong>的裂縫控制設計——這是一個容易被考生忽略的特殊情境：<br />
-- 負彎矩下，T 形梁的<strong>拉力區在頂部（翼板/板面）</strong>，而非底部<br />
-- 拉力鋼筋（12-D25）必須<strong>分布於翼板有效寬度內</strong>，且受間距限制<br />
-- 當梁深 h &gt; 90 cm，<strong>側面表層鋼筋（skin bars）為強制配置</strong></p>
+<p>本題考察<strong>負彎矩 T 型梁</strong>的裂縫控制設計——這是一個容易被考生忽略的特殊情境：</p>
+<ul>
+<li>負彎矩下，T 形梁的<strong>拉力區在頂部（翼板/板面）</strong>，而非底部</li>
+<li>拉力鋼筋（12-D25）必須<strong>分布於翼板有效寬度內</strong>，且受間距限制</li>
+<li>當梁深 h &gt; 90 cm，<strong>側面表層鋼筋（skin bars）為強制配置</strong></li>
+</ul>
 <p>本題靈魂：<strong>裂縫控制 = 控制鋼筋間距，而非控制鋼筋面積</strong>，且 T 形梁拉力翼板的分布寬度受「跨度/10」限制。</p>
 <h3>出題者意圖</h3>
 <ol>
@@ -447,9 +455,11 @@ $$</p>
 <p>$$
 s_{max} = \frac{380 \times 280}{f_s} - 2.5\,c_c
 $$</p>
-<p>其中：<br />
-- $f_s = 274.6$ MPa<br />
-- $c_c = 40$ mm（淨保護層，到箍筋外面）</p>
+<p>其中：</p>
+<ul>
+<li>$f_s = 274.6$ MPa</li>
+<li>$c_c = 40$ mm（淨保護層，到箍筋外面）</li>
+</ul>
 <p>$$
 s_{max,1} = \frac{380 \times 280}{274.6} - 2.5 \times 40 = \frac{106{,}400}{274.6} - 100 = 387.5 - 100 = 287.5\ \text{mm}
 $$</p>
@@ -506,9 +516,11 @@ $$</p>
 <p>$$
 \text{懸伸分布限制} = \min(2 \times 120,\ 120) = \min(240,\ 120) = 120\ \text{cm}
 $$</p>
-<p>因為有效懸伸（240 cm）<strong>超過</strong> $l_n/10$（120 cm），故：<br />
-- 主筋分布於 $l_n/10 = 120$ cm 懸伸範圍內（兩側各 60 cm）<br />
-- 在 60 cm 到 120 cm 的<strong>外緣翼板區</strong>需另行補充分布筋</p>
+<p>因為有效懸伸（240 cm）<strong>超過</strong> $l_n/10$（120 cm），故：</p>
+<ul>
+<li>主筋分布於 $l_n/10 = 120$ cm 懸伸範圍內（兩側各 60 cm）</li>
+<li>在 60 cm 到 120 cm 的<strong>外緣翼板區</strong>需另行補充分布筋</li>
+</ul>
 <p>$$
 \boxed{\text{主筋分布寬度} = b_w + \frac{l_n}{10} = 40 + 120 = \mathbf{160\ cm}}
 $$</p>
@@ -598,8 +610,10 @@ $$</p>
 <p>$$
 \rightarrow\ \text{每側 3 支（D13 或以上），間距 15 cm} \leq 18.8\ \text{cm}\ \checkmark
 $$</p>
-<p>或採用 s = 18 cm：<br />
-- 第 1 根：深度 30 cm、第 2 根：48 cm（&lt; 60 cm ✓）→ 每側 2 支，s = 18 cm ≤ 18.8 cm ✓</p>
+<p>或採用 s = 18 cm：</p>
+<ul>
+<li>第 1 根：深度 30 cm、第 2 根：48 cm（&lt; 60 cm ✓）→ 每側 2 支，s = 18 cm ≤ 18.8 cm ✓</li>
+</ul>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 分布寬度：160 cm 還是 120 cm？</h3>
@@ -627,9 +641,11 @@ $$</p>
 </table>
 <p>考場最安全做法：寫明分布寬度 = 160 cm（包含腹板寬40 cm + 兩側懸伸各60 cm），並說明依 ln/10 = 120 cm 限制懸伸寬度。</p>
 <h3>5.2 外緣翼板補充鋼筋</h3>
-<p>本題有效懸伸（240 cm）&gt; $l_n/10$（120 cm），故在外緣翼板（每側 60\~120 cm）需補充縱向分布筋：<br />
-- 面積及間距依 ACI §10.6.6（需另行設計）<br />
-- 考試通常只要求點明此規定，不要求計算</p>
+<p>本題有效懸伸（240 cm）&gt; $l_n/10$（120 cm），故在外緣翼板（每側 60\~120 cm）需補充縱向分布筋：</p>
+<ul>
+<li>面積及間距依 ACI §10.6.6（需另行設計）</li>
+<li>考試通常只要求點明此規定，不要求計算</li>
+</ul>
 <h3>5.3 側面鋼筋面積要求</h3>
 <p>本題只問範圍與間距，未問面積。完整設計尚需計算每單位高度的最小面積：<br />
 $$

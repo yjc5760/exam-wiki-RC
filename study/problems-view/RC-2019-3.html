@@ -32,26 +32,30 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>RC-2019-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2019-3</h1>
-<p><strong>主分類：</strong> <code>RC-U3</code> 韌性要求與耐震設計
-<strong>副分類：</strong> <code>RC-U3-2</code> 樓版與基腳設計
-<strong>設計法：</strong> USD 強度設計法
+<p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
+<strong>副分類：</strong> <code>RC-U3-2</code> 樓版與基腳設計<br />
+<strong>設計法：</strong> USD 強度設計法<br />
 <strong>標籤：</strong> <code>橫膈版</code> <code>地震剪力</code> <code>抗剪鋼筋</code> <code>雙向版</code> <code>ρt計算</code> <code>撓曲控制間距</code> <code>最終設計比較</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p>如附圖所示，一片<strong>橫膈版（Diaphragm Slab）</strong>，已依設計重力載重 $1.2W_D + 1.0W_L$ 完成撓曲設計，採用 <strong>#4@25，雙層、雙向、等間距</strong>配置。</p>
 <p>X 向與 Y 向地震力所產生之設計剪力分別為：</p>
 <p>$$V_{u,X} = 100\ \text{tf}, \quad V_{u,Y} = 100\ \text{tf}$$</p>
-<p>試求：
-1. 橫膈版內所需之<strong>抗剪鋼筋量</strong>（$\rho_t$）
-2. 採用 #4 鋼筋，雙層、雙向、等間距配置，<strong>最終設計所需鋼筋間距 $s$</strong></p>
+<p>試求：</p>
+<ol>
+<li>橫膈版內所需之<strong>抗剪鋼筋量</strong>（$\rho_t$）</li>
+<li>採用 #4 鋼筋，雙層、雙向、等間距配置，<strong>最終設計所需鋼筋間距 $s$</strong></li>
+</ol>
 <p><img alt="RC-2019-3 題目附圖：橫膈版平面與三視圖。橫膈版 500×500 cm，厚 18 cm，承受垂直重力載重 1.2WD+1.0WL 及 X/Y 向地震剪力 Vu,X=Vu,Y=100 tf" src="../../raw/solutions/RC-2019-3/RC-2019-3-fig-1.png" /></p>
 <p><em>圖說：橫膈版平面尺寸 500 × 500 cm，厚度 t = 18 cm。X 向地震剪力 Vu,X 作用於 Y 向截面；Y 向地震剪力 Vu,Y 作用於 X 向截面。圖中標示雙向配筋示意。</em></p>
-<p><strong>材料強度：</strong>
-- $f'_c = 280\ \text{kgf/cm}^2$
-- $f_y = 2{,}800\ \text{kgf/cm}^2$（注意：非 4200！）
-- $A_b^{#4} = 1.27\ \text{cm}^2$</p>
-<p><strong>計算剪力強度公式（原題提示）：</strong>
-$$V_n = \left(0.53\sqrt{f'<em cv="cv">c} + \rho_t f_y\right) A</em>$$
+<p><strong>材料強度：</strong></p>
+<ul>
+<li>$f'_c = 280\ \text{kgf/cm}^2$</li>
+<li>$f_y = 2{,}800\ \text{kgf/cm}^2$（注意：非 4200！）</li>
+<li>$A_b^{\#4} = 1.27\ \text{cm}^2$</li>
+</ul>
+<p><strong>計算剪力強度公式（原題提示）：</strong><br />
+$$V_n = \left(0.53\sqrt{f'_c} + \rho_t f_y\right) A_{cv}$$<br />
 $$\phi = 0.6\ (\text{剪力設計強度折減因數})$$</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -64,11 +68,13 @@ $$\phi = 0.6\ (\text{剪力設計強度折減因數})$$</p>
 <p><strong>出題者意圖：</strong> 本題特意設計讓撓曲控制（s = 25 cm）比剪力控制（s ≈ 41 cm）更嚴格，藉此測試考生能否完整走完比較流程，不偷懶直接給出剪力控制間距。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫（四步驟）：</strong>
-1. 確認 $A_{cv}$（厚度 × 版的邊長）
-2. 由 $\phi V_n = V_u$ 求所需 $\rho_t$
-3. 由 $\rho_t$ 反推剪力所需間距 $s_{\text{shear}}$
-4. 比較 $s_{\text{flex}} = 25\ \text{cm}$ 與 $s_{\text{shear}}$，取較小者為最終設計</p>
+<p><strong>作戰計畫（四步驟）：</strong></p>
+<ol>
+<li>確認 $A_{cv}$（厚度 × 版的邊長）</li>
+<li>由 $\phi V_n = V_u$ 求所需 $\rho_t$</li>
+<li>由 $\rho_t$ 反推剪力所需間距 $s_{\text{shear}}$</li>
+<li>比較 $s_{\text{flex}} = 25\ \text{cm}$ 與 $s_{\text{shear}}$，取較小者為最終設計</li>
+</ol>
 <p><strong>關鍵陷阱與應對：</strong></p>
 <table>
 <thead>
@@ -114,16 +120,16 @@ $$\phi = 0.6\ (\text{剪力設計強度折減因數})$$</p>
 \text{Step 1: } A_{cv} = t \times L_{\perp} = 18 \times 500 = 9{,}000\ \text{cm}^2
 $$</p>
 <p>$$
-\text{Step 2: } \phi V_n = \phi\left(0.53\sqrt{f'<em cv="cv">c} + \rho_t f_y\right) A</em> \geq V_u
+\text{Step 2: } \phi V_n = \phi\left(0.53\sqrt{f'_c} + \rho_t f_y\right) A_{cv} \geq V_u
 $$</p>
 <p>$$
-\text{Step 3: } \rho_t \geq \frac{V_u/(\phi A_{cv}) - 0.53\sqrt{f'<em t_text_required="t,\text{required">c}}{f_y} \quad \Rightarrow \quad \rho</em>
-$$}</p>
+\text{Step 3: } \rho_t \geq \frac{V_u/(\phi A_{cv}) - 0.53\sqrt{f'_c}}{f_y} \quad \Rightarrow \quad \rho_{t,\text{required}}
+$$</p>
 <p>$$
 \text{Step 4: } \rho_t = \frac{2A_b}{\boxed{s} \cdot t} \quad \Rightarrow \quad s_{\text{shear}} = \frac{2A_b}{\rho_{t,\text{required}} \cdot t}
 $$</p>
 <p>$$
-\text{Step 5: } s_{\text{final}} = \min!\left(s_{\text{flex}},\ s_{\text{shear}}\right) = \min(25\ \text{cm},\ \boxed{s_{\text{shear}}})
+\text{Step 5: } s_{\text{final}} = \min\!\left(s_{\text{flex}},\ s_{\text{shear}}\right) = \min(25\ \text{cm},\ \boxed{s_{\text{shear}}})
 $$</p>
 <hr />
 <h3>L1：題目直接給定</h3>
@@ -157,7 +163,7 @@ $$</p>
 <td>鋼筋降伏應力（SD280）</td>
 </tr>
 <tr>
-<td>$A_b^{#4}$</td>
+<td>$A_b^{\#4}$</td>
 <td>1.27 cm²</td>
 <td>單根 #4 鋼筋面積</td>
 </tr>
@@ -319,7 +325,7 @@ $$</p>
 </tr>
 </tbody>
 </table>
-<p>$$s_{\text{final}} = \min!\left(s_{\text{flex}},\ s_{\text{shear}}\right) = \min(25,\ 40.9) = \boxed{25\ \text{cm}}$$</p>
+<p>$$s_{\text{final}} = \min\!\left(s_{\text{flex}},\ s_{\text{shear}}\right) = \min(25,\ 40.9) = \boxed{25\ \text{cm}}$$</p>
 <p><strong>撓曲控制，最終設計採用 #4@25，雙層、雙向、等間距。</strong></p>
 <hr />
 <h3>4.5 驗算（以 s = 25 cm 代入剪力公式）</h3>
@@ -327,7 +333,7 @@ $$</p>
 <p>$$\phi V_n = 0.6 \times (8.868 + 0.005644 \times 2800) \times 9{,}000$$</p>
 <p>$$= 0.6 \times (8.868 + 15.803) \times 9{,}000$$</p>
 <p>$$= 0.6 \times 24.671 \times 9{,}000 = 0.6 \times 222{,}039 = 133{,}223\ \text{kgf}$$</p>
-<p>$$= 133.2\ \text{tf} &gt; 100\ \text{tf} \quad \checkmark$$</p>
+<p>$$= 133.2\ \text{tf} > 100\ \text{tf} \quad \checkmark$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>5.1 橫膈版的 Acv 如何確認</h3>

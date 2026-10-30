@@ -131,17 +131,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <thead><tr><th>期間</th><th class="num">WSD<br>容許應力</th><th class="num">混合<br>WSD＋USD</th><th class="num">USD<br>強度</th><th class="num">概念題</th><th>觀察</th></tr></thead>
 <tbody>
 <tr><td>2003–2009（6 題）</td><td class="num">3</td><td class="num">3</td><td class="num">0</td><td class="num">0</td><td>清一色要用彈性理論，USD 尚未單獨出現</td></tr>
-<tr><td>2011–2023（7 題）</td><td class="num">4</td><td class="num">1</td><td class="num">1</td><td class="num">1</td><td>WSD 仍過半，<b>2023-4 是唯一的純 USD</b></td></tr>
-<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025（2 題）</b></td><td class="num">0</td><td class="num">0</td><td class="num">1</td><td class="num">1</td><td>樣本只有 2 題，不足以推翻上面兩列</td></tr>
+<tr><td>2011–2023（7 題）</td><td class="num">5</td><td class="num">1</td><td class="num">1</td><td class="num">0</td><td>WSD 仍過半，<b>2023-4 是唯一的純 USD</b></td></tr>
+<tr style="background:#fff8e1"><td><b>近 6 考年 2020–2025（2 題）</b></td><td class="num">1</td><td class="num">0</td><td class="num">1</td><td class="num">0</td><td>樣本只有 2 題，不足以推翻上面兩列</td></tr>
 </tbody>
 </table>
 <div class="note">
-📌 <b>對複習的直接影響</b>：<b>WSD 不是可以跳過的舊制度。</b>13 題主考點裡 WSD 7 題＋混合 4 題＝<b>11 題</b>都要用彈性理論算
+📌 <b>對複習的直接影響</b>：<b>WSD 不是可以跳過的舊制度。</b>13 題主考點裡 WSD 8 題＋混合 4 題＝<b>12 題</b>都要用彈性理論算
 <code>f = P/A ± Pec/I ± Mc/I</code>；只有 2023-4 一題是純 USD。而 8 題副考點（U4-2、U4-3）在索引中<b>全部標記為 WSD</b>——整個預力區塊的骨幹就是容許應力法。
-對照全科：100 題裡 WSD 只有 16 題，而這 <b>16 題全部落在 U4 單元群</b>（U4-1 七題、U4-2 五題、U4-3 四題），U1、U2、U3 三個單元群一題都沒有。
+對照全科：100 題裡 WSD 只有 17 題，而這 <b>17 題全部落在 U4 單元群</b>（U4-1 八題、U4-2 五題、U4-3 四題），U1、U2、U3 三個單元群一題都沒有。
 <br><br>
-⚠️ <b>資料註記</b>：2021-4 在 <code>question_index.json</code> 中的 <code>designMethod</code> 記為「概念題」，但其解析內容是 WSD 容許應力計算題（求最大均布活載重）。
-本頁所有數字一律以索引為準，這一筆待更正後需重算本區塊。
+📝 <b>資料註記</b>：2021-4 的 <code>designMethod</code> 原記為「概念題」，實為 WSD 容許應力計算題（求最大均布活載重）；已於 2026-10-31 在索引更正為 WSD，本區塊數字已重算。
 <br><br>
 哪些公式（f<sub>ps</sub> 三式、容許應力四條、M<sub>cr</sub>）考卷會印給你、哪些必須自己背，見 <a href="formula-given-RC-U4-1.html">給／背分界</a>。
 </div>
@@ -202,7 +201,7 @@ const Q=[
 ["RC-2006-4","K","後拉組合 T 型梁兩階段疊加，梁頂+161.6壓／梁底−106.3拉（Class C 已開裂）",["後拉法","組合T型斷面","兩階段應力疊加","不同f'c轉換"],0,"WSD",1,""],
 ["RC-2007-4","K","20 m 預力 I 形橋梁組合斷面，求跨中最大集中活載重 P",["I形橋梁","組合T型斷面","底纖維拉力控制","不同f'c轉換"],0,"WSD",1,""],
 ["RC-2008-4","K","15 m 組合 T 斷面由底纖維拉力控制，求最大均布活載重",["後拉法","組合T型斷面","底纖維拉力控制","容許應力設計"],0,"WSD",1,""],
-["RC-2021-4","K","預鑄預力梁與場鑄板組成 T 型梁，求最大均布活載重",["預力T型梁","組合斷面","有效翼板寬","最大活載重"],0,"概念題",1,""],
+["RC-2021-4","K","預鑄預力梁與場鑄板組成 T 型梁，求最大均布活載重",["預力T型梁","組合斷面","有效翼板寬","最大活載重"],0,"WSD",1,""],
 ["RC-2010-4","P","曲線腱較直線腱的載重效益，並求梁中央偏心距限制",["偏心距限制","四控制條件","曲線型鋼腱","等效載重法"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
 ["RC-2015-4","P","拋物線腱端部無偏心，求最優 F、跨中 ep 與最大活載重",["拋物線腱","四控制條件","核心距","最大活載重"],0,"WSD",0,"U4-2 預力量與偏心量設計"],
 ["RC-2020-4","P","預力連續梁一致腱二次彎矩，以等效載重法求 C 線",["預力連續梁","一致腱","二次彎矩","C線"],0,"WSD",0,"U4-2 預力量與偏心量設計"],

@@ -32,9 +32,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>RC-2007-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h3>考題編號：RC-2007-4</h3>
-<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
-<strong>副分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計
-<strong>設計法：</strong> WSD工作應力法
+<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> WSD工作應力法<br />
 <strong>標籤：</strong> <code>I形橋梁</code> <code>組合T型斷面</code> <code>兩階段應力疊加</code> <code>底纖維拉力控制</code> <code>集中活載重</code> <code>不同f'c轉換</code> <code>容許應力設計</code> <code>內梁</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
@@ -126,9 +126,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><em>圖說：I 形梁，頂翼板寬 40 cm，底翼板寬 55 cm，梁全深 114.3 cm。橋面版寬 220 cm（梁間距 2.2 m），厚 20 cm，硬化後與梁形成組合斷面。c.g.s. 距梁底 20 cm，偏心距 $e = 51.5 - 20 = 31.5$ cm。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心：</strong> 兩階段應力疊加（施工順序決定作用斷面）：
-- <strong>Stage 1（非組合）：</strong> 預力 + 梁自重 + 橋面版濕混凝土重 → 作用於 I 形梁斷面
-- <strong>Stage 2（組合）：</strong> 附加靜載重 + 活載重 → 作用於組合斷面</p>
+<p><strong>核心：</strong> 兩階段應力疊加（施工順序決定作用斷面）：</p>
+<ul>
+<li><strong>Stage 1（非組合）：</strong> 預力 + 梁自重 + 橋面版濕混凝土重 → 作用於 I 形梁斷面</li>
+<li><strong>Stage 2（組合）：</strong> 附加靜載重 + 活載重 → 作用於組合斷面</li>
+</ul>
 <p><strong>關鍵：</strong> 最大 P 由<strong>梁底纖維不超過容許拉應力</strong>控制（底部有預壓，被活載重彎矩耗盡）。</p>
 <p><strong>若忽略組合斷面而將所有載重施於非組合梁：</strong> 頂纖維壓力在全 DL 後已達 137 kgf/cm²（容許 140），LL 幾乎無空間 → 答案不合理（≈ 0.43 tf），必須用兩階段。</p>
 <hr />
@@ -195,10 +197,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><code>以兩階段應力疊加，找三個容許應力條件下最小的 P_max</code></p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$\text{Stage 1: } f = \frac{P_e}{A} \pm \frac{P_e \cdot e}{S} \mp \frac{M_{S1}}{S} \quad (\text{非組合梁})$$</p>
-<p>$$\text{組合斷面: } n = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em>$$}}}, \quad b' = b_{deck} \times n, \quad \bar{y} = \frac{\sum A_i y_i}{\sum A_i</p>
-<p>$$I_{comp} = I_o + A_{beam}(\bar{y}-y_{beam})^2 + I'<em deck="deck">{deck} + A'</em>)^2$$}(\bar{y}-y_{deck</p>
+<p>$$\text{組合斷面: } n = \sqrt{\frac{f'_{c2}}{f'_{c1}}}, \quad b' = b_{deck} \times n, \quad \bar{y} = \frac{\sum A_i y_i}{\sum A_i}$$</p>
+<p>$$I_{comp} = I_o + A_{beam}(\bar{y}-y_{beam})^2 + I'_{deck} + A'_{deck}(\bar{y}-y_{deck})^2$$</p>
 <p>$$\text{Stage 2: } \Delta f = \pm \frac{M_{S2} \cdot y}{I_{comp}} \quad (\text{組合斷面；版取} \times n)$$</p>
-<p>$$P_{max} = \min!\left(\frac{[\sigma_{allow}]<em top_S1_S2="top,S1+S2">{top} - f</em>]}}{M_{LL,per P}/I_{comp} \cdot y_{top}},\ \frac{f_{bot,S1+S2} + [\sigma_{allow<em LL_per="LL,per" P="P">{bot,tens}}{M</em>,\ \ldots\right)$$}/I_{comp} \cdot y_{bot}</p>
+<p>$$P_{max} = \min\!\left(\frac{[\sigma_{allow}]_{top} - f_{top,S1+S2}}{M_{LL,per P}/I_{comp} \cdot y_{top}},\ \frac{f_{bot,S1+S2} + [\sigma_{allow}]_{bot,tens}}{M_{LL,per P}/I_{comp} \cdot y_{bot}},\ \ldots\right)$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -220,7 +222,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>形心至頂/底距離</td>
 </tr>
 <tr>
-<td>$f'<em c2="c2">{c1}$, $f'</em>$</td>
+<td>$f'_{c1}$, $f'_{c2}$</td>
 <td>350, 280 kgf/cm²</td>
 <td>梁、版強度</td>
 </tr>
@@ -430,27 +432,27 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Step 1：有效預力與偏心距</h3>
-<p>$$P_i = f_{pi} \times A_{ps} = 13{,}200 \times 21.7 = 286{,}440 \text{ kgf}$$
-$$P_e = 286{,}440 \times (1 - 0.20) = \boxed{229{,}152 \text{ kgf}}$$
+<p>$$P_i = f_{pi} \times A_{ps} = 13{,}200 \times 21.7 = 286{,}440 \text{ kgf}$$<br />
+$$P_e = 286{,}440 \times (1 - 0.20) = \boxed{229{,}152 \text{ kgf}}$$<br />
 $$e = c_b - 20 = 51.5 - 20 = \boxed{31.5 \text{ cm}} \quad (\text{c.g.s. 在形心下方})$$</p>
 <p><strong>預力應力（壓縮為正）：</strong></p>
 <p>$$f_{top}^{PS} = \frac{P_e}{A} - \frac{P_e \cdot e}{S_t} = \frac{229{,}152}{3{,}613} - \frac{229{,}152 \times 31.5}{83{,}082} = 63.43 - 86.88 = \boxed{-23.45 \text{ kgf/cm}^2 \text{ （拉）}}$$</p>
 <p>$$f_{bot}^{PS} = \frac{P_e}{A} + \frac{P_e \cdot e}{S_b} = 63.43 + \frac{229{,}152 \times 31.5}{101{,}370} = 63.43 + 71.21 = \boxed{+134.64 \text{ kgf/cm}^2 \text{ （壓）}}$$</p>
 <hr />
 <h3>Step 2：Stage 1（非組合梁：預力 + 梁 SW + 版 DL）</h3>
-<p><strong>荷載：</strong>
-$$w_{beam} = 2400 \times \frac{3{,}613}{10{,}000} = 867.1 \text{ kgf/m}, \quad w_{deck} = 2400 \times 0.20 \times 2.2 = 1{,}056 \text{ kgf/m}$$
+<p><strong>荷載：</strong><br />
+$$w_{beam} = 2400 \times \frac{3{,}613}{10{,}000} = 867.1 \text{ kgf/m}, \quad w_{deck} = 2400 \times 0.20 \times 2.2 = 1{,}056 \text{ kgf/m}$$<br />
 $$w_{S1} = 867.1 + 1{,}056 = 1{,}923.1 \text{ kgf/m} = 19.231 \text{ kgf/cm}$$</p>
 <p>$$M_{S1} = \frac{19.231 \times 2000^2}{8} = \boxed{9{,}615{,}500 \text{ kgf·cm}}$$</p>
-<p><strong>Stage 1 DL 應力：</strong>
-$$f_{top}^{S1,DL} = +\frac{M_{S1}}{S_t} = +\frac{9{,}615{,}500}{83{,}082} = +115.74 \text{ kgf/cm}^2 \text{ （壓）}$$
+<p><strong>Stage 1 DL 應力：</strong><br />
+$$f_{top}^{S1,DL} = +\frac{M_{S1}}{S_t} = +\frac{9{,}615{,}500}{83{,}082} = +115.74 \text{ kgf/cm}^2 \text{ （壓）}$$<br />
 $$f_{bot}^{S1,DL} = -\frac{M_{S1}}{S_b} = -\frac{9{,}615{,}500}{101{,}370} = -94.85 \text{ kgf/cm}^2 \text{ （拉）}$$</p>
-<p><strong>Stage 1 總應力（預力 + DL）：</strong>
-$$f_{top}^{S1} = -23.45 + 115.74 = \boxed{+92.29 \text{ kgf/cm}^2 \text{ （壓）}} \leq 140 \quad \checkmark$$
+<p><strong>Stage 1 總應力（預力 + DL）：</strong><br />
+$$f_{top}^{S1} = -23.45 + 115.74 = \boxed{+92.29 \text{ kgf/cm}^2 \text{ （壓）}} \leq 140 \quad \checkmark$$<br />
 $$f_{bot}^{S1} = +134.64 - 94.85 = \boxed{+39.79 \text{ kgf/cm}^2 \text{ （壓）}} \quad \checkmark$$</p>
 <hr />
 <h3>Step 3：組合轉換斷面（版硬化後）</h3>
-<p>$$n = \frac{E_{c,deck}}{E_{c,beam}} = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em> = 0.8944$$}}} = \sqrt{\frac{280}{350}} = \sqrt{0.8</p>
+<p>$$n = \frac{E_{c,deck}}{E_{c,beam}} = \sqrt{\frac{f'_{c2}}{f'_{c1}}} = \sqrt{\frac{280}{350}} = \sqrt{0.8} = 0.8944$$</p>
 <p>轉換版寬：$b'_{deck} = 220 \times 0.8944 = 196.8$ cm</p>
 <p>各子斷面（梁底起量）：</p>
 <table>
@@ -479,29 +481,31 @@ $$f_{bot}^{S1} = +134.64 - 94.85 = \boxed{+39.79 \text{ kgf/cm}^2 \text{ （壓�
 </tr>
 </tbody>
 </table>
-<p><strong>組合形心（梁底起）：</strong>
+<p><strong>組合形心（梁底起）：</strong><br />
 $$\bar{y} = \frac{3{,}613 \times 51.5 + 3{,}936 \times 124.3}{7{,}549} = \frac{186{,}070 + 489{,}245}{7{,}549} = \frac{675{,}315}{7{,}549} = \boxed{89.44 \text{ cm}}$$</p>
-<p><strong>各關鍵點到組合形心距離：</strong>
-- 梁底（受拉面）：$y_{bot} = 89.44$ cm（形心下方）
-- 梁頂：$y_{beam,top} = 114.3 - 89.44 = 24.86$ cm（形心上方）
-- 版頂：$y_{deck,top} = 134.3 - 89.44 = 44.86$ cm（形心上方）</p>
-<p><strong>組合斷面慣性矩：</strong>
-$$I_{beam} = 5{,}200{,}000 + 3{,}613 \times (89.44-51.5)^2 = 5{,}200{,}000 + 3{,}613 \times 37.94^2$$
+<p><strong>各關鍵點到組合形心距離：</strong></p>
+<ul>
+<li>梁底（受拉面）：$y_{bot} = 89.44$ cm（形心下方）</li>
+<li>梁頂：$y_{beam,top} = 114.3 - 89.44 = 24.86$ cm（形心上方）</li>
+<li>版頂：$y_{deck,top} = 134.3 - 89.44 = 44.86$ cm（形心上方）</li>
+</ul>
+<p><strong>組合斷面慣性矩：</strong><br />
+$$I_{beam} = 5{,}200{,}000 + 3{,}613 \times (89.44-51.5)^2 = 5{,}200{,}000 + 3{,}613 \times 37.94^2$$<br />
 $$= 5{,}200{,}000 + 3{,}613 \times 1{,}439.4 = 5{,}200{,}000 + 5{,}200{,}567 = 10{,}400{,}567 \text{ cm}^4$$</p>
-<p>$$I_{deck} = \frac{196.8 \times 20^3}{12} + 3{,}936 \times (124.3 - 89.44)^2 = 131{,}200 + 3{,}936 \times 34.86^2$$
+<p>$$I_{deck} = \frac{196.8 \times 20^3}{12} + 3{,}936 \times (124.3 - 89.44)^2 = 131{,}200 + 3{,}936 \times 34.86^2$$<br />
 $$= 131{,}200 + 3{,}936 \times 1{,}215.2 = 131{,}200 + 4{,}783{,}027 = 4{,}914{,}227 \text{ cm}^4$$</p>
 <p>$$\boxed{I_{comp} = 10{,}400{,}567 + 4{,}914{,}227 = 15{,}314{,}794 \approx 15.31 \times 10^6 \text{ cm}^4}$$</p>
-<p><strong>截面模數（梁材料應力）：</strong>
-$$S_{comp,bot} = \frac{I_{comp}}{y_{bot}} = \frac{15{,}314{,}794}{89.44} = 171{,}234 \text{ cm}^3$$
+<p><strong>截面模數（梁材料應力）：</strong><br />
+$$S_{comp,bot} = \frac{I_{comp}}{y_{bot}} = \frac{15{,}314{,}794}{89.44} = 171{,}234 \text{ cm}^3$$<br />
 $$S_{comp,beam top} = \frac{I_{comp}}{y_{beam,top}} = \frac{15{,}314{,}794}{24.86} = 615{,}877 \text{ cm}^3$$</p>
 <hr />
 <h3>Step 4：Stage 2（組合斷面：附加 DL = 750 kgf/m）</h3>
-<p>$$w_{S2} = 750 \text{ kgf/m} = 7.5 \text{ kgf/cm}$$
+<p>$$w_{S2} = 750 \text{ kgf/m} = 7.5 \text{ kgf/cm}$$<br />
 $$M_{S2} = \frac{7.5 \times 2000^2}{8} = 3{,}750{,}000 \text{ kgf·cm}$$</p>
-<p><strong>Stage 2 DL 應力（在梁）：</strong>
+<p><strong>Stage 2 DL 應力（在梁）：</strong><br />
 $$f_{beam,top}^{S2} = +\frac{M_{S2} \cdot y_{beam,top}}{I_{comp}} = +\frac{3{,}750{,}000 \times 24.86}{15{,}314{,}794} = +6.09 \text{ kgf/cm}^2 \text{ （壓）}$$</p>
 <p>$$f_{beam,bot}^{S2} = -\frac{M_{S2} \cdot y_{bot}}{I_{comp}} = -\frac{3{,}750{,}000 \times 89.44}{15{,}314{,}794} = -21.89 \text{ kgf/cm}^2 \text{ （拉）}$$</p>
-<p><strong>Stage 2 DL 應力（版頂，實際版混凝土應力）：</strong>
+<p><strong>Stage 2 DL 應力（版頂，實際版混凝土應力）：</strong><br />
 $$f_{deck,top}^{S2} = +\frac{M_{S2} \cdot y_{deck,top}}{I_{comp}} \times n = +\frac{3{,}750{,}000 \times 44.86}{15{,}314{,}794} \times 0.8944 = +9.82 \text{ kgf/cm}^2 \text{ （壓）}$$</p>
 <p><strong>累積應力（Stage 1 + Stage 2 DL）：</strong></p>
 <table>
@@ -550,14 +554,14 @@ $$f_{deck,top}^{S2} = +\frac{M_{S2} \cdot y_{deck,top}}{I_{comp}} \times n = +\f
 <p>$$\Delta f_{beam,bot} = -\frac{500P \times 89.44}{15{,}314{,}794} = -0.002920P \text{ kgf/cm}^2 \text{ （拉）}$$</p>
 <p>$$\Delta f_{deck,top} = +\frac{500P \times 44.86}{15{,}314{,}794} \times 0.8944 = +0.001310P \text{ kgf/cm}^2$$</p>
 <p><strong>三條限制求 $P_{max}$：</strong></p>
-<p><strong>① 梁底不超過容許拉應力（$3\sqrt{350} = 56.1$ kgf/cm²）：</strong>
-$$17.90 - 0.002920P \geq -56.1$$
+<p><strong>① 梁底不超過容許拉應力（$3\sqrt{350} = 56.1$ kgf/cm²）：</strong><br />
+$$17.90 - 0.002920P \geq -56.1$$<br />
 $$P \leq \frac{17.90 + 56.1}{0.002920} = \frac{74.0}{0.002920} = \boxed{25{,}342 \text{ kgf} = 25.3 \text{ tf}} \quad \leftarrow \textbf{控制}$$</p>
-<p><strong>② 梁頂不超過容許壓應力（$0.4 \times 350 = 140$ kgf/cm²）：</strong>
-$$98.38 + 0.0008115P \leq 140$$
+<p><strong>② 梁頂不超過容許壓應力（$0.4 \times 350 = 140$ kgf/cm²）：</strong><br />
+$$98.38 + 0.0008115P \leq 140$$<br />
 $$P \leq \frac{41.62}{0.0008115} = 51{,}288 \text{ kgf} = 51.3 \text{ tf}$$</p>
-<p><strong>③ 版頂不超過容許壓應力（$0.4 \times 280 = 112$ kgf/cm²）：</strong>
-$$9.82 + 0.001310P \leq 112$$
+<p><strong>③ 版頂不超過容許壓應力（$0.4 \times 280 = 112$ kgf/cm²）：</strong><br />
+$$9.82 + 0.001310P \leq 112$$<br />
 $$P \leq \frac{102.18}{0.001310} = 78{,}000 \text{ kgf} = 78.0 \text{ tf}$$</p>
 <p>$$\boxed{P_{max} = 25.3 \text{ tf} = 25{,}342 \text{ kgf}} \quad \text{（梁底拉力控制）}$$</p>
 <hr />
@@ -601,13 +605,15 @@ $$P \leq \frac{102.18}{0.001310} = 78{,}000 \text{ kgf} = 78.0 \text{ tf}$$</p>
 </tbody>
 </table>
 <h3>$n$ 值的影響</h3>
-<p>$n = \sqrt{280/350} = 0.894$ 使版的有效剛度稍低於梁。若取 $n=1$（同材料）：
-- 組合 $I_{comp}$ 略大，$P_{max}$ 略增
-- 誤差約 5-10%</p>
-<p>考試場合：可取 $n = \sqrt{f'<em c1="c1">{c2}/f'</em>$ 或 $n=1$（若題目未指定可合理假設）。}</p>
+<p>$n = \sqrt{280/350} = 0.894$ 使版的有效剛度稍低於梁。若取 $n=1$（同材料）：</p>
+<ul>
+<li>組合 $I_{comp}$ 略大，$P_{max}$ 略增</li>
+<li>誤差約 5-10%</li>
+</ul>
+<p>考試場合：可取 $n = \sqrt{f'_{c2}/f'_{c1}}$ 或 $n=1$（若題目未指定可合理假設）。</p>
 <h3>梁底拉力容許值 $3\sqrt{f'_c}$</h3>
-<p>本題容許<strong>正拉應力</strong> $= 3\sqrt{350} = 56.1$ kgf/cm²，屬於「B 級」截面（部分允許拉力裂縫）。若為更嚴格的「A 級」（全預壓），則容許拉應力 = 0，此時：
-$$P_{max}^{no-tension} = 17.90/0.002920 = 6{,}130 \text{ kgf} = 6.13 \text{ tf}$$
+<p>本題容許<strong>正拉應力</strong> $= 3\sqrt{350} = 56.1$ kgf/cm²，屬於「B 級」截面（部分允許拉力裂縫）。若為更嚴格的「A 級」（全預壓），則容許拉應力 = 0，此時：<br />
+$$P_{max}^{no-tension} = 17.90/0.002920 = 6{,}130 \text{ kgf} = 6.13 \text{ tf}$$<br />
 大幅降低，顯示容許拉應力對 PC 橋梁活載重承載力影響很大。</p></main>
 <footer>來源：raw/solutions/RC-2007-4/RC-2007-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>

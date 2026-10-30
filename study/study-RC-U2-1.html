@@ -99,7 +99,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 
 <h3 id="b2">考點結構（點卡片可篩選下方考題清單）</h3>
 <div class="cats">
-<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('J')"><h3>🏚️ 耐震／牆體的剪力（5 題）</h3><p>M<sub>pr</sub> → V<sub>e</sub> → V<sub>c</sub>＝0 → 密箍、接頭 V<sub>jh</sub>、剪力牆</p></div>
+<div class="cat" style="border-left-color:var(--warn)" onclick="filterQ('J')"><h3>🏚️ 耐震／牆體的剪力（5 題）</h3><p>M<sub>pr</sub> → V<sub>e</sub> → V<sub>c</sub>＝0 → 密箍、耐震柱 V<sub>e</sub>、剪力牆</p></div>
 <div class="cat" style="border-left-color:var(--c)" onclick="filterQ('V')"><h3>📍 V<sub>c</sub> 與臨界斷面（3 題）</h3><p>簡化式／詳細式、軸力修正 140／35、等效彎矩 M<sub>m</sub>、d 偏移</p></div>
 <div class="cat" style="border-left-color:var(--k)" onclick="filterQ('S')"><h3>🔗 箍筋設計與間距上限（3 題）</h3><p>V<sub>s</sub>、s<sub>max</sub> 四個上限、撓曲強度控制設計剪力、預力梁 V<sub>cw</sub></p></div>
 <div class="cat" style="border-left-color:var(--t)" onclick="filterQ('T')"><h3>🌀 剪力＋扭力互動（3 題）</h3><p>T<sub>cr</sub> 忽略門檻、A<sub>cp</sub>／p<sub>cp</sub>、空間桁架類比、斷面適當性</p></div>
@@ -110,12 +110,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 </div>
 
 <h3 id="b4">剪力的角色：主考點 7 題 vs. 副考點 9 題</h3>
-<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">本單元 16 題的 <code>designMethod</code> <b>清一色是 USD 強度設計法</b>（0 題 WSD、0 題純概念），沒有設計法之爭。真正決定準備方向的是「剪力以什麼身分出現」，故改以角色分軸。</p>
+<p style="font-size:.9em;margin:0 0 10px;color:var(--mut)">本單元 16 題的 <code>designMethod</code> <b>幾乎清一色是 USD 強度設計法</b>（15 題 USD、1 題概念題 2009-1、0 題 WSD），沒有設計法之爭。真正決定準備方向的是「剪力以什麼身分出現」，故改以角色分軸。</p>
 <table>
 <thead><tr><th>剪力在該題的角色</th><th class="num">題數</th><th>題號</th><th>觀察</th></tr></thead>
 <tbody>
 <tr><td><b>主考點</b>：剪力就是題目本身</td><td class="num">7</td><td>2006-1、2009-3、2010-3、2014-3、2017-2、2020-2、2023-3</td><td>散在 7 個不同考年，無一年出兩題；每題都額外綁一個判斷（軸力／STM／介面／倒 T／扭力）</td></tr>
-<tr style="background:#fff8e1"><td>副・<b>耐震設計 U3-3</b></td><td class="num"><b>5</b></td><td>2003-3、2003-4、2012-3、2016-2、2025-2</td><td><b>最大的來源。</b>耐震題一定要先由 M<sub>pr</sub> 反推設計剪力 V<sub>e</sub>，再判斷 V<sub>c</sub> 能不能算；2025-2 是最近一次</td></tr>
+<tr style="background:#fff8e1"><td>副・<b>耐震設計 U3-3</b></td><td class="num"><b>5</b></td><td>2003-4、2009-1、2012-3、2016-2、2025-2</td><td><b>最大的來源。</b>耐震題一定要先由 M<sub>pr</sub> 反推設計剪力 V<sub>e</sub>，再判斷 V<sub>c</sub> 能不能算；2025-2 是最近一次</td></tr>
 <tr><td>副・<b>扭力設計 U2-2</b></td><td class="num">2</td><td>2011-4、2018-1</td><td>扭剪組合必先做斷面適當性檢核，A<sub>cp</sub>／p<sub>cp</sub>／A<sub>oh</sub> 與剪力共用同一組幾何</td></tr>
 <tr><td>副・<b>梁撓曲 U1-1</b></td><td class="num">1</td><td>2021-1</td><td>撓曲設計題的後半段順帶要求配肋筋與 s<sub>max</sub></td></tr>
 <tr><td>副・<b>預力梁剪力 U4-4</b></td><td class="num">1</td><td>2022-3</td><td>預力梁改用腹剪 V<sub>cw</sub>，f<sub>pc</sub> 與 d<sub>p</sub> 取法與 RC 梁不同</td></tr>
@@ -146,7 +146,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:20px}
 <table>
 <thead><tr><th>風險</th><th>考點</th><th class="num">歷史題數</th><th>最後出現</th><th class="num">空窗</th><th>理由</th></tr></thead>
 <tbody>
-<tr class="risk-hi"><td><b>高</b></td><td>耐震剪力鏈：M<sub>pr</sub> → V<sub>e</sub> → V<sub>c</sub>＝0 → 密箍間距</td><td class="num">5</td><td>2025-2</td><td class="num">0 年</td><td>2012-3、2016-2、2025-2 三次以副考點形式出現在耐震題，加上 2003-3、2003-4 共 5 題；2025 剛考過，而這條鏈同時是 U3-3 的核心動作，練一次抵兩個單元</td></tr>
+<tr class="risk-hi"><td><b>高</b></td><td>耐震剪力鏈：M<sub>pr</sub> → V<sub>e</sub> → V<sub>c</sub>＝0 → 密箍間距</td><td class="num">5</td><td>2025-2</td><td class="num">0 年</td><td>2012-3、2016-2、2025-2 三次以副考點形式出現在耐震題，加上 2003-4（剪力牆）、2009-1（耐震柱 V<sub>e</sub> 與 V<sub>c</sub>＝0 條件）共 5 題；2025 剛考過，而這條鏈同時是 U3-3 的核心動作，練一次抵兩個單元</td></tr>
 <tr class="risk-hi"><td><b>高</b></td><td>臨界斷面位置判斷 ＋ s<sub>max</sub> 四個上限</td><td class="num">4</td><td>2023-3</td><td class="num">2 年</td><td>「臨界斷面」是本單元出現最多的標籤（3 題主考點）；2006-1 懸臂、2020-2 倒 T 的 d 偏移、2021-1 T 形、2023-3 懸臂偏心——載體年年換但要做的動作相同</td></tr>
 <tr class="risk-md"><td><b>中高</b></td><td>軸力對 V<sub>c</sub> 的修正（簡化式 140／35 vs 詳細式 M<sub>m</sub>）</td><td class="num">2</td><td>2014-3</td><td class="num">11 年</td><td>2010-3（簡化式，含觀念說明）與 2014-3（詳細式，三種軸力比較）是同一考點的兩個版本，隔 4 年連續出現後空窗 11 年；難點只有「M<sub>m</sub> 為負時要取上限」一處</td></tr>
 <tr class="risk-md"><td><b>中高</b></td><td>剪力＋扭力互動（T<sub>cr</sub> 忽略門檻、斷面適當性）</td><td class="num">3</td><td>2023-3</td><td class="num">2 年</td><td>2011-4、2018-1 從 U2-2 那側出題，2023-3 反過來從 U2-1 這側考「扭力可否忽略」；三題都要先算 A<sub>cp</sub>、p<sub>cp</sub>，是兩個單元的公共交集</td></tr>
@@ -182,7 +182,7 @@ const Q=[
 ["RC-2018-1","T","Tu=4 tf·m 與 Vu=20 tf 併用，以塑性理念設計箍筋間距",["扭矩剪力組合","空間桁架類比","poh/8最大間距","縱向扭力筋"],0,"USD",0,"U2-2 RC 扭力強度設計"],
 ["RC-2009-3","F","以壓拉桿模式 STM 預估深梁最大載重 P 與破壞模式",["壓拉桿模式","STM","深梁","βs係數","βn係數"],0,"USD",1,""],
 ["RC-2017-2","F","加大柱新舊混凝土介面以剪力摩擦法設計植筋",["加大柱","摩擦剪力法","植筋設計","粗糙面"],0,"USD",1,""],
-["RC-2003-3","J","中間層內跨梁柱接頭水平剪力 Vjh 與有效接頭寬度 bj",["梁柱接頭","內部接頭","水平剪力Vjh","有效接頭寬度bj"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
+["RC-2009-1","J","耐震柱橫向鋼筋配置：lo、so、Ash 與 Vc=0 條件",["耐震柱","密箍區lo","Ash公式","Vc=0條件"],0,"概念題",0,"U3-3 韌性要求與耐震設計"],
 ["RC-2003-4","J","兩層樓剪力牆水平／垂直剪力筋與邊界構材配筋設計",["剪力牆","邊界構材","αc係數","φ=0.6"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
 ["RC-2012-3","J","以梁端 Mpr 反推柱地震設計剪力，設計柱塑鉸區箍筋",["強柱弱梁","柱塑鉸區","Ash","Vc=0條件"],0,"USD",0,"U3-3 韌性要求與耐震設計"],
 ["RC-2016-2","J","耐震梁塑鉸區以 3 股 D10 設計橫向箍筋（Ve 與 Vc 判斷）",["特殊矩形框架梁","可能彎矩強度Mpr","強度設計剪力Ve","密箍區間距"],0,"USD",0,"U3-3 韌性要求與耐震設計"],

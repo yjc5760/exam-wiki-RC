@@ -32,9 +32,9 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </style></head><body>
 <header><h1>RC-2008-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h3>考題編號：RC-2008-4</h3>
-<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
-<strong>副分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計
-<strong>設計法：</strong> WSD工作應力法
+<p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
+<strong>副分類：</strong> 無<br />
+<strong>設計法：</strong> WSD工作應力法<br />
 <strong>標籤：</strong> <code>後拉法</code> <code>組合T型斷面</code> <code>兩階段應力疊加</code> <code>非組合梁承受DL</code> <code>組合梁承受LL</code> <code>底纖維拉力控制</code> <code>容許應力設計</code> <code>不同f'c轉換</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
@@ -88,17 +88,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p><strong>題目附圖：</strong></p>
 <p><img alt="RC-2008-4 組合T型斷面：版寬90cm×厚15cm在上，預力梁30cm×70cm在下，c.g.s.距底20cm" src="../../raw/solutions/RC-2008-4/RC-2008-4-fig-1.png" /></p>
-<p><em>圖說：跨中斷面。版寬 90 cm，厚 15 cm（$f'<em c1="c1">{c2}=280$ kgf/cm²）；梁寬 30 cm，梁深 70 cm（$f'</em>=350$ kgf/cm²）；總高 85 cm。c.g.s. 距梁底 20 cm，梁自重偏心距 $e=35-20=15$ cm（c.g.s. 在形心下方）。$P_e=200$ tf，$L=15$ m。</em></p>
+<p><em>圖說：跨中斷面。版寬 90 cm，厚 15 cm（$f'_{c2}=280$ kgf/cm²）；梁寬 30 cm，梁深 70 cm（$f'_{c1}=350$ kgf/cm²）；總高 85 cm。c.g.s. 距梁底 20 cm，梁自重偏心距 $e=35-20=15$ cm（c.g.s. 在形心下方）。$P_e=200$ tf，$L=15$ m。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 施工順序決定各載重的作用斷面：
-- <strong>非組合階段</strong>（Stage 1）：預力 + 梁自重 + <strong>版DL</strong>（版尚未硬化，梁單獨承擔）→ 以<strong>梁斷面</strong>計算應力
-- <strong>組合階段</strong>（Stage 2）：版硬化後，活載重 → 以<strong>組合轉換斷面</strong>計算增量應力</p>
+<p><strong>核心觀念：</strong> 施工順序決定各載重的作用斷面：</p>
+<ul>
+<li><strong>非組合階段</strong>（Stage 1）：預力 + 梁自重 + <strong>版DL</strong>（版尚未硬化，梁單獨承擔）→ 以<strong>梁斷面</strong>計算應力</li>
+<li><strong>組合階段</strong>（Stage 2）：版硬化後，活載重 → 以<strong>組合轉換斷面</strong>計算增量應力</li>
+</ul>
 <p>最大 $w_{LL}$ 由<strong>底纖維不可受拉</strong>控制（Stage 1 底部壓力被 Stage 2 LL 拉力抵消）</p>
-<p><strong>出題者測驗能力：</strong>
-1. 正確判斷施工順序：<strong>版DL 在非組合階段承受</strong>（最常見陷阱）
-2. 計算不同 $f'<em c2="c2">c$ 的組合轉換斷面（$n = \sqrt{f'</em>$）
-3. 疊加兩階段應力並找出控制條件}/f'_{c1}</p>
+<p><strong>出題者測驗能力：</strong></p>
+<ol>
+<li>正確判斷施工順序：<strong>版DL 在非組合階段承受</strong>（最常見陷阱）</li>
+<li>計算不同 $f'_c$ 的組合轉換斷面（$n = \sqrt{f'_{c2}/f'_{c1}}$）</li>
+<li>疊加兩階段應力並找出控制條件</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰順序：</strong></p>
@@ -169,7 +173,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$\text{Step 1: } e = \frac{h_1}{2} - 20 \text{ cm}, \quad S_{b1} = S_{t1} = \frac{I_1}{h_1/2}$$</p>
 <p>$$\text{Step 2 (Stage 1): } f_{1,bot} = -\frac{P_e}{A_1} - \frac{P_e \cdot e}{S_{b1}} + \frac{M_{DL}}{S_{b1}}$$</p>
-<p>$$\text{Step 3: } n = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em>$$}}}, \quad b'_{slab} = 90 \times n, \quad \bar{y} = \frac{\sum A_i y_i}{\sum A_i</p>
+<p>$$\text{Step 3: } n = \sqrt{\frac{f'_{c2}}{f'_{c1}}}, \quad b'_{slab} = 90 \times n, \quad \bar{y} = \frac{\sum A_i y_i}{\sum A_i}$$</p>
 <p>$$\text{Step 4: } I_c = I_1 + A_1(\bar{y}-y_1)^2 + I_{slab}' + A_{slab}'(\bar{y}-y_2)^2$$</p>
 <p>$$\text{Step 5 (控制條件): } f_{1,bot} + \frac{M_{LL} \cdot \bar{y}}{I_c} \leq 0 \Rightarrow M_{LL,max} = |f_{1,bot}| \cdot \frac{I_c}{\bar{y}}$$</p>
 <p>$$\text{Step 6: } w_{LL,max} = \frac{8 M_{LL,max}}{L^2}$$</p>
@@ -388,7 +392,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>不同 $f'_c$ 的轉換</td>
-<td>取梁混凝土為基準，版寬 × $n=\sqrt{f'<em c1="c1">{c2}/f'</em>$ → 折減}</td>
+<td>取梁混凝土為基準，版寬 × $n=\sqrt{f'_{c2}/f'_{c1}}$ → 折減</td>
 <td style="text-align: center;"></td>
 </tr>
 <tr>
@@ -409,38 +413,40 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$A_1 = 30 \times 70 = 2100 \text{ cm}^2$$</p>
 <p>$$I_1 = \frac{30 \times 70^3}{12} = \frac{30 \times 343{,}000}{12} = 857{,}500 \text{ cm}^4$$</p>
 <p>$$S_{b1} = S_{t1} = \frac{857{,}500}{35} = 24{,}500 \text{ cm}^3 \quad (\text{對稱斷面})$$</p>
-<p>偏心距（c.g.s. 在形心下方）：
+<p>偏心距（c.g.s. 在形心下方）：<br />
 $$e = \frac{h_1}{2} - 20 = 35 - 20 = 15 \text{ cm}$$</p>
 <hr />
 <h3>Step 2：Stage 1 各載重（作用於非組合梁）</h3>
 <p>施工順序：① 梁架設（梁 SW 即刻起作用）→ ② 版澆置（版尚未硬化，版 DL 由梁獨自承擔）</p>
-<p><strong>梁自重：</strong>
+<p><strong>梁自重：</strong><br />
 $$w_{SW} = 2400 \times 0.30 \times 0.70 = 504 \text{ kgf/m} = 5.04 \text{ kgf/cm}$$</p>
-<p><strong>版自重（澆置時作用於非組合梁）：</strong>
+<p><strong>版自重（澆置時作用於非組合梁）：</strong><br />
 $$w_{slab} = 2400 \times 0.90 \times 0.15 = 324 \text{ kgf/m} = 3.24 \text{ kgf/cm}$$</p>
-<p><strong>Stage 1 總死載重：</strong>
+<p><strong>Stage 1 總死載重：</strong><br />
 $$w_{DL} = 5.04 + 3.24 = 8.28 \text{ kgf/cm}$$</p>
 <p>$$M_{DL} = \frac{w_{DL} L^2}{8} = \frac{8.28 \times 1500^2}{8} = 8.28 \times 281{,}250 = 2{,}328{,}750 \text{ kgf·cm}$$</p>
 <hr />
 <h3>Step 3：Stage 1 跨中應力（預力 + 全部DL，作用於非組合梁）</h3>
-<p><strong>預力各項：</strong>
+<p><strong>預力各項：</strong><br />
 $$\frac{P_e}{A_1} = \frac{200{,}000}{2100} = 95.24 \text{ kgf/cm}^2$$</p>
 <p>$$\frac{P_e \cdot e}{S_{b1}} = \frac{200{,}000 \times 15}{24{,}500} = \frac{3{,}000{,}000}{24{,}500} = 122.45 \text{ kgf/cm}^2$$</p>
 <p>$$\frac{M_{DL}}{S_{b1}} = \frac{2{,}328{,}750}{24{,}500} = 95.05 \text{ kgf/cm}^2$$</p>
-<p><strong>底纖維（非組合梁）：</strong>
-$$f_{1,bot} = -\frac{P_e}{A_1} - \frac{P_e e}{S_{b1}} + \frac{M_{DL}}{S_{b1}}$$
+<p><strong>底纖維（非組合梁）：</strong><br />
+$$f_{1,bot} = -\frac{P_e}{A_1} - \frac{P_e e}{S_{b1}} + \frac{M_{DL}}{S_{b1}}$$<br />
 $$= -95.24 - 122.45 + 95.05 = \boxed{-122.64 \text{ kgf/cm}^2} \quad (\text{壓縮})$$</p>
-<p><strong>頂纖維（非組合梁）：</strong>
-$$f_{1,top} = -\frac{P_e}{A_1} + \frac{P_e e}{S_{t1}} - \frac{M_{DL}}{S_{t1}}$$
+<p><strong>頂纖維（非組合梁）：</strong><br />
+$$f_{1,top} = -\frac{P_e}{A_1} + \frac{P_e e}{S_{t1}} - \frac{M_{DL}}{S_{t1}}$$<br />
 $$= -95.24 + 122.45 - 95.05 = \boxed{-67.84 \text{ kgf/cm}^2} \quad (\text{壓縮})$$</p>
-<p><strong>驗算 Stage 1 限制：</strong>
-- 底纖維：$|-122.64| &lt; 0.45 \times 350 = 157.5$ kgf/cm² ✓
-- 頂纖維：$|-67.84| &lt; 157.5$ kgf/cm²，無張應力 ✓</p>
+<p><strong>驗算 Stage 1 限制：</strong></p>
+<ul>
+<li>底纖維：$|-122.64| < 0.45 \times 350 = 157.5$ kgf/cm² ✓</li>
+<li>頂纖維：$|-67.84| < 157.5$ kgf/cm²，無張應力 ✓</li>
+</ul>
 <hr />
 <h3>Step 4：組合轉換斷面性質（版硬化後）</h3>
 <p>取<strong>梁混凝土</strong>為基準，將版轉換為等效梁材料：</p>
-<p>$$n = \sqrt{\frac{f'<em c1="c1">{c2}}{f'</em>$$}}} = \sqrt{\frac{280}{350}} = \sqrt{0.8} = \boxed{0.8944</p>
-<p>轉換版寬：
+<p>$$n = \sqrt{\frac{f'_{c2}}{f'_{c1}}} = \sqrt{\frac{280}{350}} = \sqrt{0.8} = \boxed{0.8944}$$</p>
+<p>轉換版寬：<br />
 $$b'_{slab} = 90 \times 0.8944 = 80.50 \text{ cm}$$</p>
 <p>各子面積（從梁底量起）：</p>
 <table>
@@ -469,17 +475,19 @@ $$b'_{slab} = 90 \times 0.8944 = 80.50 \text{ cm}$$</p>
 </tr>
 </tbody>
 </table>
-<p><strong>組合形心（從梁底量起）：</strong>
+<p><strong>組合形心（從梁底量起）：</strong><br />
 $$\bar{y} = \frac{2100 \times 35 + 1207.5 \times 77.5}{3307.5} = \frac{73{,}500 + 93{,}581}{3307.5} = \frac{167{,}081}{3307.5} = \boxed{50.52 \text{ cm}}$$</p>
-<p>各子斷面到組合形心之距離：
-- 梁形心距：$d_1 = 50.52 - 35 = 15.52$ cm
-- 版形心距：$d_2 = 77.5 - 50.52 = 26.98$ cm</p>
-<p><strong>組合斷面慣性矩：</strong>
+<p>各子斷面到組合形心之距離：</p>
+<ul>
+<li>梁形心距：$d_1 = 50.52 - 35 = 15.52$ cm</li>
+<li>版形心距：$d_2 = 77.5 - 50.52 = 26.98$ cm</li>
+</ul>
+<p><strong>組合斷面慣性矩：</strong><br />
 $$I_c = \left[\frac{30 \times 70^3}{12} + 2100 \times 15.52^2\right] + \left[\frac{80.50 \times 15^3}{12} + 1207.5 \times 26.98^2\right]$$</p>
 <p>$$= \left[857{,}500 + 2100 \times 240.87\right] + \left[22{,}641 + 1207.5 \times 728.52\right]$$</p>
 <p>$$= \left[857{,}500 + 505{,}827\right] + \left[22{,}641 + 879{,}768\right]$$</p>
 <p>$$= 1{,}363{,}327 + 902{,}409 = \boxed{2{,}265{,}736 \text{ cm}^4}$$</p>
-<p><strong>梁底纖維截面模數（組合斷面）：</strong>
+<p><strong>梁底纖維截面模數（組合斷面）：</strong><br />
 $$S_{cb} = \frac{I_c}{\bar{y}} = \frac{2{,}265{,}736}{50.52} = \boxed{44{,}849 \text{ cm}^3}$$</p>
 <hr />
 <h3>Step 5：控制條件分析（Stage 2 活載重）</h3>
@@ -574,24 +582,28 @@ $$S_{cb} = \frac{I_c}{\bar{y}} = \frac{2{,}265{,}736}{50.52} = \boxed{44{,}849 \
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <h3>爭議：版DL 在哪個斷面作用？</h3>
-<p>這是最關鍵的判斷。實際施工順序：
-- 梁先架設（梁自重 → 非組合梁）
-- 版澆置時，版的混凝土是流動狀態，<strong>梁獨自承受版重</strong>（非組合）
-- 版硬化後形成組合斷面，後續活載重才在組合斷面上作用</p>
-<p>若誤將版 DL 放在組合斷面：$M_{DL,stage1}$ 只有梁 SW = 1,417,500 kgf·cm，則：
-$$f_{1,bot} = -95.24 - 122.45 + 57.86 = -159.83 \text{ kgf/cm}^2 &gt; 157.5 \text{ kgf/cm}^2$$
+<p>這是最關鍵的判斷。實際施工順序：</p>
+<ul>
+<li>梁先架設（梁自重 → 非組合梁）</li>
+<li>版澆置時，版的混凝土是流動狀態，<strong>梁獨自承受版重</strong>（非組合）</li>
+<li>版硬化後形成組合斷面，後續活載重才在組合斷面上作用</li>
+</ul>
+<p>若誤將版 DL 放在組合斷面：$M_{DL,stage1}$ 只有梁 SW = 1,417,500 kgf·cm，則：<br />
+$$f_{1,bot} = -95.24 - 122.45 + 57.86 = -159.83 \text{ kgf/cm}^2 > 157.5 \text{ kgf/cm}^2$$<br />
 超過允許壓應力，說明此解釋不正確。<strong>版 DL 必須在非組合階段計算。</strong></p>
 <h3>簡化：是否需要模數比 $n$？</h3>
-<p>本題兩種混凝土 $f'<em cb="cb">c$ 相差 20%（350 vs 280），若取 $n=1$：
-- 轉換版寬 = 90 cm（不折減）
-- $\bar{y} = 51.63$ cm，$I_c = 2{,}367{,}000$ cm⁴，$S</em>840$ cm³
-- $M_{LL,max} = 122.64 \times 45{,}840 = 5{,}623{,}000$ kgf·cm
-- $w_{LL,max} = 8 \times 5{,}623{,}000/2{,}250{,}000 = 19.99 \approx 2.00$ tf/m} = 45{,</p>
+<p>本題兩種混凝土 $f'_c$ 相差 20%（350 vs 280），若取 $n=1$：</p>
+<ul>
+<li>轉換版寬 = 90 cm（不折減）</li>
+<li>$\bar{y} = 51.63$ cm，$I_c = 2{,}367{,}000$ cm⁴，$S_{cb} = 45{,}840$ cm³</li>
+<li>$M_{LL,max} = 122.64 \times 45{,}840 = 5{,}623{,}000$ kgf·cm</li>
+<li>$w_{LL,max} = 8 \times 5{,}623{,}000/2{,}250{,}000 = 19.99 \approx 2.00$ tf/m</li>
+</ul>
 <p>正確使用 $n=0.894$ 時答案為 1.955 tf/m，與 $n=1$ 的 2.00 tf/m 相差約 2.3%。嚴格解題應使用 $n$。</p>
 <h3>版底纖維應力驗算</h3>
-<p>版底（梁頂）位於組合形心上方 19.48 cm：
+<p>版底（梁頂）位於組合形心上方 19.48 cm：<br />
 $$f_{slab,bot} = -\frac{M_{LL} \times 19.48}{I_c} \times n = -\frac{5{,}498{,}900 \times 19.48}{2{,}265{,}736} \times 0.8944 = -42.3 \text{ kgf/cm}^2$$</p>
-<p>$|-42.3| &lt; 0.45 \times 280 = 126$ kgf/cm² ✓，版底（界面）應力亦合格。</p></main>
+<p>$|-42.3| < 0.45 \times 280 = 126$ kgf/cm² ✓，版底（界面）應力亦合格。</p></main>
 <footer>來源：raw/solutions/RC-2008-4/RC-2008-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>

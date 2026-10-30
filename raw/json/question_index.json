@@ -217,7 +217,7 @@
       "primaryTopicId": "RC-U3-3",
       "primaryTopicName": "韌性要求與耐震設計",
       "secondaryTopicIds": [
-        "RC-U1-2"
+        "RC-U1-1"
       ],
       "designMethod": "USD",
       "verificationStatus": "unverified",
@@ -266,9 +266,7 @@
       "questionNumber": 4,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -464,7 +462,7 @@
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
       "secondaryTopicIds": [],
-      "designMethod": "概念題",
+      "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
       "hasViz": false,
@@ -1159,8 +1157,8 @@
       "hasViz": false,
       "hasHandwritten": false,
       "tags": [
-        "先拉法",
-        "有黏結腱",
+        "後拉法",
+        "有黏裹腱",
         "懸臂梁",
         "初始階段應力",
         "偏心方向判斷",
@@ -1230,9 +1228,7 @@
       "questionNumber": 4,
       "primaryTopicId": "RC-U3-3",
       "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U1-2"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1346,7 +1342,9 @@
       "questionNumber": 1,
       "primaryTopicId": "RC-U3-3",
       "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "RC-U2-1"
+      ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1476,9 +1474,7 @@
       "questionNumber": 5,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1609,9 +1605,7 @@
       "questionNumber": 4,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1708,9 +1702,7 @@
       "questionNumber": 4,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -1805,9 +1797,7 @@
       "questionNumber": 4,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-2"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -2055,7 +2045,9 @@
       "questionNumber": 1,
       "primaryTopicId": "RC-U3-3",
       "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [],
+      "secondaryTopicIds": [
+        "RC-U2-3"
+      ],
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -2128,10 +2120,10 @@
       "year": 2004,
       "rocYear": 93,
       "questionNumber": 4,
-      "primaryTopicId": "RC-U1-2",
-      "primaryTopicName": "RC 柱強度分析與設計",
+      "primaryTopicId": "RC-U1-3",
+      "primaryTopicName": "細長柱",
       "secondaryTopicIds": [
-        "RC-U1-3"
+        "RC-U1-2"
       ],
       "designMethod": "USD",
       "verificationStatus": "unverified",
@@ -2157,9 +2149,7 @@
       "questionNumber": 5,
       "primaryTopicId": "RC-U4-1",
       "primaryTopicName": "預力梁斷面應力分析",
-      "secondaryTopicIds": [
-        "RC-U4-3"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "混合",
       "verificationStatus": "unverified",
       "hasSolution": true,
@@ -2233,9 +2223,7 @@
       "questionNumber": 3,
       "primaryTopicId": "RC-U3-3",
       "primaryTopicName": "韌性要求與耐震設計",
-      "secondaryTopicIds": [
-        "RC-U2-1"
-      ],
+      "secondaryTopicIds": [],
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
