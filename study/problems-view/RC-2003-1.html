@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2003-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
+<header><h1>RC-2003-1 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U4-1.html">&#128202; U4-1 單元總覽</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h1>考題編號：RC-2003-1</h1>
 <p><strong>主分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
 <strong>副分類：</strong> 無<br />
@@ -85,28 +85,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>應力–應變曲線（圖2）：</strong></p>
-<p>$$f_p = \begin{cases} 2{,}000{,}000\,\varepsilon_p &amp; \varepsilon_p \le 0.008475 \ 65{,}000\,\varepsilon_p + 16{,}400 &amp; 0.008475 &lt; \varepsilon_p \le \varepsilon_{pu} \end{cases}$$</p>
+<p>$$f_p = \begin{cases} 2{,}000{,}000\,\varepsilon_p & \varepsilon_p \le 0.008475 \\ 65{,}000\,\varepsilon_p + 16{,}400 & 0.008475 < \varepsilon_p \le \varepsilon_{pu} \end{cases}$$</p>
 <p>比例限應力（proportional limit）：$f_{py} = 16{,}950\ \text{kgf/cm}^2$，對應 $\varepsilon_{py} = 0.008475$</p>
 <p><strong>求：</strong> 限用應變一致性（應變相容）較精確之方式，計算圖1梁斷面之標稱彎矩強度 $M_n$。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 部分預力梁的 fps 不能用簡化近似公式，必須以應變相容（strain compatibility）法，配合實際的非線性應力–應變曲線，迭代求解中性軸位置，才能得到各層鋼絞線的真實應力。</p>
-<p><strong>出題者測驗：</strong>
-1. 理解部分預力梁的配筋組成（預力 + 非預力鋼絞線）
-2. 正確計算有效預應變 $\varepsilon_{pe}$，並以此為初始應變基礎
-3. 能在雙線性應力–應變曲線上正確定位（線性段 vs. 應變硬化段）
-4. 平衡方程的建立與迭代收斂</p>
+<p><strong>出題者測驗：</strong></p>
+<ol>
+<li>理解部分預力梁的配筋組成（預力 + 非預力鋼絞線）</li>
+<li>正確計算有效預應變 $\varepsilon_{pe}$，並以此為初始應變基礎</li>
+<li>能在雙線性應力–應變曲線上正確定位（線性段 vs. 應變硬化段）</li>
+<li>平衡方程的建立與迭代收斂</li>
+</ol>
 <p><strong>陷阱：</strong> 非預力鋼絞線的初始應變為零（不同於預力鋼絞線），兩者共用相同的材料應力–應變曲線但初始條件不同。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>計算步驟：</strong>
-1. 整理斷面幾何與面積
-2. 計算 $\beta_1$（f'c=350，超過280需折減）
-3. 計算有效預應變 $\varepsilon_{pe}$
-4. 假設中性軸深度 $c$，計算各層應變
-5. 查雙線性曲線，得到各層應力
-6. 驗證壓力=拉力，迭代至收斂
-7. 計算 $M_n$</p>
+<p><strong>計算步驟：</strong></p>
+<ol>
+<li>整理斷面幾何與面積</li>
+<li>計算 $\beta_1$（f'c=350，超過280需折減）</li>
+<li>計算有效預應變 $\varepsilon_{pe}$</li>
+<li>假設中性軸深度 $c$，計算各層應變</li>
+<li>查雙線性曲線，得到各層應力</li>
+<li>驗證壓力=拉力，迭代至收斂</li>
+<li>計算 $M_n$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -150,10 +154,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\text{Step 1: } \varepsilon_{pe} = \frac{f_{pe}}{E_{ps}}$$</p>
 <p>$$\text{Step 2: } \varepsilon_{ps} = \boxed{\varepsilon_{pe}} + \frac{d_p - c}{c}\cdot\varepsilon_{cu}$$</p>
 <p>$$\text{Step 3: } \varepsilon_{ns} = \frac{d_{ns} - c}{c}\cdot\varepsilon_{cu}$$</p>
-<p>$$\text{Step 4（雙線性曲線）: } f_p = \begin{cases}E_{ps}\cdot\varepsilon_p &amp; \varepsilon_p \le \varepsilon_{py} \ 65{,}000\varepsilon_p + 16{,}400 &amp; \varepsilon_p &gt; \varepsilon_{py}\end{cases}$$</p>
-<p>$$\text{Step 5（平衡）: } 0.85f'<em ps="ps">c\cdot\boxed{\beta_1}\cdot c\cdot b = \boxed{f</em>$$}}\cdot A_p + \boxed{f_{ns}}\cdot A_{ns</p>
+<p>$$\text{Step 4（雙線性曲線）: } f_p = \begin{cases}E_{ps}\cdot\varepsilon_p & \varepsilon_p \le \varepsilon_{py} \\ 65{,}000\varepsilon_p + 16{,}400 & \varepsilon_p > \varepsilon_{py}\end{cases}$$</p>
+<p>$$\text{Step 5（平衡）: } 0.85f'_c\cdot\boxed{\beta_1}\cdot c\cdot b = \boxed{f_{ps}}\cdot A_p + \boxed{f_{ns}}\cdot A_{ns}$$</p>
 <p>$$\text{Step 6: } a = \boxed{\beta_1}\cdot\boxed{c}$$</p>
-<p>$$\text{Step 7: } M_n = \boxed{f_{ps}}\cdot A_p\cdot!\left(d_p - \frac{\boxed{a}}{2}\right) + \boxed{f_{ns}}\cdot A_{ns}\cdot!\left(d_{ns} - \frac{\boxed{a}}{2}\right)$$</p>
+<p>$$\text{Step 7: } M_n = \boxed{f_{ps}}\cdot A_p\cdot\!\left(d_p - \frac{\boxed{a}}{2}\right) + \boxed{f_{ns}}\cdot A_{ns}\cdot\!\left(d_{ns} - \frac{\boxed{a}}{2}\right)$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -326,8 +330,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>4. 步驟化詳細計算過程</h2>
 <h3>Step 1　斷面幾何與材料</h3>
-<p>$$A_p = 4 \times 1.387 = 5.548\ \text{cm}^2 \quad (d_p = 63\ \text{cm})$$
-$$A_{ns} = 2 \times 1.387 = 2.774\ \text{cm}^2 \quad (d_{ns} = 58\ \text{cm})$$
+<p>$$A_p = 4 \times 1.387 = 5.548\ \text{cm}^2 \quad (d_p = 63\ \text{cm})$$<br />
+$$A_{ns} = 2 \times 1.387 = 2.774\ \text{cm}^2 \quad (d_{ns} = 58\ \text{cm})$$<br />
 $$f'_c = 350\ \text{kgf/cm}^2 \Rightarrow \beta_1 = 0.85 - 0.05 \times \frac{350-280}{70} = \boxed{0.80}$$</p>
 <h3>Step 2　有效預應變</h3>
 <p>$$\varepsilon_{pe} = \frac{f_{pe}}{E_{ps}} = \frac{12{,}000}{2{,}000{,}000} = \boxed{0.006}$$</p>
@@ -335,25 +339,25 @@ $$f'_c = 350\ \text{kgf/cm}^2 \Rightarrow \beta_1 = 0.85 - 0.05 \times \frac{350
 <p>此值小於比例限應變 0.008475，預力鋼絞線在服務載重下仍在線性段。</p>
 </blockquote>
 <h3>Step 3　應變相容迭代</h3>
-<p><strong>比例限（proportional limit）：</strong>
+<p><strong>比例限（proportional limit）：</strong><br />
 $$\varepsilon_{py} = \frac{f_{py}}{E_{ps}} = \frac{16{,}950}{2{,}000{,}000} = 0.008475$$</p>
-<p><strong>混凝土壓力：</strong>
+<p><strong>混凝土壓力：</strong><br />
 $$C_c = 0.85 f'_c \cdot \beta_1 c \cdot b = 0.85 \times 350 \times 0.80 \times c \times 35 = 8{,}330\,c\ (\text{kgf})$$</p>
-<p><strong>預力鋼絞線應變（含初始預應變）：</strong>
+<p><strong>預力鋼絞線應變（含初始預應變）：</strong><br />
 $$\varepsilon_{ps} = \varepsilon_{pe} + \frac{d_p - c}{c}\varepsilon_{cu} = 0.006 + \frac{63-c}{c}\times 0.003$$</p>
-<p><strong>非預力鋼絞線應變（初始應變為零）：</strong>
+<p><strong>非預力鋼絞線應變（初始應變為零）：</strong><br />
 $$\varepsilon_{ns} = \frac{d_{ns} - c}{c}\varepsilon_{cu} = \frac{58-c}{c}\times 0.003$$</p>
 <p><strong>試算 c = 16.5 cm：</strong></p>
 <p>$$\varepsilon_{ps} = 0.006 + \frac{63-16.5}{16.5}\times 0.003 = 0.006 + 2.818\times 0.003 = 0.006 + 0.008455 = 0.01446$$</p>
-<p>由於 $\varepsilon_{ps} = 0.01446 &gt; \varepsilon_{py} = 0.008475$，代入應變硬化段：
+<p>由於 $\varepsilon_{ps} = 0.01446 > \varepsilon_{py} = 0.008475$，代入應變硬化段：<br />
 $$f_{ps} = 65{,}000\times 0.01446 + 16{,}400 = 939.9 + 16{,}400 = \boxed{17{,}340\ \text{kgf/cm}^2}$$</p>
-<p>檢核：$f_{ps} = 17{,}340 &lt; f_{pu} = 19{,}000$ ✓</p>
+<p>檢核：$f_{ps} = 17{,}340 < f_{pu} = 19{,}000$ ✓</p>
 <p>$$\varepsilon_{ns} = \frac{58-16.5}{16.5}\times 0.003 = 2.515\times 0.003 = 0.007545$$</p>
-<p>由於 $\varepsilon_{ns} = 0.007545 &lt; \varepsilon_{py} = 0.008475$，代入線性段：
+<p>由於 $\varepsilon_{ns} = 0.007545 < \varepsilon_{py} = 0.008475$，代入線性段：<br />
 $$f_{ns} = 2{,}000{,}000\times 0.007545 = \boxed{15{,}091\ \text{kgf/cm}^2}$$</p>
 <p><strong>驗證平衡：</strong></p>
-<p>$$C_c = 8{,}330 \times 16.5 = 137{,}445\ \text{kgf}$$
-$$T = f_{ps}\cdot A_p + f_{ns}\cdot A_{ns} = 17{,}340\times 5.548 + 15{,}091\times 2.774$$
+<p>$$C_c = 8{,}330 \times 16.5 = 137{,}445\ \text{kgf}$$<br />
+$$T = f_{ps}\cdot A_p + f_{ns}\cdot A_{ns} = 17{,}340\times 5.548 + 15{,}091\times 2.774$$<br />
 $$= 96{,}181 + 41{,}862 = 138{,}043\ \text{kgf}$$</p>
 <p>誤差 = $(138{,}043 - 137{,}445)/137{,}445 \approx 0.4\%$ ✓ 收斂</p>
 <blockquote>
@@ -362,8 +366,8 @@ $$= 96{,}181 + 41{,}862 = 138{,}043\ \text{kgf}$$</p>
 <h3>Step 4　等值矩形應力塊深度</h3>
 <p>$$a = \beta_1 \cdot c = 0.80 \times 16.5 = \boxed{13.2\ \text{cm}}$$</p>
 <h3>Step 5　標稱彎矩強度</h3>
-<p>$$M_n = f_{ps}\cdot A_p!\left(d_p - \frac{a}{2}\right) + f_{ns}\cdot A_{ns}!\left(d_{ns} - \frac{a}{2}\right)$$</p>
-<p>$$= 17{,}340\times 5.548\times!\left(63 - 6.6\right) + 15{,}091\times 2.774\times!\left(58 - 6.6\right)$$</p>
+<p>$$M_n = f_{ps}\cdot A_p\!\left(d_p - \frac{a}{2}\right) + f_{ns}\cdot A_{ns}\!\left(d_{ns} - \frac{a}{2}\right)$$</p>
+<p>$$= 17{,}340\times 5.548\times\!\left(63 - 6.6\right) + 15{,}091\times 2.774\times\!\left(58 - 6.6\right)$$</p>
 <p>$$= 96{,}181\times 56.4 + 41{,}862\times 51.4$$</p>
 <p>$$= 5{,}424{,}596 + 2{,}151{,}707$$</p>
 <p>$$= \boxed{7{,}576{,}303\ \text{kgf}\cdot\text{cm} \approx 75.8\ \text{tf}\cdot\text{m}}$$</p>
@@ -374,23 +378,23 @@ $$= 96{,}181 + 41{,}862 = 138{,}043\ \text{kgf}$$</p>
 <p><strong>2. 非預力鋼絞線的定位</strong></p>
 <p>兩種鋼絞線同為 15.2mm 相同材料，但「非預力」表示未施加預拉力，在計算極限強度時其初始應變為零，需特別注意。在部分預力設計中，非預力鋼絞線可提升延性，是此類題型的核心概念。</p>
 <p><strong>3. 延性檢核（補充）</strong></p>
-<p>$$\varepsilon_t = \varepsilon_{ps} - \varepsilon_{pe} = 0.01446 - 0.006 = 0.00846 &gt; 0.005$$</p>
+<p>$$\varepsilon_t = \varepsilon_{ps} - \varepsilon_{pe} = 0.01446 - 0.006 = 0.00846 > 0.005$$</p>
 <blockquote>
 <p>淨拉應變 $\varepsilon_t$ 超過 0.005，屬拉力控制斷面，$\phi = 0.9$，斷面具有足夠延性。</p>
 </blockquote></main>
 <footer>來源：raw/solutions/RC-2003-1/RC-2003-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

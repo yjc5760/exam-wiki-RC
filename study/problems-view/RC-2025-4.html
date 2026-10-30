@@ -30,30 +30,36 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2025-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
+<header><h1>RC-2025-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U4-1.html">&#128202; U4-1 單元總覽</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h3>考題編號：RC-2025-4</h3>
-<p><strong>主分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計
-<strong>副分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析
-<strong>設計法：</strong> WSD（容許應力法）
+<p><strong>主分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計<br />
+<strong>副分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
+<strong>設計法：</strong> WSD（容許應力法）<br />
 <strong>標籤：</strong> <code>偏心距限制</code> <code>核心距</code> <code>傳遞階段</code> <code>使用階段</code> <code>簡支預力梁</code> <code>應力驗核</code> <code>eccentricity</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>規範依據：</strong> 中國土木水利工程學會「混凝土工程設計規範與解說」（土木401-112）</p>
 <p>一簡支預力混凝土梁，跨度 $l = 12\text{ m}$，斷面 $b = 40\text{ cm}$，$h = 120\text{ cm}$。</p>
-<p><strong>預力資料：</strong>
-- 鋼鍵有效預力比：$f_{pe}/f_{pi} = 0.85$
-- 初始預力：$P_i = 200\text{ tf}$
-- 有效預力：$P_e = 0.85 \times 200 = 170\text{ tf}$</p>
-<p><strong>材料強度：</strong>
-- 初始混凝土強度（傳遞時）：$f'_{ci} = 320\text{ kgf/cm}^2$
-- 終期混凝土強度（使用時）：$f'_c = 420\text{ kgf/cm}^2$</p>
-<p><strong>載重：</strong>
-- 均布活載重：$w_L = 1.5\text{ tf/m}$
-- 自重：$w_D = 2.4 \times 0.40 \times 1.20 = 1.152\text{ tf/m}$</p>
+<p><strong>預力資料：</strong></p>
+<ul>
+<li>鋼鍵有效預力比：$f_{pe}/f_{pi} = 0.85$</li>
+<li>初始預力：$P_i = 200\text{ tf}$</li>
+<li>有效預力：$P_e = 0.85 \times 200 = 170\text{ tf}$</li>
+</ul>
+<p><strong>材料強度：</strong></p>
+<ul>
+<li>初始混凝土強度（傳遞時）：$f'_{ci} = 320\text{ kgf/cm}^2$</li>
+<li>終期混凝土強度（使用時）：$f'_c = 420\text{ kgf/cm}^2$</li>
+</ul>
+<p><strong>載重：</strong></p>
+<ul>
+<li>均布活載重：$w_L = 1.5\text{ tf/m}$</li>
+<li>自重：$w_D = 2.4 \times 0.40 \times 1.20 = 1.152\text{ tf/m}$</li>
+</ul>
 <p><strong>要求：</strong> 求梁中央點鋼鍵配置之偏心距限制。（20 分）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 預力梁的鋼鍵偏心距 $e$ 必須落在一個可行範圍內——偏心太小（$e &lt; e_{min}$）則有效預力不足以抵抗活載重引起的底纖維拉力；偏心太大（$e &gt; e_{max}$）則傳遞瞬間頂纖維拉力或底纖維壓力超標。這個「可行範圍」即<strong>偏心距限制</strong>。</p>
+<p><strong>核心觀念：</strong> 預力梁的鋼鍵偏心距 $e$ 必須落在一個可行範圍內——偏心太小（$e < e_{min}$）則有效預力不足以抵抗活載重引起的底纖維拉力；偏心太大（$e > e_{max}$）則傳遞瞬間頂纖維拉力或底纖維壓力超標。這個「可行範圍」即<strong>偏心距限制</strong>。</p>
 <p><strong>解題架構（四個應力控制條件）：</strong></p>
 <table>
 <thead>
@@ -98,11 +104,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong>
-1. 計算斷面幾何量 $A$、$I$、$S_t = S_b$
-2. 計算各階段彎矩 $M_D$、$M_T$
-3. 列出容許應力 $f_{ti}$、$f_{ci}$、$f_{ts}$、$f_{cs}$
-4. 列四個應力條件不等式，解出 $e_{min}$ 與 $e_{max}$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算斷面幾何量 $A$、$I$、$S_t = S_b$</li>
+<li>計算各階段彎矩 $M_D$、$M_T$</li>
+<li>列出容許應力 $f_{ti}$、$f_{ci}$、$f_{ts}$、$f_{cs}$</li>
+<li>列四個應力條件不等式，解出 $e_{min}$ 與 $e_{max}$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -480,30 +488,36 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>爭議1：自重是否應該計入？</strong>
-- 傳遞瞬間梁已就位於支承，自重矩 $M_D$ 立即存在，必須計入
-- 若題目明確說「不計自重」，則 $M_D = 0$，上界將大幅縮小（$e_{max}$ ≈ 24 cm）</p>
-<p><strong>爭議2：使用時允許拉力值</strong>
-- 取 $f_{ts} = 0$（最保守）：不允許任何拉力
-- 取 $f_{ts} = 0.5\sqrt{f'<em min="min">c}$（Class T）：$= 0.5\sqrt{420} = 10.25\text{ kgf/cm}^2$，則 $e</em>$ 降為 2.3 cm
-- 本題採 $f_{ts} = 0$ 為最常見考場設定</p>
-<p><strong>進階思考：偏心距可行區域（Feasibility Zone）</strong>
-- 若將各年份各截面的上下界畫成圖，即為鋼鍵的「可行範圍（Feasibility Zone）」
-- 連接各截面中點的連線即理想的鋼鍵線（concordant profile）
-- 拋物線鋼鍵形狀可使各截面同時達到最佳應力狀態</p></main>
+<p><strong>爭議1：自重是否應該計入？</strong></p>
+<ul>
+<li>傳遞瞬間梁已就位於支承，自重矩 $M_D$ 立即存在，必須計入</li>
+<li>若題目明確說「不計自重」，則 $M_D = 0$，上界將大幅縮小（$e_{max}$ ≈ 24 cm）</li>
+</ul>
+<p><strong>爭議2：使用時允許拉力值</strong></p>
+<ul>
+<li>取 $f_{ts} = 0$（最保守）：不允許任何拉力</li>
+<li>取 $f_{ts} = 0.5\sqrt{f'_c}$（Class T）：$= 0.5\sqrt{420} = 10.25\text{ kgf/cm}^2$，則 $e_{min}$ 降為 2.3 cm</li>
+<li>本題採 $f_{ts} = 0$ 為最常見考場設定</li>
+</ul>
+<p><strong>進階思考：偏心距可行區域（Feasibility Zone）</strong></p>
+<ul>
+<li>若將各年份各截面的上下界畫成圖，即為鋼鍵的「可行範圍（Feasibility Zone）」</li>
+<li>連接各截面中點的連線即理想的鋼鍵線（concordant profile）</li>
+<li>拋物線鋼鍵形狀可使各截面同時達到最佳應力狀態</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2025-4/RC-2025-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

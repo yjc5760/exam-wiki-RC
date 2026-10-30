@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2014-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2014-1 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2014-1</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> （無）<br />
@@ -58,13 +58,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心精神：</strong><br />
-- <strong>Part 1</strong>：既有梁常因舊規範設計或設計不當而形成<strong>過筋梁</strong>（$\rho > \rho_b$），此時鋼筋不會降伏，須以<strong>應變相容</strong>求解真實 $f_s$，且 $\phi$ 值適用壓力控制（$\phi = 0.65$）。<br />
-- <strong>Part 2</strong>：加寬補強形成<strong>複合斷面</strong>，原核心與新增混凝土強度不同（140 vs 350 kgf/cm²），兩者 $\beta_1$ 值亦不同（0.85 vs 0.80），須分別計算各自的 Whitney 應力塊壓力。</p>
-<p><strong>出題者測驗能力：</strong><br />
-1. 能識別過筋梁並正確啟動應變相容（Part 1）<br />
-2. 能處理不均勻 $f'_c$ 的複合斷面壓力疊加（Part 2）<br />
-3. 正確判斷 $\varepsilon_t$ 並套用對應 $\phi$ 值</p>
+<p><strong>核心精神：</strong></p>
+<ul>
+<li><strong>Part 1</strong>：既有梁常因舊規範設計或設計不當而形成<strong>過筋梁</strong>（$\rho > \rho_b$），此時鋼筋不會降伏，須以<strong>應變相容</strong>求解真實 $f_s$，且 $\phi$ 值適用壓力控制（$\phi = 0.65$）。</li>
+<li><strong>Part 2</strong>：加寬補強形成<strong>複合斷面</strong>，原核心與新增混凝土強度不同（140 vs 350 kgf/cm²），兩者 $\beta_1$ 值亦不同（0.85 vs 0.80），須分別計算各自的 Whitney 應力塊壓力。</li>
+</ul>
+<p><strong>出題者測驗能力：</strong></p>
+<ol>
+<li>能識別過筋梁並正確啟動應變相容（Part 1）</li>
+<li>能處理不均勻 $f'_c$ 的複合斷面壓力疊加（Part 2）</li>
+<li>正確判斷 $\varepsilon_t$ 並套用對應 $\phi$ 值</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -475,9 +479,11 @@ Step 5 → φMn
 <p>$$\boxed{\phi M_n \approx 23.25\ \text{tf·m}} \quad \text{（壓力控制，} \phi = 0.65\text{）}$$</p>
 <hr />
 <h3>Part 2：加寬後複合斷面（$b=60$ cm，$d=50$ cm，$A_s=40.54$ cm²）</h3>
-<p><strong>斷面配置：</strong><br />
-- 中央核心 $b_1 = 30\ \text{cm}$，$f'_{c,1} = 140\ \text{kgf/cm}^2$，$\beta_{1,1} = 0.85$<br />
-- 兩側新增 $b_2 = 2\times15 = 30\ \text{cm}$，$f'_{c,2} = 350\ \text{kgf/cm}^2$，$\beta_{1,2} = ?$</p>
+<p><strong>斷面配置：</strong></p>
+<ul>
+<li>中央核心 $b_1 = 30\ \text{cm}$，$f'_{c,1} = 140\ \text{kgf/cm}^2$，$\beta_{1,1} = 0.85$</li>
+<li>兩側新增 $b_2 = 2\times15 = 30\ \text{cm}$，$f'_{c,2} = 350\ \text{kgf/cm}^2$，$\beta_{1,2} = ?$</li>
+</ul>
 <p><strong>Step 1：計算 $\beta_{1,2}$</strong></p>
 <p>$$\beta_{1,2} = 0.85 - 0.05 \times \frac{f'_{c,2} - 280}{70} = 0.85 - 0.05 \times \frac{350 - 280}{70} = 0.85 - 0.05 = \boxed{0.80}$$</p>
 <p><strong>Step 2：複合斷面力平衡求 $c$（假設鋼筋降伏）</strong></p>
@@ -536,22 +542,24 @@ Step 5 → φMn
 </table>
 <p><strong>考場建議</strong>：採用嚴格法。步驟清晰，不難計算，且顯示對規範的精確掌握。</p>
 <p><strong>③ 加寬補強效益</strong></p>
-<p>比較兩種斷面的結果：<br />
-- 原梁：$\phi M_n = 23.25\ \text{tf·m}$（壓力控制，過筋）<br />
-- 加寬後：$\phi M_n = 66.19\ \text{tf·m}$（拉力控制，符合規範）</p>
+<p>比較兩種斷面的結果：</p>
+<ul>
+<li>原梁：$\phi M_n = 23.25\ \text{tf·m}$（壓力控制，過筋）</li>
+<li>加寬後：$\phi M_n = 66.19\ \text{tf·m}$（拉力控制，符合規範）</li>
+</ul>
 <p>加寬後強度提升約 <strong>2.85 倍</strong>，且從壓力控制轉為拉力控制，顯示補強不僅提升強度，同時改善了延性行為。</p></main>
 <footer>來源：raw/solutions/RC-2014-1/RC-2014-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

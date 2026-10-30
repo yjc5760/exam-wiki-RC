@@ -30,11 +30,11 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2012-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
+<header><h1>RC-2012-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U3-3.html">&#128202; U3-3 單元總覽</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2012-2</h1>
-<p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計
-<strong>副分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計
-<strong>設計法：</strong> USD 強度設計法
+<p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
+<strong>副分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
+<strong>設計法：</strong> USD 強度設計法<br />
 <strong>標籤：</strong> <code>耐震梁</code> <code>特殊矩形框架梁</code> <code>可能彎矩強度Mpr</code> <code>地震彎矩</code> <code>梁端強度</code> <code>強柱弱梁</code> <code>1.25fy</code></p>
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
@@ -43,21 +43,25 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><em>圖說：梁斷面 bw = 50 cm，h = 60 cm；頂筋 6-#8（保護層 6 cm）；底筋 4-#7（保護層 6 cm）；柱斷面 60×60 cm，12-#7，保護層 6 cm；梁淨跨距 7 m，各樓層柱淨高 3 m。</em></p>
 <p><img alt="RC-2012-2 柱斷面（2樓與3樓）：60×60 cm，12-#7，保護層 6 cm，淨尺寸 48×48 cm" src="../../raw/solutions/RC-2012-2/RC-2012-2-fig-1.png" /></p>
 <p><em>圖說：柱斷面（2 樓與 3 樓），60×60 cm，12-#7，四面均勻配筋，保護層 6 cm。</em></p>
-<p><strong>設計參數：</strong>
-- $f'<em s_text_top="s,\text{top">c = 280\ \text{kgf/cm}^2$，$f_y = 4{,}200\ \text{kgf/cm}^2$
-- 梁主筋：#7（$A_b = 3.87\ \text{cm}^2$）、#8（$A_b = 5.07\ \text{cm}^2$）
-- 梁斷面：$b_w = 50\ \text{cm}$，$h = 60\ \text{cm}$，$d = 60 - 6 = 54\ \text{cm}$
-- 頂筋：$6\text{-#8}$，$A</em>^2$
-- 底筋：$4\text{-#7}$，$A_{s,\text{bot}} = 4\times3.87 = 15.48\ \text{cm}^2$}} = 6\times5.07 = 30.42\ \text{cm</p>
+<p><strong>設計參數：</strong></p>
+<ul>
+<li>$f'_c = 280\ \text{kgf/cm}^2$，$f_y = 4{,}200\ \text{kgf/cm}^2$</li>
+<li>梁主筋：#7（$A_b = 3.87\ \text{cm}^2$）、#8（$A_b = 5.07\ \text{cm}^2$）</li>
+<li>梁斷面：$b_w = 50\ \text{cm}$，$h = 60\ \text{cm}$，$d = 60 - 6 = 54\ \text{cm}$</li>
+<li>頂筋：$6\text{-\#8}$，$A_{s,\text{top}} = 6\times5.07 = 30.42\ \text{cm}^2$</li>
+<li>底筋：$4\text{-\#7}$，$A_{s,\text{bot}} = 4\times3.87 = 15.48\ \text{cm}^2$</li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心精神：</strong>
-特殊矩形框架（SMF）採<strong>強柱弱梁</strong>機制：地震時能量消散集中於梁端塑鉸。
+<p><strong>核心精神：</strong><br />
+特殊矩形框架（SMF）採<strong>強柱弱梁</strong>機制：地震時能量消散集中於梁端塑鉸。<br />
 梁端強度使用<strong>可能彎矩強度（Mpr）</strong>，以 $f_{ps} = 1.25\,f_y$ 計算（考量鋼筋應變硬化），且 $\phi = 1.0$。</p>
-<p><strong>出題者意圖：</strong>
-1. 測試 Mpr 公式（$f_{ps} = 1.25\,f_y$，$\phi = 1.0$）與一般 $\phi M_n$（$f_y$，$\phi = 0.9$）的差異
-2. 測試地震正反兩向：頂筋決定負彎矩 Mpr（EQ→右），底筋決定正彎矩 Mpr（EQ→左）
-3. 梁最大彎矩 = 頂筋 Mpr（通常頂筋多於底筋）</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測試 Mpr 公式（$f_{ps} = 1.25\,f_y$，$\phi = 1.0$）與一般 $\phi M_n$（$f_y$，$\phi = 0.9$）的差異</li>
+<li>測試地震正反兩向：頂筋決定負彎矩 Mpr（EQ→右），底筋決定正彎矩 Mpr（EQ→左）</li>
+<li>梁最大彎矩 = 頂筋 Mpr（通常頂筋多於底筋）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -285,7 +289,7 @@ Step 4：報告最大值 = Mpr⁻（頂筋控制）
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① Mpr ≥ ½ Mpr 另端的耐震規定檢核</strong></p>
-<p>ACI 318 特殊框架梁規定：
+<p>ACI 318 特殊框架梁規定：<br />
 $$M_{pr}^+ \geq \frac{1}{2}\,M_{pr}^- \implies 41.1 \geq \frac{1}{2}\times75.5 = 37.75\ \text{tf·m} \quad ✓$$</p>
 <p>此規定確保梁在正反彎矩下均有足夠塑鉸能力，不致因底筋過少而在正彎矩時發生脆性破壞。</p>
 <p><strong>② 為何不直接用 φMn 作為「地震最大彎矩」</strong></p>
@@ -299,16 +303,16 @@ $$M_{pr}^+ \geq \frac{1}{2}\,M_{pr}^- \implies 41.1 \geq \frac{1}{2}\times75.5 =
 <footer>來源：raw/solutions/RC-2012-2/RC-2012-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

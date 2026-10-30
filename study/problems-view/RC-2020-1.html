@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2020-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2020-1 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2020-1</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -41,36 +41,44 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述（Problem Restatement）</h2>
 <p>一梁版系統斷面如圖所示，每一梁腹與部分相連的版可視為一 T 型梁抵抗外載。<br />
 每一 T 型梁所受之設計（因數化）正彎矩 $M_u = 130 \text{ tf-m}$（含自重之效應），求每一 T 型梁所需之<strong>最少</strong>拉力筋面積 $A_s$。</p>
-<p><strong>已知條件：</strong><br />
-- 混凝土抗壓強度 $f'_c = 210 \text{ kgf/cm}^2$<br />
-- 鋼筋降伏強度 $f_y = 4200 \text{ kgf/cm}^2$<br />
-- 梁跨度 $L = 500 \text{ cm}$<br />
-- 設計正彎矩 $M_u = 130 \text{ tf-m} = 13{,}000{,}000 \text{ kgf-cm}$</p>
-<p><strong>斷面幾何（由圖讀取）：</strong><br />
-- 版厚（翼板厚）$h_f = 10 \text{ cm}$<br />
-- 梁腹寬 $b_w = 50 \text{ cm}$<br />
-- 梁腹高（翼板底至梁底）$= 70 \text{ cm}$<br />
-- 全深 $h = 10 + 70 = 80 \text{ cm}$<br />
-- 保護層（至鋼筋重心）$= 6 \text{ cm}$，故有效深度 $d = 80 - 6 = 74 \text{ cm}$<br />
-- 梁間淨距 $= 400 \text{ cm}$（每側）</p>
+<p><strong>已知條件：</strong></p>
+<ul>
+<li>混凝土抗壓強度 $f'_c = 210 \text{ kgf/cm}^2$</li>
+<li>鋼筋降伏強度 $f_y = 4200 \text{ kgf/cm}^2$</li>
+<li>梁跨度 $L = 500 \text{ cm}$</li>
+<li>設計正彎矩 $M_u = 130 \text{ tf-m} = 13{,}000{,}000 \text{ kgf-cm}$</li>
+</ul>
+<p><strong>斷面幾何（由圖讀取）：</strong></p>
+<ul>
+<li>版厚（翼板厚）$h_f = 10 \text{ cm}$</li>
+<li>梁腹寬 $b_w = 50 \text{ cm}$</li>
+<li>梁腹高（翼板底至梁底）$= 70 \text{ cm}$</li>
+<li>全深 $h = 10 + 70 = 80 \text{ cm}$</li>
+<li>保護層（至鋼筋重心）$= 6 \text{ cm}$，故有效深度 $d = 80 - 6 = 74 \text{ cm}$</li>
+<li>梁間淨距 $= 400 \text{ cm}$（每側）</li>
+</ul>
 <p><img alt="RC-2020-1 題目附圖：T形梁版系統橫斷面，梁間淨距 400+400 cm，版厚 10 cm，梁腹 50×70 cm，保護層 6 cm" src="../../raw/solutions/RC-2020-1/RC-2020-1-fig-1.png" /></p>
 <p><em>圖說：T形梁斷面，有效翼板範圍由三個條件控制；梁腹寬 bw=50 cm，版厚 hf=10 cm，全深 h=80 cm，d=74 cm，兩側梁間淨距均為 400 cm，L=500 cm，f'c=210 kgf/cm²，fy=4200 kgf/cm²。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
 <p><strong>核心觀念：</strong> T 形梁有效翼板寬三個控制條件的判斷 → 中性軸位置假設與驗證 → USD 設計彎矩強度公式求 $A_s$。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗考生能否正確套用三個有效翼板寬規定，取最小值<br />
-2. 判斷中性軸是否在翼板內（內 T 梁多數情況中性軸在翼板，需驗算）<br />
-3. 求解 $A_s$ 的二次方程求根，並確認最小鋼筋量</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗考生能否正確套用三個有效翼板寬規定，取最小值</li>
+<li>判斷中性軸是否在翼板內（內 T 梁多數情況中性軸在翼板，需驗算）</li>
+<li>求解 $A_s$ 的二次方程求根，並確認最小鋼筋量</li>
+</ol>
 <p><strong>陷阱：</strong> 題目明示三個規定條件，考生需<strong>全部計算</strong>後取最小值；另外 $M_u = 130 \text{ tf-m}$ 需正確換算為 kgf-cm 單位（$\times 10^5$，不是 $\times 10^4$）。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 計算有效翼板寬 $b_e$（三條件取最小）<br />
-2. 假設中性軸在翼板內 → 當作矩形梁（寬 $b_e$）求解 $A_s$<br />
-3. 驗算假設（$a \leq h_f$）<br />
-4. 確認 $\varepsilon_t \geq 0.005$（拉力控制，$\phi = 0.9$）<br />
-5. 檢核最小鋼筋量 $A_{s,\min}$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算有效翼板寬 $b_e$（三條件取最小）</li>
+<li>假設中性軸在翼板內 → 當作矩形梁（寬 $b_e$）求解 $A_s$</li>
+<li>驗算假設（$a \leq h_f$）</li>
+<li>確認 $\varepsilon_t \geq 0.005$（拉力控制，$\phi = 0.9$）</li>
+<li>檢核最小鋼筋量 $A_{s,\min}$</li>
+</ol>
 <p><strong>三大陷阱：</strong></p>
 <table>
 <thead>
@@ -385,16 +393,16 @@ $$0.75\rho_b = 0.75 \times 0.85 \times 0.85 \times \frac{210}{4200} \times \frac
 $$0.00536 \ll 0.01607 \quad \checkmark$$</p></main>
 <footer>來源：raw/solutions/RC-2020-1/RC-2020-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

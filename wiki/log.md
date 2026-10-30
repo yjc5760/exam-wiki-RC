@@ -1740,3 +1740,44 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
 - **[SYNC] 命題分析頁**（unit-exam-intel verify.py 五頁全過）：U1-2 主 12→11、副 8→7（2004-4 改副；2012-4、2018-2 移出），漂移表改前 5／後 6；U1-1 副 3→4（加 2018-2）；U2-1 2003-3 換 2009-1；U4-1 設計法表 WSD 7→8、全科 WSD 16→17
 - 複核報告：`複核報告_分類與引用_2026-10-31.md`
 - **[FIX]** problems-view 另有 8 頁（RC-2003-3、2004-1、2007-4、2008-4、2009-1、2018-3、2018-4、2019-3）是舊管線產物，以 `scripts/gen_problems_view.py` 單題重建：修正清單被 nl2br 壓成段落、數學式未遮罩（2008-4 `f'_{c2}` 被轉成 `<em>`、2018-4 `\!` 被吃、2009-1 `<` 轉義），內容不變；重建後 `--check` 8/8 一致
+
+## 2026-10-31 problems-view 全庫正規化
+
+- **[FIX]** `python3 scripts/gen_problems_view.py . --all`：重建前 `--check --all` 有 53 頁與現行管線不一致（皆為舊管線產物），重建後 100/100 一致
+  - 修正類型：清單被 nl2br 壓成 `<br />` 段落（無 `<ol>`/`<ul>`）、數學式未遮罩就送進 markdown（`_` 被當強調吃掉、`<` `&` 被轉義、`\!` `\\` 被吃）
+  - 逐頁比對新舊頁純文字：差異僅限清單符號與數學式字元，無 HTML 手改內容遺失
+- **[FIX]** Playwright 實測 100 頁 KaTeX：共 15,258 個式子，3 處解析錯誤皆為正本筆誤，已改正本後單題重建：
+  - RC-2018-1 §3.5 Step 3 式尾多一個 `}`
+  - RC-2008-3 `\text{ 根 #4 縱向鋼筋}`、RC-2012-3 `\text{（4 leg #4）}`：`\text{}` 內的 `#` 須寫 `\#`
+  - 改正後全庫 0 處 KaTeX 錯誤
+
+## 2026-10-31 formula-given 五頁升級 v2 ＋ 套用新分類
+
+- **[UPGRADE]** `study/formula-given-RC-{U1-1,U1-2,U2-1,U3-3,U4-1}.html/.pdf` 由 v1 升級 unit-formula-map v2：卡片補 `c` 欄位、逐年表三態（✔ 印出／✗ 考了沒給／· 未考）＋表底合計列＋題號連 problems-view、回想模式、sticky 表頭依導覽列高度；PDF 以 MathJax＋WeasyPrint 重出
+- **[FIX] 既有 bug**：五頁的卡片容器與 `<section id="cards">` 同 id，v1 渲染時把整個區段（含篩選鈕）覆蓋掉；容器改名 `cardbox`
+- **[SYNC] 套用 2026-10-31 分類修正**：
+  - U1-2：2004-4 改副考點；2012-4、2018-2 移出 → 刪接頭三卡（Vjh、Vn、Mpr）與「接頭 √f'c Aj」欄，E 群改名「加大柱與載重組合」；30→27 條、題目 20→18 題
+  - U1-1：加 2018-2（副），Whitney 三卡 no 補 2018；題目 22→23 題
+  - U2-1：2003-3 移出、2009-1（副）加入，「Vc=0 條件」「Ve」兩卡 no 補 2009
+- **[FIX] 內容依 [[solve-design-vs-nominal]] 更正**：U1-2「最大彎矩出現在平衡點」改為「最大極限彎矩的位置：標稱 vs 設計」（104年一 答案在 εt=0.005，104.1 vs 88.3 tf·m），連帶改平衡點卡說明、背誦策略第 3 條、104 年備註；U1-1「εt ≥ 0.004」卡說明改正 104年二 峰值在 0.005 不在 0.004
+- **[FIX]** U1-1 Ec／kd／μφ 三卡 no 原含 2005（引用的 94年一 屬 U1-2 柱題），移除並在說明註明單元
+- 驗證：verify.py 五頁全部一致；Playwright 五頁無 pageerror、0 個 KaTeX 錯誤、題號連結數＝本單元題數（23／18／16／18／21）、回想模式可蓋可翻；PDF 文字層無原始 LaTeX、無 emoji，逐年表含合計列單頁
+- 合計：U1-1 ✔19／✗68、U1-2 ✔13／✗29、U2-1 ✔9／✗35、U3-3 ✔11／✗21、U4-1 ✔13／✗37
+
+## 2026-10-31 導入單元總覽（unit-overview），五單元改版
+
+- **[ADD]** `scripts/build_unit_page.py`、`scripts/unit_page_template.html`（取自 unit-overview skill；順手修正 SUBJ_NAME 的 SM／MM 對調：SM＝土壤力學、MM＝材料力學）
+- **[ADD]** `study/data/unit-RC-{U1-1,U1-2,U2-1,U3-3,U4-1}.json` → `python scripts/build_unit_page.py --all` 產生 `study/unit-RC-*.html`；PDF（Playwright，A4、scale 0.85）`study/unit-RC-*.pdf`
+  - 內容來源：考點群、漂移、題型走向、命題風險、只剩三天取自原 study-（命題分析）；公式卡、逐年備註、判定方法、背誦策略取自原 formula-given-（給／背 v2）
+  - 設定：`giveCol:false`（RC 的 give 類分散各欄）、`showDesignMethod:true`；風險表加「必背公式」欄
+  - 逐年表新增欄位：U1-1「kd/μφ 韌性」「設計流程」「鋼筋間距」、U1-2「摩擦剪力」「載重組合」、U4-1「Pe 給定」（原 v2 頁這幾張卡沒有對應欄）
+  - 「設參考公式區次數」＝ 五單元逐年表合併，24 年中有 20 年印過任何 RC 公式
+- **[FIX] 逐題公式用途**：「考了卻沒給」由年份層級改為逐題（`Q[].f`），每條公式以 regex 對本單元題解計數、差異逐一開題解判斷；同年多題時分配到實際用到的那題。各單元 footer 列出相對舊版的證據更正（U1-1 12 處、U1-2 9、U2-1 7、U3-3 4、U4-1 8），主要是：
+  - U1-1「φ 過渡式」移除 109–112 年（各題算出皆為拉力控制 φ=0.90）、「載重組合」移除 113 年；U1-2「柱 φ」移除 110、113 年（求標稱值）；U3-3「耐震組合」移除 101 年；U4-1「ωp」移除 102／107／112 年、「預力 Mn」移除 102 年（102年四 只求 Mcr 與極限應變）
+  - 卡片說明（meta）裡的題號同步改正
+  - U1-2 RC-2015-1 摘要改為「峰值在拉力控制界限，不在平衡點」
+- **[SYNC]** 舊 `study-RC-*.html`、`formula-given-RC-*.html` 改為轉址頁（分別轉 `unit-…#s1`、`#s2`）；`formula-given-RC-*.pdf` 未刪（已無頁面連結）
+  - `study/problems-view/*.html`（100 頁）：「命題分析」鍵改「單元總覽」指向 `../unit-RC-Un-m.html`；跟隨來源腳本加認 `unit-`
+  - `study/lecture-RC-*.html`：導覽列「命題分析」「給／背分界」兩鍵合併為「單元總覽」
+  - `scripts/build_frequency.py`：教材偵測加 `unit`（有 unit- 時不再列 study／formula）、說明文字改指單元總覽；重跑 frequency-RC.html，對帳通過
+- 驗證：`build_unit_page.py --check` 五頁通過（題目集合＝索引主＋副）；Playwright 1280／390 寬：無 console 錯誤、`.katex-error` 0、`scrollWidth` 不超出視窗；PDF 文字層無原始 LaTeX

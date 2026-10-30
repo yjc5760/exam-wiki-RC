@@ -40,41 +40,51 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述（Problem Restatement）</h2>
 <p>一地下室無梁版柱系統，版上承擔均佈設計（因數化）載重 $w_u = 4.6 \text{ tf/m}^2$（含自重），版全深 $h = 40 \text{ cm}$，平均有效深度 $d = 35 \text{ cm}$。版與柱之間無彎矩傳遞。</p>
-<p><strong>已知條件：</strong><br />
-- $f'_c = 280 \text{ kgf/cm}^2$，$f_y = 4200 \text{ kgf/cm}^2$<br />
-- 柱尺寸：$100 \times 100 \text{ cm}$（正方形，內柱 $\alpha_s = 40$）<br />
-- 柱間距：$L_1 = L_2 = 800 \text{ cm}$<br />
-- 有效深度 $d = 35 \text{ cm}$，$d/2 = 17.5 \text{ cm}$</p>
+<p><strong>已知條件：</strong></p>
+<ul>
+<li>$f'_c = 280 \text{ kgf/cm}^2$，$f_y = 4200 \text{ kgf/cm}^2$</li>
+<li>柱尺寸：$100 \times 100 \text{ cm}$（正方形，內柱 $\alpha_s = 40$）</li>
+<li>柱間距：$L_1 = L_2 = 800 \text{ cm}$</li>
+<li>有效深度 $d = 35 \text{ cm}$，$d/2 = 17.5 \text{ cm}$</li>
+</ul>
 <p><strong>規範給定穿孔剪力公式（無剪力筋）：</strong></p>
 <p>$$V_c = 0.265\!\left(2 + \frac{4}{\beta}\right)\!\sqrt{f'_c}\, b_o d \quad \cdots (1)$$</p>
 <p>$$V_c = 0.265\!\left(2 + \frac{\alpha_s d}{b_o}\right)\!\sqrt{f'_c}\, b_o d \quad \cdots (2) \quad (\alpha_s = 40 \text{ 內柱},\ 30 \text{ 邊柱},\ 20 \text{ 角柱})$$</p>
 <p>$$V_c = 1.06\sqrt{f'_c}\, b_o d \quad \cdots (3)$$</p>
 <p><strong>有剪力筋時：</strong> $V_c = 0.53\sqrt{f'_c}\, b_o d$</p>
-<p><strong>兩小題：</strong><br />
-1. 若版中無剪力鋼筋，驗核版於柱 A 之混凝土穿孔剪力強度是否足夠。（10 分）<br />
-2. 若不足，由柱面往外，沿 X 與 Y 方向配置雙肢剪力鋼筋，計算所需間距 $s$。（10 分）</p>
+<p><strong>兩小題：</strong></p>
+<ol>
+<li>若版中無剪力鋼筋，驗核版於柱 A 之混凝土穿孔剪力強度是否足夠。（10 分）</li>
+<li>若不足，由柱面往外，沿 X 與 Y 方向配置雙肢剪力鋼筋，計算所需間距 $s$。（10 分）</li>
+</ol>
 <p><img alt="RC-2020-3 題目附圖一：無梁版柱系統平面圖（柱間距800cm，柱A位置，剪力筋間距s）" src="../../raw/solutions/RC-2020-3/RC-2020-3-fig-1.png" /></p>
 <p><em>圖說：無梁版平面圖，方形內柱100×100 cm，柱間距800 cm（X與Y方向），版全深h=40 cm，d=35 cm；wu=4.6 tf/m²，柱A為內柱，剪力鋼筋由柱面往外沿X、Y方向排列，間距s。</em></p>
 <p><img alt="RC-2020-3 題目附圖二：版與柱斷面圖（版厚40cm，柱100cm，剪力筋位置）" src="../../raw/solutions/RC-2020-3/RC-2020-3-fig-2.png" /></p>
 <p><em>圖說：斷面圖顯示版厚h=40 cm，有效深度d=35 cm，柱寬100 cm；剪力筋由柱面往外配置。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
-<p><strong>核心觀念：</strong><br />
-1. 穿孔剪力臨界周長 $b_o$ 的計算<br />
-2. 三個 $V_c$ 公式取最小值，判斷控制公式<br />
-3. 剪力鋼筋間距計算（強度 vs 規範上限）</p>
-<p><strong>出題者意圖：</strong><br />
-- 測驗考生能否正確計算 $b_o$、判斷柱種類（內柱 $\alpha_s = 40$）<br />
-- 三個公式中哪個控制（公式(3) = $1.06\sqrt{f'_c}$ 幾乎總是最小值）<br />
-- 加入剪力筋後 $V_c$ 降低（從1.06係數降到0.53），但 $V_n$ 仍需滿足</p>
+<p><strong>核心觀念：</strong></p>
+<ol>
+<li>穿孔剪力臨界周長 $b_o$ 的計算</li>
+<li>三個 $V_c$ 公式取最小值，判斷控制公式</li>
+<li>剪力鋼筋間距計算（強度 vs 規範上限）</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗考生能否正確計算 $b_o$、判斷柱種類（內柱 $\alpha_s = 40$）</li>
+<li>三個公式中哪個控制（公式(3) = $1.06\sqrt{f'_c}$ 幾乎總是最小值）</li>
+<li>加入剪力筋後 $V_c$ 降低（從1.06係數降到0.53），但 $V_n$ 仍需滿足</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 計算臨界周長 $b_o = 4(c + d) = 4 \times 135 = 540 \text{ cm}$<br />
-2. 計算穿孔剪力需求 $V_u$（扣除臨界周長內面積）<br />
-3. 代入三個 $V_c$ 公式，取最小值，乘以 $\phi = 0.75$<br />
-4. 比較 $\phi V_c$ 與 $V_u$，判斷是否足夠<br />
-5. 若不足：換用有剪力筋的 $V_c$，計算所需 $V_s$，求 $s$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算臨界周長 $b_o = 4(c + d) = 4 \times 135 = 540 \text{ cm}$</li>
+<li>計算穿孔剪力需求 $V_u$（扣除臨界周長內面積）</li>
+<li>代入三個 $V_c$ 公式，取最小值，乘以 $\phi = 0.75$</li>
+<li>比較 $\phi V_c$ 與 $V_u$，判斷是否足夠</li>
+<li>若不足：換用有剪力筋的 $V_c$，計算所需 $V_s$，求 $s$</li>
+</ol>
 <p><strong>三大陷阱：</strong></p>
 <table>
 <thead>
@@ -349,16 +359,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 規範要求剪力筋範圍應從柱面延伸至 $4d = 140 \text{ cm}$ 以外，在此範圍外需驗算外層臨界周長（$b_o' > b_o$）的無剪力筋穿孔強度是否足夠。</p></main>
 <footer>來源：raw/solutions/RC-2020-3/RC-2020-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

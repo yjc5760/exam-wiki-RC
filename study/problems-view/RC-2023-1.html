@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2023-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2023-1 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h3>考題編號：RC-2023-1</h3>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -77,10 +77,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong>「<strong>延性</strong>」是結構在超過彈性範圍後仍能持續變形、消散能量的能力，是耐震設計的靈魂。曲率延展比 $\mu_\phi = \phi_u / \phi_y$ 是衡量斷面層次延性的標準指標。</p>
-<p><strong>出題者要測驗的能力：</strong><br />
-1. 能正確定義並計算<strong>極限曲率</strong> $\phi_u$（Whitney 應力塊）<br />
-2. 能正確計算<strong>降伏曲率</strong> $\phi_y$（彈性轉換斷面法）<br />
-3. 理解 $f'_c$ 對延性的影響：更高強度的混凝土 → 更小的 $c_u$ → 更高的 $\phi_u$ → 更大的 $\mu_\phi$</p>
+<p><strong>出題者要測驗的能力：</strong></p>
+<ol>
+<li>能正確定義並計算<strong>極限曲率</strong> $\phi_u$（Whitney 應力塊）</li>
+<li>能正確計算<strong>降伏曲率</strong> $\phi_y$（彈性轉換斷面法）</li>
+<li>理解 $f'_c$ 對延性的影響：更高強度的混凝土 → 更小的 $c_u$ → 更高的 $\phi_u$ → 更大的 $\mu_\phi$</li>
+</ol>
 <p><strong>常見陷阱：</strong> 考生容易對兩種狀態（降伏 vs. 極限）套用同一種分析方法，導致公式錯誤。</p>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
@@ -431,9 +433,11 @@ Step 4：μφ = φu / φy → 分別計算兩個 f'c → 求比值
 <p><strong>1. $f_y$ 的假設問題</strong></p>
 <p>本題原文未明示 $f_y$，考場上應在答題開頭寫「假設 $f_y = 4200 \text{ kgf/cm}^2$（SD420）」。因為 $f_y$ 同時影響 $\varepsilon_y$ 和 $a$，若假設不同 $f_y$ 答案會變，但比值趨勢不變。</p>
 <p><strong>2. 為何高強度混凝土有更高延展性？</strong></p>
-<p>從公式可見：<br />
-- $\phi_u \propto 1/c_u \propto f'_c$（$f'_c$ 越高 → $a$ 越小 → $c_u$ 越小 → $\phi_u$ 越大）<br />
-- $\phi_y$ 受 $n = E_s/E_c \propto 1/\sqrt{f'_c}$ 影響，但變化幅度遠小於 $\phi_u$ 的變化</p>
+<p>從公式可見：</p>
+<ul>
+<li>$\phi_u \propto 1/c_u \propto f'_c$（$f'_c$ 越高 → $a$ 越小 → $c_u$ 越小 → $\phi_u$ 越大）</li>
+<li>$\phi_y$ 受 $n = E_s/E_c \propto 1/\sqrt{f'_c}$ 影響，但變化幅度遠小於 $\phi_u$ 的變化</li>
+</ul>
 <p>因此提高 $f'_c$ 可以有效提升斷面的曲率延展比——這也是高強度混凝土在耐震設計中被允許使用的理論依據之一。</p>
 <p><strong>3. 位移延展比 vs. 曲率延展比</strong></p>
 <p>本題求的是<strong>曲率延展比</strong>（斷面層次）；實際結構耐震設計更常用<strong>位移延展比</strong>（整體層次），兩者的關係取決於構架的塑鉸分布型態，是更進階的議題。</p>
@@ -447,16 +451,16 @@ Step 4：μφ = φu / φy → 分別計算兩個 f'c → 求比值
 </blockquote></main>
 <footer>來源：raw/solutions/RC-2023-1/RC-2023-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

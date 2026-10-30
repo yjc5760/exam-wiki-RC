@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2014-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2014-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2014-2</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> <code>RC-U3-1</code> 梁工作性要求（含撓度、裂縫）<br />
@@ -75,15 +75,19 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong><br />
-本題考查梁斷面在<strong>載重增加過程中，從彈性至極限</strong>的三個關鍵狀態，要求考生掌握：<br />
-1. 開裂前以<strong>未開裂轉換斷面</strong>分析<br />
-2. 開裂後以<strong>開裂轉換斷面</strong>進行彈性分析<br />
-3. 達到極限強度時以 <strong>Whitney 等值矩形應力塊</strong>計算</p>
+本題考查梁斷面在<strong>載重增加過程中，從彈性至極限</strong>的三個關鍵狀態，要求考生掌握：</p>
+<ol>
+<li>開裂前以<strong>未開裂轉換斷面</strong>分析</li>
+<li>開裂後以<strong>開裂轉換斷面</strong>進行彈性分析</li>
+<li>達到極限強度時以 <strong>Whitney 等值矩形應力塊</strong>計算</li>
+</ol>
 <p>題目特別要求計算 $\phi_u/\phi_{cr}$（<strong>曲率韌性</strong>）和 $M_n/M_{cr}$（<strong>強度儲備比</strong>），考驗對斷面延性行為的宏觀理解。</p>
-<p><strong>出題者意圖：</strong><br />
-- 測試三種不同計算模型的靈活切換<br />
-- 驗算對 $\varepsilon_{el}$（比例限度）概念的理解：混凝土應力-應變曲線在 $\varepsilon_{el}$ 以內為線性彈性<br />
-- 透過韌性比率考查對延性設計哲學的認識</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測試三種不同計算模型的靈活切換</li>
+<li>驗算對 $\varepsilon_{el}$（比例限度）概念的理解：混凝土應力-應變曲線在 $\varepsilon_{el}$ 以內為線性彈性</li>
+<li>透過韌性比率考查對延性設計哲學的認識</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>三階段作戰計畫：</strong></p>
@@ -546,16 +550,16 @@ $$\varepsilon_s = \varepsilon_{el}\times\frac{d-kd}{kd} = 0.00055\times\frac{29.
 <p>$\varepsilon_t = 0.00272$ 介於 0.002 與 0.005 之間，屬過渡區；且 $\varepsilon_t < 0.004$，未達梁的最低延性要求（$\varepsilon_t \geq 0.004$）。考場上應予以注明，但題目仍要求計算 $M_n$，故仍照規範公式執行。此梁若為實際設計，應減少鋼筋量以提高 $\varepsilon_t$ 至 0.004 以上。</p></main>
 <footer>來源：raw/solutions/RC-2014-2/RC-2014-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

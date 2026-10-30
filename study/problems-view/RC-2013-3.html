@@ -42,20 +42,26 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>一<strong>鋼筋混凝土構件</strong>承受扭矩 $T_u = 1.5\ \text{tf·m}$，採<strong>閉合箍筋 D10</strong>，斷面如圖二所示。（30 分）</p>
 <p><img alt="RC-2013-3 扭力構件斷面：30cm×50cm外輪廓，閉合箍筋c-c尺寸20cm×40cm，D13縱向扭力筋於角部" src="../../raw/solutions/RC-2013-3/RC-2013-3-fig-1.png" /></p>
 <p><em>圖說：矩形斷面 $b=30\ \text{cm}$，$h=50\ \text{cm}$；閉合 D10 箍筋中心距：$x_o=20\ \text{cm}$（寬向）、$y_o=40\ \text{cm}$（高向）；D13 縱向扭力筋配置於箍筋角部（依圖二，角部 4 根 + 視間距要求增設）。$f'_c=280\ \text{kgf/cm}^2$，$f_y=2{,}800\ \text{kgf/cm}^2$。</em></p>
-<p><strong>試求：</strong><br />
-1. 閉合箍筋間距 $s$<br />
-2. 檢核斷面鋼筋配置是否恰當</p>
+<p><strong>試求：</strong></p>
+<ol>
+<li>閉合箍筋間距 $s$</li>
+<li>檢核斷面鋼筋配置是否恰當</li>
+</ol>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心精神：</strong><br />
 扭力設計採<strong>空間桁架類比法</strong>（Space Truss Analogy）：扭矩由閉合箍筋（抗拉腹桿）與斜向混凝土壓力帶（斜壓桿）共同抵抗，縱向鋼筋則平衡水平拉力分量。</p>
-<p><strong>兩項主要驗算：</strong><br />
-1. <strong>橫向箍筋</strong>：$A_t/s \geq T_u/(\phi\times2A_o\times f_{yv})$，由此定 $s$<br />
-2. <strong>縱向鋼筋</strong>：$A_l \geq (A_t/s)\times p_h\times(f_{yv}/f_{yl})$，並檢核圖示之 D13 是否足夠</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測試扭力設計公式（空間桁架）與 $A_o = 0.85A_{oh}$ 的理解<br />
-2. 測試最大間距限制 $s \leq p_h/8$（扭力專用上限）<br />
-3. 測試縱向鋼筋的面積需求與最大間距（≤ 30 cm 沿周長）</p>
+<p><strong>兩項主要驗算：</strong></p>
+<ol>
+<li><strong>橫向箍筋</strong>：$A_t/s \geq T_u/(\phi\times2A_o\times f_{yv})$，由此定 $s$</li>
+<li><strong>縱向鋼筋</strong>：$A_l \geq (A_t/s)\times p_h\times(f_{yv}/f_{yl})$，並檢核圖示之 D13 是否足夠</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測試扭力設計公式（空間桁架）與 $A_o = 0.85A_{oh}$ 的理解</li>
+<li>測試最大間距限制 $s \leq p_h/8$（扭力專用上限）</li>
+<li>測試縱向鋼筋的面積需求與最大間距（≤ 30 cm 沿周長）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -331,9 +337,11 @@ $$= \frac{5\times16.733}{2800}\times\frac{1500}{12} - 5.562 = 0.02988\times125 -
 <p>不足量：$5.562 - 5.08 = 0.48\ \text{cm}^2$</p>
 <h4>縱向扭力筋間距檢核</h4>
 <p>規範要求：沿閉合箍筋周長，縱向鋼筋間距 ≤ 30 cm，且每角一根。</p>
-<p>箍筋中心線各邊長：<br />
-- 短邊（寬向）：$x_o = 20\ \text{cm}$ → 僅角部 2 根，間距 20 cm ≤ 30 ✓<br />
-- 長邊（高向）：$y_o = 40\ \text{cm}$ → 僅角部 2 根，間距 = 40 cm &gt; 30 cm ❌</p>
+<p>箍筋中心線各邊長：</p>
+<ul>
+<li>短邊（寬向）：$x_o = 20\ \text{cm}$ → 僅角部 2 根，間距 20 cm ≤ 30 ✓</li>
+<li>長邊（高向）：$y_o = 40\ \text{cm}$ → 僅角部 2 根，間距 = 40 cm &gt; 30 cm ❌</li>
+</ul>
 <p>長邊方向需在中點增設一根縱向扭力筋，以滿足 30 cm 限制：<br />
 每根長邊加設 1 根 D13（共 2 根）→ 長邊間距 = 40/2 = 20 cm ≤ 30 ✓</p>
 <p>增設 2 根後：<br />
@@ -378,9 +386,11 @@ $$A_{l,\text{prov,revised}} = (4+2) \times 1.27 = 6 \times 1.27 = \boxed{7.62\ \
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① $\theta = 45°$ vs 最佳化角度</strong></p>
-<p>本題採 $\theta = 45°$，為保守但簡單的設計。若採 $\theta < 45°$（如 $\theta = 36°$，$\cot\theta \approx 1.38$）：<br />
-- $A_t/s$ 需求減少（有利箍筋）<br />
-- $A_l$ 需求增加（不利縱筋）</p>
+<p>本題採 $\theta = 45°$，為保守但簡單的設計。若採 $\theta < 45°$（如 $\theta = 36°$，$\cot\theta \approx 1.38$）：</p>
+<ul>
+<li>$A_t/s$ 需求減少（有利箍筋）</li>
+<li>$A_l$ 需求增加（不利縱筋）</li>
+</ul>
 <p>設計時可視哪種鋼筋比較「充裕」來選擇 $\theta$，但規範限制 $30° \leq \theta \leq 60°$。</p>
 <p><strong>② 2.12√f'c 係數的由來</strong></p>
 <p>ACI 318-99（英制，psi）斷面壓碎限制右側用 $8\sqrt{f'_c}$（psi）。轉換為 kgf/cm²：<br />
@@ -390,16 +400,16 @@ $$8\sqrt{f'_c[\text{psi}]} = 8 \times 0.2651\sqrt{f'_c[\text{kgf/cm}^2]} \approx
 <p>$T_u = 1.5\ \text{tf·m}$ 是門檻 0.167 tf·m 的約 9 倍——說明這個構件的扭矩需求非常大。在實務設計中，若扭矩超過門檻太多，應考慮增大截面尺寸或改變結構佈置，以減少扭力需求。</p></main>
 <footer>來源：raw/solutions/RC-2013-3/RC-2013-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

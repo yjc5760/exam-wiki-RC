@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2010-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U2-1.html">&#128269; U2-1 命題分析</a><a class="lect" href="../lecture-RC-U2-1.html">&#128218; U2-1 RC 剪力強度分析與設計 講義</a></div></header>
+<header><h1>RC-2010-3 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U2-1.html">&#128202; U2-1 單元總覽</a><a class="lect" href="../lecture-RC-U2-1.html">&#128218; U2-1 RC 剪力強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2010-3</h1>
 <p><strong>主分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -42,28 +42,36 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>(二)（15 分）</strong> 簡支矩形梁：$b = 40$ cm，$d = 52$ cm，$h = 60$ cm<br />
 材料：$f'_c = 280$ kgf/cm²，$f_y = 4200$ kgf/cm²<br />
 梁跨徑中央承受集中設計載重 40 tf；設計斷面拉力鋼筋面積 $A_s = 24.42$ cm²</p>
-<p>試以<strong>簡化式</strong>計算臨界斷面之最大混凝土剪力設計強度（$\phi V_c$）：
-- (a) 無軸力
-- (b) 設計軸壓力 $N_u = 30$ tf
-- (c) 設計軸拉力 $N_u = 30$ tf</p>
+<p>試以<strong>簡化式</strong>計算臨界斷面之最大混凝土剪力設計強度（$\phi V_c$）：</p>
+<ul>
+<li>(a) 無軸力</li>
+<li>(b) 設計軸壓力 $N_u = 30$ tf</li>
+<li>(c) 設計軸拉力 $N_u = 30$ tf</li>
+</ul>
 <blockquote>
 <p>本題為純文字計算題，無附圖，無截圖需求。</p>
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong>
-- 軸壓力使混凝土更難開裂（主拉應力減小）→ $V_c$ 提升
-- 軸拉力使混凝土更易開裂（主拉應力增大）→ $V_c$ 降低，甚至歸零
-- ACI 簡化式以「分母基準軸壓/軸拉應力」進行線性修正</p>
-<p><strong>出題者意圖：</strong>
-1. <strong>(一)</strong> 測驗對軸力影響剪力的物理理解（主拉應力概念）
-2. <strong>(二)</strong> 測驗三種情況下修正後 $\phi V_c$ 的數值計算，以及 ACI 轉換係數的正確使用</p>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li>軸壓力使混凝土更難開裂（主拉應力減小）→ $V_c$ 提升</li>
+<li>軸拉力使混凝土更易開裂（主拉應力增大）→ $V_c$ 降低，甚至歸零</li>
+<li>ACI 簡化式以「分母基準軸壓/軸拉應力」進行線性修正</li>
+</ul>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li><strong>(一)</strong> 測驗對軸力影響剪力的物理理解（主拉應力概念）</li>
+<li><strong>(二)</strong> 測驗三種情況下修正後 $\phi V_c$ 的數值計算，以及 ACI 轉換係數的正確使用</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong>
-1. 計算基礎 $V_c = 0.53\sqrt{f'_c}\,b_w\,d$（無軸力）
-2. 對每個軸力情況套入修正係數，計算 $\phi V_c$
-3. 注意軸拉力時符號為負，若修正後係數 &lt; 0 則 $V_c = 0$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算基礎 $V_c = 0.53\sqrt{f'_c}\,b_w\,d$（無軸力）</li>
+<li>對每個軸力情況套入修正係數，計算 $\phi V_c$</li>
+<li>注意軸拉力時符號為負，若修正後係數 &lt; 0 則 $V_c = 0$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -107,8 +115,8 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>計算三種軸力條件下之 $\phi V_c$（臨界斷面最大混凝土剪力設計強度）。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
 <p>$$\text{基礎：} V_c = 0.53\sqrt{f'_c}\,b_w\,d$$</p>
-<p>$$\text{軸壓修正：} V_c = 0.53\sqrt{f'_c}\,b_w\,d \cdot \left(1 + \frac{N_u}{140\,A_g}\right) \quad (N_u &gt; 0)$$</p>
-<p>$$\text{軸拉修正：} V_c = 0.53\sqrt{f'_c}\,b_w\,d \cdot \left(1 + \frac{N_u}{35\,A_g}\right) \quad (N_u &lt; 0)$$</p>
+<p>$$\text{軸壓修正：} V_c = 0.53\sqrt{f'_c}\,b_w\,d \cdot \left(1 + \frac{N_u}{140\,A_g}\right) \quad (N_u > 0)$$</p>
+<p>$$\text{軸拉修正：} V_c = 0.53\sqrt{f'_c}\,b_w\,d \cdot \left(1 + \frac{N_u}{35\,A_g}\right) \quad (N_u < 0)$$</p>
 <p>$$\phi V_c = \phi\times V_c,\quad \phi = 0.75$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -222,25 +230,29 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <p><strong>▌ 軸壓力（Axial Compression）之影響</strong></p>
 <p><strong>① 剪力開裂強度：增加 ✅</strong></p>
-<p>在主應力空間中，軸壓 $\sigma_x &lt; 0$（壓力）使水平正應力向壓縮側位移，主拉應力：
+<p>在主應力空間中，軸壓 $\sigma_x < 0$（壓力）使水平正應力向壓縮側位移，主拉應力：<br />
 $$\sigma_{1} = \frac{\sigma_x}{2} + \sqrt{\left(\frac{\sigma_x}{2}\right)^2 + \tau^2} \le f_t$$</p>
 <p>軸壓使 $\sigma_x$ 更負，需要更大的 $\tau$（剪應力）才能使 $\sigma_1$ 達到開裂強度 → <strong>開裂剪力 $V_{cr}$ 增大</strong>。</p>
-<p><strong>② 裂縫形態：斜裂縫角度較陡、裂縫較窄</strong>
-- 斜裂縫角度（相對於梁軸）<strong>增大</strong>（趨向 45° 以上）
-- 裂縫較不易張開，寬度較小
-- 撓曲裂縫受壓力壓制，不易從底部向上延伸為對角拉力裂縫</p>
+<p><strong>② 裂縫形態：斜裂縫角度較陡、裂縫較窄</strong></p>
+<ul>
+<li>斜裂縫角度（相對於梁軸）<strong>增大</strong>（趨向 45° 以上）</li>
+<li>裂縫較不易張開，寬度較小</li>
+<li>撓曲裂縫受壓力壓制，不易從底部向上延伸為對角拉力裂縫</li>
+</ul>
 <hr />
 <p><strong>▌ 軸拉力（Axial Tension）之影響</strong></p>
 <p><strong>① 剪力開裂強度：降低 ❌</strong></p>
-<p>軸拉 $\sigma_x &gt; 0$（拉力）使主拉應力增大，僅需較小的 $\tau$ 即可達到開裂 → <strong>開裂剪力 $V_{cr}$ 降低</strong>；
+<p>軸拉 $\sigma_x > 0$（拉力）使主拉應力增大，僅需較小的 $\tau$ 即可達到開裂 → <strong>開裂剪力 $V_{cr}$ 降低</strong>；<br />
 嚴重軸拉時，混凝土甚至在無剪力下就已開裂 → $V_c \to 0$。</p>
-<p><strong>② 裂縫形態：斜裂縫角度較平、裂縫較寬</strong>
-- 全截面在軸拉下已處於受拉狀態，原撓曲裂縫可貫穿全斷面高度
-- 斜裂縫角度<strong>減小</strong>（趨向水平，或「仍近 45° 但長度更長且更早出現」）
-- 裂縫寬度較大，數量可能更多</p>
+<p><strong>② 裂縫形態：斜裂縫角度較平、裂縫較寬</strong></p>
+<ul>
+<li>全截面在軸拉下已處於受拉狀態，原撓曲裂縫可貫穿全斷面高度</li>
+<li>斜裂縫角度<strong>減小</strong>（趨向水平，或「仍近 45° 但長度更長且更早出現」）</li>
+<li>裂縫寬度較大，數量可能更多</li>
+</ul>
 <hr />
 <h3>Part (二)：三種軸力下 $\phi V_c$ 計算</h3>
-<p><strong>基本量計算：</strong>
+<p><strong>基本量計算：</strong><br />
 $$A_g = b\times h = 40\times60 = 2400 \text{ cm}^2$$</p>
 <p>$$\text{基礎 }V_c = 0.53\sqrt{f'_c}\,b_w\,d = 0.53\times\sqrt{280}\times40\times52 = 0.53\times16.733\times2080$$</p>
 <p>$$= 0.53\times34{,}804 = 18{,}446 \text{ kgf} = 18.45 \text{ tf}$$</p>
@@ -267,7 +279,7 @@ $$A_g = b\times h = 40\times60 = 2400 \text{ cm}^2$$</p>
 <p>$$\boxed{\phi V_c = 0.75\times11{,}858 = 8{,}893 \text{ kgf} = \mathbf{8.89 \text{ tf}}}$$</p>
 <blockquote>
 <p>軸拉使 $\phi V_c$ 降低 <strong>−35.7%</strong>（相較無軸力情況）<br />
-驗核：修正係數 0.6429 &gt; 0，故 $V_c &gt; 0$（若係數 ≤ 0，則取 $V_c = 0$）</p>
+驗核：修正係數 0.6429 &gt; 0，故 $V_c > 0$（若係數 ≤ 0，則取 $V_c = 0$）</p>
 </blockquote>
 <hr />
 <h3>彙整成果表</h3>
@@ -332,29 +344,29 @@ $$A_g = b\times h = 40\times60 = 2400 \text{ cm}^2$$</p>
 </table>
 <p>等效 SI 版本（ACI 318M）：14 MPa 和 3.5 MPa（分別對應 140 和 35 kgf/cm²）。</p>
 <p><strong>② 軸拉趨近截止值 $N_u^*$（$V_c \to 0$）</strong></p>
-<p>當 $1 + N_u/(35A_g) = 0$：
+<p>當 $1 + N_u/(35A_g) = 0$：<br />
 $$N_u^* = -35\times A_g = -35\times2400 = -84{,}000 \text{ kgf} = -84 \text{ tf}$$</p>
 <p>即若軸拉超過 84 tf，簡化式給出 $V_c = 0$，<strong>此時混凝土無剪力貢獻，剪力全由箍筋承擔</strong>。</p>
 <p><strong>③ 壓縮修正的物理上限</strong></p>
-<p>若 $N_u/(140A_g) &gt; $ 某一閾值，混凝土可能因過大軸壓進入非線性，ACI 詳細公式才能更精確描述。但簡化式仍為線性，僅在「顯著軸壓」範圍內適用。</p>
+<p>若 $N_u/(140A_g) > $ 某一閾值，混凝土可能因過大軸壓進入非線性，ACI 詳細公式才能更精確描述。但簡化式仍為線性，僅在「顯著軸壓」範圍內適用。</p>
 <p><strong>④ 本題 $A_s$ = 24.42 cm² 和載重 40 tf 的用途</strong></p>
-<p>簡化式無需這些數據。若改用<strong>詳細公式</strong>：
+<p>簡化式無需這些數據。若改用<strong>詳細公式</strong>：<br />
 $$V_c = \left[0.50\sqrt{f'_c} + 175\,\rho_w\,\frac{V_u\,d}{M_u}\right]b_w\,d \le 0.93\sqrt{f'_c}\,b_w\,d$$</p>
 <p>則需要 $\rho_w = A_s/(b_w d) = 24.42/(40\times52) = 0.01174$，以及臨界斷面的 $V_u$ 和 $M_u$。</p>
 <p>與簡化式比較：詳細公式通常較高，可節省材料，但計算較繁複。</p></main>
 <footer>來源：raw/solutions/RC-2010-3/RC-2010-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

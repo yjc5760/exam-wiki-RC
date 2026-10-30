@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2003-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
+<header><h1>RC-2003-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U3-3.html">&#128202; U3-3 單元總覽</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2003-4</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
 <strong>副分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
@@ -76,7 +76,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>單層條件</td>
-<td>$V_u \le 0.53\sqrt{f'<em cv="cv">c}\cdot A</em>$</td>
+<td>$V_u \le 0.53\sqrt{f'_c}\cdot A_{cv}$</td>
 </tr>
 <tr>
 <td>剪力折減係數</td>
@@ -96,30 +96,36 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 </tbody>
 </table>
-<p><strong>求：</strong>
-1. 邊界構材縱向主筋及箍筋配置
-2. 剪力牆版水平剪力筋配置 + 邊界構材錨定驗核
-3. 剪力牆版垂直剪力筋配置 + 牆版應力驗核
-4. 剪力牆斷面圖（文字描述）</p>
+<p><strong>求：</strong></p>
+<ol>
+<li>邊界構材縱向主筋及箍筋配置</li>
+<li>剪力牆版水平剪力筋配置 + 邊界構材錨定驗核</li>
+<li>剪力牆版垂直剪力筋配置 + 牆版應力驗核</li>
+<li>剪力牆斷面圖（文字描述）</li>
+</ol>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 剪力牆設計三步驟——①計算覆沒彎矩在邊界構材的拉壓力，②設計水平剪力筋（最小配筋量控制），③設計垂直分布筋。40分題考所有環節：荷載組合、邊界構材拉壓設計、水平筋配置、彎鉤錨定、垂直筋配置。</p>
-<p><strong>出題者測驗：</strong>
-1. 兩種載重組合控制不同設計（拉力用Combo 1，壓力用Combo 2）
-2. αc 係數隨 hw/lw 改變
-3. 單層配筋的判斷與最小配筋率
-4. 彎鉤錨定長度計算</p>
+<p><strong>出題者測驗：</strong></p>
+<ol>
+<li>兩種載重組合控制不同設計（拉力用Combo 1，壓力用Combo 2）</li>
+<li>αc 係數隨 hw/lw 改變</li>
+<li>單層配筋的判斷與最小配筋率</li>
+<li>彎鉤錨定長度計算</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>計算步驟：</strong>
-1. 確認牆體幾何（Acv、hw/lw、αc）
-2. 計算基底設計力（兩種組合）
-3. 邊界構材拉壓力（覆沒力矩 ÷ lw_ce）
-4. 選邊界構材主筋（#8）→ 驗核拉壓
-5. 邊界構材箍筋設計（Ash 要求）
-6. 單層水平剪力筋條件 → 最小ρh → 間距
-7. 彎鉤錨定驗核
-8. 垂直剪力筋（ρv ≥ ρh）</p>
+<p><strong>計算步驟：</strong></p>
+<ol>
+<li>確認牆體幾何（Acv、hw/lw、αc）</li>
+<li>計算基底設計力（兩種組合）</li>
+<li>邊界構材拉壓力（覆沒力矩 ÷ lw_ce）</li>
+<li>選邊界構材主筋（#8）→ 驗核拉壓</li>
+<li>邊界構材箍筋設計（Ash 要求）</li>
+<li>單層水平剪力筋條件 → 最小ρh → 間距</li>
+<li>彎鉤錨定驗核</li>
+<li>垂直剪力筋（ρv ≥ ρh）</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -162,7 +168,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\text{Step 3（邊界構材力）: } F_{OT} = \frac{\boxed{M_u}}{l_{w,ce}},\quad P_{BE} = \phi_g\times P_{per BE} \pm \boxed{F_{OT}}$$</p>
 <p>$$\text{Step 4（水平剪力強度）: } \phi V_n = \phi\cdot A_{cv}\cdot(\alpha_c\sqrt{f'_c} + \rho_h f_y)$$</p>
 <p>$$\text{Step 5（彎鉤錨定）: } A_{dh} = \frac{0.06\,f_y\,d_b}{\sqrt{f'_c}}$$</p>
-<p>$$\text{Step 6（垂直分布筋）: } \rho_v \ge \max!\left(0.0025,\ 0.0025+0.5(2.5-\frac{h_w}{l_w})(\rho_h-0.0025)\right)$$</p>
+<p>$$\text{Step 6（垂直分布筋）: } \rho_v \ge \max\!\left(0.0025,\ 0.0025+0.5(2.5-\frac{h_w}{l_w})(\rho_h-0.0025)\right)$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -364,7 +370,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>Step 1　牆體幾何</h3>
 <p>$$A_{cv} = t_w \times l_w = 30\times900 = \boxed{27{,}000\ \text{cm}^2}$$</p>
 <p>$$\frac{h_w}{l_w} = \frac{900}{900} = 1.0 \le 1.5 \Rightarrow \alpha_c = 0.80\ \text{（kgf/cm}^2\text{ 制）}$$</p>
-<p>基底地震作用：
+<p>基底地震作用：<br />
 $$V = f_{o1}+f_{o2} = 30+20 = 50\ \text{tf（基底剪力）}$$</p>
 <p>$$M_{base} = 30\times900 + 20\times450 = 27{,}000+9{,}000 = \boxed{36{,}000\ \text{tf·cm} = 360\ \text{tf·m}}$$</p>
 <blockquote>
@@ -374,12 +380,12 @@ $l_{w,ce} = 900 - 2\times15 = \boxed{870\ \text{cm}}$</p>
 <hr />
 <h3>Step 2　設計載重組合</h3>
 <p><strong>Combo 1：$U = 0.9D + 1.43E$</strong>（最大地震 + 最小重力，控制拉力）</p>
-<p>$$P_u = 0.9\times50 = 45\ \text{tf}\ (\text{每BE}: 22.5\ \text{tf})$$
-$$V_u = 1.43\times50 = \boxed{71.5\ \text{tf}}$$
+<p>$$P_u = 0.9\times50 = 45\ \text{tf}\ (\text{每BE}: 22.5\ \text{tf})$$<br />
+$$V_u = 1.43\times50 = \boxed{71.5\ \text{tf}}$$<br />
 $$M_u = 1.43\times36{,}000 = \boxed{51{,}480\ \text{tf·cm}}$$</p>
 <p><strong>Combo 2：$U = 0.75(1.4D+1.87E)$</strong>（取 $L=0$，控制壓力）</p>
-<p>$$P_u = 0.75\times1.4\times50 = 52.5\ \text{tf}\ (\text{每BE}: 26.25\ \text{tf})$$
-$$V_u = 0.75\times1.87\times50 = 70.1\ \text{tf}$$
+<p>$$P_u = 0.75\times1.4\times50 = 52.5\ \text{tf}\ (\text{每BE}: 26.25\ \text{tf})$$<br />
+$$V_u = 0.75\times1.87\times50 = 70.1\ \text{tf}$$<br />
 $$M_u = 0.75\times1.87\times36{,}000 = 50{,}625\ \text{tf·cm}$$</p>
 <p><strong>各項最大值：</strong></p>
 <table>
@@ -418,21 +424,21 @@ $$M_u = 0.75\times1.87\times36{,}000 = 50{,}625\ \text{tf·cm}$$</p>
 <p><strong>邊界構材受力（覆沒力矩效應）：</strong></p>
 <p>$$F_{OT} = \frac{M_u}{l_{w,ce}}$$</p>
 <p>Combo 1: $F_{OT} = 51{,}480/870 = 59.2\ \text{tf}$</p>
-<p>$$P_{BE,\text{壓}} = \frac{P_u}{2} + F_{OT} = 22.5 + 59.2 = 81.7\ \text{tf}\quad\text{（Combo 1）}$$
+<p>$$P_{BE,\text{壓}} = \frac{P_u}{2} + F_{OT} = 22.5 + 59.2 = 81.7\ \text{tf}\quad\text{（Combo 1）}$$<br />
 $$P_{BE,\text{拉}} = -\frac{P_u}{2} + F_{OT} = -22.5 + 59.2 = +36.7\ \text{tf（拉力）}\quad\text{（Combo 1）}$$</p>
-<p>Combo 2: $F_{OT} = 50{,}625/870 = 58.2\ \text{tf}$
+<p>Combo 2: $F_{OT} = 50{,}625/870 = 58.2\ \text{tf}$<br />
 $$P_{BE,\text{壓,max}} = 26.25 + 58.2 = \boxed{84.5\ \text{tf}}\quad\text{（Combo 2，最大壓力）}$$</p>
 <p><strong>邊界構材斷面：30cm × 30cm，$A_g = 900\ \text{cm}^2$</strong></p>
-<p><strong>選配主筋：4-#8（角筋各一）</strong>
+<p><strong>選配主筋：4-#8（角筋各一）</strong><br />
 $$A_{st} = 4\times5.07 = 20.28\ \text{cm}^2,\quad \rho_g = 20.28/900 = 2.25\%\quad(1\%\sim8\%\ \checkmark)$$</p>
 <p><strong>壓力驗核（Combo 2）：</strong></p>
-<p>$$\phi P_n = 0.65\times[0.85\times280\times(900-20.28)+4{,}200\times20.28]$$
-$$= 0.65\times[0.85\times280\times879.72+85{,}176]$$
+<p>$$\phi P_n = 0.65\times[0.85\times280\times(900-20.28)+4{,}200\times20.28]$$<br />
+$$= 0.65\times[0.85\times280\times879.72+85{,}176]$$<br />
 $$= 0.65\times[209{,}359+85{,}176] = 0.65\times294{,}535 = \boxed{191{,}448\ \text{kgf} = 191.4\ \text{tf}}$$</p>
-<p>$$\phi P_n = 191.4\ \text{tf} &gt; P_{BE,max} = 84.5\ \text{tf}\quad\checkmark$$</p>
+<p>$$\phi P_n = 191.4\ \text{tf} > P_{BE,max} = 84.5\ \text{tf}\quad\checkmark$$</p>
 <p><strong>拉力驗核（Combo 1）：</strong></p>
 <p>$$\phi T_n = \phi \times f_y \times A_{st} = 0.9\times4{,}200\times20.28 = 76{,}659\ \text{kgf} = \boxed{76.7\ \text{tf}}$$</p>
-<p>$$\phi T_n = 76.7\ \text{tf} &gt; P_{BE,\text{拉}} = 36.7\ \text{tf}\quad\checkmark$$</p>
+<p>$$\phi T_n = 76.7\ \text{tf} > P_{BE,\text{拉}} = 36.7\ \text{tf}\quad\checkmark$$</p>
 <p><strong>邊界構材箍筋設計（耐震圍束）：</strong></p>
 <p>間距限制：$s \le \min(b/4,\ 6d_{b,\text{main}},\ 10\ \text{cm})$</p>
 <p>$$= \min(30/4,\ 6\times2.54,\ 10) = \min(7.5,\ 15.24,\ 10) = \boxed{7.5\ \text{cm}}$$</p>
@@ -440,41 +446,43 @@ $$= 0.65\times[209{,}359+85{,}176] = 0.65\times294{,}535 = \boxed{191{,}448\ \te
 <p>$A_{ch} = 20.73^2 = 429.7\ \text{cm}^2$</p>
 <p>Ash 需求（s=7.5cm）：</p>
 <p>$$0.09\times7.5\times20.73\times\frac{280}{4{,}200} = 0.09\times7.5\times20.73\times0.0667 = 0.93\ \text{cm}^2$$</p>
-<p>$$0.3\times!\left(\frac{900}{429.7}-1\right)\times7.5\times20.73\times0.0667 = 0.3\times1.094\times7.5\times1.382 = \boxed{3.40\ \text{cm}^2\ \text{（控制）}}$$</p>
-<p>箍筋選配：
-- <strong>1個 #4 閉合方形箍</strong>：2肢/方向 → $A_{sh} = 2\times1.27 = 2.54\ \text{cm}^2 &lt; 3.40$（不足）
-- <strong>加入1根 #4 繫筋（每方向）</strong>：$A_{sh} = 2.54+1.27 = \boxed{3.81\ \text{cm}^2 &gt; 3.40\ \checkmark}$</p>
-<p>$$\therefore \text{邊界構材箍筋：#4 閉合箍 + #4 繫筋（各向）@}7.5\ \text{cm}$$</p>
+<p>$$0.3\times\!\left(\frac{900}{429.7}-1\right)\times7.5\times20.73\times0.0667 = 0.3\times1.094\times7.5\times1.382 = \boxed{3.40\ \text{cm}^2\ \text{（控制）}}$$</p>
+<p>箍筋選配：</p>
+<ul>
+<li><strong>1個 #4 閉合方形箍</strong>：2肢/方向 → $A_{sh} = 2\times1.27 = 2.54\ \text{cm}^2 < 3.40$（不足）</li>
+<li><strong>加入1根 #4 繫筋（每方向）</strong>：$A_{sh} = 2.54+1.27 = \boxed{3.81\ \text{cm}^2 > 3.40\ \checkmark}$</li>
+</ul>
+<p>$$\therefore \text{邊界構材箍筋：\#4 閉合箍 + \#4 繫筋（各向）@}7.5\ \text{cm}$$</p>
 <hr />
 <h3>Step 4　水平剪力筋設計</h3>
 <p><strong>單層配筋條件驗核：</strong></p>
-<p>$$0.53\sqrt{f'<em cv="cv">c}\cdot A</em>$$} = 0.53\times\sqrt{280}\times27{,}000 = 0.53\times16.73\times27{,}000 = 239{,}565\ \text{kgf} = 239.6\ \text{tf</p>
+<p>$$0.53\sqrt{f'_c}\cdot A_{cv} = 0.53\times\sqrt{280}\times27{,}000 = 0.53\times16.73\times27{,}000 = 239{,}565\ \text{kgf} = 239.6\ \text{tf}$$</p>
 <p>$$V_u = 71.5\ \text{tf} \ll 239.6\ \text{tf}\quad\checkmark\ \text{（採單層配置）}$$</p>
 <p><strong>所需最小水平配筋率：</strong></p>
 <p>$$\phi V_n = \phi\cdot A_{cv}\cdot(\alpha_c\sqrt{f'_c}+\rho_h f_y) \ge V_u$$</p>
 <p>$$0.6\times27{,}000\times(0.80\times16.73+\rho_h\times4{,}200) \ge 71{,}500\ \text{kgf}$$</p>
-<p>即使 $\rho_h = 0$：$\phi V_c = 0.6\times27{,}000\times13.38 = 216{,}756\ \text{kgf} = 216.8\ \text{tf} &gt; 71.5\ \text{tf}$</p>
+<p>即使 $\rho_h = 0$：$\phi V_c = 0.6\times27{,}000\times13.38 = 216{,}756\ \text{kgf} = 216.8\ \text{tf} > 71.5\ \text{tf}$</p>
 <blockquote>
 <p>混凝土強度已超過需求 → <strong>最小配筋率</strong> $\rho_{h,\min} = 0.0025$ <strong>控制</strong></p>
 </blockquote>
 <p>$$s_h = \frac{A_{b,h}}{\rho_{h,\min}\times t_w} = \frac{1.27}{0.0025\times30} = 16.9\ \text{cm} \to \text{採}\ \boxed{15\ \text{cm}}$$</p>
-<p>最大間距：$\min(l_w/5,\ 3t_w,\ 45\ \text{cm}) = \min(180,\ 90,\ 45) = 45\ \text{cm} &gt; 15\ \text{cm}\quad\checkmark$</p>
-<p>$$\rho_h = \frac{1.27}{30\times15} = 0.00282 &gt; 0.0025\quad\checkmark$$</p>
-<p>$$\therefore \text{水平剪力筋：#4 單層 @ 15 cm}$$</p>
+<p>最大間距：$\min(l_w/5,\ 3t_w,\ 45\ \text{cm}) = \min(180,\ 90,\ 45) = 45\ \text{cm} > 15\ \text{cm}\quad\checkmark$</p>
+<p>$$\rho_h = \frac{1.27}{30\times15} = 0.00282 > 0.0025\quad\checkmark$$</p>
+<p>$$\therefore \text{水平剪力筋：\#4 單層 @ 15 cm}$$</p>
 <p><strong>彎鉤錨定驗核：</strong></p>
 <p>$$A_{dh} = \frac{0.06\times f_y\times d_b}{\sqrt{f'_c}} = \frac{0.06\times4{,}200\times1.27}{\sqrt{280}} = \frac{320.0}{16.73} = \boxed{19.1\ \text{cm}}$$</p>
 <p>邊界構材可用深度（從牆面算起）：$30 - 4(\text{淨保護層}) = 26\ \text{cm}$</p>
-<p>$$A_{dh} = 19.1\ \text{cm} &lt; 26\ \text{cm}\quad\checkmark\ \text{（彎鉤錨定充足）}$$</p>
+<p>$$A_{dh} = 19.1\ \text{cm} < 26\ \text{cm}\quad\checkmark\ \text{（彎鉤錨定充足）}$$</p>
 <hr />
 <h3>Step 5　垂直剪力筋設計</h3>
 <p>依規範（hw/lw = 1.0 &lt; 2.0，垂直筋比不得少於水平筋之某比例）：</p>
-<p>$$\rho_{v,\min} = \max!\left(0.0025,\ 0.0025+0.5!\left(2.5-\frac{h_w}{l_w}\right)!(\rho_h-0.0025)\right)$$</p>
-<p>$$= \max!\left(0.0025,\ 0.0025+0.5\times(2.5-1.0)\times(0.00282-0.0025)\right)$$</p>
+<p>$$\rho_{v,\min} = \max\!\left(0.0025,\ 0.0025+0.5\!\left(2.5-\frac{h_w}{l_w}\right)\!(\rho_h-0.0025)\right)$$</p>
+<p>$$= \max\!\left(0.0025,\ 0.0025+0.5\times(2.5-1.0)\times(0.00282-0.0025)\right)$$</p>
 <p>$$= \max(0.0025,\ 0.0025+0.5\times1.5\times0.00032)$$</p>
 <p>$$= \max(0.0025,\ 0.0025+0.00024) = \max(0.0025,\ 0.00274) = \boxed{0.00274}$$</p>
 <p>$$s_v = \frac{A_{b,v}}{\rho_{v,\min}\times t_w} = \frac{1.27}{0.00274\times30} = \frac{1.27}{0.0822} = 15.45\ \text{cm} \to \text{採}\ \boxed{15\ \text{cm}}$$</p>
-<p>$$\rho_v = \frac{1.27}{30\times15} = 0.00282 &gt; 0.00274\quad\checkmark$$</p>
-<p>$$\therefore \text{垂直剪力筋：#4 單層 @ 15 cm}$$</p>
+<p>$$\rho_v = \frac{1.27}{30\times15} = 0.00282 > 0.00274\quad\checkmark$$</p>
+<p>$$\therefore \text{垂直剪力筋：\#4 單層 @ 15 cm}$$</p>
 <p><strong>牆版最大剪力應力驗核：</strong></p>
 <p>$$\frac{V_u}{\phi\cdot A_{cv}} = \frac{71{,}500}{0.6\times27{,}000} = \frac{71{,}500}{16{,}200} = 4.41\ \text{kgf/cm}^2$$</p>
 <p>最大允許牆版剪力：</p>
@@ -523,34 +531,38 @@ $$= 0.65\times[209{,}359+85{,}176] = 0.65\times294{,}535 = \boxed{191{,}448\ \te
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <p><strong>1. αc 係數的換算</strong></p>
-<p>ACI 318-99（psi制）：
-- hw/lw ≤ 1.5 → αc = 3.0 → 換算 kgf/cm² ≈ 0.795
-- hw/lw ≥ 2.0 → αc = 2.0 → 換算 kgf/cm² ≈ 0.530</p>
-<p>ACI 318M-99（MPa制）：
-- hw/lw ≤ 1.5 → αc = 0.25（MPa^0.5）→ 換算 kgf/cm² ≈ 0.80</p>
+<p>ACI 318-99（psi制）：</p>
+<ul>
+<li>hw/lw ≤ 1.5 → αc = 3.0 → 換算 kgf/cm² ≈ 0.795</li>
+<li>hw/lw ≥ 2.0 → αc = 2.0 → 換算 kgf/cm² ≈ 0.530</li>
+</ul>
+<p>ACI 318M-99（MPa制）：</p>
+<ul>
+<li>hw/lw ≤ 1.5 → αc = 0.25（MPa^0.5）→ 換算 kgf/cm² ≈ 0.80</li>
+</ul>
 <p>兩版本換算結果接近，本題取 αc = 0.80（kgf/cm²制）。</p>
 <p><strong>2. 為何 Vc 遠超 Vu？</strong></p>
 <p>本題 hw/lw = 1.0（方形牆），屬短矮牆，混凝土抗剪能力很強（αc = 0.80 最大值）。若 hw/lw = 2.0，αc 降至 0.53，Vc 僅約一半，可能需要計算用的剪力筋。</p>
 <p><strong>3. 單層配置 vs 雙層配置的工程意義</strong></p>
 <p>單層（ρ ≤ 0.53√f'c/fy 時允許）：節省材料，施工簡便。雙層配置除了強度較高，還有益於防止牆面劈裂，是高剪力需求時的標準做法。本題 Vu/φAcv = 4.41 kgf/cm² 遠低於限值，單層完全合理。</p>
 <p><strong>4. 邊界構材是否需要特殊圍束？</strong></p>
-<p>本題極端纖維壓應力：
-$$f_c = P_u/A_g + M_u\times(l_w/2)/I_g = 45{,}000/27{,}000 + 51{,}480{,}000\times450/1{,}822{,}500{,}000$$
-$$= 1.67 + 12.72 = 14.4\ \text{kgf/cm}^2 &lt; 0.2f'_c = 56\ \text{kgf/cm}^2$$</p>
+<p>本題極端纖維壓應力：<br />
+$$f_c = P_u/A_g + M_u\times(l_w/2)/I_g = 45{,}000/27{,}000 + 51{,}480{,}000\times450/1{,}822{,}500{,}000$$<br />
+$$= 1.67 + 12.72 = 14.4\ \text{kgf/cm}^2 < 0.2f'_c = 56\ \text{kgf/cm}^2$$</p>
 <p>雖依應力法不需特殊邊界構材，但本題已預設邊界構材於圖5，故仍需設計其圍束箍筋。</p></main>
 <footer>來源：raw/solutions/RC-2003-4/RC-2003-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

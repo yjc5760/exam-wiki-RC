@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2022-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2022-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2022-2</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -40,29 +40,35 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 矩形梁斷面，承受設計彎矩 $M_u = 19.5$ tf·m，使用 D25 拉力筋，試從下列四種材料組合中選出<strong>最經濟（D25 支數最少）</strong>的組合，並評論材料強度對拉力鋼筋用量的影響。（25 分）</p>
-<p><strong>已知條件：</strong><br />
-- 斷面尺寸：$b = 30$ cm，$h = 50$ cm，$d = 43.5$ cm<br />
-- 設計彎矩：$M_u = 19.5$ tf·m $= 1{,}950{,}000$ kgf·cm<br />
-- 拉力筋限用 D25（$A_b = 5.067$ cm²）<br />
-- 可選材料：<br />
-  - $f'_c = 210$ kgf/cm² 或 $f'_c = 280$ kgf/cm²<br />
-  - $f_y = 4200$ kgf/cm² 或 $f_y = 5600$ kgf/cm²<br />
-- 梁寬 30 cm 時，D25 每層最多 3 支（由表 2）</p>
+<p><strong>已知條件：</strong></p>
+<ul>
+<li>斷面尺寸：$b = 30$ cm，$h = 50$ cm，$d = 43.5$ cm</li>
+<li>設計彎矩：$M_u = 19.5$ tf·m $= 1{,}950{,}000$ kgf·cm</li>
+<li>拉力筋限用 D25（$A_b = 5.067$ cm²）</li>
+<li>可選材料：</li>
+<li>$f'_c = 210$ kgf/cm² 或 $f'_c = 280$ kgf/cm²</li>
+<li>$f_y = 4200$ kgf/cm² 或 $f_y = 5600$ kgf/cm²</li>
+<li>梁寬 30 cm 時，D25 每層最多 3 支（由表 2）</li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 理解 $f'_c$ 與 $f_y$ 對拉力鋼筋需求量的影響機制，並能比較四種材料組合的設計結果。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗考生能否快速評估四種材料組合，找出最少鋼筋用量<br />
-2. 考驗對「$f_y$ 影響大、$f'_c$ 影響小」的物理直覺<br />
-3. 要求定量計算 + 定性評論，評測綜合表達能力</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗考生能否快速評估四種材料組合，找出最少鋼筋用量</li>
+<li>考驗對「$f_y$ 影響大、$f'_c$ 影響小」的物理直覺</li>
+<li>要求定量計算 + 定性評論，評測綜合表達能力</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 對四種組合分別解方程求 $A_s$（需求值）<br />
-2. 除以 $A_{b,D25} = 5.067$ cm² → 無條件進位取整數支數<br />
-3. 驗算 $\varepsilon_t$（確認 $\phi = 0.90$）及 $\rho_{\min}$<br />
-4. 比較，找出 D25 支數最少且混凝土強度最低的組合<br />
-5. 定性評論材料強度的影響</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>對四種組合分別解方程求 $A_s$（需求值）</li>
+<li>除以 $A_{b,D25} = 5.067$ cm² → 無條件進位取整數支數</li>
+<li>驗算 $\varepsilon_t$（確認 $\phi = 0.90$）及 $\rho_{\min}$</li>
+<li>比較，找出 D25 支數最少且混凝土強度最低的組合</li>
+<li>定性評論材料強度的影響</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -416,34 +422,40 @@ $$a = \frac{10.134 \times 5600}{7140} = 7.95 \text{ cm}, \quad c = 9.35 \text{ c
 <h3>評論：材料強度對拉力鋼筋用量的影響</h3>
 <p><strong>（一）提高 $f_y$ 的效果（主要因素）：</strong></p>
 <p>$$A_s \approx \frac{M_u}{\phi f_y \left(d - \dfrac{a}{2}\right)}$$</p>
-<p>提高 $f_y$：<br />
-1. 分母直接增大 → $A_s$ 減少<br />
-2. $f_y$ 大使 $a = A_s f_y/(0.85f'_c b)$ 中兩效果相消，但淨效果仍使 $A_s$ 減少<br />
-3. <strong>本題：$f_y$ 從 4200→5600（增加 33%），D25 支數從 3 降至 2（減少 33%）</strong></p>
+<p>提高 $f_y$：</p>
+<ol>
+<li>分母直接增大 → $A_s$ 減少</li>
+<li>$f_y$ 大使 $a = A_s f_y/(0.85f'_c b)$ 中兩效果相消，但淨效果仍使 $A_s$ 減少</li>
+<li><strong>本題：$f_y$ 從 4200→5600（增加 33%），D25 支數從 3 降至 2（減少 33%）</strong></li>
+</ol>
 <p><strong>（二）提高 $f'_c$ 的效果（次要因素）：</strong></p>
 <p>當梁配筋率很低（$\varepsilon_t \gg 0.005$，如本題 $\varepsilon_t \approx 0.007 \sim 0.011$），等值應力塊深度 $a$ 極小，力矩臂 $(d-a/2) \approx d$ 幾乎不變。此時：</p>
 <p>$$A_s \approx \frac{M_u}{\phi f_y d} \quad \text{（與 $f'_c$ 幾乎無關）}$$</p>
 <p><strong>本題：$f'_c$ 從 210→280（增加 33%），D25 支數不變（組合一→三同為 3 支，組合二→四同為 2 支）</strong></p>
-<p><strong>（三）結論：</strong><br />
-- 對低配筋率梁（即一般梁設計），<strong>提高 $f_y$ 是最有效的節省鋼筋方式</strong>，$f'_c$ 影響甚微。<br />
-- 只有在接近 $\rho_{\max}$ 的高配筋梁，提高 $f'_c$ 才能顯著減少鋼筋用量。<br />
-- 從工程實務看，若鋼筋費用遠高於混凝土費用，採高強度鋼筋（fy=5600）可達到最佳材料經濟性。</p>
+<p><strong>（三）結論：</strong></p>
+<ul>
+<li>對低配筋率梁（即一般梁設計），<strong>提高 $f_y$ 是最有效的節省鋼筋方式</strong>，$f'_c$ 影響甚微。</li>
+<li>只有在接近 $\rho_{\max}$ 的高配筋梁，提高 $f'_c$ 才能顯著減少鋼筋用量。</li>
+<li>從工程實務看，若鋼筋費用遠高於混凝土費用，採高強度鋼筋（fy=5600）可達到最佳材料經濟性。</li>
+</ul>
 <h3>爭議點：「最經濟」的定義</h3>
-<p>本題以「D25 支數最少」為判斷準則，組合二、四均為 2 支。若同時考慮材料成本：<br />
-- 高強度混凝土（f'c=280）通常比 f'c=210 貴 ~20%<br />
-- 兩種組合鋼筋量相同，故<strong>組合二（f'c=210, fy=5600）更經濟</strong>。</p></main>
+<p>本題以「D25 支數最少」為判斷準則，組合二、四均為 2 支。若同時考慮材料成本：</p>
+<ul>
+<li>高強度混凝土（f'c=280）通常比 f'c=210 貴 ~20%</li>
+<li>兩種組合鋼筋量相同，故<strong>組合二（f'c=210, fy=5600）更經濟</strong>。</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2022-2/RC-2022-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

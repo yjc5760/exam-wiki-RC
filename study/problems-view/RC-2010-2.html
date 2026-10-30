@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2010-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
+<header><h1>RC-2010-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U3-3.html">&#128202; U3-3 單元總覽</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2010-2</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
 <strong>副分類：</strong> <code>RC-U2-3</code> 鋼筋錨定長度與斷點計算<br />
@@ -45,21 +45,27 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>材料：$f'_c = 280$ kgf/cm²，$f_y = 4200$ kgf/cm²，試設計其<strong>抗拉搭接長度</strong>。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong>
-- 耐震柱縱向搭接的嚴格限制，是為防止塑性鉸區因搭接失效導致柱脆性崩潰
-- 必須使用 Class B 拉力搭接（$l_s = 1.3l_d$），即使鋼筋可能承受壓力也如此
-- $l_d$ 的計算需要正確判斷圍束條件（cb、Ktr）和修正係數</p>
-<p><strong>出題者意圖：</strong>
-1. <strong>(一)</strong> 測驗耐震規範對搭接的「位置、面積、類型、橫向鋼筋」四項要求
-2. <strong>(二)</strong> 測驗 ACI §12.2 發展長度公式的完整計算流程（cb、Ktr、修正係數）</p>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li>耐震柱縱向搭接的嚴格限制，是為防止塑性鉸區因搭接失效導致柱脆性崩潰</li>
+<li>必須使用 Class B 拉力搭接（$l_s = 1.3l_d$），即使鋼筋可能承受壓力也如此</li>
+<li>$l_d$ 的計算需要正確判斷圍束條件（cb、Ktr）和修正係數</li>
+</ul>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li><strong>(一)</strong> 測驗耐震規範對搭接的「位置、面積、類型、橫向鋼筋」四項要求</li>
+<li><strong>(二)</strong> 測驗 ACI §12.2 發展長度公式的完整計算流程（cb、Ktr、修正係數）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫（Part (二)）：</strong>
-1. 求柱的幾何（淨間距→c.t.c.間距→$c_b$；保護層→$c_b$）
-2. 求 $K_{tr}$（箍筋圍束貢獻）
-3. 計算 $(c_b+K_{tr})/d_b$，上限 2.5
-4. 代入 ACI 發展長度公式求 $l_d$
-5. Class B 搭接：$l_s = 1.3\,l_d$</p>
+<p><strong>作戰計畫（Part (二)）：</strong></p>
+<ol>
+<li>求柱的幾何（淨間距→c.t.c.間距→$c_b$；保護層→$c_b$）</li>
+<li>求 $K_{tr}$（箍筋圍束貢獻）</li>
+<li>計算 $(c_b+K_{tr})/d_b$，上限 2.5</li>
+<li>代入 ACI 發展長度公式求 $l_d$</li>
+<li>Class B 搭接：$l_s = 1.3\,l_d$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -102,10 +108,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>最終目標</h3>
 <p>計算 D29 縱向鋼筋在耐震柱中的 Class B 拉力搭接長度 $l_s$。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$\text{Step 1：} c_b = \min!\left(\text{保護層至中心},\ \frac{s_{cc}+d_b}{2}\right)$$</p>
+<p>$$\text{Step 1：} c_b = \min\!\left(\text{保護層至中心},\ \frac{s_{cc}+d_b}{2}\right)$$</p>
 <p>$$\text{Step 2：} K_{tr} = \frac{40\,A_{tr}}{s\cdot n}$$</p>
 <p>$$\text{Step 3：} \frac{c_b + \boxed{K_{tr}}}{d_b} \le 2.5$$</p>
-<p>$$\text{Step 4：} l_d = \frac{f_y\,\psi_t\,\psi_e\,\psi_s}{3.5\lambda\sqrt{f'<em tr="tr">c}} \cdot \frac{d_b}{\boxed{(c_b+K</em>$$})/d_b}</p>
+<p>$$\text{Step 4：} l_d = \frac{f_y\,\psi_t\,\psi_e\,\psi_s}{3.5\lambda\sqrt{f'_c}} \cdot \frac{d_b}{\boxed{(c_b+K_{tr})/d_b}}$$</p>
 <p>$$\text{Step 5（Class B）：} l_s = 1.3\,\boxed{l_d}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -229,7 +235,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$(c_b+K_{tr})/d_b$</td>
-<td>$(6.085+1.689)/2.87 = 2.71 &gt; 2.5$ → 上限 <strong>2.5</strong></td>
+<td>$(6.085+1.689)/2.87 = 2.71 > 2.5$ → 上限 <strong>2.5</strong></td>
 <td></td>
 </tr>
 </tbody>
@@ -321,32 +327,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>依<strong>混凝土設計規範（TCRCDC，ACI 318 Chapter 21）</strong>，特殊矩形框架柱縱向搭接需符合：</p>
 <p><strong>① 搭接位置（Location）</strong></p>
 <blockquote>
-<p>縱向鋼筋搭接<strong>只能設置在柱淨高的中段 1/2 範圍內</strong>（遠離柱端塑性鉸潛在位置）。
+<p>縱向鋼筋搭接<strong>只能設置在柱淨高的中段 1/2 範圍內</strong>（遠離柱端塑性鉸潛在位置）。<br />
 嚴禁在柱接頭區（joint）及柱端密箍區（$l_o$）內搭接。</p>
 </blockquote>
 <p><strong>② 搭接面積（Area）</strong></p>
 <blockquote>
-<p>在任一斷面上，搭接縱向鋼筋的面積不得超過總縱向鋼筋面積的 <strong>50%</strong>。
+<p>在任一斷面上，搭接縱向鋼筋的面積不得超過總縱向鋼筋面積的 <strong>50%</strong>。<br />
 若需更多鋼筋在同一截面對接，必須改用機械式接頭或焊接接頭。</p>
 </blockquote>
 <p><strong>③ 搭接類型（Type）</strong></p>
 <blockquote>
-<p>一律採用 <strong>Class B 拉力搭接</strong>，搭接長度 $l_s = 1.3\,l_d$（$l_d$ = 拉力發展長度）。
+<p>一律採用 <strong>Class B 拉力搭接</strong>，搭接長度 $l_s = 1.3\,l_d$（$l_d$ = 拉力發展長度）。<br />
 即使鋼筋在服務載重下為壓力，耐震設計仍強制使用拉力搭接（地震時應力方向可能逆轉）。</p>
 </blockquote>
 <p><strong>④ 橫向鋼筋（Lateral Reinforcement）</strong></p>
 <blockquote>
-<p>搭接長度全程必須配置符合 §21.4.4 規定的<strong>閉合箍筋（hoops）</strong>。
+<p>搭接長度全程必須配置符合 §21.4.4 規定的<strong>閉合箍筋（hoops）</strong>。<br />
 箍筋間距、面積需同時滿足密箍區規定（即不放寬）。</p>
 </blockquote>
 <hr />
 <h3>Part (二)：D29 搭接長度計算</h3>
 <hr />
 <h4>Step 1：柱幾何 → $c_b$</h4>
-<p><strong>半中心間距：</strong>
-$$c.t.c. = s_{cc} + d_b = 9.3 + 2.87 = 12.17 \text{ cm}$$
+<p><strong>半中心間距：</strong><br />
+$$c.t.c. = s_{cc} + d_b = 9.3 + 2.87 = 12.17 \text{ cm}$$<br />
 $$c_{b,\text{spacing}} = \frac{c.t.c.}{2} = \frac{12.17}{2} = 6.085 \text{ cm}$$</p>
-<p><strong>保護層至 D29 中心：</strong>（清保護層 $cc = 4$ cm）
+<p><strong>保護層至 D29 中心：</strong>（清保護層 $cc = 4$ cm）<br />
 $$c_{b,\text{cover}} = cc + d_{b,s} + \frac{d_b}{2} = 4 + 1.27 + 1.435 = 6.705 \text{ cm}$$</p>
 <p>$$c_b = \min(6.085,\ 6.705) = \boxed{6.085 \text{ cm}} \quad \text{（半c.t.c.間距控制）}$$</p>
 <hr />
@@ -356,7 +362,7 @@ $$c_{b,\text{cover}} = cc + d_{b,s} + \frac{d_b}{2} = 4 + 1.27 + 1.435 = 6.705 \
 <p>$$K_{tr} = \frac{40\,A_{tr}}{s\cdot n} = \frac{40\times1.267}{10\times3} = \frac{50.68}{30} = 1.689 \text{ cm}$$</p>
 <hr />
 <h4>Step 3：圍束係數驗核</h4>
-<p>$$\frac{c_b + K_{tr}}{d_b} = \frac{6.085 + 1.689}{2.87} = \frac{7.774}{2.87} = 2.709 &gt; 2.5$$</p>
+<p>$$\frac{c_b + K_{tr}}{d_b} = \frac{6.085 + 1.689}{2.87} = \frac{7.774}{2.87} = 2.709 > 2.5$$</p>
 <p>$$\Rightarrow \text{取上限：}\frac{c_b + K_{tr}}{d_b} = \boxed{2.5}$$</p>
 <hr />
 <h4>Step 4：修正係數</h4>
@@ -393,7 +399,7 @@ $$c_{b,\text{cover}} = cc + d_{b,s} + \frac{d_b}{2} = 4 + 1.27 + 1.435 = 6.705 \
 </table>
 <hr />
 <h4>Step 5：計算基本發展長度 $l_d$（kgf/cm² 系統）</h4>
-<p>$$l_d = \frac{f_y\,\psi_t\,\psi_e\,\psi_s}{3.5\lambda\sqrt{f'<em tr="tr">c}} \cdot \frac{d_b}{(c_b+K</em>$$})/d_b</p>
+<p>$$l_d = \frac{f_y\,\psi_t\,\psi_e\,\psi_s}{3.5\lambda\sqrt{f'_c}} \cdot \frac{d_b}{(c_b+K_{tr})/d_b}$$</p>
 <p>$$= \frac{4200\times1.0\times1.0\times1.0}{3.5\times1.0\times\sqrt{280}} \times \frac{2.87}{2.5}$$</p>
 <p>$$= \frac{4200}{3.5\times16.733} \times 1.148 = \frac{4200}{58.57} \times 1.148$$</p>
 <p>$$= 71.72\times1.148 = \boxed{82.3 \text{ cm}}$$</p>
@@ -458,9 +464,9 @@ $$c_{b,\text{cover}} = cc + d_{b,s} + \frac{d_b}{2} = 4 + 1.27 + 1.435 = 6.705 \
 </tbody>
 </table>
 <p><strong>③ $K_{tr} = 0$ 保守算法</strong></p>
-<p>若不確定 $n$ 值，可令 $K_{tr} = 0$（忽略箍筋圍束貢獻），此時：
-$(c_b+0)/d_b = 6.085/2.87 = 2.12$，未超過 2.5，不需 cap。
-$l_d = [4200/(3.5\times16.733)] \times (2.87/2.12) = 71.72 \times 1.354 = 97.1$ cm
+<p>若不確定 $n$ 值，可令 $K_{tr} = 0$（忽略箍筋圍束貢獻），此時：<br />
+$(c_b+0)/d_b = 6.085/2.87 = 2.12$，未超過 2.5，不需 cap。<br />
+$l_d = [4200/(3.5\times16.733)] \times (2.87/2.12) = 71.72 \times 1.354 = 97.1$ cm<br />
 $l_s = 1.3\times97.1 = 126$ cm（保守值）</p>
 <p>本題取 $K_{tr}$ 計入後：$l_s = 107$ cm（比保守值短，因圍束有效）。</p>
 <p><strong>④ 考場提示</strong></p>
@@ -468,16 +474,16 @@ $l_s = 1.3\times97.1 = 126$ cm（保守值）</p>
 <footer>來源：raw/solutions/RC-2010-2/RC-2010-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

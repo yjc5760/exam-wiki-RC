@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2012-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
+<header><h1>RC-2012-3 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U3-3.html">&#128202; U3-3 單元總覽</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2012-3</h1>
 <p><strong>主分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
 <strong>副分類：</strong> <code>RC-U2-1</code> RC 剪力強度分析與設計<br />
@@ -443,7 +443,7 @@ Step 6：最終設計：取最嚴格間距，驗證 Ash 足夠
 <p>保護層 6 cm 量至主筋心，故原卷附圖標註的 48 cm 是<strong>主筋中心至主筋中心</strong>（規範定義為量至橫向鋼筋外緣，兩者差異與敏感度見 §5④）：</p>
 <p>$$b_c = 60 - 2 \times 6 = \boxed{48\ \text{cm}}$$</p>
 <p>$$A_g = 60 \times 60 = 3{,}600\ \text{cm}^2, \quad A_{ch} = 48 \times 48 = \boxed{2{,}304\ \text{cm}^2}$$</p>
-<p>$$A_v = 4 \times 1.27 = \boxed{5.08\ \text{cm}^2}\ \text{（4 leg #4）}$$</p>
+<p>$$A_v = 4 \times 1.27 = \boxed{5.08\ \text{cm}^2}\ \text{（4 leg \#4）}$$</p>
 <hr />
 <h3>Step 4：橫向箍筋間距上限（幾何）</h3>
 <p><strong>主筋分布：</strong> 12-#7 分布於 60×60 柱，頂底面各 4 根，側面各 2 根（不含角筋）。頂底面上相鄰主筋中心距：</p>
@@ -729,16 +729,16 @@ Step 6：最終設計：取最嚴格間距，驗證 Ash 足夠
 <footer>來源：raw/solutions/RC-2012-3/RC-2012-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

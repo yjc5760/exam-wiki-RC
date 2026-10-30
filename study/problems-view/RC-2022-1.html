@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2022-1 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2022-1 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2022-1</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -40,34 +40,42 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 求下圖所示梁斷面之設計彎矩強度 $\phi M_n$。（25 分）</p>
-<p><strong>材料強度：</strong><br />
-- 混凝土抗壓強度：$f'_c = 280 \text{ kgf/cm}^2$<br />
-- 鋼筋降伏強度：$f_y = 5600 \text{ kgf/cm}^2$<br />
-- 淨保護層：$c = 4 \text{ cm}$</p>
-<p><strong>斷面幾何（由圖讀取）：</strong><br />
-- 梁寬：$b = 30 \text{ cm}$，梁深：$h = 60 \text{ cm}$<br />
-- 箍筋：D13（$d_b = 1.27 \text{ cm}$）<br />
-- 拉力筋（下層）：3-D25（$A_b = 5.067 \text{ cm}^2$）<br />
-- 拉力筋（上層）：2-D22（$A_b = 3.871 \text{ cm}^2$）；兩層鋼筋淨距 2.5 cm<br />
-- 壓力筋：2-D19（$A_b = 2.865 \text{ cm}^2$）</p>
+<p><strong>材料強度：</strong></p>
+<ul>
+<li>混凝土抗壓強度：$f'_c = 280 \text{ kgf/cm}^2$</li>
+<li>鋼筋降伏強度：$f_y = 5600 \text{ kgf/cm}^2$</li>
+<li>淨保護層：$c = 4 \text{ cm}$</li>
+</ul>
+<p><strong>斷面幾何（由圖讀取）：</strong></p>
+<ul>
+<li>梁寬：$b = 30 \text{ cm}$，梁深：$h = 60 \text{ cm}$</li>
+<li>箍筋：D13（$d_b = 1.27 \text{ cm}$）</li>
+<li>拉力筋（下層）：3-D25（$A_b = 5.067 \text{ cm}^2$）</li>
+<li>拉力筋（上層）：2-D22（$A_b = 3.871 \text{ cm}^2$）；兩層鋼筋淨距 2.5 cm</li>
+<li>壓力筋：2-D19（$A_b = 2.865 \text{ cm}^2$）</li>
+</ul>
 <p><img alt="RC-2022-1 題目附圖：b=30cm、h=60cm 雙筋梁斷面，拉力側下層 3-D25、上層 2-D22（兩層淨距 2.5 cm），壓力側 2-D19，D13 箍筋，淨保護層 4 cm" src="../../raw/solutions/RC-2022-1/RC-2022-1-fig-1.png" /></p>
 <p><em>圖說：矩形斷面 b×h = 30×60 cm，壓力側頂部配 2-D19 壓力筋，拉力側底部配 3-D25，其上方淨距 2.5 cm 處再配 2-D22，箍筋 D13，上下淨保護層均為 4 cm。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 雙筋梁（雙層拉力筋 + 壓力筋）的 $\phi M_n$ 計算。<br />
 本題特殊之處在於 $f_y = 5600 \text{ kgf/cm}^2$（高強度鋼筋），此時壓力筋<strong>不一定</strong>能降伏，必須逐步驗證。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗考生是否能正確計算雙層拉力筋的合力作用點（有效深度 $d$）<br />
-2. 考驗壓力筋降伏假設的驗證流程（高強度鋼筋使 $\varepsilon_y$ 變大，壓力筋更難降伏）<br />
-3. 確認 $\phi$ 值的選取是否根據 $\varepsilon_t$ 判斷</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗考生是否能正確計算雙層拉力筋的合力作用點（有效深度 $d$）</li>
+<li>考驗壓力筋降伏假設的驗證流程（高強度鋼筋使 $\varepsilon_y$ 變大，壓力筋更難降伏）</li>
+<li>確認 $\phi$ 值的選取是否根據 $\varepsilon_t$ 判斷</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 計算各鋼筋重心位置 → 求 $d$、$d'$<br />
-2. <strong>先假設壓力筋降伏</strong>，計算 $c$ 並驗證假設<br />
-3. 若壓力筋未降伏 → 用彈性公式建立方程式，解二次方程求 $c$<br />
-4. 計算 $\varepsilon_t$ → 判斷 $\phi$ 值<br />
-5. 計算 $M_n$，求 $\phi M_n$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算各鋼筋重心位置 → 求 $d$、$d'$</li>
+<li><strong>先假設壓力筋降伏</strong>，計算 $c$ 並驗證假設</li>
+<li>若壓力筋未降伏 → 用彈性公式建立方程式，解二次方程求 $c$</li>
+<li>計算 $\varepsilon_t$ → 判斷 $\phi$ 值</li>
+<li>計算 $M_n$，求 $\phi M_n$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -495,16 +503,16 @@ $$\varepsilon_t = 0.00580 \ge 0.005 \quad \Rightarrow \quad \phi = 0.90 \text{�
 <p>若誤以為壓力筋降伏（$f'_s = 5600$ kgf/cm²），則 $c = 16.11$ cm，$M_n$ 約多估 ~2 tf·m（因 $C'_s$ 偏高），$\phi M_n$ 約多算 ~1.8 tf·m，誤差約 3.5%。</p></main>
 <footer>來源：raw/solutions/RC-2022-1/RC-2022-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

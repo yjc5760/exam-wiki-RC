@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2005-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2005-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2005-2</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -83,27 +83,35 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> T 型梁平衡鋼筋量的正確計算，以及 USD 反推活載重。</p>
-<p><strong>測驗重點：</strong><br />
-1. T 型梁的平衡鋼筋量 $A_{sb}$ 計算（平衡時 NA 在腹板中，需計算翼板 + 腹板壓力面積）<br />
-2. 確認使用 $A_s = A_{s,\max}/2$ 後，中性軸深度是否仍在翼板內（若在翼板，可簡化為矩形梁計算）<br />
-3. 知道「設計彎矩」= $\phi M_n$，並確認 $\phi = 0.9$（拉力控制）<br />
-4. 利用 $\phi M_n = M_u = W_u L^2/8$ 反推因數化載重，再求 $w_L$</p>
-<p><strong>典型陷阱：</strong><br />
-- 誤用矩形梁 $\rho_b$ 而忽略翼板壓力貢獻 → 低估 $A_{s,\max}$<br />
-- 計算完 $A_{s,\max}/2$ 後，未檢核 NA 是否在翼板內，就套用 T 形梁公式</p>
+<p><strong>測驗重點：</strong></p>
+<ol>
+<li>T 型梁的平衡鋼筋量 $A_{sb}$ 計算（平衡時 NA 在腹板中，需計算翼板 + 腹板壓力面積）</li>
+<li>確認使用 $A_s = A_{s,\max}/2$ 後，中性軸深度是否仍在翼板內（若在翼板，可簡化為矩形梁計算）</li>
+<li>知道「設計彎矩」= $\phi M_n$，並確認 $\phi = 0.9$（拉力控制）</li>
+<li>利用 $\phi M_n = M_u = W_u L^2/8$ 反推因數化載重，再求 $w_L$</li>
+</ol>
+<p><strong>典型陷阱：</strong></p>
+<ul>
+<li>誤用矩形梁 $\rho_b$ 而忽略翼板壓力貢獻 → 低估 $A_{s,\max}$</li>
+<li>計算完 $A_{s,\max}/2$ 後，未檢核 NA 是否在翼板內，就套用 T 形梁公式</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 求平衡中性軸深度 $a_b$，判斷 NA 是在翼板還是腹板<br />
-2. 依 NA 位置計算 T 型梁平衡壓力 → 求 $A_{sb}$<br />
-3. $A_{s,\max} = 0.75 A_{sb}$；使用 $A_s = A_{s,\max}/2$<br />
-4. 確認 NA 位置（用 $A_s/2$ 計算的 $a$ 是否 $\le h_f$）<br />
-5. 若 NA 在翼板 → 矩形梁公式求 $\phi M_n$<br />
-6. 設 $\phi M_n = W_u L^2/8$，以 $W_u = 1.4w_D + 1.7w_L$ 反推 $w_L$</p>
-<p><strong>關鍵陷阱（3 個）：</strong><br />
-- ⚠ <strong>T 型梁平衡時 NA 在腹板中</strong>：$a_b = 25.2\ \text{cm} > h_f = 12\ \text{cm}$，翼板伸出部分 + 腹板均受壓，壓力面積比矩形梁大很多，$A_{sb}$ 也遠大於矩形梁的 $\rho_b \times b_w \times d$<br />
-- ⚠ <strong>用 $A_s/2$ 後 NA 反而跑回翼板內</strong>：用 $A_{s,\max}/2 = 37.6\ \text{cm}^2$ 時，$a = 5.53\ \text{cm} < 12\ \text{cm}$，此時設計方法退化為矩形梁（寬度 $b = 120\ \text{cm}$），<strong>不需用 T 形梁公式</strong><br />
-- ⚠ <strong>$\phi$ 值驗核</strong>：$\varepsilon_t = 0.02 \gg 0.005$，確認拉力控制 $\phi = 0.9$ ✓</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>求平衡中性軸深度 $a_b$，判斷 NA 是在翼板還是腹板</li>
+<li>依 NA 位置計算 T 型梁平衡壓力 → 求 $A_{sb}$</li>
+<li>$A_{s,\max} = 0.75 A_{sb}$；使用 $A_s = A_{s,\max}/2$</li>
+<li>確認 NA 位置（用 $A_s/2$ 計算的 $a$ 是否 $\le h_f$）</li>
+<li>若 NA 在翼板 → 矩形梁公式求 $\phi M_n$</li>
+<li>設 $\phi M_n = W_u L^2/8$，以 $W_u = 1.4w_D + 1.7w_L$ 反推 $w_L$</li>
+</ol>
+<p><strong>關鍵陷阱（3 個）：</strong></p>
+<ul>
+<li>⚠ <strong>T 型梁平衡時 NA 在腹板中</strong>：$a_b = 25.2\ \text{cm} > h_f = 12\ \text{cm}$，翼板伸出部分 + 腹板均受壓，壓力面積比矩形梁大很多，$A_{sb}$ 也遠大於矩形梁的 $\rho_b \times b_w \times d$</li>
+<li>⚠ <strong>用 $A_s/2$ 後 NA 反而跑回翼板內</strong>：用 $A_{s,\max}/2 = 37.6\ \text{cm}^2$ 時，$a = 5.53\ \text{cm} < 12\ \text{cm}$，此時設計方法退化為矩形梁（寬度 $b = 120\ \text{cm}$），<strong>不需用 T 形梁公式</strong></li>
+<li>⚠ <strong>$\phi$ 值驗核</strong>：$\varepsilon_t = 0.02 \gg 0.005$，確認拉力控制 $\phi = 0.9$ ✓</li>
+</ul>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <blockquote>
@@ -344,16 +352,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>需驗核 $b_w = 25\ \text{cm}$ 腹板內能否排下（考量淨距與覆蓋層）。</p></main>
 <footer>來源：raw/solutions/RC-2005-2/RC-2005-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

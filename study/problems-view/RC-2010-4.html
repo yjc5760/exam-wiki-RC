@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2010-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
+<header><h1>RC-2010-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U4-1.html">&#128202; U4-1 單元總覽</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h1>考題編號：RC-2010-4</h1>
 <p><strong>主分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計<br />
 <strong>副分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
@@ -48,19 +48,25 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong>
-- <strong>(一)</strong> 曲線型鋼腱透過「等效載重」產生向上分佈力，可平衡重力載重；直線型（水平）鋼腱無此效果
-- <strong>(二)</strong> 偏心距過小 → 服務載重下底纖維受拉；偏心距過大 → 施拉時頂纖維受拉；四控制條件確定允許範圍</p>
-<p><strong>出題者意圖：</strong>
-1. 測驗等效載重法概念（曲線腱 vs 直線腱）
-2. 測驗四個應力控制條件的設定與求解偏心距範圍</p>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li><strong>(一)</strong> 曲線型鋼腱透過「等效載重」產生向上分佈力，可平衡重力載重；直線型（水平）鋼腱無此效果</li>
+<li><strong>(二)</strong> 偏心距過小 → 服務載重下底纖維受拉；偏心距過大 → 施拉時頂纖維受拉；四控制條件確定允許範圍</li>
+</ul>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗等效載重法概念（曲線腱 vs 直線腱）</li>
+<li>測驗四個應力控制條件的設定與求解偏心距範圍</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫（Part (二)）：</strong>
-1. 確認基本參數（$A$、$Z$、$P_i$、$P_e$、自重 $W_G$）
-2. 建立各纖維應力公式（以 $e_p$ 為變數）
-3. 代入四個容許應力條件，得出 $e_p$ 的上下限
-4. 綜合確認限制範圍</p>
+<p><strong>作戰計畫（Part (二)）：</strong></p>
+<ol>
+<li>確認基本參數（$A$、$Z$、$P_i$、$P_e$、自重 $W_G$）</li>
+<li>建立各纖維應力公式（以 $e_p$ 為變數）</li>
+<li>代入四個容許應力條件，得出 $e_p$ 的上下限</li>
+<li>綜合確認限制範圍</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -293,11 +299,15 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>Part (一)：曲線型 vs 直線型鋼腱之載重提升</h3>
 <hr />
-<p><strong>直線型鋼腱（水平，偏心距為零）：</strong>
-- 僅提供軸向壓力 $P_e/A$
-- 無等效向上分佈載重</p>
-<p><strong>曲線型（拋物線）鋼腱，中央偏心 $e_p$，端部偏心為零：</strong>
-- 透過等效載重法，產生向上均佈等效載重：</p>
+<p><strong>直線型鋼腱（水平，偏心距為零）：</strong></p>
+<ul>
+<li>僅提供軸向壓力 $P_e/A$</li>
+<li>無等效向上分佈載重</li>
+</ul>
+<p><strong>曲線型（拋物線）鋼腱，中央偏心 $e_p$，端部偏心為零：</strong></p>
+<ul>
+<li>透過等效載重法，產生向上均佈等效載重：</li>
+</ul>
 <p>$$W_e = \frac{8\,P_e\,e_p}{l^2}$$</p>
 <ul>
 <li>此向上力平衡部分重力載重，等同於梁可多承受 $W_e$ 的均佈載重</li>
@@ -306,7 +316,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$\boxed{\Delta W = W_e = \frac{8\,P_e\,e_p}{l^2}}$$</p>
 <p>使用 $P_e = 170$ tf 及 Part (二) 求得之 $e_p \approx 29$ cm = 0.29 m（代表性取值）：</p>
 <p>$$W_e = \frac{8 \times 170 \times 0.29}{15^2} = \frac{394.4}{225} \approx 1.75 \text{ tf/m}$$</p>
-<p>由於 $W_e = 1.75 \text{ tf/m} &gt; W_l = 1.5 \text{ tf/m}$，曲線型鋼腱可完全平衡活載重，尚有餘裕。</p>
+<p>由於 $W_e = 1.75 \text{ tf/m} > W_l = 1.5 \text{ tf/m}$，曲線型鋼腱可完全平衡活載重，尚有餘裕。</p>
 <blockquote>
 <p>結論：曲線型鋼腱的等效向上載重 $W_e = 8P_e e_p/l^2$，此即較直線型鋼腱額外能承受的均佈載重量。</p>
 </blockquote>
@@ -325,7 +335,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$$M_G + M_L = 7{,}256{,}250 \text{ kgf·cm}$$</p>
 <hr />
 <h4>Step 3：中央斷面纖維應力公式</h4>
-<p><strong>符號規定：壓力 = 正，拉力 = 負；$e_p &gt; 0$ 表示鋼腱在形心以下。</strong></p>
+<p><strong>符號規定：壓力 = 正，拉力 = 負；$e_p > 0$ 表示鋼腱在形心以下。</strong></p>
 <p><strong>傳遞階段（$P_i = 200{,}000$ kgf，$M_G$）：</strong></p>
 <p>$$\sigma_{t,i} = \frac{P_i}{A} - \frac{P_i\,e_p}{Z} + \frac{M_G}{Z} = \frac{200{,}000}{4500} - \frac{200{,}000\,e_p}{67{,}500} + \frac{3{,}037{,}500}{67{,}500}$$</p>
 <p>$$= 44.44 - 2.963\,e_p + 45.00 = \boxed{89.44 - 2.963\,e_p}$$</p>
@@ -352,7 +362,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <td>傳遞，頂壓 ≤ 168</td>
 <td>$89.44-2.963e_p \le 168$</td>
 <td>$e_p \ge -26.5$ cm</td>
-<td>❌ 不控制（$e_p &gt; 0$）</td>
+<td>❌ 不控制（$e_p > 0$）</td>
 </tr>
 <tr>
 <td>②</td>
@@ -474,9 +484,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <hr />
-<p><strong>物理解釋：</strong>
-- $e_{p,\min} = 27.68$ cm：若偏心距再小，服務載重下底纖維產生拉應力（預壓不足抵抗 $M_G + M_L$）
-- $e_{p,\max} = 30.18$ cm：若偏心距再大，傳遞時頂纖維產生拉應力（偏心彎矩過大，$M_G$ 不足抵消）</p>
+<p><strong>物理解釋：</strong></p>
+<ul>
+<li>$e_{p,\min} = 27.68$ cm：若偏心距再小，服務載重下底纖維產生拉應力（預壓不足抵抗 $M_G + M_L$）</li>
+<li>$e_{p,\max} = 30.18$ cm：若偏心距再大，傳遞時頂纖維產生拉應力（偏心彎矩過大，$M_G$ 不足抵消）</li>
+</ul>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 控制條件分析（為何只有③和⑧控制）</strong></p>
@@ -502,38 +514,42 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>② 為何允許範圍很窄（僅約 2.5 cm）？</strong></p>
-<p>矩形截面的 $Z_t = Z_b$（上下緣對稱），使得：
+<p>矩形截面的 $Z_t = Z_b$（上下緣對稱），使得：<br />
 $$e_{p,\max} - e_{p,\min} = \frac{(P_i/A)(f_{ci,c} + f_{ci,t}) + (P_e/A)(f_{c,t} + f_{c,c})...}{...}$$</p>
 <p>本題預力損失大（fpe/fpi = 0.85），加上活載 $W_l$ 大（1.5 tf/m），導致 $P_e$ 與 $M_G+M_L$ 之間的差距使範圍縮窄。</p>
 <p><strong>③ 若允許小量拉應力（寬鬆標準）</strong></p>
-<p>若採用：
-- 傳遞頂拉 ≥ $-0.25\sqrt{f'_{ci}} = -4.18$ kgf/cm²（小量拉力許可）
-- 服務底拉 ≥ $-0.5\sqrt{f'_c} = -9.35$ kgf/cm²</p>
-<p>則：
-- 上限：$89.44 - 2.963e_p \ge -4.18 \Rightarrow e_p \le 31.60$ cm
-- 下限：$-69.72 + 2.519e_p \ge -9.35 \Rightarrow e_p \ge 24.00$ cm</p>
+<p>若採用：</p>
+<ul>
+<li>傳遞頂拉 ≥ $-0.25\sqrt{f'_{ci}} = -4.18$ kgf/cm²（小量拉力許可）</li>
+<li>服務底拉 ≥ $-0.5\sqrt{f'_c} = -9.35$ kgf/cm²</li>
+</ul>
+<p>則：</p>
+<ul>
+<li>上限：$89.44 - 2.963e_p \ge -4.18 \Rightarrow e_p \le 31.60$ cm</li>
+<li>下限：$-69.72 + 2.519e_p \ge -9.35 \Rightarrow e_p \ge 24.00$ cm</li>
+</ul>
 <p>允許範圍擴大為：$24.00 \le e_p \le 31.60$ cm（寬鬆約 7.6 cm）</p>
 <p><strong>④ 鋼腱實際偏心限制（幾何約束）</strong></p>
-<p>實際安裝時，鋼腱中心與底面之間需有最小保護層（如 5-8 cm）：
+<p>實際安裝時，鋼腱中心與底面之間需有最小保護層（如 5-8 cm）：<br />
 $$e_{p,\text{max, practical}} = \frac{h}{2} - \text{底蓋層} = 45 - 8 = 37 \text{ cm}$$</p>
 <p>本題計算的 30.18 cm &lt; 37 cm，故幾何限制不控制。</p>
 <p><strong>⑤ Part (一) 的等效載重公式推導</strong></p>
-<p>拋物線鋼腱在端點為 0、中央為 $e_p$ 的曲率下：
-鋼腱曲率半徑 $R = l^2/(8e_p)$（近似值）
+<p>拋物線鋼腱在端點為 0、中央為 $e_p$ 的曲率下：<br />
+鋼腱曲率半徑 $R = l^2/(8e_p)$（近似值）<br />
 等效向上均佈力 = $P_e / R = 8P_e e_p / l^2$ ✓</p></main>
 <footer>來源：raw/solutions/RC-2010-4/RC-2010-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

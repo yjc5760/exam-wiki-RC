@@ -41,35 +41,45 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>規範依據：</strong> 土木 401-100（$f_y = 4{,}200\text{ kgf/cm}^2$ 沿用全卷）</p>
 <p>一方形獨立基腳，尺寸 $4.0\text{ m} \times 4.0\text{ m}$，中央承接方形柱 $45\text{ cm} \times 45\text{ cm}$（柱混凝土 $f'_c = 350\text{ kgf/cm}^2$）。</p>
-<p><strong>柱載重（服務載重）：</strong><br />
-- 靜載重：$P_D = 180\text{ tf}$<br />
-- 活載重：$P_L = 120\text{ tf}$</p>
-<p><strong>基腳資料：</strong><br />
-- 厚度：$h = 80\text{ cm}$<br />
-- 混凝土：$f'_c = 210\text{ kgf/cm}^2$<br />
-- 鋼筋：$f_y = 4{,}200\text{ kgf/cm}^2$</p>
-<p><strong>土壤條件：</strong><br />
-- 容許承載力：$q_a = 3\text{ kgf/cm}^2 = 30\text{ tf/m}^2$<br />
-- 覆土深度：$1.0\text{ m}$（基腳頂面以上）<br />
-- 土壤重度：$\gamma_s = 1{,}900\text{ kg/m}^3 = 1.9\text{ tf/m}^3$<br />
-- RC 單位重：$\gamma_{RC} = 2.4\text{ tf/m}^3$</p>
+<p><strong>柱載重（服務載重）：</strong></p>
+<ul>
+<li>靜載重：$P_D = 180\text{ tf}$</li>
+<li>活載重：$P_L = 120\text{ tf}$</li>
+</ul>
+<p><strong>基腳資料：</strong></p>
+<ul>
+<li>厚度：$h = 80\text{ cm}$</li>
+<li>混凝土：$f'_c = 210\text{ kgf/cm}^2$</li>
+<li>鋼筋：$f_y = 4{,}200\text{ kgf/cm}^2$</li>
+</ul>
+<p><strong>土壤條件：</strong></p>
+<ul>
+<li>容許承載力：$q_a = 3\text{ kgf/cm}^2 = 30\text{ tf/m}^2$</li>
+<li>覆土深度：$1.0\text{ m}$（基腳頂面以上）</li>
+<li>土壤重度：$\gamma_s = 1{,}900\text{ kg/m}^3 = 1.9\text{ tf/m}^3$</li>
+<li>RC 單位重：$\gamma_{RC} = 2.4\text{ tf/m}^3$</li>
+</ul>
 <p><strong>試求：</strong> 底版所需鋼筋量，並檢核剪力強度是否足夠。（25分）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 方形基腳的設計哲學是「倒置懸臂梁」——柱傳來的集中力透過基腳底板向四周懸挑，底部向上的土壓力為均佈載重，臨界設計截面在柱面（彎矩）與距柱面 $d/2$（穿孔剪力）、距柱面 $d$（單向剪力）處。</p>
-<p><strong>出題者測試重點：</strong><br />
-1. 能否正確區分「服務載重驗地基」vs「因數載重驗混凝土」<br />
-2. 穿孔剪力臨界周長 $b_o$ 的計算與三公式取最小<br />
-3. 設計有效深度 $d$ 的合理假設</p>
+<p><strong>出題者測試重點：</strong></p>
+<ol>
+<li>能否正確區分「服務載重驗地基」vs「因數載重驗混凝土」</li>
+<li>穿孔剪力臨界周長 $b_o$ 的計算與三公式取最小</li>
+<li>設計有效深度 $d$ 的合理假設</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 假設有效深度 $d$（根據 $h=80\text{cm}$、保護層、鋼筋尺寸）<br />
-2. 地基驗核（服務載重）<br />
-3. 因數載重 $P_u$、淨因數土壓力 $q_u$<br />
-4. 彎矩設計（臨界截面：柱面）→ $A_s$<br />
-5. 單向剪力驗核（臨界截面：距柱面 $d$）<br />
-6. 雙向穿孔剪力驗核（臨界截面：距柱面 $d/2$）</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>假設有效深度 $d$（根據 $h=80\text{cm}$、保護層、鋼筋尺寸）</li>
+<li>地基驗核（服務載重）</li>
+<li>因數載重 $P_u$、淨因數土壓力 $q_u$</li>
+<li>彎矩設計（臨界截面：柱面）→ $A_s$</li>
+<li>單向剪力驗核（臨界截面：距柱面 $d$）</li>
+<li>雙向穿孔剪力驗核（臨界截面：距柱面 $d/2$）</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -529,35 +539,43 @@ $$V_{u,2} = q_u\times\bigl[B^2 - (c+d)^2\bigr] = 2.55\times(400^2 - 117^2) = 2.5
 <p>$$\boxed{\text{底版鋼筋：各方向 12-D25 @ 35 cm，雙向剪力均符合規範要求}}$$</p>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>爭議1：穿孔剪力公式選擇（3個公式的適用條件）</strong><br />
-- <strong>公式①</strong>：控制非方形柱（$\beta_c > 2$）時<br />
-- <strong>公式②</strong>：控制臨界周長非常大時（$b_o \gg \alpha_s d$）<br />
-- <strong>公式③</strong>：方柱（$\beta_c = 1$）時最常控制，也是最保守的下限<br />
-- 本題 $\beta_c = 1$，公式③控制 ✓</p>
-<p><strong>爭議2：有效深度 $d$ 的假設</strong><br />
-- 本題假設 $d = 72\text{ cm}$（保護層 7.5cm + D25 半徑 1.27cm ≈ 8.77cm → 取 8cm）<br />
-- 若題目允許較大保護層（如 8cm 清保護層），$d = 80 - 8 - 1.27 = 70.7\text{ cm}$，穿孔剪力裕度更小<br />
-- 考場須明確說明假設</p>
-<p><strong>爭議3：柱-基腳承壓（Bearing）是否需要驗核？</strong><br />
-- 題目未要求，但可快速確認：<br />
-  - 基腳頂面承壓強度 $\phi V_n = 0.65\times0.85\times210\times(45\times45)\times2 = 469\text{ tf} > P_u = 408\text{ tf}$ ✓<br />
-  - 柱底採高強混凝土（$f'_c = 350\text{ kgf/cm}^2$），遠大於基腳，不控制</p>
-<p><strong>進階思考：若穿孔剪力不足的設計選擇</strong><br />
-- 方案①：增加 $d$（最直接，每增 5cm，$\phi V_c$ 提升約 7%）<br />
-- 方案②：擴大基腳尺寸（降低 $q_u$，同時增大 $b_o$，兩效果綜合）<br />
-- 方案③：增設剪力帽（Shear Capital）或鋼板剪力頭（Shearhead）</p></main>
+<p><strong>爭議1：穿孔剪力公式選擇（3個公式的適用條件）</strong></p>
+<ul>
+<li><strong>公式①</strong>：控制非方形柱（$\beta_c > 2$）時</li>
+<li><strong>公式②</strong>：控制臨界周長非常大時（$b_o \gg \alpha_s d$）</li>
+<li><strong>公式③</strong>：方柱（$\beta_c = 1$）時最常控制，也是最保守的下限</li>
+<li>本題 $\beta_c = 1$，公式③控制 ✓</li>
+</ul>
+<p><strong>爭議2：有效深度 $d$ 的假設</strong></p>
+<ul>
+<li>本題假設 $d = 72\text{ cm}$（保護層 7.5cm + D25 半徑 1.27cm ≈ 8.77cm → 取 8cm）</li>
+<li>若題目允許較大保護層（如 8cm 清保護層），$d = 80 - 8 - 1.27 = 70.7\text{ cm}$，穿孔剪力裕度更小</li>
+<li>考場須明確說明假設</li>
+</ul>
+<p><strong>爭議3：柱-基腳承壓（Bearing）是否需要驗核？</strong></p>
+<ul>
+<li>題目未要求，但可快速確認：</li>
+<li>基腳頂面承壓強度 $\phi V_n = 0.65\times0.85\times210\times(45\times45)\times2 = 469\text{ tf} > P_u = 408\text{ tf}$ ✓</li>
+<li>柱底採高強混凝土（$f'_c = 350\text{ kgf/cm}^2$），遠大於基腳，不控制</li>
+</ul>
+<p><strong>進階思考：若穿孔剪力不足的設計選擇</strong></p>
+<ul>
+<li>方案①：增加 $d$（最直接，每增 5cm，$\phi V_c$ 提升約 7%）</li>
+<li>方案②：擴大基腳尺寸（降低 $q_u$，同時增大 $b_o$，兩效果綜合）</li>
+<li>方案③：增設剪力帽（Shear Capital）或鋼板剪力頭（Shearhead）</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2017-3/RC-2017-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

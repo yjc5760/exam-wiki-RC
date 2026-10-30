@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2002-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2002-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2002-4</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -41,11 +41,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目（20 分）：</strong></p>
 <p>一矩形 RC 梁斷面，試求此斷面之彎矩設計強度 Mn。</p>
-<p><strong>已知條件（由題目與附圖）：</strong><br />
-- b = 30 cm，d = 60 cm，h = 70 cm，d' = 7 cm<br />
-- f'c = 350 kgf/cm²，fy = 4200 kgf/cm²，Es = 2,040,000 kgf/cm²<br />
-- As = 50.70 cm²（拉力側鋼筋）<br />
-- As' = 10.14 cm²（壓力側鋼筋）</p>
+<p><strong>已知條件（由題目與附圖）：</strong></p>
+<ul>
+<li>b = 30 cm，d = 60 cm，h = 70 cm，d' = 7 cm</li>
+<li>f'c = 350 kgf/cm²，fy = 4200 kgf/cm²，Es = 2,040,000 kgf/cm²</li>
+<li>As = 50.70 cm²（拉力側鋼筋）</li>
+<li>As' = 10.14 cm²（壓力側鋼筋）</li>
+</ul>
 <p><strong>題目附帶參考公式（確認採用舊版 ACI 318 kgf/cm² 制）：</strong><br />
 $$\rho_b = 0.85\beta_1 \frac{f'_c}{f_y} \cdot \frac{6120}{6120+f_y}$$</p>
 <p>$$A_{s,\min} = \frac{14}{f_y}b_w d \quad \text{或} \quad A_{s,\min} = \frac{0.8\sqrt{f'_c}}{f_y}b_w d$$</p>
@@ -60,18 +62,22 @@ $$\rho_b = 0.85\beta_1 \frac{f'_c}{f_y} \cdot \frac{6120}{6120+f_y}$$</p>
 <li><strong>先假設壓力筋降伏，再驗証</strong>：假設 f's = fy → 求 a → 求 c → 驗算 ε'_s ≥ εy</li>
 <li>若壓力筋未降伏，需聯立方程式重解（本題恰好略微超過降伏）</li>
 </ol>
-<p><strong>出題者意圖：</strong><br />
-- 測驗 β₁ 隨 f'c 遞減的規則（高強混凝土考點）<br />
-- 測驗雙筋梁的完整計算流程（假設驗算）<br />
-- 鋼筋量比例大（As 很大）：測驗是否符合 ρ ≤ 0.75ρb 延性要求</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗 β₁ 隨 f'c 遞減的規則（高強混凝土考點）</li>
+<li>測驗雙筋梁的完整計算流程（假設驗算）</li>
+<li>鋼筋量比例大（As 很大）：測驗是否符合 ρ ≤ 0.75ρb 延性要求</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 計算 β₁（f'c = 350 &gt; 280，需修正）<br />
-2. 假設 f's = fy，力平衡求 a<br />
-3. 由 a 求 c = a/β₁，驗算 ε'_s ≥ εy<br />
-4. 若驗算通過，計算 Mn（對拉力筋取矩或對中性軸取矩均可）<br />
-5. 延性驗核：ρ - ρ' ≤ 0.75ρb</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算 β₁（f'c = 350 &gt; 280，需修正）</li>
+<li>假設 f's = fy，力平衡求 a</li>
+<li>由 a 求 c = a/β₁，驗算 ε'_s ≥ εy</li>
+<li>若驗算通過，計算 Mn（對拉力筋取矩或對中性軸取矩均可）</li>
+<li>延性驗核：ρ - ρ' ≤ 0.75ρb</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -306,10 +312,12 @@ $$\rho_b = 0.85\beta_1 \frac{f'_c}{f_y} \cdot \frac{6120}{6120+f_y}$$</p>
 <p>f'c = 350 kgf/cm² &gt; 280 kgf/cm²，需依公式修正：</p>
 <p>$$\beta_1 = 0.85 - 0.05 \times \frac{f'_c - 280}{70} = 0.85 - 0.05 \times \frac{350 - 280}{70} = 0.85 - 0.05 \times 1.0 = \boxed{0.80}$$</p>
 <h3>Step 2：假設壓力筋降伏（f's = fy），力平衡求 a</h3>
-<p>各力表達式：<br />
-- $C_c = 0.85 \times 350 \times a \times 30 = 8{,}925a \text{ kgf}$<br />
-- $C_s = A'_s \times (f_y - 0.85f'_c) = 10.14 \times (4{,}200 - 297.5) = 10.14 \times 3{,}902.5 = 39{,}571\text{ kgf}$<br />
-- $T = A_s \times f_y = 50.70 \times 4{,}200 = 212{,}940\text{ kgf}$</p>
+<p>各力表達式：</p>
+<ul>
+<li>$C_c = 0.85 \times 350 \times a \times 30 = 8{,}925a \text{ kgf}$</li>
+<li>$C_s = A'_s \times (f_y - 0.85f'_c) = 10.14 \times (4{,}200 - 297.5) = 10.14 \times 3{,}902.5 = 39{,}571\text{ kgf}$</li>
+<li>$T = A_s \times f_y = 50.70 \times 4{,}200 = 212{,}940\text{ kgf}$</li>
+</ul>
 <p>力平衡 $C_c + C_s = T$：<br />
 $$8{,}925a + 39{,}571 = 212{,}940$$<br />
 $$8{,}925a = 173{,}369$$<br />
@@ -350,10 +358,12 @@ $$A_{s,\min} = \frac{0.8\sqrt{350}}{4200} \times 30 \times 60 = \frac{0.8 \times
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>1. β₁ = 0.80 是本題的核心考點</strong></p>
-<p>f'c = 350 kgf/cm² = 34.3 MPa，超過門檻值 280 kgf/cm²（≈4000 psi）。若誤用 β₁ = 0.85，則：<br />
-- a 偏小，c 偏小<br />
-- 可能誤判壓力筋「未降伏」<br />
-- Mn 計算結果偏高（因 a 偏小，力臂 d−a/2 偏大）</p>
+<p>f'c = 350 kgf/cm² = 34.3 MPa，超過門檻值 280 kgf/cm²（≈4000 psi）。若誤用 β₁ = 0.85，則：</p>
+<ul>
+<li>a 偏小，c 偏小</li>
+<li>可能誤判壓力筋「未降伏」</li>
+<li>Mn 計算結果偏高（因 a 偏小，力臂 d−a/2 偏大）</li>
+</ul>
 <p><strong>2. 壓力筋恰好在降伏邊界（本題特色）</strong></p>
 <p>ε'_s = 0.002135，εy = 0.002059，差距僅 0.076 × 10⁻³（3.7%）。出題者刻意設計在邊界附近，考驗是否確實驗算。若考生未驗算就假設「壓力筋未降伏」，需建立二次方程，結果也會接近 0.002135，但計算繁瑣。</p>
 <p><strong>3. 本題 Mn vs φMn</strong></p>
@@ -364,16 +374,16 @@ $$\phi M_n = 0.9 \times 10{,}816{,}000 = 9{,}734{,}400\text{ kgf·cm} \approx 97
 <p>Whitney 應力塊假設壓縮區（0 至 a）混凝土均勻應力 0.85f'c，壓力鋼筋也在此範圍內。若只寫 Cs = As'×f's，則該位置混凝土已在 Cc 中被計算，造成重複。因此淨鋼筋力 = As'×(f's − 0.85f'c)。</p></main>
 <footer>來源：raw/solutions/RC-2002-4/RC-2002-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

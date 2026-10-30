@@ -41,32 +41,42 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>規範依據：</strong> 中國土木水利工程學會「混凝土工程設計規範與解說」（土木401-112）</p>
 <p>一方形柱 $40\text{ cm} \times 40\text{ cm}$，承受靜載重 $P_D = 80\text{ tf}$ 及活載重 $P_L = 75\text{ tf}$，其下由一位於地表下 $1.5\text{ m}$ 處之正方形獨立基腳支持。</p>
-<p><strong>基腳資料：</strong><br />
-- 尺寸：$B \times B = 3\text{ m} \times 3\text{ m}$<br />
-- 有效深度：$d = 50\text{ cm}$<br />
-- 雙向鋼筋量（各方向）：$A_s = 50\text{ cm}^2$<br />
-- $f_y = 4200\text{ kgf/cm}^2$（D25以上）</p>
-<p><strong>材料與土壤：</strong><br />
-- $f'_c = 280\text{ kgf/cm}^2$（全卷通用）<br />
-- RC 單位重：$\gamma_{RC} = 2.4\text{ tf/m}^3$<br />
-- 土壤單位重：$\gamma_{soil} = 2\text{ tf/m}^3$<br />
-- 地基土壤承載力：$q_a = 25\text{ tf/m}^2$</p>
+<p><strong>基腳資料：</strong></p>
+<ul>
+<li>尺寸：$B \times B = 3\text{ m} \times 3\text{ m}$</li>
+<li>有效深度：$d = 50\text{ cm}$</li>
+<li>雙向鋼筋量（各方向）：$A_s = 50\text{ cm}^2$</li>
+<li>$f_y = 4200\text{ kgf/cm}^2$（D25以上）</li>
+</ul>
+<p><strong>材料與土壤：</strong></p>
+<ul>
+<li>$f'_c = 280\text{ kgf/cm}^2$（全卷通用）</li>
+<li>RC 單位重：$\gamma_{RC} = 2.4\text{ tf/m}^3$</li>
+<li>土壤單位重：$\gamma_{soil} = 2\text{ tf/m}^3$</li>
+<li>地基土壤承載力：$q_a = 25\text{ tf/m}^2$</li>
+</ul>
 <p><strong>要求：</strong> 檢核基腳承受彎矩與穿孔剪力之適當性。（25分）</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong> 獨立基腳是「倒置懸臂梁」——柱傳來的集中力透過基腳底板向四周懸挑，底部承受向上的均布土壓力。設計者需同時確認：<br />
-1. <strong>彎矩強度</strong>：底板在柱面處的懸臂彎矩 $\leq \phi M_n$<br />
-2. <strong>穿孔剪力（雙向衝剪）</strong>：柱四周臨界周面的剪力 $\leq \phi V_c$</p>
-<p><strong>出題者意圖：</strong><br />
-- 測試能否正確區分「服務載重（驗地基）」vs.「因數載重（驗混凝土強度）」<br />
-- 測試穿孔剪力臨界周長 $b_o$ 的計算（距柱面 $d/2$ 處，四面形成封閉矩形）<br />
-- 測試在 $\beta_c = 1$（方形柱）時，三個 $V_c$ 公式中哪個控制</p>
+<p><strong>核心觀念：</strong> 獨立基腳是「倒置懸臂梁」——柱傳來的集中力透過基腳底板向四周懸挑，底部承受向上的均布土壓力。設計者需同時確認：</p>
+<ol>
+<li><strong>彎矩強度</strong>：底板在柱面處的懸臂彎矩 $\leq \phi M_n$</li>
+<li><strong>穿孔剪力（雙向衝剪）</strong>：柱四周臨界周面的剪力 $\leq \phi V_c$</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測試能否正確區分「服務載重（驗地基）」vs.「因數載重（驗混凝土強度）」</li>
+<li>測試穿孔剪力臨界周長 $b_o$ 的計算（距柱面 $d/2$ 處，四面形成封閉矩形）</li>
+<li>測試在 $\beta_c = 1$（方形柱）時，三個 $V_c$ 公式中哪個控制</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 算因數化載重 $P_u$，得淨因數化土壓力 $q_u = P_u/A$<br />
-2. 彎矩：找懸臂長 $L$，算 $M_u$；算 $\phi M_n$（Whitney 應力塊）<br />
-3. 穿孔剪力：算 $b_o$，算 $V_u$；用 ACI/土木401 三公式取最小 $V_c$，乘 $\phi=0.75$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>算因數化載重 $P_u$，得淨因數化土壓力 $q_u = P_u/A$</li>
+<li>彎矩：找懸臂長 $L$，算 $M_u$；算 $\phi M_n$（Whitney 應力塊）</li>
+<li>穿孔剪力：算 $b_o$，算 $V_u$；用 ACI/土木401 三公式取最小 $V_c$，乘 $\phi=0.75$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -458,31 +468,37 @@ $$V_u = q_u \times (B^2 - (c+d)^2) = 24 \times (9.00 - 0.81) = 24 \times 8.19 = 
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>爭議1：基腳自重是否納入因數化設計載重？</strong><br />
-- 嚴格作法：$q_u$ 應考慮 $1.2(W_f + W_{soil})$ 的因數化，再扣除後得淨 $q_u$<br />
-- 工程簡化：$q_u = P_u/B^2$（本題採用）<br />
-- 考場建議：若題目不特別要求，採簡化法並加以說明即可</p>
-<p><strong>爭議2：穿孔剪力公式中的 $\alpha_s$ 值</strong><br />
-- $\alpha_s = 40$：內柱（四面均有板）<br />
-- $\alpha_s = 30$：邊柱<br />
-- $\alpha_s = 20$：角柱<br />
-- 本題為柱下基腳（視同內柱），$\alpha_s = 40$</p>
-<p><strong>進階思考：若穿孔剪力不足怎麼辦？</strong><br />
-- 方案①：增加有效深度 $d$（最有效）<br />
-- 方案②：加大基腳平面尺寸（降低 $q_u$）<br />
-- 方案③：設置剪力頭（shear head）或剪力柱（stud rail）</p></main>
+<p><strong>爭議1：基腳自重是否納入因數化設計載重？</strong></p>
+<ul>
+<li>嚴格作法：$q_u$ 應考慮 $1.2(W_f + W_{soil})$ 的因數化，再扣除後得淨 $q_u$</li>
+<li>工程簡化：$q_u = P_u/B^2$（本題採用）</li>
+<li>考場建議：若題目不特別要求，採簡化法並加以說明即可</li>
+</ul>
+<p><strong>爭議2：穿孔剪力公式中的 $\alpha_s$ 值</strong></p>
+<ul>
+<li>$\alpha_s = 40$：內柱（四面均有板）</li>
+<li>$\alpha_s = 30$：邊柱</li>
+<li>$\alpha_s = 20$：角柱</li>
+<li>本題為柱下基腳（視同內柱），$\alpha_s = 40$</li>
+</ul>
+<p><strong>進階思考：若穿孔剪力不足怎麼辦？</strong></p>
+<ul>
+<li>方案①：增加有效深度 $d$（最有效）</li>
+<li>方案②：加大基腳平面尺寸（降低 $q_u$）</li>
+<li>方案③：設置剪力頭（shear head）或剪力柱（stud rail）</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2025-1/RC-2025-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

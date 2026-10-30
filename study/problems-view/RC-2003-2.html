@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2003-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U3-3.html">&#128269; U3-3 命題分析</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
+<header><h1>RC-2003-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U3-3.html">&#128202; U3-3 單元總覽</a><a class="lect" href="../lecture-RC-U3-3.html">&#128218; U3-3 韌性要求與耐震設計 講義</a></div></header>
 <main><h1>考題編號：RC-2003-2</h1>
 <p><strong>主分類：</strong> <code>RC-U2-3</code> 鋼筋錨定長度與斷點計算<br />
 <strong>副分類：</strong> <code>RC-U3-3</code> 韌性要求與耐震設計<br />
@@ -85,28 +85,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tbody>
 </table>
 <p><strong>限用詳細計算法公式：</strong></p>
-<p>$$l_d = \frac{0.28\,d_b\,f_y}{\sqrt{f'<em tr="tr">c}} \cdot \frac{\alpha\beta\lambda}{\dfrac{c + K</em>$$}}{d_b}</p>
+<p>$$l_d = \frac{0.28\,d_b\,f_y}{\sqrt{f'_c}} \cdot \frac{\alpha\beta\lambda}{\dfrac{c + K_{tr}}{d_b}}$$</p>
 <p>$$K_{tr} = \frac{A_{tr} \cdot f_{yt}}{10 \cdot s \cdot n}$$</p>
 <p>限制：$\dfrac{c + K_{tr}}{d_b} \le 2.5$，且 $l_d \ge 30$ cm</p>
 <p><strong>求：</strong> 柱主筋搭接長度，並示於立面圖，繪製搭接處斷面圖。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖</h2>
 <p><strong>核心觀念：</strong> 考生必須正確計算保護層/間距兩種 $c$ 值取小，以及橫向鋼筋指標 $K_{tr}$，再判斷是否觸及 2.5 上限，才能得到「詳細計算法」（而非保守簡化法）的 $l_d$。耐震柱的搭接位置限制（柱淨高中間半段）是另一個考點。</p>
-<p><strong>出題者測驗：</strong>
-1. 正確計算 $c$（保護層 vs. 半中心距，取小）
-2. 正確計算 $K_{tr}$（橫向鋼筋面積、間距、根數 $n$）
-3. 判斷是否觸及 $(c+K_{tr})/d_b = 2.5$ 上限
-4. 耐震柱搭接：Class B 係數 1.3，位置在中間半段</p>
+<p><strong>出題者測驗：</strong></p>
+<ol>
+<li>正確計算 $c$（保護層 vs. 半中心距，取小）</li>
+<li>正確計算 $K_{tr}$（橫向鋼筋面積、間距、根數 $n$）</li>
+<li>判斷是否觸及 $(c+K_{tr})/d_b = 2.5$ 上限</li>
+<li>耐震柱搭接：Class B 係數 1.3，位置在中間半段</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析</h2>
-<p><strong>計算步驟：</strong>
-1. 確認柱內鋼筋排列（每面幾根？）→ 計算中心距
-2. 計算 $c$（取保護層到中心 vs. 半中心距之小值）
-3. 計算 $K_{tr}$（確認 $n$ 的意義）
-4. 判斷 $(c + K_{tr})/d_b \le 2.5$
-5. 代入公式得 $l_d$
-6. 耐震柱 Class B 搭接：$l_s = 1.3\,l_d$
-7. 定搭接位置（中間半段）</p>
+<p><strong>計算步驟：</strong></p>
+<ol>
+<li>確認柱內鋼筋排列（每面幾根？）→ 計算中心距</li>
+<li>計算 $c$（取保護層到中心 vs. 半中心距之小值）</li>
+<li>計算 $K_{tr}$（確認 $n$ 的意義）</li>
+<li>判斷 $(c + K_{tr})/d_b \le 2.5$</li>
+<li>代入公式得 $l_d$</li>
+<li>耐震柱 Class B 搭接：$l_s = 1.3\,l_d$</li>
+<li>定搭接位置（中間半段）</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -147,10 +151,10 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>最終目標</h3>
 <p>求耐震柱 16-#9 主筋之<strong>拉力搭接長度 $l_s$</strong>，並指定搭接位置。</p>
 <h3>本題關鍵公式（依計算順序）</h3>
-<p>$$\text{Step 1: } c = \min!\left(c_{cover},\ \frac{s_{cc}}{2}\right)$$</p>
+<p>$$\text{Step 1: } c = \min\!\left(c_{cover},\ \frac{s_{cc}}{2}\right)$$</p>
 <p>$$\text{Step 2: } K_{tr} = \frac{A_{tr}\cdot f_{yt}}{10\cdot s\cdot n}$$</p>
 <p>$$\text{Step 3: 判斷} \quad \frac{c + \boxed{K_{tr}}}{d_b} \le 2.5$$</p>
-<p>$$\text{Step 4: } l_d = \frac{0.28\,d_b\,f_y}{\sqrt{f'<em tr="tr">c}}\cdot\frac{\alpha\beta\lambda}{\boxed{\dfrac{c+K</em>$$}}{d_b}}</p>
+<p>$$\text{Step 4: } l_d = \frac{0.28\,d_b\,f_y}{\sqrt{f'_c}}\cdot\frac{\alpha\beta\lambda}{\boxed{\dfrac{c+K_{tr}}{d_b}}}$$</p>
 <p>$$\text{Step 5: } l_s = 1.3\,\boxed{l_d} \quad (\text{Class B 拉力搭接})$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
@@ -274,7 +278,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </tr>
 <tr>
 <td>$(c+K_{tr})/d_b$</td>
-<td>$(5.825+21.3)/2.87 = 9.45 &gt; 2.5 \Rightarrow$ 取 2.5</td>
+<td>$(5.825+21.3)/2.87 = 9.45 > 2.5 \Rightarrow$ 取 2.5</td>
 <td></td>
 </tr>
 </tbody>
@@ -346,9 +350,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>4. 步驟化詳細計算過程</h2>
 <h3>Step 1　斷面幾何：每面鋼筋根數與中心距</h3>
-<p>16根#9鋼筋配置於60×60cm柱，均勻分佈於四周邊：
-- 4個角筋 + 每面3根中間筋 = 4 + 3×4 = 16根 ✓
-- <strong>每面共5根</strong>（含兩側角筋）</p>
+<p>16根#9鋼筋配置於60×60cm柱，均勻分佈於四周邊：</p>
+<ul>
+<li>4個角筋 + 每面3根中間筋 = 4 + 3×4 = 16根 ✓</li>
+<li><strong>每面共5根</strong>（含兩側角筋）</li>
+</ul>
 <p>箍筋表面至主筋中心（保護層到中心）：</p>
 <p>$$c_{cover} = 4 + 1.27 + \frac{2.87}{2} = 4 + 1.27 + 1.435 = 6.705\ \text{cm}$$</p>
 <p>每面5根主筋，4個間距均分 46.59 cm：</p>
@@ -364,7 +370,7 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>$n$ = 沿潛在劈裂面被搭接的主筋根數 = <strong>5根</strong>（每面5根同時搭接）</p>
 <p>$$K_{tr} = \frac{A_{tr}\cdot f_{yt}}{10\cdot s\cdot n} = \frac{2.54\times 4{,}200}{10\times10\times5} = \frac{10{,}668}{500} = 21.3$$</p>
 <h3>Step 3　判斷 $(c+K_{tr})/d_b$</h3>
-<p>$$\frac{c+K_{tr}}{d_b} = \frac{5.825+21.3}{2.87} = \frac{27.125}{2.87} = 9.45 &gt; 2.5$$</p>
+<p>$$\frac{c+K_{tr}}{d_b} = \frac{5.825+21.3}{2.87} = \frac{27.125}{2.87} = 9.45 > 2.5$$</p>
 <p>$$\therefore \text{取上限}\quad \boxed{\frac{c+K_{tr}}{d_b} = 2.5}$$</p>
 <blockquote>
 <p>策略注解：箍筋圍束非常充足，$K_{tr}$ 遠超需求，(c+Ktr)/db 直接到達 2.5 上限。此為最優圍束狀態，可得最短 $l_d$。</p>
@@ -398,21 +404,25 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p>$$\alpha\beta\lambda = 1.0\times1.0\times1.0 = 1.0$$</p>
 <h3>Step 5　錨定長度 $l_d$</h3>
-<p>$$l_d = \frac{0.28\times d_b\times f_y}{\sqrt{f'<em tr="tr">c}}\cdot\frac{\alpha\beta\lambda}{(c+K</em>$$})/d_b</p>
+<p>$$l_d = \frac{0.28\times d_b\times f_y}{\sqrt{f'_c}}\cdot\frac{\alpha\beta\lambda}{(c+K_{tr})/d_b}$$</p>
 <p>$$= \frac{0.28\times2.87\times4{,}200}{\sqrt{280}}\times\frac{1.0}{2.5}$$</p>
 <p>$$= \frac{0.28\times2.87\times4{,}200}{16.73}\times\frac{1}{2.5}$$</p>
 <p>$$= \frac{3{,}375.1}{16.73\times2.5} = \frac{3{,}375.1}{41.83} = \boxed{80.7\ \text{cm}}$$</p>
-<p>檢核最小值：$l_d = 80.7\ \text{cm} &gt; 30\ \text{cm}$ ✓</p>
+<p>檢核最小值：$l_d = 80.7\ \text{cm} > 30\ \text{cm}$ ✓</p>
 <h3>Step 6　搭接長度（Class B 拉力搭接）</h3>
-<p>耐震柱（Special RC Column）之主筋搭接規定：
-- 地震逆作用下柱反彎，主筋可能受<strong>拉力</strong>
-- 16根全部在同一截面搭接 → 100% &gt; 50% → <strong>Class B</strong>
-- $l_s = 1.3\,l_d$</p>
+<p>耐震柱（Special RC Column）之主筋搭接規定：</p>
+<ul>
+<li>地震逆作用下柱反彎，主筋可能受<strong>拉力</strong></li>
+<li>16根全部在同一截面搭接 → 100% &gt; 50% → <strong>Class B</strong></li>
+<li>$l_s = 1.3\,l_d$</li>
+</ul>
 <p>$$\boxed{l_s = 1.3\times80.7 = 104.9\ \text{cm} \to \text{取}\ 105\ \text{cm}}$$</p>
 <h3>Step 7　搭接位置（耐震規定）</h3>
-<p>依台灣92年規範（源自 ACI 318-99 §21.4.3）：
-- 搭接<strong>必須在柱淨高之中間半段</strong>
-- 中間半段：$300/4 = 75\ \text{cm}$ 至 $3\times300/4 = 225\ \text{cm}$（距下端）</p>
+<p>依台灣92年規範（源自 ACI 318-99 §21.4.3）：</p>
+<ul>
+<li>搭接<strong>必須在柱淨高之中間半段</strong></li>
+<li>中間半段：$300/4 = 75\ \text{cm}$ 至 $3\times300/4 = 225\ \text{cm}$（距下端）</li>
+</ul>
 <p><strong>建議搭接位置：</strong></p>
 <table>
 <thead>
@@ -451,17 +461,19 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
   ─────── 下梁 ───────
 </code></pre>
 <h3>Step 8　搭接處斷面描述</h3>
-<p>於搭接區（75cm~180cm），斷面A-A配置如下：
-- 每面5根主筋中，每根鋼筋各與一根搭接鋼筋並排
-- 搭接筋間距：淨距 ≥ max($d_b$, 25mm) = max(28.7mm, 25mm) = 28.7mm 檢核
-- 箍筋 #4@10cm 貫穿全搭接區（提供橫向圍束）
-- 搭接區有效淨保護層：4cm（不變）</p>
+<p>於搭接區（75cm~180cm），斷面A-A配置如下：</p>
+<ul>
+<li>每面5根主筋中，每根鋼筋各與一根搭接鋼筋並排</li>
+<li>搭接筋間距：淨距 ≥ max($d_b$, 25mm) = max(28.7mm, 25mm) = 28.7mm 檢核</li>
+<li>箍筋 #4@10cm 貫穿全搭接區（提供橫向圍束）</li>
+<li>搭接區有效淨保護層：4cm（不變）</li>
+</ul>
 <hr />
 <h2>5. 關鍵爭議點與進階探討</h2>
 <p><strong>1. 為何 $(c+K_{tr})/d_b$ 觸及上限 2.5？</strong></p>
 <p>因本題箍筋 #4@10cm 為相對密集的配置（尤其耐震柱的密箍區），$K_{tr}$ 遠大於 $c$，使圍束指標遠超 2.5。實際上，只要橫向鋼筋足夠，使用上限 2.5 即可，無需嚴格迭代。</p>
 <p><strong>2. 搭接為何不用壓力搭接（較短）？</strong></p>
-<p>壓力搭接長度：
+<p>壓力搭接長度：<br />
 $$l_{s,comp} = 0.075\frac{f_y}{\sqrt{f'_c}}d_b = 0.075\times\frac{4200}{\sqrt{280}}\times2.87 = 54\ \text{cm}$$</p>
 <p>雖然 54cm &lt; 105cm，但耐震柱在地震時主筋可能受拉，<strong>規範要求使用拉力搭接（Class B）</strong>，不得縮減為壓力搭接長度。</p>
 <p><strong>3. 搭接鋼筋的額外橫向圍束</strong></p>
@@ -469,16 +481,16 @@ $$l_{s,comp} = 0.075\frac{f_y}{\sqrt{f'_c}}d_b = 0.075\times\frac{4200}{\sqrt{28
 <footer>來源：raw/solutions/RC-2003-2/RC-2003-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

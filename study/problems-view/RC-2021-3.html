@@ -40,15 +40,19 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目：</strong> 260×260 cm 樁帽，4 根 D30 基樁，柱 50×50 cm，承受偏心軸力 $P_u = 100$ tf，求柱載重最大容許偏心距 $e_x$。（20 分）</p>
-<p><strong>條件與限制：</strong><br />
-- 樁帽厚 $D = 55$ cm，有效深度 $d = 55 - 10 = 45$ cm<br />
-- $f'_c = 280$ kgf/cm²，不設置剪力鋼筋<br />
-- 基樁最大承壓軸力：$P_c = 40$ tf<br />
-- 基樁最大承拉軸力：$P_t = -10$ tf<br />
-- 忽略樁帽自重；假設樁帽為剛體</p>
-<p><strong>樁位幾何（由圖三之一讀取）：</strong><br />
-- 樁帽 260×260 cm，樁中心距邊緣 40 cm → 樁中心距樁帽中心 = 260/2 - 40 = <strong>90 cm</strong><br />
-- 4 根樁位於 $(x, y) = (\pm90, \pm90)$ cm（以樁帽形心為原點）</p>
+<p><strong>條件與限制：</strong></p>
+<ul>
+<li>樁帽厚 $D = 55$ cm，有效深度 $d = 55 - 10 = 45$ cm</li>
+<li>$f'_c = 280$ kgf/cm²，不設置剪力鋼筋</li>
+<li>基樁最大承壓軸力：$P_c = 40$ tf</li>
+<li>基樁最大承拉軸力：$P_t = -10$ tf</li>
+<li>忽略樁帽自重；假設樁帽為剛體</li>
+</ul>
+<p><strong>樁位幾何（由圖三之一讀取）：</strong></p>
+<ul>
+<li>樁帽 260×260 cm，樁中心距邊緣 40 cm → 樁中心距樁帽中心 = 260/2 - 40 = <strong>90 cm</strong></li>
+<li>4 根樁位於 $(x, y) = (\pm90, \pm90)$ cm（以樁帽形心為原點）</li>
+</ul>
 <p><img alt="RC-2021-3 附圖一：260×260 cm 樁帽平面，4 根 D30 基樁，柱 50×50 cm，各樁距邊緣 40 cm" src="../../raw/solutions/RC-2021-3/RC-2021-3-fig-1.png" /></p>
 <p><em>圖說：260×260 cm 樁帽，4 根 D30 樁排列於 (±90, ±90) cm，柱 50×50 cm 位於形心，偏心距 ex 沿 X 方向。</em></p>
 <p><img alt="RC-2021-3 附圖二：樁帽側視圖，柱偏心載重 Pu=100tf，偏心距 ex，厚度 D=55cm，底部 10cm 至鋼筋中心" src="../../raw/solutions/RC-2021-3/RC-2021-3-fig-2.png" /></p>
@@ -56,10 +60,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 在偏心軸力下，利用剛體靜力學求各基樁軸力；再依基樁承壓/承拉限制與樁帽穿孔剪力，決定最大容許偏心距。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗「剛性樁帽假設」的應用（靜力學）<br />
-2. 考驗樁帽雙向剪力（穿孔）設計公式的三條件選最小值<br />
-3. 確認哪個限制（基樁力 vs 穿孔剪力）才是真正控制條件</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗「剛性樁帽假設」的應用（靜力學）</li>
+<li>考驗樁帽雙向剪力（穿孔）設計公式的三條件選最小值</li>
+<li>確認哪個限制（基樁力 vs 穿孔剪力）才是真正控制條件</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -408,16 +414,16 @@ $$V_c = 1.06\times16.73\times176.7\times45 = 1.06\times133{,}006 = 140{,}986 \te
 <p>本題 4 根樁在 $\pm90$ cm 處，相當於樁群的「抵抗力矩 $= \Sigma x_i^2/x_{\max} = 32400/90 = 360$ cm」。若樁間距增大，$\Sigma x_i^2$ 增加，可允許更大的偏心距。</p></main>
 <footer>來源：raw/solutions/RC-2021-3/RC-2021-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

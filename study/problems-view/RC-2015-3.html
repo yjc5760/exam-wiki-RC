@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2015-3 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2015-3 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2015-3</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> （無）<br />
@@ -88,10 +88,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
 <p><strong>核心觀念：</strong> T 型梁在<strong>負彎矩</strong>下，壓力區在腹板（下方），翼板在拉力側（不參與受壓）。此時設計等效為<strong>矩形梁 b = bw = 40 cm</strong>。由於 Mu = 150 tf·m 超過單筋矩形梁（b=40, d=63）的最大設計彎矩，需設計雙筋梁，在底面加入壓力鋼筋 A's。</p>
-<p><strong>出題者意圖：</strong><br />
-- 測驗考生是否知道「T 型梁負彎矩 = 矩形腹板受壓」的關鍵判斷<br />
-- 測驗雙筋梁設計流程（分步法：先單筋設計到 εt = 0.004 上限，剩餘彎矩由壓力鋼筋承擔）<br />
-- 測驗 φ 值於 εt = 0.004 的正確計算</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗考生是否知道「T 型梁負彎矩 = 矩形腹板受壓」的關鍵判斷</li>
+<li>測驗雙筋梁設計流程（分步法：先單筋設計到 εt = 0.004 上限，剩餘彎矩由壓力鋼筋承擔）</li>
+<li>測驗 φ 值於 εt = 0.004 的正確計算</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
 <p><strong>關鍵判斷：負彎矩下的等效壓縮區</strong></p>
@@ -417,9 +419,11 @@ $$\varphi M_n = 0.817 \times \left[257{,}040 \times 52.2 + 22.63 \times 3{,}902.
 <p>對於正彎矩（翼板受壓），T 型梁的有效壓縮翼板寬度按規範取值，可大幅增加壓縮面積。<br />
 對於<strong>負彎矩（翼板受拉）</strong>，翼板不計入壓縮，壓縮區僅為矩形腹板（b = bw），設計彎矩容量大幅縮小。</p>
 <h3>爭議 2：拉力鋼筋 As = 82.22 cm² 的實際配置</h3>
-<p>負彎矩的拉力鋼筋通常分佈在頂部（連續梁支承區），包含：<br />
-- <strong>翼板拉力筋：</strong> 分布於翼板寬度（bf = 100 cm）內，承擔翼板拉力<br />
-- ACI 規定：在有效翼板寬度範圍內分佈鋼筋（細部規定見 ACI 318-19 §9.7.3）</p>
+<p>負彎矩的拉力鋼筋通常分佈在頂部（連續梁支承區），包含：</p>
+<ul>
+<li><strong>翼板拉力筋：</strong> 分布於翼板寬度（bf = 100 cm）內，承擔翼板拉力</li>
+<li>ACI 規定：在有效翼板寬度範圍內分佈鋼筋（細部規定見 ACI 318-19 §9.7.3）</li>
+</ul>
 <p>實際分配時，82.22 cm² 的拉力筋應均勻分布在頂部翼板區，以確保有效承拉。</p>
 <h3>單筋設計的容量上限（對照）</h3>
 <table>
@@ -446,16 +450,16 @@ $$\varphi M_n = 0.817 \times \left[257{,}040 \times 52.2 + 22.63 \times 3{,}902.
 <p>T 型梁在正彎矩下容量遠大於負彎矩，這是連續梁設計中的典型不對稱性。</p></main>
 <footer>來源：raw/solutions/RC-2015-3/RC-2015-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

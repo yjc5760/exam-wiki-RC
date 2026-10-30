@@ -40,34 +40,44 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目（20 分）：</strong></p>
-<p>有鋼筋混凝土矩形梁：<br />
-- 對垂直載重：跨度 λ = 8 m，兩端簡支<br />
-- 對扭轉：一端支座完全受拘束（fixed），另一端完全不受拘束（free）<br />
-- 梁承受偏心均佈設計載重 Wu = 2.0 t/m（偏心量為 e）<br />
-- 已知：f'c = 210 kgf/cm²，d = 45 cm<br />
-- 求：在不需考慮扭力影響下，最大偏心量 e 值</p>
-<p><strong>斷面幾何（由附圖讀取）：</strong><br />
-- b = 36 cm（寬度）<br />
-- h = 50 cm（深度；d = 45 cm → 保護層至鋼筋心距 = 5 cm）</p>
+<p>有鋼筋混凝土矩形梁：</p>
+<ul>
+<li>對垂直載重：跨度 λ = 8 m，兩端簡支</li>
+<li>對扭轉：一端支座完全受拘束（fixed），另一端完全不受拘束（free）</li>
+<li>梁承受偏心均佈設計載重 Wu = 2.0 t/m（偏心量為 e）</li>
+<li>已知：f'c = 210 kgf/cm²，d = 45 cm</li>
+<li>求：在不需考慮扭力影響下，最大偏心量 e 值</li>
+</ul>
+<p><strong>斷面幾何（由附圖讀取）：</strong></p>
+<ul>
+<li>b = 36 cm（寬度）</li>
+<li>h = 50 cm（深度；d = 45 cm → 保護層至鋼筋心距 = 5 cm）</li>
+</ul>
 <p><img alt="RC-2002-3 題目附圖：矩形梁斷面 b=36cm × h=50cm，偏心均佈載重 Wu=2t/m 作用於形心線右方偏心距 e 處" src="../../raw/solutions/RC-2002-3/RC-2002-3-fig-1.png" /></p>
 <p><em>圖說：矩形斷面 b=36 cm × h=50 cm；Wu = 2.0 t/m 作用在距截面剪力中心（形心）e 處，產生均佈扭矩 tu = Wu × e；扭轉邊界：左端完全固定（反力 T = tu×L），右端自由（T = 0）。</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong><br />
-本題考查兩個層面：<br />
-1. <strong>扭矩圖的建立</strong>：偏心均佈載重在「一端固定、一端自由」扭轉邊界條件下，最大扭矩在何處？數值為何？<br />
-2. <strong>扭力忽略門檻</strong>（ACI 318 閾值扭矩）：Tu ≤ φTc 時可忽略扭力效應。</p>
-<p><strong>出題者意圖：</strong><br />
-- 測驗是否能正確建立非對稱扭轉邊界條件下的扭矩圖（最大值在固定端）<br />
-- 測驗是否記得 ACI 318 閾值扭矩公式（x²y 型舊版公式）<br />
-- 兩者聯立即可解出 e</p>
+本題考查兩個層面：</p>
+<ol>
+<li><strong>扭矩圖的建立</strong>：偏心均佈載重在「一端固定、一端自由」扭轉邊界條件下，最大扭矩在何處？數值為何？</li>
+<li><strong>扭力忽略門檻</strong>（ACI 318 閾值扭矩）：Tu ≤ φTc 時可忽略扭力效應。</li>
+</ol>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗是否能正確建立非對稱扭轉邊界條件下的扭矩圖（最大值在固定端）</li>
+<li>測驗是否記得 ACI 318 閾值扭矩公式（x²y 型舊版公式）</li>
+<li>兩者聯立即可解出 e</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 建立扭矩分布（一端固定、一端自由，均佈扭矩 tu = Wu × e）<br />
-2. 求最大扭矩 Tu_max（在固定端）<br />
-3. 代入 ACI 閾值扭矩公式求 φTc<br />
-4. 令 Tu_max ≤ φTc，解出 e_max</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>建立扭矩分布（一端固定、一端自由，均佈扭矩 tu = Wu × e）</li>
+<li>求最大扭矩 Tu_max（在固定端）</li>
+<li>代入 ACI 閾值扭矩公式求 φTc</li>
+<li>令 Tu_max ≤ φTc，解出 e_max</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -272,12 +282,14 @@ T(L) = 0       （自由端）
 <h3>Step 3：計算 ACI 閾值扭矩 φTc</h3>
 <p>依 ACI 318-89/CNS 1480（舊版），純矩形截面，扭力可忽略之條件：</p>
 <p>$$T_u \leq 0.5\,\phi\,\sqrt{f'_c} \cdot \frac{\Sigma x^2 y}{3}$$</p>
-<p><strong>截面參數：</strong><br />
-- x = b = 36 cm（短邊）<br />
-- y = h = 50 cm（長邊）<br />
-- Σx²y = 36² × 50 = 1296 × 50 = 64,800 cm³<br />
-- φ = 0.85（舊版 ACI 扭力強度折減係數）<br />
-- √f'c = √210 = 14.49 kgf^0.5/cm</p>
+<p><strong>截面參數：</strong></p>
+<ul>
+<li>x = b = 36 cm（短邊）</li>
+<li>y = h = 50 cm（長邊）</li>
+<li>Σx²y = 36² × 50 = 1296 × 50 = 64,800 cm³</li>
+<li>φ = 0.85（舊版 ACI 扭力強度折減係數）</li>
+<li>√f'c = √210 = 14.49 kgf^0.5/cm</li>
+</ul>
 <p>$$\phi T_c = 0.5 \times 0.85 \times 14.49 \times \frac{64{,}800}{3}$$</p>
 <p>$$= 0.5 \times 0.85 \times 14.49 \times 21{,}600$$</p>
 <p>$$= 0.425 \times 14.49 \times 21{,}600$$</p>
@@ -319,22 +331,24 @@ T(L) = 0       （自由端）
 <p><strong>3. d = 45 cm 在本題的用途：</strong><br />
 題目給定 d = 45 cm，但閾值扭矩公式使用 x²y（毛斷面尺寸），d 不直接出現。d 可能作為後續剪力設計的輸入，但本題只問扭力忽略條件，d 未直接使用。</p>
 <p><strong>4. 若偏心量 e &gt; 8.31 cm 需如何處理？</strong><br />
-需進行完整扭力設計：<br />
-- 計算 φTn = φ(Tc + Ts)<br />
-- 配置閉合箍筋（for torsion）與縱向扭力筋<br />
-- 同時驗算斷面適當性（剪力+扭力組合）</p></main>
+需進行完整扭力設計：</p>
+<ul>
+<li>計算 φTn = φ(Tc + Ts)</li>
+<li>配置閉合箍筋（for torsion）與縱向扭力筋</li>
+<li>同時驗算斷面適當性（剪力+扭力組合）</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2002-3/RC-2002-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

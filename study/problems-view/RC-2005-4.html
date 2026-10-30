@@ -77,19 +77,25 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 混凝土的時間相依行為——區分<strong>彈性應變</strong>（立即）和<strong>潛變應變</strong>（長期），以潛變係數串聯兩者。</p>
-<p><strong>測驗重點：</strong><br />
-1. 潛變的定義及其實質影響（定性分析，影響梁撓度、柱載重重分配、預力損失）<br />
-2. 計算彈性變形 $\delta_e = PL/(E_c A)$，其中 $E_c = 15{,}000\sqrt{f'_c}$（kgf/cm² 制）<br />
-3. 總變形 = 彈性變形 × $(1 + C_c)$</p>
+<p><strong>測驗重點：</strong></p>
+<ol>
+<li>潛變的定義及其實質影響（定性分析，影響梁撓度、柱載重重分配、預力損失）</li>
+<li>計算彈性變形 $\delta_e = PL/(E_c A)$，其中 $E_c = 15{,}000\sqrt{f'_c}$（kgf/cm² 制）</li>
+<li>總變形 = 彈性變形 × $(1 + C_c)$</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 回答定義：潛變 = 持續應力下隨時間增加的應變；$C_c$ = 潛變應變 ÷ 彈性應變<br />
-2. 條列潛變的影響（梁撓度、柱載重重分配、預力損失、超靜定力重分佈）<br />
-3. 計算 $E_c$、$\delta_e$、$\delta_{cr}$、$\delta_{total}$</p>
-<p><strong>關鍵陷阱（2 個）：</strong><br />
-- ⚠ <strong>總變形不是只加潛變</strong>：$\delta_{total} = \delta_e + \delta_{cr} = \delta_e(1+C_c)$，必須保留彈性部分<br />
-- ⚠ <strong>$E_c$ 公式</strong>：台灣 kgf/cm² 制：$E_c = 15{,}000\sqrt{f'_c}$，勿與 SI 制 $4700\sqrt{f'_c}$（MPa）混淆</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>回答定義：潛變 = 持續應力下隨時間增加的應變；$C_c$ = 潛變應變 ÷ 彈性應變</li>
+<li>條列潛變的影響（梁撓度、柱載重重分配、預力損失、超靜定力重分佈）</li>
+<li>計算 $E_c$、$\delta_e$、$\delta_{cr}$、$\delta_{total}$</li>
+</ol>
+<p><strong>關鍵陷阱（2 個）：</strong></p>
+<ul>
+<li>⚠ <strong>總變形不是只加潛變</strong>：$\delta_{total} = \delta_e + \delta_{cr} = \delta_e(1+C_c)$，必須保留彈性部分</li>
+<li>⚠ <strong>$E_c$ 公式</strong>：台灣 kgf/cm² 制：$E_c = 15{,}000\sqrt{f'_c}$，勿與 SI 制 $4700\sqrt{f'_c}$（MPa）混淆</li>
+</ul>
 <hr />
 <h2>3.5 變數層次分析 (Variable Hierarchy Analysis)</h2>
 <h3>最終目標</h3>
@@ -199,14 +205,18 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)</h2>
 <h3>甲：潛變定義與影響（概念）</h3>
 <p><strong>（一）潛變（Creep）的定義</strong></p>
-<p>混凝土在<strong>持續不變的應力</strong>下，隨時間推移產生超過即時彈性應變的附加應變，稱為<strong>潛變</strong>。其特性如下：<br />
-- 潛變在施載初期發展最快，爾後速率遞減，趨近最終值<br />
-- 溫度升高、濕度降低、水灰比增大、齡期短、應力高時，潛變增大</p>
+<p>混凝土在<strong>持續不變的應力</strong>下，隨時間推移產生超過即時彈性應變的附加應變，稱為<strong>潛變</strong>。其特性如下：</p>
+<ul>
+<li>潛變在施載初期發展最快，爾後速率遞減，趨近最終值</li>
+<li>溫度升高、濕度降低、水灰比增大、齡期短、應力高時，潛變增大</li>
+</ul>
 <p><strong>（二）潛變係數（Creep Coefficient，$C_c$）的定義</strong></p>
 <p>$$C_c = \frac{\varepsilon_{cr}}{\varepsilon_e}$$</p>
-<p>其中：<br />
-- $\varepsilon_{cr}$ = 潛變應變（隨時間發展之附加應變）<br />
-- $\varepsilon_e$ = 彈性應變（施載瞬間的即時應變）</p>
+<p>其中：</p>
+<ul>
+<li>$\varepsilon_{cr}$ = 潛變應變（隨時間發展之附加應變）</li>
+<li>$\varepsilon_e$ = 彈性應變（施載瞬間的即時應變）</li>
+</ul>
 <p>$C_c$ 代表「潛變應變是彈性應變的幾倍」，一般在長期作用下 $C_c = 1.5 \sim 3.0$。</p>
 <p><strong>（三）潛變對 RC 構件行為的影響</strong></p>
 <table>
@@ -281,11 +291,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
 <p><strong>① 潛變係數的實際範圍</strong></p>
-<p>ACI 209 報告指出，長期（50 年）潛變係數 $C_c$ 的終極值約為 1.5～3.0，視下列因素而定：<br />
-- 養護條件（水中 &lt; 空氣中）<br />
-- 施載齡期（越早施載，潛變越大）<br />
-- 水灰比（越大，潛變越大）<br />
-- 構件尺寸（越小，潛變越大）</p>
+<p>ACI 209 報告指出，長期（50 年）潛變係數 $C_c$ 的終極值約為 1.5～3.0，視下列因素而定：</p>
+<ul>
+<li>養護條件（水中 &lt; 空氣中）</li>
+<li>施載齡期（越早施載，潛變越大）</li>
+<li>水灰比（越大，潛變越大）</li>
+<li>構件尺寸（越小，潛變越大）</li>
+</ul>
 <p>本題給定 $C_c = 3.0$（3 年後），屬於上限值，說明環境條件不利或施載較早。</p>
 <p><strong>② RC 柱（有鋼筋）的長期變形</strong></p>
 <p>若柱有鋼筋（鋼筋面積 $A_s$），由於混凝土潛變縮短，鋼筋被迫額外壓縮，造成<strong>荷載重分配</strong>：混凝土應力降低，鋼筋應力上升。長期應力重分配量為：</p>
@@ -296,16 +308,16 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p>混凝土收縮（乾縮）是無應力作用下因水分散失引起的體積收縮，與載重無關。題目排除收縮，讓計算聚焦於潛變機制，是合理的簡化。實務上，收縮量級與潛變相當，需一併計算才能得到真實長期變形。</p></main>
 <footer>來源：raw/solutions/RC-2005-4/RC-2005-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

@@ -31,7 +31,7 @@ blockquote{border-left:4px solid #90caf9;background:#f1f8ff;margin:14px 0;paddin
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2024-2 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U1-1.html">&#128269; U1-1 命題分析</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
+<header><h1>RC-2024-2 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U1-1.html">&#128202; U1-1 單元總覽</a><a class="lect" href="../lecture-RC-U1-1.html">&#128218; U1-1 RC 梁彎矩強度分析與設計 講義</a></div></header>
 <main><h1>考題編號：RC-2024-2</h1>
 <p><strong>主分類：</strong> <code>RC-U1-1</code> RC 梁彎矩強度分析與設計<br />
 <strong>副分類：</strong> 無<br />
@@ -45,17 +45,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><em>圖說：矩形梁斷面，$b = 30\ \text{cm}$，總深 $h \approx 52\ \text{cm}$。底部壓力區有 $A'_s = 2\text{-\#10} = 16.28\ \text{cm}^2$，$d' = 8\ \text{cm}$（壓力面至壓力鋼筋形心）；頂部拉力鋼筋 $A_s = 3\text{-\#10} = 24.42\ \text{cm}^2$，$d = 44\ \text{cm}$（壓力面至拉力筋形心）。箍筋 #3@25 cm。</em></p>
 <p><img alt="RC-2024-2 懸臂梁結構示意圖：固定端在左，懸臂長3m，承受因數化均佈載重ωu向下" src="../../raw/solutions/RC-2024-2/RC-2024-2-fig-2.png" /></p>
 <p><em>圖說：懸臂梁，固定端在左，自由端在右，梁長 $L = 3\ \text{m} = 300\ \text{cm}$，承受均佈因數化載重 $\omega_u$（包含自重、靜載重、活載重）向下作用。最大彎矩發生在固定端，$M_u = \omega_u L^2 / 2$。</em></p>
-<p><strong>【小題一】</strong> 考慮壓力鋼筋之貢獻，計算：<br />
-- (a) 斷面標稱彎矩強度 $\phi M_n$<br />
-- (b) 壓力鋼筋應力 $f'_s$</p>
+<p><strong>【小題一】</strong> 考慮壓力鋼筋之貢獻，計算：</p>
+<ul>
+<li>(a) 斷面標稱彎矩強度 $\phi M_n$</li>
+<li>(b) 壓力鋼筋應力 $f'_s$</li>
+</ul>
 <p><strong>【小題二】</strong> 梁長 $L = 3\ \text{m}$，計算最大因數化均佈載重 $\omega_u$（含自重）。</p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 雙筋梁分析，重點在<strong>壓力鋼筋是否降伏</strong>的判斷與迭代求解。</p>
-<p><strong>出題意圖：</strong><br />
-1. 測試是否能先假設壓力鋼筋降伏，再用應變相容驗證（本題壓力鋼筋<strong>不降伏</strong>）<br />
-2. 懸臂梁的方向感——底部壓力代表固定端的負彎矩區，d 與 d' 從壓力面量起<br />
-3. 由 $\phi M_n$ 推算最大因數化均佈載重（懸臂梁力矩公式）</p>
+<p><strong>出題意圖：</strong></p>
+<ol>
+<li>測試是否能先假設壓力鋼筋降伏，再用應變相容驗證（本題壓力鋼筋<strong>不降伏</strong>）</li>
+<li>懸臂梁的方向感——底部壓力代表固定端的負彎矩區，d 與 d' 從壓力面量起</li>
+<li>由 $\phi M_n$ 推算最大因數化均佈載重（懸臂梁力矩公式）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <p><strong>作戰計畫：</strong></p>
@@ -409,9 +413,11 @@ $$\beta_1 = 0.85\ (f'_c = 210 < 280\ \text{kgf/cm}^2)$$</p>
 <p><strong>爭議點 1：壓力鋼筋降伏判斷為何用「試誤法」？</strong></p>
 <p>若先假設降伏並得到 $c_0 < d'$，表示假設的壓力合力過大（多算了 $A'_s f_y$），導致所需混凝土壓力不足，NA 位置偏淺。正確做法是讓 $f'_s$ 隨應變線性變化，列方程求真實 $c$。考場上若無法快速解二次方程，可用迭代法（猜 $c$ → 算 $f'_s$ → 驗平衡）。</p>
 <p><strong>爭議點 2：d 與 d' 的量測方向</strong></p>
-<p>本題底部受壓，所有「有效深度」均從<strong>底部</strong>量起：<br />
-- $d = 44\ \text{cm}$（底→頂拉力鋼筋形心）<br />
-- $d' = 8\ \text{cm}$（底→底壓力鋼筋形心）</p>
+<p>本題底部受壓，所有「有效深度」均從<strong>底部</strong>量起：</p>
+<ul>
+<li>$d = 44\ \text{cm}$（底→頂拉力鋼筋形心）</li>
+<li>$d' = 8\ \text{cm}$（底→底壓力鋼筋形心）</li>
+</ul>
 <p>若誤從頂部量起，方向矛盾，整題計算錯誤。</p>
 <p><strong>進階：φ 值選取</strong></p>
 <p>$\varepsilon_t = 0.0067 > 0.005$ → 拉力控制 → $\phi = 0.90$。若 $\varepsilon_t$ 在過渡區（0.004–0.005），需線性內插：<br />
@@ -420,16 +426,16 @@ $$\text{或}\ \phi = 0.75 + (\varepsilon_t - 0.002) \times \frac{0.15}{0.003}\ \
 本題 $\varepsilon_t$ 遠超臨界值，不需內插。</p></main>
 <footer>來源：raw/solutions/RC-2024-2/RC-2024-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

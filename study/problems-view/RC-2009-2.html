@@ -50,22 +50,28 @@ $$E_c = 15000\sqrt{f'_c} \text{ kgf/cm}^2,\quad E_s = 2.04\times10^6 \text{ kgf/
 </blockquote>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
-<p><strong>核心觀念：</strong><br />
-- 降伏時固定端為裂縫斷面，梁沿長度並非全部開裂（近自由端 M 較小，尚未開裂）<br />
-- 需分<strong>裂縫區</strong>（$I_{cr}$）與<strong>非裂縫區</strong>（$I_g$）分段計算曲率，再積分求撓度</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測驗轉換斷面法求裂縫中性軸 $kd$ 與 $I_{cr}$<br />
-2. 測驗開裂彎矩 $M_{cr}$ 的計算（需用 $f_r$）<br />
-3. 測驗非均一 EI 下的撓度積分（雙段 EI 法）</p>
+<p><strong>核心觀念：</strong></p>
+<ul>
+<li>降伏時固定端為裂縫斷面，梁沿長度並非全部開裂（近自由端 M 較小，尚未開裂）</li>
+<li>需分<strong>裂縫區</strong>（$I_{cr}$）與<strong>非裂縫區</strong>（$I_g$）分段計算曲率，再積分求撓度</li>
+</ul>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測驗轉換斷面法求裂縫中性軸 $kd$ 與 $I_{cr}$</li>
+<li>測驗開裂彎矩 $M_{cr}$ 的計算（需用 $f_r$）</li>
+<li>測驗非均一 EI 下的撓度積分（雙段 EI 法）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 計算材料常數（$E_c$、$n$、$\varepsilon_y$）<br />
-2. 用轉換斷面法求裂縫中性軸 $kd$ 和 $I_{cr}$<br />
-3. 計算全斷面慣性矩 $I_g$ 和開裂彎矩 $M_{cr}$（用 $f_r$）<br />
-4. 求降伏彎矩 $M_y$ 和對應的載重 $P$<br />
-5. 確定裂縫從固定端延伸的距離 $x_{cr}$<br />
-6. 分段積分求撓度 $\delta$</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>計算材料常數（$E_c$、$n$、$\varepsilon_y$）</li>
+<li>用轉換斷面法求裂縫中性軸 $kd$ 和 $I_{cr}$</li>
+<li>計算全斷面慣性矩 $I_g$ 和開裂彎矩 $M_{cr}$（用 $f_r$）</li>
+<li>求降伏彎矩 $M_y$ 和對應的載重 $P$</li>
+<li>確定裂縫從固定端延伸的距離 $x_{cr}$</li>
+<li>分段積分求撓度 $\delta$</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -281,10 +287,12 @@ $$E_c = 15000\sqrt{f'_c} \text{ kgf/cm}^2,\quad E_s = 2.04\times10^6 \text{ kgf/
 <blockquote>
 <p>混凝土受壓區在<strong>底部</strong>（壓力面）$0$ 到 $kd = 14$ cm；鋼筋在<strong>頂部</strong>，離底 $d - kd$... </p>
 </blockquote>
-<p><strong>斷面配置確認（懸臂梁）：</strong><br />
-- 壓力面 = 底纖維（距 $kd = 14$ cm 處為 NA）<br />
-- 拉力面 = 頂纖維<br />
-- 鋼筋在頂部：距壓力面 $d = 50$ cm，距 NA = $d - kd = 50 - 14 = 36$ cm</p>
+<p><strong>斷面配置確認（懸臂梁）：</strong>  </p>
+<ul>
+<li>壓力面 = 底纖維（距 $kd = 14$ cm 處為 NA）  </li>
+<li>拉力面 = 頂纖維  </li>
+<li>鋼筋在頂部：距壓力面 $d = 50$ cm，距 NA = $d - kd = 50 - 14 = 36$ cm</li>
+</ul>
 <hr />
 <h3>Step 3：裂縫斷面慣性矩 $I_{cr}$</h3>
 <p>$$I_{cr} = \frac{b\,(kd)^3}{3} + n\,A_s\,(d-kd)^2$$</p>
@@ -316,9 +324,11 @@ $$P = \frac{M_y}{L} = \frac{1{,}285{,}700}{400} = \boxed{3{,}214 \text{ kgf}}$$<
 <p>$$M(x_{cr}) = P\,(L-x_{cr}) = M_{cr}$$</p>
 <p>$$L - x_{cr} = \frac{M_{cr}}{P} = \frac{608{,}580}{3{,}214} = 189.4 \text{ cm}$$</p>
 <p>$$x_{cr} = 400 - 189.4 = 210.6 \text{ cm}$$</p>
-<p><strong>分段：</strong><br />
-- $0 \le x \le 210.6$ cm：裂縫斷面，使用 $I_{cr}$<br />
-- $210.6 \le x \le 400$ cm：完整斷面，使用 $I_g$</p>
+<p><strong>分段：</strong></p>
+<ul>
+<li>$0 \le x \le 210.6$ cm：裂縫斷面，使用 $I_{cr}$</li>
+<li>$210.6 \le x \le 400$ cm：完整斷面，使用 $I_g$</li>
+</ul>
 <hr />
 <h3>Step 7：自由端即時撓度（曲率積分）</h3>
 <p>懸臂梁自由端撓度（用虛功法，虛單位載重在自由端）：</p>
@@ -403,16 +413,16 @@ $$\delta_{approx} = PL^3/(3E_cI_{cr}) = 3214\times400^3/(3\times217{,}371\times1
 <p>但精確解 1.87 cm 需分段積分，是本題的考核重點。</p></main>
 <footer>來源：raw/solutions/RC-2009-2/RC-2009-2.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

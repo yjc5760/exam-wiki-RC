@@ -40,13 +40,17 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目（30 分）：</strong></p>
-<p>有一後拉法預力混凝土連續梁，彎曲鋼腱由兩端拉線：<br />
-- μ = 0.4（鋼索與套管間摩擦係數）<br />
-- k = 0.0026/m（長度方向皺摺摩擦係數）<br />
-- 假設 A 點應力為 F₁</p>
-<p>求：<br />
-1. A、E 兩點間由摩擦所致的預力損失百分率<br />
-2. B、C、D、E 各點之應力</p>
+<p>有一後拉法預力混凝土連續梁，彎曲鋼腱由兩端拉線：</p>
+<ul>
+<li>μ = 0.4（鋼索與套管間摩擦係數）</li>
+<li>k = 0.0026/m（長度方向皺摺摩擦係數）</li>
+<li>假設 A 點應力為 F₁</li>
+</ul>
+<p>求：</p>
+<ol>
+<li>A、E 兩點間由摩擦所致的預力損失百分率</li>
+<li>B、C、D、E 各點之應力</li>
+</ol>
 <p><strong>斷面幾何（由附圖讀取）：</strong></p>
 <table>
 <thead>
@@ -137,17 +141,21 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>核心觀念：</strong><br />
 後拉法摩擦損失公式：鋼腱自張拉端向遠端傳遞時，因鋼索與套管間的<strong>曲率摩擦</strong>（μα 項）及<strong>皺摺摩擦</strong>（kx 項）而逐漸衰減：</p>
 <p>$$F_x = F_0 \cdot e^{-(\mu \Sigma\alpha + kx)}$$</p>
-<p><strong>出題者意圖：</strong><br />
-- 測驗是否能從圖面幾何正確計算各段<strong>角變量</strong> α = L/R（圓弧近似）<br />
-- 測驗是否能累積 Σα 逐點計算（注意直線段不增加角變量）<br />
-- 測驗是否知道兩端張拉時，從 A 端看到 E 端的損失計算方式</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗是否能從圖面幾何正確計算各段<strong>角變量</strong> α = L/R（圓弧近似）</li>
+<li>測驗是否能累積 Σα 逐點計算（注意直線段不增加角變量）</li>
+<li>測驗是否知道兩端張拉時，從 A 端看到 E 端的損失計算方式</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 從圖面讀取各段水平距離與 R，計算各段 α = L/R<br />
-2. 建立各點累積 Σα 表格<br />
-3. 代入公式逐點計算 F_x = F₁ × e^{-(μΣα + kx)}<br />
-4. 計算 A→E 損失百分率</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>從圖面讀取各段水平距離與 R，計算各段 α = L/R</li>
+<li>建立各點累積 Σα 表格</li>
+<li>代入公式逐點計算 F_x = F₁ × e^{-(μΣα + kx)}</li>
+<li>計算 A→E 損失百分率</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -498,28 +506,32 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li>結果：F_D 比 F_{D'} 減少了 e^{-0.01391} = 0.9862，即額外損失約 1.4%</li>
 </ul>
 <p><strong>3. 兩端張拉的完整應力分析</strong></p>
-<p>本題只分析 A→E 端的貢獻（F₁ 由 A 端給定）。實際工程中：<br />
-- 右端（設為 G）亦以應力 F_G 張拉<br />
-- E 點的實際應力 = F₁ × e^{-0.2137}（來自 A）+ F_G × e^{-右端到E的損失}（來自 G）<br />
-- 兩端張拉可大幅減少跨中最低應力點的損失量</p>
+<p>本題只分析 A→E 端的貢獻（F₁ 由 A 端給定）。實際工程中：</p>
+<ul>
+<li>右端（設為 G）亦以應力 F_G 張拉</li>
+<li>E 點的實際應力 = F₁ × e^{-0.2137}（來自 A）+ F_G × e^{-右端到E的損失}（來自 G）</li>
+<li>兩端張拉可大幅減少跨中最低應力點的損失量</li>
+</ul>
 <p><strong>4. 摩擦損失百分率的工程意義</strong></p>
-<p>A→E 共 19.2% 的損失意味著：<br />
-- 若設計有效預力 = 0.85 F₁（扣除摩擦+其他損失），A 端張拉力需至少 F₁/0.808 才能在 E 點達到 F₁ 水準<br />
-- k = 0.0026/m 造成的損失在 21.5m 長度內 = 0.0026 × 21.5 = 5.6%（皺摺項），μΣα 項 = 0.4 × 0.394 = 15.8%（曲率項），兩者比例約 1：2.7</p>
+<p>A→E 共 19.2% 的損失意味著：</p>
+<ul>
+<li>若設計有效預力 = 0.85 F₁（扣除摩擦+其他損失），A 端張拉力需至少 F₁/0.808 才能在 E 點達到 F₁ 水準</li>
+<li>k = 0.0026/m 造成的損失在 21.5m 長度內 = 0.0026 × 21.5 = 5.6%（皺摺項），μΣα 項 = 0.4 × 0.394 = 15.8%（曲率項），兩者比例約 1：2.7</li>
+</ul>
 <p><strong>5. 本題與 RC-2019-4 的差異</strong></p>
 <p>RC-2019-4 亦為後拉法摩擦損失（兩腱雙端張拉），但幾何更複雜（拋物線腱+矢高計算）。本題直接給出 R 和圖示角變量，計算路徑更直接，適合練習基本框架。</p></main>
 <footer>來源：raw/solutions/RC-2002-5/RC-2002-5.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

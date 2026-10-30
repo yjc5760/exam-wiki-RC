@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2016-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
+<header><h1>RC-2016-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U4-1.html">&#128202; U4-1 單元總覽</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h1>考題編號：RC-2016-4</h1>
 <p><strong>主分類：</strong> <code>RC-U4-3</code> 預力損失<br />
 <strong>副分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
@@ -88,22 +88,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 </table>
 <p><img alt="RC-2016-4 題目附圖：20 cm 寬 × 60 cm 深矩形斷面，形心在斷面中央（距頂 30 cm），Aps 位於形心以下 15 cm 處（距頂 45 cm）" src="../../raw/solutions/RC-2016-4/RC-2016-4-fig-1.png" /></p>
 <p><em>圖說：矩形斷面 20 cm × 60 cm，形心軸（中性軸）距頂面 30 cm；Aps = 3.95 cm² 位於距頂面 45 cm 處，偏心距 e = 15 cm。</em></p>
-<p><strong>試求：</strong>
-1. 初施預力時，混凝土彈性收縮造成之預力損失 $\Delta f_{pES}$
-2. 彈性收縮後，混凝土頂部與底部纖維之應力
-3. 判斷混凝土是否開裂（開裂）或受壓過多</p>
+<p><strong>試求：</strong></p>
+<ol>
+<li>初施預力時，混凝土彈性收縮造成之預力損失 $\Delta f_{pES}$</li>
+<li>彈性收縮後，混凝土頂部與底部纖維之應力</li>
+<li>判斷混凝土是否開裂（開裂）或受壓過多</li>
+</ol>
 <hr />
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
 <p><strong>核心觀念：</strong> 預力傳遞給混凝土的瞬間，混凝土因受壓而彈性縮短，鋼鍵隨之縮短，預力因此減少。這是「立即損失」的核心，也是先拉法的標誌性損失項目。</p>
-<p><strong>出題者意圖：</strong>
-- 測驗彈性縮短損失公式的正確應用：$\Delta f_{pES} = n \cdot f_{cpa}$
-- 測驗斷面應力的組合（軸壓 + 偏心彎矩）：$f = \frac{P_e}{A} \pm \frac{P_e \cdot e \cdot y}{I}$
-- 測驗容許應力判斷能力：開裂（抗拉）與受壓過多（抗壓）</p>
-<p><strong>關鍵陷阱預告：</strong>
-- $f_{cpa}$ 必須是 <strong>Aps 形心位置處的混凝土壓應力</strong>，不是斷面最大壓應力
-- 頂部纖維因偏心效應會出現<strong>拉應力</strong>，須與開裂強度 $f_r = 2\sqrt{f'<em ci="ci">{ci}}$ 比較
-- 底部纖維為最大壓應力，須與 $0.60\,f'</em>$ 比較
-- 彈性收縮後的有效預力 $P_e$（而非 $P_i$）用於計算斷面應力</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗彈性縮短損失公式的正確應用：$\Delta f_{pES} = n \cdot f_{cpa}$</li>
+<li>測驗斷面應力的組合（軸壓 + 偏心彎矩）：$f = \frac{P_e}{A} \pm \frac{P_e \cdot e \cdot y}{I}$</li>
+<li>測驗容許應力判斷能力：開裂（抗拉）與受壓過多（抗壓）</li>
+</ul>
+<p><strong>關鍵陷阱預告：</strong></p>
+<ul>
+<li>$f_{cpa}$ 必須是 <strong>Aps 形心位置處的混凝土壓應力</strong>，不是斷面最大壓應力</li>
+<li>頂部纖維因偏心效應會出現<strong>拉應力</strong>，須與開裂強度 $f_r = 2\sqrt{f'_{ci}}$ 比較</li>
+<li>底部纖維為最大壓應力，須與 $0.60\,f'_{ci}$ 比較</li>
+<li>彈性收縮後的有效預力 $P_e$（而非 $P_i$）用於計算斷面應力</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
 <p><strong>作戰計畫（五步驟）：</strong></p>
@@ -139,7 +145,7 @@ Step 5  判斷：ft vs. fr（開裂）、fb vs. 0.60 f'ci（受壓過多）
 </tr>
 <tr>
 <td>③</td>
-<td>開裂判斷用 $f'<em ci="ci">{ci}$ 而非 $f_r = 2\sqrt{f'</em>$}</td>
+<td>開裂判斷用 $f'_{ci}$ 而非 $f_r = 2\sqrt{f'_{ci}}$</td>
 <td>抗拉開裂強度為模數破裂 $f_r = 2\sqrt{f'_{ci}}$</td>
 </tr>
 <tr>
@@ -163,7 +169,7 @@ Step 5  判斷：ft vs. fr（開裂）、fb vs. 0.60 f'ci（受壓過多）
 <p>$$\text{Step 4:}\quad \Delta f_{pES} = n \cdot \boxed{f_{cpa}}$$</p>
 <p>$$\text{Step 5:}\quad P_e = (f_{pi} - \boxed{\Delta f_{pES}}) \cdot A_{ps}$$</p>
 <p>$$\text{Step 6:}\quad f_{top} = \frac{\boxed{P_e}}{A} - \frac{\boxed{P_e} \cdot e \cdot y_t}{I},\quad f_{bot} = \frac{\boxed{P_e}}{A} + \frac{\boxed{P_e} \cdot e \cdot y_b}{I}$$</p>
-<p>$$\text{Step 7 判斷:}\quad f_{top}\ \text{(拉力)} \overset{?}{&lt;} f_r = 2\sqrt{f'<em bot="bot">{ci}},\quad f</em>$$}\ \text{(壓力)} \overset{?}{&lt;} 0.60\,f'_{ci</p>
+<p>$$\text{Step 7 判斷:}\quad f_{top}\ \text{(拉力)} \overset{?}{<} f_r = 2\sqrt{f'_{ci}},\quad f_{bot}\ \text{(壓力)} \overset{?}{<} 0.60\,f'_{ci}$$</p>
 <h3>L1：題目直接給定</h3>
 <table>
 <thead>
@@ -408,7 +414,7 @@ Step 5  判斷：ft vs. fr（開裂）、fb vs. 0.60 f'ci（受壓過多）
 <hr />
 <h3>Step 4：彈性縮短預力損失</h3>
 <p>$$\Delta f_{pES} = n \cdot f_{cpa} = 6 \times 76.61 = \boxed{459.7 \text{ kgf/cm}^2}$$</p>
-<p>損失率：
+<p>損失率：<br />
 $$\frac{\Delta f_{pES}}{f_{pi}} = \frac{459.7}{13{,}300} = 3.46\%$$</p>
 <hr />
 <h3>Step 5：彈性縮短後之有效預力</h3>
@@ -429,11 +435,11 @@ $$\frac{\Delta f_{pES}}{f_{pi}} = \frac{459.7}{13{,}300} = 3.46\%$$</p>
 <h3>Step 7：開裂與受壓過多判斷</h3>
 <p><strong>（a）開裂判斷（頂部拉應力 vs. 模數破裂強度）：</strong></p>
 <p>$$f_r = 2\sqrt{f'_{ci}} = 2\sqrt{245} = 2 \times 15.65 = 31.30 \text{ kgf/cm}^2$$</p>
-<p>$$f_{top}(\text{拉}) = 21.13 \text{ kgf/cm}^2 &lt; f_r = 31.30 \text{ kgf/cm}^2$$</p>
+<p>$$f_{top}(\text{拉}) = 21.13 \text{ kgf/cm}^2 < f_r = 31.30 \text{ kgf/cm}^2$$</p>
 <p>$$\Rightarrow \boxed{\text{頂部纖維不開裂}}$$</p>
 <p><strong>（b）受壓過多判斷（底部壓應力 vs. 容許壓應力）：</strong></p>
 <p>$$0.60\,f'_{ci} = 0.60 \times 245 = 147 \text{ kgf/cm}^2$$</p>
-<p>$$f_{bot}(\text{壓}) = 105.67 \text{ kgf/cm}^2 &lt; 147 \text{ kgf/cm}^2$$</p>
+<p>$$f_{bot}(\text{壓}) = 105.67 \text{ kgf/cm}^2 < 147 \text{ kgf/cm}^2$$</p>
 <p>$$\Rightarrow \boxed{\text{底部纖維受壓未過多}}$$</p>
 <p><strong>結論：</strong> 初施預力彈性收縮後，頂部拉應力 21.13 kgf/cm² 未超過開裂強度，底部壓應力 105.67 kgf/cm² 未超過容許值，斷面安全。</p>
 <hr />
@@ -497,22 +503,22 @@ $$\frac{\Delta f_{pES}}{f_{pi}} = \frac{459.7}{13{,}300} = 3.46\%$$</p>
 </table>
 <p>本題給定 $n = 6$ 且不提千斤頂施拉條件，採先拉法公式處理。</p>
 <h3>進階：偏心對損失量的放大效應</h3>
-<p>如果鋼鍵位於形心（$e = 0$），則：
+<p>如果鋼鍵位於形心（$e = 0$），則：<br />
 $$f_{cpa} = P_i/A = 43.78 \text{ kgf/cm}^2 \Rightarrow \Delta f_{pES} = 262.7 \text{ kgf/cm}^2$$</p>
 <p>而本題偏心 $e = 15$ cm 使 $f_{cpa}$ 增加 $P_i e^2/I = 32.83$，導致損失多出 197 kgf/cm²（約75%增幅）。偏心越大，Aps 位置的混凝土壓應力越高，彈性縮短損失也越大。</p></main>
 <footer>來源：raw/solutions/RC-2016-4/RC-2016-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

@@ -41,10 +41,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>題目（10 分）：</strong></p>
 <p>四週有邊梁的 RC 雙向樓版，其角隅處在配筋上應作何特殊考慮？試繪圖說明之。</p>
-<p><strong>已知條件：</strong><br />
-- 雙向版（Two-way slab）<br />
-- 四邊均設有邊梁（beams on all four sides）<br />
-- 問：角隅處特殊配筋為何？需繪圖說明。</p>
+<p><strong>已知條件：</strong></p>
+<ul>
+<li>雙向版（Two-way slab）</li>
+<li>四邊均設有邊梁（beams on all four sides）</li>
+<li>問：角隅處特殊配筋為何？需繪圖說明。</li>
+</ul>
 <p><em>(本題為純文字概念題，無需題目附圖)</em></p>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
@@ -55,18 +57,22 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <li><strong>垂直對角線方向（135°）</strong> 的正彎矩：版角翹起 → 上述垂直方向下緣受拉</li>
 </ol>
 <p>這兩組彎矩的存在，使角隅版面同時在上下緣都需要配置鋼筋，形成「角隅特殊配筋」的要求。</p>
-<p><strong>出題者意圖：</strong><br />
-- 測驗考生是否理解雙向版角隅「翹起效應」的力學機理<br />
-- 測驗是否知道需在角隅同時配置<strong>上層</strong>與<strong>下層</strong>鋼筋<br />
-- 測驗鋼筋布置範圍與數量的規範規定（$l_n/5$）<br />
-- 有繪圖說明要求，需要具體展示配筋細部</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗考生是否理解雙向版角隅「翹起效應」的力學機理</li>
+<li>測驗是否知道需在角隅同時配置<strong>上層</strong>與<strong>下層</strong>鋼筋</li>
+<li>測驗鋼筋布置範圍與數量的規範規定（$l_n/5$）</li>
+<li>有繪圖說明要求，需要具體展示配筋細部</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 說明角隅翹起效應的力學原因（2–3 句）<br />
-2. 說明角隅彎矩方向（對角線方向的負彎矩 + 垂直方向的正彎矩）<br />
-3. 列出 ACI 318 規範規定的角隅配筋要求<br />
-4. 繪製角隅配筋示意圖</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>說明角隅翹起效應的力學原因（2–3 句）</li>
+<li>說明角隅彎矩方向（對角線方向的負彎矩 + 垂直方向的正彎矩）</li>
+<li>列出 ACI 318 規範規定的角隅配筋要求</li>
+<li>繪製角隅配筋示意圖</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -238,9 +244,11 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h3>Step 2：規範規定（ACI 318 §13.3.6 / CNS 1480）</h3>
 <p>配筋要求如下：</p>
 <p><strong>(a) 配置位置：</strong><br />
-角隅上方需設置<strong>特殊角隅配筋</strong>，包含：<br />
-- 上層配筋：平行 x 軸（一層）+ 平行 y 軸（一層），共兩組<br />
-- 下層配筋：平行 x 軸（一層）+ 平行 y 軸（一層），共兩組</p>
+角隅上方需設置<strong>特殊角隅配筋</strong>，包含：</p>
+<ul>
+<li>上層配筋：平行 x 軸（一層）+ 平行 y 軸（一層），共兩組</li>
+<li>下層配筋：平行 x 軸（一層）+ 平行 y 軸（一層），共兩組</li>
+</ul>
 <p><strong>(b) 延伸範圍：</strong><br />
 每組鋼筋各自從角點沿版面延伸，向兩側各延伸：</p>
 <p>$$\boxed{L = \frac{\ell_n}{5}}$$</p>
@@ -285,26 +293,28 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <p><strong>1. 邊梁「完全束制」vs「部分束制」：</strong><br />
 若版角上方有梁，但梁的抗扭勁度很低，則版角仍會有部分翹起，此時角隅配筋更顯重要。ACI 318 明確規定當版由梁在兩方向支撐時，角隅筋為必要要求。</p>
 <p><strong>2. 可否用 45° 斜向配筋？</strong><br />
-規範允許採用平行版邊（x/y 方向）配筋或 45°/135° 對角線配筋。<br />
-- 45° 對角線配筋：理論上直接對應彎矩方向，鋼筋效率最高<br />
-- 平行版邊配筋：施工方便，為實務中常用做法<br />
-兩者均符合規範，考場上以「平行版邊 + 說明」最為完整安全。</p>
+規範允許採用平行版邊（x/y 方向）配筋或 45°/135° 對角線配筋。</p>
+<ul>
+<li>45° 對角線配筋：理論上直接對應彎矩方向，鋼筋效率最高</li>
+<li>平行版邊配筋：施工方便，為實務中常用做法<br />
+兩者均符合規範，考場上以「平行版邊 + 說明」最為完整安全。</li>
+</ul>
 <p><strong>3. 角隅特殊配筋範圍是否含頂層普通筋？</strong><br />
 角隅配筋為<strong>附加</strong>配筋，置於一般版筋之上（或合併設計時需確認），不可以一般版筋替代角隅特殊筋的要求。</p>
 <p><strong>4. 若版角為自由端（無梁）：</strong><br />
 若版角僅有牆支撐或完全自由，此條款不適用。角隅特殊配筋僅適用於<strong>版邊由梁支撐</strong>的情形。</p></main>
 <footer>來源：raw/solutions/RC-2002-1/RC-2002-1.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

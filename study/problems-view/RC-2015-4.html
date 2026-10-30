@@ -30,7 +30,7 @@ img{max-width:100%;display:block;margin:14px auto;border:1px solid var(--bd);bor
 .katex-display{margin:12px 0!important;overflow-x:auto;overflow-y:hidden}
 footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top:1px solid var(--bd)}
 </style></head><body>
-<header><h1>RC-2015-4 題目解析</h1><div class="navbtns"><a class="quick" href="../study-RC-U4-1.html">&#128269; U4-1 命題分析</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
+<header><h1>RC-2015-4 題目解析</h1><div class="navbtns"><a class="quick" href="../unit-RC-U4-1.html">&#128202; U4-1 單元總覽</a><a class="lect" href="../lecture-RC-U4-1.html">&#128218; U4-1 預力梁斷面應力分析 講義</a></div></header>
 <main><h1>考題編號：RC-2015-4</h1>
 <p><strong>主分類：</strong> <code>RC-U4-2</code> 預力量與偏心量設計<br />
 <strong>副分類：</strong> <code>RC-U4-1</code> 預力梁斷面應力分析<br />
@@ -84,10 +84,12 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖（Core Concepts &amp; Examiner's Intent）</h2>
 <p><strong>核心觀念：</strong> 預力梁在「施預力時」與「服務載重時」各有頂底纖維的應力限制，共四個邊界條件（允許壓應力上限、禁止拉應力）。<strong>同時啟動四個邊界條件</strong>（頂底各達極限），斷面應力空間被最充分利用，此時可承受之活載重最大、預力量最小。</p>
-<p><strong>出題者意圖：</strong>
-- 測驗容許應力設計的四個邊界條件的建立能力
-- 測驗聯立方程組解 F 與 ep 的能力
-- 測驗從「最大活載重」反求 ML 再求 wLmax 的思路</p>
+<p><strong>出題者意圖：</strong></p>
+<ul>
+<li>測驗容許應力設計的四個邊界條件的建立能力</li>
+<li>測驗聯立方程組解 F 與 ep 的能力</li>
+<li>測驗從「最大活載重」反求 ML 再求 wLmax 的思路</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析（Strategic Roadmap &amp; Trap Analysis）</h2>
 <p><strong>四個關鍵應力邊界條件（同時啟動 → 最優設計）：</strong></p>
@@ -329,19 +331,19 @@ Step 4  驗算四個應力條件均滿足
 </table>
 <hr />
 <h3>Step 3：聯立求解 ML</h3>
-<p><strong>條件①（施預力頂）：</strong>
+<p><strong>條件①（施預力頂）：</strong><br />
 $$a - b_e + M_D/S = 0 \quad\Rightarrow\quad a - b_e = -M_D/S \qquad \cdots (1)$$</p>
-<p><strong>條件④（全部載重底）：</strong>
+<p><strong>條件④（全部載重底）：</strong><br />
 $$a + b_e - (M_D + M_L)/S = 0 \quad\Rightarrow\quad a + b_e = (M_D + M_L)/S \qquad \cdots (4)$$</p>
-<p>(1) + (4)：
+<p>(1) + (4)：<br />
 $$2a = \frac{M_L}{S}$$</p>
-<p><strong>條件②（施預力底）：</strong>
+<p><strong>條件②（施預力底）：</strong><br />
 $$a + b_e - M_D/S = 140 \quad\Rightarrow\quad a + b_e = 140 + M_D/S \qquad \cdots (2)$$</p>
-<p><strong>條件③（全部載重頂）：</strong>
+<p><strong>條件③（全部載重頂）：</strong><br />
 $$a - b_e + (M_D + M_L)/S = 140 \quad\Rightarrow\quad a - b_e = 140 - (M_D + M_L)/S \qquad \cdots (3)$$</p>
-<p>(2) + (3)：
+<p>(2) + (3)：<br />
 $$2a = 280 - M_L/S$$</p>
-<p>由兩個 $2a$ 的表達式相等：
+<p>由兩個 $2a$ 的表達式相等：<br />
 $$\frac{M_L}{S} = 280 - \frac{M_L}{S}$$</p>
 <p>$$\frac{2M_L}{S} = 280 \quad\Rightarrow\quad M_L = 140 \times S = 140 \times 12{,}500 = \boxed{1{,}750{,}000 \text{ kgf·cm} = 17.5 \text{ tf·m}}$$</p>
 <hr />
@@ -351,7 +353,7 @@ $$\frac{M_L}{S} = 280 - \frac{M_L}{S}$$</p>
 <p>$$\boxed{F = 70 \times 1{,}500 = 105{,}000 \text{ kgf} = 105 \text{ tf}}$$</p>
 <hr />
 <h3>Step 5：求 ep（跨中偏心量）</h3>
-<p>由條件①：
+<p>由條件①：<br />
 $$a - b_e = -M_D/S \quad\Rightarrow\quad b_e = a + M_D/S = 70 + \frac{648{,}000}{12{,}500} = 70 + 51.84 = 121.84 \text{ kgf/cm}^2$$</p>
 <p>$$b_e = \frac{F \cdot e_p}{S} = 121.84$$</p>
 <p>$$e_p = \frac{121.84 \times S}{F} = \frac{121.84 \times 12{,}500}{105{,}000} = \frac{1{,}523{,}000}{105{,}000} = \boxed{14.50 \text{ cm}}$$</p>
@@ -441,16 +443,16 @@ $$a - b_e = -M_D/S \quad\Rightarrow\quad b_e = a + M_D/S = 70 + \frac{648{,}000}
 <footer>來源：raw/solutions/RC-2015-4/RC-2015-4.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）
 </footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

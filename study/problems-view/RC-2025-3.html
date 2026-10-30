@@ -41,32 +41,40 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <h2>1. 原始題目重述 (Problem Restatement)</h2>
 <p><strong>規範依據：</strong> 中國土木水利工程學會「混凝土工程設計規範與解說」（土木401-112）</p>
 <p>一鋼筋混凝土矩形梁斷面（如圖2），配置下層 4 支 D32 拉力筋，上層 2 支 D29 壓力筋，閉合箍筋使用 D13，間距 15 cm，淨保護層為 4 cm。<strong>若箍筋僅用於抵抗扭矩</strong>，試求此斷面之扭矩強度 $T_n$ (tf·m)。（25 分）</p>
-<p><strong>斷面資料（圖2）：</strong><br />
-- 斷面：$b = 40\text{ cm}$，$h = 70\text{ cm}$<br />
-- 下層：4-D32，$A_b = 8.14\text{ cm}^2$，共 $A_{sl,bot} = 4 \times 8.14 = 32.56\text{ cm}^2$<br />
-- 上層：2-D29，$A_b = 6.47\text{ cm}^2$，共 $A_{sl,top} = 2 \times 6.47 = 12.94\text{ cm}^2$<br />
-- 箍筋：D13 閉合箍筋，間距 $s = 15\text{ cm}$，$A_t = 1.27\text{ cm}^2$（單腳）<br />
-- 淨保護層：$c_c = 4\text{ cm}$（至箍筋外緣）</p>
+<p><strong>斷面資料（圖2）：</strong></p>
+<ul>
+<li>斷面：$b = 40\text{ cm}$，$h = 70\text{ cm}$</li>
+<li>下層：4-D32，$A_b = 8.14\text{ cm}^2$，共 $A_{sl,bot} = 4 \times 8.14 = 32.56\text{ cm}^2$</li>
+<li>上層：2-D29，$A_b = 6.47\text{ cm}^2$，共 $A_{sl,top} = 2 \times 6.47 = 12.94\text{ cm}^2$</li>
+<li>箍筋：D13 閉合箍筋，間距 $s = 15\text{ cm}$，$A_t = 1.27\text{ cm}^2$（單腳）</li>
+<li>淨保護層：$c_c = 4\text{ cm}$（至箍筋外緣）</li>
+</ul>
 <p><img alt="RC-2025-3 題目附圖：矩形梁斷面 40×70cm，上層 2-D29，下層 4-D32，D13 閉合箍筋，淨保護層 4cm" src="../../raw/solutions/RC-2025-3/RC-2025-3-fig-1.png" /></p>
 <p><em>圖說：矩形梁斷面寬 $b = 40\text{ cm}$，高 $h = 70\text{ cm}$。下層受拉筋 4-D32（$A_s = 31.96\text{ cm}^2$），上層受壓筋 2-D29（$A_{sl} = 12.94\text{ cm}^2$）。D13 閉合箍筋，間距 $s = 15\text{ cm}$，淨保護層 $c_c = 4\text{ cm}$（至箍筋外緣）。</em></p>
-<p><strong>全卷通用材料：</strong><br />
-- $f'_c = 280\text{ kgf/cm}^2$，$f_y = 4200\text{ kgf/cm}^2$（D25以上），$f_{yt} = 2800\text{ kgf/cm}^2$（D13）</p>
+<p><strong>全卷通用材料：</strong></p>
+<ul>
+<li>$f'_c = 280\text{ kgf/cm}^2$，$f_y = 4200\text{ kgf/cm}^2$（D25以上），$f_{yt} = 2800\text{ kgf/cm}^2$（D13）</li>
+</ul>
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心觀念：</strong> 土木401-112（ACI 318）採用<strong>空間桁架類比（Space Truss Analogy）</strong>計算扭矩強度——把斷面視為薄壁管，扭矩由閉合箍筋（橫向）與縱向鋼筋共同抵抗。$T_n$ 由<strong>箍筋</strong>與<strong>縱筋</strong>各自算出，取較小值（通常箍筋控制）。</p>
-<p><strong>出題者意圖：</strong><br />
-1. 測試 $A_{oh}$（箍筋圍合面積）的幾何計算——從淨保護層推至箍筋中心線<br />
-2. 測試 $A_o = 0.85 A_{oh}$ 的折減係數<br />
-3. 測試扭矩公式 $T_n = 2A_o A_t f_{yt}/s \cdot \cot\theta$（$\theta=45°$時 $\cot\theta=1$）<br />
-4. 測試縱向鋼筋驗核（需求量 vs. 提供量）</p>
+<p><strong>出題者意圖：</strong></p>
+<ol>
+<li>測試 $A_{oh}$（箍筋圍合面積）的幾何計算——從淨保護層推至箍筋中心線</li>
+<li>測試 $A_o = 0.85 A_{oh}$ 的折減係數</li>
+<li>測試扭矩公式 $T_n = 2A_o A_t f_{yt}/s \cdot \cot\theta$（$\theta=45°$時 $\cot\theta=1$）</li>
+<li>測試縱向鋼筋驗核（需求量 vs. 提供量）</li>
+</ol>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
-<p><strong>作戰計畫：</strong><br />
-1. 算幾何量：由淨保護層→箍筋中心線距→$x_1, y_1$→$A_{oh}, p_h$<br />
-2. 算 $A_o = 0.85 A_{oh}$<br />
-3. 算箍筋提供之 $T_n$（橫向控制）<br />
-4. 驗核縱向鋼筋需求量 $\leq$ 提供量（縱向不控制）<br />
-5. 驗核混凝土壓碎上限</p>
+<p><strong>作戰計畫：</strong></p>
+<ol>
+<li>算幾何量：由淨保護層→箍筋中心線距→$x_1, y_1$→$A_{oh}, p_h$</li>
+<li>算 $A_o = 0.85 A_{oh}$</li>
+<li>算箍筋提供之 $T_n$（橫向控制）</li>
+<li>驗核縱向鋼筋需求量 $\leq$ 提供量（縱向不控制）</li>
+<li>驗核混凝土壓碎上限</li>
+</ol>
 <p><strong>關鍵陷阱：</strong></p>
 <table>
 <thead>
@@ -375,30 +383,36 @@ $$c_{cover} = c_c + \frac{d_{b,s}}{2} = 4 + \frac{1.27}{2} = 4 + 0.635 = 4.635\t
 </blockquote>
 <hr />
 <h2>5. 關鍵爭議點與進階探討 (Critical Issues &amp; Advanced Discussion)</h2>
-<p><strong>爭議1：$\theta$ 角的選取</strong><br />
-- ACI 318 允許 $30° \leq \theta \leq 60°$，考場通常取 $45°$<br />
-- 若取 $\theta < 45°$（如 $37.5°$），$\cot\theta > 1$，箍筋效率提高，但縱筋需求也增大<br />
-- 取 $45°$ 是最安全的預設選項</p>
-<p><strong>爭議2：$A_{oh}$ vs. $A_{cp}$</strong><br />
-- $A_{cp}$ = 全截面面積（含保護層）= $40 \times 70 = 2800\text{ cm}^2$，用於門檻扭矩 $T_{th}$ 計算<br />
-- $A_{oh}$ = 箍筋中心線圍合面積，用於 $T_n$ 計算<br />
-- 本題給了足夠配筋，直接計算 $T_n$ 即可</p>
-<p><strong>進階思考：若 $T_n$ 不足怎麼辦？</strong><br />
-- 方案①：縮小箍筋間距 $s$（$T_n \propto 1/s$，最直接）<br />
-- 方案②：增加箍筋腳數或改用較大號箍筋（增大 $A_t$）<br />
-- 方案③：加大斷面（增大 $A_{oh}$）</p></main>
+<p><strong>爭議1：$\theta$ 角的選取</strong></p>
+<ul>
+<li>ACI 318 允許 $30° \leq \theta \leq 60°$，考場通常取 $45°$</li>
+<li>若取 $\theta < 45°$（如 $37.5°$），$\cot\theta > 1$，箍筋效率提高，但縱筋需求也增大</li>
+<li>取 $45°$ 是最安全的預設選項</li>
+</ul>
+<p><strong>爭議2：$A_{oh}$ vs. $A_{cp}$</strong></p>
+<ul>
+<li>$A_{cp}$ = 全截面面積（含保護層）= $40 \times 70 = 2800\text{ cm}^2$，用於門檻扭矩 $T_{th}$ 計算</li>
+<li>$A_{oh}$ = 箍筋中心線圍合面積，用於 $T_n$ 計算</li>
+<li>本題給了足夠配筋，直接計算 $T_n$ 即可</li>
+</ul>
+<p><strong>進階思考：若 $T_n$ 不足怎麼辦？</strong></p>
+<ul>
+<li>方案①：縮小箍筋間距 $s$（$T_n \propto 1/s$，最直接）</li>
+<li>方案②：增加箍筋腳數或改用較大號箍筋（增大 $A_t$）</li>
+<li>方案③：加大斷面（增大 $A_{oh}$）</li>
+</ul></main>
 <footer>來源：raw/solutions/RC-2025-3/RC-2025-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();

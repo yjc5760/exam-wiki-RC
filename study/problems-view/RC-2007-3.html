@@ -98,11 +98,13 @@ footer{text-align:center;color:var(--mut);font-size:.8em;padding:22px;border-top
 <hr />
 <h2>2. 考題核心精神與出題者意圖 (Core Concepts &amp; Examiner's Intent)</h2>
 <p><strong>核心：</strong> 方形基腳有三項強度驗算——<strong>彎矩</strong>、<strong>單向剪力</strong>（廣剪）、<strong>雙向剪力</strong>（衝剪）。</p>
-<p><strong>關鍵規則：</strong><br />
-- 結構設計使用<strong>因數化淨上壓力</strong> $q_u = P_u/A$（不含基腳自重）<br />
-- 彎矩臨界斷面：柱面<br />
-- 單向剪力臨界斷面：距柱面 $d$ 處<br />
-- 雙向剪力臨界周長：距柱面 $d/2$ 處圍起之矩形</p>
+<p><strong>關鍵規則：</strong></p>
+<ul>
+<li>結構設計使用<strong>因數化淨上壓力</strong> $q_u = P_u/A$（不含基腳自重）</li>
+<li>彎矩臨界斷面：柱面</li>
+<li>單向剪力臨界斷面：距柱面 $d$ 處</li>
+<li>雙向剪力臨界周長：距柱面 $d/2$ 處圍起之矩形</li>
+</ul>
 <hr />
 <h2>3. 解題戰略地圖與陷阱分析 (Strategic Roadmap &amp; Trap Analysis)</h2>
 <table>
@@ -482,16 +484,16 @@ $$L_c = \frac{B - c}{2} = \frac{300 - 45}{2} = \boxed{127.5 \text{ cm} = 1.275 \
 <p>$$A_{s,min} = 0.002 \times b \times h = 0.002 \times 300 \times 60 = 36 \text{ cm}^2 \ll 50 \text{ cm}^2 \quad \checkmark$$</p></main>
 <footer>來源：raw/solutions/RC-2007-3/RC-2007-3.md（知識庫解題內容唯一正本；本頁僅為渲染顯示）</footer>
 <script>
-/* 跟隨來源單元：由 study-/lecture-/formula-given-RC-Un-m.html 進入時，
+/* 跟隨來源單元：由 unit-/lecture-（及舊 study-/formula-given-）RC-Un-m.html 進入時，
    把頁首兩顆按鈕改指向來源單元。無 JS 或無 referrer 時，靜態 href 保底。 */
 (function(){
   try{
-    var m = (document.referrer||"").match(/(?:study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
+    var m = (document.referrer||"").match(/(?:unit|study|lecture|formula-given)-(RC-U\d+-\d+)\.html/);
     if(!m) return;
     var u = m[1];
     var q = document.querySelector('header a.quick');
     var l = document.querySelector('header a.lect');
-    if(q) q.setAttribute('href','../study-'+u+'.html');
+    if(q) q.setAttribute('href','../unit-'+u+'.html');
     if(l) l.setAttribute('href','../lecture-'+u+'.html');
   }catch(e){}
 })();
