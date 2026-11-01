@@ -3,6 +3,9 @@
 """
 generate_knowledge_graph.py — exam-wiki-RC 知識圖譜產生器
 
+⚠️ 2026-11-01 wiki 已封存至 archive/wiki/、不再維護；本腳本路徑已改指封存處，僅供參考，
+   knowledge_graph.html 不再重新產生。
+
 用途：
     重新掃描 raw/json/question_index.json、raw/json/concepts.json 以及
     wiki/{methods,philosophy,diagnosis,code-ref,failure-modes,materials,traps}/*.md，
@@ -180,7 +183,7 @@ def load_json_concepts(root):
 def scan_concept_problems(root, known_concept_ids):
     """掃 wiki/concepts/*.md 的『出現題目』表格，抓 [[RC-YYYY-N]]"""
     out = {cid: [] for cid in known_concept_ids}
-    d = root / "wiki/concepts"
+    d = root / "archive/wiki/concepts"
     if not d.exists():
         return out
     for f in sorted(d.glob("*.md")):
@@ -197,7 +200,7 @@ def scan_concept_problems(root, known_concept_ids):
 
 
 def scan_methods(root, known_concept_ids):
-    d = root / "wiki/methods"
+    d = root / "archive/wiki/methods"
     out = []
     if not d.exists():
         return out
@@ -222,7 +225,7 @@ def scan_methods(root, known_concept_ids):
 
 
 def scan_philosophy(root):
-    d = root / "wiki/philosophy"
+    d = root / "archive/wiki/philosophy"
     out = []
     if not d.exists():
         return out
@@ -246,7 +249,7 @@ def scan_philosophy(root):
 
 
 def scan_diagnosis(root, known_concept_ids):
-    d = root / "wiki/diagnosis"
+    d = root / "archive/wiki/diagnosis"
     out = []
     if not d.exists():
         return out
@@ -280,7 +283,7 @@ def scan_diagnosis(root, known_concept_ids):
 
 
 def scan_coderef(root):
-    d = root / "wiki/code-ref"
+    d = root / "archive/wiki/code-ref"
     out = []
     if not d.exists():
         return out
@@ -300,12 +303,12 @@ def scan_coderef(root):
 
 
 def scan_traps(root):
-    d = root / "wiki/traps"
+    d = root / "archive/wiki/traps"
     out = []
     if not d.exists():
         return out
     problems_by_trap = {}
-    prob_dir = root / "wiki/problems"
+    prob_dir = root / "archive/wiki/problems"
     trap_ids = {f.stem for f in d.glob("*.md") if f.stem != "index"}
     if prob_dir.exists():
         for pf in prob_dir.glob("*.md"):
@@ -353,7 +356,7 @@ def build(root: Path):
         ph["topics"] = sorted(topics)
 
     # 讀真正的標題（failure-modes / materials 用檔案 H1，覆蓋掉暫用的 id 當 name）
-    for lst, subdir in [(failuremodes, "wiki/failure-modes"), (materials, "wiki/materials")]:
+    for lst, subdir in [(failuremodes, "archive/wiki/failure-modes"), (materials, "archive/wiki/materials")]:
         for item in lst:
             f = root / subdir / f"{item['id']}.md"
             if f.exists():
@@ -485,9 +488,9 @@ const TYPE_META = {
   material:{color:"var(--c-material)",label:"材料行為"}
 };
 const FILE_DIR = {
-  problem:"wiki/problems", concept:"wiki/concepts", method:"wiki/methods",
-  philosophy:"wiki/philosophy", diagnosis:"wiki/diagnosis", coderef:"wiki/code-ref",
-  failuremode:"wiki/failure-modes", material:"wiki/materials", trap:"wiki/traps"
+  problem:"archive/wiki/problems", concept:"archive/wiki/concepts", method:"archive/wiki/methods",
+  philosophy:"archive/wiki/philosophy", diagnosis:"archive/wiki/diagnosis", coderef:"archive/wiki/code-ref",
+  failuremode:"archive/wiki/failure-modes", material:"archive/wiki/materials", trap:"archive/wiki/traps"
 };
 
 /* ===================== 組裝節點與邊 ===================== */

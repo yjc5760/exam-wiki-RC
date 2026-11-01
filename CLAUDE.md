@@ -27,7 +27,7 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 你加入補充截圖（chart/eqn/hand）
 請 Cowork 更新 question_index.json（tags、verified）
     ↓
-說：「ingest RC-XXXX-N」→ Cowork 直接執行，wiki 自動更新
+（ingest 已停用（2026-11-01 wiki 封存）；驗算後直接以 raw/solutions/ 正本與 study/ 教材為準）
 ```
 
 ---
@@ -37,28 +37,25 @@ Cowork 讀取 CLAUDE.md + 考卷 PDF + question_index.json
 | 環境 | 負責什麼 |
 |------|---------|
 | **你（使用者）** | PDF 題目附圖截圖（fig-N.png）、chart/eqn/hand 補充截圖、人工驗算後通知 Cowork 更新 verificationStatus |
-| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md + viz.html）、更新 question_index.json、**所有 wiki 操作指令**（ingest / compile-all / lint / status / reindex / add-concept / add-method / refresh-dashboard / frequency / analyze / predict / study / find / related / unverified / query，共 16 個，詳見 CLAUDE-CODE.md）、直接維護 wiki/diagnosis/ · wiki/failure-modes/ · wiki/materials/ · wiki/code-ref/ · wiki/queries/ · study/（study 指令輸出） |
+| **Cowork** | 解題（SOLVE，**一次一題**）、存檔（.md）、更新 question_index.json、**操作指令**（詳見 CLAUDE-CODE.md；寫入 wiki 的 ingest / compile-all / lint / add-concept 已停用（2026-11-01 wiki 封存））、直接維護 wiki/queries/ · study/（study 指令輸出） |
 
 ---
 
 ## 單向資料流
 
 ```
-raw/solutions/RC-XXXX-N/RC-XXXX-N.md  ──→  wiki/problems/      （Cowork: ingest）
-raw/json/concepts.json                 ──→  wiki/concepts/      （Cowork: compile-all）
-raw/solutions/methods/                 ──→  wiki/methods/       （Cowork: compile-all）
-   ↑ 修正公式錯誤時改「這一端」，不要只改 wiki 副本（否則下次 compile 會被蓋回）
-Cowork 查詢結果                        ──→  wiki/queries/       （Cowork 直接存入）
+raw/solutions/RC-XXXX-N/RC-XXXX-N.md  ──→  study/（problems-view、講義、單元總覽）
+Cowork 查詢／稽核結果                  ──→  wiki/queries/       （Cowork 直接存入）
 Cowork study 指令輸出                  ──→  study/              （Cowork 直接存入）
-Cowork 跨層知識工具                    ──→  wiki/diagnosis/     （Cowork 直接存入）
-                                       ──→  wiki/failure-modes/ （Cowork 直接存入）
-                                       ──→  wiki/materials/     （Cowork 直接存入）
-                                       ──→  wiki/code-ref/      （Cowork 直接存入）
+
+（2026-11-01 起 wiki/ 只保留 queries/；problems/ concepts/ methods/ traps/ philosophy/
+ diagnosis/ failure-modes/ materials/ code-ref/ index.md by-year.md 封存至 archive/wiki/，
+ 不再 ingest／compile，僅供參考，見 archive/README.md）
 
 解題內容唯一來源：raw/solutions/ 下的 .md 檔案
 索引資訊唯一來源：raw/json/question_index.json
-方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋同步 wiki＋記 log，見規則 1）
-wiki/queries/、study/（study 輸出）及四個跨層知識目錄：由 Cowork 直接寫入，不走 ingest 流程
+方法論唯一來源：raw/solutions/methods/（可修正，須驗算＋記 log，見規則 1）
+wiki/queries/、study/（study 輸出）：由 Cowork 直接寫入
 ```
 
 ---
@@ -90,29 +87,24 @@ exam-wiki-RC/
 │       ├── RC-YYYY-N/               ← 🔒 證據，不可修改（規則 1、2）
 │       │   ├── RC-YYYY-N.md
 │       │   ├── RC-YYYY-N-fig-1.png
-│       │   ├── RC-YYYY-N-[內容碼]-viz.html
-│       │   └── *.pdf                    ← 補充筆記（選用，命名無限制）
+│       │   └── figs/                    ← 程式產生之向量圖解（選用）
 │       └── methods/                 ← ✏️ 解題方法論（可修正公式／單位，見規則 1）
 │
-└── wiki/                            ← 知識庫輸出
-    ├── index.md                     ← 主導航（七層架構）
-    ├── by-year.md                   ← 依考年分類
-    ├── log.md                       ← 操作紀錄（append only）
-    ├── concepts/                    ← 概念頁         ← Cowork (compile-all)
-    ├── methods/                     ← 方法論頁       ← Cowork (compile-all)
-    ├── traps/                       ← 陷阱頁         ← Cowork (compile-all)（補充目錄，非七層架構核心）
-    ├── problems/                    ← 題目頁         ← Cowork (ingest)
-    ├── philosophy/                  ← 設計哲學頁     ← Cowork (compile-all)
-    ├── queries/                     ← 查詢結果頁     ← Cowork (直接存入)
-    ├── diagnosis/                   ← 題型診斷層     ← Cowork (直接存入)
-    ├── failure-modes/               ← 失敗模式層     ← Cowork (直接存入)
-    ├── materials/                   ← 材料行為層     ← Cowork (直接存入)
-    └── code-ref/                    ← 規範條文對應層 ← Cowork (直接存入)
+├── wiki/
+│   └── queries/                     ← 稽核與分析報告（Cowork 直接存入）
+│       ├── index.md                 ← 報告目錄
+│       └── log.md                   ← 操作紀錄（append only）
+│
+└── archive/
+    ├── README.md                    ← 封存說明
+    └── wiki/                        ← 2026-11-01 封存的舊 wiki（七層頁、index、by-year），不再維護
 ```
 
 ---
 
 ## 知識分類骨架（七層）
+
+> ⚠️ 2026-11-01 起本節所列目錄已封存至 `archive/wiki/`，不再 compile／ingest，以下僅保留作為歷史說明。
 
 Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/ingest 生成，後四層由 Cowork 直接維護）：
 
@@ -179,22 +171,22 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 
    > **為什麼 methods/ 是例外**：本規則要保護的是**證據**（考卷、AI 解析、驗證過的答案），
    > 這些一旦被改就失去可追溯性。但 `raw/solutions/methods/` 存的是**可維護的知識整理**，
-   > 且它是 `wiki/methods/` 的 compile 來源 —— 只改 wiki 副本的話，下次 `compile-all` 會被蓋回舊版。
+   > 且它是方法論的唯一來源（舊 `wiki/methods/` 已於 2026-11-01 封存至 archive/wiki/，不再同步）。
    > 發現公式或係數錯誤時，必須改 raw 來源才算根治。
    >
-   > **修改 methods/ 的三個條件（缺一不可）**：
+   > **修改 methods/ 的兩個條件（缺一不可）**：
    > ① 修正前先做**數值驗算**（邊界代入、量綱檢查、與驗證解答交叉比對），不可憑印象改；
-   > ② 改完**同步覆蓋** `wiki/methods/` 對應檔；
-   > ③ 在 `wiki/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
+   > ② 在 `wiki/queries/log.md` 記錄**改了什麼、為什麼、怎麼驗證的**。
+   > （原「同步覆蓋 `wiki/methods/`」一項已隨 2026-11-01 wiki 封存取消）
    >
    > ⚠️ `raw/solutions/RC-YYYY-N/`（個別題目解析）**不在例外內**，仍受規則 1 與規則 2 保護。
 
 2. **`verifiedSolution` 是最終答案，不可質疑或重新計算**
-3. **`wiki/log.md` 只可 append，不可刪除已有紀錄**
-4. **wiki/ 大多數目錄是 compile 輸出，不可手動修改**；例外：diagnosis/ · failure-modes/ · materials/ · code-ref/ · queries/ 由 Cowork 直接維護
-5. **ingest 前必須確認 verificationStatus = "verified"**
+3. **`wiki/queries/log.md` 只可 append，不可刪除已有紀錄**
+4. **wiki/ 只保留 queries/（Cowork 直接維護）**；`archive/wiki/` 為 2026-11-01 封存的舊 compile 輸出，不可修改、不再維護
+5. **ingest 前必須確認 verificationStatus = "verified"**（ingest 已停用（2026-11-01 wiki 封存））
 6. 概念連結使用 `[[concept_id]]`（Obsidian 相容）
-7. 每次 ingest 同時更新 index.md 和 by-year.md
+7. ~~每次 ingest 同時更新 index.md 和 by-year.md~~（已停用（2026-11-01 wiki 封存））
 8. **格式與命名規範見 CLAUDE-SPEC.md；操作指令（ingest/compile/lint/status）見 CLAUDE-CODE.md，全部由 Cowork 執行**
 
 ---
@@ -225,3 +217,5 @@ Wiki 導航依七層知識架構組織（前三層由 Cowork 透過 compile-all/
 | 2026-10-09 | `frequency-RC.html` 以 subject-frequency-map v1.1 重產；新增 `scripts/build_frequency.py`（v1.1 產生器入庫） | v1.1 加入前後半期升溫／冷凍比較、後半期排名、可點熱圖；產生器改放知識庫內，可直接重跑 |
 | 2026-10-31 | 全庫主／副分類與引用關聯複核修正：13 題分類、1 題設計法修正並同步解析表頭／wiki／儀表板／知識圖譜／frequency／命題分析頁／problems-view；24 頁「相關題目」重寫；RC-2023-1 wiki 頁改為摘要頁；wiki/log.md 亂碼還原 | 同題型分類標法不一（接頭、組合斷面、預力損失副分類），且部分相關題目依題號自動湊數、連到無關考點 |
 | 2026-10-31 | 導入 unit-overview：`study/unit-RC-Un-m.html`（單元總覽＝命題分析＋公式給／背＋逐題公式表）由 `scripts/build_unit_page.py` 從 `study/data/unit-RC-Un-m.json` 產生，五單元（U1-1、U1-2、U2-1、U3-3、U4-1）上線；舊 `study-`／`formula-given-` 改轉址頁；problems-view、lecture 導覽、build_frequency 同步改指單元總覽 | 兩份單元頁內容互補但分散，「考了卻沒給」原為年份層級無法對應到題；改為逐題公式用途後證據可回溯到題解 |
+| 2026-11-01 | wiki 封存：wiki/ 只保留 queries/；其餘目錄與 index.md、by-year.md 移至 archive/wiki/；wiki/log.md → wiki/queries/log.md；ingest / compile-all / lint / add-concept 停用；規則 1 methods 修改不再同步 wiki/methods/；index.html、講義連結、xcheck.py、generate_knowledge_graph.py 同步改指 | 舊 wiki 為未驗證的 AI 摘要且與 raw/solutions、study/ 重複（SS 掃描發現 45 處錯誤），改以正本與 study 教材為準 |
+| 2026-11-01 | **廢止題解互動圖與補充筆記 PDF、儀表板改版**：刪除 18 份 `*-viz.html` 與 2 份題目補充 PDF；`question_index.json` 去 `hasViz`、`dashboard-data.js` 改 5 欄；`index.html` 完整解析改連 `study/problems-view/`、刪「指令速查」分頁並修資料夾授權恢復 bug | 圖解改以 `figs/*.svg` 為準；儀表板只保留讀書用功能，指令以 CLAUDE-CODE.md 為唯一正本 |

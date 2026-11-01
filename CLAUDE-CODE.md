@@ -8,17 +8,17 @@
 
 ## 指令索引
 
-### 📦 wiki 編譯與維護
+### 📦 知識庫維護（wiki 已於 2026-11-01 封存，只留 wiki/queries）
 
 | 指令 | 觸發語句 | 用途 |
 |------|---------|------|
-| [INGEST](#ingest) | `ingest RC-XXXX-N` | 將一道已驗證題目寫入 wiki |
-| [COMPILE-ALL](#compile-all) | `compile all` | 從零初始化整個 wiki |
-| [LINT](#lint) | `lint wiki` | 健檢 wiki 完整性（16 項） |
+| [INGEST](#ingest) | `ingest RC-XXXX-N` | ~~將一道已驗證題目寫入 wiki~~ 已停用（2026-11-01 wiki 封存） |
+| [COMPILE-ALL](#compile-all) | `compile all` | ~~從零初始化整個 wiki~~ 已停用（2026-11-01 wiki 封存） |
+| [LINT](#lint) | `lint wiki` | ~~健檢 wiki 完整性（16 項）~~ 已停用（2026-11-01 wiki 封存） |
 | [STATUS](#status) | `status` | 查看驗證進度與統計 |
 | [REINDEX](#reindex) | `reindex` | 掃描 solutions/，修正 hasSolution 不一致 |
-| [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | 新增概念到 concepts.json |
-| [ADD-METHOD](#add-method) | `add method [方法名]` | 新增解題方法論頁面 |
+| [ADD-CONCEPT](#add-concept) | `add concept [概念名]` | ~~新增概念到 concepts.json~~ 已停用（2026-11-01 wiki 封存） |
+| [ADD-METHOD](#add-method) | `add method [方法名]` | 新增解題方法論（只寫 raw/solutions/methods/） |
 | [REFRESH-DASHBOARD](#refresh-dashboard) | `更新儀表板資料` | 從 question_index.json 重新生成 dashboard-data.js |
 
 ### 📊 備考分析類
@@ -43,6 +43,8 @@
 
 ## INGEST
 
+> ⚠️ **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 queries/，其餘移至 archive/wiki/，本指令不再執行；以下保留作為歷史說明。
+
 **觸發語句：** `ingest RC-2018-1`（Cowork 直接執行）
 
 **前置檢查（強制）：**
@@ -59,11 +61,11 @@
 ```
 1. 讀取 raw/solutions/RC-XXXX-N/RC-XXXX-N.md
 2. 讀取 raw/json/question_index.json 中該題的完整條目
-   → 取得 primaryTopicId、secondaryTopicIds、designMethod、tags、hasViz
+   → 取得 primaryTopicId、secondaryTopicIds、designMethod、tags
 3. 掃描 raw/solutions/RC-XXXX-N/ 下的所有附屬檔案：
    → *-fig-*.png、*-chart-*.png、*-eqn-*.png（靜態截圖）
    → *-hand-*.png（手寫補充）
-   → *-pm-viz.html、*-sfd-bmd-viz.html 等（互動圖）
+   → figs/*.svg（程式產生之向量圖解）
 4. 建立或更新 wiki/problems/RC-XXXX-N.md
 5. 從 .md 萃取涉及的概念 → 更新 wiki/concepts/ 相關頁面的「出現題目」表格
 6. 從 .md 萃取涉及的陷阱 → 更新 wiki/traps/ 相關頁面的「出現題目」表格
@@ -83,6 +85,8 @@
 ---
 
 ## COMPILE-ALL
+
+> ⚠️ **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 queries/，其餘移至 archive/wiki/，本指令不再執行；以下保留作為歷史說明。
 
 **觸發語句：** `compile all`（Cowork 直接執行）
 
@@ -105,6 +109,8 @@
 
 ## LINT
 
+> ⚠️ **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 queries/，其餘移至 archive/wiki/，本指令不再執行；以下保留作為歷史說明。
+
 **觸發語句：** `lint wiki`（Cowork 直接執行）
 
 **檢查項目：**
@@ -113,8 +119,8 @@
 2.  斷開連結（[[id]] 但對應頁面不存在）
 3.  概念缺口（concepts.json 有 related_concept_ids 但頁面未建立）
 4.  手寫補充未登錄（raw/solutions/ 有 hand-*.png 但 problems/ 頁面未標注）
-5.  圖形未登錄（raw/solutions/ 有 *-viz.html 但 problems/ 頁面無圖形區塊）
-6.  P-M 圖缺口（RC-U1-2/RC-U1-4 柱設計題目但無 pm-viz.html）
+5.  圖形未登錄（raw/solutions/RC-XXXX-N/figs/ 有 *.svg 但 problems/ 頁面圖形區塊未列）
+6.  殘留互動圖（raw/solutions/ 出現 *-viz.html，或 .md 仍引用 -viz.html；互動圖已於 2026-11-01 廢止）
 7.  方法論缺口（raw/solutions/methods/ 有資料夾但 wiki/methods/ 無對應頁面）
 8.  圖片圖說缺漏（.md 中有 ![...](*.png) 但下方無 *圖說：* 的題目）
 9.  eqn.png 圖說未文字化（有 *-eqn.png 但圖說未包含公式 LaTeX）
@@ -172,6 +178,8 @@ solutions/ 已有解析但未驗證：[列出題號]
 
 ## ADD-CONCEPT
 
+> ⚠️ **已停用（2026-11-01 wiki 封存）**：wiki/ 只保留 queries/，其餘移至 archive/wiki/，本指令不再執行；以下保留作為歷史說明。
+
 **觸發語句：** `add concept [概念名]`（例：`add concept 開裂彎矩`）
 
 **用途：** 在 `raw/json/concepts.json` 新增一個概念條目，並建立對應的 `wiki/concepts/[id].md`。
@@ -195,7 +203,7 @@ solutions/ 已有解析但未驗證：[列出題號]
 
 **觸發語句：** `add method [方法名]`（例：`add method Whitney應力塊法`）
 
-**用途：** 在 `raw/solutions/methods/` 新增一個解題方法論文件，並建立 `wiki/methods/[id].md`。
+**用途：** 在 `raw/solutions/methods/` 新增一個解題方法論文件（2026-11-01 wiki 封存後不再建立 `wiki/methods/` 頁面）。
 
 **執行步驟：**
 ```
@@ -204,8 +212,7 @@ solutions/ 已有解析但未驗證：[列出題號]
    - 適用題型、適用規範條文
    - 核心公式、步驟摘要
 2. 建立 raw/solutions/methods/[method_id]/[method_id].md
-3. 建立 wiki/methods/[method_id].md
-4. 在 wiki/log.md 追加紀錄
+3. 在 wiki/queries/log.md 追加紀錄
 ```
 
 ---
@@ -218,9 +225,8 @@ solutions/ 已有解析但未驗證：[列出題號]
 1. 驗算：邊界代入、量綱檢查、與 verified 題目解答交叉比對
    （只憑印象或單一參考書就改 = 不合格）
 2. 改 raw/solutions/methods/[id]/[id].md
-3. cp 覆蓋 wiki/methods/[id].md（不可只改 wiki，compile-all 會蓋回）
-4. 全庫 grep 同一個錯誤係數，其他頁面一併修正
-5. wiki/log.md 追加紀錄：改了什麼、為什麼、怎麼驗證的
+3. 全庫 grep 同一個錯誤係數，其他頁面（study/ 講義等）一併修正
+4. wiki/queries/log.md 追加紀錄：改了什麼、為什麼、怎麼驗證的
 ```
 
 > **單位是最常見的錯誤來源**。同一條規範式在不同單位制下係數完全不同，
@@ -239,22 +245,14 @@ solutions/ 已有解析但未驗證：[列出題號]
 ```
 1. 讀取 raw/json/question_index.json 全部條目
 2. 轉換為精簡陣列格式寫入 dashboard-data.js：
-   [moduleId, primaryTopicId縮寫(去RC-前綴), secondaryTopicIds縮寫, designMethod, viz檔名前綴陣列, tags, pdf補充筆記檔名陣列]
-   - viz 前綴：掃描 raw/solutions/RC-XXXX-N/ 下 *-viz.html，
-     取檔名中 moduleId 與 -viz.html 之間的字段（如 pm、section）
-   - pdf 補充筆記：掃描 raw/solutions/RC-XXXX-N/ 下所有 *.pdf，取原始檔名（含副檔名）存入陣列；
-     無 PDF 的題目寫入空陣列 []
+   [moduleId, primaryTopicId縮寫(去RC-前綴), secondaryTopicIds縮寫, designMethod, tags]
+   - （2026-11-01 起移除 viz 與 pdf 補充筆記欄；index.html 依此 5 欄格式讀取）
 3. 讀取 `raw/json/syllabus_taxonomy.json`，提取出 `subject.id === "RC"` 的分類樹，並自動轉換成 `window.RC_TOPICS` 與 `window.RC_UNITS` 寫入 `dashboard-data.js` 中。
-4. 在 wiki/log.md 追加紀錄
+4. 在 wiki/queries/log.md 追加紀錄
 注意：index.html 本身不需改動；僅當需求變更時才修改 UI。
 ```
 
-**補充說明：補充筆記 PDF**
-- 使用者可將任意 `.pdf` 檔案放入 `raw/solutions/RC-YYYY-N/` 資料夾，命名無強制規範
-- PDF 檔名清單由 REFRESH-DASHBOARD 指令掃描並寫入 dashboard-data.js（q.pdf 欄位），不再於前端即時掃描資料夾
-- index.html 題庫瀏覽頁會依 dashboard-data.js 資料，對有 PDF 的題目卡片直接顯示「📎 補充筆記 PDF」按鈕（多筆時顯示筆數，點擊可選取要開啟的檔案）；無 PDF 者不顯示
-- 開啟行為雙軌機制：線上環境（GitHub Pages）會直接開新分頁載入；本機環境（`file:///`）則需透過 File System Access API 授權讀取知識庫資料夾（與「📄 完整解析」共用同一次授權）。
-- 使用者新增或移除 PDF 後，需對 Cowork 說「更新儀表板資料」才會反映在按鈕上
+**補充說明：** 補充筆記 PDF 功能已於 2026-11-01 移除（按鈕、篩選與 `raw/solutions/` 下的題目補充 PDF 一併刪除）。
 
 ---
 
@@ -347,8 +345,8 @@ RC-U4（預力）：XX%
 
 ③ 考題清單（互動篩選）
   - 篩選按鈕（全部 + 各子項）
-  - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/互動圖/驗證狀態 icon
-  - 【重要】點擊題號或標題時，必須以 `<a href="../index.html#md=raw/solutions/RC-XXXX-N/RC-XXXX-N.md&t=RC-XXXX-N" target="_blank">` 格式連結至 markdown 渲染器，確保公式能透過 KaTeX 呈現，且相對路徑的附圖（png）與補充檔（pdf）皆可正常載入。
+  - 每題顯示：題號/年度、題型摘要、關鍵 tags（前5個）、解析/驗證狀態 icon
+  - 【重要】點擊題號或標題時，必須以 `<a href="problems-view/RC-XXXX-N.html" target="_blank">` 連結至預先渲染的解析頁（study/problems-view，公式與附圖皆已處理）；舊式 `../index.html#md=...` 連結會自動導向同一頁。
 
 ④ 核心公式速查（KaTeX 渲染）
   - 每個子項一張公式卡，含主要計算公式與注意事項
@@ -468,3 +466,4 @@ RC-2018-4：後拉法預力梁
 | 2026-06-30 | 更新 STUDY 指令規格：考題連結必須指向 `raw/solutions/` 原始檔 | 確保 index.html#md 渲染引擎能正確讀取相對路徑的圖片與 PDF 附檔 |
 | 2026-07-02 | index.html 實作雙軌讀取機制，非本機環境下改用原生 fetch 取代 File System Access API 讀取資源 | 提升 GitHub Pages 線上版儀表板操作流暢度，免除多餘的資料夾授權提示 |
 | 2026-07-02 | 實作 index.html 前端的 Hash 深度連結（#md=）邏輯，正式支援 study 頁面考題點擊跳轉功能 | 補齊前端功能，完全對齊 STUDY 指令的連結規格 |
+| 2026-11-01 | wiki 封存：INGEST / COMPILE-ALL / LINT / ADD-CONCEPT 標「已停用」；ADD-METHOD、FIX-METHOD 只寫 raw/solutions/methods/，不再同步 wiki/methods/；log 改記 wiki/queries/log.md | wiki/ 只保留 queries/，其餘移至 archive/wiki/ |

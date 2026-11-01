@@ -8,16 +8,16 @@
 
 ## 這個資料庫是什麼
 
-每道考古題都有一份 **深度解析**（LaTeX 公式、逐步計算、陷阱說明），解析由 AI 完成，人工驗算確認後才進 wiki。
+每道考古題都有一份 **深度解析**（LaTeX 公式、逐步計算、陷阱說明），解析由 AI 完成，人工驗算確認後以 `raw/solutions/` 正本與 `study/` 教材為準（舊 wiki 已於 2026-11-01 封存至 `archive/wiki/`）。
 
 **兩個工作角色：**
 
 | 你要做什麼 | 怎麼做 |
 |-----------|--------|
 | 解一道新題 | 對 **Cowork** 說「解析 XXXX 年考卷」 |
-| 把解析寫進 wiki | 對 **Cowork** 說「ingest RC-XXXX-N」 |
+| ~~把解析寫進 wiki~~ | ~~對 **Cowork** 說「ingest RC-XXXX-N」~~ 已停用（2026-11-01 wiki 封存） |
 | 查詢知識 / 跨題分析 | 對 **Cowork** 直接提問 |
-| 維護橫向知識工具 | 對 **Cowork** 說（diagnosis / failure-modes / materials / code-ref） |
+| ~~維護橫向知識工具~~ | ~~diagnosis / failure-modes / materials / code-ref~~ 已停用（2026-11-01 wiki 封存） |
 
 > 所有操作都在 Cowork 對話中完成，無需終端機或其他工具。完整指令清單見 **CLAUDE-CODE.md**。
 
@@ -32,12 +32,9 @@
 | 子項深度複習速查頁 | `study/study-RC-UN-n.html`（說 `study RC-UN-n` 生成）— **練題時**用 |
 | 子項觀念講義（理解導向） | `study/lecture-RC-UN-n.html` + `.pdf`（說 `生成 RC-UN-n 講義` 生成）— **練題前**用 |
 | 公式給／背分界 | `study/formula-given-RC-UN-n.html` + `.pdf`（說 `整理 RC-UN-n 主要公式` 生成）— **背誦決策**用 |
-| wiki 題目頁（含標籤/考點） | `wiki/problems/RC-YYYY-N.md` |
-| 依年份瀏覽所有題目 | `wiki/by-year.md` |
-| 概念說明（Whitney應力塊、P-M圖等） | `wiki/concepts/` |
-| 解題策略（拿到考題怎麼判斷） | `wiki/diagnosis/` |
-| 規範條文對應（ACI 318） | `wiki/code-ref/` |
-| 操作紀錄 | `wiki/log.md` |
+| 稽核與分析報告 | `wiki/queries/index.md` |
+| 操作紀錄 | `wiki/queries/log.md` |
+| 舊 wiki（題目頁、概念、診斷、規範對應等，2026-11-01 封存，僅供參考） | `archive/wiki/`（見 `archive/README.md`） |
 
 ---
 
@@ -62,16 +59,13 @@ exam-wiki-RC/
 ├── raw/               ← 原始資料（唯讀）
 │   ├── exams/         ← 考卷 PDF（RC-YYYY_鋼筋混凝土設計與預力.pdf）
 │   ├── json/          ← question_index.json、concepts.json
-│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖 + 補充筆記 PDF
+│   └── solutions/     ← 每題一個資料夾，含 .md + 截圖
 │
-└── wiki/              ← 知識庫（七層架構）
-    ├── problems/      ← 所有題目頁
-    ├── concepts/      ← 概念頁
-    ├── methods/       ← 解題方法論（Whitney、P-M互制、損失計算等）
-    ├── diagnosis/     ← 題型診斷決策樹
-    ├── failure-modes/ ← 失敗模式分類
-    ├── materials/     ← 材料行為（混凝土/鋼筋）
-    └── code-ref/      ← 規範條文對應（ACI 318/CNS 1480）
+├── wiki/
+│   └── queries/       ← 稽核與分析報告、操作紀錄 log.md
+│
+└── archive/
+    └── wiki/          ← 2026-11-01 封存的舊 wiki（七層頁、index、by-year），不再維護
 ```
 
 ---
@@ -85,7 +79,7 @@ exam-wiki-RC/
 4. 告知 Cowork「截圖完成，請開始解題」
 5. Cowork 輸出 RC-2025-1.md（一次一題）
 6. 人工驗算無誤後，說：「將 RC-2025-1 的 verificationStatus 改為 verified」
-7. 說：「ingest RC-2025-1」→ Cowork 直接寫入 wiki
+7. ~~說：「ingest RC-2025-1」→ Cowork 直接寫入 wiki~~ 已停用（2026-11-01 wiki 封存）
 ```
 
 ---
@@ -94,7 +88,7 @@ exam-wiki-RC/
 
 - 年份用**西元**（RC-2018-1，不是 RC-107-1）
 - PNG 截圖必須加序號（`fig-1.png`，不可寫 `fig.png`）
-- 互動圖後綴必須是 `-viz.html`（`pm-viz.html`，不是 `pm.html`）
+- 不產生互動圖 `*-viz.html`（2026-11-01 廢止）；圖解一律用 `figs/*.svg` 向量圖
 - 公式必須用 LaTeX（`$f'_c$`，不可寫純文字）
 - ingest 前確認 `verificationStatus = "verified"`
 

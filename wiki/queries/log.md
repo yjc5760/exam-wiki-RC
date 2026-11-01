@@ -1781,3 +1781,14 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
   - `study/lecture-RC-*.html`：導覽列「命題分析」「給／背分界」兩鍵合併為「單元總覽」
   - `scripts/build_frequency.py`：教材偵測加 `unit`（有 unit- 時不再列 study／formula）、說明文字改指單元總覽；重跑 frequency-RC.html，對帳通過
 - 驗證：`build_unit_page.py --check` 五頁通過（題目集合＝索引主＋副）；Playwright 1280／390 寬：無 console 錯誤、`.katex-error` 0、`scrollWidth` 不超出視窗；PDF 文字層無原始 LaTeX
+
+## 2026-11-01 ARCHIVE-WIKI：wiki 封存，只保留 wiki/queries/
+
+- **[MOVE]** `wiki/` 的 code-ref、concepts、diagnosis、failure-modes、materials、methods、philosophy、problems、traps 九個目錄及 `index.md`、`by-year.md` 移至 `archive/wiki/`（mv，未刪除）；`wiki/log.md` → `wiki/queries/log.md`（本檔）
+- **[ADD]** `archive/README.md`：封存原因（未經驗證的 AI 摘要，SS 同類頁面掃描發現 45 處錯誤；內容與 raw/solutions、study/ 重複）與替代來源
+- **[KEEP]** `raw/solutions/methods/`、`raw/json/concepts.json` 原地保留
+- **[SYNC]** `index.html`：wiki 導航卡改為「🔍 稽核與分析報告」「📝 變更紀錄」，標題改「知識庫導覽」；ingest／compile all／lint wiki／add concept 標「已停用（2026-11-01 wiki 封存）」
+- **[SYNC]** `study/lecture-RC-{U1-2,U2-1,U3-3,U4-1}.html` 的 wiki 連結改指 `archive/wiki/`、log 改指 `wiki/queries/log.md`；四份 PDF 重產（38／27／33／31 頁）
+- **[SYNC]** `scripts/xcheck.py` 衍生目錄不存在時改掃 `archive/`；`generate_knowledge_graph.py` 路徑改指 `archive/wiki/` 並註明不再重產
+- **[DOC]** CLAUDE.md（資料流、目錄樹、規則 1 methods 修改改為兩條件「驗算＋記 log」、規則 3/4/5/7、CHANGELOG）、CLAUDE-CODE.md、CLAUDE-SPEC.md、CLAUDE-SOLVE.md、README.md、知識庫使用說明書.md、檔案架構索引表.md、.gitattributes（加 `archive/**`）、`wiki/queries/index.md`
+- 2026-11-01｜REMOVE-VIZ-PDF＋DASHBOARD｜比照 exam-wiki-SS 同日處理：① 廢止題解互動圖——刪除 `raw/solutions/` 下 18 份 `*-viz.html`（pm 12、curve／section／prestress／stress 各 1、RC-2023-1 兩份 analyzer／lifecycle），移除 RC-2018-2／2018-3／2018-4 正本與 problems-view 的「互動圖：無」欄，`question_index.json` 移除 100 個 `hasViz`，`scripts/build_unit_page.py`＋模板移除 📊 圖示並重建 5 份 `study/unit-RC-*.html`（差異僅 viz 旗標）；② 移除補充筆記 PDF——刪除 `RC-2023-1.pdf`、`RC-2023-1_補充.pdf`，正本與 problems-view 刪除對應連結；`dashboard-data.js` 改為 5 欄（去 viz、pdf）；③ `index.html`：完整解析改連 `study/problems-view/`（舊 `#md=` 深層連結與 [[題號]] 自動導向）、刪「指令速查」分頁、工作流程表改現行做法、導覽卡以全科熱圖取代舊出題頻率分析並加「⌨️ 指令清單」、新增單元教材區、統計卡「全部 verified」更正為「已收錄題目」（實際 7 verified／93 unverified）並以 USD／WSD 題數取代互動圖題數、修 ensureDir 在 dirHandle 宣告前呼叫之 TDZ（靜默恢復授權從未生效）、選到的資料夾須含 raw/solutions/本科題號、搜尋多關鍵字＋副考點名稱、結果筆數與清除篩選等；④ 規則文件（CLAUDE／CLAUDE-SOLVE／CLAUDE-SPEC／CLAUDE-CODE／README／檔案架構索引表／知識庫使用說明書）同步。公式渲染：以 study/assets/katex 0.18.1 依 auto-render 規則重算 100 頁 14,944 個數學式，錯誤 0；正本無控制字元／未跳脫 % 問題。

@@ -18,7 +18,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "方形柱",
@@ -43,7 +42,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙筋梁",
@@ -69,7 +67,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T型梁",
@@ -94,7 +91,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -120,7 +116,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "先拉法",
@@ -146,7 +141,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "特殊矩形框架梁",
@@ -171,7 +165,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "兩端固定梁",
@@ -196,7 +189,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "矩形梁",
@@ -222,7 +214,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "角柱接頭",
@@ -246,7 +237,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -270,7 +260,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -296,7 +285,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -322,7 +310,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "橫膈版",
@@ -346,7 +333,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "矩形柱",
@@ -369,7 +355,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "單筋梁",
@@ -394,7 +379,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -418,7 +402,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "偏心距求解",
@@ -441,7 +424,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "樁帽設計",
@@ -465,7 +447,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "預力T型梁",
@@ -489,7 +470,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙筋梁",
@@ -513,7 +493,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "梁設計",
@@ -539,7 +518,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "預力梁",
@@ -565,7 +543,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "曲率韌性",
@@ -590,7 +567,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "曲率延展比",
@@ -613,7 +589,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -641,7 +616,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "懸臂梁",
@@ -667,7 +641,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -691,7 +664,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -715,7 +687,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙筋梁",
@@ -738,7 +709,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "方形柱",
@@ -763,7 +733,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "等效載重法",
@@ -787,7 +756,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "獨立基腳",
@@ -811,7 +779,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震梁",
@@ -836,7 +803,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "扭矩強度",
@@ -861,7 +827,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "偏心距限制",
@@ -884,7 +849,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -906,7 +870,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "倒T型梁",
@@ -932,7 +895,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "無梁版",
@@ -956,7 +918,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "預力連續梁",
@@ -979,7 +940,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "單筋矩形梁",
@@ -1005,7 +965,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "彎矩曲率分析",
@@ -1029,7 +988,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "臨界斷面",
@@ -1055,7 +1013,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "預力梁斷面應力",
@@ -1079,7 +1036,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "單向版",
@@ -1105,7 +1061,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "特殊矩形柱",
@@ -1130,7 +1085,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "扭矩強度",
@@ -1154,7 +1108,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -1180,7 +1133,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震梁",
@@ -1205,7 +1157,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "強柱弱梁",
@@ -1232,7 +1183,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "梁柱外接頭",
@@ -1264,7 +1214,6 @@
       "designMethod": "混合",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "預力RC拉力桿",
@@ -1290,7 +1239,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "壓拉桿模式",
@@ -1321,7 +1269,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "懸臂梁",
@@ -1348,7 +1295,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震柱",
@@ -1375,7 +1321,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "簡支預力梁",
@@ -1401,7 +1346,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "軸力影響",
@@ -1427,7 +1371,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震柱",
@@ -1453,7 +1396,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "圓形螺旋柱",
@@ -1478,7 +1420,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -1507,7 +1448,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "矩形梁",
@@ -1531,7 +1471,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "矩形柱",
@@ -1556,7 +1495,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -1585,7 +1523,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "P-M互制圖",
@@ -1609,7 +1546,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -1633,7 +1569,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "簡支梁",
@@ -1658,7 +1593,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "無側移柱",
@@ -1683,7 +1617,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "懸臂梁",
@@ -1706,7 +1639,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "I形橋梁",
@@ -1730,7 +1662,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "獨立基腳",
@@ -1754,7 +1685,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙筋梁",
@@ -1778,7 +1708,6 @@
       "designMethod": "USD",
       "verificationStatus": "verified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁設計",
@@ -1801,7 +1730,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -1825,7 +1753,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "矩形梁",
@@ -1849,7 +1776,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "矩形柱",
@@ -1873,7 +1799,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "懸臂梁",
@@ -1896,7 +1821,6 @@
       "designMethod": "混合",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "先拉法",
@@ -1921,7 +1845,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "矩形柱",
@@ -1945,7 +1868,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "T形梁",
@@ -1971,7 +1893,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "角柱接頭",
@@ -1998,7 +1919,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "潛變",
@@ -2024,7 +1944,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "直線型鋼腱",
@@ -2051,7 +1970,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "混凝土品質判定",
@@ -2075,7 +1993,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "外伸梁",
@@ -2102,7 +2019,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震柱",
@@ -2128,7 +2044,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "雙軸彎矩",
@@ -2153,7 +2068,6 @@
       "designMethod": "混合",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "先拉法",
@@ -2178,7 +2092,6 @@
       "designMethod": "混合",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "部分預力梁",
@@ -2203,7 +2116,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "耐震柱",
@@ -2227,7 +2139,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "梁柱接頭",
@@ -2253,7 +2164,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "剪力牆",
@@ -2279,7 +2189,6 @@
       "designMethod": "概念題",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙向版",
@@ -2303,7 +2212,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "偏心受壓",
@@ -2327,7 +2235,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "扭力忽略門檻",
@@ -2351,7 +2258,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "雙筋梁",
@@ -2375,7 +2281,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "後拉法",
@@ -2401,7 +2306,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "細長柱",
@@ -2424,7 +2328,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": true,
       "hasHandwritten": false,
       "tags": [
         "加大柱",
@@ -2449,7 +2352,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "加大柱",
@@ -2476,7 +2378,6 @@
       "designMethod": "USD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "方形基腳",
@@ -2501,7 +2402,6 @@
       "designMethod": "WSD",
       "verificationStatus": "unverified",
       "hasSolution": true,
-      "hasViz": false,
       "hasHandwritten": false,
       "tags": [
         "論述題",

@@ -3,7 +3,7 @@
 
 > **使用環境：Cowork**
 > 在 Cowork 開啟 `exam-wiki-RC/` 資料夾後，此檔案提供解題、分析的完整規範。
-> wiki 的維護（ingest/compile/lint）請對 Cowork 說出對應指令，詳見 CLAUDE-CODE.md。
+> wiki 的維護（ingest/compile/lint）已停用（2026-11-01 wiki 封存）；wiki/ 只保留 queries/，其餘在 archive/wiki/，詳見 CLAUDE-CODE.md。
 
 ---
 
@@ -35,7 +35,7 @@
    → 圖形說明（如有）
 ```
 
-**wiki/methods/[method-id].md 格式：**
+**wiki/methods/[method-id].md 格式**（已停用（2026-11-01 wiki 封存），不再產生；僅供參考）：
 ```markdown
 # [方法名稱]
 
@@ -97,8 +97,8 @@
    → 直接存入 raw/solutions/RC-XXXX-N/RC-XXXX-N.md
 9. 所有數學公式使用 LaTeX 格式
 10. 每份解析開頭必須包含標籤區塊
-11. 判斷是否需要輸出互動圖（依「圖形觸發條件」）：
-    → 直接存入 raw/solutions/RC-XXXX-N/RC-XXXX-N-[內容碼]-viz.html
+11. 不輸出互動圖 *-viz.html（2026-11-01 起廢止）；
+    → 需要圖解時以 struct-diagram 產生 figs/*.svg 向量圖並插回 .md
 ```
 
 ---
@@ -329,7 +329,6 @@ Icr：開裂斷面慣性矩（需計算中性軸位置）
    - 欄位：**知識點 ∣ 說明 ∣ 卡關?**（卡關欄全部留空）
 
 ## 4. 步驟化詳細計算過程 (Step-by-Step Detailed Calculation)
-   > 📊 互動圖（如有）：`RC-XXXX-N-pm-viz.html`
    - 完整計算過程，含公式、單位、中間結果
    - 關鍵步驟加「策略註解」說明為何這樣做
    - 最終答案用 \boxed{} 標示
@@ -363,7 +362,7 @@ N    = 題號（1、2、3、4，部分年份有 5）
    - RC-XXXX-N-hand-1.png
 4. 人工驗算解析內容正確後，更新 verificationStatus：
    告訴 Cowork：「將 RC-XXXX-N 的 verificationStatus 改為 verified」
-5. 說：「ingest RC-XXXX-N」 → Cowork 直接執行，wiki 自動更新
+5. ~~說：「ingest RC-XXXX-N」 → Cowork 直接執行，wiki 自動更新~~ 已停用（2026-11-01 wiki 封存）
 6. 說「繼續下一題」→ Cowork 解析下一道尚未有解析的題目
 ```
 
@@ -415,8 +414,8 @@ N    = 題號（1、2、3、4，部分年份有 5）
 
 **執行流程：**
 ```
-1. Cowork 讀取 wiki/index.md 定位相關分類
-2. Cowork 讀取相關 concepts/、problems/、traps/、methods/ 頁面
+1. Cowork 讀取 raw/json/question_index.json 定位相關分類（舊 wiki/index.md 已封存）
+2. Cowork 讀取相關 raw/solutions/ 正本、raw/solutions/methods/ 與 study/ 教材
 3. Cowork 合成跨頁面的分析答案
 4. 你說「把這個答案存進知識庫」
 5. Cowork 存成 wiki/queries/[主題]-[日期].md
