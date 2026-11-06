@@ -1792,3 +1792,7 @@ $T = \tfrac12 \times 15.63 \times 22.5 \times 30 = 5{,}275.125 \to \mathbf{5{,}2
 - **[SYNC]** `scripts/xcheck.py` 衍生目錄不存在時改掃 `archive/`；`generate_knowledge_graph.py` 路徑改指 `archive/wiki/` 並註明不再重產
 - **[DOC]** CLAUDE.md（資料流、目錄樹、規則 1 methods 修改改為兩條件「驗算＋記 log」、規則 3/4/5/7、CHANGELOG）、CLAUDE-CODE.md、CLAUDE-SPEC.md、CLAUDE-SOLVE.md、README.md、知識庫使用說明書.md、檔案架構索引表.md、.gitattributes（加 `archive/**`）、`wiki/queries/index.md`
 - 2026-11-01｜REMOVE-VIZ-PDF＋DASHBOARD｜比照 exam-wiki-SS 同日處理：① 廢止題解互動圖——刪除 `raw/solutions/` 下 18 份 `*-viz.html`（pm 12、curve／section／prestress／stress 各 1、RC-2023-1 兩份 analyzer／lifecycle），移除 RC-2018-2／2018-3／2018-4 正本與 problems-view 的「互動圖：無」欄，`question_index.json` 移除 100 個 `hasViz`，`scripts/build_unit_page.py`＋模板移除 📊 圖示並重建 5 份 `study/unit-RC-*.html`（差異僅 viz 旗標）；② 移除補充筆記 PDF——刪除 `RC-2023-1.pdf`、`RC-2023-1_補充.pdf`，正本與 problems-view 刪除對應連結；`dashboard-data.js` 改為 5 欄（去 viz、pdf）；③ `index.html`：完整解析改連 `study/problems-view/`（舊 `#md=` 深層連結與 [[題號]] 自動導向）、刪「指令速查」分頁、工作流程表改現行做法、導覽卡以全科熱圖取代舊出題頻率分析並加「⌨️ 指令清單」、新增單元教材區、統計卡「全部 verified」更正為「已收錄題目」（實際 7 verified／93 unverified）並以 USD／WSD 題數取代互動圖題數、修 ensureDir 在 dirHandle 宣告前呼叫之 TDZ（靜默恢復授權從未生效）、選到的資料夾須含 raw/solutions/本科題號、搜尋多關鍵字＋副考點名稱、結果筆數與清除篩選等；④ 規則文件（CLAUDE／CLAUDE-SOLVE／CLAUDE-SPEC／CLAUDE-CODE／README／檔案架構索引表／知識庫使用說明書）同步。公式渲染：以 study/assets/katex 0.18.1 依 auto-render 規則重算 100 頁 14,944 個數學式，錯誤 0；正本無控制字元／未跳脫 % 問題。
+
+## 2026-11-06 清理 study 觀念簡報與旁白稿檔案
+
+- **[CLEANUP]** 移除 `study/` 下 5 個單元簡報與向量圖資目錄（RC-U1-1、RC-U1-2、RC-U2-1、RC-U3-3、RC-U4-1，共 482 檔）及旁白稿（`旁白稿_RC-*.md`），教材正式回歸外部專用簡報與影音專案管理，使本知識庫聚焦於考題解析正本與單元總覽網頁。
